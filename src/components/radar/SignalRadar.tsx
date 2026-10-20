@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, CircleDot, Orbit } from "lucide-react";
+import { ChevronRight, Orbit } from "lucide-react";
 import { useMemo, useState } from "react";
 import { pollCandidates, pollObservations, radarEvents } from "../../data/radarData";
 import "./radar.css";
@@ -147,7 +147,6 @@ export function SignalRadar() {
         <div className="feed-footer"><Link href="/events">Tous les événements <ChevronRight size={14} /></Link></div>
       </section>
 
-      <footer className="radar-footer"><span><CircleDot size={12} /> PRÉSIDENTIELLE 2027</span><Link href="/events">Tous les événements <ChevronRight size={14} /></Link></footer>
     </main>
   );
 }
