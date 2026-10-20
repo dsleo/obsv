@@ -1,0 +1,32 @@
+name: Refresh data snapshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 5 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Collect configured JSON feeds
+        run: npm run data:collect
+        env:
+          POLLS_FEED_URL: ${{ vars.POLLS_FEED_URL }}
+          EVENTS_FEED_URL: ${{ vars.EVENTS_FEED_URL }}
+      - run: npm run data:validate
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated-election-data-${{ github.run_id }}
+          path: data/generated/
+          if-no-files-found: error
+          retention-days: 14
