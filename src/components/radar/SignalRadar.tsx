@@ -104,8 +104,8 @@ export function SignalRadar() {
     <main className="radar-page">
       <header className="radar-header">
         <a className="radar-brand" href="#radar" aria-label="L’Observatoire, accueil"><span className="radar-brand-mark"><Orbit size={19} strokeWidth={1.7} /></span><span>L’OBSERVATOIRE</span></a>
-        <nav className="radar-nav" aria-label="Navigation principale"><a className="active" href="#radar">Le radar</a><Link href="/events">Événements</Link></nav>
-        <div className="radar-header-status"><Link href="/candidates" className="candidate-shortcut">Candidats</Link><span className="live-dot" /> MODÈLE ACTIF <b>20 OCT. 2026</b></div>
+        <nav className="radar-nav" aria-label="Navigation principale"><a className="active" href="#radar">Le radar</a><Link href="/events">Événements</Link><Link href="/candidates">Candidats</Link></nav>
+        <div className="radar-header-status"><span className="live-dot" /> MODÈLE ACTIF <b>20 OCT. 2026</b></div>
       </header>
 
       <section className="radar-workspace" id="radar">

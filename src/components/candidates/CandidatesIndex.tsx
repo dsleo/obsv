@@ -14,9 +14,7 @@ export function CandidatesIndex() {
       <NewsMasthead section="CANDIDATS" />
       <div className="candidate-content">
         <header className="candidate-intro">
-          <span className="news-kicker"><span /> PREMIER TOUR / LES CANDIDATS</span>
           <h1>Les candidats <em>en mouvement.</em></h1>
-          <p>Suivez l’évolution des intentions de vote et les événements qui renforcent ou fragilisent chaque candidature.</p>
         </header>
 
         <section className="candidate-roster" aria-label="Candidats classés selon les intentions de vote">

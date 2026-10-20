@@ -11,12 +11,12 @@ export function NewsMasthead({ section }: { section: string }) {
         </Link>
 
         <nav className="news-nav" aria-label="Rubriques">
-          <Link href="/">Le radar</Link>
+          <Link href="/" className={section === "ACCUEIL" ? "active" : undefined}>Le radar</Link>
           <Link href="/events" className={section === "ÉVÉNEMENTS" || section === "ÉVÉNEMENT" ? "active" : undefined}>Événements</Link>
+          <Link href="/candidates" className={section === "CANDIDATS" ? "active" : undefined}>Candidats</Link>
         </nav>
 
         <div className="news-masthead-actions">
-          <Link href="/candidates" className={`candidate-shortcut ${section === "CANDIDATS" ? "active" : ""}`}>Candidats</Link>
           <span className="news-masthead-meta"><span className="news-live-dot" /> MODÈLE ACTIF <b>20 OCT. 2026</b></span>
         </div>
       </header>
