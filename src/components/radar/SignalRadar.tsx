@@ -38,6 +38,16 @@ function trendPath(candidateId: string) {
 
 function RadarChart({ selectedId, onSelect }: { selectedId: string; onSelect: (id: string) => void }) {
   const yTicks = [0, 5, 10, 15, 20, 25, 30, 35];
+  const [hoveredPoll, setHoveredPoll] = useState<{ poll: (typeof pollObservations)[number]; candidate: (typeof pollCandidates)[number]; x: number; y: number } | null>(null);
+  const showPoll = (poll: (typeof pollObservations)[number], candidate: (typeof pollCandidates)[number], circle: SVGCircleElement) => {
+    const plotBounds = circle.closest(".radar-plot")?.getBoundingClientRect();
+    const circleBounds = circle.getBoundingClientRect();
+    if (!plotBounds) return;
+    const x = circleBounds.left + circleBounds.width / 2 - plotBounds.left;
+    const y = circleBounds.top - plotBounds.top;
+    setHoveredPoll({ poll, candidate, x: Math.max(150, Math.min(plotBounds.width - 150, x)), y: Math.max(108, y) });
+  };
+  const pollDate = (day: number) => new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(2026, 5, 30 + day)));
 
   return (
     <div className="radar-plot">
@@ -61,7 +71,13 @@ function RadarChart({ selectedId, onSelect }: { selectedId: string; onSelect: (i
             r="2.7"
             fill={candidate.color}
             className="poll-observation"
-          ><title>{`${poll.pollster} · ${poll.day} jours depuis le 30 juin · ${candidate.short} : ${poll.values[candidate.id]} % · n=${poll.sample.toLocaleString("fr-FR")}`}</title></circle>))}
+            tabIndex={0}
+            aria-label={`${poll.pollster}, ${pollDate(poll.day)} : ${candidate.name}, ${poll.values[candidate.id]} %, échantillon de ${poll.sample.toLocaleString("fr-FR")} personnes`}
+            onPointerEnter={(event) => showPoll(poll, candidate, event.currentTarget)}
+            onFocus={(event) => showPoll(poll, candidate, event.currentTarget)}
+            onPointerLeave={() => setHoveredPoll(null)}
+            onBlur={() => setHoveredPoll(null)}
+          ><title>{`${poll.pollster} · ${pollDate(poll.day)} · ${candidate.name} : ${poll.values[candidate.id]} % · n=${poll.sample.toLocaleString("fr-FR")}`}</title></circle>))}
         </g>
 
         {dayLabels.map(({ day, label }) => <g key={label}>
@@ -88,6 +104,11 @@ function RadarChart({ selectedId, onSelect }: { selectedId: string; onSelect: (i
           </g>;
         })}
       </svg>
+      {hoveredPoll && <div className="radar-poll-tooltip" style={{ left: hoveredPoll.x, top: hoveredPoll.y }} aria-hidden="true">
+        <span>{hoveredPoll.poll.pollster} · {pollDate(hoveredPoll.poll.day)}</span>
+        <strong style={{ color: hoveredPoll.candidate.color }}>{hoveredPoll.candidate.name} <b>{hoveredPoll.poll.values[hoveredPoll.candidate.id]} %</b></strong>
+        <small>Échantillon : {hoveredPoll.poll.sample.toLocaleString("fr-FR")} personnes</small>
+      </div>}
     </div>
   );
 }
@@ -105,7 +126,6 @@ export function SignalRadar() {
       <header className="radar-header">
         <a className="radar-brand" href="#radar" aria-label="L’Observatoire, accueil"><span className="radar-brand-mark"><Orbit size={19} strokeWidth={1.7} /></span><span>L’OBSERVATOIRE</span></a>
         <nav className="radar-nav" aria-label="Navigation principale"><a className="active" href="#radar">Le radar</a><Link href="/events">Événements</Link><Link href="/candidates">Candidats</Link></nav>
-        <div className="radar-header-status"><span className="live-dot" /> MODÈLE ACTIF <b>20 OCT. 2026</b></div>
       </header>
 
       <section className="radar-workspace" id="radar">

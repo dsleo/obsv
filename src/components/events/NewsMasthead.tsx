@@ -16,9 +16,6 @@ export function NewsMasthead({ section }: { section: string }) {
           <Link href="/candidates" className={section === "CANDIDATS" ? "active" : undefined}>Candidats</Link>
         </nav>
 
-        <div className="news-masthead-actions">
-          <span className="news-masthead-meta"><span className="news-live-dot" /> MODÈLE ACTIF <b>20 OCT. 2026</b></span>
-        </div>
       </header>
       <div className="news-section-rule">
         <span>{section}</span>
