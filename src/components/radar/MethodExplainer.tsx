@@ -1,45 +1,40 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
-import { AnimatePresence, motion, MotionConfig, useReducedMotion } from "framer-motion";
-import { ArrowRight, BarChart3, BrainCircuit, MapPinned, Newspaper, Pause, Play, RotateCcw, UsersRound } from "lucide-react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { motion, MotionConfig, useReducedMotion } from "framer-motion";
+import { ArrowDownRight, ArrowRight, BarChart3, BrainCircuit, MapPinned, Newspaper, UsersRound } from "lucide-react";
 import { pollCandidates, radarEvents } from "../../data/radarData";
 import "./method-explainer.css";
 
-const stages = [
+const chapters = [
   {
-    nav: "Les données",
-    label: "LE POINT DE DÉPART",
-    title: "Former une population de référence",
-    description: "Une population synthétique représente la diversité des profils en France. Un jeu de données distinct rassemble les intentions de vote passées.",
+    title: "Une population, des trajectoires de vote",
+    text: "Le point de départ est une population synthétique qui représente la diversité des profils en France. À part, les enquêtes passées nous apprennent comment les intentions de vote se répartissent.",
+    eyebrow: "CONSTRUIRE LE TERRAIN D’ÉTUDE",
     scene: "sources",
   },
   {
-    nav: "Le modèle",
-    label: "L’APPRENTISSAGE",
-    title: "Apprendre les intentions de vote",
-    description: "Le modèle apprend à partir des intentions passées, puis l’applique aux profils synthétiques pour estimer un vecteur de probabilités par personne.",
+    title: "Apprendre des intentions passées",
+    text: "Un modèle apprend à partir de ces réponses, puis les applique à la population synthétique. Chaque profil reçoit son propre vecteur de probabilités — une estimation, pas une certitude individuelle.",
+    eyebrow: "ESTIMER PROFIL PAR PROFIL",
     scene: "model",
   },
   {
-    nav: "Le calage local",
-    label: "L’ANCRAGE TERRITORIAL",
-    title: "Ajuster les probabilités à chaque commune",
-    description: "Notre algorithme recale les probabilités individuelles pour retrouver les résultats électoraux observés dans la commune.",
+    title: "Ancrer l’estimation dans chaque commune",
+    text: "Les probabilités individuelles sont ajustées pour retrouver les résultats électoraux observés localement. Le modèle national prend ainsi en compte les réalités de chaque territoire.",
+    eyebrow: "CALER SUR LE VOTE OBSERVÉ",
     scene: "calibration",
   },
   {
-    nav: "L’événement",
-    label: "LA RENCONTRE AVEC L’ACTUALITÉ",
-    title: "Relier une nouvelle aux profils concernés",
-    description: "Pour chaque événement, le système suggère des sous-populations et les retrouve dans la population de référence enrichie.",
+    title: "Une actualité ne touche pas tout le monde de la même façon",
+    text: "À partir d’un événement, le système suggère les sous-populations potentiellement concernées, puis les retrouve dans la population enrichie. Ici, la hausse de TVA est un exemple de démonstration.",
+    eyebrow: "FAIRE LE LIEN AVEC L’ACTUALITÉ",
     scene: "event",
   },
   {
-    nav: "Le nouvel équilibre",
-    label: "LE RÉSULTAT",
-    title: "Observer le déplacement des intentions",
-    description: "Le vecteur de chaque personne concernée est ajusté. L’agrégation de ces changements donne une estimation de l’effet sur les candidats.",
+    title: "Des vecteurs individuels à l’effet agrégé",
+    text: "Pour les profils concernés, le vecteur d’intentions est réévalué. L’agrégation des variations fournit une estimation de l’effet possible sur les candidats — distincte d’un sondage ou d’un résultat observé.",
+    eyebrow: "MESURER UN EFFET ESTIMÉ",
     scene: "impact",
   },
 ] as const;
@@ -47,168 +42,106 @@ const stages = [
 const people = Array.from({ length: 36 }, (_, index) => index);
 const candidateColors = pollCandidates.slice(0, 5).map((candidate) => candidate.color);
 
-function DataFlow({ className = "" }: { className?: string }) {
-  return <div className={`method-data-flow ${className}`} aria-hidden="true"><span /><span /><span /></div>;
-}
-
 function PopulationDots({ highlighted = false }: { highlighted?: boolean }) {
   return <div className={`method-people ${highlighted ? "is-targeted" : ""}`} aria-hidden="true">
     {people.map((person) => <i className={highlighted && person % 6 === 1 ? "is-highlighted" : ""} key={person} style={{ "--person-index": person } as CSSProperties} />)}
   </div>;
 }
 
-function MethodScene({ stage, playing }: { stage: (typeof stages)[number]; playing: boolean }) {
+function DataFlow({ vertical = false }: { vertical?: boolean }) {
+  return <div className={`method-data-flow ${vertical ? "is-vertical" : ""}`} aria-hidden="true"><span /><span /><span /></div>;
+}
+
+function VisualScene({ scene, active, reducedMotion }: { scene: (typeof chapters)[number]["scene"]; active: boolean; reducedMotion: boolean }) {
   const event = radarEvents.find((item) => item.id === "vat");
   const group = event?.impact.groups[0];
+  return <motion.div key={scene} className={`method-visual-scene scene-${scene}`} initial={reducedMotion ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reducedMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}>
+    <div className="method-visual-meta"><span>DE LA DONNÉE À L’INTENTION DE VOTE</span><span>{scene === "event" || scene === "impact" ? "EXEMPLE FICTIF" : "REPRÉSENTATION SCHÉMATIQUE"}</span></div>
 
-  if (stage.scene === "sources") return <div className="method-scene method-scene-sources">
-    <div className="method-scene-caption"><span>DEUX SOURCES, UNE POPULATION</span><span>DONNÉES DE DÉMONSTRATION</span></div>
-    <div className="method-source-layout">
+    {scene === "sources" && <div className="method-source-layout">
       <div className="method-input-stack">
-        <motion.div className="method-source-slip" animate={playing ? { x: [0, 8, 0] } : false} transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity }}>
-          <UsersRound size={20} /><div><b>Population synthétique</b><small>Des profils représentatifs de la France</small></div>
-        </motion.div>
-        <motion.div className="method-source-slip method-source-polls" animate={playing ? { x: [0, 8, 0] } : false} transition={{ duration: 2.4, delay: .45, ease: "easeInOut", repeat: Infinity }}>
-          <BarChart3 size={20} /><div><b>Intentions de vote passées</b><small>Les réponses observées dans les enquêtes</small></div>
-        </motion.div>
+        <motion.div className="method-source-slip" animate={active && !reducedMotion ? { x: [0, 5, 0] } : {}} transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}><UsersRound /><div><b>Population synthétique</b><small>Des profils représentatifs de la France</small></div></motion.div>
+        <motion.div className="method-source-slip method-source-polls" animate={active && !reducedMotion ? { x: [0, 5, 0] } : {}} transition={{ duration: 2.6, delay: 0.3, repeat: Infinity, ease: "easeInOut" }}><BarChart3 /><div><b>Enquêtes passées</b><small>Intentions observées dans le temps</small></div></motion.div>
       </div>
       <DataFlow />
-      <div className="method-population-result"><PopulationDots /><div><b>Profils individuels</b><small>Une base enrichie, prête à être modélisée</small></div></div>
-    </div>
-    <motion.div className="method-flying-record" aria-hidden="true" animate={playing ? { x: [0, 188], opacity: [0, 1, 0] } : false} transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity }}><i /><i /><i /></motion.div>
-  </div>;
+      <div className="method-population-result"><PopulationDots /><div><b>Des profils individuels</b><small>La base du modèle</small></div></div>
+    </div>}
 
-  if (stage.scene === "model") return <div className="method-scene method-scene-model">
-    <div className="method-scene-caption"><span>APPRENDRE, PUIS APPLIQUER AUX PROFILS</span><span>UN VECTEUR PAR PERSONNE</span></div>
-    <div className="method-model-layout">
-      <div className="method-poll-archive"><span className="method-mini-kicker">HISTORIQUE DES INTENTIONS</span><div className="method-mini-chart"><i /><i /><i /><i /></div><small>Résultats de vote déclarés dans les enquêtes</small></div>
+    {scene === "model" && <div className="method-model-layout">
+      <div className="method-poll-archive"><span className="method-mini-kicker">INTENTIONS PASSÉES</span><div className="method-mini-chart"><i /><i /><i /><i /></div><small>Réponses recueillies par les enquêtes</small></div>
       <DataFlow />
-      <motion.div className="method-model-core" animate={playing ? { scale: [1, 1.04, 1] } : false} transition={{ duration: 2.2, ease: "easeInOut", repeat: Infinity }}><BrainCircuit size={30} /><b>Modèle</b><small>appris sur les intentions passées</small><div className="method-neuron-links"><i /><i /><i /><i /></div></motion.div>
+      <motion.div className="method-model-core" animate={active && !reducedMotion ? { y: [0, -4, 0] } : {}} transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}><BrainCircuit /><b>Le modèle</b><small>apprend les régularités observées</small></motion.div>
       <DataFlow />
-      <div className="method-profile-vector"><span className="method-mini-kicker">UN PROFIL SYNTHÉTIQUE</span><b>Vecteur d’intentions</b><div className="method-probabilities">{candidateColors.map((color, index) => <motion.i key={color} style={{ backgroundColor: color }} animate={playing ? { opacity: [.35, .95, .35], scale: [1, 1.2, 1] } : false} transition={{ duration: 1.8, delay: index * .16, repeat: Infinity }} />)}<small>[ p₁ · p₂ · … · pₙ ]</small></div><small>Probabilité de vote pour chaque candidat</small></div>
-    </div>
-  </div>;
+      <div className="method-profile-vector"><span className="method-mini-kicker">UN PROFIL</span><b>Vecteur d’intentions</b><div className="method-probabilities">{candidateColors.map((color, index) => <motion.i key={color} style={{ backgroundColor: color }} animate={active && !reducedMotion ? { scaleY: [0.65, 1, 0.75], opacity: [0.65, 1, 0.7] } : {}} transition={{ duration: 1.7, delay: index * 0.12, repeat: Infinity }} />)}<small>[ p₁ · p₂ · … · pₙ ]</small></div><small>Une probabilité par candidat</small></div>
+    </div>}
 
-  if (stage.scene === "calibration") return <div className="method-scene method-scene-calibration">
-    <div className="method-scene-caption"><span>DU PROFIL À LA COMMUNE</span><span>CALAGE SCHÉMATIQUE · SANS ÉCHELLE</span></div>
-    <div className="method-calibration-layout">
-      <div className="method-calibration-input"><span className="method-mini-kicker">INTENTIONS ESTIMÉES</span><PopulationDots /><small>Probabilités de vote, profil par profil</small></div>
-      <div className="method-calibration-machine"><MapPinned size={26} /><b>Calage communal</b><small>Notre algorithme ajuste les probabilités</small><DataFlow /></div>
-      <div className="method-calibration-output"><span className="method-mini-kicker">RÉSULTATS LOCAUX OBSERVÉS</span><div className="method-local-bars">{pollCandidates.slice(0, 5).map((candidate, index) => <div key={candidate.id}><span>{candidate.short}</span><div><motion.i style={{ backgroundColor: candidate.color, transformOrigin: "left" }} animate={playing ? { scaleX: [.38 + index * .07, .88 - index * .09] } : false} transition={{ duration: 1.1, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", delay: index * .12 }} /></div></div>)}</div><small>Les probabilités s’alignent sur le vote de la commune</small></div>
-    </div>
-    <div className="method-calibration-note"><span /> Les formes animées illustrent le calage; elles ne représentent pas des résultats chiffrés.</div>
-  </div>;
+    {scene === "calibration" && <div className="method-calibration-layout">
+      <div className="method-calibration-input"><span className="method-mini-kicker">PROFILS ESTIMÉS</span><PopulationDots /><small>Intentions individuelles</small></div>
+      <div className="method-calibration-machine"><MapPinned /><b>Calage local</b><small>La distribution s’ajuste</small><DataFlow /></div>
+      <div className="method-calibration-output"><span className="method-mini-kicker">VOTE OBSERVÉ DANS LA COMMUNE</span><div className="method-local-bars">{pollCandidates.slice(0, 5).map((candidate, index) => <div key={candidate.id}><span>{candidate.short}</span><div><motion.i style={{ backgroundColor: candidate.color, transformOrigin: "left" }} animate={active && !reducedMotion ? { scaleX: [0.22 + index * 0.08, 0.82 - index * 0.09] } : { scaleX: 0.56 }} transition={{ duration: 1.35, delay: index * 0.11, repeat: Infinity, repeatType: "reverse" }} /></div></div>)}</div><small>Les profils reflètent le contexte territorial</small></div>
+    </div>}
 
-  if (stage.scene === "event") return <div className="method-scene method-scene-event">
-    <div className="method-scene-caption"><span>UN FAIT D’ACTUALITÉ, DES PROFILS CIBLÉS</span><span>EXEMPLE SIMULÉ</span></div>
-    <div className="method-event-layout">
-      <motion.article className="method-news-cutting" animate={playing ? { y: [4, 0, 4], rotate: [-.5, 0, -.5] } : false} transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity }}>
-        <span><Newspaper size={13} /> ACTUALITÉ · BUDGET</span><b>{event?.title ?? "La hausse de TVA et ses effets"}</b><small>Le sujet devient un signal à confronter aux profils de la population.</small>
+    {scene === "event" && <div className="method-event-layout">
+      <motion.article className="method-news-cutting" animate={active && !reducedMotion ? { y: [4, 0, 4], rotate: [-0.4, 0, -0.4] } : {}} transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}>
+        <span><Newspaper /> L’ACTUALITÉ · BUDGET</span><b>{event?.title ?? "La hausse de TVA et ses effets"}</b><small>Un événement à confronter aux profils de la population.</small>
       </motion.article>
       <DataFlow />
-      <div className="method-event-target"><span className="method-mini-kicker">SOUS-POPULATION SUGGÉRÉE</span><PopulationDots highlighted /><b>{group?.name ?? "Profils concernés"}</b><small>Le groupe est retrouvé dans la population enrichie</small></div>
-    </div>
-    <motion.div className="method-target-beam" aria-hidden="true" animate={playing ? { scaleX: [0, 1, 1, 0], opacity: [0, 1, 1, 0] } : false} transition={{ duration: 2.2, ease: "easeInOut", repeat: Infinity }} />
-    <span className="method-target-share">{group?.pct ?? "—"}<small>du groupe · exemple fictif</small></span>
-  </div>;
+      <div className="method-event-target"><span className="method-mini-kicker">PROFILS POTENTIELLEMENT CONCERNÉS</span><PopulationDots highlighted /><b>{group?.name ?? "Sous-population suggérée"}</b><small>{group?.pct ?? "—"} · illustration fictive</small></div>
+    </div>}
 
-  return <div className="method-scene method-scene-impact">
-    <div className="method-scene-caption"><span>LE VECTEUR CHANGE, PUIS ON AGRÈGE</span><span>EXEMPLE SIMULÉ · PAS UN SONDAGE</span></div>
-    <div className="method-impact-layout">
-      <div className="method-person-vector"><span className="method-mini-kicker">POUR CHAQUE PERSONNE</span><div className="method-vector-formula"><b>vᵢ</b><span>=</span><span>[ p₁ · p₂ · … · pₙ ]</span></div><small>Ses probabilités de vote avant l’événement</small></div>
-      <motion.div className="method-vector-transform"><ArrowRight size={20} /><span>Δ événement</span></motion.div>
-      <div className="method-person-vector is-updated"><span className="method-mini-kicker">APRÈS L’ÉVÉNEMENT</span><div className="method-vector-formula"><b>vᵢ′</b><span>=</span><span>[ p₁+Δ₁ · … · pₙ+Δₙ ]</span></div><small>Un vecteur ajusté pour chaque profil concerné</small></div>
-      <div className="method-impact-result"><span className="method-mini-kicker">EFFET AGRÉGÉ · DÉMO</span><b>{event?.impact.voteEffect ?? "Variation estimée"}</b><small>{group?.name ?? "Groupe concerné"} · {group?.flow ?? "transition simulée"}</small><strong>Ces variations fictives ne sont pas des mesures réelles.</strong></div>
-    </div>
-  </div>;
+    {scene === "impact" && <div className="method-impact-layout">
+      <div className="method-person-vector"><span className="method-mini-kicker">AVANT</span><div className="method-vector-formula"><b>vᵢ</b><span>=</span><span>[ p₁ · p₂ · … · pₙ ]</span></div><small>Intentions estimées pour un profil</small></div>
+      <motion.div className="method-vector-transform" animate={active && !reducedMotion ? { x: [0, 8, 0] } : {}} transition={{ duration: 1.6, repeat: Infinity }}><ArrowRight /><span>ÉVÉNEMENT</span></motion.div>
+      <div className="method-person-vector is-updated"><span className="method-mini-kicker">APRÈS · ESTIMATION</span><div className="method-vector-formula"><b>vᵢ′</b><span>=</span><span>[ p₁+Δ₁ · … · pₙ+Δₙ ]</span></div><small>Intentions réévaluées pour le profil</small></div>
+      <div className="method-impact-result"><span className="method-mini-kicker">PUIS, ON AGRÈGE</span><b>{event?.impact.voteEffect ?? "Effet estimé"}</b><small>{group?.name ?? "Profils concernés"}</small></div>
+    </div>}
+    <div className="method-visual-footer"><ArrowDownRight /><span>{scene === "impact" ? "Une estimation de modèle, pas un sondage" : "Suivez le fil pour voir la suite"}</span></div>
+  </motion.div>;
 }
 
 export function MethodExplainer() {
-  const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
-  const [activeStage, setActiveStage] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
-
-  const stopPlayback = useCallback(() => setIsPlaying(false), []);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const chapterRefs = useRef<Array<HTMLElement | null>>([]);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || reduceMotion !== false) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !hasAutoPlayed) {
-        setHasAutoPlayed(true);
-        setIsPlaying(true);
+    const nodes = chapterRefs.current.filter((node): node is HTMLElement => node !== null);
+    if (!nodes.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        const index = nodes.indexOf(visible.target as HTMLElement);
+        if (index >= 0) setActiveChapter(index);
       }
-      if (!entry.isIntersecting) setIsPlaying(false);
-    }, { threshold: 0.25 });
-    observer.observe(section);
+    }, { rootMargin: "-35% 0px -40% 0px", threshold: [0.05, 0.2, 0.45, 0.7] });
+    nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
-  }, [hasAutoPlayed, reduceMotion]);
+  }, []);
 
-  useEffect(() => {
-    if (!isPlaying) return;
-    if (activeStage >= stages.length - 1) {
-      setIsPlaying(false);
-      return;
-    }
-    const timer = window.setTimeout(() => {
-      setActiveStage((current) => Math.min(current + 1, stages.length - 1));
-    }, 2600);
-    return () => window.clearTimeout(timer);
-  }, [activeStage, isPlaying]);
+  return <MotionConfig reducedMotion="user">
+    <section className="method-section" id="method" aria-labelledby="method-title">
+      <header className="method-heading">
+        <div><span className="method-kicker"><i /> DÉCRYPTAGE</span><h2 id="method-title">Comment ça <em>marche&nbsp;?</em></h2></div>
+        <p>Des données électorales à l’évolution estimée des intentions de vote après un événement.</p>
+      </header>
 
-  const playFromBeginning = () => {
-    if (activeStage === stages.length - 1) setActiveStage(0);
-    setIsPlaying(true);
-  };
-
-  const goToNextStage = () => {
-    setActiveStage((current) => current === stages.length - 1 ? 0 : current + 1);
-  };
-
-  const stage = stages[activeStage];
-
-  return <section className="method-section" id="method" ref={sectionRef} aria-labelledby="method-title">
-    <header className="method-heading">
-      <div><span className="method-kicker"><i /> LA MÉTHODE</span><h2 id="method-title">Comment ça <em>marche&nbsp;?</em></h2></div>
-      <p>Suivez le parcours des données : des profils de la population jusqu’à l’évolution estimée des intentions de vote après un événement.</p>
-    </header>
-
-    <MotionConfig reducedMotion={reduceMotion ? "always" : "never"}>
-    <div className="method-player">
-      <nav className="method-timeline" aria-label="Étapes du pipeline">
-        {stages.map((item, index) => <button className={index === activeStage ? "is-active" : index < activeStage ? "is-complete" : ""} type="button" key={item.nav} aria-current={index === activeStage ? "step" : undefined} onClick={() => { stopPlayback(); setActiveStage(index); }}>
-          <i aria-hidden="true" /><span>{item.nav}</span>
-        </button>)}
-      </nav>
-
-      <div className="method-frame">
-        <div className="method-story" aria-live="polite" aria-atomic="true">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div key={`copy-${activeStage}`} initial={reduceMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? undefined : { opacity: 0, y: -8 }} transition={{ duration: reduceMotion ? 0 : .24, ease: "easeOut" }}>
-              <span className="method-story-label">{stage.label}</span>
-              <h3>{stage.title}</h3>
-              <p>{stage.description}</p>
-            </motion.div>
-          </AnimatePresence>
-
-        <div className="method-controls">
-            {reduceMotion ? <button type="button" className="method-play-button" onClick={goToNextStage}><ArrowRight size={15} /> Étape suivante</button> : <button type="button" className="method-play-button" onClick={isPlaying ? stopPlayback : playFromBeginning}>{isPlaying ? <><Pause size={14} /> Mettre en pause</> : activeStage === stages.length - 1 ? <><RotateCcw size={14} /> Rejouer l’animation</> : <><Play size={14} /> {hasAutoPlayed ? "Continuer l’animation" : "Lancer l’animation"}</>}</button>}
-        </div>
+      <div className="method-story-layout">
+        <div className="method-chapters">
+          {chapters.map((chapter, index) => <article className={`method-chapter ${activeChapter === index ? "is-current" : ""}`} key={chapter.scene} ref={(node) => { chapterRefs.current[index] = node; }}>
+            <span className="method-chapter-rule" aria-hidden="true" />
+            <div className="method-chapter-copy"><span className="method-story-label">{chapter.eyebrow}</span><h3>{chapter.title}</h3><p>{chapter.text}</p></div>
+          </article>)}
         </div>
 
-        <div className={`method-canvas ${isPlaying ? "is-playing" : ""}`} role="group" aria-label={`Illustration : ${stage.title}`}>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div key={`scene-${activeStage}`} className="method-scene-positioner" initial={reduceMotion ? false : { opacity: 0, x: 26, scale: .985 }} animate={{ opacity: 1, x: 0, scale: 1 }} exit={reduceMotion ? undefined : { opacity: 0, x: -12, scale: .99 }} transition={{ duration: reduceMotion ? 0 : .32, ease: [.22, 1, .36, 1] }}>
-              <MethodScene stage={stage} playing={isPlaying} />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        <aside className="method-sticky-visual" aria-label="Illustration animée du pipeline">
+          <div className="method-visual-masthead"><span>LE PARCOURS DES DONNÉES</span><span>{String(activeChapter + 1).padStart(2, "0")} / 05</span></div>
+          <div className="method-visual-window" aria-live="polite" aria-atomic="true">
+            <VisualScene scene={chapters[activeChapter].scene} active={!reduceMotion} reducedMotion={Boolean(reduceMotion)} />
+          </div>
+          <div className="method-progress" aria-hidden="true"><i style={{ transform: `scaleX(${(activeChapter + 1) / chapters.length})` }} /></div>
+        </aside>
       </div>
-    </div>
-    </MotionConfig>
-
-    <p className="method-caveat">Les exemples et chiffres qui accompagnent cette démonstration sont fictifs. Ils servent à expliquer le pipeline, pas à décrire des effets électoraux établis.</p>
-  </section>;
+      <p className="method-caveat">Les chiffres et exemples présentés ici sont fictifs. Ils illustrent le fonctionnement du pipeline, pas des effets électoraux établis.</p>
+    </section>
+  </MotionConfig>;
 }
