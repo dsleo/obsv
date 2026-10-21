@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ChevronRight, Orbit } from "lucide-react";
 import { useMemo, useState } from "react";
 import { pollCandidates, pollObservations, radarEvents } from "../../data/radarData";
+import { MethodExplainer } from "./MethodExplainer";
 import "./radar.css";
 
 type FilterKey = "all" | "budget" | "coalition" | "foreign" | "programme";
@@ -137,7 +138,7 @@ export function SignalRadar() {
       </section>
 
       <section className="radar-feed-section" id="events">
-        <div className="feed-heading"><div><h2>Les événements qui <i>font bouger les lignes.</i></h2></div></div>
+        <div className="feed-heading"><div><h2>Les événements qui <i>font bouger les lignes.</i></h2></div><a className="method-jump" href="#method">Comment ça marche&nbsp;? <ChevronRight size={14} /></a></div>
         <div className="feed-filters" aria-label="Filtrer les événements">{(["all", "budget", "coalition", "foreign", "programme"] as FilterKey[]).map((filter) => <button key={filter} type="button" className={activeFilter === filter ? "active" : ""} onClick={() => setActiveFilter(filter)}>{filter === "all" ? "Tous" : filter === "foreign" ? "International" : filter === "budget" ? "Budget" : filter === "coalition" ? "Coalition" : "Programme"}</button>)}</div>
         <div className="feed-list">{visibleEvents.map((event) => <Link id={`feed-event-${event.id}`} key={event.id} href={`/events/${event.id}`} className={`feed-item ${selectedId === event.id ? "is-selected" : ""}`} onMouseEnter={() => setSelectedId(event.id)} onFocus={() => setSelectedId(event.id)}>
           <time className="feed-date">{event.shortDate}<small>2026</small></time>
@@ -146,6 +147,8 @@ export function SignalRadar() {
         </Link>)}</div>
         <div className="feed-footer"><Link href="/events">Tous les événements <ChevronRight size={14} /></Link></div>
       </section>
+
+      <MethodExplainer />
 
     </main>
   );
