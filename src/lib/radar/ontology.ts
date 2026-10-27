@@ -2,18 +2,18 @@ import { z } from "zod";
 
 // Only these versioned, inspectable concepts may appear in an event filter.
 // Commune and department codes are data values, resolved against COG separately.
-export const ONTOLOGY_VERSION = "fr-electorate-4";
+export const ONTOLOGY_VERSION = "fr-electorate-5";
 export const TAG_IDS = [
   "age.18_24", "age.25_34", "age.35_49", "age.50_64", "age.65_74", "age.75_plus",
   "sex.female", "sex.male",
-  "education.no_diploma", "education.cap_bep", "education.baccalaureate",
+  "education.no_diploma", "education.brevet", "education.cap_bep", "education.baccalaureate",
   "education.bac_plus_2", "education.bac_plus_3_4", "education.bac_plus_5_plus",
   "occupation.farmer", "occupation.artisan_merchant_owner", "occupation.executive_professional",
   "occupation.intermediate", "occupation.employee", "occupation.worker", "occupation.retired",
   "occupation.other_inactive",
   "household.single", "household.couple_no_children", "household.couple_with_children",
   "household.single_parent", "household.other",
-  "marital.single", "marital.married", "marital.civil_union", "marital.divorced", "marital.widowed",
+  "marital.single", "marital.married", "marital.civil_union", "marital.cohabiting", "marital.divorced", "marital.widowed",
   "geo.dense", "geo.intermediate", "geo.rural",
   "commune_size.under_1000", "commune_size.1000_plus", "municipal_system.paris_lyon_marseille",
   "profession.teacher", "profession.university_professor", "profession.health",
@@ -21,7 +21,31 @@ export const TAG_IDS = [
   "profession.liberal_explicit",
   "former_profession.teacher", "former_profession.university_professor",
   "former_profession.health", "former_profession.legal", "former_profession.engineer",
+  "cluster.young_farmer", "cluster.older_farmer", "cluster.rural_retiree", "cluster.retiree_no_diploma",
+  "cluster.isolated_senior", "cluster.retired_couple", "cluster.young_urban_graduate",
+  "cluster.young_without_activity", "cluster.young_family", "cluster.single_mother",
+  "cluster.modest_wage_earner", "cluster.older_worker", "cluster.urban_executive", "cluster.independent",
 ] as const;
+
+// Named, reusable audiences. Each is a deterministic rule over base tags (never narrative_rule tags),
+// stored as a tag at index time so an event segment can simply ask for `cluster.young_farmer`.
+export type ClusterDefinition = { id: string; label: string; description: string; all: string[]; anyGroups: string[][]; none: string[] };
+export const CLUSTERS: ClusterDefinition[] = [
+  { id: "cluster.young_farmer", label: "Jeunes agriculteurs", description: "Agriculteurs exploitants de moins de 35 ans", all: ["occupation.farmer"], anyGroups: [["age.18_24", "age.25_34"]], none: [] },
+  { id: "cluster.older_farmer", label: "Agriculteurs de 50 ans et plus", description: "Agriculteurs exploitants de 50 ans et plus, proches de la retraite", all: ["occupation.farmer"], anyGroups: [["age.50_64", "age.65_74", "age.75_plus"]], none: [] },
+  { id: "cluster.rural_retiree", label: "Retraités ruraux", description: "Retraités vivant dans une commune rurale", all: ["occupation.retired", "geo.rural"], anyGroups: [], none: [] },
+  { id: "cluster.retiree_no_diploma", label: "Retraités peu diplômés", description: "Retraités sans diplôme ou au plus brevet : approximation, pas un niveau de pension", all: ["occupation.retired"], anyGroups: [["education.no_diploma", "education.brevet"]], none: [] },
+  { id: "cluster.isolated_senior", label: "Seniors vivant seuls", description: "Personnes de 75 ans et plus vivant seules", all: ["household.single", "age.75_plus"], anyGroups: [], none: [] },
+  { id: "cluster.retired_couple", label: "Couples de retraités", description: "Retraités en couple sans enfant au foyer", all: ["occupation.retired", "household.couple_no_children"], anyGroups: [], none: [] },
+  { id: "cluster.young_urban_graduate", label: "Jeunes diplômés des villes", description: "Moins de 35 ans, bac+3 ou plus, commune dense", all: ["geo.dense"], anyGroups: [["age.18_24", "age.25_34"], ["education.bac_plus_3_4", "education.bac_plus_5_plus"]], none: [] },
+  { id: "cluster.young_without_activity", label: "Jeunes sans activité professionnelle", description: "18-24 ans classés « autres sans activité professionnelle » (étudiants, chômeurs, inactifs)", all: ["age.18_24", "occupation.other_inactive"], anyGroups: [], none: [] },
+  { id: "cluster.young_family", label: "Jeunes familles", description: "Couples avec enfants de 25 à 49 ans", all: ["household.couple_with_children"], anyGroups: [["age.25_34", "age.35_49"]], none: [] },
+  { id: "cluster.single_mother", label: "Mères seules", description: "Femmes en famille monoparentale", all: ["household.single_parent", "sex.female"], anyGroups: [], none: [] },
+  { id: "cluster.modest_wage_earner", label: "Salariés modestes", description: "Employés et ouvriers", all: [], anyGroups: [["occupation.employee", "occupation.worker"]], none: [] },
+  { id: "cluster.older_worker", label: "Ouvriers de 50 à 64 ans", description: "Ouvriers de 50 à 64 ans, exposés aux réformes des retraites", all: ["occupation.worker", "age.50_64"], anyGroups: [], none: [] },
+  { id: "cluster.urban_executive", label: "Cadres urbains", description: "Cadres et professions intellectuelles supérieures en commune dense", all: ["occupation.executive_professional", "geo.dense"], anyGroups: [], none: [] },
+  { id: "cluster.independent", label: "Indépendants", description: "Artisans, commerçants et chefs d’entreprise", all: ["occupation.artisan_merchant_owner"], anyGroups: [], none: [] },
+];
 
 export const tagIdSchema = z.enum(TAG_IDS);
 export type TagId = z.infer<typeof tagIdSchema>;
@@ -38,6 +62,7 @@ const FAMILY_DEFINITIONS: Record<string, { definition: string; source: TagSource
   geo: { definition: "INSEE commune density class", source: "official_geo" },
   commune_size: { definition: "INSEE municipal population 2023 for current commune geography", source: "official_geo" },
   municipal_system: { definition: "INSEE COG Paris/Lyon/Marseille commune or arrondissement", source: "official_geo" },
+  cluster: { definition: "Named audience defined by a deterministic rule over base tags (see CLUSTERS)", source: "derived" },
   profession: { definition: "Explicit specific current profession in synthetic professional narrative; unaudited", source: "narrative_rule" },
   former_profession: { definition: "Explicit former profession in synthetic professional narrative; unaudited", source: "narrative_rule" },
 };
@@ -98,7 +123,8 @@ function ascii(value: string): string {
 
 function tagFromEducation(value: string): TagId | null {
   const v = ascii(value);
-  if (/sans dipl[oô]me|aucun dipl[oô]me|brevet des coll[eè]ges/.test(v)) return "education.no_diploma";
+  if (/sans diplome|aucun diplome|certificat d.etudes/.test(v)) return "education.no_diploma";
+  if (/^brevet|brevet des colleges/.test(v)) return "education.brevet";
   if (/cap|bep/.test(v)) return "education.cap_bep";
   if (/bac\s*\+\s*[5-9]|master|doctorat|grande ecole/.test(v)) return "education.bac_plus_5_plus";
   if (/bac\s*\+\s*[34]|licence/.test(v)) return "education.bac_plus_3_4";
@@ -112,7 +138,7 @@ function tagFromOccupation(value: string): TagId | null {
   if (/agriculteur|exploitant agricole/.test(v)) return "occupation.farmer";
   if (/artisan|commercant|chef d.entreprise/.test(v)) return "occupation.artisan_merchant_owner";
   if (/cadre|profession intellectuelle superieure/.test(v)) return "occupation.executive_professional";
-  if (/profession intermediaire/.test(v)) return "occupation.intermediate";
+  if (/professions? intermediaires?/.test(v)) return "occupation.intermediate";
   if (/employe/.test(v)) return "occupation.employee";
   if (/ouvrier/.test(v)) return "occupation.worker";
   if (/retraite/.test(v)) return "occupation.retired";
@@ -123,8 +149,8 @@ function tagFromOccupation(value: string): TagId | null {
 function tagFromHousehold(value: string): TagId | null {
   const v = ascii(value);
   if (/monoparent/.test(v)) return "household.single_parent";
-  if (/couple.*enfant/.test(v)) return "household.couple_with_children";
   if (/couple.*sans enfant/.test(v)) return "household.couple_no_children";
+  if (/couple.*enfant/.test(v)) return "household.couple_with_children";
   if (/seul|single|personne seule/.test(v)) return "household.single";
   return v ? "household.other" : null;
 }
@@ -133,6 +159,7 @@ function tagFromMarital(value: string): TagId | null {
   const v = ascii(value);
   if (/celibataire/.test(v)) return "marital.single";
   if (/pacs/.test(v)) return "marital.civil_union";
+  if (/concubinage|union libre/.test(v)) return "marital.cohabiting";
   if (/marie/.test(v)) return "marital.married";
   if (/divorce/.test(v)) return "marital.divorced";
   if (/veuf|veuve/.test(v)) return "marital.widowed";
@@ -179,6 +206,12 @@ export function enrichNemotronRow(row: Record<string, unknown>, geography: GeoRe
   if (geography && [geography.communeCode, geography.parentCommuneCode].some((code) => code && ["75056", "69123", "13055"].includes(code))) {
     add("municipal_system.paris_lyon_marseille", "official_geo", "INSEE COG 2026 commune/arrondissement");
   }
+  const base = new Set(tags.map((tag) => tag.id as string));
+  for (const cluster of CLUSTERS) {
+    if (cluster.all.every((id) => base.has(id)) && cluster.anyGroups.every((group) => group.some((id) => base.has(id))) && cluster.none.every((id) => !base.has(id))) {
+      add(cluster.id as TagId, "derived", "cluster", cluster.description);
+    }
+  }
   const normalizedNarrative = ascii(professionalNarrative);
   const retired = tags.some((tag) => tag.id === "occupation.retired");
   for (const entry of PROFESSIONS) {
@@ -202,7 +235,8 @@ export function enrichNemotronRow(row: Record<string, unknown>, geography: GeoRe
 export function matchesFilter(persona: RadarPersona, input: RadarFilter, allowedSources: readonly TagSource[] = ["direct", "derived", "official_geo", "audited_narrative"]): boolean {
   const filter = filterSchema.parse(input);
   const present = new Set(persona.tags.filter((tag) => allowedSources.includes(tag.source)).map((tag) => tag.id));
-  const familyObserved = (id: TagId) => id === "municipal_system.paris_lyon_marseille"
+  const familyObserved = (id: TagId) => id.startsWith("cluster.") ? true
+    : id === "municipal_system.paris_lyon_marseille"
     ? persona.geography !== null
     : [...present].some((tag) => tag.split(".")[0] === id.split(".")[0]);
   return filter.all.every((id) => present.has(id)) &&

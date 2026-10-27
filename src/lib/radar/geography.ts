@@ -32,3 +32,10 @@ export function buildGeographyResolver(entries: GeographyEntry[]) {
     } : null;
   };
 }
+
+/** Paris/Lyon/Marseille arrondissements carry no density or population in INSEE: inherit the parent commune's. */
+export function withParentGeography(geo: GeoRecord | null, byCode: Map<string, GeoRecord>): GeoRecord | null {
+  if (!geo || !geo.parentCommuneCode || (geo.density && geo.population2023 != null)) return geo;
+  const parent = byCode.get(geo.parentCommuneCode);
+  return parent ? { ...geo, density: geo.density ?? parent.density, population2023: geo.population2023 ?? parent.population2023 } : geo;
+}
