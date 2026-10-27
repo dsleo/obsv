@@ -90,13 +90,6 @@ export const radarEvents: RadarEvent[] = eventSources.map((event) => ({
   pollDay: dayOffset(event.isoDate),
 }));
 
-/** Per-candidate view of `effects`, keyed by event id. */
-export const candidateEventImpacts: Record<CandidateId, Record<string, number>> = Object.fromEntries(
-  pollCandidates.map((candidate) => [candidate.id, Object.fromEntries(
-    radarEvents.flatMap((event) => (event.effects[candidate.id] ? [[event.id, event.effects[candidate.id]!]] : [])),
-  )]),
-) as Record<CandidateId, Record<string, number>>;
-
 const pollsters: { name: string; every: number; offset: number; bias: Partial<Record<CandidateId, number>> }[] = [
   { name: "Ifop", every: 11, offset: 2, bias: { lepen: 0.8 } },
   { name: "Elabe", every: 13, offset: 5, bias: { lepen: -0.5, melenchon: 0.2 } },

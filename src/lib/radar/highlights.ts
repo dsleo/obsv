@@ -24,3 +24,20 @@ export function leadSegment(analysis: AnalysisArtifact | null) {
   }
   return best;
 }
+
+/** Engine bloc of each candidate (the engine's own bloc definitions: LFI, social-democratic/green left, macronist centre, LR, RN and allies). */
+export const candidateBloc: Record<string, string> = {
+  melenchon: "radical_left", glucksmann: "left", philippe: "center", retailleau: "right", lepen: "far_right", zemmour: "far_right",
+};
+
+/** Directional counts toward/away from a bloc, summed over the segment and global contrasts of one analysis. */
+export function blocSignal(analysis: AnalysisArtifact | null, bloc: string) {
+  if (!analysis) return null;
+  let toward = 0, away = 0, sampled = 0;
+  for (const contrast of Object.values(analysis.contrasts)) {
+    const v = contrast.summary[bloc];
+    if (!v) continue;
+    toward += v.toward; away += v.away; sampled += contrast.sampledCount;
+  }
+  return sampled ? { toward, away, sampled } : null;
+}
