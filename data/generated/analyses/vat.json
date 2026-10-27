@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "eventId": "vat",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-4",
+  "inputHash": "0fb7106a05ca0744",
+  "computedAt": "2026-10-27T07:51:49.677Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Couples avec enfants en zones urbaines denses des grandes métropoles",
+      "mechanism": "Ces ménages perçoivent plus directement l'impact de la hausse de TVA sur leur budget familial, ce qui augmente leur sensibilité à la question de la répartition fiscale avant les ajustements salariaux.",
+      "reason": "La hausse de la TVA influence le pouvoir d'achat des familles avec enfants qui vivent en milieu urbain dense et dans des communes importantes, notamment dans Paris, Lyon ou Marseille.",
+      "all": [
+        "household.couple_with_children",
+        "geo.dense",
+        "commune_size.1000_plus",
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "perception_budget",
+        "priorite_fiscale",
+        "sensibilite_tva"
+      ],
+      "count": 30577,
+      "distinctCommunes": 3,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Le gouvernement ne hausse pas le taux normal de TVA dans le projet de budget 2026",
+        "comparator": "Le gouvernement annonce une hausse du taux normal de TVA dans le projet de budget 2026",
+        "outcomeToMeasure": "Changement dans la perception du budget familial et priorité accordée à la répartition fiscale"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes adultes (18-34 ans) en milieu urbain dense",
+      "mechanism": "Ce groupe, souvent en début de vie active et avec des revenus contraints, est susceptible d'être particulièrement sensible aux changements de la TVA, affectant leur consommation et donc leur opinion sur le budget.",
+      "reason": "La hausse de TVA peut modifier la perception de la charge fiscale globale et du coût de la vie chez les jeunes urbains.",
+      "all": [
+        "age.18_24",
+        "geo.dense",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "age.25_34"
+      ],
+      "none": [],
+      "membershipGaps": [
+        "household type"
+      ],
+      "measurementNeeds": [
+        "perception_budget",
+        "charge_fiscale_percue",
+        "impact_tva_sur_depenses"
+      ],
+      "count": 0,
+      "distinctCommunes": 0,
+      "status": "incomplete_membership",
+      "counterfactual": {
+        "intervention": "Pas de hausse du taux normal de TVA dans le projet de budget 2026",
+        "comparator": "Hausse du taux normal de TVA annoncée dans le projet de budget 2026",
+        "outcomeToMeasure": "Modification de la perception du coût de la vie et des priorités budgétaires"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités mariés dans les communes importantes hors grandes métropoles",
+      "mechanism": "Les retraités peuvent ressentir différemment l'impact d'une hausse de TVA, notamment s'ils ont un revenu fixe, influençant leur opinion sur la justice fiscale et le budget national.",
+      "reason": "Ils représentent une part significative de la population affectée indirectement par la hausse fiscale et peuvent réagir selon leur statut marital et lieu de résidence.",
+      "all": [
+        "occupation.retired",
+        "marital.married",
+        "commune_size.1000_plus"
+      ],
+      "any": [],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "membershipGaps": [
+        "geo class (dense, intermediate, rural)"
+      ],
+      "measurementNeeds": [
+        "perception_budget",
+        "justice_fiscale",
+        "impact_tva_sur_revenu_fixe"
+      ],
+      "count": 2593,
+      "distinctCommunes": 71,
+      "status": "incomplete_membership",
+      "counterfactual": {
+        "intervention": "Absence d'augmentation du taux normal de TVA dans le projet de budget 2026",
+        "comparator": "Annonce et application d'une hausse de TVA dans le projet de budget 2026",
+        "outcomeToMeasure": "Opinion sur la justice fiscale et les priorités budgétaires"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Travailleurs salariés de niveau intermédiaire en milieu urbain",
+      "mechanism": "Leur rôle dans l'économie et leur capacité à ressentir les variations du coût fiscal par la TVA rend ce groupe particulièrement pertinent pour étudier la perception de l'impact budgétaire.",
+      "reason": "Ils constituent une catégorie socio-professionnelle avec un poids économique important et peuvent être sensibles aux modifications fiscales indirectes.",
+      "all": [
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [
+        "commune_size.1000_plus"
+      ],
+      "none": [],
+      "membershipGaps": [
+        "household and marital status"
+      ],
+      "measurementNeeds": [
+        "perception_budget",
+        "impact_tva_sur_pouvoir_achat"
+      ],
+      "count": 10214,
+      "distinctCommunes": 27,
+      "status": "incomplete_membership",
+      "counterfactual": {
+        "intervention": "Maintien du taux de TVA sans augmentation",
+        "comparator": "Hausse du taux normal de TVA dans le budget 2026",
+        "outcomeToMeasure": "Variation de la perception du pouvoir d'achat et des priorités fiscales"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Le gouvernement ne procède pas à la hausse du taux normal de TVA dans le projet de budget de 2026",
+      "comparator": "Le gouvernement annonce et met en œuvre la hausse du taux normal de TVA dans le projet de budget de 2026",
+      "outcomeToMeasure": "Perception du budget national et préoccupations économiques des citoyens",
+      "reason": "Comparer l'impact de la mesure fiscale annoncée sur l'opinion publique concernant le budget et son rapport à la répartition des charges fiscales"
+    },
+    {
+      "intervention": "Le gouvernement communique uniquement sur la gestion du déficit budgétaire sans évoquer la hausse de TVA",
+      "comparator": "Le gouvernement annonce la hausse du taux normal de TVA comme principal sujet dans le projet de budget de 2026",
+      "outcomeToMeasure": "Importance accordée aux questions fiscales et redistributives dans le débat public",
+      "reason": "Évaluer comment la focalisation sur la TVA ou le déficit affecte les priorités des électeurs dans la sphère politique"
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Couples avec enfants en zones urbaines denses des grandes métropoles",
+      "matchedCount": 30577,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Le gouvernement annonce une hausse du taux normal de TVA dans le projet de budget 2026",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Le gouvernement annonce et met en œuvre la hausse du taux normal de TVA dans le projet de budget de 2026",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Le gouvernement annonce la hausse du taux normal de TVA comme principal sujet dans le projet de budget de 2026",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "left": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "center": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}

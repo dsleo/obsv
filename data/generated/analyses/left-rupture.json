@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "eventId": "left-rupture",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-4",
+  "inputHash": "af08eb0efa432d20",
+  "computedAt": "2026-10-27T07:55:37.006Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes adultes urbains peu diplômés potentiellement démobilisés",
+      "mechanism": "Ils sont plus susceptibles de ne pas voir de raisons de choisir face à la rupture à gauche, en particulier dans les grandes villes comme Paris, Lyon, Marseille, où le système municipal est complexe et les attentes fortes.",
+      "reason": "Le contexte urbain dense et leur niveau d’éducation plus faible peuvent conduire à un sentiment d’exclusion ou de désillusion politique, ce qui affecte leur participation.",
+      "all": [
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille",
+        "age.18_24",
+        "education.no_diploma"
+      ],
+      "any": [],
+      "none": [
+        "age.75_plus",
+        "occupation.retired"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "taux de participation électorale",
+        "attitudes envers l’alliance gauche sociale-démocrate/insoumis",
+        "intention de vote"
+      ],
+      "count": 811,
+      "distinctCommunes": 3,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Une alliance forte et perçue comme légitime entre sociaux-démocrates et insoumis",
+        "comparator": "La rupture constatée et la perception d’un choix absent ou non motivant",
+        "outcomeToMeasure": "Changement dans la mobilisation électorale et l’attitude politique des jeunes adultes urbains peu diplômés"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Personnes d’âge moyen en couple et avec enfants en milieu urbain hors métropoles principales",
+      "mechanism": "Cette catégorie peut être sensible à la cohérence politique et à la représentation des intérêts familiaux ; la rupture peut réduire leur engagement, entraînant un désintérêt voire une abstention accrue.",
+      "reason": "Leur situation familiale et géographique modèrent leur perception des alliances politiques et peuvent influer sur leur participation.",
+      "all": [
+        "age.35_49",
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "taux de participation électorale",
+        "niveau de confiance dans les partis de gauche",
+        "disposition à voter pour les sociaux-démocrates ou les insoumis"
+      ],
+      "count": 1485,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Une alliance pluridimensionnelle qui intègre les intérêts familiaux et urbains",
+        "comparator": "La situation de rupture où l’alliance est absente ou fragilisée",
+        "outcomeToMeasure": "Effet sur la mobilisation et la confiance politique dans ce groupe"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités en zones urbaines denses, scolarité variable",
+      "mechanism": "Les retraités peuvent avoir une participation plus stable mais la rupture peut susciter un questionnement sur la pertinence de leur vote à gauche, et influencer leur décision de participer ou non.",
+      "reason": "Ce groupe représente un électorat traditionnel souvent sensible aux changements dans la gauche, et pouvant réagir par une abstention plus ou moins forte.",
+      "all": [
+        "occupation.retired",
+        "geo.dense"
+      ],
+      "any": [
+        "education.no_diploma",
+        "education.baccalaureate",
+        "education.bac_plus_2"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "participation électorale",
+        "motivations du vote ou abstention",
+        "attitudes envers les partis politiques de gauche"
+      ],
+      "count": 8106,
+      "distinctCommunes": 27,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Une alliance claire entre sociaux-démocrates et insoumis renforçant la représentativité à gauche",
+        "comparator": "La rupture qui fragilise cette représentation politique",
+        "outcomeToMeasure": "Impact sur la participation et attitudes des retraités urbains"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Employés urbains avec éducation intermédiaire confrontés à la rupture politique",
+      "mechanism": "Ce groupe professionnel est potentiellement tiraillé entre différentes options à gauche ; la rupture peut accroître leur indécision et affecter leur taux de participation.",
+      "reason": "Leur position socio-professionnelle et le contexte urbain dense les rend sensibles aux divisions politiques et à l’offre électorale.",
+      "all": [
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [
+        "education.baccalaureate",
+        "education.bac_plus_2",
+        "education.cap_bep"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "intention de vote",
+        "participation électorale",
+        "perceptions des partis sociaux-démocrates et insoumis"
+      ],
+      "count": 6411,
+      "distinctCommunes": 27,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Une alliance stable et visible entre les partis de gauche",
+        "comparator": "La situation de rupture avec des divisions claires",
+        "outcomeToMeasure": "Changement dans les attitudes et la participation de ce groupe"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Une alliance réussie et cohérente entre sociaux-démocrates et insoumis",
+      "comparator": "La rupture et l’échec des discussions entre sociaux-démocrates et insoumis",
+      "outcomeToMeasure": "Participation électorale aux élections à gauche",
+      "reason": "Comparer comment une alliance réussie ou une rupture affecte la mobilisation des électeurs de gauche, en particulier ceux qui doutent ou se désintéressent du choix politique."
+    },
+    {
+      "intervention": "Campagne de mobilisation ciblée pour restaurer la confiance des électeurs de gauche dans l’alliance politique",
+      "comparator": "Absence d’une telle campagne après la rupture",
+      "outcomeToMeasure": "Taux de participation électorale et expressions d’engagement politique",
+      "reason": "Tester si les actions de mobilisation peuvent contrebalancer les effets négatifs d’une rupture et réduire l’abstention chez les électeurs concernés."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes adultes urbains peu diplômés potentiellement démobilisés",
+      "matchedCount": 811,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "La rupture constatée et la perception d’un choix absent ou non motivant",
+      "summary": {
+        "radical_left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Personnes d’âge moyen en couple et avec enfants en milieu urbain hors métropoles principales",
+      "matchedCount": 1485,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "La situation de rupture où l’alliance est absente ou fragilisée",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "left": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 1
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités en zones urbaines denses, scolarité variable",
+      "matchedCount": 8106,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "La rupture qui fragilise cette représentation politique",
+      "summary": {
+        "radical_left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 5
+        },
+        "right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 5
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Employés urbains avec éducation intermédiaire confrontés à la rupture politique",
+      "matchedCount": 6411,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "La situation de rupture avec des divisions claires",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "La rupture et l’échec des discussions entre sociaux-démocrates et insoumis",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 2
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence d’une telle campagne après la rupture",
+      "summary": {
+        "radical_left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 2
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}

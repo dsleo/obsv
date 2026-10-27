@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "eventId": "pensions",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-4",
+  "inputHash": "cfa0abc3d6a4cdb1",
+  "computedAt": "2026-10-27T08:00:16.703Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Travailleurs de 50 à 64 ans non retraités en zones urbaines denses",
+      "mechanism": "Ce segment est susceptible d'être directement concerné par le changement d’âge légal de départ à la retraite, en particulier ceux qui anticipent leur propre départ à la retraite. Leur implication économique et sociale leur confère un regard critique sur les annonces en matière de retraite.",
+      "reason": "Ils représentent une tranche d’âge proche de la retraite, habitant dans des zones urbaines où les enjeux de l’emploi et des services sont forts, et pouvant peser dans le débat sur la retraite. Leur réaction peut indiquer la réception parmi les actifs proches de la retraite.",
+      "all": [
+        "age.50_64",
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "soutien_politique",
+        "perception_crédibilité",
+        "attitude_vers_retraite"
+      ],
+      "count": 2433,
+      "distinctCommunes": 27,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Marine Le Pen promet de rétablir l’âge légal de départ à la retraite à 62 ans dès le début du mandat.",
+        "comparator": "Maintien de l’âge de départ à la retraite actuel.",
+        "outcomeToMeasure": "Changement dans la confiance et le soutien politique à Marine Le Pen."
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Retraités âgés de 65 ans et plus",
+      "mechanism": "Ce segment est directement concerné en tant que bénéficiaires actuels des pensions de retraite, pouvant évaluer la crédibilité et les effets de la promesse sur la pérennité du système.",
+      "reason": "Les retraités actuels ont un intérêt marqué pour l’évolution des règles de retraite, pouvant influer leur appui politique et leur perception du discours.",
+      "all": [
+        "occupation.retired",
+        "age.65_74"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "perception_crédibilité",
+        "satisfaction_retraite",
+        "engagement_politique"
+      ],
+      "count": 12496,
+      "distinctCommunes": 161,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Marine Le Pen promet de rétablir l’âge légal à 62 ans dès le début du mandat.",
+        "comparator": "Pas de changement dans la politique de retraite.",
+        "outcomeToMeasure": "Variation dans la perception de la crédibilité et du soutien politique."
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes adultes de 18 à 34 ans en milieu urbain",
+      "mechanism": "Ce segment est moins directement concerné par l’âge légal immédiat, mais peut être sensibilisé au long terme sur leurs futures conditions de retraite et la soutenabilité du système.",
+      "reason": "Ils constituent une partie importante du corps électoral et leur perception du projet peut influencer leur vote futur et leurs attentes sociales.",
+      "all": [
+        "age.18_24",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34"
+      ],
+      "none": [
+        "occupation.retired"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "perception_avenir_retraite",
+        "confiance_institutions",
+        "attitude_politique"
+      ],
+      "count": 0,
+      "distinctCommunes": 0,
+      "status": "insufficient_sample",
+      "counterfactual": {
+        "intervention": "Annonce du rétablissement de l’âge légal à 62 ans.",
+        "comparator": "Maintien de l’âge légal actuel.",
+        "outcomeToMeasure": "Évolution des attentes vis-à-vis du système de retraite et de la confiance politique."
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Travailleurs manuels et non diplômés en zones urbaines et périurbaines",
+      "mechanism": "Ce groupe peut être sensible aux annonces sur les retraites car historiquement concernés par les départs anticipés et les conditions de travail lourdes.",
+      "reason": "Leur perception de la crédibilité de la promesse peut moduler leur mobilisation ou leur vote dans les scrutins à venir.",
+      "all": [
+        "occupation.worker",
+        "education.no_diploma"
+      ],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "perception_crédibilité",
+        "attitude_retraite",
+        "mobilisation_politique"
+      ],
+      "count": 1761,
+      "distinctCommunes": 50,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Promesse de recul de l’âge légal à 62 ans.",
+        "comparator": "Maintien du système de retraite actuel.",
+        "outcomeToMeasure": "Changement de perception et de mobilisation politique."
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Marine Le Pen promet de rétablir l’âge légal de départ à la retraite à 62 ans dès le début du mandat (rétablissement anticipé de la retraite à 62 ans).",
+      "comparator": "Pas de changement dans l’âge légal de départ à la retraite (maintien de la réforme précédente ou statu quo).",
+      "outcomeToMeasure": "L’évolution du soutien politique à Marine Le Pen au sein des différents groupes sociaux après l’annonce.",
+      "reason": "Mesurer comment l’annonce impacte la crédibilité perçue du programme et l’adhésion politique à travers les groupes sociaux affectés par la réforme."
+    },
+    {
+      "intervention": "Marine Le Pen promet de rétablir l’âge légal de départ à la retraite à 62 ans dès le début du mandat.",
+      "comparator": "Annonce alternative sans engagement clair sur l’âge légal de départ à la retraite.",
+      "outcomeToMeasure": "La variation dans la perception de la crédibilité des propositions de Marine Le Pen chez les usagers du système de retraite.",
+      "reason": "Comparer la réaction au discours selon la clarté et la crédibilité des propositions avancées."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Travailleurs de 50 à 64 ans non retraités en zones urbaines denses",
+      "matchedCount": 2433,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Maintien de l’âge de départ à la retraite actuel.",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 2
+        },
+        "left": {
+          "toward": 2,
+          "away": 4,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 5
+        },
+        "far_right": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités âgés de 65 ans et plus",
+      "matchedCount": 12496,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Pas de changement dans la politique de retraite.",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Travailleurs manuels et non diplômés en zones urbaines et périurbaines",
+      "matchedCount": 1761,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Maintien du système de retraite actuel.",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Pas de changement dans l’âge légal de départ à la retraite (maintien de la réforme précédente ou statu quo).",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Annonce alternative sans engagement clair sur l’âge légal de départ à la retraite.",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}

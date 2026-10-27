@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "eventId": "ukraine",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-4",
+  "inputHash": "e23cd617c1e53852",
+  "computedAt": "2026-10-27T07:56:36.033Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Adultes de 35 à 64 ans en zone dense avec enfants",
+      "mechanism": "Les personnes âgées de 35 à 64 ans vivant en zone urbaine dense et dans un ménage avec enfants sont potentiellement sensibles à la dimension sécuritaire liée à la protection de leur famille, ce qui influence leur perception de la politique de déploiement militaire.",
+      "reason": "Ce segment a une exposition élevée aux problématiques liées à la sécurité familiale et peut réagir plus fortement aux annonces sur la sécurité nationale et européenne.",
+      "all": [
+        "age.35_49",
+        "age.50_64",
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "opinion_on_security_policy",
+        "perception_of_military_deployment",
+        "level_of_consent"
+      ],
+      "count": 0,
+      "distinctCommunes": 0,
+      "status": "invalid_filter",
+      "issue": "Conflicting required tags: age.35_49, age.50_64",
+      "counterfactual": {
+        "intervention": "Annonce et déploiement du contingent militaire",
+        "comparator": "Aucune annonce ou déploiement militaire",
+        "outcomeToMeasure": "Changement de l'accord au déploiement dans la force européenne"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes adultes urbains de 18 à 34 ans sans enfants",
+      "mechanism": "Les jeunes adultes urbains, souvent plus sensibilisés aux débats sur les libertés individuelles et le consentement, peuvent être plus critiques sur le recours à des forces armées, même face à une menace perçue.",
+      "reason": "Ce segment peut privilégier la dimension démocratique et éthique du consentement sur la réponse sécuritaire brute.",
+      "all": [
+        "age.18_24",
+        "age.25_34",
+        "geo.dense"
+      ],
+      "any": [
+        "household.single",
+        "household.couple_no_children",
+        "marital.single"
+      ],
+      "none": [
+        "household.couple_with_children"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "opinion_on_military_engagement",
+        "concern_for_personal_freedoms",
+        "perception_of_threat_level"
+      ],
+      "count": 0,
+      "distinctCommunes": 0,
+      "status": "invalid_filter",
+      "issue": "Conflicting required tags: age.18_24, age.25_34",
+      "counterfactual": {
+        "intervention": "Annonce et déploiement du contingent militaire",
+        "comparator": "Aucune annonce ou déploiement militaire",
+        "outcomeToMeasure": "Niveau de critique ou de soutien au déploiement"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités en milieu urbain dense ou intermédiaire",
+      "mechanism": "Les retraités vivant dans des zones urbaines denses ou intermédiaires peuvent avoir une vision plus nuancée ou conservatrice sur la sécurité nationale, avec une possible préoccupation sur la stabilité européenne future.",
+      "reason": "Ce segment est susceptible de considérer la réponse militaire comme un moyen de maintenir la paix et la sécurité sur le long terme.",
+      "all": [
+        "occupation.retired"
+      ],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "opinion_on_european_security",
+        "perceived_threat_from_conflict",
+        "attitude_towards_military_force"
+      ],
+      "count": 16575,
+      "distinctCommunes": 51,
+      "status": "filterable_discovery_sample",
+      "counterfactual": {
+        "intervention": "Annonce et déploiement du contingent militaire",
+        "comparator": "Aucune annonce ou déploiement militaire",
+        "outcomeToMeasure": "Niveau d'acceptation ou de refus du déploiement"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Travailleurs et employés urbains avec niveau moyen à faible d’éducation",
+      "mechanism": "Ce groupe socio-professionnel, résidant en zone urbaine, peut être soumis à des tensions entre besoins économiques, risques personnels et acceptation des mesures de sécurité collective.",
+      "reason": "Leurs priorités et contraintes économiques peuvent influencer leur soutien ou opposition à un engagement militaire perçu comme risqué ou coûteux.",
+      "all": [
+        "occupation.employee",
+        "occupation.worker",
+        "geo.dense"
+      ],
+      "any": [
+        "education.no_diploma",
+        "education.cap_bep",
+        "education.baccalaureate"
+      ],
+      "none": [
+        "education.bac_plus_2",
+        "education.bac_plus_3_4",
+        "education.bac_plus_5_plus"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "perception_of_risk",
+        "trust_in_government_decisions",
+        "economic_concerns_related_to_security_measures"
+      ],
+      "count": 0,
+      "distinctCommunes": 0,
+      "status": "invalid_filter",
+      "issue": "Conflicting required tags: occupation.employee, occupation.worker",
+      "counterfactual": {
+        "intervention": "Annonce et déploiement du contingent militaire",
+        "comparator": "Absence d’intervention",
+        "outcomeToMeasure": "Changement de l'adhésion ou opposition au déploiement"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Annoncer et déployer un contingent de 5 000 personnes françaises dans une force européenne de réassurance en réponse à la situation en Ukraine",
+      "comparator": "Ne pas déployer ce contingent ou ne pas annoncer ce déploiement",
+      "outcomeToMeasure": "L'évolution des opinions électorales sur la politique étrangère, notamment sur la sécurité et le consentement à l'engagement militaire",
+      "reason": "L’annonce et le déploiement sont susceptibles d’impacter les préférences des électeurs quant à la politique de défense et leur perception du risque sécuritaire."
+    },
+    {
+      "intervention": "Promouvoir des campagnes d'information sur les implications du déploiement militaire en Ukraine",
+      "comparator": "Absence de campagne d'information spécifique",
+      "outcomeToMeasure": "Le niveau de connaissance et l'acceptation des mesures de sécurité parmi les électeurs",
+      "reason": "L'information claire pourrait moduler la perception des risques et accroître le consentement envers l'engagement militaire."
+    }
+  ],
+  "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités en milieu urbain dense ou intermédiaire",
+      "matchedCount": 16575,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Aucune annonce ou déploiement militaire",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Ne pas déployer ce contingent ou ne pas annoncer ce déploiement",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 1
+        },
+        "left": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 1
+        },
+        "center": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence de campagne d'information spécifique",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 5
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}
