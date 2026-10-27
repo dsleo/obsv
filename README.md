@@ -30,6 +30,17 @@ Activer Pages dans **Settings → Pages → Build and deployment → GitHub Acti
 
 Le workflow [refresh-data.yml](.github/workflows/refresh-data.yml) collecte les feeds configurés, valide le contrat et conserve un snapshot comme artefact Actions. Il ne promeut pas automatiquement de résultats analytiques en production : la revue humaine et l’intégration des collecteurs/moteur sont requises avant de publier des changements de données.
 
+## Analyse des sous-populations (hors ligne)
+
+Le moteur (extraction de segments par tags + contrastes directionnels LLM) a été porté depuis `tweenverse` sans réécriture : `pipeline/radar/` et `src/lib/radar/`. Il tourne uniquement en CLI :
+
+```sh
+npm run data:analyze          # OPENAI_API_KEY + index de personas requis, voir .env.example
+npm run data:check-analyses   # valide les artefacts data/generated/analyses/*.json
+```
+
+Les index `data/radar/*.jsonl` et `geography-2026.json` ne sont pas versionnés et doivent être fournis (non présents dans ce dépôt) ; sans eux la commande s’arrête avec la liste des fichiers manquants. Les artefacts sont lus au build par les pages événement ; sans artefact, la page affiche « Analyse non disponible ».
+
 ## État et limites actuels
 
 - L’interface importée est un prototype avec données de démonstration explicitement signalées comme telles.

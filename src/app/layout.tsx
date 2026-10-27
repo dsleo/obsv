@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Newsreader } from "next/font/google";
+import { DemoBanner } from "../components/DemoBanner";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -25,7 +26,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr">
-      <body className={`${newsreader.variable} ${plexSans.variable}`}>{children}</body>
+      <body className={`${newsreader.variable} ${plexSans.variable}`}>
+        <DemoBanner />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "eventId": "left-rupture",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "07544a9f485f0807",
+  "computedAt": "2026-10-27T11:53:58.960Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes diplômés urbains sensibles à la clarté politique",
+      "mechanism": "Ces jeunes diplômés (moins de 35 ans avec bac+3 ou plus, habitant en milieu dense) perçoivent fortement la rupture à gauche comme un signal d'instabilité, ce qui peut renforcer leur désengagement par abstention car ils ne voient plus de raison claire de choisir.",
+      "reason": "Leur fort niveau d'éducation et conscience politique les rendent sensibles à la cohérence des alliances, mais ils sont aussi portés à s'abstenir en cas d'opposition interne apparente",
+      "all": [
+        "age.18_24"
+      ],
+      "any": [
+        "education.bac_plus_3_4",
+        "education.bac_plus_5_plus"
+      ],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "participation électorale",
+        "perception de l'alliance à gauche",
+        "intention de vote"
+      ],
+      "count": 95,
+      "distinctCommunes": 45,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Information claire sur la continuité et la solidité de l'alliance à gauche favorisant un enjeu positif",
+        "comparator": "Situation réelle de division et d'incertitude sur l'alliance",
+        "outcomeToMeasure": "Variation de la participation électorale et du taux d'abstention parmi ces jeunes diplômés"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Salariés modestes urbains et périurbains en doute",
+      "mechanism": "Les salariés modestes employés et ouvriers, souvent sensibles aux enjeux sociaux des partis de gauche, peuvent devenir désengagés à cause du conflit visible entre sociaux-démocrates et insoumis, réduisant leur perception d'enjeu et motivant une abstention accrue.",
+      "reason": "Ce groupe est souvent mobilisé par des programmes sociaux mais peut réagir négativement à une division marquée dans leurs forces politiques traditionnelles",
+      "all": [
+        "cluster.modest_wage_earner",
+        "geo.dense"
+      ],
+      "any": [
+        "commune_size.1000_plus"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "participation électorale",
+        "perception de la division politique à gauche",
+        "intention de vote"
+      ],
+      "count": 33045,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Mesures unificatrices ou discours réconciliant entre courants de gauche favorisant une alliance claire",
+        "comparator": "Situation réelle de conflit et division visibles",
+        "outcomeToMeasure": "Impact sur la mobilisation et la participation électorale au sein des salariés modestes"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités peu diplômés en milieu rural peu mobilisés",
+      "mechanism": "Les retraités peu diplômés vivant en milieu rural, souvent attachés à des partis historiques, pourraient être affectés par la rupture à gauche en percevant un manque d'intérêt ou de cohérence politique, ce qui peut contribuer à une abstention élevée.",
+      "reason": "Leur niveau d'éducation et contexte géographique les rendent plus susceptibles d'être déconnectés des débats complexes entre factions à gauche, réduisant l'importance perçue de l'enjeu",
+      "all": [
+        "cluster.retiree_no_diploma",
+        "geo.rural"
+      ],
+      "any": [
+        "commune_size.under_1000"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "participation électorale",
+        "perception de l'enjeu politique",
+        "intention de vote"
+      ],
+      "count": 73,
+      "distinctCommunes": 44,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Actions pédagogiques ou médiatiques renforçant la compréhension et l'importance des enjeux à gauche",
+        "comparator": "Situation réelle d'absence ou de confusion sur l'enjeu, avec risque d'abstention",
+        "outcomeToMeasure": "Variation dans la mobilisation électorale et hésitations de vote chez ces retraités ruraux"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes sans activité professionnelle face au découragement politique",
+      "mechanism": "Les jeunes de 18-24 ans sans activité professionnelle (étudiants, chômeurs, inactifs) peuvent, en contexte de division à gauche, percevoir une perte d'intérêt et une légitimité moindre des choix politiques, augmentant leur abstention potentielle.",
+      "reason": "Ce segment est déjà à risque d'abstention élevée ; la rupture politique peut alimenter leur découragement et éloignement du vote",
+      "all": [
+        "cluster.young_without_activity",
+        "age.18_24"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "participation électorale",
+        "perception des enjeux politiques",
+        "intention de vote"
+      ],
+      "count": 8781,
+      "distinctCommunes": 138,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Initiatives ciblées visant à rétablir un sentiment d'enjeu et de cohésion politique à gauche",
+        "comparator": "Situation actuelle avec division et risque accru d'abstention",
+        "outcomeToMeasure": "Effet sur la motivation à voter et la participation chez ce groupe fragile"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Les électeurs perçoivent une rupture claire et conflictualisée à gauche, ce qui rend l'alliance gauche-droite incertaine et débattue",
+      "comparator": "Une situation où une alliance claire et stable à gauche est maintenue",
+      "outcomeToMeasure": "Niveau de participation électorale générale et variation dans les abstentions",
+      "reason": "La rupture à gauche peut créer un sentiment de division et désengagement, affectant la motivation à voter"
+    },
+    {
+      "intervention": "Communication institutionnelle ou médiatique qui valorise l'unité et l'enjeu de l'alliance à gauche pour mobiliser la participation",
+      "comparator": "Absence de cette communication mettant en avant l'enjeu et les divisions visibles à gauche",
+      "outcomeToMeasure": "Mobilisation à voter parmi les sympathisants de gauche et variation du taux d'abstention spécifique à ces électeurs",
+      "reason": "L'enjeu perçu est un facteur clé de mobilisation électorale, particulièrement dans un contexte de division politique"
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains sensibles à la clarté politique",
+      "matchedCount": 95,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Situation réelle de division et d'incertitude sur l'alliance",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
+        },
+        "left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes urbains et périurbains en doute",
+      "matchedCount": 33045,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Situation réelle de conflit et division visibles",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités peu diplômés en milieu rural peu mobilisés",
+      "matchedCount": 73,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Situation réelle d'absence ou de confusion sur l'enjeu, avec risque d'abstention",
+      "summary": {
+        "radical_left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes sans activité professionnelle face au découragement politique",
+      "matchedCount": 8781,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Situation actuelle avec division et risque accru d'abstention",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 1
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Une situation où une alliance claire et stable à gauche est maintenue",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence de cette communication mettant en avant l'enjeu et les divisions visibles à gauche",
+      "summary": {
+        "radical_left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 2
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}

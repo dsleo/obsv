@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "eventId": "ukraine",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "d98be35054c45c25",
+  "computedAt": "2026-10-27T11:56:14.140Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes diplômés urbains, moins de 35 ans",
+      "mechanism": "Cette catégorie combine un niveau d'éducation élevé et une localisation dense en commune urbaine, potentiellement plus sensible aux arguments liés aux droits individuels et à la légitimité du consentement au déploiement militaire.",
+      "reason": "Ils pourraient privilégier le principe de consentement personnel, questionnant la portée de l'engagement militaire à l'étranger, même face à une menace perçue.",
+      "all": [
+        "age.18_24",
+        "education.bac_plus_3_4",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [
+        "commune_size.under_1000"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "opinion.securite_vs_consentement",
+        "attitude.force_europeenne",
+        "exposition.media",
+        "enquete.post_evenement"
+      ],
+      "count": 1070,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Annonce de l'envoi du contingent",
+        "comparator": "Absence d'annonce",
+        "outcomeToMeasure": "Modification dans la priorité donnée à la sécurité versus consentement personnel"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Salariés modestes, employés et ouvriers",
+      "mechanism": "Ce segment, généralement plus exposé aux risques et préoccupations sécuritaires dans leur vie quotidienne, pourrait être plus enclin à valoriser la sécurité collective et l'intervention militaire comme moyen de protection.",
+      "reason": "Ils pourraient soutenir le déploiement malgré les débats sur le consentement, privilégiant la réaction à la menace extérieure.",
+      "all": [
+        "cluster.modest_wage_earner"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "opinion.securite_vs_consentement",
+        "attitude.force_europeenne",
+        "exposition.informations_officielles",
+        "enquete.sondage_post_evenement"
+      ],
+      "count": 34763,
+      "distinctCommunes": 182,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Annonce de l'envoi du contingent",
+        "comparator": "Absence d'annonce",
+        "outcomeToMeasure": "Variation dans l'acceptation du déploiement au nom de la sécurité collective"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités peu diplômés en milieu rural",
+      "mechanism": "Ce groupe, souvent plus traditionnel et potentiellement attaché à la souveraineté nationale, peut percevoir la menace extérieure comme immédiate, mais avec une interrogation sur les modalités du consentement au déploiement.",
+      "reason": "Ils peuvent osciller entre soutien à la sécurité nationale et souci de la légitimité démocratique des décisions militaires.",
+      "all": [
+        "cluster.retiree_no_diploma",
+        "geo.rural"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "opinion.securite_vs_consentement",
+        "perception.menace_etrangere",
+        "enquete.qualitative_post_evenement"
+      ],
+      "count": 351,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Annonce du déploiement militaire",
+        "comparator": "Aucune annonce",
+        "outcomeToMeasure": "Changement dans le rapport entre confiance dans la sécurité et importance du consentement démocratique"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes sans activité professionnelle, 18-24 ans",
+      "mechanism": "Ce segment peut être plus exposé à des idéologies pacifistes ou critiques des interventions militaires, influençant leur préférence pour le respect du consentement individuel malgré la reconnaissance de la menace.",
+      "reason": "Ils pourraient être une force d'opposition ou de débat autour des principes du consentement face à l'alerte sécuritaire.",
+      "all": [
+        "cluster.young_without_activity"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "opinion.securite_vs_consentement",
+        "valeurs.pacifistes",
+        "exposition.medias_alternatifs",
+        "enquete.post_evenement"
+      ],
+      "count": 8781,
+      "distinctCommunes": 138,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Annonce de l'envoi du contingent dans une force européenne",
+        "comparator": "Pas d'annonce",
+        "outcomeToMeasure": "Influence de l'annonce sur l'attitude envers la priorité entre sécurité et consentement individuel"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Annonce de l'envoi d'un contingent de 5 000 personnes dans une force européenne de réassurance en Ukraine",
+      "comparator": "Absence d'envoi ou maintien du statu quo sans déploiement",
+      "outcomeToMeasure": "Changement d'opinion sur l'équilibre entre sécurité et respect du consentement personnel à l'engagement militaire",
+      "reason": "Mesurer l'impact de cette annonce sur les perceptions générales concernant la priorité entre la sécurité nationale et le consentement individuel au sein de la population française."
+    },
+    {
+      "intervention": "Déploiement effectif du contingent militaire en Ukraine",
+      "comparator": "Annonce sans déploiement effectif",
+      "outcomeToMeasure": "Évolution des attitudes envers la défense européenne et la coopération militaire internationale",
+      "reason": "Tester si la mise en œuvre concrète du déploiement influence l'adhésion politique et sociale au concept d'une force européenne de réassurance."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains, moins de 35 ans",
+      "matchedCount": 1070,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence d'annonce",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "center": {
+          "toward": 5,
+          "away": 1,
+          "noClearChange": 0
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes, employés et ouvriers",
+      "matchedCount": 34763,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence d'annonce",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 1
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 3,
+          "noClearChange": 1
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 5
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités peu diplômés en milieu rural",
+      "matchedCount": 351,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Aucune annonce",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes sans activité professionnelle, 18-24 ans",
+      "matchedCount": 8781,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Pas d'annonce",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "left": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "right": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence d'envoi ou maintien du statu quo sans déploiement",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Annonce sans déploiement effectif",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "center": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}

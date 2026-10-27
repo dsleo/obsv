@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { pollCandidates, getSmoothedPollValue } from "../../data/radarData";
+import { pollCandidates } from "../../data/radarData";
+import { getSmoothedPollValue } from "../../lib/chart";
 import { NewsMasthead } from "../events/NewsMasthead";
 import "../events/event-pages.css";
 import "./candidates.css";
