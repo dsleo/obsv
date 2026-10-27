@@ -12,6 +12,7 @@ const segmentSchema = z.object({
   count: z.number(), distinctCommunes: z.number(),
   status: z.enum(["filterable_discovery_sample", "insufficient_sample", "incomplete_membership", "invalid_filter"]),
   issue: z.string().optional(),
+  repairs: z.array(z.string()).optional(),
   counterfactual: scenarioSchema,
 });
 const directionCounts = z.object({ toward: z.number(), away: z.number(), noClearChange: z.number() });

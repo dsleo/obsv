@@ -6,7 +6,8 @@ import path from "node:path";
 import readline from "node:readline";
 import { z } from "zod";
 import { callStructuredModel } from "./openaiStructured";
-import { filterSchema, matchesFilter, ONTOLOGY_VERSION, TAG_IDS, TAG_REGISTRY, tagIdSchema, type RadarFilter, type RadarPersona } from "../../src/lib/radar/ontology";
+import { CLUSTERS, filterSchema, matchesFilter, ONTOLOGY_VERSION, TAG_IDS, TAG_REGISTRY, tagIdSchema, type RadarFilter, type RadarPersona } from "../../src/lib/radar/ontology";
+import { normalizeFilter, pruneSpuriousGaps, SINGLE_VALUED_FAMILIES, splitMeasurementGaps } from "./filters";
 import { buildGeographyResolver, type GeographyEntry } from "../../src/lib/radar/geography";
 
 const eventSchema = z.object({
@@ -44,6 +45,8 @@ export type SegmentPreview = SegmentProposal & {
   samplePersonaIds: string[];
   status: "filterable_discovery_sample" | "insufficient_sample" | "incomplete_membership" | "invalid_filter";
   issue?: string;
+  /** Deterministic repairs applied to the model's proposal (union regrouping, dropped spurious gaps). */
+  repairs?: string[];
 };
 
 function personaPath() {
@@ -108,12 +111,13 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
   const departmentCodes = new Map<string, string>();
   for (const row of geographyData.records) departmentCodes.set(row.department.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim(), row.departmentCode);
   const available = TAG_REGISTRY.map((tag) => ({ ...tag, count: coverage[tag.id] })).filter((tag) => tag.count > 0).sort((a, b) => b.count - a.count);
+  const clusters = CLUSTERS.filter((cluster) => coverage[cluster.id] > 0).map(({ id, label, description }) => ({ id, label, description, count: coverage[id] }));
   const result = await callStructuredModel({
     schema: eventMapSchema,
     schemaName: "radar_event_map_v1",
     stageName: "radar_event_map",
-    system: `Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral. Utilisez UNIQUEMENT les identifiants de tags fournis. Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet. Ne classez pas les groupes selon ces effectifs. Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ». Pour un lieu précis, utilisez son nom officiel et son département tels qu’ils figurent dans l’événement ; sinon laissez ces champs vides. Une vérification COG distincte valide le lieu : n’en inventez aucun. Dans « membershipGaps », indiquez UNIQUEMENT les attributs nécessaires pour définir le groupe nommé mais absents des tags ; laissez ce champ vide si les tags et le lieu suffisent. Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds », jamais dans « membershipGaps ». N’utilisez pas de substitut approximatif pour une caractéristique absente. Proposez 2 à 4 segments distincts, un scénario contrefactuel précis par segment et 1 à 2 scénarios globaux. Distinguez l’événement réel de l’alternative hypothétique. N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine. Rédigez tous les champs en langage naturel en français.`,
-    user: JSON.stringify({ event, ontologyVersion: ONTOLOGY_VERSION, tagCoverage: available, sampleSize: rows }),
+    system: `Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral. Utilisez UNIQUEMENT les identifiants de tags fournis. Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet. Ne classez pas les groupes selon ces effectifs. Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ». Les familles age, sex, education, occupation, household, marital, geo et commune_size sont à valeur unique : une personne n’a qu’une seule valeur par famille. « all » contient donc au plus un tag par famille ; pour « 35 à 64 ans » ou « employés et ouvriers », placez les valeurs alternatives dans « any ». « any » est UNE seule liste d’alternatives : n’y mélangez pas plusieurs familles et ne l’utilisez pas pour deux unions à la fois. Une liste de « clusters » (publics nommés, déjà définis par des règles sur les tags) est fournie : utilisez un cluster dès qu’il correspond au public visé, seul ou combiné à d’autres tags. Pour un lieu précis, utilisez son nom officiel et son département tels qu’ils figurent dans l’événement ; sinon laissez ces champs vides. Une vérification COG distincte valide le lieu : n’en inventez aucun. Dans « membershipGaps », indiquez UNIQUEMENT un attribut nécessaire pour définir le groupe nommé qu’AUCUN tag ni cluster fourni ne peut représenter (revenu, pension, vote passé, statut de sortant…) ; un attribut déjà couvert par une famille de tags (âge, foyer, statut matrimonial, densité…) n’est jamais une lacune, choisissez simplement la valeur voulue. Laissez ce champ vide si les tags et le lieu suffisent. Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds », jamais dans « membershipGaps ». N’utilisez pas de substitut approximatif pour une caractéristique absente. Proposez 2 à 4 segments distincts, un scénario contrefactuel précis par segment et 1 à 2 scénarios globaux. Distinguez l’événement réel de l’alternative hypothétique. N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine. Rédigez tous les champs en langage naturel en français.`,
+    user: JSON.stringify({ event, ontologyVersion: ONTOLOGY_VERSION, singleValuedFamilies: SINGLE_VALUED_FAMILIES, clusters, tagCoverage: available, sampleSize: rows }),
   });
   const proposals = result.data.segments.slice(0, 4);
   const segments: SegmentPreview[] = proposals.map((proposal, index) => ({
@@ -122,6 +126,15 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
   }));
   const filters = segments.map((segment, index) => {
     try {
+      const normalized = normalizeFilter(segment);
+      if (normalized.error) throw new Error(normalized.error);
+      segment.all = normalized.all as typeof segment.all;
+      segment.any = normalized.any as typeof segment.any;
+      const gaps = pruneSpuriousGaps(segment.membershipGaps);
+      const split = splitMeasurementGaps(gaps.kept);
+      segment.membershipGaps = split.gaps;
+      segment.measurementNeeds = [...segment.measurementNeeds, ...split.measurement];
+      segment.repairs = [...normalized.repairs, ...split.measurement.map((gap) => `« ${gap} » déplacé de « lacunes » vers « à mesurer » : variable de résultat, pas critère d’appartenance`), ...gaps.dropped.map((gap) => `Lacune « ${gap} » ignorée : cet attribut existe déjà dans les tags`)];
       const filter = validFilter(segment);
       const place = segment.place;
       if (place.commune && !place.department) throw new Error("Named commune needs its department");
@@ -159,10 +172,14 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
   segments.forEach((segment, index) => {
     segment.distinctCommunes = communes[index].size;
     if (segment.status === "invalid_filter") return;
-    segment.status = segment.membershipGaps.length > 0 || (segment.count === 0 && segment.countIncludingNarrativeRules > 0)
-      ? "incomplete_membership"
-      : segment.count >= 20 && segment.distinctCommunes >= (segment.resolvedPlace?.communeCode ? 1 : 3)
-        ? "filterable_discovery_sample" : "insufficient_sample";
+    const minCommunes = segment.resolvedPlace?.communeCode ? 1 : 3;
+    if (segment.membershipGaps.length > 0 || (segment.count === 0 && segment.countIncludingNarrativeRules > 0)) {
+      segment.status = "incomplete_membership";
+      segment.issue = segment.membershipGaps.length ? `Attributs absents des tags : ${segment.membershipGaps.join(", ")}` : "Seuls des tags issus du récit (non audités) permettraient de former ce groupe";
+    } else if (segment.count < 20 || segment.distinctCommunes < minCommunes) {
+      segment.status = "insufficient_sample";
+      segment.issue = [segment.count < 20 && `${segment.count} profils (minimum 20)`, segment.distinctCommunes < minCommunes && `${segment.distinctCommunes} communes (minimum ${minCommunes})`].filter(Boolean).join(" · ");
+    } else segment.status = "filterable_discovery_sample";
   });
   return {
     event, ontologyVersion: ONTOLOGY_VERSION, index: manifest,

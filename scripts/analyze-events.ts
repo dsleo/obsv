@@ -66,17 +66,18 @@ for (const { id, demo, ...event } of await loadEvents()) {
   console.log(`${id}: analyzing…`);
   const analysis = await analyzeRadarEvent(event);
   const contrasts: AnalysisArtifact["contrasts"] = {};
+  const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } catch { return run(); } }; // one retry: the model occasionally omits a persona
   const keep = (contrast: Awaited<ReturnType<typeof evaluateSegmentContrast>>) => {
     const { responses: _private, ...publicPart } = contrast; // per-persona answers stay offline
     contrasts[contrast.segmentId] = publicPart;
   };
   for (const segment of analysis.segments) {
     if (segment.status !== "filterable_discovery_sample") continue;
-    try { keep(await evaluateSegmentContrast(analysis.event, segment)); }
+    try { keep(await retry(() => evaluateSegmentContrast(analysis.event, segment))); }
     catch (error) { console.warn(`${id}/${segment.id}: ${error instanceof Error ? error.message : error}`); }
   }
   for (const [index, scenario] of analysis.globalScenarios.entries()) {
-    try { keep(await evaluateGlobalContrast(analysis.event, scenario, index)); }
+    try { keep(await retry(() => evaluateGlobalContrast(analysis.event, scenario, index))); }
     catch (error) { console.warn(`${id}/global_${index + 1}: ${error instanceof Error ? error.message : error}`); }
   }
   const artifact = analysisArtifactSchema.parse({

@@ -3,9 +3,9 @@
   "eventId": "philippe-programme",
   "methodVersion": "radar-directional-v1",
   "model": "gpt-4.1-mini",
-  "ontologyVersion": "fr-electorate-4",
-  "inputHash": "421094ad91e2b3f1",
-  "computedAt": "2026-10-27T07:58:28.465Z",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "6373cb1bdca5c282",
+  "computedAt": "2026-10-27T11:58:26.229Z",
   "evidenceGrade": "hypothesis",
   "demo": true,
   "index": {
@@ -15,124 +15,132 @@
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes urbains diplômés de l'enseignement supérieur",
-      "mechanism": "Ces jeunes actifs, souvent en milieu urbain dense et avec un niveau d'éducation élevé, pourraient réagir favorablement à la réforme du travail mais être critiques sur la baisse des dépenses publiques si elle impacte les services dont ils bénéficient.",
-      "reason": "Le programme engage à la fois des réformes du travail touchant probablement leur environnement professionnel et des coupes dans les dépenses qui peuvent affecter les services publics urbains fréquemment utilisés par ce groupe.",
+      "name": "Salariés modestes exposés aux réformes du travail et baisse des dépenses",
+      "mechanism": "Ce groupe, composé d'employés et ouvriers (cluster.modest_wage_earner) dans des situations professionnelles susceptibles d'être affectées par la réforme du travail et la baisse des dépenses publiques, pourrait modifier ses attitudes en fonction des bénéfices ou pertes perçus.",
+      "reason": "Ils représentent un large groupe potentiellement impacté par la réforme du travail et les ajustements financiers dans le secteur public. Leur opinion peut influencer significativement le débat politique.",
       "all": [
-        "age.25_34",
-        "education.bac_plus_5_plus",
-        "geo.dense",
-        "commune_size.1000_plus"
+        "cluster.modest_wage_earner"
       ],
-      "any": [
-        "sex.female",
-        "sex.male"
-      ],
-      "none": [
-        "occupation.retired"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude.programme",
-        "perception.emploi",
-        "confiance.institutions"
+        "opinion_sur_reforme_travail",
+        "perception_baisse_depenses_publiques"
       ],
-      "count": 2653,
-      "distinctCommunes": 27,
+      "count": 34763,
+      "distinctCommunes": 182,
       "status": "filterable_discovery_sample",
+      "repairs": [],
       "counterfactual": {
-        "intervention": "Ne pas annoncer de programme spécifique",
-        "comparator": "Annonce du programme réel",
-        "outcomeToMeasure": "Changement dans les attitudes vis-à-vis du programme et des réformes économiques"
+        "intervention": "Programme d'Édouard Philippe présenté",
+        "comparator": "Programme non présenté",
+        "outcomeToMeasure": "Attitudes face à la réforme du travail et baisse des dépenses publiques"
       }
     },
     {
       "id": "segment_2",
-      "name": "Travailleurs intermédiaires en zone urbaine",
-      "mechanism": "Ce groupe employé ou intermédiaire en zones urbaines intermédiaires pourrait être sensible à des réformes du travail ajustées au marché et prudent face à la baisse des dépenses publiques pouvant affecter la protection sociale.",
-      "reason": "Les modifications du cadre du travail et de la dépense publique peuvent directement affecter leurs conditions de travail et leur sécurité économique.",
+      "name": "Jeunes diplômés urbains sensibles aux réformes économiques",
+      "mechanism": "Les jeunes diplômés des zones urbaines denses (cluster.young_urban_graduate) peuvent réagir différemment aux annonces de baisse des dépenses et à la réforme du travail, selon leurs attentes économiques et emploi potentiel.",
+      "reason": "Ce segment détient souvent une forte sensibilité à la politique économique et sociale, pouvant influencer l’avenir périmètre de l'emploi et les conditions du travail.",
       "all": [
-        "occupation.employee",
-        "geo.intermediate",
-        "commune_size.1000_plus"
+        "cluster.young_urban_graduate"
       ],
-      "any": [
-        "sex.female",
-        "sex.male"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude.programme",
-        "perception.sécurité_emploi",
-        "satisfaction.services_publics"
+        "intention_de_vote_apres_programme",
+        "perception_reforme_travail"
       ],
-      "count": 560,
-      "distinctCommunes": 24,
+      "count": 11394,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
+      "repairs": [],
       "counterfactual": {
-        "intervention": "Ne pas avoir présenté le programme",
-        "comparator": "Présentation du programme",
-        "outcomeToMeasure": "Modification de l'opinion et des attentes vis-à-vis des réformes"
+        "intervention": "Annonce du programme d'Édouard Philippe",
+        "comparator": "Absence d'annonce",
+        "outcomeToMeasure": "Modification des opinions envers la politique économique annoncée"
       }
     },
     {
       "id": "segment_3",
-      "name": "Retraités en milieu urbain dense",
-      "mechanism": "Ce segment plus âgé, souvent soumis à des revenus fixes, peut craindre les baisses de dépenses publiques qui toucheraient potentiellement les services sociaux et les retraites.",
-      "reason": "La baisse des dépenses pourrait être perçue comme une menace à leur niveau de vie et aux aides reçues, tandis que la réforme du travail les impacte moins directement.",
+      "name": "Retraités peu diplômés préoccupés par la baisse des dépenses publiques",
+      "mechanism": "Les retraités peu diplômés (cluster.retiree_no_diploma) peuvent percevoir la baisse des dépenses publiques comme une menace pour leurs prestations sociales ou services, influençant leurs attitudes politiques.",
+      "reason": "Ce groupe représente un segment social vulnerable aux coupes budgétaires, avec des attentes spécifiques en termes de protection sociale.",
       "all": [
-        "occupation.retired",
-        "geo.dense"
+        "cluster.retiree_no_diploma"
       ],
-      "any": [
-        "sex.female",
-        "sex.male"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perception.protection_sociale",
-        "intention_vote",
-        "confiance.gouvernement"
+        "perception_des_coupes_sociales",
+        "intensité_du_soutien_ou_opposition_au_programme"
       ],
-      "count": 15403,
-      "distinctCommunes": 27,
+      "count": 12520,
+      "distinctCommunes": 163,
       "status": "filterable_discovery_sample",
+      "repairs": [],
       "counterfactual": {
-        "intervention": "Aucune annonce de baisse des dépenses",
-        "comparator": "Annonce de baisse des dépenses publiques et réforme",
-        "outcomeToMeasure": "Variation dans les préférences et inquiétudes liées au programme"
+        "intervention": "Annonce du programme d'Édouard Philippe",
+        "comparator": "Maintien du statu quo",
+        "outcomeToMeasure": "Changement dans l'attitude face aux politiques sociales"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Indépendants concernés par les ajustements économiques",
+      "mechanism": "Les artisans, commerçants et chefs d'entreprise (cluster.independent) sont concernés par la baisse des dépenses publiques qui peut influencer le contexte économique général, et potentiellement la réforme du travail.",
+      "reason": "Ils ont une position intermédiaire entre le secteur privé et public et peuvent être sensibles aux réformes affectant la réglementation et la fiscalité.",
+      "all": [
+        "cluster.independent"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "perception_impact_economique",
+        "intention_politique_apres_rencontre_programme"
+      ],
+      "count": 3921,
+      "distinctCommunes": 132,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Programme présenté",
+        "comparator": "Programme non présenté",
+        "outcomeToMeasure": "Attitudes vers les réformes économiques"
       }
     }
   ],
   "globalScenarios": [
     {
-      "intervention": "Présentation du programme d'Édouard Philippe fondé sur la baisse des dépenses publiques et la réforme du travail",
-      "comparator": "Situation antérieure sans annonce de programme spécifique",
-      "outcomeToMeasure": "Perception de la crédibilité et de l'efficacité économique du programme",
-      "reason": "Évaluer dans quelle mesure la présentation de ce programme affecte la confiance des citoyens dans la capacité à gérer les finances publiques et à réformer le travail"
+      "intervention": "Programme d'Édouard Philippe : baisse des dépenses publiques et réforme du travail",
+      "comparator": "Pas de présentation de ce programme ou maintien du programme antérieur",
+      "outcomeToMeasure": "Changement dans l'opinion favorable au parti ou candidat défendant ce programme",
+      "reason": "Mesurer l'impact global du programme sur la popularité et l'attractivité politique auprès de l'électorat français"
     },
     {
-      "intervention": "Annonce du programme d'Édouard Philippe",
-      "comparator": "Absence d'annonce ou annonces d'autres programmes avec des priorités différentes",
-      "outcomeToMeasure": "Intérêt et mobilisation électorale autour du programme",
-      "reason": "Mesurer l'effet de la nouveauté et de la nature du programme sur l'engagement politique des différentes catégories de population"
+      "intervention": "Programme d'Édouard Philippe : baisse des dépenses publiques et réforme du travail",
+      "comparator": "Maintien du programme antérieur sans réformes",
+      "outcomeToMeasure": "Modification de la perception des mesures économiques chez les catégories les plus concernées",
+      "reason": "Évaluer si ces mesures influencent positivement ou négativement les attitudes politiques selon les profils économiques et sociaux"
     }
   ],
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes urbains diplômés de l'enseignement supérieur",
-      "matchedCount": 2653,
+      "segmentName": "Salariés modestes exposés aux réformes du travail et baisse des dépenses",
+      "matchedCount": 34763,
       "sampledCount": 6,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "Annonce du programme réel",
+      "comparator": "Programme non présenté",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 6
+          "noClearChange": 1
         },
         "left": {
           "toward": 0,
@@ -141,8 +149,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 6
+          "away": 6,
+          "noClearChange": 0
         },
         "right": {
           "toward": 0,
@@ -150,9 +158,9 @@
           "noClearChange": 6
         },
         "far_right": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 6
+          "noClearChange": 5
         },
         "abstention": {
           "toward": 0,
@@ -164,31 +172,31 @@
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Travailleurs intermédiaires en zone urbaine",
-      "matchedCount": 560,
+      "segmentName": "Jeunes diplômés urbains sensibles aux réformes économiques",
+      "matchedCount": 11394,
       "sampledCount": 6,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "Présentation du programme",
+      "comparator": "Absence d'annonce",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 6
+          "away": 5,
+          "noClearChange": 1
         },
         "left": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 4
+          "away": 4,
+          "noClearChange": 2
         },
         "center": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 3
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
         },
         "right": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 4
+          "noClearChange": 6
         },
         "far_right": {
           "toward": 0,
@@ -205,26 +213,26 @@
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Retraités en milieu urbain dense",
-      "matchedCount": 15403,
+      "segmentName": "Retraités peu diplômés préoccupés par la baisse des dépenses publiques",
+      "matchedCount": 12520,
       "sampledCount": 6,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "Annonce de baisse des dépenses publiques et réforme",
+      "comparator": "Maintien du statu quo",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 6
+          "away": 2,
+          "noClearChange": 4
         },
         "left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 6
+          "away": 3,
+          "noClearChange": 3
         },
         "center": {
-          "toward": 0,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 6
+          "noClearChange": 1
         },
         "right": {
           "toward": 0,
@@ -233,8 +241,49 @@
         },
         "far_right": {
           "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "abstention": {
+          "toward": 0,
           "away": 0,
           "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Indépendants concernés par les ajustements économiques",
+      "matchedCount": 3921,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Programme non présenté",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "left": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 1
+        },
+        "center": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
         },
         "abstention": {
           "toward": 0,
@@ -250,12 +299,12 @@
       "matchedCount": 2000,
       "sampledCount": 6,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "Situation antérieure sans annonce de programme spécifique",
+      "comparator": "Pas de présentation de ce programme ou maintien du programme antérieur",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 6,
-          "noClearChange": 0
+          "away": 0,
+          "noClearChange": 6
         },
         "left": {
           "toward": 0,
@@ -291,7 +340,7 @@
       "matchedCount": 2000,
       "sampledCount": 6,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "Absence d'annonce ou annonces d'autres programmes avec des priorités différentes",
+      "comparator": "Maintien du programme antérieur sans réformes",
       "summary": {
         "radical_left": {
           "toward": 0,
@@ -304,19 +353,19 @@
           "noClearChange": 0
         },
         "center": {
-          "toward": 6,
-          "away": 0,
-          "noClearChange": 0
-        },
-        "right": {
           "toward": 3,
           "away": 0,
           "noClearChange": 3
         },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
         "far_right": {
           "toward": 0,
-          "away": 6,
-          "noClearChange": 0
+          "away": 0,
+          "noClearChange": 6
         },
         "abstention": {
           "toward": 0,
