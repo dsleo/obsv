@@ -82,13 +82,14 @@ const CONTEXT = { tag: "CONTEXTE", filter: "context" as const, color: "#718b86" 
 const frenchLong = new Intl.DateTimeFormat("fr-FR", { year: "numeric", timeZone: "UTC" });
 export const radarEvents: RadarEvent[] = snapshot.events.map((event) => {
   const isoDate = event.occurredAt.slice(0, 10);
+  const thumbnail = (event as { image?: string }).image; // optional: absent from the inferred type when no event has one
   // context:* (international, security...) only appears if pinned in data/events-curation.json; unknown types fall back to statement.
   const type = EVENT_TYPES[event.category ?? ""] ?? (event.category?.startsWith("context") ? CONTEXT : EVENT_TYPES.statement);
   return {
     id: event.id, isoDate, ...type,
     importance: event.importance === "major" ? ("major" as const) : ("notable" as const),
     title: event.title, summary: event.summary,
-    image: event.image ? `url("${event.image}")` : "none",
+    image: thumbnail ? `url("${thumbnail}")` : "none",
     sources: `SOURCES : ${event.sources[0].title.toUpperCase()}`, sourceUrl: event.sources[0].url,
     shortDate: formatShortDate(isoDate),
     date: `${formatShortDate(isoDate)} ${frenchLong.format(Date.parse(isoDate))}`,
