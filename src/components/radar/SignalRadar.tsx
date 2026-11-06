@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ChevronRight, Orbit } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
-import { pollCandidates, pollObservations, radarEvents, type PollObservation } from "../../data/radarData";
+import { pollCandidates, pollObservations, pollWindowLabel, radarEvents, type PollObservation } from "../../data/radarData";
 import { AXIS_DAYS, axisLabel, createScale, pollDateLong, trendPath, Y_TICKS } from "../../lib/chart";
 import { useChartWidth, WIDE_WIDTH } from "../../lib/useChartWidth";
 import { MethodExplainer } from "./MethodExplainer";
@@ -23,7 +23,7 @@ function RadarChart({ selectedId, onSelect }: { selectedId: string; onSelect: (i
   const plot = { left: compact ? 40 : 74, right: width - (compact ? 12 : 40), top: 32, bottom: 332 };
   const { x: xAt, y: yAt } = createScale(plot);
   const railGap = compact ? 34 : 20;
-  const axisDays = compact ? AXIS_DAYS.filter((day) => [0, 30, 60, 91].includes(day)) : AXIS_DAYS;
+  const axisDays = compact ? AXIS_DAYS.filter((day) => day % 60 === 0) : AXIS_DAYS;
   const [hoveredPoll, setHoveredPoll] = useState<{ poll: PollObservation; candidate: Candidate; x: number; y: number } | null>(null);
   const showPoll = (poll: PollObservation, candidate: Candidate, circle: SVGCircleElement) => {
     const plotBounds = circle.closest(".radar-plot")?.getBoundingClientRect();
@@ -38,7 +38,7 @@ function RadarChart({ selectedId, onSelect }: { selectedId: string; onSelect: (i
     <div className={`radar-plot ${compact ? "is-compact" : ""}`} ref={wrapRef}>
       <svg viewBox={`0 0 ${width} ${compact ? COMPACT_HEIGHT : CHART_HEIGHT}`} role="group" aria-labelledby="plot-title plot-description">
         <title id="plot-title">Intentions de vote au premier tour et évolution des sondages</title>
-        <desc id="plot-description">Les courbes de six candidats sont établies à partir de plusieurs sondages. Les points représentent les résultats de chaque sondage et les repères verticaux, cinq événements datés. Les valeurs sont aussi disponibles dans le tableau sous le graphique.</desc>
+        <desc id="plot-description">Les courbes de chaque candidat sont établies à partir des sondages publiés. Les points représentent les résultats de chaque sondage et les repères verticaux, cinq événements datés. Les valeurs sont aussi disponibles dans le tableau sous le graphique.</desc>
         <defs><clipPath id="plot-area-clip"><rect x={plot.left} y={plot.top} width={plot.right - plot.left} height={plot.bottom - plot.top} /></clipPath></defs>
 
         {Y_TICKS.map((tick) => <g key={tick}>
@@ -49,10 +49,10 @@ function RadarChart({ selectedId, onSelect }: { selectedId: string; onSelect: (i
         <g clipPath="url(#plot-area-clip)">
           {radarEvents.map((event) => <line key={`guide-${event.id}`} x1={xAt(event.pollDay)} x2={xAt(event.pollDay)} y1={plot.top} y2={plot.bottom} className={`plot-event-guide ${selectedId === event.id ? "is-selected" : ""}`} />)}
           {pollCandidates.map((candidate) => <path key={candidate.id} d={trendPath(candidate.id, { x: xAt, y: yAt })} fill="none" stroke={candidate.color} className="poll-trend-line" />)}
-          {pollObservations.map((poll) => pollCandidates.map((candidate) => <circle
+          {pollObservations.map((poll) => pollCandidates.filter((candidate) => poll.values[candidate.id] !== undefined).map((candidate) => <circle
             key={`${poll.pollster}-${poll.day}-${candidate.id}`}
             cx={xAt(poll.day)}
-            cy={yAt(poll.values[candidate.id])}
+            cy={yAt(poll.values[candidate.id] ?? 0)}
             r="2.7"
             fill={candidate.color}
             className="poll-observation"
@@ -101,11 +101,11 @@ function PollTable() {
       <summary>Voir les sondages sous forme de tableau</summary>
       <div className="poll-data-scroll">
         <table>
-          <caption>Intentions de vote par sondage, en pourcentage (données de démonstration)</caption>
+          <caption>Intentions de vote par sondage publié, premier tour, en pourcentage</caption>
           <thead><tr><th scope="col">Date</th><th scope="col">Institut</th><th scope="col">Échantillon</th>{pollCandidates.map((candidate) => <th scope="col" key={candidate.id}>{candidate.short}</th>)}</tr></thead>
           <tbody>{pollObservations.map((poll) => <tr key={`${poll.pollster}-${poll.day}`}>
             <th scope="row">{pollDateLong(poll.day)}</th><td>{poll.pollster}</td><td>{poll.sample.toLocaleString("fr-FR")}</td>
-            {pollCandidates.map((candidate) => <td key={candidate.id}>{poll.values[candidate.id]} %</td>)}
+            {pollCandidates.map((candidate) => <td key={candidate.id}>{poll.values[candidate.id] === undefined ? "—" : `${poll.values[candidate.id]} %`}</td>)}
           </tr>)}</tbody>
         </table>
       </div>
@@ -130,7 +130,7 @@ export function SignalRadar({ publics = {} }: { publics?: Record<string, string>
 
       <section className="radar-workspace" id="radar">
         <div className="radar-chart-panel">
-          <div className="panel-heading"><div><h1 className="radar-chart-title">Les intentions de vote <i>à l’épreuve de l’actualité.</i></h1></div><span className="poll-window">30 JUIN — 29 SEPT. 2026</span></div>
+          <div className="panel-heading"><div><h1 className="radar-chart-title">Les intentions de vote <i>à l’épreuve de l’actualité.</i></h1></div><span className="poll-window">{pollWindowLabel}</span></div>
           <div className="plot-legend">{pollCandidates.map((candidate) => <span key={candidate.id}><i style={{ backgroundColor: candidate.color }} />{candidate.short}</span>)}</div>
           <RadarChart selectedId={selectedId} onSelect={(id) => { setSelectedId(id); setActiveFilter("all"); }} />
           <PollTable />

@@ -27,7 +27,9 @@ export function leadSegment(analysis: AnalysisArtifact | null) {
 
 /** Engine bloc of each candidate (the engine's own bloc definitions: LFI, social-democratic/green left, macronist centre, LR, RN and allies). */
 export const candidateBloc: Record<string, string> = {
-  melenchon: "radical_left", glucksmann: "left", philippe: "center", retailleau: "right", lepen: "far_right", zemmour: "far_right",
+  arthaud: "radical_left", melenchon: "radical_left", tondelier: "left", roussel: "left", glucksmann: "left",
+  attal: "center", philippe: "center", retailleau: "right", lisnard: "right", "dupont-aignan": "right",
+  "le-pen": "far_right", bardella: "far_right", zemmour: "far_right",
 };
 
 /** Directional counts toward/away from a bloc, summed over the segment and global contrasts of one analysis. */

@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Daily, after refresh-data.yml (05:23 UTC): picks up the latest Sondax polls.
+    - cron: "40 5 * * *"
 
 permissions:
   contents: read
@@ -28,6 +31,8 @@ jobs:
           cache: npm
       - uses: actions/configure-pages@v5
       - run: npm ci
+      - name: Collect polls (Sondax CSV, full history)
+        run: npm run data:collect
       - run: npm run typecheck
       - name: Validator tests
         run: node --test scripts/validate.test.mjs

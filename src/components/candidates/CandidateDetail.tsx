@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { pollCandidates, radarEvents, type RadarEvent } from "../../data/radarData";
+import { formatShortDate, POLL_DAYS, POLL_START, pollCandidates, pollWindowLabel, radarEvents, type RadarEvent } from "../../data/radarData";
 import { blocLabels, blocSignal, candidateBloc } from "../../lib/radar/highlights";
 import { loadAnalysis } from "../../lib/radar/loadAnalysis";
-import { getSmoothedPollValue } from "../../lib/chart";
+import { formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { CandidateChart } from "./CandidateChart";
 import { NewsMasthead } from "../events/NewsMasthead";
 import "../events/event-pages.css";
@@ -25,9 +25,9 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
   const candidate = pollCandidates.find((entry) => entry.id === candidateId);
   if (!candidate) return null;
 
-  const first = getSmoothedPollValue(candidate.id, 0) ?? candidate.base;
-  const current = getSmoothedPollValue(candidate.id, 91) ?? candidate.base;
-  const netChange = current - first;
+  const first = getSmoothedPollValue(candidate.id, 0);
+  const current = getSmoothedPollValue(candidate.id, POLL_DAYS);
+  const netChange = current !== null && first !== null ? current - first : null;
   const bloc = candidateBloc[candidate.id];
   const signals = radarEvents.flatMap((event): Signal[] => {
     const signal = blocSignal(loadAnalysis(event.id), bloc);
@@ -44,11 +44,11 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
         <header className="candidate-profile-heading">
           <span className="candidate-party-line"><i style={{ backgroundColor: candidate.color }} /> {candidate.party}</span>
           <h1>{candidate.name}</h1>
-          <div className="candidate-profile-stats"><span><small>INTENTIONS DE VOTE / 29 SEPT.</small><strong>{current.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %</strong></span><span><small>ÉVOLUTION DEPUIS LE 30 JUIN</small><strong className={netChange >= 0 ? "candidate-up" : "candidate-down"}>{netChange >= 0 ? "+" : "−"}{Math.abs(netChange).toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} pts</strong></span></div>
+          <div className="candidate-profile-stats"><span><small>INTENTIONS DE VOTE · MOYENNE RÉCENTE</small><strong>{current === null ? "—" : `${formatPct(current)} %`}</strong></span><span><small>ÉVOLUTION DEPUIS LE {formatShortDate(POLL_START).toUpperCase()}</small><strong className={(netChange ?? 0) >= 0 ? "candidate-up" : "candidate-down"}>{netChange === null ? "—" : `${netChange >= 0 ? "+" : "−"}${formatPct(Math.abs(netChange))} pts`}</strong></span></div>
         </header>
 
         <section className="candidate-chart-section">
-          <div className="candidate-section-heading"><h2>Évolution des intentions de vote</h2><span>30 JUIN — 29 SEPT. 2026</span></div>
+          <div className="candidate-section-heading"><h2>Évolution des intentions de vote</h2><span>{pollWindowLabel}</span></div>
           <CandidateChart candidateId={candidate.id} color={candidate.color} />
           <div className="candidate-event-key">Les repères verticaux indiquent les dates des événements · les points, les sondages</div>
         </section>

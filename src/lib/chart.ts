@@ -2,7 +2,8 @@ import { dayToIso, formatShortDate, pollObservations, POLL_DAYS, type CandidateI
 
 export const Y_MAX = 35;
 export const Y_TICKS = [0, 5, 10, 15, 20, 25, 30, 35];
-export const AXIS_DAYS = [0, 14, 30, 45, 60, 75, 91];
+// One tick every 30 days from the first poll; compact layouts keep every other one (see components).
+export const AXIS_DAYS = Array.from({ length: Math.floor(POLL_DAYS / 30) + 1 }, (_, index) => index * 30);
 
 export type Plot = { left: number; right: number; top: number; bottom: number };
 
@@ -18,13 +19,15 @@ export const axisLabel = (day: number) => formatShortDate(dayToIso(day));
 export const pollDateLong = (day: number) =>
   new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(Date.parse(dayToIso(day)));
 
-/** Gaussian-weighted mean of all polls around `day`; null where polls are too sparse to say anything. */
+/** Gaussian-weighted mean of the polls that tested this candidate around `day`; null where polls are too sparse to say anything. */
 export function getSmoothedPollValue(candidateId: CandidateId, day: number) {
   let sum = 0;
   let weight = 0;
   for (const poll of pollObservations) {
+    const value = poll.values[candidateId];
+    if (value === undefined) continue;
     const w = Math.exp(-Math.pow(day - poll.day, 2) / 18);
-    sum += w * poll.values[candidateId];
+    sum += w * value;
     weight += w;
   }
   return weight > 0.35 ? sum / weight : null;
@@ -40,3 +43,5 @@ export function trendPath(candidateId: CandidateId, scale: ReturnType<typeof cre
   }
   return points.join(" ");
 }
+
+export const formatPct = (value: number) => value.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });

@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { pollCandidates } from "../../data/radarData";
-import { getSmoothedPollValue } from "../../lib/chart";
+import { formatShortDate, POLL_DAYS, POLL_START, pollCandidates } from "../../data/radarData";
+import { formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { NewsMasthead } from "../events/NewsMasthead";
 import "../events/event-pages.css";
 import "./candidates.css";
 
 export function CandidatesIndex() {
   const rankedCandidates = [...pollCandidates].sort((a, b) =>
-    (getSmoothedPollValue(b.id, 91) ?? 0) - (getSmoothedPollValue(a.id, 91) ?? 0),
+    (getSmoothedPollValue(b.id, POLL_DAYS) ?? 0) - (getSmoothedPollValue(a.id, POLL_DAYS) ?? 0),
   );
 
   return (
@@ -21,19 +21,19 @@ export function CandidatesIndex() {
         <section className="candidate-roster" aria-label="Candidats classés selon les intentions de vote">
           <div className="candidate-roster-heading"><span>Candidat</span><span>Parti</span><span>Intentions de vote</span></div>
           {rankedCandidates.map((candidate) => {
-            const current = getSmoothedPollValue(candidate.id, 91) ?? candidate.base;
-            const first = getSmoothedPollValue(candidate.id, 0) ?? candidate.base;
-            const change = current - first;
+            const current = getSmoothedPollValue(candidate.id, POLL_DAYS);
+            const first = getSmoothedPollValue(candidate.id, 0);
+            const change = current !== null && first !== null ? current - first : null;
             return (
               <Link href={`/candidates/${candidate.id}`} className="candidate-roster-row" key={candidate.id}>
                 <span className="candidate-roster-name"><i style={{ backgroundColor: candidate.color }} /><strong>{candidate.name}</strong></span>
                 <span className="candidate-party">{candidate.party}</span>
-                <span className="candidate-latest"><strong>{current.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %</strong><span className={change >= 0 ? "candidate-up" : "candidate-down"}>{change >= 0 ? "+" : ""}{change.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} pts depuis le 30 juin</span><i><b style={{ width: `${Math.min(100, (current / 35) * 100)}%`, backgroundColor: candidate.color }} /></i></span>
+                <span className="candidate-latest"><strong>{current === null ? "—" : `${formatPct(current)} %`}</strong>{change === null ? null : <span className={change >= 0 ? "candidate-up" : "candidate-down"}>{change >= 0 ? "+" : ""}{formatPct(change)} pts depuis le {formatShortDate(POLL_START)}</span>}<i><b style={{ width: `${Math.min(100, ((current ?? 0) / 35) * 100)}%`, backgroundColor: candidate.color }} /></i></span>
               </Link>
             );
           })}
         </section>
-        <p className="candidate-data-note">Les chiffres et les variations présentés reposent sur une série de sondages fictifs.</p>
+        <p className="candidate-data-note">Moyenne lissée des sondages publiés au premier tour (Sondax, d’après Wikipédia, CC BY-SA 4.0). Un candidat sans sondage récent n’a pas de valeur actuelle.</p>
       </div>
     </main>
   );

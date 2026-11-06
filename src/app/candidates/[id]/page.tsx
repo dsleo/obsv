@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const candidate = pollCandidates.find((entry) => entry.id === id);
-  return candidate ? pageMetadata(candidate.name, `Intentions de vote et évolution pour  (), données de démonstration.`) : {};
+  return candidate ? pageMetadata(candidate.name, `Intentions de vote et évolution pour ${candidate.name}, à partir des sondages publiés.`) : {};
 }
 
 export default async function CandidatePage({ params }: { params: Promise<{ id: string }> }) {
