@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Newsreader } from "next/font/google";
 import { DemoBanner } from "../components/DemoBanner";
+import { pageMetadata, SITE_DESCRIPTION, SITE_NAME } from "../lib/metadata";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -19,8 +20,9 @@ const plexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "L’Observatoire — Actualité et intentions de vote",
-  description: "Suivez l’évolution des intentions de vote et les événements qui comptent pour les électeurs.",
+  ...pageMetadata("Actualité et intentions de vote", SITE_DESCRIPTION),
+  applicationName: SITE_NAME,
+  formatDetection: { telephone: false },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -51,8 +51,11 @@ function getClient() {
   return cachedClient;
 }
 
+// Dated snapshot: the analysis artifacts record it, and check-analyses rejects other models.
+export const PINNED_MODEL = "gpt-4.1-mini-2025-04-14";
+
 function getModel() {
-  return process.env.OPENAI_MODEL || "gpt-4.1-mini";
+  return process.env.OPENAI_MODEL || PINNED_MODEL;
 }
 
 function extractOutputText(messageContent: unknown) {

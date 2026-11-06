@@ -41,6 +41,12 @@ npm run data:check-analyses   # valide les artefacts data/generated/analyses/*.j
 
 Les index `data/radar/*.jsonl` et `geography-2026.json` ne sont pas versionnés et doivent être fournis (non présents dans ce dépôt) ; sans eux la commande s’arrête avec la liste des fichiers manquants. Les artefacts sont lus au build par les pages événement ; sans artefact, la page affiche « Analyse non disponible ».
 
+## Reproductibilité et revue humaine des analyses
+
+- **Modèle épinglé** : `PINNED_MODEL` dans `pipeline/radar/openaiStructured.ts` (instantané daté). Chaque artefact enregistre le modèle ; `npm run data:check-analyses` refuse les autres.
+- **Index versionnés** : `data/radar-index.lock.json` fixe le SHA-256 de chaque index. `RADAR_INDEX_BASE_URL=<hébergement versionné> npm run data:fetch-index` télécharge et vérifie ; `npm run data:fetch-index -- --verify` vérifie seulement les fichiers locaux. L’hébergement reste à choisir.
+- **Revue avant publication** : `npm run data:analyze` écrit chaque artefact avec `review.status = "pending"`. Après relecture du contenu, `npm run data:approve -- <eventId> --reviewer "Nom"` enregistre l’approbation liée au hash du contenu. Toute modification ou regénération annule l’approbation. Seuls les artefacts approuvés apparaissent sur le site.
+
 ## État et limites actuels
 
 - L’interface importée est un prototype avec données de démonstration explicitement signalées comme telles.

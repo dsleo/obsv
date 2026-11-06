@@ -5,6 +5,7 @@ import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { analyzeRadarEvent } from "../pipeline/radar/pipeline";
+import { PINNED_MODEL } from "../pipeline/radar/openaiStructured";
 import { evaluateGlobalContrast, evaluateSegmentContrast } from "../pipeline/radar/relativeResponse";
 import { ANALYSIS_SCHEMA_VERSION, analysisArtifactSchema, type AnalysisArtifact } from "../src/lib/radar/analysisArtifact";
 import { radarEvents } from "../src/data/radarData";
@@ -18,7 +19,7 @@ const out = path.join(process.cwd(), "data/generated/analyses");
 try { process.loadEnvFile(".env.local"); } catch { /* optional */ }
 const personaIndex = process.env.RADAR_PERSONA_INDEX || "data/radar/personas.jsonl";
 const geographyIndex = process.env.RADAR_GEOGRAPHY_INDEX || "data/radar/geography-2026.json";
-const model = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+const model = process.env.OPENAI_MODEL || PINNED_MODEL;
 
 const missing = [
   !process.env.OPENAI_API_KEY && "OPENAI_API_KEY is not set",
@@ -81,7 +82,7 @@ for (const { id, demo, ...event } of await loadEvents()) {
     catch (error) { console.warn(`${id}/global_${index + 1}: ${error instanceof Error ? error.message : error}`); }
   }
   const artifact = analysisArtifactSchema.parse({
-    schemaVersion: ANALYSIS_SCHEMA_VERSION, eventId: id, methodVersion: METHOD_VERSION, model,
+    schemaVersion: ANALYSIS_SCHEMA_VERSION, review: { status: "pending" }, eventId: id, methodVersion: METHOD_VERSION, model,
     ontologyVersion: analysis.ontologyVersion, inputHash, computedAt: new Date().toISOString(),
     evidenceGrade: analysis.evidenceGrade, ...(demo ? { demo: true } : {}),
     index: { frame: analysis.index.frame, rowCount: analysis.index.rowCount },

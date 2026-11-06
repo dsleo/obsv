@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // Public, browser-safe contract of one offline analysis artifact
 // (data/generated/analyses/<eventId>.json). Per-persona responses never leave the pipeline.
-export const ANALYSIS_SCHEMA_VERSION = 1;
+export const ANALYSIS_SCHEMA_VERSION = 2;
 
 const scenarioSchema = z.object({ intervention: z.string(), comparator: z.string(), outcomeToMeasure: z.string(), reason: z.string().optional() });
 const segmentSchema = z.object({
@@ -36,5 +36,12 @@ export const analysisArtifactSchema = z.object({
   globalScenarios: z.array(scenarioSchema),
   contrasts: z.record(z.string(), contrastSchema),
   note: z.string(),
+  // Published only when a human approved this exact content (see scripts/approve-analysis.ts).
+  review: z.object({
+    status: z.enum(["pending", "approved"]),
+    reviewer: z.string().optional(),
+    reviewedAt: z.string().optional(),
+    contentHash: z.string().optional(),
+  }),
 });
 export type AnalysisArtifact = z.infer<typeof analysisArtifactSchema>;

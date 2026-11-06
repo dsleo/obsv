@@ -88,12 +88,12 @@ export function MethodExplainer() {
           </article>)}
         </div>
 
-        <aside className="method-sticky-visual" aria-label="Illustrations du fonctionnement du modèle">
+        <section className="method-sticky-visual" aria-label="Illustrations du fonctionnement du modèle">
           <div className="method-visual-masthead">DU FAIT AU SCÉNARIO</div>
           <div className="method-visual-window">
             {chapters.map((chapter, index) => <StoryArtwork key={chapter.image} chapter={chapter} index={index} active={index === activeChapter} />)}
           </div>
-        </aside>
+        </section>
       </div>
       <p className="method-caveat"><span>À garder en tête</span> Les exemples présentés ici sont fictifs. Le scénario illustre une méthode&nbsp;: il ne mesure pas l’effet causal d’un événement et ne remplace pas un sondage.</p>
     </section>;

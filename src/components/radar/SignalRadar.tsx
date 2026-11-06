@@ -36,7 +36,7 @@ function RadarChart({ selectedId, onSelect }: { selectedId: string; onSelect: (i
 
   return (
     <div className={`radar-plot ${compact ? "is-compact" : ""}`} ref={wrapRef}>
-      <svg viewBox={`0 0 ${width} ${compact ? COMPACT_HEIGHT : CHART_HEIGHT}`} role="img" aria-labelledby="plot-title plot-description">
+      <svg viewBox={`0 0 ${width} ${compact ? COMPACT_HEIGHT : CHART_HEIGHT}`} role="group" aria-labelledby="plot-title plot-description">
         <title id="plot-title">Intentions de vote au premier tour et évolution des sondages</title>
         <desc id="plot-description">Les courbes de six candidats sont établies à partir de plusieurs sondages. Les points représentent les résultats de chaque sondage et les repères verticaux, cinq événements datés. Les valeurs sont aussi disponibles dans le tableau sous le graphique.</desc>
         <defs><clipPath id="plot-area-clip"><rect x={plot.left} y={plot.top} width={plot.right - plot.left} height={plot.bottom - plot.top} /></clipPath></defs>

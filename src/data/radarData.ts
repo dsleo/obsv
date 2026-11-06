@@ -1,3 +1,6 @@
+// Set by next.config.ts from the GitHub Pages project path (empty at the site root).
+const SITE_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const POLL_START = "2026-06-30";
 export const POLL_DAYS = 91;
 
@@ -49,35 +52,35 @@ const eventSources: Omit<RadarEvent, "date" | "shortDate" | "pollDay">[] = [
     id: "vat", isoDate: "2026-07-08", effects: { lepen: 1.5, philippe: -1.5, retailleau: -0.5, melenchon: 0.5 }, tag: "BUDGET", filter: "budget",
     title: "La hausse de la TVA transforme le budget en enjeu électoral",
     summary: "Le gouvernement annonce une hausse du taux normal de TVA dans son projet de budget. Dans le panel, la première question n’est pas celle du déficit, mais de savoir qui paiera avant que les salaires ne suivent.",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=82", color: "#ec5b34", chartX: 196, chartY: 236,
+    image: `${SITE_BASE}/events/vat.svg`, color: "#ec5b34", chartX: 196, chartY: 236,
     sources: "DONNÉES DE SIMULATION · ACTUALITÉ BUDGÉTAIRE / PROFILS SYNTHÉTIQUES",
   },
   {
     id: "left-rupture", isoDate: "2026-07-29", effects: { glucksmann: -1, melenchon: 1 }, tag: "COALITION", filter: "coalition",
     title: "La rupture à gauche transforme l’alliance en enjeu de participation",
     summary: "Les discussions entre sociaux-démocrates et insoumis échouent. Le premier signal n’est pas la naissance d’un nouveau bloc, mais un risque bien connu : des électeurs qui ne voient plus de raison de choisir.",
-    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=82", color: "#718b86", chartX: 360, chartY: 214,
+    image: `${SITE_BASE}/events/left-rupture.svg`, color: "#718b86", chartX: 360, chartY: 214,
     sources: "DONNÉES DE SIMULATION · ACTUALITÉ DES ALLIANCES / PROFILS SYNTHÉTIQUES",
   },
   {
     id: "ukraine", isoDate: "2026-08-14", effects: { melenchon: 2, glucksmann: -2, lepen: 0.5, philippe: 0.5 }, tag: "UKRAINE", filter: "foreign",
     title: "Le déploiement en Ukraine ravive le débat entre sécurité et consentement",
     summary: "La France annonce l’envoi d’un contingent de 5 000 personnes dans une force européenne de réassurance. L’annonce fait réagir des électeurs qui s’accordent sur la menace, mais pas sur la réponse à y apporter.",
-    image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=82", color: "#9c8d6a", chartX: 510, chartY: 198,
+    image: `${SITE_BASE}/events/ukraine.svg`, color: "#9c8d6a", chartX: 510, chartY: 198,
     sources: "DONNÉES DE SIMULATION · ACTUALITÉ INTERNATIONALE / PROFILS SYNTHÉTIQUES",
   },
   {
     id: "philippe-programme", isoDate: "2026-09-02", effects: { philippe: 2, retailleau: -1.5 }, tag: "PROGRAMME", filter: "programme",
     title: "Édouard Philippe dévoile son programme : baisse des dépenses et réforme du travail",
     summary: "Édouard Philippe présente un programme fondé sur la baisse des dépenses publiques et une réforme du travail. Son offre se précise, tout comme les arbitrages qu’elle implique.",
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=82", color: "#577572", chartX: 648, chartY: 166,
+    image: `${SITE_BASE}/events/philippe-programme.svg`, color: "#577572", chartX: 648, chartY: 166,
     sources: "DONNÉES DE SIMULATION · ACTUALITÉ PROGRAMMATIQUE / PROFILS SYNTHÉTIQUES",
   },
   {
     id: "pensions", isoDate: "2026-09-22", effects: { lepen: 2, retailleau: -1, zemmour: -1 }, tag: "RETRAITES", filter: "programme",
     title: "Le Pen promet le retour à 62 ans : les retraites à l’épreuve de la crédibilité",
     summary: "Marine Le Pen promet de rétablir l’âge légal de départ à la retraite à 62 ans dès le début du mandat. L’annonce touche au-delà de son électorat habituel, mais de façon inégale.",
-    image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1200&q=82", color: "#a95a56", chartX: 790, chartY: 112,
+    image: `${SITE_BASE}/events/pensions.svg`, color: "#a95a56", chartX: 790, chartY: 112,
     sources: "DONNÉES DE SIMULATION · ACTUALITÉ DES RETRAITES / PROFILS SYNTHÉTIQUES",
   },
 ];
@@ -91,11 +94,11 @@ export const radarEvents: RadarEvent[] = eventSources.map((event) => ({
 }));
 
 const pollsters: { name: string; every: number; offset: number; bias: Partial<Record<CandidateId, number>> }[] = [
-  { name: "Ifop", every: 11, offset: 2, bias: { lepen: 0.8 } },
-  { name: "Elabe", every: 13, offset: 5, bias: { lepen: -0.5, melenchon: 0.2 } },
-  { name: "Odoxa", every: 14, offset: 8, bias: { melenchon: 0.6, philippe: -0.3 } },
-  { name: "OpinionWay", every: 12, offset: 4, bias: { philippe: 0.7, zemmour: 0.3 } },
-  { name: "Toluna Harris Interactive", every: 15, offset: 10, bias: {} },
+  { name: "Série simulée 1", every: 11, offset: 2, bias: { lepen: 0.8 } },
+  { name: "Série simulée 2", every: 13, offset: 5, bias: { lepen: -0.5, melenchon: 0.2 } },
+  { name: "Série simulée 3", every: 14, offset: 8, bias: { melenchon: 0.6, philippe: -0.3 } },
+  { name: "Série simulée 4", every: 12, offset: 4, bias: { philippe: 0.7, zemmour: 0.3 } },
+  { name: "Série simulée 5", every: 15, offset: 10, bias: {} },
 ];
 
 function seededRandom(seed: number) {

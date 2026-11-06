@@ -1,12 +1,20 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { EventArticle } from "../../../components/events/EventArticle";
 import { loadAnalysis } from "../../../lib/radar/loadAnalysis";
+import { pageMetadata } from "../../../lib/metadata";
 import { radarEvents } from "../../../data/radarData";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
   return radarEvents.map((event) => ({ id: event.id }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const event = radarEvents.find((candidate) => candidate.id === id);
+  return event ? pageMetadata(event.title, event.summary, "article") : {};
 }
 
 export default async function EventPage({ params }: { params: Promise<{ id: string }> }) {

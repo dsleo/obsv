@@ -43,7 +43,7 @@ export function EventArticle({ event, analysis }: { event: RadarEvent; analysis:
             <p>Ce scénario ne prédit pas à lui seul le résultat. Il examine comment l’attention peut devenir une préférence, et comment la réponse d’un candidat peut infléchir cette évolution.</p>
           </div>
 
-          <aside className="article-aside">
+          <div className="article-aside">
             <section className="article-impact-card">
               <span className="article-aside-kicker">RÉSULTAT DE L’ANALYSE · PROFILS SYNTHÉTIQUES</span>
               {lead ? <>
@@ -67,7 +67,7 @@ export function EventArticle({ event, analysis }: { event: RadarEvent; analysis:
               <p>Plutôt que : {scenario.comparator}</p>
               <div className="scenario-candidate"><span>HYPOTHÈSE · AUCUNE VARIATION DE VOTE ESTIMÉE</span><ArrowUpRight size={16} /></div>
             </section> : null}
-          </aside>
+          </div>
         </div>
 
         <EventSubpopulationAnalysis analysis={analysis} />
