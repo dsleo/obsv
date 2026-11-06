@@ -42,6 +42,20 @@ export async function fetchOgImage(url) {
   } catch { return null; }
 }
 
+/**
+ * The event's source articles. `sources`, `source_urls` and `source_descriptions` are parallel arrays (one entry per article).
+ * Google News descriptions are "headline + outlet name": the outlet is matched against `publishers` and split off.
+ * `publishers` is deduplicated, so it cannot be zipped with the articles.
+ */
+export function buildArticles(e, max = 40) {
+  return (e.sources ?? []).slice(0, max).map((id, i) => {
+    const raw = (e.source_descriptions?.[i] ?? "").trim();
+    const publisher = e.publishers.find((p) => raw.endsWith(p)) ?? (id.startsWith("france24") ? "France 24" : "");
+    const text = publisher && raw.endsWith(publisher) ? raw.slice(0, -publisher.length).replace(/\s+[-–|]\s*$/, "").trim() : raw;
+    return { title: text || e.title, publisher, url: e.source_urls?.[i] ?? null };
+  }).filter((a) => a.url);
+}
+
 /** API events -> events.json rows (docs/data-contracts.md). Pure, so it can be tested. */
 export function apiToEvents(items, curation = {}) {
   const rows = [];
@@ -59,6 +73,7 @@ export function apiToEvents(items, curation = {}) {
       importance,
       candidateIds: e.candidate_ids,
       publisherCount: e.publisher_count,
+      articles: buildArticles(e),
       // A direct publisher URL when the event has one (enables the thumbnail); else representative_url (usually a Google News redirect).
       sources: [{ title: e.publishers[0] || "Presse", url: [e.representative_url, ...(e.source_urls ?? [])].find((u) => !isGoogle(u)) || e.representative_url || `https://news.google.com/search?q=${encodeURIComponent(e.title)}` }],
       editorialStatus: "draft", // rule-selected, not human-reviewed

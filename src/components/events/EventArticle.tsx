@@ -8,6 +8,10 @@ import { EventSubpopulationAnalysis } from "./EventSubpopulationAnalysis";
 import { NewsMasthead } from "./NewsMasthead";
 import "./event-pages.css";
 
+function ArticleRow({ article }: { article: RadarEvent["articles"][number] }) {
+  return <li><a href={article.url} target="_blank" rel="noopener noreferrer"><span>{article.publisher || "Presse"}</span><strong>{article.title}</strong><ExternalLink size={18} aria-hidden="true" /></a></li>;
+}
+
 export function EventArticle({ event, analysis }: { event: RadarEvent; analysis: AnalysisArtifact | null }) {
   const lead = leadSegment(analysis);
   const scenario = lead?.segment.counterfactual ?? analysis?.globalScenarios[0] ?? null;
@@ -66,6 +70,12 @@ export function EventArticle({ event, analysis }: { event: RadarEvent; analysis:
             </section> : null}
           </div>
         </div>
+
+        {event.articles.length ? <section className="article-sources" aria-labelledby="article-sources-title">
+          <div className="article-sources-heading"><h2 id="article-sources-title">Les articles de cette actualité</h2><span>{event.articles.length} article{event.articles.length > 1 ? "s" : ""} · {event.publisherCount} média{event.publisherCount > 1 ? "s" : ""}</span></div>
+          <ul>{event.articles.slice(0, 8).map((article) => <ArticleRow key={article.url} article={article} />)}</ul>
+          {event.articles.length > 8 ? <details><summary>Voir les {event.articles.length - 8} autres articles</summary><ul>{event.articles.slice(8).map((article) => <ArticleRow key={article.url} article={article} />)}</ul></details> : null}
+        </section> : null}
 
         <EventSubpopulationAnalysis analysis={analysis} />
 

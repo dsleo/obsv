@@ -25,6 +25,14 @@ test("description skips headline echoes; url comes from the API", () => {
   assert.match(apiToEvents([{ ...e, source_descriptions: [null] }])[0].summary, /^Relayé par 6 médias/);
 });
 
+test("articles: outlet split from the description, one per source", () => {
+  const e = ev({ publishers: ["Le Monde", "BFM"], sources: ["google:1", "google:2"], source_urls: ["https://g/1", "https://g/2"], source_descriptions: ["Roussel candidat Le Monde", "Sans éditeur connu"] });
+  assert.deepEqual(apiToEvents([{ ...e, publisher_count: 6 }])[0].articles, [
+    { title: "Roussel candidat", publisher: "Le Monde", url: "https://g/1" },
+    { title: "Sans éditeur connu", publisher: "", url: "https://g/2" },
+  ]);
+});
+
 test("curation: pin promotes any tier, hide wins", () => {
   const rows = apiToEvents([ev({ seed_source: "google:6", tier: "C" }), ev({ seed_source: "google:1", publisher_count: 9 })], { pin: ["google-6"], hide: ["google-1"] });
   assert.deepEqual(rows.map((r) => [r.id, r.importance]), [["google-6", "major"]]);

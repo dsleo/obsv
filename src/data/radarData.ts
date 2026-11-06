@@ -63,6 +63,9 @@ export type RadarEvent = {
   color: string;
   sources: string;
   sourceUrl: string;
+  /** All the articles grouped in this event. */
+  articles: { title: string; publisher: string; url: string }[];
+  publisherCount: number;
 };
 
 // Real events from the election-tracker API, selected by rules in scripts/lib/events-api.mjs
@@ -89,6 +92,8 @@ export const radarEvents: RadarEvent[] = snapshot.events.map((event) => {
     id: event.id, isoDate, ...type,
     importance: event.importance === "major" ? ("major" as const) : ("notable" as const),
     title: event.title, summary: event.summary,
+    articles: ((event as { articles?: { title: string; publisher: string; url: string }[] }).articles ?? []),
+    publisherCount: (event as { publisherCount?: number }).publisherCount ?? 1,
     image: thumbnail ? `url("${thumbnail}")` : "none",
     sources: `SOURCES : ${event.sources[0].title.toUpperCase()}`, sourceUrl: event.sources[0].url,
     shortDate: formatShortDate(isoDate),
