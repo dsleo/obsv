@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, MotionConfig, useReducedMotion } from "framer-motion";
 import "./method-explainer.css";
 
 const chapters = [
@@ -49,17 +48,14 @@ const chapters = [
 
 type Chapter = (typeof chapters)[number];
 
-function StoryArtwork({ chapter, index, reducedMotion, mobile = false }: { chapter: Chapter; index: number; reducedMotion: boolean; mobile?: boolean }) {
-  const image = <img src={`method/${chapter.image}`} alt={chapter.alt} loading={mobile && index > 0 ? "lazy" : "eager"} />;
-
-  return <motion.figure className={`method-artwork ${mobile ? "method-artwork-mobile" : ""}`} initial={mobile || reducedMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={mobile || reducedMotion ? undefined : { opacity: 0 }} transition={{ duration: reducedMotion ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}>
-    {mobile ? image : <motion.div className="method-artwork-image" initial={reducedMotion ? false : { scale: 1.045 }} animate={{ scale: 1 }} transition={{ duration: reducedMotion ? 0 : 1.2, ease: [0.22, 1, 0.36, 1] }}>{image}</motion.div>}
+function StoryArtwork({ chapter, index, active = true, mobile = false }: { chapter: Chapter; index: number; active?: boolean; mobile?: boolean }) {
+  return <figure className={`method-artwork ${mobile ? "method-artwork-mobile" : active ? "is-active" : ""}`} aria-hidden={!mobile && !active ? true : undefined}>
+    <img src={`method/${chapter.image}`} alt={chapter.alt} loading={index > 0 ? "lazy" : "eager"} />
     <figcaption><strong>{chapter.caption}</strong></figcaption>
-  </motion.figure>;
+  </figure>;
 }
 
 export function MethodExplainer() {
-  const reduceMotion = Boolean(useReducedMotion());
   const [activeChapter, setActiveChapter] = useState(0);
   const chapterRefs = useRef<Array<HTMLElement | null>>([]);
 
@@ -78,8 +74,7 @@ export function MethodExplainer() {
     return () => observer.disconnect();
   }, []);
 
-  return <MotionConfig reducedMotion="user">
-    <section className="method-section" id="method" aria-labelledby="method-title">
+  return <section className="method-section" id="method" aria-labelledby="method-title">
       <header className="method-heading">
         <div className="method-heading-main"><h2 id="method-title">Comment ça <em>marche&nbsp;?</em></h2></div>
         <p>Du réel aux hypothèses&nbsp;: suivez une information, les personnes qu’elle concerne et ce qu’elle pourrait changer dans leurs choix.</p>
@@ -89,18 +84,17 @@ export function MethodExplainer() {
         <div className="method-chapters">
           {chapters.map((chapter, index) => <article className={`method-chapter ${activeChapter === index ? "is-current" : ""}`} key={chapter.image} ref={(node) => { chapterRefs.current[index] = node; }}>
             <div className="method-chapter-copy"><span className="method-story-label">{chapter.eyebrow}</span><h3>{chapter.title}</h3><p>{chapter.text}</p></div>
-            <StoryArtwork chapter={chapter} index={index} reducedMotion={reduceMotion} mobile />
+            <StoryArtwork chapter={chapter} index={index} mobile />
           </article>)}
         </div>
 
         <aside className="method-sticky-visual" aria-label="Illustrations du fonctionnement du modèle">
           <div className="method-visual-masthead">DU FAIT AU SCÉNARIO</div>
           <div className="method-visual-window">
-            <AnimatePresence mode="sync"><StoryArtwork key={chapters[activeChapter].image} chapter={chapters[activeChapter]} index={activeChapter} reducedMotion={reduceMotion} /></AnimatePresence>
+            {chapters.map((chapter, index) => <StoryArtwork key={chapter.image} chapter={chapter} index={index} active={index === activeChapter} />)}
           </div>
         </aside>
       </div>
       <p className="method-caveat"><span>À garder en tête</span> Les exemples présentés ici sont fictifs. Le scénario illustre une méthode&nbsp;: il ne mesure pas l’effet causal d’un événement et ne remplace pas un sondage.</p>
-    </section>
-  </MotionConfig>;
+    </section>;
 }

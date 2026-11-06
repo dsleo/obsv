@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "eventId": "vat",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "d0d082b44e7dff97",
+  "computedAt": "2026-10-27T11:51:40.512Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Salariés modestes en ménage avec enfants",
+      "mechanism": "Cette population ressent directement l’impact de la hausse de TVA car leurs dépenses de consommation représentent une part importante de leur budget familial.",
+      "reason": "Leur sensibilité économique et familiale pourrait rendre cette hausse un enjeu électoral majeur, accentué par la crainte que les augmentations de salaire n’interviennent pas simultanément.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "household.couple_with_children"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de l’impact de la TVA sur leur budget familial",
+        "Intention de vote liée au projet de budget"
+      ],
+      "count": 15555,
+      "distinctCommunes": 163,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Communication gouvernementale justifiant la hausse de la TVA",
+        "comparator": "Absence ou minimisation de cette communication",
+        "outcomeToMeasure": "Changement dans la perception du poids financier de la hausse et dans l’intention de vote"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Retraités en couple sans enfant en commune dense",
+      "mechanism": "Cette population observe la hausse de TVA comme un alourdissement du coût de la vie sans perspective immédiate d'augmentation de revenus, sensible aux justifications du gouvernement.",
+      "reason": "Leurs fixations de revenus fixes et leur résidence en zone dense pourraient influencer leur opinion sur le budget et leur mobilisation politique.",
+      "all": [
+        "cluster.retired_couple",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Opinion sur la justice fiscale de la hausse de TVA",
+        "Vote éventuel en lien avec le projet de budget"
+      ],
+      "count": 15215,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Communication gouvernementale sur la hausse de TVA",
+        "comparator": "Absence ou discours alternatif minimisant l’impact",
+        "outcomeToMeasure": "Variation dans l’opinion et intention de vote"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes diplômés urbains",
+      "mechanism": "Ce groupe peut percevoir la hausse de TVA dans le cadre plus large des politiques publiques touchant leur contexte professionnel et social, avec potentiellement moins d’impact direct mais une sensibilité à l’argumentation économique.",
+      "reason": "Leur position sociale et niveau d’éducation pourraient moduler leur compréhension et réaction à cette mesure budgétaire.",
+      "all": [
+        "cluster.young_urban_graduate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Connaissances économiques sur la TVA",
+        "Réaction politique au projet de budget"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Information gouvernementale sur la hausse de TVA",
+        "comparator": "Information alternative ou silence",
+        "outcomeToMeasure": "Changement de perception et d’opinion politique"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes familles modestes rurales",
+      "mechanism": "Ces foyers dans des zones rurales peuvent être particulièrement touchés par le double effet de la hausse de TVA et d’un possible retard des augmentations salariales, influençant leur segmentation électorale locale.",
+      "reason": "La conjoncture locale et le profil socio-économique rendent ce groupe pertinent pour tester l’impact électoral du budget dans les campagnes.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "household.couple_with_children",
+        "geo.rural"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [
+        "Niveau de revenu spécifique"
+      ],
+      "measurementNeeds": [
+        "Perception du coût de la vie lié à la TVA",
+        "Intention électorale en contexte rural"
+      ],
+      "count": 320,
+      "distinctCommunes": 67,
+      "status": "incomplete_membership",
+      "issue": "Attributs absents des tags : Niveau de revenu spécifique",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Campagne gouvernementale sur la hausse de la TVA",
+        "comparator": "Absence de communication ou argumentaire alternatif",
+        "outcomeToMeasure": "Modification des perceptions et intentions de vote"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Exposition au discours gouvernemental justifiant la hausse du taux normal de TVA dans le projet de budget",
+      "comparator": "Absence de ce discours gouvernemental ou communication alternative minimisant la hausse de la TVA",
+      "outcomeToMeasure": "Perception de qui supportera le coût de la hausse de la TVA (ménages, entreprises, revenus)",
+      "reason": "Mesurer si le message gouvernemental influence la compréhension de l’enjeu budgétaire avant que les évolutions salariales interviennent"
+    },
+    {
+      "intervention": "Exposition à une campagne d’information citoyenne expliquant les effets redistributifs de la hausse de la TVA",
+      "comparator": "Absence de cette campagne ou campagne focalisée sur d’autres aspects budgétaires",
+      "outcomeToMeasure": "Opinion sur la justice sociale de la hausse de la TVA et intention politique liée au budget",
+      "reason": "Évaluer l’effet d’une information ciblée sur les représentations des ménages et leur mobilisation électorale possible"
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes en ménage avec enfants",
+      "matchedCount": 15555,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence ou minimisation de cette communication",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "center": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités en couple sans enfant en commune dense",
+      "matchedCount": 15215,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence ou discours alternatif minimisant l’impact",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
+        },
+        "left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "center": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés urbains",
+      "matchedCount": 11394,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Information alternative ou silence",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "left": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence de ce discours gouvernemental ou communication alternative minimisant la hausse de la TVA",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 2
+        },
+        "right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 4
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence de cette campagne ou campagne focalisée sur d’autres aspects budgétaires",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 3
+        },
+        "center": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 3
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}

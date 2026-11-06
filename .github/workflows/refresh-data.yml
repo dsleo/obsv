@@ -23,8 +23,15 @@ jobs:
         env:
           POLLS_FEED_URL: ${{ vars.POLLS_FEED_URL }}
           EVENTS_FEED_URL: ${{ vars.EVENTS_FEED_URL }}
-      - run: npm run data:validate
-      - uses: actions/upload-artifact@v4
+      - name: Validate feeds and build snapshot
+        run: npm run data:prepare
+      - name: Check a snapshot was produced
+        id: snapshot
+        run: |
+          if [ -f data/generated/snapshot.json ]; then echo "present=true" >> "$GITHUB_OUTPUT"
+          else echo "present=false" >> "$GITHUB_OUTPUT"; echo "::notice::No feed configured or supplied; nothing to upload (demo data stays in use)."; fi
+      - if: steps.snapshot.outputs.present == 'true'
+        uses: actions/upload-artifact@v4
         with:
           name: validated-election-data-${{ github.run_id }}
           path: data/generated/

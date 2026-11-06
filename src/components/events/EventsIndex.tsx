@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { RadarEvent } from "../../data/radarData";
 import { radarEvents } from "../../data/radarData";
+import { leadSegment } from "../../lib/radar/highlights";
+import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import { NewsMasthead } from "./NewsMasthead";
 import "./event-pages.css";
 
@@ -15,6 +17,7 @@ function StoryImage({ event, featured = false }: { event: RadarEvent; featured?:
 
 export function EventsIndex() {
   const [lead, ...secondary] = [...radarEvents].sort((a, b) => b.pollDay - a.pollDay);
+  const leadGroup = leadSegment(loadAnalysis(lead.id));
 
   return (
     <main className="news-page">
@@ -39,7 +42,7 @@ export function EventsIndex() {
               <h2 id="lead-story-heading">{lead.title}</h2>
             </Link>
             <p>{lead.summary}</p>
-            <div className="news-lead-footer"><span><b>{lead.impact.value}</b> effet de démonstration</span><span>Groupe illustratif : {lead.impact.group}</span></div>
+            {leadGroup ? <div className="news-lead-footer"><span><b>{leadGroup.segment.count.toLocaleString("fr-FR")}</b> profils synthétiques</span><span>Public analysé : {leadGroup.segment.name}</span></div> : null}
           </div>
         </section>
 

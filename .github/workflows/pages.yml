@@ -29,10 +29,14 @@ jobs:
       - uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm run typecheck
+      - name: Validator tests
+        run: node --test scripts/validate.test.mjs
       - run: npm run build
         env:
           GITHUB_ACTIONS: "true"
           GITHUB_REPOSITORY: ${{ github.repository }}
+      - name: Smoke-check exported routes
+        run: node scripts/smoke-routes.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out

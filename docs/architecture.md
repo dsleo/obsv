@@ -49,6 +49,10 @@ data/
 
 Les secrets des fournisseurs et du modèle restent uniquement dans l’environnement du pipeline. `data/raw`, personas et journaux détaillés ne sont jamais copiés dans le répertoire public.
 
+## État d’implémentation (analyse)
+
+`analyzeRadarEvent` et `evaluateSegmentContrast` sont portés depuis `tweenverse` dans `pipeline/radar/`, appelés par `scripts/analyze-events.ts` (artefact par événement dans `data/generated/analyses/`, cache par `inputHash`, schéma public `src/lib/radar/analysisArtifact.ts`, réponses par persona exclues). Bloqué tant que l’index de personas et l’index géographique ne sont pas fournis. Les routes `/api/radar/*` ne sont pas reprises : le site n’appelle aucun modèle.
+
 ## Contrats de données
 
 Tous les contrats sont versionnés (`schemaVersion`) et les identifiants sont stables.

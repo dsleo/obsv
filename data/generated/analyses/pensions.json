@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "eventId": "pensions",
+  "methodVersion": "radar-directional-v1",
+  "model": "gpt-4.1-mini",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "7c3d2e2db980b491",
+  "computedAt": "2026-10-27T12:00:40.108Z",
+  "evidenceGrade": "hypothesis",
+  "demo": true,
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Agriculteurs proches de la retraite",
+      "mechanism": "La promesse de retour à 62 ans peut toucher directement les agriculteurs de 50 ans et plus, préoccupés par leur âge de départ à la retraite",
+      "reason": "Les agriculteurs âgés proches de la retraite peuvent être sensibles à une promesse ramenant l'âge légal à 62 ans car cela pourrait affecter leur calendrier de départ et leur statut social",
+      "all": [
+        "cluster.older_farmer"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la crédibilité de la promesse",
+        "Intention de voter",
+        "Niveau de connaissance de la réforme"
+      ],
+      "count": 384,
+      "distinctCommunes": 79,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Promesse de retour à 62 ans immédiatement mise en œuvre",
+        "comparator": "Absence de changement dans l'âge légal de départ à la retraite",
+        "outcomeToMeasure": "Adhésion et soutien politique à la promesse"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Retraités ruraux",
+      "mechanism": "Les retraités vivant en milieu rural sont directement concernés par la politique des retraites et peuvent porter un regard critique sur la crédibilité de la promesse",
+      "reason": "Ils constituent un groupe social établi qui peut réagir différemment en fonction de leur vécu de la retraite et des réformes passées",
+      "all": [
+        "cluster.rural_retiree"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la crédibilité de la promesse",
+        "Satisfaction vis-à-vis de la politique actuelle des retraites"
+      ],
+      "count": 784,
+      "distinctCommunes": 91,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Communication intensive sur la mise en œuvre du retour à la retraite à 62 ans",
+        "comparator": "Communication classique sans détail particulier sur la mise en œuvre",
+        "outcomeToMeasure": "Niveau de confiance et crédibilité perçue"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Salariés modestes de 35 à 64 ans",
+      "mechanism": "Les salariés considérés comme modestes (employés et ouvriers) âgés de 35 à 64 ans sont une catégorie directement impactée par les réformes des retraites et potentiellement sensible à cette promesse",
+      "reason": "Leur situation professionnelle et âge les expose directement aux débats sur l'âge légal de départ à la retraite et influence leur perception politique",
+      "all": [
+        "cluster.modest_wage_earner"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Intention de vote liée à la promesse",
+        "Perception des gains ou pertes liés à la réforme"
+      ],
+      "count": 20752,
+      "distinctCommunes": 175,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Promesse claire et soutenue d'abaisser l'âge légal à 62 ans",
+        "comparator": "Maintien de l'âge légal actuel sans promesse explicite",
+        "outcomeToMeasure": "Changement d'intention de vote parmi ce groupe"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes diplômés urbains",
+      "mechanism": "Les jeunes diplômés des villes, généralement moins concernés directement par l'âge de départ à la retraite immédiat, peuvent percevoir la promesse sous l'angle de son impact sur les générations futures ou la crédibilité politique",
+      "reason": "Ce public peut réagir différemment, en termes d'adhésion ou de scepticisme, à la promesse de changement de l'âge de la retraite",
+      "all": [
+        "cluster.young_urban_graduate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la crédibilité politique",
+        "Impact anticipé sur leur propre futur retraite"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Promesse ferme de retour à 62 ans",
+        "comparator": "Absence de promesse ou maintien du statu quo",
+        "outcomeToMeasure": "Niveau de confiance dans la politique à venir"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Marine Le Pen promet de rétablir l'âge légal de départ à la retraite à 62 ans dès le début du mandat",
+      "comparator": "Pas de modification de l'âge légal de départ à la retraite (maintien de l'âge légal actuel)",
+      "outcomeToMeasure": "Perception de la crédibilité de la promesse de réforme des retraites",
+      "reason": "Mesurer comment la promesse politique est perçue en termes de crédibilité par différents publics concernés par la question des retraites"
+    },
+    {
+      "intervention": "Marine Le Pen promet de rétablir l'âge légal de départ à la retraite à 62 ans dès le début du mandat",
+      "comparator": "Maintien des réformes adoptées précédemment sur l'âge de départ à la retraite",
+      "outcomeToMeasure": "Niveau d'adhésion à la promesse de retour à la retraite à 62 ans",
+      "reason": "Évaluer le degré d'adhésion politique à cette promesse parmi les catégories d'âge proches de la retraite"
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Agriculteurs proches de la retraite",
+      "matchedCount": 384,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence de changement dans l'âge légal de départ à la retraite",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 5
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités ruraux",
+      "matchedCount": 784,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Communication classique sans détail particulier sur la mise en œuvre",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes de 35 à 64 ans",
+      "matchedCount": 20752,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Maintien de l'âge légal actuel sans promesse explicite",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "left": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 0
+        },
+        "center": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 0
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes diplômés urbains",
+      "matchedCount": 11394,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Absence de promesse ou maintien du statu quo",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 5
+        },
+        "left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 4
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 2
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Pas de modification de l'âge légal de départ à la retraite (maintien de l'âge légal actuel)",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 5
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 1,
+          "noClearChange": 1
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    },
+    "global_2": {
+      "segmentId": "global_2",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 6,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "Maintien des réformes adoptées précédemment sur l'âge de départ à la retraite",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        },
+        "far_right": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 1
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 6
+        }
+      },
+      "note": "Les effectifs décrivent uniquement les profils synthétiques échantillonnés, sous condition d’exposition. Ils ne représentent ni des parts de vote, ni des variations de probabilité, ni des effets causaux estimés. Cette méthode directionnelle n’a pas encore été validée par comparaison à des réponses humaines."
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé."
+}

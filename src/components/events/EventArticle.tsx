@@ -2,10 +2,15 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, CircleDot, ExternalLink } from "lucide-react";
 import type { RadarEvent } from "../../data/radarData";
 import { radarEvents } from "../../data/radarData";
+import type { AnalysisArtifact } from "../../lib/radar/analysisArtifact";
+import { leadSegment } from "../../lib/radar/highlights";
+import { EventSubpopulationAnalysis } from "./EventSubpopulationAnalysis";
 import { NewsMasthead } from "./NewsMasthead";
 import "./event-pages.css";
 
-export function EventArticle({ event }: { event: RadarEvent }) {
+export function EventArticle({ event, analysis }: { event: RadarEvent; analysis: AnalysisArtifact | null }) {
+  const lead = leadSegment(analysis);
+  const scenario = lead?.segment.counterfactual ?? analysis?.globalScenarios[0] ?? null;
   const relatedEvents = radarEvents.filter((candidate) => candidate.id !== event.id).slice(0, 2);
 
   return (
@@ -33,42 +38,41 @@ export function EventArticle({ event }: { event: RadarEvent }) {
           <div className="article-body">
             <p className="article-dropcap">Un événement prend son sens politique à travers ses conséquences concrètes.</p>
             <p>{event.summary} Il s’inscrit désormais dans les préoccupations du quotidien : qu’est-ce qui change, qui en supporte le coût, et quel candidat semble en mesure d’agir ?</p>
-            <p>Ses effets ne sont pas uniformes. La réaction la plus marquée se dessine chez <strong>{event.impact.group}</strong>, où {event.impact.concern.toLowerCase()} Ce groupe représente {event.impact.groupShare} : c’est le plus net à suivre pour comprendre l’évolution du signal.</p>
+            {lead ? <p>Ses effets ne sont pas uniformes. L’analyse met en avant <strong>{lead.segment.name}</strong> : {lead.segment.mechanism} {lead.segment.count.toLocaleString("fr-FR")} profils synthétiques de l’index correspondent à ce groupe ; c’est une hypothèse à tester, pas un résultat mesuré.</p> : null}
             <div className="article-pullquote">« L’actualité devient électorale quand chacun y reconnaît une part de son quotidien. »</div>
             <p>Ce scénario ne prédit pas à lui seul le résultat. Il examine comment l’attention peut devenir une préférence, et comment la réponse d’un candidat peut infléchir cette évolution.</p>
           </div>
 
           <aside className="article-aside">
             <section className="article-impact-card">
-              <span className="article-aside-kicker">EXEMPLE FICTIF · EFFET SUR LA POPULATION</span>
-              <strong>{event.impact.value}</strong>
-              <span className="article-impact-label">{event.impact.label} · valeur fictive du prototype</span>
-              <div className="article-population"><span className="population-initial">{event.impact.group.slice(0, 1)}</span><span><b>{event.impact.group}</b><small>{event.impact.groupShare}</small></span></div>
-              <dl>
-                <div><dt>PRÉOCCUPATION PRINCIPALE</dt><dd>{event.impact.concern}</dd></div>
-                <div><dt>EFFET SUR LES INTENTIONS DE VOTE</dt><dd className="orange-copy">{event.impact.voteEffect}</dd></div>
-              </dl>
-              <div className="article-group-list">
-                <span className="article-group-list-label">AUTRES GROUPES CONCERNÉS</span>
-                {event.impact.groups.slice(1).map((group) => <div className="article-group-row" key={group.name}><span><b>{group.name}</b><small>{group.flow}</small></span><strong>{group.pct}</strong></div>)}
-              </div>
+              <span className="article-aside-kicker">RÉSULTAT DE L’ANALYSE · PROFILS SYNTHÉTIQUES</span>
+              {lead ? <>
+                <strong>{lead.contrast.sampledCount}</strong>
+                <span className="article-impact-label">profils exposés dans l’échantillon · sur {lead.segment.count.toLocaleString("fr-FR")} correspondant au filtre</span>
+                <div className="article-population"><span className="population-initial">{lead.segment.name.slice(0, 1)}</span><span><b>{lead.segment.name}</b><small>{lead.segment.distinctCommunes} communes</small></span></div>
+                <dl>
+                  <div><dt>RÉACTIONS LES PLUS NETTES</dt><dd className="orange-copy">{lead.signals.slice(0, 3).map((s) => `${s.label} : ${s.count}/${s.sampled} ${s.direction === "toward" ? "vers" : "s’éloignent"}`).join(" · ")}</dd></div>
+                  {lead.segment.measurementNeeds.length ? <div><dt>À MESURER</dt><dd>{lead.segment.measurementNeeds.join(", ")}</dd></div> : null}
+                </dl>
+                <div className="article-group-list">
+                  <span className="article-group-list-label">AUTRES GROUPES EXAMINÉS</span>
+                  {analysis!.segments.filter((g) => g.id !== lead.segment.id).map((g) => <div className="article-group-row" key={g.id}><span><b>{g.name}</b><small>{g.status === "filterable_discovery_sample" ? "Groupe filtrable" : "Non évalué"}</small></span><strong>{g.count.toLocaleString("fr-FR")}</strong></div>)}
+                </div>
+              </> : <p className="event-analysis-caveat">Analyse non disponible pour cet événement.</p>}
             </section>
 
-            <section className="article-scenario-card">
-              <span className="article-aside-kicker"><CircleDot size={12} /> {event.scenario.label}</span>
-              <h2>{event.scenario.title}</h2>
-              <p>{event.scenario.description}</p>
-              <div className="scenario-candidate"><span>SCÉNARIO FICTIF · ÉVOLUTION ENVISAGÉE</span><b>{event.scenario.candidate}</b><strong>{event.scenario.candidateMove}</strong><ArrowUpRight size={16} /></div>
-            </section>
+            {scenario ? <section className="article-scenario-card">
+              <span className="article-aside-kicker"><CircleDot size={12} /> SCÉNARIO COMPARÉ</span>
+              <h2>{scenario.intervention}</h2>
+              <p>Plutôt que : {scenario.comparator}</p>
+              <div className="scenario-candidate"><span>HYPOTHÈSE · AUCUNE VARIATION DE VOTE ESTIMÉE</span><ArrowUpRight size={16} /></div>
+            </section> : null}
           </aside>
         </div>
 
-        <section className="event-subpopulation">
-          <div className="event-subpopulation-heading"><div><span className="news-kicker"><span /> ANALYSE DES PUBLICS</span><h2>Qui est concerné ?</h2></div></div>
-          <p className="event-analysis-caveat">Les résultats affichés ici sont des données de démonstration. Les analyses validées seront publiées avec leur méthode, leurs sources et leur date de calcul ; aucune analyse n’est lancée depuis cette page.</p>
-        </section>
+        <EventSubpopulationAnalysis analysis={analysis} />
 
-        <footer className="article-footer-note"><span><ExternalLink size={13} /> {event.sources}</span><span>SCÉNARIO ILLUSTRATIF · PAS UN SONDAGE</span></footer>
+        <footer className="article-footer-note"><span><ExternalLink size={13} /> {event.sources}</span><span>HYPOTHÈSES SUR PROFILS SYNTHÉTIQUES · PAS UN SONDAGE</span></footer>
       </article>
 
       <section className="article-related">
