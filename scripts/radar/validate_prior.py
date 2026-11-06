@@ -54,8 +54,9 @@ def work_group(value: str) -> str:  # same grouping as train_history_prior.surve
     return "other_inactive"
 
 
-def load(voters: Path) -> pd.DataFrame:
+def load(voters: Path, min_duration: float = 0) -> pd.DataFrame:
     rows = pd.read_csv(voters)
+    rows = rows[rows["duration"] >= min_duration]  # 180 s reproduces the 1,972 published participants exactly
     outcomes = []
     for _, row in rows.iterrows():
         will = norm(row["will_vote"])
@@ -124,8 +125,9 @@ def main() -> None:
     parser.add_argument("--voters", type=Path, required=True)
     parser.add_argument("--out", type=Path, default=Path("docs/radar/prior-validation.json"))
     parser.add_argument("--repeats", type=int, default=5)
+    parser.add_argument("--min-duration", type=float, default=0, help="drop respondents faster than this many seconds")
     args = parser.parse_args()
-    data = load(args.voters)
+    data = load(args.voters, args.min_duration)
     classes = sorted(data["y"].unique())
     blocs = sorted(data["bloc"].unique())
     n = len(data)

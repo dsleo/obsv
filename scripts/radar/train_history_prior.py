@@ -124,11 +124,13 @@ def tilt_to_margins(probabilities: np.ndarray, target: np.ndarray) -> tuple[np.n
     raise ValueError("National intercept calibration failed to converge")
 
 
-def run(index: Path, survey: Path, margins: Path, departments: Path) -> dict:
+def run(index: Path, survey: Path, margins: Path, departments: Path, min_duration: float = 0.0) -> dict:
     official, labels = official_counts(margins)
     department_region = {row["DEP"]: row["REG"] for row in csv.DictReader(departments.open(newline="", encoding="utf8"))}
     by_name = {normalized(label): option for option, label in labels.items() if option.startswith("choice_")}
     rows = list(csv.DictReader(survey.open(newline="", encoding="utf8")))
+    # 150 respondents finished in under 180 s; dropping them leaves exactly the 1,972 participants the authors report.
+    rows = [row for row in rows if float(row["duration"]) >= min_duration]
     x, y = [], []
     exclusions = Counter()
     for row in rows:
@@ -230,5 +232,6 @@ if __name__ == "__main__":
     parser.add_argument("--survey", type=Path, required=True)
     parser.add_argument("--margins", type=Path, required=True)
     parser.add_argument("--departments", type=Path, required=True)
+    parser.add_argument("--min-duration", type=float, default=0.0, help="drop survey respondents faster than this many seconds (180 matches the published 1,972)")
     args = parser.parse_args()
-    print(json.dumps(run(args.index, args.survey, args.margins, args.departments), ensure_ascii=False))
+    print(json.dumps(run(args.index, args.survey, args.margins, args.departments, args.min_duration), ensure_ascii=False))

@@ -47,7 +47,8 @@ Survey-only prediction (before local calibration, which would match by construct
 
 ## 3. Data issues found
 
-- `voters.csv` has 2,122 rows, but the paper reports 1,972 participants. The 150-row gap is unexplained and should be raised with the authors.
+- `voters.csv` has 2,122 rows, but the paper reports 1,972 participants. **Reconciled by arithmetic, not yet confirmed by the authors:** exactly 150 respondents have a completion time under 180 seconds (147 under 179 s, 152 under 181 s), and dropping them leaves exactly 1,972. They look different from the rest: 21 % are aged 18 to 24 (8 % in the rest) and 14 % gave an all-zero approval ballot (6 %). `--min-duration 180` applies the cut in `validate_prior.py` and `train_history_prior.py`.
+- **Sensitivity:** repeating the respondent-level validation without those 150 (1,888 labelled) leaves every conclusion unchanged: current model gain 0.0385 [0.027, 0.050], best set tied with the simpler ones, leave-one-region-out gain 0.039 to 0.042 (`prior-validation-1972.json`). The delivered persona vectors were fitted on all 2,122 rows and were not recomputed, because the election margins needed to recalibrate were lost with the deleted worktree.
 - Stated abstention is 4.7 % (96 of 2,032 labelled), against about 26 % observed in 2022. The abstention part of the model rests on 96 respondents and is rescaled afterwards by national intercepts only.
 - Fieldwork ran 1 to 11 April 2022, so these are stated intentions before the election.
 
