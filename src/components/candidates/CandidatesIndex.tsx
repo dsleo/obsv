@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatShortDate, POLL_DAYS, POLL_START, pollCandidates } from "../../data/radarData";
+import { dayToIso, FIRST_POLL_DAY, formatShortDate, LAST_POLL_DAY, pollCandidates } from "../../data/radarData";
 import { formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { NewsMasthead } from "../events/NewsMasthead";
 import "../events/event-pages.css";
@@ -7,7 +7,7 @@ import "./candidates.css";
 
 export function CandidatesIndex() {
   const rankedCandidates = [...pollCandidates].sort((a, b) =>
-    (getSmoothedPollValue(b.id, POLL_DAYS) ?? 0) - (getSmoothedPollValue(a.id, POLL_DAYS) ?? 0),
+    (getSmoothedPollValue(b.id, LAST_POLL_DAY) ?? 0) - (getSmoothedPollValue(a.id, LAST_POLL_DAY) ?? 0),
   );
 
   return (
@@ -21,14 +21,14 @@ export function CandidatesIndex() {
         <section className="candidate-roster" aria-label="Candidats classés selon les intentions de vote">
           <div className="candidate-roster-heading"><span>Candidat</span><span>Parti</span><span>Intentions de vote</span></div>
           {rankedCandidates.map((candidate) => {
-            const current = getSmoothedPollValue(candidate.id, POLL_DAYS);
-            const first = getSmoothedPollValue(candidate.id, 0);
+            const current = getSmoothedPollValue(candidate.id, LAST_POLL_DAY);
+            const first = getSmoothedPollValue(candidate.id, FIRST_POLL_DAY);
             const change = current !== null && first !== null ? current - first : null;
             return (
               <Link href={`/candidates/${candidate.id}`} className="candidate-roster-row" key={candidate.id}>
                 <span className="candidate-roster-name"><i style={{ backgroundColor: candidate.color }} /><strong>{candidate.name}</strong></span>
                 <span className="candidate-party">{candidate.party}</span>
-                <span className="candidate-latest"><strong>{current === null ? "—" : `${formatPct(current)} %`}</strong>{change === null ? null : <span className={change >= 0 ? "candidate-up" : "candidate-down"}>{change >= 0 ? "+" : ""}{formatPct(change)} pts depuis le {formatShortDate(POLL_START)}</span>}<i><b style={{ width: `${Math.min(100, ((current ?? 0) / 35) * 100)}%`, backgroundColor: candidate.color }} /></i></span>
+                <span className="candidate-latest"><strong>{current === null ? "—" : `${formatPct(current)} %`}</strong>{change === null ? null : <span className={change >= 0 ? "candidate-up" : "candidate-down"}>{change >= 0 ? "+" : ""}{formatPct(change)} pts depuis le {formatShortDate(dayToIso(FIRST_POLL_DAY))}</span>}<i><b style={{ width: `${Math.min(100, ((current ?? 0) / 40) * 100)}%`, backgroundColor: candidate.color }} /></i></span>
               </Link>
             );
           })}

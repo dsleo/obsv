@@ -4,10 +4,13 @@ import snapshot from "../../data/generated/snapshot.json";
 const SITE_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // Real first-round polls from the validated snapshot (`npm run data:collect && npm run data:prepare`).
-const firstRoundPolls = snapshot.polls.filter((poll) => poll.round === "first");
+// The collector backfills from February 2026; the site only shows polls from SHOW_FROM onward.
+export const POLL_START = "2026-09-01";
+const firstRoundPolls = snapshot.polls.filter((poll) => poll.round === "first" && poll.fieldworkEnd >= POLL_START);
 const fieldworkEnds = firstRoundPolls.map((poll) => poll.fieldworkEnd).sort();
-export const POLL_START = fieldworkEnds[0] ?? "2026-02-27";
-export const POLL_END = fieldworkEnds[fieldworkEnds.length - 1] ?? POLL_START;
+const lastPollDate = fieldworkEnds[fieldworkEnds.length - 1] ?? POLL_START;
+/** The axis runs to the current date (build day, rebuilt daily) so a gap since the last poll stays visible. */
+export const POLL_END = [lastPollDate, new Date().toISOString().slice(0, 10)].sort().pop() as string;
 export const POLL_DAYS = Math.round((Date.parse(POLL_END) - Date.parse(POLL_START)) / 86_400_000);
 
 const MONTHS = ["JANV.", "FÉVR.", "MARS", "AVR.", "MAI", "JUIN", "JUIL.", "AOÛT", "SEPT.", "OCT.", "NOV.", "DÉC."];
@@ -22,11 +25,10 @@ export function formatShortDate(iso: string) {
 }
 export const pollWindowLabel = `${formatShortDate(POLL_START)} — ${formatShortDate(POLL_END)} ${POLL_END.slice(0, 4)}`;
 
-// Candidates with first-round polls in the retained scenario (see data/candidates.json, the validator's allow-list).
-// Bardella was the RN line until June 2026, Le Pen from July: the two are never tested in the same poll.
+// Candidates polled in the retained first-round scenario since September (data/candidates.json is the wider collection allow-list;
+// Bardella was the RN line only until June, so he is collected but not shown).
 export const pollCandidates = [
   { id: "le-pen", name: "Marine Le Pen", short: "Le Pen", party: "RN", color: "#2b5a8c" },
-  { id: "bardella", name: "Jordan Bardella", short: "Bardella", party: "RN", color: "#6f9bc7" },
   { id: "philippe", name: "Édouard Philippe", short: "Philippe", party: "Horizons", color: "#577572" },
   { id: "attal", name: "Gabriel Attal", short: "Attal", party: "Renaissance", color: "#e08a3c" },
   { id: "glucksmann", name: "Raphaël Glucksmann", short: "Glucksmann", party: "Place publique", color: "#8e7b5e" },
@@ -108,9 +110,17 @@ export const radarEvents: RadarEvent[] = eventSources.map((event) => ({
   pollDay: dayOffset(event.isoDate),
 }));
 
+/** Events inside the plotted window (earlier ones stay in the feed but have no place on the time axis). */
+export const chartEvents = radarEvents.filter((event) => event.pollDay >= 0 && event.pollDay <= POLL_DAYS);
+
 export type PollObservation = { day: number; pollster: string; sample: number; values: PollValues };
 
 /** One point per first-round poll (fieldwork end date), real data only. */
 export const pollObservations: PollObservation[] = firstRoundPolls
   .map((poll) => ({ day: dayOffset(poll.fieldworkEnd), pollster: poll.pollster, sample: poll.sampleSize, values: poll.candidateShares as PollValues }))
   .sort((a, b) => a.day - b.day);
+
+/** Day of the earliest plotted poll: baseline for "change since". */
+export const FIRST_POLL_DAY = pollObservations[0]?.day ?? 0;
+/** Day of the latest plotted poll: "current" values are read here, not at today's date (which may be days ahead). */
+export const LAST_POLL_DAY = pollObservations[pollObservations.length - 1]?.day ?? 0;

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { formatShortDate, POLL_DAYS, POLL_START, pollCandidates, pollWindowLabel, radarEvents, type RadarEvent } from "../../data/radarData";
+import { dayToIso, FIRST_POLL_DAY, formatShortDate, LAST_POLL_DAY, pollCandidates, pollWindowLabel, radarEvents, type RadarEvent } from "../../data/radarData";
 import { blocLabels, blocSignal, candidateBloc } from "../../lib/radar/highlights";
 import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import { formatPct, getSmoothedPollValue } from "../../lib/chart";
@@ -25,8 +25,8 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
   const candidate = pollCandidates.find((entry) => entry.id === candidateId);
   if (!candidate) return null;
 
-  const first = getSmoothedPollValue(candidate.id, 0);
-  const current = getSmoothedPollValue(candidate.id, POLL_DAYS);
+  const first = getSmoothedPollValue(candidate.id, FIRST_POLL_DAY);
+  const current = getSmoothedPollValue(candidate.id, LAST_POLL_DAY);
   const netChange = current !== null && first !== null ? current - first : null;
   const bloc = candidateBloc[candidate.id];
   const signals = radarEvents.flatMap((event): Signal[] => {
@@ -44,7 +44,7 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
         <header className="candidate-profile-heading">
           <span className="candidate-party-line"><i style={{ backgroundColor: candidate.color }} /> {candidate.party}</span>
           <h1>{candidate.name}</h1>
-          <div className="candidate-profile-stats"><span><small>INTENTIONS DE VOTE · MOYENNE RÉCENTE</small><strong>{current === null ? "—" : `${formatPct(current)} %`}</strong></span><span><small>ÉVOLUTION DEPUIS LE {formatShortDate(POLL_START).toUpperCase()}</small><strong className={(netChange ?? 0) >= 0 ? "candidate-up" : "candidate-down"}>{netChange === null ? "—" : `${netChange >= 0 ? "+" : "−"}${formatPct(Math.abs(netChange))} pts`}</strong></span></div>
+          <div className="candidate-profile-stats"><span><small>INTENTIONS DE VOTE · MOYENNE RÉCENTE</small><strong>{current === null ? "—" : `${formatPct(current)} %`}</strong></span><span><small>ÉVOLUTION DEPUIS LE {formatShortDate(dayToIso(FIRST_POLL_DAY)).toUpperCase()}</small><strong className={(netChange ?? 0) >= 0 ? "candidate-up" : "candidate-down"}>{netChange === null ? "—" : `${netChange >= 0 ? "+" : "−"}${formatPct(Math.abs(netChange))} pts`}</strong></span></div>
         </header>
 
         <section className="candidate-chart-section">
