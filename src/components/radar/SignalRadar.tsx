@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronRight, Minus, Orbit, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
-import { pollCandidates, pollObservations, chartEvents, eventFilters, LAST_POLL_DAY, POLL_DAYS, pollWindowLabel, type EventFilter, type PollObservation } from "../../data/radarData";
+import { pollCandidates, pollObservations, chartEvents, eventFilters, LAST_POLL_DAY, POLL_DAYS, pollWindowLabel, type EventFilter, type PollObservation, type RadarEvent } from "../../data/radarData";
 import { AXIS_DAYS, axisLabel, createScale, getSmoothedPollValue, pollDateLong, trendPath, Y_TICKS } from "../../lib/chart";
 import { ScrollChart } from "../ScrollChart";
 import { MethodExplainer } from "./MethodExplainer";
@@ -25,6 +26,9 @@ const PLOT_BOTTOM = 332;
 const yAt = createScale({ left: 0, right: 1, top: PLOT_TOP, bottom: PLOT_BOTTOM }).y;
 
 function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSelect: (id: string) => void; shown: readonly Candidate[] }) {
+  const router = useRouter();
+  const [hoveredLine, setHoveredLine] = useState<{ candidate: Candidate; x: number; y: number } | null>(null);
+  const [hoveredEvent, setHoveredEvent] = useState<{ event: RadarEvent; x: number; y: number } | null>(null);
   const [hoveredPoll, setHoveredPoll] = useState<{ poll: PollObservation; candidate: Candidate; x: number; y: number } | null>(null);
   const showPoll = (poll: PollObservation, candidate: Candidate, circle: SVGCircleElement) => {
     const plotBounds = circle.closest(".radar-plot")?.getBoundingClientRect();
@@ -33,6 +37,13 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
     const x = circleBounds.left + circleBounds.width / 2 - plotBounds.left;
     const y = circleBounds.top - plotBounds.top;
     setHoveredPoll({ poll, candidate, x: Math.max(150, Math.min(plotBounds.width - 150, x)), y: Math.max(108, y) });
+  };
+  // Position (relative to the plot) of an SVG element, with x kept inside the plot so the tooltip is not clipped.
+  const anchorOf = (element: Element) => {
+    const plotBounds = element.closest(".radar-plot")?.getBoundingClientRect();
+    if (!plotBounds) return null;
+    const bounds = element.getBoundingClientRect();
+    return { x: Math.max(130, Math.min(plotBounds.width - 130, bounds.left + bounds.width / 2 - plotBounds.left)), y: bounds.top - plotBounds.top };
   };
   const axis = Y_TICKS.map((tick) => <text key={tick} x="100%" dx="-10" y={yAt(tick) + 4} textAnchor="end" className="plot-axis-label">{tick}%</text>);
 
@@ -52,7 +63,18 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
 
             <g clipPath="url(#plot-area-clip)">
               {chartEvents.map((event) => <line key={`guide-${event.id}`} x1={xAt(event.pollDay)} x2={xAt(event.pollDay)} y1={plot.top} y2={plot.bottom} className={`plot-event-guide ${selectedId === event.id ? "is-selected" : ""}`} />)}
-              {shown.map((candidate) => <path key={candidate.id} d={trendPath(candidate.id, { x: xAt, y: yAt })} fill="none" stroke={candidate.color} className="poll-trend-line" />)}
+              {shown.map((candidate) => {
+                const d = trendPath(candidate.id, { x: xAt, y: yAt });
+                const state = hoveredLine ? (hoveredLine.candidate.id === candidate.id ? "is-hovered" : "is-dimmed") : "";
+                return <g key={candidate.id}>
+                  <path d={d} fill="none" stroke={candidate.color} className={`poll-trend-line ${state}`} />
+                  {/* wide invisible stroke: an easy hover target for the thin line */}
+                  <path d={d} fill="none" stroke="transparent" strokeWidth="16" className="poll-trend-hit" onPointerMove={(event) => {
+                    const plotBounds = event.currentTarget.closest(".radar-plot")?.getBoundingClientRect();
+                    if (plotBounds) setHoveredLine({ candidate, x: Math.max(70, Math.min(plotBounds.width - 70, event.clientX - plotBounds.left)), y: event.clientY - plotBounds.top });
+                  }} onPointerLeave={() => setHoveredLine(null)} />
+                </g>;
+              })}
               {pollObservations.map((poll) => shown.filter((candidate) => poll.values[candidate.id] !== undefined).map((candidate) => <circle
                 key={`${poll.pollster}-${poll.day}-${candidate.id}`}
                 cx={xAt(poll.day)}
@@ -74,18 +96,18 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
             {chartEvents.map((event) => {
               const x = xAt(event.pollDay);
               // chartEvents is newest-first: label an event only when it is far enough from the last labelled one.
-              const labelled = lastLabelX - x >= 84;
+              const labelled = lastLabelX - x >= 100;
               if (labelled) lastLabelX = x;
               const anchor = x < 70 ? "start" : x > width - 70 ? "end" : "middle";
               const isSelected = selectedId === event.id;
-              const selectEvent = () => {
-                onSelect(event.id);
-                window.setTimeout(() => document.getElementById(`feed-event-${event.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
-              };
-              return <g key={`event-${event.id}`} className={`plot-event ${isSelected ? "is-selected" : ""}`} role="button" tabIndex={0} aria-label={`Voir dans le fil : ${event.title}`} onClick={selectEvent} onKeyDown={(keyboardEvent) => {
-                if (keyboardEvent.key === "Enter" || keyboardEvent.key === " ") { keyboardEvent.preventDefault(); selectEvent(); }
-              }}>
-                <title>{`${event.shortDate} · ${event.title}`}</title>
+              const open = () => router.push(`/events/${event.id}`);
+              return <g key={`event-${event.id}`} className={`plot-event ${isSelected ? "is-selected" : ""}`} role="link" tabIndex={0} aria-label={event.title} onClick={open}
+                onPointerEnter={(pointerEvent) => { onSelect(event.id); const at = anchorOf(pointerEvent.currentTarget); if (at) setHoveredEvent({ event, ...at }); }}
+                onPointerLeave={() => { onSelect(""); setHoveredEvent(null); }}
+                onFocus={(focusEvent) => { onSelect(event.id); const at = anchorOf(focusEvent.currentTarget); if (at) setHoveredEvent({ event, ...at }); }}
+                onBlur={() => { onSelect(""); setHoveredEvent(null); }}
+                onKeyDown={(keyboardEvent) => { if (keyboardEvent.key === "Enter" || keyboardEvent.key === " ") { keyboardEvent.preventDefault(); open(); } }}>
+                <circle cx={x} cy="390" r="14" fill="transparent" />
                 <line x1={x} x2={x} y1="390" y2="401" stroke={event.color} strokeWidth="2" />
                 <circle cx={x} cy="390" r="6" fill={event.color} className="event-rail-dot" />
                 {labelled ? <text x={x} y="418" textAnchor={anchor} className="event-rail-label">{event.tag}</text> : null}
@@ -94,6 +116,15 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
           </>;
         }}
       </ScrollChart>
+      {hoveredLine && !hoveredPoll && <div className="radar-poll-tooltip radar-line-tooltip" style={{ left: hoveredLine.x, top: hoveredLine.y }} aria-hidden="true">
+        <strong style={{ color: hoveredLine.candidate.color }}>{hoveredLine.candidate.name}</strong>
+        <small>{hoveredLine.candidate.party}</small>
+      </div>}
+      {hoveredEvent && <div className="radar-poll-tooltip" style={{ left: hoveredEvent.x, top: hoveredEvent.y }} aria-hidden="true">
+        <span>{hoveredEvent.event.tag} · {hoveredEvent.event.date}</span>
+        <strong>{hoveredEvent.event.title}</strong>
+        <small>Cliquer pour ouvrir l’événement</small>
+      </div>}
       {hoveredPoll && <div className="radar-poll-tooltip" style={{ left: hoveredPoll.x, top: hoveredPoll.y }} aria-hidden="true">
         <span>{hoveredPoll.poll.pollster} · {pollDateLong(hoveredPoll.poll.day)}</span>
         <strong style={{ color: hoveredPoll.candidate.color }}>{hoveredPoll.candidate.name} <b>{hoveredPoll.poll.values[hoveredPoll.candidate.id]} %</b></strong>
@@ -126,7 +157,7 @@ export function SignalRadar({ publics = {} }: { publics?: Record<string, string>
             {shown.map((candidate) => <span key={candidate.id}><i style={{ backgroundColor: candidate.color }} />{candidate.short}</span>)}
             <button type="button" className="legend-toggle" aria-expanded={expanded} aria-label={expanded ? `Afficher seulement les ${DEFAULT_VISIBLE} premiers candidats` : "Afficher tous les candidats"} title={expanded ? "Top 6 seulement" : "Afficher tous"} onClick={() => setExpanded(!expanded)}>{expanded ? <Minus size={11} strokeWidth={2.5} /> : <Plus size={11} strokeWidth={2.5} />}</button>
           </div>
-          <RadarChart shown={shown} selectedId={selectedId} onSelect={(id) => { setSelectedId(id); setActiveFilter("all"); }} />
+          <RadarChart shown={shown} selectedId={selectedId} onSelect={setSelectedId} />
         </div>
       </section>
 
