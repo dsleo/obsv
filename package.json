@@ -6,7 +6,7 @@
   "scripts": {
     "predev": "npm run data:prepare",
     "dev": "next dev",
-    "data:collect": "node scripts/collect-data.mjs",
+    "data:collect": "node --env-file-if-exists=.env scripts/collect-data.mjs",
     "data:validate": "node scripts/prepare-data.mjs --validate-only",
     "data:prepare": "node scripts/prepare-data.mjs",
     "build": "npm run data:prepare && next build",
@@ -16,7 +16,7 @@
     "data:check-analyses": "tsx scripts/check-analyses.ts",
     "data:approve": "tsx scripts/approve-analysis.ts",
     "data:fetch-index": "node scripts/radar/fetch-index.mjs",
-    "test": "node --test scripts/validate.test.mjs && vitest run pipeline src",
+    "test": "node --test scripts/validate.test.mjs scripts/events-api.test.mjs && vitest run pipeline src",
     "smoke": "node scripts/smoke-routes.mjs",
     "data:retag": "tsx scripts/radar/retag-index.ts"
   },

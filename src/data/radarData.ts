@@ -1,8 +1,5 @@
 import snapshot from "../../data/generated/snapshot.json";
 
-// Set by next.config.ts from the GitHub Pages project path (empty at the site root).
-const SITE_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
 // Real first-round polls from the validated snapshot (`npm run data:collect && npm run data:prepare`).
 // The collector backfills from February 2026; the site only shows polls from SHOW_FROM onward.
 export const POLL_START = "2026-09-01";
@@ -45,6 +42,9 @@ export const pollCandidates = [
 export type CandidateId = (typeof pollCandidates)[number]["id"];
 export type PollValues = Partial<Record<CandidateId, number>>;
 
+export type EventFilter = "candidacy" | "endorsement" | "campaign" | "justice" | "programme" | "context";
+export const eventFilters: Record<EventFilter, string> = { candidacy: "Candidatures", endorsement: "Soutiens", campaign: "Campagne", justice: "Justice", programme: "Propositions", context: "Contexte" };
+
 export type RadarEvent = {
   id: string;
   /** ISO date, YYYY-MM-DD; `date`, `shortDate` and `pollDay` are derived from it. */
@@ -53,65 +53,51 @@ export type RadarEvent = {
   shortDate: string;
   pollDay: number;
   tag: string;
-  filter: "budget" | "coalition" | "foreign" | "programme";
+  filter: EventFilter;
+  /** "major" events get a vertical line on the chart; "notable" ones only appear in the lists. */
+  importance: "major" | "notable";
   title: string;
   summary: string;
+  /** CSS `background-image` value: the API events have no illustration. */
   image: string;
   color: string;
-  chartX: number;
-  chartY: number;
   sources: string;
+  sourceUrl: string;
 };
 
-// Events are still SIMULATED (titles, dates and summaries are placeholders, not sourced news).
-const eventSources: Omit<RadarEvent, "date" | "shortDate" | "pollDay">[] = [
-  {
-    id: "vat", isoDate: "2026-07-08", tag: "BUDGET", filter: "budget",
-    title: "La hausse de la TVA transforme le budget en enjeu électoral",
-    summary: "Le gouvernement annonce une hausse du taux normal de TVA dans son projet de budget. Dans le panel, la première question n’est pas celle du déficit, mais de savoir qui paiera avant que les salaires ne suivent.",
-    image: `${SITE_BASE}/events/vat.svg`, color: "#ec5b34", chartX: 196, chartY: 236,
-    sources: "DONNÉES DE SIMULATION · ACTUALITÉ BUDGÉTAIRE / PROFILS SYNTHÉTIQUES",
-  },
-  {
-    id: "left-rupture", isoDate: "2026-07-29", tag: "COALITION", filter: "coalition",
-    title: "La rupture à gauche transforme l’alliance en enjeu de participation",
-    summary: "Les discussions entre sociaux-démocrates et insoumis échouent. Le premier signal n’est pas la naissance d’un nouveau bloc, mais un risque bien connu : des électeurs qui ne voient plus de raison de choisir.",
-    image: `${SITE_BASE}/events/left-rupture.svg`, color: "#718b86", chartX: 360, chartY: 214,
-    sources: "DONNÉES DE SIMULATION · ACTUALITÉ DES ALLIANCES / PROFILS SYNTHÉTIQUES",
-  },
-  {
-    id: "ukraine", isoDate: "2026-08-14", tag: "UKRAINE", filter: "foreign",
-    title: "Le déploiement en Ukraine ravive le débat entre sécurité et consentement",
-    summary: "La France annonce l’envoi d’un contingent de 5 000 personnes dans une force européenne de réassurance. L’annonce fait réagir des électeurs qui s’accordent sur la menace, mais pas sur la réponse à y apporter.",
-    image: `${SITE_BASE}/events/ukraine.svg`, color: "#9c8d6a", chartX: 510, chartY: 198,
-    sources: "DONNÉES DE SIMULATION · ACTUALITÉ INTERNATIONALE / PROFILS SYNTHÉTIQUES",
-  },
-  {
-    id: "philippe-programme", isoDate: "2026-09-02", tag: "PROGRAMME", filter: "programme",
-    title: "Édouard Philippe dévoile son programme : baisse des dépenses et réforme du travail",
-    summary: "Édouard Philippe présente un programme fondé sur la baisse des dépenses publiques et une réforme du travail. Son offre se précise, tout comme les arbitrages qu’elle implique.",
-    image: `${SITE_BASE}/events/philippe-programme.svg`, color: "#577572", chartX: 648, chartY: 166,
-    sources: "DONNÉES DE SIMULATION · ACTUALITÉ PROGRAMMATIQUE / PROFILS SYNTHÉTIQUES",
-  },
-  {
-    id: "pensions", isoDate: "2026-09-22", tag: "RETRAITES", filter: "programme",
-    title: "Le Pen promet le retour à 62 ans : les retraites à l’épreuve de la crédibilité",
-    summary: "Marine Le Pen promet de rétablir l’âge légal de départ à la retraite à 62 ans dès le début du mandat. L’annonce touche au-delà de son électorat habituel, mais de façon inégale.",
-    image: `${SITE_BASE}/events/pensions.svg`, color: "#a95a56", chartX: 790, chartY: 112,
-    sources: "DONNÉES DE SIMULATION · ACTUALITÉ DES RETRAITES / PROFILS SYNTHÉTIQUES",
-  },
-];
+// Real events from the election-tracker API, selected by rules in scripts/lib/events-api.mjs
+// (`npm run data:collect && npm run data:prepare`). event_type -> display tag, filter and colour.
+const EVENT_TYPES: Record<string, { tag: string; filter: EventFilter; color: string }> = {
+  candidacy: { tag: "CANDIDATURE", filter: "candidacy", color: "#577572" },
+  primary_result: { tag: "PRIMAIRE", filter: "candidacy", color: "#577572" },
+  endorsement: { tag: "SOUTIEN", filter: "endorsement", color: "#e08a3c" },
+  debate: { tag: "DÉBAT", filter: "campaign", color: "#8e7b5e" },
+  campaign_visit: { tag: "CAMPAGNE", filter: "campaign", color: "#8e7b5e" },
+  judicial: { tag: "JUSTICE", filter: "justice", color: "#a95a56" },
+  proposal: { tag: "PROPOSITION", filter: "programme", color: "#2b5a8c" },
+  statement: { tag: "DÉCLARATION", filter: "programme", color: "#2b5a8c" },
+};
 
+const CONTEXT = { tag: "CONTEXTE", filter: "context" as const, color: "#718b86" };
 const frenchLong = new Intl.DateTimeFormat("fr-FR", { year: "numeric", timeZone: "UTC" });
-export const radarEvents: RadarEvent[] = eventSources.map((event) => ({
-  ...event,
-  shortDate: formatShortDate(event.isoDate),
-  date: `${formatShortDate(event.isoDate)} ${frenchLong.format(Date.parse(event.isoDate))}`,
-  pollDay: dayOffset(event.isoDate),
-}));
+export const radarEvents: RadarEvent[] = snapshot.events.map((event) => {
+  const isoDate = event.occurredAt.slice(0, 10);
+  // context:* (international, security...) only appears if pinned in data/events-curation.json; unknown types fall back to statement.
+  const type = EVENT_TYPES[event.category ?? ""] ?? (event.category?.startsWith("context") ? CONTEXT : EVENT_TYPES.statement);
+  return {
+    id: event.id, isoDate, ...type,
+    importance: event.importance === "major" ? ("major" as const) : ("notable" as const),
+    title: event.title, summary: event.summary,
+    image: event.image ? `url("${event.image}")` : "none",
+    sources: `SOURCES : ${event.sources[0].title.toUpperCase()}`, sourceUrl: event.sources[0].url,
+    shortDate: formatShortDate(isoDate),
+    date: `${formatShortDate(isoDate)} ${frenchLong.format(Date.parse(isoDate))}`,
+    pollDay: dayOffset(isoDate),
+  };
+}).sort((a, b) => b.pollDay - a.pollDay);
 
-/** Events inside the plotted window (earlier ones stay in the feed but have no place on the time axis). */
-export const chartEvents = radarEvents.filter((event) => event.pollDay >= 0 && event.pollDay <= POLL_DAYS);
+/** Major events inside the plotted window: the vertical lines on the charts and the radar feed. */
+export const chartEvents = radarEvents.filter((event) => event.importance === "major" && event.pollDay >= 0 && event.pollDay <= POLL_DAYS);
 
 export type PollObservation = { day: number; pollster: string; sample: number; values: PollValues };
 

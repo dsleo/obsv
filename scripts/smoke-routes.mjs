@@ -3,9 +3,9 @@ import path from "node:path";
 
 // Source of truth: ids in src/data/radarData.ts (regex keeps this dependency-free).
 const data = readFileSync("src/data/radarData.ts", "utf8");
-const eventIds = [...data.matchAll(/^\s*id: "([^"]+)", isoDate:/gm)].map((m) => m[1]);
+const eventIds = JSON.parse(readFileSync("data/generated/snapshot.json", "utf8")).events.map((e) => e.id);
 const candidateIds = [...data.matchAll(/\{ id: "([^"]+)", name: "[^"]+", short:/g)].map((m) => m[1]);
-if (!eventIds.length || !candidateIds.length) { console.error("smoke: could not read ids from radarData.ts"); process.exit(1); }
+if (!candidateIds.length) { console.error("smoke: could not read ids from radarData.ts"); process.exit(1); }
 
 const routes = ["", "events", "candidates", ...eventIds.map((id) => `events/${id}`), ...candidateIds.map((id) => `candidates/${id}`)];
 const missing = routes.filter((r) => !existsSync(path.join("out", r, "index.html")));

@@ -23,24 +23,21 @@ export function EventArticle({ event, analysis }: { event: RadarEvent; analysis:
         <header className="article-header">
           <div className="news-story-meta"><span>{event.tag}</span><time>{event.date}</time></div>
           <h1>{event.title}</h1>
-          <p className="article-dek">{event.summary}</p>
+          
         </header>
 
         <figure className="article-hero">
-          <div className="article-hero-image" style={{ backgroundImage: `url(${event.image})` }}>
+          <div className="article-hero-image" style={{ backgroundImage: event.image }}>
             <span className="article-image-mark" style={{ backgroundColor: event.color }} />
             <span className="article-image-index">À LA UNE / {event.shortDate}</span>
           </div>
-          <figcaption><span>IMAGE D’ILLUSTRATION</span><span>{event.sources}</span></figcaption>
+          <figcaption><span>{event.tag}</span><span>{event.sources}</span></figcaption>
         </figure>
 
         <div className="article-reading-grid">
           <div className="article-body">
-            <p className="article-dropcap">Un événement prend son sens politique à travers ses conséquences concrètes.</p>
-            <p>{event.summary} Il s’inscrit désormais dans les préoccupations du quotidien : qu’est-ce qui change, qui en supporte le coût, et quel candidat semble en mesure d’agir ?</p>
+            <p className="article-dropcap">{event.summary}</p>
             {lead ? <p>Ses effets ne sont pas uniformes. L’analyse met en avant <strong>{lead.segment.name}</strong> : {lead.segment.mechanism} {lead.segment.count.toLocaleString("fr-FR")} profils synthétiques de l’index correspondent à ce groupe ; c’est une hypothèse à tester, pas un résultat mesuré.</p> : null}
-            <div className="article-pullquote">« L’actualité devient électorale quand chacun y reconnaît une part de son quotidien. »</div>
-            <p>Ce scénario ne prédit pas à lui seul le résultat. Il examine comment l’attention peut devenir une préférence, et comment la réponse d’un candidat peut infléchir cette évolution.</p>
           </div>
 
           <div className="article-aside">
@@ -72,7 +69,7 @@ export function EventArticle({ event, analysis }: { event: RadarEvent; analysis:
 
         <EventSubpopulationAnalysis analysis={analysis} />
 
-        <footer className="article-footer-note"><span><ExternalLink size={13} /> {event.sources}</span><span>HYPOTHÈSES SUR PROFILS SYNTHÉTIQUES · PAS UN SONDAGE</span></footer>
+        <footer className="article-footer-note"><a href={event.sourceUrl} target="_blank" rel="noopener noreferrer"><ExternalLink size={13} /> {event.sources} · LIRE L’ARTICLE</a><span>HYPOTHÈSES SUR PROFILS SYNTHÉTIQUES · PAS UN SONDAGE</span></footer>
       </article>
 
       <section className="article-related">

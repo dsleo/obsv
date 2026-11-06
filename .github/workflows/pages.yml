@@ -31,11 +31,13 @@ jobs:
           cache: npm
       - uses: actions/configure-pages@v5
       - run: npm ci
-      - name: Collect polls (Sondax CSV, full history)
+      - name: Collect polls (Sondax) and events (API)
         run: npm run data:collect
+        env:
+          ELECTION_API_KEY: ${{ secrets.ELECTION_API_KEY }}
       - run: npm run typecheck
       - name: Validator tests
-        run: node --test scripts/validate.test.mjs
+        run: node --test scripts/validate.test.mjs scripts/events-api.test.mjs
       - run: npm run build
         env:
           GITHUB_ACTIONS: "true"

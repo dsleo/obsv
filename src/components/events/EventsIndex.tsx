@@ -8,7 +8,7 @@ import "./event-pages.css";
 
 function StoryImage({ event, featured = false }: { event: RadarEvent; featured?: boolean }) {
   return (
-    <span className={`news-story-image ${featured ? "is-featured" : ""}`} style={{ backgroundImage: `url(${event.image})` }}>
+    <span className={`news-story-image ${featured ? "is-featured" : ""}`} style={{ backgroundImage: event.image }}>
       <span className="news-story-image-mark" style={{ backgroundColor: event.color }} />
       <span className="news-story-image-index">{event.date.slice(0, 2)}</span>
     </span>

@@ -20,7 +20,7 @@ npm run typecheck
 npm run build
 ```
 
-Les entrées brutes et le snapshot normalisé ne sont pas suivis par Git par défaut. Les sondages sont collectés chaque jour depuis le CSV Sondax (historique complet depuis février 2026, voir [`docs/data-contracts.md`](docs/data-contracts.md)) ; `POLLS_FEED_URL` et `EVENTS_FEED_URL` peuvent remplacer ces sources. Les événements n’ont pas encore de source réelle : sans `EVENTS_FEED_URL`, ils restent simulés.
+Les entrées brutes et le snapshot normalisé ne sont pas suivis par Git par défaut. Les sondages sont collectés chaque jour depuis le CSV Sondax (historique complet depuis février 2026, voir [`docs/data-contracts.md`](docs/data-contracts.md)) ; `POLLS_FEED_URL` et `EVENTS_FEED_URL` peuvent remplacer ces sources. Les événements viennent par défaut de l’API election-tracker (`scripts/lib/events-api.mjs`) : règles de sélection (tier A/B, nombre de médias) → « majeurs » (traits verticaux du graphique) et « notables » (listes). Revue quotidienne facultative via `data/events-curation.json` : `{ "pin": ["google-123"], "hide": ["google-456"] }`. `EVENTS_FEED_URL` remplace cette source.
 
 ## GitHub Pages
 
@@ -49,7 +49,7 @@ Les index `data/radar/*.jsonl` et `geography-2026.json` ne sont pas versionnés 
 
 ## État et limites actuels
 
-- Les intentions de vote affichées sont les sondages réels collectés (premier tour uniquement). Les événements et leurs effets restent simulés et sont signalés comme tels.
+- Les intentions de vote affichées sont les sondages réels collectés (premier tour uniquement). Les événements sont réels (presse, sélection automatique) ; leurs effets restent simulés et signalés comme tels.
 - Les validateurs et workflows constituent l’ossature d’ingestion et de publication ; ils ne remplacent pas encore les collecteurs de votre collègue.
 - La prochaine intégration est de faire produire à ces collecteurs les contrats versionnés, puis de connecter le snapshot validé à l’interface. L’analyse des sous-populations devra tourner comme étape CLI avec versions de méthode, cache par empreinte et revue ; pas comme endpoint utilisateur.
 - Les associations événement-candidat ne sont pas des effets causaux. Le site ne doit pas transformer une hypothèse issue de personas synthétiques en variation réelle d’intentions de vote.

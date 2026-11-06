@@ -1,10 +1,10 @@
-import { mkdir, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { loadKnownCandidates, validateFeed } from "./lib/validate.mjs";
+import { apiToEvents, fetchApiEvents, fetchOgImage } from "./lib/events-api.mjs";
 import { SONDAX_CSV_URL, sondaxToPolls } from "./lib/sondax.mjs";
 
 // Polls default to the daily Sondax CSV (full history = backfill). POLLS_FEED_URL overrides it with a JSON feed.
-// Events have no default source yet.
 const eventsUrl = process.env.EVENTS_FEED_URL;
 const destination = path.resolve("data/incoming");
 const knownCandidates = loadKnownCandidates();
@@ -44,8 +44,19 @@ if (pollsUrl) {
   console.log(`polls: collected ${polls.length} first-round polls from Sondax (${skipped} skipped without sample size)`);
 }
 
-// Events
-if (eventsUrl) {
+// Events: EVENTS_FEED_URL (contract JSON) overrides the default election-tracker API.
+if (!eventsUrl) {
+  // data/events-curation.json = { "pin": ["google-123"], "hide": ["google-456"] }: the daily manual review, if any.
+  let curation = {};
+  try { curation = JSON.parse(await readFile("data/events-curation.json", "utf8")); } catch (error) { if (error?.code !== "ENOENT") throw error; }
+  const all = await fetchApiEvents();
+  const events = apiToEvents(all, curation);
+  await Promise.all(events.map(async (event) => { event.image = (await fetchOgImage(event.sources[0].url)) ?? undefined; }));
+  const payload = { schemaVersion: 1, events };
+  check("events", payload);
+  await write("events", payload);
+  console.log(`events: ${events.filter((e) => e.image).length} thumbnails; kept ${events.length} of ${all.length} API events (${events.filter((e) => e.importance === "major").length} major)`);
+} else {
   const response = await fetch(eventsUrl, { headers: { accept: "application/json" }, signal: AbortSignal.timeout(30_000) });
   if (!response.ok) throw new Error(`events feed returned HTTP ${response.status}`);
   let payload;
@@ -53,6 +64,4 @@ if (eventsUrl) {
   check("events", payload);
   await write("events", payload);
   console.log(`events: collected ${payload.events.length} records`);
-} else {
-  console.log("events: feed URL not configured; preserving manual-input workflow");
 }

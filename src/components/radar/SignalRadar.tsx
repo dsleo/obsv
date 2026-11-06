@@ -3,16 +3,17 @@
 import Link from "next/link";
 import { ChevronRight, Minus, Orbit, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
-import { pollCandidates, pollObservations, chartEvents, LAST_POLL_DAY, POLL_DAYS, pollWindowLabel, radarEvents, type PollObservation } from "../../data/radarData";
+import { pollCandidates, pollObservations, chartEvents, eventFilters, LAST_POLL_DAY, POLL_DAYS, pollWindowLabel, type EventFilter, type PollObservation } from "../../data/radarData";
 import { AXIS_DAYS, axisLabel, createScale, getSmoothedPollValue, pollDateLong, trendPath, Y_TICKS } from "../../lib/chart";
 import { ScrollChart } from "../ScrollChart";
 import { MethodExplainer } from "./MethodExplainer";
 import "./radar.css";
 
-type FilterKey = "all" | "budget" | "coalition" | "foreign" | "programme";
+type FilterKey = "all" | EventFilter;
 type Candidate = (typeof pollCandidates)[number];
 
 const DEFAULT_VISIBLE = 6;
+const FEED_SIZE = 6;
 // Candidates ranked by current smoothed value: the top few are the readable default view, the rest are one click away.
 const rankedCandidates = [...pollCandidates]
   .sort((a, b) => (getSmoothedPollValue(b.id, LAST_POLL_DAY) ?? 0) - (getSmoothedPollValue(a.id, LAST_POLL_DAY) ?? 0));
@@ -41,9 +42,10 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
         {({ width, compact }) => {
           const plot = { left: 12, right: width - 12, top: PLOT_TOP, bottom: PLOT_BOTTOM };
           const { x: xAt } = createScale(plot);
+          let lastLabelX = Infinity;
           return <>
             <title id="plot-title">Intentions de vote au premier tour et évolution des sondages</title>
-            <desc id="plot-description">Les courbes de chaque candidat sont établies à partir des sondages publiés. Les points représentent les résultats de chaque sondage et les repères verticaux, cinq événements datés. Les valeurs sont aussi disponibles dans le tableau sous le graphique.</desc>
+            <desc id="plot-description">Les courbes de chaque candidat sont établies à partir des sondages publiés. Les points représentent les résultats de chaque sondage et les repères verticaux, les événements majeurs datés. Les valeurs sont aussi disponibles dans le tableau sous le graphique.</desc>
             <defs><clipPath id="plot-area-clip"><rect x={plot.left} y={plot.top} width={plot.right - plot.left} height={plot.bottom - plot.top} /></clipPath></defs>
 
             {Y_TICKS.map((tick) => <line key={tick} x1={plot.left} x2={plot.right} y1={yAt(tick)} y2={yAt(tick)} className="plot-grid-line" />)}
@@ -71,6 +73,9 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
             <line x1={plot.left} x2={plot.right} y1={plot.bottom} y2={plot.bottom} className="plot-baseline" />
             {chartEvents.map((event) => {
               const x = xAt(event.pollDay);
+              // chartEvents is newest-first: label an event only when it is far enough from the last labelled one.
+              const labelled = lastLabelX - x >= 84;
+              if (labelled) lastLabelX = x;
               const anchor = x < 70 ? "start" : x > width - 70 ? "end" : "middle";
               const isSelected = selectedId === event.id;
               const selectEvent = () => {
@@ -80,9 +85,10 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
               return <g key={`event-${event.id}`} className={`plot-event ${isSelected ? "is-selected" : ""}`} role="button" tabIndex={0} aria-label={`Voir dans le fil : ${event.title}`} onClick={selectEvent} onKeyDown={(keyboardEvent) => {
                 if (keyboardEvent.key === "Enter" || keyboardEvent.key === " ") { keyboardEvent.preventDefault(); selectEvent(); }
               }}>
+                <title>{`${event.shortDate} · ${event.title}`}</title>
                 <line x1={x} x2={x} y1="390" y2="401" stroke={event.color} strokeWidth="2" />
                 <circle cx={x} cy="390" r="6" fill={event.color} className="event-rail-dot" />
-                <text x={x} y="418" textAnchor={anchor} className="event-rail-label">{event.tag}</text>
+                {labelled ? <text x={x} y="418" textAnchor={anchor} className="event-rail-label">{event.tag}</text> : null}
               </g>;
             })}
           </>;
@@ -103,8 +109,7 @@ export function SignalRadar({ publics = {} }: { publics?: Record<string, string>
   const [expanded, setExpanded] = useState(false);
   const shown = expanded ? rankedCandidates : rankedCandidates.slice(0, DEFAULT_VISIBLE);
   const visibleEvents = useMemo(() => {
-    const filtered = activeFilter === "all" ? radarEvents : radarEvents.filter((event) => event.filter === activeFilter);
-    return [...filtered].sort((a, b) => b.pollDay - a.pollDay);
+    return (activeFilter === "all" ? chartEvents : chartEvents.filter((event) => event.filter === activeFilter)).slice(0, FEED_SIZE); // newest first; the rest is on /events
   }, [activeFilter]);
 
   return (
@@ -127,10 +132,10 @@ export function SignalRadar({ publics = {} }: { publics?: Record<string, string>
 
       <section className="radar-feed-section" id="events">
         <div className="feed-heading"><div><h2>Les événements qui <i>font bouger les lignes.</i></h2></div></div>
-        <div className="feed-filters" aria-label="Filtrer les événements">{(["all", "budget", "coalition", "foreign", "programme"] as FilterKey[]).map((filter) => <button key={filter} type="button" className={activeFilter === filter ? "active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter === "all" ? "Tous" : filter === "foreign" ? "International" : filter === "budget" ? "Budget" : filter === "coalition" ? "Coalition" : "Programme"}</button>)}</div>
+        <div className="feed-filters" aria-label="Filtrer les événements">{(["all", ...Object.keys(eventFilters)] as FilterKey[]).map((filter) => <button key={filter} type="button" className={activeFilter === filter ? "active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter === "all" ? "Tous" : eventFilters[filter]}</button>)}</div>
         <div className="feed-list" onMouseLeave={() => setSelectedId("")}>{visibleEvents.map((event) => <Link id={`feed-event-${event.id}`} key={event.id} href={`/events/${event.id}`} className={`feed-item ${selectedId === event.id ? "is-selected" : ""}`} onMouseEnter={() => setSelectedId(event.id)}>
           <time className="feed-date">{event.shortDate}<small>2026</small></time>
-          <span className="feed-image" style={{ backgroundImage: `url(${event.image})` }}><span style={{ backgroundColor: event.color }} /></span>
+          <span className="feed-image" style={{ backgroundImage: event.image }}><span style={{ backgroundColor: event.color }} /></span>
           <span className="feed-item-copy"><span className="feed-item-topline"><b>{event.tag}</b>{publics[event.id] ? <span>Public analysé : {publics[event.id]}</span> : null}</span><strong>{event.title}</strong><span className="feed-summary">{event.summary}</span></span>
         </Link>)}</div>
         <div className="feed-footer"><Link href="/events">Tous les événements <ChevronRight size={14} /></Link></div>

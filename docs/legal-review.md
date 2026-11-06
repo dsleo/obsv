@@ -5,7 +5,7 @@
 ## Ce qui a été fait dans le code
 
 - Les séries d’intentions de vote fictives ne portent pas de noms d’instituts de sondage réels (`src/data/radarData.ts` : « Série simulée 1 à 5 »). Les noms réels ont été retirés délibérément : une série inventée ne doit pas être attribuée à un institut existant.
-- Le wording « sondage » reste celui du site (bandeau `DemoBanner`, graphiques, tableaux). Le juriste doit valider cette formulation, car elle sera publiée telle quelle.
+- Le wording « sondage » reste celui du site (graphiques, tableaux ; le bandeau de démonstration a été retiré). Le juriste doit valider cette formulation, car elle sera publiée telle quelle.
 - Le test `src/lib/radar/wording.test.ts` échoue si un nom d’institut réel réapparaît dans `src/`.
 
 ## Questions pour le juriste

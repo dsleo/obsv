@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Newsreader } from "next/font/google";
-import { DemoBanner } from "../components/DemoBanner";
 import { pageMetadata, SITE_DESCRIPTION, SITE_NAME } from "../lib/metadata";
 import "./globals.css";
 
@@ -29,7 +28,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr">
       <body className={`${newsreader.variable} ${plexSans.variable}`}>
-        <DemoBanner />
         {children}
       </body>
     </html>
