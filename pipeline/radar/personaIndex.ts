@@ -4,14 +4,15 @@
 import { createReadStream, statSync } from "node:fs";
 import { open, readFile, rename, writeFile } from "node:fs/promises";
 import type { RadarPersona } from "../../src/lib/radar/ontology";
+import { BLOC_KEYS, baseline } from "./baseline";
 
 type Tag = RadarPersona["tags"][number];
 type Slim = RadarPersona & { _offset: number; _length: number };
-type Cache = { size: number; mtimeMs: number; tags: Tag[]; rows: [string, number, number, number[], RadarPersona["geography"], string | null][] };
+type Cache = { version?: number; priorMass?: number[]; size: number; mtimeMs: number; tags: Tag[]; rows: [string, number, number, number[], RadarPersona["geography"], string | null][] };
 
 async function build(file: string): Promise<Cache> {
   const stat = statSync(file);
-  const tagIndex = new Map<string, number>(), tags: Tag[] = [], rows: Cache["rows"] = [];
+  const tagIndex = new Map<string, number>(), tags: Tag[] = [], rows: Cache["rows"] = [], priorMass = [0, 0, 0, 0, 0];
   let offset = 0, carry = Buffer.alloc(0);
   const add = (line: Buffer, start: number) => {
     if (!line.length || !line.toString("utf8", 0, Math.min(line.length, 8)).trim()) return;
@@ -23,6 +24,7 @@ async function build(file: string): Promise<Cache> {
     });
     const top = Object.entries(p.historicalPropensity?.probabilities ?? {}).filter(([id]) => id.startsWith("choice_")).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
     rows.push([p.id, start, line.length, ids, p.geography, top]);
+    const b = baseline(p); if (b) BLOC_KEYS.forEach((key, i) => { priorMass[i] += b[key]; });
   };
   for await (const chunk of createReadStream(file) as AsyncIterable<Buffer>) {
     let buffer = Buffer.concat([carry, chunk]), from = 0, at: number;
@@ -32,27 +34,27 @@ async function build(file: string): Promise<Cache> {
     offset += chunk.length;
   }
   add(carry, offset - carry.length);
-  return { size: stat.size, mtimeMs: stat.mtimeMs, tags, rows };
+  return { version: 2, priorMass, size: stat.size, mtimeMs: stat.mtimeMs, tags, rows };
 }
 
-const loaded = new Map<string, Promise<{ file: string; personas: Slim[] }>>();
+const loaded = new Map<string, Promise<{ file: string; personas: Slim[]; priorMass: number[] }>>();
 
 /** Slim personas (tags, geography, id; `historicalPropensity.probabilities` reduced to the top choice). Cached on disk and in memory. */
 export function loadPersonas(file: string) {
   if (!loaded.has(file)) loaded.set(file, (async () => {
     const stat = statSync(file), cachePath = `${file}.slim.json`;
     let cache: Cache | null = await readFile(cachePath, "utf8").then(JSON.parse, () => null);
-    if (!cache || cache.size !== stat.size || cache.mtimeMs !== stat.mtimeMs) {
+    if (!cache || cache.version !== 2 || cache.size !== stat.size || cache.mtimeMs !== stat.mtimeMs) {
       console.log(`building slim index for ${file} (one-off pass)…`);
       cache = await build(file);
-      await writeFile(`${cachePath}.tmp`, JSON.stringify(cache));
-      await rename(`${cachePath}.tmp`, cachePath);
+      await writeFile(`${cachePath}.${process.pid}.tmp`, JSON.stringify(cache)); // pid-unique: parallel processes may rebuild at once
+      await rename(`${cachePath}.${process.pid}.tmp`, cachePath);
     }
     const personas = cache.rows.map(([id, _offset, _length, ids, geography, top]) => ({
       id, tags: ids.map((i) => cache!.tags[i]), geography,
       historicalPropensity: top ? { probabilities: { [top]: 1 } } : undefined, _offset, _length,
     }) as unknown as Slim);
-    return { file, personas };
+    return { file, personas, priorMass: cache.priorMass! };
   })());
   return loaded.get(file)!;
 }

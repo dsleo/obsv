@@ -127,6 +127,42 @@ All 99 collected events are already used (91 have polls on both sides). The API 
 
 Learnings to apply (ordered): (1) do not publish magnitudes; (2) cap or shrink large predicted effects (large = least reliable); (3) remove the per-bloc bias with a larger control set (25–30) and verify the correction is stable; (4) anchor baselines on **current** 2026 poll levels instead of the 2022 survey prior; (5) test whether event type or importance genuinely predicts reliability on more data; (6) a richer outcome than 47 polls (more pollsters, daily trackers, or a past campaign) is the real bottleneck.
 
+### 7. Round 2: cap, bias correction, poll-anchored baseline, retest
+
+Changes: (a) **cap** predicted effects at ±1 pt (read-time: `CAP_PT=1`); (b) **30 control events** (was 6), bias = mean effect per bloc on the controls, subtracted (`BIAS_DIR=`); (c) **baseline re-anchored on current polls**: each persona keeps its own 2022 survey-model profile and abstention, but the bloc mix is rescaled so the index-wide average equals the first-round polls of the 45 days before the event (no look-ahead; `pipeline/radar/baseline.ts`, `ANALYZE_BASELINE=poll|survey`); (d) retest; (e) `effect` is stripped from artifacts written to the published folder unless `PUBLISH_MAGNITUDES=1`.
+
+**Control events (30 events, ~115 contrasts per baseline):**
+
+| bloc | survey baseline | poll-anchored |
+|---|---|---|
+| radical left | −0.05 | +0.03 |
+| left | +0.06 | +0.15 |
+| centre | +0.18 | +0.22 |
+| right | −0.02 | −0.05 |
+| far right | **−0.49** | **−0.63** |
+| abstention | **+0.31** | **+0.29** |
+
+Mean effect in points; the standard error is 0.02–0.05, so the bias is **real and stable** (sd/√n ≈ 0.03 for the far right). Mean absolute effect on controls 0.30 pt, stable-significant rate 3–4.5 %, versus 0.74–0.80 pt and 25–29 % on real events.
+
+**On the 99 real events** (mean signed effect, pts): far right −1.01 (survey) / −1.41 (poll-anchored) vs −0.49 / −0.63 on controls: roughly half of the far-right reflex is the generic bias, the rest is attributed to the events themselves. Poll-anchoring removed the spurious centre drift (centre −0.35 → +0.01).
+
+**Backtest, all 99 events (sign agreement; p from 1,000 event-shuffles; "detrended" removes each bloc's mean predicted and observed shift):**
+
+| baseline | cap | bias-corrected | ±14 d raw | ±14 d detrended | ±7 d raw | ±7 d detrended |
+|---|---|---|---|---|---|---|
+| survey | no | no | 58.5 % (p .31) | 52.8 % (p .08) | 52.2 % (p .38) | 52.8 % (p .15) |
+| survey | ±1 pt | no | 58.5 % | 49.7 % | 52.2 % | 51.7 % |
+| survey | no | yes | 62.3 % (p .18) | 52.8 % | 54.4 % (p .31) | 52.8 % |
+| survey | ±1 pt | yes | 62.3 % | 51.5 % | 54.4 % | 51.9 % |
+| poll | no | no | 51.2 % (p .39) | **56.1 % (p .025)** | 50.6 % | 52.8 % |
+| poll | ±1 pt | no | 51.2 % | 51.6 % | 50.6 % | 55.1 % |
+| poll | no | yes | 60.3 % (p .22) | 56.1 % (p .025) | 54.1 % | 52.8 % |
+| poll | ±1 pt | yes | 60.3 % | 51.0 % | 54.1 % | 51.7 % |
+
+R² against observed poll changes stays below 0.03 in every configuration (slope 0.00–0.19; calibrated would be 1).
+
+**Reading:** bias correction raises raw agreement by 3–9 points but stays non-significant (p ≥ 0.17). The single "significant" cell (poll-anchored, detrended, ±14 d, p 0.025) is 1 of 16 tested cells, disappears with the cap and at ±7 d, and has R² ≈ 0: with this many comparisons it is expected by chance. **No configuration beats chance robustly, so magnitudes stay off the site.** The cap does not help (it removes what little spread there is). Not tested yet: whether the effect is better treated as a ranking, and any scheme that learns the exposure factor from the polls.
+
 ## Where each problem stands
 
 | # | Problem | Status |
@@ -138,7 +174,7 @@ Learnings to apply (ordered): (1) do not publish magnitudes; (2) cap or shrink l
 | P5 | Contradictory global scenarios | **Fixed by design**: one template scenario, 48 personas × 2 runs. |
 | P6 | Invented counterfactuals | **Fixed**: relevance check (fired 1 time in 79 segments tested). |
 | P7 | Incoherent bloc moves | **Fixed by construction** (distributions sum to 1). |
-| P8 | No validation | **Harness built; method not validated.** Baseline and v2 are both at chance against polls. |
+| P8 | No validation | **Harness built; method not validated.** Baseline, v2, cap, bias correction and poll-anchored baseline are all at chance against polls (section 7). Magnitudes are stripped from published artifacts unless `PUBLISH_MAGNITUDES=1`. |
 
 ## Conclusions and what it would take to trust the numbers
 

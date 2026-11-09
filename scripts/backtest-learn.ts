@@ -4,6 +4,11 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 const BLOCS: Record<string, string[]> = { radical_left: ["melenchon", "arthaud"], left: ["glucksmann", "tondelier", "roussel"], center: ["attal", "philippe"], right: ["retailleau", "lisnard"], far_right: ["le-pen", "bardella", "zemmour", "dupont-aignan"] };
+// BIAS_DIR=<control artifacts>: subtract the mean effect the model produces on neutral events (per bloc). CAP_PT=<points>: clamp each predicted effect.
+const BIAS: Record<string, number> = {};
+if (process.env.BIAS_DIR) { const sums: Record<string, number> = {}; let count = 0; for (const f of readdirSync(process.env.BIAS_DIR).filter((n) => n.endsWith(".json"))) for (const c of Object.values<any>(JSON.parse(readFileSync(join(process.env.BIAS_DIR, f), "utf8")).contrasts)) if (c.effect) { count++; for (const [b, e] of Object.entries<any>(c.effect)) sums[b] = (sums[b] ?? 0) + e.mean; } for (const b of Object.keys(sums)) BIAS[b] = sums[b] / count; }
+const CAP = process.env.CAP_PT ? Number(process.env.CAP_PT) : Infinity;
+const adj = (b: string, mean: number) => Math.max(-CAP, Math.min(CAP, (mean - (BIAS[b] ?? 0)) * 100)); // points
 const DAY = 86400000, W = Number(process.argv[3] ?? 14), dir = process.argv[2]!;
 const snap = JSON.parse(readFileSync("data/generated/snapshot.json", "utf8"));
 const polls = snap.polls.map((p: any) => ({ t: Date.parse(p.fieldworkEnd), s: p.candidateShares as Record<string, number> }));
@@ -23,7 +28,7 @@ const rows: Row[] = [];
 for (const f of readdirSync(dir).filter((n) => n.endsWith(".json"))) {
   const a = JSON.parse(readFileSync(join(dir, f), "utf8")), e = ev.get(a.eventId); if (!e) continue;
   const cs = Object.entries<any>(a.contrasts).filter(([, c]) => c.effect); if (!cs.length) continue;
-  const wmean = (list: [string, any][], b: string) => list.length ? list.reduce((s, [, c]) => s + c.effect[b].mean * c.sampledCount, 0) / list.reduce((s, [, c]) => s + c.sampledCount, 0) * 100 : null;
+  const wmean = (list: [string, any][], b: string) => list.length ? Math.max(-CAP, Math.min(CAP, list.reduce((s, [, c]) => s + (c.effect[b].mean - (BIAS[b] ?? 0)) * c.sampledCount, 0) / list.reduce((s, [, c]) => s + c.sampledCount, 0) * 100)) : null;
   for (const bloc of Object.keys(BLOCS)) {
     const o = observed(Date.parse(e.occurredAt), bloc); if (!o) continue;
     rows.push({ id: a.eventId, bloc, pred: wmean(cs, bloc)!, predGlobal: wmean(cs.filter(([k]) => k.startsWith("global")), bloc), predSeg: wmean(cs.filter(([k]) => !k.startsWith("global")), bloc), obs: o.obs, polls: o.polls, cat: e.category ?? "?", imp: e.importance, concerned: (e.candidateIds ?? []).some((c: string) => BLOCS[bloc].includes(c)) });
@@ -40,6 +45,21 @@ const fmt = (x: { n: number; agree: number; constantGuess: number }) => `${(100 
 const by = (key: (r: Row) => string) => { const m = new Map<string, Row[]>(); for (const r of rows) m.set(key(r), [...(m.get(key(r)) ?? []), r]); return [...m.entries()].sort((a, b) => b[1].length - a[1].length); };
 const ols = (rs: Row[]) => { const x = rs.map((r) => r.pred), y = rs.map((r) => r.obs), mx = mean(x), my = mean(y); let sxy = 0, sxx = 0, syy = 0; x.forEach((v, i) => { sxy += (v - mx) * (y[i] - my); sxx += (v - mx) ** 2; syy += (y[i] - my) ** 2; }); return { slope: sxy / sxx, r2: sxy ** 2 / (sxx * syy) }; };
 
+// Permutation test on the pooled sign agreement: shuffle which event's predictions go with which event's polls (seeded).
+let sd = 7; const rnd = () => { sd = (sd * 1664525 + 1013904223) % 4294967296; return sd / 4294967296; };
+function permP(rs: Row[], minPred: number, minObs: number) {
+  const real = agree(rs, (r) => r.pred, minPred, minObs).agree, ids = [...new Set(rs.map((r) => r.id))], by = new Map<string, Map<string, number>>();
+  for (const r of rs) { if (!by.has(r.id)) by.set(r.id, new Map()); by.get(r.id)!.set(r.bloc, r.pred); }
+  let ge = 0; const N = 1000;
+  for (let k = 0; k < N; k++) { const perm = [...ids]; for (let i = perm.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [perm[i], perm[j]] = [perm[j], perm[i]]; } const map = new Map(ids.map((id, i) => [id, perm[i]]));
+    const shuffled = rs.map((r) => ({ ...r, pred: by.get(map.get(r.id)!)!.get(r.bloc) ?? NaN })).filter((r) => Number.isFinite(r.pred));
+    if (agree(shuffled, (r) => r.pred, minPred, minObs).agree >= real) ge++; }
+  return { real, p: (ge + 1) / (N + 1) };
+}
+{ const lines = Object.keys(BLOCS).map((b) => { const r = rows.filter((x) => x.bloc === b); return [b, { p: mean(r.map((x) => x.pred)), o: mean(r.map((x) => x.obs)) }] as const; });
+  const bm = Object.fromEntries(lines); const dt = rows.map((r) => ({ ...r, pred: r.pred - bm[r.bloc].p, obs: r.obs - bm[r.bloc].o }));
+  const raw = permP(rows, 0.3, 0.2), det = permP(dt, 0.3, 0.1), f1 = ols(rows), f2 = ols(dt);
+  console.log(`SUMMARY w=${W} cap=${process.env.CAP_PT ?? "none"} bias=${process.env.BIAS_DIR ? "yes" : "no"} | raw agree ${(100 * raw.real).toFixed(1)} % (p ${raw.p.toFixed(3)}) | detrended ${(100 * det.real).toFixed(1)} % (p ${det.p.toFixed(3)}) | R² raw ${f1.r2.toFixed(4)} detrended ${f2.r2.toFixed(4)} slope ${f1.slope.toFixed(3)}`); }
 console.log(`window ±${W} d, ${rows.length} (event,bloc) pairs, ${new Set(rows.map((r) => r.id)).size} events\n`);
 const all = agree(rows); console.log(`overall sign agreement ${fmt(all)}; always-guess-the-majority-sign baseline ${(100 * all.constantGuess).toFixed(0)} %`);
 console.log("\nby bloc:"); for (const [k, r] of by((r) => r.bloc)) console.log(`  ${k.padEnd(13)} ${fmt(agree(r))}  (mean predicted ${mean(r.map((x) => x.pred)).toFixed(2)} pt, mean observed ${mean(r.map((x) => x.obs)).toFixed(2)} pt)`);

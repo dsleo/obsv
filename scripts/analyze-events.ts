@@ -80,6 +80,8 @@ async function analyzeOne({ id, demo, ...event }: Input) {
   const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } catch { return run(); } }; // one retry: the model occasionally omits a persona
   const keep = (contrast: { segmentId: string; responses?: unknown; [key: string]: unknown }) => {
     const { responses: _private, ...publicPart } = contrast; // per-persona answers stay offline
+    // Magnitudes (method v2 `effect`) stay out of the published folder until a backtest beats chance (docs/radar-trust.md). Experiments (--out) keep them.
+    if (outIndex < 0 && !process.env.PUBLISH_MAGNITUDES) delete publicPart.effect;
     contrasts[contrast.segmentId] = publicPart as never;
   };
   const warn = (label: string) => (error: unknown) => console.warn(`${id}/${label}: ${error instanceof Error ? error.message : error}`);

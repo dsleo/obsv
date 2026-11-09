@@ -3,33 +3,18 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { callStructuredModel } from "./openaiStructured";
-import { hydrate, loadPersonas } from "./personaIndex";
+import { loadPersonas } from "./personaIndex";
 import { sampleSegmentPersonas } from "./relativeResponse";
 import type { RadarEvent, SegmentPreview } from "./pipeline";
 import type { RadarPersona } from "../../src/lib/radar/ontology";
 
-export const OPTIONS = ["radical_left", "left", "center", "right", "far_right", "abstention"] as const;
-type Option = (typeof OPTIONS)[number];
-type Dist = Record<Option, number>;
+import { OPTIONS, anchored, baseline, pollTarget, type Dist, type Option } from "./baseline";
+export { OPTIONS, baseline };
 
 const dist = z.object({ radical_left: z.number(), left: z.number(), center: z.number(), right: z.number(), far_right: z.number(), abstention: z.number() });
 const responseSchema = z.object({ responses: z.array(z.object({ personaId: z.string(), ifEvent: dist, ifNoEvent: dist, mechanism: z.string() })) });
-
-// 2022 first-round candidates -> bloc (deterministic; blank votes and Lassalle are left out of the baseline).
-const BLOC_OF: [RegExp, Option][] = [[/ARTHAUD|POUTOU|MÉLENCHON/, "radical_left"], [/ROUSSEL|HIDALGO|JADOT/, "left"], [/MACRON/, "center"], [/PÉCRESSE/, "right"], [/LE PEN|ZEMMOUR|DUPONT/, "far_right"]];
-
-/** The persona's survey-model baseline over the six options, normalised. Null when the row has no calibrated prior. */
-export function baseline(persona: RadarPersona): Dist | null {
-  const prior = persona.historicalPropensity;
-  if (!prior) return null;
-  const out: Dist = { radical_left: 0, left: 0, center: 0, right: 0, far_right: 0, abstention: prior.probabilities.abstention ?? 0 };
-  for (const [id, p] of Object.entries(prior.probabilities)) {
-    const bloc = BLOC_OF.find(([re]) => re.test(prior.choiceLabels[id] ?? ""))?.[1];
-    if (bloc) out[bloc] += p;
-  }
-  const total = OPTIONS.reduce((sum, key) => sum + out[key], 0);
-  return total > 0 ? Object.fromEntries(OPTIONS.map((key) => [key, out[key] / total])) as Dist : null;
-}
+// Baseline: "survey" = 2022 survey-model prior; "poll" (default) = the same prior re-anchored on the polls of the 45 days before the event.
+export const BASELINE_MODE = process.env.ANALYZE_BASELINE === "survey" ? "survey" : "poll";
 
 const normalise = (d: Dist): Dist => {
   const total = OPTIONS.reduce((sum, key) => sum + Math.max(0, d[key]), 0) || 1;
@@ -41,18 +26,18 @@ function rng(seed: string) { // small seeded PRNG so bootstrap intervals are rep
   return () => { a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 }
 
-const SYSTEM = `Vous estimez, pour des profils synthétiques français, leur intention de vote à la présidentielle selon deux mondes : (A) « ifEvent » : l’événement a lieu et le profil en a connaissance ; (B) « ifNoEvent » : le scénario contrefactuel, l’événement n’a pas lieu. Pour chaque monde, donnez une distribution sur cinq blocs et l’abstention (six nombres entre 0 et 1, somme égale à 1). Partez de la distribution de base fournie (modèle d’enquête 2022, contexte faible) et écartez-vous-en seulement pour une raison concrète liée à l’événement ; sans raison concrète, ifEvent et ifNoEvent restent égaux à la base, y compris pour l’abstention. Un déplacement raisonnable est de quelques points, rarement plus de 10 points, et seulement pour les profils réellement concernés. Ne devinez ni parti préféré ni idéologie à partir de la profession, de l’âge ou du lieu. Un même événement peut mobiliser ou démobiliser : estimez aussi l’abstention. Fournissez exactement une réponse par profil, avec les six clés. Expliquez en français, en une phrase, le mécanisme concret ou son absence.`;
+const SYSTEM = (poll: boolean) => `Vous estimez, pour des profils synthétiques français, leur intention de vote à la présidentielle selon deux mondes : (A) « ifEvent » : l’événement a lieu et le profil en a connaissance ; (B) « ifNoEvent » : le scénario contrefactuel, l’événement n’a pas lieu. Pour chaque monde, donnez une distribution sur cinq blocs et l’abstention (six nombres entre 0 et 1, somme égale à 1). Partez de la distribution de base fournie (modèle d’enquête 2022 ${poll ? "recalé sur le niveau des sondages récents" : ""}, contexte faible) et écartez-vous-en seulement pour une raison concrète liée à l’événement ; sans raison concrète, ifEvent et ifNoEvent restent égaux à la base, y compris pour l’abstention. Un déplacement raisonnable est de quelques points, rarement plus de 10 points, et seulement pour les profils réellement concernés. Ne devinez ni parti préféré ni idéologie à partir de la profession, de l’âge ou du lieu. Un même événement peut mobiliser ou démobiliser : estimez aussi l’abstention. Fournissez exactement une réponse par profil, avec les six clés. Expliquez en français, en une phrase, le mécanisme concret ou son absence.`;
 
 const BLOCS_DEF = { radical_left: "LFI et partis à sa gauche", left: "gauche sociale-démocrate et écologiste", center: "centre macroniste ou libéral", right: "droite conservatrice classique", far_right: "RN et extrême droite alliée", abstention: "ne vote pas" };
 
-async function askBatch(event: RadarEvent, segment: SegmentPreview, personas: RadarPersona[], seed: string) {
+async function askBatch(event: RadarEvent, segment: SegmentPreview, personas: RadarPersona[], seed: string, target: Record<string, number> | null, priorMass: number[]) {
   const order = [...OPTIONS].sort((a, b) => createHash("sha256").update(`${seed}${a}`).digest("hex").localeCompare(createHash("sha256").update(`${seed}${b}`).digest("hex"))); // blocs shown in a seeded random order: no positional bias
   const view = personas.map((p) => ({
     id: p.id, age: p.age, sex: p.sex, education: p.education, occupation: p.occupation, household: p.household, commune: p.commune, department: p.department,
-    baseline: Object.fromEntries(order.map((key) => [key, Number(((baseline(p) ?? { radical_left: .2, left: .2, center: .2, right: .1, far_right: .2, abstention: .1 })[key]).toFixed(3))])),
+    baseline: Object.fromEntries(order.map((key) => [key, Number((((target ? anchored(p, target, priorMass) : baseline(p)) ?? { radical_left: .2, left: .2, center: .2, right: .1, far_right: .2, abstention: .1 })[key]).toFixed(3))])),
   }));
   const out = await callStructuredModel({
-    schema: responseSchema, schemaName: "radar_probabilistic_response_v2", stageName: "radar_probabilistic_response", system: SYSTEM,
+    schema: responseSchema, schemaName: "radar_probabilistic_response_v2", stageName: "radar_probabilistic_response", system: SYSTEM(!!target),
     user: JSON.stringify({ event, intervention: segment.counterfactual.intervention, comparator: segment.counterfactual.comparator, segment: segment.name, blocDefinitions: BLOCS_DEF, personas: view }),
   });
   const wanted = new Set(personas.map((p) => p.id));
@@ -67,13 +52,15 @@ const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } 
 /** n personas per run (batches of `batch`, in parallel), `runs` independent samples. Effect = mean(ifEvent - ifNoEvent), bootstrap 95% interval. */
 export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentPreview, { n = 24, batch = 8, runs = 2 } = {}) {
   const perRun: { personaId: string; delta: Dist }[][] = [];
+  const { priorMass } = await loadPersonas(process.env.RADAR_PERSONA_INDEX || "data/radar/personas.jsonl");
+  const target = BASELINE_MODE === "poll" ? pollTarget(event.occurredAt.slice(0, 10)) : null;
   const mechanisms: string[] = [];
   let matched = 0;
   const runResults = await Promise.all(Array.from({ length: runs }, async (_, run) => {
     const { matches, selected } = await sampleSegmentPersonas(event, segment, n, `run${run}`);
     matched = matches;
     const chunks = Array.from({ length: Math.ceil(selected.length / batch) }, (_, i) => selected.slice(i * batch, (i + 1) * batch));
-    const answers = (await Promise.all(chunks.map((chunk, i) => retry(() => askBatch(event, segment, chunk, `${segment.id}|${run}|${i}`))))).flat();
+    const answers = (await Promise.all(chunks.map((chunk, i) => retry(() => askBatch(event, segment, chunk, `${segment.id}|${run}|${i}`, target, priorMass))))).flat();
     return answers.map((a) => ({ personaId: a.personaId, delta: Object.fromEntries(OPTIONS.map((key) => [key, a.ifEvent[key] - a.ifNoEvent[key]])) as Dist, mechanism: a.mechanism }));
   }));
   for (const r of runResults) { perRun.push(r); mechanisms.push(...r.slice(0, 2).map((x) => (x as { mechanism?: string }).mechanism ?? "")); }
