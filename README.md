@@ -39,6 +39,8 @@ npm run data:analyze          # OPENAI_API_KEY + index de personas requis, voir 
 npm run data:check-analyses   # valide les artefacts data/generated/analyses/*.json
 ```
 
+Pipeline par événement (méthode v2, voir [docs/radar-trust.md](docs/radar-trust.md)) : (1) un LLM propose des publics en composant des tags (titre + description seulement) ; (2) le code filtre les 115 011 profils en mémoire (index allégé `*.slim.json` construit une fois), rejette les segments trop petits/larges/doublons/génériques et relance si besoin ; (3) un LLM propose UN scénario alternatif proche de l’événement ; (4) des profils échantillonnés jouent leur propre rôle et donnent leur intention de vote sans événement / avec l’événement / avec l’alternative ; (5) les effets chiffrés (`effect`, `altEffect`) sont retirés des artefacts publiés tant qu’un test contre les sondages ne les valide pas (`PUBLISH_MAGNITUDES=1` pour les garder). `npm run data:analyze -- --out <dossier>` écrit ailleurs (expériences), `npx tsx scripts/publish-analyses.ts <dossier>` copie sans les chiffres, `--method v1` relance l’ancienne méthode.
+
 Les index `data/radar/*.jsonl` et `geography-2026.json` ne sont pas versionnés et doivent être fournis (non présents dans ce dépôt) ; sans eux la commande s’arrête avec la liste des fichiers manquants. Les artefacts sont lus au build par les pages événement ; sans artefact, la page affiche « Analyse non disponible ».
 
 ## Reproductibilité et revue humaine des analyses

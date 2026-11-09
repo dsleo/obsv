@@ -22,6 +22,8 @@ const contrastSchema = z.object({
   // Method v2 (radar-probabilistic-v2): effect in probability points (-1..1) per bloc and abstention, bootstrap 95% interval, stable = same sign across independent runs.
   runs: z.number().optional(), mechanisms: z.array(z.string()).optional(),
   effect: z.record(z.string(), z.object({ mean: z.number(), lo: z.number(), hi: z.number(), stable: z.boolean() })).optional(),
+  // Event vs its close alternative scenario (what in the event matters), same shape as `effect`; interpretive, not backtestable.
+  altEffect: z.record(z.string(), z.object({ mean: z.number(), lo: z.number(), hi: z.number(), stable: z.boolean() })).optional(),
 });
 
 export const analysisArtifactSchema = z.object({
@@ -35,6 +37,7 @@ export const analysisArtifactSchema = z.object({
   evidenceGrade: z.literal("hypothesis"),
   demo: z.boolean().optional(),
   index: z.object({ frame: z.string(), rowCount: z.number() }),
+  alternative: z.object({ description: z.string(), whatChanges: z.string() }).optional(),
   segments: z.array(segmentSchema),
   globalScenarios: z.array(scenarioSchema),
   contrasts: z.record(z.string(), contrastSchema),

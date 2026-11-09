@@ -190,6 +190,50 @@ R² against observed poll changes stays below 0.03 in every configuration (slope
 
 **Decision:** keep magnitudes off the published artifacts. Freeze the configuration (poll-anchored baseline, 30-control bias correction, publishers weighting) **before** looking at new data and re-run `backtest-pairs.ts` as the daily pipeline adds polls and events; publish calibrated estimates (scaled by the fitted factor, with interval and "hypothesis" label) only if the frozen configuration still beats the shuffle null on data it has not seen.
 
+### 9. Round 4: prompt review (step 2, step 5, counterfactual) and the final pipeline
+
+Product-owner suggestions, battle-tested one by one.
+
+**Step 2 (segment proposal) — A/B on all 99 events, no persona stage (`pipeline/radar/pipeline.ts`):**
+
+| change | verdict |
+|---|---|
+| Send only title + description (no date, no URL) | kept (nothing to lose; the model does not need them) |
+| Say explicitly that the tag vocabulary is a set of building blocks to compose custom publics, clusters are shortcuts | kept: segments that are a cluster alone fell from 51 to 30, stock archetypes from 5.2 % to 2.7 % |
+| Remove `place` | **kept removed**: ≥ 2 usable segments is 99/99 with or without; ≥ 3 is 98 without vs 93 with; fallback segments 0 vs 10; named places are never in the index so the field only added repair work |
+| Few-shot examples (3 fictional events, filters checked in memory) | **kept** (a trade-off): without examples 39 events needed a repair call vs 16, ≥ 3 segments 89 vs 97; cost: the first example's cluster was copied 8 times (the copy of the shape, not the text), so the example cluster was swapped for a less common one |
+| Wording: the `mechanism` must cite the person/measure/theme by name | added: removing `place` and the per-segment counterfactual had dropped event-naming (proper-noun overlap 55 % vs 75 %); the stronger wording gives 87 % |
+
+Before → after (same 99 events): events with ≥ 3 usable segments 89 → 97; with fallback 8 → 1; mean LLM calls per event 1.21; segments under 5 % of the index 45 % → 60 %; distinct tag sets 147 → 184. Specificity is a modest improvement: e.g. Zemmour's candidacy now gets workers/employees 35–64 outside dense areas and married men 50+ instead of retired couples and farmers. Known weaknesses: the model sometimes uses `municipal_system.paris_lyon_marseille` as a stand-in for another city (Toulouse), and one event (PCF membership) occasionally ends up with a "membership gap" on party membership.
+
+**Counterfactual — one per event, not per segment.** The per-segment counterfactual was a conceptual error (kept only as a template for artifact compatibility). `pipeline/radar/alternative.ts` makes ONE call per event proposing a *close alternative scenario*: a variant of the same event that would have moved voters differently (e.g. "Tondelier stays in the race even if a clear path opens for another left candidate"; "the PCF allies with LFI but leaves members free"). Persona answers then have three worlds: nothing happened / the real event / the alternative. `effect` = event − nothing (backtestable); `altEffect` = event − alternative (what in the event matters; interpretive, **not** backtestable). Adding the third world does not distort the main effect (correlation 0.83 between runs with and without it, same as run-to-run noise).
+
+**Step 5 — role-play prompt (`ANALYZE_PERSONA=roleplay`, now the default).** The model plays the persona from the full row (age, job, commune, biography, professional narrative, local election results, baseline), writes a first-person reaction first ("Ça ne change pas mon vote…"), then three distributions. Same frozen segments, 30 controls + 99 events:
+
+| | demographic prompt | role-play prompt |
+|---|---|---|
+| controls: mean \|effect\| | 0.30 pt | **0.09 pt** |
+| controls: stable & significant | 4.5 % | **0.0 %** |
+| controls: far-right bias / abstention bias | −0.63 / +0.29 pt | **−0.16 / +0.04 pt** |
+| real events: mean \|effect\| | 0.74 pt | 0.25 pt |
+| real events: stable & significant | 25.3 % | 3.0 % |
+| pair backtest, bias-corrected: r | 0.18 [0.05, 0.25] | **0.30 [0.19, 0.38]** |
+| pair backtest slope (1 = calibrated) | 0.04 | **0.18** |
+| per-event backtest raw sign agreement ±14 d | 51 % | 62 % (p 0.051) |
+
+Role-play is clearly better where we can measure (false positives, bias, calibration). Its effects are small and conservative: personas mostly say "this does not change my vote", which is realistic.
+
+**Final pipeline (new step 2 + role-play + alternative), all 99 events + 30 controls:**
+- Structure: 99/99 events with ≥ 2 usable segments, 99/99 with an alternative scenario.
+- Controls: mean \|effect\| 0.10 pt, 0.1 % stable-significant (vs 4.5 % before); far-right bias −0.17 pt, abstention +0.09 pt.
+- Real events: mean \|effect\| 0.25 pt, 3.3 % stable-significant.
+- Pair backtest bias-corrected: r = 0.31 [0.17, 0.44], positive for all three exposure weightings, 0.32 in both halves of the period, partial r beyond news volume 0.32, Spearman against |observed move| 0.55 (vs 0.34 for the number of events and 0.30 for media volume).
+- **But** the shuffle test is not passed (p = 0.32): much of that correlation comes from a per-bloc tilt shared by every event. With each bloc's average prediction removed (event-specific part only, `DEMEAN_BLOC=1`): demographic r = 0.36 (p 0.005), role-play on old segments r = 0.34 (p 0.011), **final pipeline r = 0.17 (p 0.14, CI [−0.08, 0.38])**.
+
+**What we learned about the test itself:** with 13 poll pairs the correlation swings between 0.17 and 0.36 from one run to the next and the intervals are wide, so the backtest cannot tell these variants apart and cannot be the arbiter of prompt choices. We chose the final pipeline on what is measurable with power (structure, false positives, bias, calibration), not on the pair correlation. The pair backtest says: there may be a weak event-specific signal; it is not established.
+
+**Decision: ship the structure without numbers.** Published artifacts (`scripts/publish-analyses.ts`) keep segments, mechanisms, direction counts and the alternative scenario; `effect` and `altEffect` are stripped; review status is `pending` (nothing is shown until `data:approve`). Validation continues in the background (section "Next").
+
 ## Where each problem stands
 
 | # | Problem | Status |
@@ -197,9 +241,9 @@ R² against observed poll changes stays below 0.03 in every configuration (slope
 | P1 | No turnout / magnitude | **Fixed in form**: v2 gives effect in points with interval and an explicit abstention effect. Not validated (see P8) and biased up on abstention (+0.3 to +0.8 pt on any event). |
 | P2 | Generic segments | **Largely fixed**: no segment > 25 %, 288 distinct names over 312, narrower. Some fallback segments still generic. |
 | P3 | Empty / invalid segments | **Fixed**: 99/99 events with usable segments (was 79/99). |
-| P4 | Unanimity / stereotyping | **Improved**: with 24 personas × 2 runs and an explicit "stay at baseline" rule only 28.6 % of bloc effects are stable-significant; controls ≈ 0. A far-right-negative / abstention-positive reflex remains. |
+| P4 | Unanimity / stereotyping | **Fixed for practical purposes**: the role-play prompt gives 0.1 pt mean effect and 0.1 % significant effects on 30 neutral controls (was 0.30 pt / 4.5 % with the demographic prompt); the far-right reflex is down from −0.63 to −0.17 pt. |
 | P5 | Contradictory global scenarios | **Fixed by design**: one template scenario, 48 personas × 2 runs. |
-| P6 | Invented counterfactuals | **Fixed**: relevance check (fired 1 time in 79 segments tested). |
+| P6 | Invented counterfactuals | **Fixed at the root**: no per-segment counterfactual; one close alternative scenario per event (`alternative.ts`). |
 | P7 | Incoherent bloc moves | **Fixed by construction** (distributions sum to 1). |
 | P8 | No validation | **Harness built; method not validated.** Round 2 variants are all at chance on the per-event test (section 7); on a cleaner pollster-pair outcome the bias-corrected predictions show a weak positive signal (r 0.18–0.30, section 8), not yet confirmed prospectively. Magnitudes are stripped from published artifacts unless `PUBLISH_MAGNITUDES=1`. |
 
@@ -224,3 +268,10 @@ npx tsx scripts/score-effects.ts /tmp/ctrl
 npx tsx scripts/backtest-analyses.ts data/generated/analyses-v2        # per-event sign agreement vs polls
 BIAS_DIR=/tmp/ctrl npx tsx scripts/backtest-weekly.ts data/generated/analyses-v2
 ```
+
+## Next (background validation)
+
+1. Re-run `scripts/backtest-pairs.ts` (with `BIAS_DIR` = controls and with `DEMEAN_BLOC=1`) as the daily pipeline adds polls and events; the configuration is now frozen: new step 2, role-play, poll-anchored baseline, 30-control bias correction, publishers weighting.
+2. More controls (60+) to tighten the bias estimate; check the bias is stable across prompt versions.
+3. A richer outcome than 13 poll pairs (more pollsters, daily trackers, a past campaign).
+4. Show `altEffect` / direction counts only after a human has reviewed the alternative scenarios.

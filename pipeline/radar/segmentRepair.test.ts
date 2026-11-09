@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { contentWords, counterfactualRelevant, globalScenario, jaccard, lacksEventSpecificity, narrowings, relaxations, sharedWords } from "./segmentRepair";
+import { contentWords, globalScenario, jaccard, lacksEventSpecificity, narrowings, relaxations, sharedWords, templateScenario } from "./segmentRepair";
 
 const event = { title: "Attentat raciste à Trappes : Lecornu dénonce les mots", description: "Un mort et cinq blessés après une attaque à Trappes, dans les Yvelines." };
 
@@ -19,9 +19,8 @@ describe("segmentRepair", () => {
     expect(lacksEventSpecificity({ ...(generic as object), mechanism: "Habitants proches de Trappes" } as never, event)).toBe(false);
     expect(lacksEventSpecificity({ all: ["cluster.single_mother"], any: [], name: "Mères seules", mechanism: "x" } as never, event)).toBe(false);
   });
-  it("needs two shared words in a counterfactual intervention", () => {
-    expect(counterfactualRelevant("Ateliers de dialogue entre voisins", event)).toBe(false);
-    expect(counterfactualRelevant("Attentat à Trappes sans réaction de Lecornu", event)).toBe(true);
+  it("builds the per-event counterfactual template from the title", () => {
+    expect(templateScenario(event)).toEqual({ intervention: event.title, comparator: "L’événement n’a pas lieu ou n’est pas relayé dans les médias", outcomeToMeasure: "intention de vote par bloc et abstention" });
   });
   it("builds one global scenario from the title", () => {
     expect(globalScenario(event).intervention).toBe(event.title);

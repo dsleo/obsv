@@ -8,7 +8,7 @@ import { callStructuredModel } from "./openaiStructured";
 import { CLUSTERS, filterSchema, matchesFilter, ONTOLOGY_VERSION, TAG_IDS, TAG_REGISTRY, tagIdSchema, type RadarFilter, type RadarPersona } from "../../src/lib/radar/ontology";
 import { normalizeFilter, pruneSpuriousGaps, SINGLE_VALUED_FAMILIES, splitMeasurementGaps } from "./filters";
 import {
-  counterfactualRelevant, DUPLICATE_JACCARD, globalScenario, jaccard, lacksEventSpecificity, Matcher, MAX_REPAIR_ROUNDS, MAX_SEGMENT_SHARE,
+  DUPLICATE_JACCARD, globalScenario, jaccard, lacksEventSpecificity, Matcher, MAX_REPAIR_ROUNDS, MAX_SEGMENT_SHARE,
   MIN_COMMUNES, MIN_PLACE_SEGMENT_SIZE, MIN_SEGMENT_SIZE, MIN_USABLE_SEGMENTS, narrowings, relaxations, TARGET_SEGMENTS, templateScenario, type Place,
 } from "./segmentRepair";
 import { buildGeographyResolver, type GeographyEntry } from "../../src/lib/radar/geography";
@@ -21,6 +21,7 @@ const eventSchema = z.object({
 });
 export type RadarEvent = z.infer<typeof eventSchema>;
 
+// The model no longer proposes a place or a counterfactual (see SegmentPreview): named places hold ~0 personas in the index.
 const segmentProposalSchema = z.object({
   name: z.string(),
   mechanism: z.string(),
@@ -28,15 +29,17 @@ const segmentProposalSchema = z.object({
   all: z.array(tagIdSchema),
   any: z.array(tagIdSchema),
   none: z.array(tagIdSchema),
-  place: z.object({ commune: z.string(), department: z.string() }),
   membershipGaps: z.array(z.string()),
   measurementNeeds: z.array(z.string()),
-  counterfactual: z.object({ intervention: z.string(), comparator: z.string(), outcomeToMeasure: z.string() }),
 });
 const eventMapSchema = z.object({ segments: z.array(segmentProposalSchema) });
 
 type SegmentProposal = z.infer<typeof segmentProposalSchema>;
 export type SegmentPreview = SegmentProposal & {
+  /** Kept for artifact compatibility: the model no longer proposes places, always empty. */
+  place: { commune: string; department: string };
+  /** Per-event template (one counterfactual for the event, not per segment); the model no longer proposes it. */
+  counterfactual: { intervention: string; comparator: string; outcomeToMeasure: string };
   id: string;
   resolvedPlace: { communeCode: string | null; departmentCode: string } | null;
   count: number;
@@ -105,10 +108,26 @@ function validFilter(proposal: SegmentProposal): RadarFilter {
   return filter;
 }
 
-const SYSTEM = `Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral. Utilisez UNIQUEMENT les identifiants de tags fournis. Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet. Ne classez pas les groupes selon ces effectifs. Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ». Les familles age, sex, education, occupation, household, marital, geo et commune_size sont à valeur unique : une personne n’a qu’une seule valeur par famille. « all » contient donc au plus un tag par famille ; pour « 35 à 64 ans » ou « employés et ouvriers », placez les valeurs alternatives dans « any ». « any » est UNE seule liste d’alternatives : n’y mélangez pas plusieurs familles et ne l’utilisez pas pour deux unions à la fois. Une liste de « clusters » (publics nommés, déjà définis par des règles sur les tags) est fournie : utilisez un cluster dès qu’il correspond au public visé, seul ou combiné à d’autres tags. Pour un lieu précis, utilisez son nom officiel et son département tels qu’ils figurent dans l’événement ; sinon laissez ces champs vides. Une vérification COG distincte valide le lieu : n’en inventez aucun. Dans « membershipGaps », indiquez UNIQUEMENT un attribut nécessaire pour définir le groupe nommé qu’AUCUN tag ni cluster fourni ne peut représenter (revenu, pension, vote passé, statut de sortant…) ; un attribut déjà couvert par une famille de tags (âge, foyer, statut matrimonial, densité…) n’est jamais une lacune, choisissez simplement la valeur voulue. Laissez ce champ vide si les tags et le lieu suffisent. Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds », jamais dans « membershipGaps ». N’utilisez pas de substitut approximatif pour une caractéristique absente.
-SPÉCIFICITÉ À L’ÉVÉNEMENT : chaque segment doit être le public plausiblement le plus concerné par le mécanisme PROPRE de CET événement : qui constitue la base de la personne ou du candidat soutenu ou attaqué, qui est visé par la mesure ou la proposition, qui vit là où l’événement s’est produit. Dans « mechanism », nommez explicitement l’élément de l’événement (personne, mesure, lieu, thème) qui concerne ce public. N’utilisez PAS les archétypes génériques habituels (jeunes diplômés des villes, salariés modestes, jeunes sans activité, retraités peu diplômés) sauf si l’événement les concerne réellement. Préférez des intersections précises de tags (âge × occupation × densité, sexe × foyer, etc.) à un seul grand groupe. Incluez au moins un segment étroit (moins de 5 % de l’échantillon) lorsque l’événement le permet.
-CONTRAINTES DE TAILLE vérifiées après coup : un segment doit compter au moins ${MIN_SEGMENT_SIZE} personnes, au plus ${MAX_SEGMENT_SHARE * 100} % de l’échantillon (« maxSegmentSize » personnes) et couvrir au moins ${MIN_COMMUNES} communes (sauf lieu nommé). Un segment trop large (un tag de profession ou d’âge seul, plusieurs unions) sera rejeté : combinez des tags pour le resserrer.
-Proposez 3 ou 4 segments distincts, qui ne se recouvrent pas, avec un scénario contrefactuel précis par segment. L’« intervention » du contrefactuel est l’événement réel lui-même (ou sa version précise), JAMAIS une action inventée sans rapport (atelier, dialogue, campagne…) ; le comparateur est l’alternative hypothétique (l’événement n’a pas eu lieu, ou a eu lieu autrement). N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine. Rédigez tous les champs en langage naturel en français.`;
+// Illustrations only (checked against the index: each is non-empty and within the size limits). Not to be copied.
+const EXAMPLES = `EXEMPLES ILLUSTRATIFS (événements fictifs, à ne PAS recopier : adaptez le raisonnement à l’événement réel) :
+Exemple 1 — « Le maire de Lille appelle à rassembler la gauche derrière une candidature unique à la présidentielle »
+  • « Cadres des grandes villes » : mécanisme « électorat urbain et diplômé, cœur de cible de l’appel à l’union de la gauche porté par le maire de Lille » ; all [cluster.urban_executive] (un cluster seul, car c’est exactement le bon public).
+  • « Femmes cadres intermédiaires des communes denses » : mécanisme « électorat féminin de la gauche modérée, concerné par la question de l’union » ; all [sex.female, occupation.intermediate, geo.dense] (intersection de 3 tags).
+  • « Actifs employés des communes intermédiaires » : mécanisme « base populaire de la gauche, à convaincre de se ranger derrière une candidature unique » ; all [geo.intermediate, occupation.employee], any [age.25_34, age.35_49] (tags obligatoires + liste d’alternatives).
+Exemple 2 — « Le gouvernement propose de désindexer les pensions de retraite de l’inflation en 2027 »
+  • « Retraités de 75 ans et plus ne vivant pas seuls » : mécanisme « premiers touchés par la désindexation des pensions, avec peu de marge d’adaptation » ; all [occupation.retired], any [age.75_plus], none [household.single] (usage d’un « none »).
+  • « Ouvriers de 50 à 64 ans » : mécanisme « proches de la retraite, ils anticipent l’effet de la désindexation sur leur future pension » ; all [cluster.older_worker].
+  • « Retraités ruraux » : mécanisme « pensions modestes et dépendance à la voiture dans les communes rurales, très sensibles à la perte de pouvoir d’achat » ; all [cluster.rural_retiree].
+Exemple 3 — « Le ministre de l’Intérieur annonce 500 policiers supplémentaires après une fusillade à Marseille »
+  • « Parents de famille des communes denses » : mécanisme « familles exposées à l’insécurité urbaine, destinataires de l’annonce de renforts policiers » ; all [household.couple_with_children, geo.dense, education.baccalaureate].
+  • « Commerçants et artisans » : mécanisme « premiers concernés par la sécurité de leur commerce, sensibles à la présence policière » ; all [cluster.independent].
+  • « Femmes de 25 à 49 ans vivant seules en ville » : mécanisme « sentiment d’insécurité dans l’espace public après une fusillade » ; all [sex.female, household.single, geo.dense], any [age.25_34, age.35_49].
+Ces exemples montrent des filtres de formes variées (cluster seul, intersection de 3 tags, « any », « none ») ; chaque mécanisme nomme un élément précis de l’événement.`;
+
+const SYSTEM = `Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral. Utilisez UNIQUEMENT les identifiants de tags fournis. Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet. Ne classez pas les groupes selon ces effectifs. Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ». Les familles age, sex, education, occupation, household, marital, geo et commune_size sont à valeur unique : une personne n’a qu’une seule valeur par famille. « all » contient donc au plus un tag par famille ; pour « 35 à 64 ans » ou « employés et ouvriers », placez les valeurs alternatives dans « any ». « any » est UNE seule liste d’alternatives : n’y mélangez pas plusieurs familles et ne l’utilisez pas pour deux unions à la fois. Les tags sont des BRIQUES pour COMPOSER des publics sur mesure : construisez l’intersection qui correspond au mécanisme de CET événement, au-delà des publics nommés. Les « clusters » fournis (14 publics déjà définis par des règles sur les tags) ne sont que des raccourcis et des exemples : n’en utilisez un que s’il correspond exactement au public visé, seul ou combiné à d’autres tags ; sinon composez votre propre filtre à partir des tags. Dans « membershipGaps », indiquez UNIQUEMENT un attribut nécessaire pour définir le groupe nommé qu’AUCUN tag ni cluster fourni ne peut représenter (revenu, pension, vote passé, statut de sortant…) ; un attribut déjà couvert par une famille de tags (âge, foyer, statut matrimonial, densité…) n’est jamais une lacune, choisissez simplement la valeur voulue. Laissez ce champ vide si les tags suffisent. Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds », jamais dans « membershipGaps ». N’utilisez pas de substitut approximatif pour une caractéristique absente.
+SPÉCIFICITÉ À L’ÉVÉNEMENT : chaque segment doit être le public plausiblement le plus concerné par le mécanisme PROPRE de CET événement : qui constitue la base de la personne ou du candidat soutenu ou attaqué, qui est visé par la mesure ou la proposition, qui vit là où l’événement s’est produit. « mechanism » : une ou deux phrases qui citent NOMMÉMENT la personne, la mesure, le lieu ou le thème de l’événement (reprenez ses termes) et expliquent pourquoi CE public est concerné ; un mécanisme qui conviendrait à n’importe quel événement politique est insuffisant. N’utilisez PAS les archétypes génériques habituels (jeunes diplômés des villes, salariés modestes, jeunes sans activité, retraités peu diplômés) sauf si l’événement les concerne réellement. Préférez des intersections précises de tags (âge × occupation × densité, sexe × foyer, etc.) à un seul grand groupe. Incluez au moins un segment étroit (moins de 5 % de l’échantillon) lorsque l’événement le permet.
+CONTRAINTES DE TAILLE vérifiées après coup : un segment doit compter au moins ${MIN_SEGMENT_SIZE} personnes, au plus ${MAX_SEGMENT_SHARE * 100} % de l’échantillon (« maxSegmentSize » personnes) et couvrir au moins ${MIN_COMMUNES} communes. Un segment trop large (un tag de profession ou d’âge seul, plusieurs unions) sera rejeté : combinez des tags pour le resserrer.
+Proposez 3 ou 4 segments distincts, qui ne se recouvrent pas. N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine. Rédigez tous les champs en langage naturel en français.\n${EXAMPLES}`;
 
 const REPAIR_SYSTEM = `${SYSTEM}
 MISSION DE RÉPARATION : une première proposition a été partiellement rejetée. Vous recevez « rejected » (segments refusés, avec la raison précise : tag inconnu, tags en conflit, trop large avec son effectif, trop petit, doublon, générique…), « accepted » (segments déjà retenus : ne les répétez pas et évitez tout recouvrement) et « needed » (nombre de remplaçants à proposer). Proposez des segments de remplacement DIFFÉRENTS et plus étroits (trop large : ajoutez des tags d’intersection ; trop petit : retirez un tag ou prenez un cluster ; conflit : une seule valeur par famille dans « all »), toujours liés au mécanisme de l’événement. Utilisez uniquement les tags et clusters fournis.`;
@@ -133,7 +152,7 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
   const shared = { ontologyVersion: ONTOLOGY_VERSION, singleValuedFamilies: SINGLE_VALUED_FAMILIES, clusters, tagCoverage: available, sampleSize: rows, maxSegmentSize: maxSize, minSegmentSize: MIN_SEGMENT_SIZE };
 
   const blank = (proposal: SegmentProposal): SegmentPreview => ({
-    ...proposal, id: "", count: 0, countIncludingNarrativeRules: 0, distinctCommunes: 0, samplePersonaIds: [], status: "insufficient_sample", resolvedPlace: null,
+    ...proposal, place: { commune: "", department: "" }, counterfactual: templateScenario(event), id: "", count: 0, countIncludingNarrativeRules: 0, distinctCommunes: 0, samplePersonaIds: [], status: "insufficient_sample", resolvedPlace: null,
   });
   const placeOf = (segment: SegmentPreview): Place => segment.resolvedPlace;
 
@@ -222,7 +241,8 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
       if (candidate.segment.status === "filterable_discovery_sample") { if (accepted.length < 4) accepted.push(candidate); } else rejected.push(candidate);
     }
   };
-  const user = (extra: object) => JSON.stringify({ event, ...shared, ...extra });
+  // The model only sees the title and description (no date, no URL): they would only invite recall of real-world outcomes.
+  const user = (extra: object) => JSON.stringify({ event: { title: event.title, description: event.description }, ...shared, ...extra });
 
   const first = await callStructuredModel({ schema: eventMapSchema, schemaName: "radar_event_map_v2", stageName: "radar_event_map", system: SYSTEM, user: user({}) });
   consider(first.data.segments.slice(0, 5));
@@ -234,7 +254,7 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
       user: user({
         needed,
         accepted: accepted.map(({ segment, members }) => ({ name: segment.name, all: segment.all, any: segment.any, none: segment.none, count: members.length })),
-        rejected: rejected.slice(-6).map(({ segment }) => ({ name: segment.name, all: segment.all, any: segment.any, none: segment.none, place: segment.place, count: segment.count, reason: segment.issue })),
+        rejected: rejected.slice(-6).map(({ segment }) => ({ name: segment.name, all: segment.all, any: segment.any, none: segment.none, count: segment.count, reason: segment.issue })),
       }),
     });
     consider(repair.data.segments.slice(0, 5));
@@ -285,14 +305,6 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
         if (found) break;
       }
       if (found) accepted.push(found);
-    }
-  }
-
-  // Counterfactual sanity: the intervention must be about the event itself.
-  for (const { segment } of accepted) {
-    if (!counterfactualRelevant(segment.counterfactual.intervention, event)) {
-      segment.repairs = [...(segment.repairs ?? []), `Contrefactuel remplacé par le gabarit : l’intervention proposée (« ${segment.counterfactual.intervention} ») ne se rattache pas à l’événement`];
-      segment.counterfactual = templateScenario(event, segment.counterfactual.outcomeToMeasure || undefined);
     }
   }
 

@@ -42,10 +42,6 @@ export function lacksEventSpecificity(segment: Pick<RadarFilter, "all" | "any"> 
   return sharedWords(`${segment.name} ${segment.mechanism}`, `${event.title} ${event.description}`).length === 0;
 }
 
-export function counterfactualRelevant(intervention: string, event: { title: string; description: string }) {
-  return sharedWords(intervention, `${event.title} ${event.description}`).length >= 2;
-}
-
 export const GLOBAL_OUTCOME = "intention de vote par bloc et abstention";
 export function eventComparator() { return "L’événement n’a pas lieu ou n’est pas relayé dans les médias"; }
 export function templateScenario(event: { title: string }, outcomeToMeasure = GLOBAL_OUTCOME) {

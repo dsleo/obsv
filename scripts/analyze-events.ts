@@ -5,18 +5,21 @@ import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { analyzeRadarEvent } from "../pipeline/radar/pipeline";
+import { proposeAlternative } from "../pipeline/radar/alternative";
 import { PINNED_MODEL } from "../pipeline/radar/openaiStructured";
 import { evaluateGlobalContrast, evaluateSegmentContrast } from "../pipeline/radar/relativeResponse";
 import { evaluateGlobalEffect, evaluateSegmentEffect } from "../pipeline/radar/probabilisticResponse";
 import { ANALYSIS_SCHEMA_VERSION, analysisArtifactSchema, type AnalysisArtifact } from "../src/lib/radar/analysisArtifact";
 import { radarEvents } from "../src/data/radarData";
 
-// --method v2: per-persona probabilities with/without the event, bigger samples, repeated runs (see docs/radar-trust.md).
+// default (v2): per-persona probabilities with/without the event, bigger samples, repeated runs (see docs/radar-trust.md).
+const reuseIndex = process.argv.indexOf("--reuse-segments");
+const withAlternative = !process.argv.includes("--no-alternative"); // v2 adds one close alternative scenario per event (event vs alternative)
 const methodIndex = process.argv.indexOf("--method");
-const V2 = methodIndex >= 0 && process.argv[methodIndex + 1] === "v2";
+const V2 = !(methodIndex >= 0 && process.argv[methodIndex + 1] === "v1"); // v2 is the default; --method v1 = the old directional method
 type Contrast = Promise<{ segmentId: string; [key: string]: unknown }>;
-const evalSegment = (V2 ? evaluateSegmentEffect : evaluateSegmentContrast) as unknown as (event: unknown, segment: unknown) => Contrast;
-const evalGlobal = (V2 ? evaluateGlobalEffect : evaluateGlobalContrast) as unknown as (event: unknown, scenario: unknown, index: number) => Contrast;
+const evalSegment = (V2 ? evaluateSegmentEffect : evaluateSegmentContrast) as unknown as (event: unknown, segment: unknown, opts?: unknown) => Contrast;
+const evalGlobal = (V2 ? evaluateGlobalEffect : evaluateGlobalContrast) as unknown as (event: unknown, scenario: unknown, index: number, opts?: unknown) => Contrast;
 const METHOD_VERSION = V2 ? "radar-probabilistic-v2" : "radar-directional-v1";
 const force = process.argv.includes("--force");
 const onlyIndex = process.argv.indexOf("--only");
@@ -75,9 +78,17 @@ async function analyzeOne({ id, demo, ...event }: Input) {
     if (previous?.inputHash === inputHash) { console.log(`${id}: up to date (${inputHash})`); return; }
   }
   console.log(`${id}: analyzing…`);
-  const analysis = await analyzeRadarEvent(event);
-  const contrasts: AnalysisArtifact["contrasts"] = {};
   const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } catch { return run(); } }; // one retry: the model occasionally omits a persona
+  // --reuse-segments <dir>: reuse the segments/scenarios of a previous run (freezes step 2 so only the response prompt differs between experiments).
+  const reuse = reuseIndex < 0 ? null : await readFile(path.join(path.resolve(process.argv[reuseIndex + 1]), `${id}.json`), "utf8").then(JSON.parse, () => null);
+  const analysis = reuse ? {
+    event: { ...event }, ontologyVersion: reuse.ontologyVersion, evidenceGrade: reuse.evidenceGrade, index: reuse.index, note: reuse.note, globalScenarios: reuse.globalScenarios,
+    segments: reuse.segments.map((segment: Record<string, unknown>) => ({ ...segment, place: { commune: "", department: "" }, resolvedPlace: null, countIncludingNarrativeRules: 0, samplePersonaIds: [] })),
+  } as unknown as Awaited<ReturnType<typeof analyzeRadarEvent>> : await analyzeRadarEvent(event);
+  // --alternative (v2): ONE close alternative scenario per event; the responses then also give ifAlternative (altEffect = event vs alternative).
+  const alternative = V2 && withAlternative ? (reuse?.alternative ?? await retry(() => proposeAlternative(analysis.event))) : undefined;
+  const opts = alternative ? { alternative: alternative.description } : undefined;
+  const contrasts: AnalysisArtifact["contrasts"] = {};
   const keep = (contrast: { segmentId: string; responses?: unknown; [key: string]: unknown }) => {
     const { responses: _private, ...publicPart } = contrast; // per-persona answers stay offline
     // Magnitudes (method v2 `effect`) stay out of the published folder until a backtest beats chance (docs/radar-trust.md). Experiments (--out) keep them.
@@ -87,15 +98,15 @@ async function analyzeOne({ id, demo, ...event }: Input) {
   const warn = (label: string) => (error: unknown) => console.warn(`${id}/${label}: ${error instanceof Error ? error.message : error}`);
   await Promise.all([ // segments and global scenarios of one event are independent LLM calls
     ...analysis.segments.filter((segment) => segment.status === "filterable_discovery_sample")
-      .map((segment) => retry(() => evalSegment(analysis.event, segment)).then(keep, warn(segment.id))),
-    ...analysis.globalScenarios.map((scenario, index) => retry(() => evalGlobal(analysis.event, scenario, index)).then(keep, warn(`global_${index + 1}`))),
+      .map((segment) => retry(() => evalSegment(analysis.event, segment, opts)).then(keep, warn(segment.id))),
+    ...analysis.globalScenarios.map((scenario, index) => retry(() => evalGlobal(analysis.event, scenario, index, opts)).then(keep, warn(`global_${index + 1}`))),
   ]);
   const artifact = analysisArtifactSchema.parse({
     schemaVersion: ANALYSIS_SCHEMA_VERSION, review: { status: "pending" }, eventId: id, methodVersion: METHOD_VERSION, model,
     ontologyVersion: analysis.ontologyVersion, inputHash, computedAt: new Date().toISOString(),
     evidenceGrade: analysis.evidenceGrade, ...(demo ? { demo: true } : {}),
     index: { frame: analysis.index.frame, rowCount: analysis.index.rowCount },
-    segments: analysis.segments, globalScenarios: analysis.globalScenarios, contrasts, note: analysis.note,
+    ...(alternative ? { alternative } : {}), segments: analysis.segments, globalScenarios: analysis.globalScenarios, contrasts, note: analysis.note,
   });
   await writeFile(file, `${JSON.stringify(artifact, null, 2)}\n`);
   console.log(`${id}: wrote ${file}`);

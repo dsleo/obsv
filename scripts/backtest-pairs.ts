@@ -20,6 +20,8 @@ for (const f of readdirSync(dir).filter((x) => x.endsWith(".json"))) {
   pred.set(a.eventId, Object.fromEntries(Object.keys(BLOCS).map((b) => [b, 100 * cs.reduce((s, c) => s + (c.effect[b].mean - (BIAS[b] ?? 0)) * c.sampledCount, 0) / n])));
 }
 
+// DEMEAN_BLOC=1: subtract each bloc's average prediction across all events, so only event-to-event differences are tested (a tilt shared by every event cannot score).
+if (process.env.DEMEAN_BLOC) for (const b of Object.keys(BLOCS)) { const avg = [...pred.values()].reduce((sum, v) => sum + v[b], 0) / pred.size; for (const v of pred.values()) v[b] -= avg; }
 type Pair = { t1: number; t2: number; obs: { c: string; y: number; frac: number }[] };
 const polls = snap.polls.filter((p: any) => p.round === "first").map((p: any) => ({ pollster: p.pollster, t: Date.parse(p.fieldworkEnd), s: p.candidateShares as Record<string, number> })).sort((a: any, b: any) => a.t - b.t);
 const pairs: Pair[] = [];
