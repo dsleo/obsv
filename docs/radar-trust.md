@@ -63,3 +63,82 @@ What changed vs `radar-directional-v1`:
 
 First look at 3 events (13 contrasts): mean |effect| 0.92 pt, max 4.2 pt, 35 % of bloc effects stable and significant. Effects are of plausible size (communist-group endorsement of Mélenchon: radical left +3 to +4 pt, far right −2 to −4 pt, abstention ~+1 pt) and weak/unstable effects are visibly flagged (e.g. second global scenario for the Glucksmann/LFI event). Caveat: the interval only covers persona sampling, not model variability; the `stable` flag covers part of that.
 
+### 3. Segment proposal: validation, repair loop, event specificity (P2, P3, P5, P6) — `pipeline/radar/pipeline.ts`, `segmentRepair.ts`
+
+- Reject segments with < 100 personas (20 for a named commune), > 25 % of the index, < 3 communes, duplicates (Jaccard > 0.8 on member ids), or a stock archetype that shares no word with the event.
+- Up to 2 LLM repair rounds that receive the rejected segments with exact reasons; then a deterministic fallback (widen the place, drop `none`, drop the last `all` tag, move to a cluster), each step logged in `repairs`.
+- Prompt now asks for publics specifically concerned by the event's mechanism and at least one narrow segment.
+- Global scenario is a template (the event / the event does not happen), not model-invented. A segment counterfactual with < 2 content words in common with the event is replaced by the template.
+- Finding: most baseline failures were **named places absent from the index** (Orléans, Trappes, Angers have 0 personas) and `any`/`all` conflicts, not invented tag ids (the schema enum already blocks those).
+
+Result on the full 99-event run (v2 run, all 312 retained segments usable):
+
+| | baseline | after |
+|---|---|---|
+| events with ≥ 1 usable segment | 79 (80 %) | 99 (100 %) |
+| usable segments / total | 286 / 383 | 312 / 312 (rejected ones are dropped) |
+| median segment size | 8,781 | 4,569 |
+| distinct segment names | 208 / 383 | 288 / 312 |
+| most common name | "Jeunes diplômés urbains" ×34 + "Salariés modestes" ×20 | "Jeunes diplômés urbains de moins de 35 ans" ×10 |
+
+Remaining: 7 of 26 events tested in isolation end with exactly 2 segments; fallback segments skip the specificity check and can end up as stock archetypes (e.g. a generic audience for Trappes); place-specific segments are impossible while the index has no persona in the place.
+
+### 4. Control events and false positives (P4) — `scripts/fixtures/control-events.json`, `scripts/score-effects.ts`
+
+6 neutral events (football calendar, weather alert, stamp price, jazz festival, car launch, rugby result) run through v2.
+
+| | controls (6 events, 26 contrasts) | real events (99 events, 407 contrasts) |
+|---|---|---|
+| mean absolute effect per bloc | 0.29 pt | 0.80 pt |
+| bloc effects stable across runs AND CI excludes 0 AND ≥ 1 pt | 3.8 % | 28.6 % |
+| max absolute effect | 1.7 pt | 5.3 pt |
+
+So v2 separates real events from noise by a factor ~3 in size and ~7 in "significant" rate: false positives are low but not zero. **Systematic bias found:** the far-right effect is negative on the controls too (−0.44 pt on average) and in 82 of 99 real events; abstention rises on almost any event (+0.30 pt on controls, +0.81 pt on real events). The model has a reflex "an event lowers the far right / raises abstention".
+
+### 5. Full v2 run vs real polls
+
+| window | scope | sign agreement | chance | p |
+|---|---|---|---|---|
+| 7 d | all blocs | 51.6 % | 50.8 % | 0.41 |
+| 7 d | concerned blocs | 42.6 % | 45.9 % | 0.70 |
+| 14 d | all blocs | 57.4 % | 57.6 % | 0.53 |
+| 14 d | concerned blocs | 50.0 % | 57.7 % | 0.90 |
+
+Placebo-corrected (control mean subtracted per bloc, `BIAS_DIR=...`): no change, still chance (14 d all blocs 58.8 % vs 62.1 % chance). Weekly aggregate (`scripts/backtest-weekly.ts`, 45 bloc-weeks): Pearson 0.12 (0.11 corrected), not distinguishable from 0 at that n.
+
+**Scale check (cumulative effects over the 99 events vs real poll drift, September → November):** radical left +27 pt vs +1.3 real; left +22 vs −0.8; centre −33 vs 0.0; right +0.3 vs +0.1; far right −97 vs −2.3. The effects are conditional on a persona being fully aware of the event; real exposure and persistence are a small fraction, so these numbers are not population effects.
+
+## Where each problem stands
+
+| # | Problem | Status |
+|---|---|---|
+| P1 | No turnout / magnitude | **Fixed in form**: v2 gives effect in points with interval and an explicit abstention effect. Not validated (see P8) and biased up on abstention (+0.3 to +0.8 pt on any event). |
+| P2 | Generic segments | **Largely fixed**: no segment > 25 %, 288 distinct names over 312, narrower. Some fallback segments still generic. |
+| P3 | Empty / invalid segments | **Fixed**: 99/99 events with usable segments (was 79/99). |
+| P4 | Unanimity / stereotyping | **Improved**: with 24 personas × 2 runs and an explicit "stay at baseline" rule only 28.6 % of bloc effects are stable-significant; controls ≈ 0. A far-right-negative / abstention-positive reflex remains. |
+| P5 | Contradictory global scenarios | **Fixed by design**: one template scenario, 48 personas × 2 runs. |
+| P6 | Invented counterfactuals | **Fixed**: relevance check (fired 1 time in 79 segments tested). |
+| P7 | Incoherent bloc moves | **Fixed by construction** (distributions sum to 1). |
+| P8 | No validation | **Harness built; method not validated.** Baseline and v2 are both at chance against polls. |
+
+## Conclusions and what it would take to trust the numbers
+
+1. The **structure** is now sound and measured (usable segments, specificity, stability, controls). This part can ship as hypotheses with the existing "hypothesis" label and human approval.
+2. The **magnitudes are not trustworthy**: not validated against polls, overstated ≥ 10× in cumulative terms, with a systematic bias. Do not present them as estimated vote changes. If shown, show them as "effect if fully exposed", with the interval and the stability flag, or as ranks (who is most affected) only.
+3. **Why the backtest cannot confirm anything yet:** 47 polls, ~6 polls per ±7-day window, poll sampling noise of ~±1–2 pt per bloc-week, against true per-event effects of a fraction of a point. With ~180 usable pairs the test only detects a method that is right ≥ ~57–60 % of the time. A null result here means "not demonstrated", not "disproved". Confounding (many events per week) adds to it.
+4. Next steps, in order of value:
+   - Add an **exposure / persistence factor** (e.g. share of the population reached by the event, from `publisher_count` and a decay) so cumulative effects are comparable to polls; fit it on the weekly series.
+   - **More controls (20–30)** and subtract the per-bloc bias only if it is stable; re-test with the backtest.
+   - Backtest on **past real shocks with known outcomes** (not only the Sept–Nov window), e.g. 2022 events with the 2022 polls, which gives far more power.
+   - Make the segment index **geo-complete** (persona coverage for Orléans, Trappes, Angers…) so place-specific events get place-specific segments.
+   - Ask for **human review** of the 10 largest predicted effects before publishing anything.
+
+## Reproduce
+
+```sh
+npm run data:analyze -- --method v2 --out data/generated/analyses-v2   # new method, separate output dir
+npm run data:analyze -- --method v2 --events scripts/fixtures/control-events.json --out /tmp/ctrl
+npx tsx scripts/score-effects.ts /tmp/ctrl
+npx tsx scripts/backtest-analyses.ts data/generated/analyses-v2        # per-event sign agreement vs polls
+BIAS_DIR=/tmp/ctrl npx tsx scripts/backtest-weekly.ts data/generated/analyses-v2
+```

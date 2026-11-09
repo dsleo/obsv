@@ -13,8 +13,19 @@ const BLOCS: Record<string, string[]> = {
 };
 const BLOC_NAMES = Object.keys(BLOCS);
 const WINDOWS = [7, 14];
-const SIGN_MIN_PRED = 0.15, SIGN_MIN_OBS = 0.2, PERMS = 2000;
+let SIGN_MIN_PRED = 0.15; // v1: net direction share (-1..1). v2 artifacts (effect in probability units): 0.005 = half a point, set once artifacts are loaded
+const SIGN_MIN_OBS = 0.2, PERMS = 2000;
 const DAY = 86400000;
+
+
+// Placebo correction: BIAS_DIR=<artifacts of control events> subtracts the mean effect the model produces on neutral events, per bloc.
+const BIAS: Record<string, number> = {};
+if (process.env.BIAS_DIR) {
+  const sums: Record<string, number> = {}; let count = 0;
+  for (const f of readdirSync(process.env.BIAS_DIR).filter((n) => n.endsWith(".json"))) for (const c of Object.values<any>(JSON.parse(readFileSync(join(process.env.BIAS_DIR, f), "utf8")).contrasts)) if (c.effect) { count++; for (const [b, e] of Object.entries<any>(c.effect)) sums[b] = (sums[b] ?? 0) + e.mean; }
+  for (const b of Object.keys(sums)) BIAS[b] = sums[b] / count;
+}
+const debiased = (b: string, mean: number) => mean - (BIAS[b] ?? 0);
 
 const dir = process.argv[2] ?? "data/generated/analyses";
 const snap = JSON.parse(readFileSync("data/generated/snapshot.json", "utf8"));
@@ -45,13 +56,17 @@ const artifacts = new Map<string, any>();
 for (const file of readdirSync(dir).filter((n) => n.endsWith(".json"))) {
   try { const a = JSON.parse(readFileSync(join(dir, file), "utf8")); if (a.eventId) artifacts.set(a.eventId, a); } catch { /* skip */ }
 }
+if ([...artifacts.values()].some((a) => a.methodVersion === "radar-probabilistic-v2")) SIGN_MIN_PRED = 0.005;
 const predicted = (a: any): Record<string, number> | null => {
   const out: Record<string, number> = {}; let n = 0;
   for (const c of Object.values<any>(a.contrasts ?? {})) n += c.sampledCount ?? 0;
   if (!n) return null;
   for (const b of [...BLOC_NAMES, "abstention"]) {
     let net = 0;
-    for (const c of Object.values<any>(a.contrasts)) { const s = c.summary?.[b]; if (s) net += s.toward - s.away; }
+    for (const c of Object.values<any>(a.contrasts)) {
+      if (c.effect?.[b]) net += debiased(b, c.effect[b].mean) * (c.sampledCount ?? 0); // v2: sample-weighted mean effect
+      else { const s = c.summary?.[b]; if (s) net += s.toward - s.away; } // v1: net direction counts
+    }
     out[b] = net / n;
   }
   return out;
