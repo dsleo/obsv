@@ -163,6 +163,33 @@ R² against observed poll changes stays below 0.03 in every configuration (slope
 
 **Reading:** bias correction raises raw agreement by 3–9 points but stays non-significant (p ≥ 0.17). The single "significant" cell (poll-anchored, detrended, ±14 d, p 0.025) is 1 of 16 tested cells, disappears with the cap and at ±7 d, and has R² ≈ 0: with this many comparisons it is expected by chance. **No configuration beats chance robustly, so magnitudes stay off the site.** The cap does not help (it removes what little spread there is). Not tested yet: whether the effect is better treated as a ranking, and any scheme that learns the exposure factor from the polls.
 
+### 8. Round 3: a cleaner outcome, exposure weighting, ranking, news-volume null model (`scripts/backtest-pairs.ts`)
+
+**Why the earlier backtests were weak (a method flaw, not only the model):** pollsters test different candidate lists (e.g. Philippe 16 % in one poll, 9.5 % when Attal and Lisnard are added), so "share before vs after" mixes scenario composition with real change. Part of the "centre falls over the period" drift we saw was probably this.
+
+**Cleaner outcome:** for each pollster, consecutive polls with the **identical candidate list** (house effect and scenario cancel), from 2026-09-01: **13 poll pairs, 148 candidate observations**. Outcome = change in each candidate's share (demeaned within the pair, shares are zero-sum). Predictor = sum of the predicted bloc effects of the events between the two polls, spread over the bloc's candidates in proportion to their share, **weighted by exposure** (equal / log(publishers) / publishers, i.e. how widely the event was relayed). Significance: 2,000 shuffles of which event gets which prediction, using the maximum correlation over the 3 exposure weightings (so trying them is paid for); bootstrap over poll pairs for the interval. Also a **no-LLM null model**: "the candidate was named in an event (+1) × log(publishers)".
+
+| baseline | bias-corrected | best exposure | r with poll change | 95 % CI (bootstrap over pairs) | permutation p | earlier / later half | partial r beyond news volume |
+|---|---|---|---|---|---|---|---|
+| survey | no | publishers | 0.15 | [−0.02, 0.24] | 0.008* | n/a | 0.14 |
+| survey | yes (30 controls) | publishers | **0.30** | [0.15, 0.38] | 0.031 | 0.22 / 0.32 | 0.28 |
+| poll-anchored | no | publishers | 0.02 | [−0.14, 0.10] | 0.001* | n/a | 0.01 |
+| poll-anchored | yes (30 controls) | publishers | **0.18** | [0.05, 0.25] | 0.002 | 0.12 / 0.20 | 0.17 |
+| no-LLM mention × log(publishers) | – | – | 0.19 | – | – | – | – |
+
+\* Without bias correction the p-value is **not** meaningful as "beats chance": shuffled predictions all carry the same systematic bias (e.g. far right −1.4 pt), so the null is centred on a negative correlation and any event-specific content looks significant even though r ≈ 0. Read r instead. Only the bias-corrected rows test event-specific information against a null centred near 0.
+
+**Ranking over the 13 intervals:** Spearman between total |predicted effect| and total |observed move| = 0.31–0.34, exactly what the number of events (0.34) or media volume (0.30) give: the model does not rank intervals by impact better than simple attention counts.
+
+**Learned exposure factor:** weighting by publishers (linear) beats equal or log weighting in every row; the fitted slope for the best configs is 0.04–0.05 poll points per predicted point (that is, the raw predicted effects need to be scaled by about 0.04 and weighted by how widely the event was relayed to line up with the polls).
+
+**Reading (preliminary, and deliberately not oversold):**
+- This is the **first signal above chance**: after bias correction, event-specific predictions correlate positively with real poll changes (r 0.18–0.30), the sign is positive in both the earlier and the later half of the period, and it holds after partialling out news volume (partial r 0.17–0.28).
+- But: only 13 pairs (several pollsters' waves overlap in time, so the effective number of independent intervals is smaller, about 5–6); r = 0.18 explains ~3 % of the variance; the bootstrap lower bound is just above 0; and we tried 4 baseline/bias variants × 3 exposure weightings. A Bonferroni factor of 4 on the best p leaves the poll-anchored + bias-corrected row at ≈ 0.008 but the survey row at ≈ 0.12. The no-LLM "candidate in the news" predictor already reaches 0.19, so the model's added value over attention is modest.
+- It tells us the predicted *direction and relative size*, bias-corrected and exposure-weighted, carries some real information. It does **not** validate absolute magnitudes.
+
+**Decision:** keep magnitudes off the published artifacts. Freeze the configuration (poll-anchored baseline, 30-control bias correction, publishers weighting) **before** looking at new data and re-run `backtest-pairs.ts` as the daily pipeline adds polls and events; publish calibrated estimates (scaled by the fitted factor, with interval and "hypothesis" label) only if the frozen configuration still beats the shuffle null on data it has not seen.
+
 ## Where each problem stands
 
 | # | Problem | Status |
@@ -174,7 +201,7 @@ R² against observed poll changes stays below 0.03 in every configuration (slope
 | P5 | Contradictory global scenarios | **Fixed by design**: one template scenario, 48 personas × 2 runs. |
 | P6 | Invented counterfactuals | **Fixed**: relevance check (fired 1 time in 79 segments tested). |
 | P7 | Incoherent bloc moves | **Fixed by construction** (distributions sum to 1). |
-| P8 | No validation | **Harness built; method not validated.** Baseline, v2, cap, bias correction and poll-anchored baseline are all at chance against polls (section 7). Magnitudes are stripped from published artifacts unless `PUBLISH_MAGNITUDES=1`. |
+| P8 | No validation | **Harness built; method not validated.** Round 2 variants are all at chance on the per-event test (section 7); on a cleaner pollster-pair outcome the bias-corrected predictions show a weak positive signal (r 0.18–0.30, section 8), not yet confirmed prospectively. Magnitudes are stripped from published artifacts unless `PUBLISH_MAGNITUDES=1`. |
 
 ## Conclusions and what it would take to trust the numbers
 
