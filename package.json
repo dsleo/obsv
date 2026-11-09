@@ -12,14 +12,15 @@
     "build": "npm run data:prepare && next build",
     "start": "next start",
     "typecheck": "npm run data:prepare && tsc --noEmit",
-    "data:backtest": "tsx scripts/backtest-analyses.ts",
+    "data:backtest": "tsx scripts/backtest-pairs.ts",
     "data:analyze": "tsx scripts/analyze-events.ts",
     "data:check-analyses": "tsx scripts/check-analyses.ts",
     "data:approve": "tsx scripts/approve-analysis.ts",
     "data:fetch-index": "node scripts/radar/fetch-index.mjs",
     "test": "node --test scripts/validate.test.mjs scripts/events-api.test.mjs && vitest run pipeline src",
     "smoke": "node scripts/smoke-routes.mjs",
-    "data:retag": "tsx scripts/radar/retag-index.ts"
+    "data:retag": "tsx scripts/radar/retag-index.ts",
+    "trust:refresh": "node --env-file-if-exists=.env scripts/trust-refresh.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.479.0",

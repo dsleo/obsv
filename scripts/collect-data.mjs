@@ -37,7 +37,9 @@ if (pollsUrl) {
 } else {
   const response = await fetch(SONDAX_CSV_URL, { signal: AbortSignal.timeout(60_000) });
   if (!response.ok) throw new Error(`Sondax CSV returned HTTP ${response.status}`);
-  const { polls, skipped } = sondaxToPolls(await response.text(), { knownCandidates });
+  const csv = await response.text();
+  await writeFile(path.join(destination, "sondax.csv"), csv); // full file (all configurations, second-round duels): outcome for scripts/backtest-pairs.ts
+  const { polls, skipped } = sondaxToPolls(csv, { knownCandidates });
   const payload = { schemaVersion: 1, polls };
   check("polls", payload);
   await write("polls", payload);

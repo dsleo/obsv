@@ -269,9 +269,38 @@ npx tsx scripts/backtest-analyses.ts data/generated/analyses-v2        # per-eve
 BIAS_DIR=/tmp/ctrl npx tsx scripts/backtest-weekly.ts data/generated/analyses-v2
 ```
 
+### 10. Round 5: more controls, a richer outcome, alternative-scenario review, automatic refresh
+
+**More controls: 59 neutral events (was 30).** Mean |effect| 0.10 pt, 0.1 % stable-significant (2 of 1,512 bloc effects). The per-bloc bias is **stable**: first 30 vs the 29 new controls: far right −0.17 ± 0.01 vs −0.16 ± 0.01 pt, abstention +0.09 vs +0.08, centre +0.06 vs +0.09, left +0.07 vs +0.05, right −0.06 vs −0.05, radical left 0.00 vs −0.01. The correction subtracted in the backtests is therefore well estimated (standard error ≤ 0.01 pt).
+
+**A richer outcome than 13 poll pairs.** The Sondax CSV holds far more than the main first-round configuration we publish: every survey has several configurations, and there are second-round duels (2,437 rows). `data:collect` now keeps the full file (`data/incoming/sondax.csv`) and `scripts/backtest-pairs.ts` uses all of it: consecutive polls from the same pollster with the identical candidate list (first round, all configurations) or the same duel (second round), from 2026-09-01.
+
+| outcome set | pairs | observations |
+|---|---|---|
+| first round, main configuration (the old test) | 10 | 114 |
+| first round, all configurations | 49 | 504 |
+| second-round duels | 24 | 24 |
+| **all** | **73** | **528** |
+
+Final pipeline, bias-corrected with the 59 controls (exposure weighting by number of publishers; permutation p = 2,000 event-shuffles, max over 3 weightings):
+
+| | r | 95 % CI over pairs | p | earlier / later half | partial r beyond news volume |
+|---|---|---|---|---|---|
+| overall (shared per-bloc tilt included), all 73 pairs | 0.19 | [0.05, 0.32] | 0.26 | 0.14 / 0.22 | 0.19 |
+| **event-specific** (per-bloc mean removed), all 73 pairs | **0.15** | **[0.00, 0.28]** | **0.10** | 0.17 / 0.14 | 0.14 |
+| event-specific, first round main only (10 pairs) | 0.24 | [−0.12, 0.48] | 0.04 | 0.38 / 0.17 | 0.21 |
+| event-specific, second-round duels (24 pairs) | 0.20 | [−0.23, 0.61] | 0.32 | 0.64 / −0.05 | 0.49 |
+
+**Reading:** a weak, positive and stable event-specific signal (r ≈ 0.15, same in the earlier and later half of the period), but it is **not established**: the interval touches 0 and p = 0.10. Five times more outcome data did not make it stronger or weaker, it made the estimate stable: that is what a small true effect looks like, and what pure noise usually does not do. Rough power calculation: detecting r = 0.15 at 80 % power needs about 350 independent observations; our 528 overlap heavily in time (several pollsters' waves cover the same events), so the effective number is perhaps a third of that. We gain about 35 pairs a month: another 2–3 months of polls would settle it either way. No richer outcome source exists in the data we have (no daily trackers, no other poll series; the API's own volumes measure attention, not votes).
+
+**Alternative scenarios reviewed.** I read all 99. A first pass wrongly called several "invented" because I compared them to the *title*; the generator also sees the *description*, which in clustered Google News events can cover a different angle than the title (e.g. title "Glucksmann désigné candidat" but description about a cyberattack on the primary vote; the alternative "no cyberattack" is grounded). Lessons: the review sheet must show title and description side by side, and automatic checks can only catch invented names, not invented facts. What the read-through did find: about a third of the alternatives only changed the tone ("plus apaisé / conciliant"), 13 introduced names absent from the event, a few were vague ("un des candidats") or mentioned media.
+
+Fix in `pipeline/radar/alternative.ts`: stricter prompt (no new person/organisation/place/fact; vary the *type* of change, not only the tone; name the actors; no media), a deterministic check (`alternativeFlags`: new proper noun, tone-only, vague, media mention, near-copy, off-topic) and up to 3 attempts with feedback, keeping the least-flagged. Regenerating the flagged ones took **31 flagged (31 %) → 1 (1 %)**. `scripts/review-alternatives.ts` writes [alternative-review.md](alternative-review.md): one row per event with title, description, alternative, what changes, flags and an empty **status** column for the human reviewer. `altEffect` is published only if `PUBLISH_MAGNITUDES`/`--keep-magnitudes` is set **and** the event is marked `ok` in `data/alternative-review.json`.
+
+**Automatic refresh.** `npm run trust:refresh` collects fresh polls and events, analyses new events (cache by input hash), the 59 controls, runs the pair backtest overall and event-specific with the control bias correction, and appends one line to `docs/radar-trust-history.jsonl`. It needs the persona index, so it runs on a developer machine, not in GitHub Actions. First entry (2026-11-09): 47 polls, 100 events, event-specific r = 0.15, p = 0.104.
+
 ## Next (background validation)
 
-1. Re-run `scripts/backtest-pairs.ts` (with `BIAS_DIR` = controls and with `DEMEAN_BLOC=1`) as the daily pipeline adds polls and events; the configuration is now frozen: new step 2, role-play, poll-anchored baseline, 30-control bias correction, publishers weighting.
-2. More controls (60+) to tighten the bias estimate; check the bias is stable across prompt versions.
-3. A richer outcome than 13 poll pairs (more pollsters, daily trackers, a past campaign).
-4. Show `altEffect` / direction counts only after a human has reviewed the alternative scenarios.
+1. Run `npm run trust:refresh` about once a month (it appends to `docs/radar-trust-history.jsonl`): the question is whether the event-specific r ≈ 0.15 stays and the interval separates from 0. Decision rule, fixed now: publish calibrated magnitudes (scaled by the fitted factor, with interval, labelled hypothesis) only if the event-specific shuffle test reaches p < 0.05 on data that did not exist at this entry, with the configuration unchanged.
+2. A human fills the status column of [alternative-review.md](alternative-review.md) (and `data/alternative-review.json`) before any `altEffect` is shown.
+3. A richer outcome would still help (daily trackers, a past campaign); none is available in our data today.
