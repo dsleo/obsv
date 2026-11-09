@@ -19,6 +19,9 @@ const directionCounts = z.object({ toward: z.number(), away: z.number(), noClear
 const contrastSchema = z.object({
   segmentId: z.string(), segmentName: z.string(), matchedCount: z.number(), sampledCount: z.number(),
   evidenceGrade: z.string(), comparator: z.string(), summary: z.record(z.string(), directionCounts), note: z.string(),
+  // Method v2 (radar-probabilistic-v2): effect in probability points (-1..1) per bloc and abstention, bootstrap 95% interval, stable = same sign across independent runs.
+  runs: z.number().optional(), mechanisms: z.array(z.string()).optional(),
+  effect: z.record(z.string(), z.object({ mean: z.number(), lo: z.number(), hi: z.number(), stable: z.boolean() })).optional(),
 });
 
 export const analysisArtifactSchema = z.object({

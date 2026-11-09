@@ -7,14 +7,22 @@ import path from "node:path";
 import { analyzeRadarEvent } from "../pipeline/radar/pipeline";
 import { PINNED_MODEL } from "../pipeline/radar/openaiStructured";
 import { evaluateGlobalContrast, evaluateSegmentContrast } from "../pipeline/radar/relativeResponse";
+import { evaluateGlobalEffect, evaluateSegmentEffect } from "../pipeline/radar/probabilisticResponse";
 import { ANALYSIS_SCHEMA_VERSION, analysisArtifactSchema, type AnalysisArtifact } from "../src/lib/radar/analysisArtifact";
 import { radarEvents } from "../src/data/radarData";
 
-const METHOD_VERSION = "radar-directional-v1";
+// --method v2: per-persona probabilities with/without the event, bigger samples, repeated runs (see docs/radar-trust.md).
+const methodIndex = process.argv.indexOf("--method");
+const V2 = methodIndex >= 0 && process.argv[methodIndex + 1] === "v2";
+type Contrast = Promise<{ segmentId: string; [key: string]: unknown }>;
+const evalSegment = (V2 ? evaluateSegmentEffect : evaluateSegmentContrast) as unknown as (event: unknown, segment: unknown) => Contrast;
+const evalGlobal = (V2 ? evaluateGlobalEffect : evaluateGlobalContrast) as unknown as (event: unknown, scenario: unknown, index: number) => Contrast;
+const METHOD_VERSION = V2 ? "radar-probabilistic-v2" : "radar-directional-v1";
 const force = process.argv.includes("--force");
 const onlyIndex = process.argv.indexOf("--only");
-const only = onlyIndex < 0 ? null : process.argv[onlyIndex + 1];
-const out = path.join(process.cwd(), "data/generated/analyses");
+const only = onlyIndex < 0 ? null : process.argv[onlyIndex + 1].split(","); // --only id1,id2
+const outIndex = process.argv.indexOf("--out"); // --out <dir>: write elsewhere (experiments), default = the published location
+const out = path.resolve(outIndex < 0 ? "data/generated/analyses" : process.argv[outIndex + 1]);
 
 for (const file of [".env", ".env.local"]) { try { process.loadEnvFile(file); } catch { /* optional: CI passes real env vars */ } }
 const concurrencyIndex = process.argv.indexOf("--concurrency");
@@ -36,9 +44,10 @@ if (missing.length) {
 
 type Input = { id: string; title: string; description: string; occurredAt: string; sourceUrl: string; demo: boolean };
 
+const eventsIndex = process.argv.indexOf("--events"); // --events <file>: another events file (e.g. scripts/fixtures/control-events.json)
 async function loadEvents(): Promise<Input[]> {
   try {
-    const payload = JSON.parse(await readFile("data/incoming/events.json", "utf8"));
+    const payload = JSON.parse(await readFile(eventsIndex < 0 ? "data/incoming/events.json" : process.argv[eventsIndex + 1], "utf8"));
     return payload.events.map((e: { id: string; title: string; summary: string; occurredAt: string; sources: { url: string }[] }) => ({
       id: e.id, title: e.title, description: e.summary, occurredAt: e.occurredAt.slice(0, 10), sourceUrl: e.sources[0].url, demo: false,
     }));
@@ -53,7 +62,7 @@ async function loadEvents(): Promise<Input[]> {
   }
 }
 
-const sources = await Promise.all(["pipeline", "relativeResponse"].map((name) => readFile(`pipeline/radar/${name}.ts`, "utf8")));
+const sources = await Promise.all(["pipeline", "relativeResponse", ...(V2 ? ["probabilisticResponse"] : [])].map((name) => readFile(`pipeline/radar/${name}.ts`, "utf8")));
 const indexManifest = await readFile(`${personaIndex}.manifest.json`, "utf8");
 await mkdir(out, { recursive: true });
 
@@ -69,15 +78,15 @@ async function analyzeOne({ id, demo, ...event }: Input) {
   const analysis = await analyzeRadarEvent(event);
   const contrasts: AnalysisArtifact["contrasts"] = {};
   const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } catch { return run(); } }; // one retry: the model occasionally omits a persona
-  const keep = (contrast: Awaited<ReturnType<typeof evaluateSegmentContrast>>) => {
+  const keep = (contrast: { segmentId: string; responses?: unknown; [key: string]: unknown }) => {
     const { responses: _private, ...publicPart } = contrast; // per-persona answers stay offline
-    contrasts[contrast.segmentId] = publicPart;
+    contrasts[contrast.segmentId] = publicPart as never;
   };
   const warn = (label: string) => (error: unknown) => console.warn(`${id}/${label}: ${error instanceof Error ? error.message : error}`);
   await Promise.all([ // segments and global scenarios of one event are independent LLM calls
     ...analysis.segments.filter((segment) => segment.status === "filterable_discovery_sample")
-      .map((segment) => retry(() => evaluateSegmentContrast(analysis.event, segment)).then(keep, warn(segment.id))),
-    ...analysis.globalScenarios.map((scenario, index) => retry(() => evaluateGlobalContrast(analysis.event, scenario, index)).then(keep, warn(`global_${index + 1}`))),
+      .map((segment) => retry(() => evalSegment(analysis.event, segment)).then(keep, warn(segment.id))),
+    ...analysis.globalScenarios.map((scenario, index) => retry(() => evalGlobal(analysis.event, scenario, index)).then(keep, warn(`global_${index + 1}`))),
   ]);
   const artifact = analysisArtifactSchema.parse({
     schemaVersion: ANALYSIS_SCHEMA_VERSION, review: { status: "pending" }, eventId: id, methodVersion: METHOD_VERSION, model,
@@ -91,7 +100,7 @@ async function analyzeOne({ id, demo, ...event }: Input) {
 }
 
 // Worker pool: `concurrency` events at a time. A failed event never stops the others; the exit code reports it (for CI).
-const queue = (await loadEvents()).filter((event) => !only || event.id === only);
+const queue = (await loadEvents()).filter((event) => !only || only.includes(event.id));
 const failed: string[] = [];
 await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
   for (let event = queue.shift(); event; event = queue.shift()) {

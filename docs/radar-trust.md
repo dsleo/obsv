@@ -37,4 +37,29 @@ Backfill result, measured on `data/generated/analyses/*.json`:
 
 ## Log
 
-_(filled in as work progresses: each entry = what we tried, result, decision)_
+### 1. Backtest of the baseline (P8) — `scripts/backtest-analyses.ts`
+
+Predicted net shift per bloc (sum of toward − away over all contrasts / sampled personas) vs the real change in first-round polls (mean share in the N days after the event minus the N days up to it; blocs mapped to poll candidates in one constant). Permutation baseline: artifacts shuffled across events 2,000×.
+
+| window | scope | events | pairs used for sign | sign agreement | chance | p | Pearson |
+|---|---|---|---|---|---|---|---|
+| 7 d | all blocs | 85 | 161 | 56.5 % | 49.0 % | 0.024 | 0.04 |
+| 7 d | blocs of the named candidates | 85 | 67 | 52.2 % | 49.6 % | 0.37 | −0.11 |
+| 14 d | all blocs | 91 | 169 | 51.5 % | 51.6 % | 0.52 | 0.00 |
+| 14 d | blocs of the named candidates | 91 | 64 | 51.6 % | 51.7 % | 0.48 | −0.04 |
+
+**Reading:** baseline is indistinguishable from chance (one nominally significant cell out of four, which is expected by luck; correlations ≈ 0). Caveats: only 47 polls, median 6 polls within ±7 d of an event, overlapping windows (pairs are not independent, so the p-values are optimistic), many event candidates belong to no polled bloc (Ruffin, Polony, Lecornu, Villepin…).
+**Decision:** every later change is scored with this harness; "trustworthy" means beating chance here, not just looking plausible.
+
+### 2. Probability output with bigger, repeated samples (P1, P4, P7) — `pipeline/radar/probabilisticResponse.ts`, `--method v2`
+
+What changed vs `radar-directional-v1`:
+- Each persona gets a **baseline** distribution over 5 blocs + abstention (deterministic mapping of its 2022 survey-model propensity, e.g. Mélenchon/Poutou/Arthaud → radical left).
+- The model returns two distributions per persona, **with** and **without** the event (counterfactual in the same call), each summing to 1, told to stay at baseline unless the event gives a concrete reason. Effect = difference. Because both sum to 1, a gain for one bloc is a loss for another or for abstention: incoherent "toward several blocs at once" (P7) is impossible by construction.
+- Abstention is estimated explicitly (P1), in points.
+- Bloc order is shuffled in the prompt (seeded) against positional bias.
+- 24 personas per run per segment (was 6), 2 independent runs (different sample seeds), 48 per run for the global scenario. Mean effect with bootstrap 95 % interval over personas; `stable` = same sign in both runs.
+- Artifact: new optional `effect` per bloc, `runs`, `mechanisms`; the old `summary` counts are kept (|Δ| ≥ 2 pts) so the UI keeps working.
+
+First look at 3 events (13 contrasts): mean |effect| 0.92 pt, max 4.2 pt, 35 % of bloc effects stable and significant. Effects are of plausible size (communist-group endorsement of Mélenchon: radical left +3 to +4 pt, far right −2 to −4 pt, abstention ~+1 pt) and weak/unstable effects are visibly flagged (e.g. second global scenario for the Glucksmann/LFI event). Caveat: the interval only covers persona sampling, not model variability; the `stable` flag covers part of that.
+

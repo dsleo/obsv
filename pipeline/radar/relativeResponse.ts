@@ -57,7 +57,7 @@ function snapshot(persona: RadarPersona) {
   };
 }
 
-export async function sampleSegmentPersonas(event: RadarEvent, segment: SegmentPreview, limit = 6) {
+export async function sampleSegmentPersonas(event: RadarEvent, segment: SegmentPreview, limit = 6, salt = "") {
   const global = segment.id.startsWith("global_") && segment.all.length === 0 && segment.any.length === 0 && segment.none.length === 0;
   const filter = global ? null : filterSchema.parse({ all: segment.all, any: segment.any, none: segment.none });
   if (segment.status === "invalid_filter" || segment.membershipGaps.length > 0) {
@@ -77,7 +77,7 @@ export async function sampleSegmentPersonas(event: RadarEvent, segment: SegmentP
   const byCommune = new Map<string, Candidate>();
   const overall: Candidate[] = [];
   let matches = 0;
-  const seed = `${event.title}|${event.occurredAt}|${segment.id}`;
+  const seed = `${event.title}|${event.occurredAt}|${segment.id}${salt ? `|${salt}` : ""}`;
   const index = global
     ? process.env.RADAR_GLOBAL_PERSONA_INDEX || path.join(process.cwd(), "data/radar/personas.jsonl")
     : process.env.RADAR_PERSONA_INDEX || path.join(process.cwd(), "data/radar/personas.jsonl");

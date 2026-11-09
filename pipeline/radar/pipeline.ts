@@ -7,6 +7,10 @@ import { z } from "zod";
 import { callStructuredModel } from "./openaiStructured";
 import { CLUSTERS, filterSchema, matchesFilter, ONTOLOGY_VERSION, TAG_IDS, TAG_REGISTRY, tagIdSchema, type RadarFilter, type RadarPersona } from "../../src/lib/radar/ontology";
 import { normalizeFilter, pruneSpuriousGaps, SINGLE_VALUED_FAMILIES, splitMeasurementGaps } from "./filters";
+import {
+  counterfactualRelevant, DUPLICATE_JACCARD, globalScenario, jaccard, lacksEventSpecificity, Matcher, MAX_REPAIR_ROUNDS, MAX_SEGMENT_SHARE,
+  MIN_COMMUNES, MIN_PLACE_SEGMENT_SIZE, MIN_SEGMENT_SIZE, MIN_USABLE_SEGMENTS, narrowings, relaxations, TARGET_SEGMENTS, templateScenario, type Place,
+} from "./segmentRepair";
 import { buildGeographyResolver, type GeographyEntry } from "../../src/lib/radar/geography";
 
 const eventSchema = z.object({
@@ -29,10 +33,7 @@ const segmentProposalSchema = z.object({
   measurementNeeds: z.array(z.string()),
   counterfactual: z.object({ intervention: z.string(), comparator: z.string(), outcomeToMeasure: z.string() }),
 });
-const eventMapSchema = z.object({
-  globalScenarios: z.array(z.object({ intervention: z.string(), comparator: z.string(), outcomeToMeasure: z.string(), reason: z.string() })),
-  segments: z.array(segmentProposalSchema),
-});
+const eventMapSchema = z.object({ segments: z.array(segmentProposalSchema) });
 
 type SegmentProposal = z.infer<typeof segmentProposalSchema>;
 export type SegmentPreview = SegmentProposal & {
@@ -55,6 +56,12 @@ function personaPath() {
 // In-memory slim view (tags, geography): no rescan of the multi-GB file per event. See personaIndex.ts.
 async function eachPersona(visitor: (persona: RadarPersona) => void) {
   for (const persona of (await loadPersonas(personaPath())).personas) visitor(persona);
+}
+
+let matcherPromise: Promise<Matcher> | undefined;
+function cachedMatcher() {
+  matcherPromise ??= loadPersonas(personaPath()).then(({ personas }) => new Matcher(personas)).catch((error) => { matcherPromise = undefined; throw error; });
+  return matcherPromise;
 }
 
 async function tagCoverage() {
@@ -98,6 +105,16 @@ function validFilter(proposal: SegmentProposal): RadarFilter {
   return filter;
 }
 
+const SYSTEM = `Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral. Utilisez UNIQUEMENT les identifiants de tags fournis. Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet. Ne classez pas les groupes selon ces effectifs. Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ». Les familles age, sex, education, occupation, household, marital, geo et commune_size sont à valeur unique : une personne n’a qu’une seule valeur par famille. « all » contient donc au plus un tag par famille ; pour « 35 à 64 ans » ou « employés et ouvriers », placez les valeurs alternatives dans « any ». « any » est UNE seule liste d’alternatives : n’y mélangez pas plusieurs familles et ne l’utilisez pas pour deux unions à la fois. Une liste de « clusters » (publics nommés, déjà définis par des règles sur les tags) est fournie : utilisez un cluster dès qu’il correspond au public visé, seul ou combiné à d’autres tags. Pour un lieu précis, utilisez son nom officiel et son département tels qu’ils figurent dans l’événement ; sinon laissez ces champs vides. Une vérification COG distincte valide le lieu : n’en inventez aucun. Dans « membershipGaps », indiquez UNIQUEMENT un attribut nécessaire pour définir le groupe nommé qu’AUCUN tag ni cluster fourni ne peut représenter (revenu, pension, vote passé, statut de sortant…) ; un attribut déjà couvert par une famille de tags (âge, foyer, statut matrimonial, densité…) n’est jamais une lacune, choisissez simplement la valeur voulue. Laissez ce champ vide si les tags et le lieu suffisent. Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds », jamais dans « membershipGaps ». N’utilisez pas de substitut approximatif pour une caractéristique absente.
+SPÉCIFICITÉ À L’ÉVÉNEMENT : chaque segment doit être le public plausiblement le plus concerné par le mécanisme PROPRE de CET événement : qui constitue la base de la personne ou du candidat soutenu ou attaqué, qui est visé par la mesure ou la proposition, qui vit là où l’événement s’est produit. Dans « mechanism », nommez explicitement l’élément de l’événement (personne, mesure, lieu, thème) qui concerne ce public. N’utilisez PAS les archétypes génériques habituels (jeunes diplômés des villes, salariés modestes, jeunes sans activité, retraités peu diplômés) sauf si l’événement les concerne réellement. Préférez des intersections précises de tags (âge × occupation × densité, sexe × foyer, etc.) à un seul grand groupe. Incluez au moins un segment étroit (moins de 5 % de l’échantillon) lorsque l’événement le permet.
+CONTRAINTES DE TAILLE vérifiées après coup : un segment doit compter au moins ${MIN_SEGMENT_SIZE} personnes, au plus ${MAX_SEGMENT_SHARE * 100} % de l’échantillon (« maxSegmentSize » personnes) et couvrir au moins ${MIN_COMMUNES} communes (sauf lieu nommé). Un segment trop large (un tag de profession ou d’âge seul, plusieurs unions) sera rejeté : combinez des tags pour le resserrer.
+Proposez 3 ou 4 segments distincts, qui ne se recouvrent pas, avec un scénario contrefactuel précis par segment. L’« intervention » du contrefactuel est l’événement réel lui-même (ou sa version précise), JAMAIS une action inventée sans rapport (atelier, dialogue, campagne…) ; le comparateur est l’alternative hypothétique (l’événement n’a pas eu lieu, ou a eu lieu autrement). N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine. Rédigez tous les champs en langage naturel en français.`;
+
+const REPAIR_SYSTEM = `${SYSTEM}
+MISSION DE RÉPARATION : une première proposition a été partiellement rejetée. Vous recevez « rejected » (segments refusés, avec la raison précise : tag inconnu, tags en conflit, trop large avec son effectif, trop petit, doublon, générique…), « accepted » (segments déjà retenus : ne les répétez pas et évitez tout recouvrement) et « needed » (nombre de remplaçants à proposer). Proposez des segments de remplacement DIFFÉRENTS et plus étroits (trop large : ajoutez des tags d’intersection ; trop petit : retirez un tag ou prenez un cluster ; conflit : une seule valeur par famille dans « all »), toujours liés au mécanisme de l’événement. Utilisez uniquement les tags et clusters fournis.`;
+
+type Evaluated = { segment: SegmentPreview; filter: RadarFilter | null; members: Int32Array; tooLarge?: boolean };
+
 async function analyzeRadarEventUncached(rawEvent: unknown) {
   const event = eventSchema.parse(rawEvent);
   const { coverage, rows } = await cachedTagCoverage();
@@ -108,22 +125,21 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
   const geographyData = JSON.parse(await readFile(geoPath, "utf8")) as { records: GeographyEntry[] };
   const resolveCommune = buildGeographyResolver(geographyData.records);
   const departmentCodes = new Map<string, string>();
-  for (const row of geographyData.records) departmentCodes.set(row.department.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim(), row.departmentCode);
+  for (const row of geographyData.records) departmentCodes.set(row.department.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim(), row.departmentCode);
+  const matcher = await cachedMatcher();
+  const maxSize = Math.floor(rows * MAX_SEGMENT_SHARE);
   const available = TAG_REGISTRY.map((tag) => ({ ...tag, count: coverage[tag.id] })).filter((tag) => tag.count > 0).sort((a, b) => b.count - a.count);
   const clusters = CLUSTERS.filter((cluster) => coverage[cluster.id] > 0).map(({ id, label, description }) => ({ id, label, description, count: coverage[id] }));
-  const result = await callStructuredModel({
-    schema: eventMapSchema,
-    schemaName: "radar_event_map_v1",
-    stageName: "radar_event_map",
-    system: `Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral. Utilisez UNIQUEMENT les identifiants de tags fournis. Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet. Ne classez pas les groupes selon ces effectifs. Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ». Les familles age, sex, education, occupation, household, marital, geo et commune_size sont à valeur unique : une personne n’a qu’une seule valeur par famille. « all » contient donc au plus un tag par famille ; pour « 35 à 64 ans » ou « employés et ouvriers », placez les valeurs alternatives dans « any ». « any » est UNE seule liste d’alternatives : n’y mélangez pas plusieurs familles et ne l’utilisez pas pour deux unions à la fois. Une liste de « clusters » (publics nommés, déjà définis par des règles sur les tags) est fournie : utilisez un cluster dès qu’il correspond au public visé, seul ou combiné à d’autres tags. Pour un lieu précis, utilisez son nom officiel et son département tels qu’ils figurent dans l’événement ; sinon laissez ces champs vides. Une vérification COG distincte valide le lieu : n’en inventez aucun. Dans « membershipGaps », indiquez UNIQUEMENT un attribut nécessaire pour définir le groupe nommé qu’AUCUN tag ni cluster fourni ne peut représenter (revenu, pension, vote passé, statut de sortant…) ; un attribut déjà couvert par une famille de tags (âge, foyer, statut matrimonial, densité…) n’est jamais une lacune, choisissez simplement la valeur voulue. Laissez ce champ vide si les tags et le lieu suffisent. Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds », jamais dans « membershipGaps ». N’utilisez pas de substitut approximatif pour une caractéristique absente. Proposez 2 à 4 segments distincts, un scénario contrefactuel précis par segment et 1 à 2 scénarios globaux. Distinguez l’événement réel de l’alternative hypothétique. N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine. Rédigez tous les champs en langage naturel en français.`,
-    user: JSON.stringify({ event, ontologyVersion: ONTOLOGY_VERSION, singleValuedFamilies: SINGLE_VALUED_FAMILIES, clusters, tagCoverage: available, sampleSize: rows }),
+  const shared = { ontologyVersion: ONTOLOGY_VERSION, singleValuedFamilies: SINGLE_VALUED_FAMILIES, clusters, tagCoverage: available, sampleSize: rows, maxSegmentSize: maxSize, minSegmentSize: MIN_SEGMENT_SIZE };
+
+  const blank = (proposal: SegmentProposal): SegmentPreview => ({
+    ...proposal, id: "", count: 0, countIncludingNarrativeRules: 0, distinctCommunes: 0, samplePersonaIds: [], status: "insufficient_sample", resolvedPlace: null,
   });
-  const proposals = result.data.segments.slice(0, 4);
-  const segments: SegmentPreview[] = proposals.map((proposal, index) => ({
-    ...proposal, id: `segment_${index + 1}`, count: 0, countIncludingNarrativeRules: 0,
-    distinctCommunes: 0, samplePersonaIds: [], status: "insufficient_sample", resolvedPlace: null,
-  }));
-  const filters = segments.map((segment, index) => {
+  const placeOf = (segment: SegmentPreview): Place => segment.resolvedPlace;
+
+  /** Normalise, validate and COG-resolve one proposal (no counting). */
+  const prepare = (proposal: SegmentProposal): { segment: SegmentPreview; filter: RadarFilter | null } => {
+    const segment = blank(proposal);
     try {
       const normalized = normalizeFilter(segment);
       if (normalized.error) throw new Error(normalized.error);
@@ -138,52 +154,155 @@ async function analyzeRadarEventUncached(rawEvent: unknown) {
       const place = segment.place;
       if (place.commune && !place.department) throw new Error("Named commune needs its department");
       if (place.department) {
-        const departmentKey = place.department.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+        const departmentKey = place.department.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
         const departmentCode = departmentCodes.get(departmentKey);
         if (!departmentCode) throw new Error(`Department not found in INSEE COG: ${place.department}`);
         const communeCode = place.commune ? resolveCommune(place.commune, place.department)?.communeCode : null;
         if (place.commune && !communeCode) throw new Error(`Commune/department not found unambiguously in INSEE COG: ${place.commune}, ${place.department}`);
         segment.resolvedPlace = { communeCode: communeCode ?? null, departmentCode };
       }
-      return filter;
+      return { segment, filter };
+    } catch (error) {
+      segment.status = "invalid_filter";
+      segment.issue = error instanceof Error ? error.message : String(error);
+      return { segment, filter: null };
     }
-    catch (error) {
-      segments[index].status = "invalid_filter";
-      segments[index].issue = error instanceof Error ? error.message : String(error);
-      return null;
-    }
-  });
-  const communes = segments.map(() => new Set<string>());
-  await eachPersona((persona) => {
-    filters.forEach((filter, index) => {
-      if (!filter) return;
-      const place = segments[index].resolvedPlace;
-      if (place && (!persona.geography || persona.geography.departmentCode !== place.departmentCode ||
-        (place.communeCode && persona.geography.communeCode !== place.communeCode && persona.geography.parentCommuneCode !== place.communeCode))) return;
-      if (matchesFilter(persona, filter, ["direct", "derived", "official_geo", "narrative_rule", "audited_narrative"])) segments[index].countIncludingNarrativeRules += 1;
-      if (!matchesFilter(persona, filter)) return;
-      const segment = segments[index];
-      segment.count += 1;
-      if (persona.geography?.communeCode) communes[index].add(persona.geography.communeCode);
-      if (segment.samplePersonaIds.length < 3) segment.samplePersonaIds.push(persona.id);
-    });
-  });
-  segments.forEach((segment, index) => {
-    segment.distinctCommunes = communes[index].size;
-    if (segment.status === "invalid_filter") return;
-    const minCommunes = segment.resolvedPlace?.communeCode ? 1 : 3;
+  };
+
+  /** Count membership; set status/issue from the size, commune and membership constraints. */
+  const measure = ({ segment, filter }: { segment: SegmentPreview; filter: RadarFilter | null }, candidates?: ArrayLike<number>): Evaluated => {
+    if (!filter) return { segment, filter, members: new Int32Array() };
+    const result = matcher.match(filter, placeOf(segment), candidates);
+    segment.count = result.members.length;
+    segment.countIncludingNarrativeRules = result.narrativeCount;
+    segment.distinctCommunes = result.communes;
+    segment.samplePersonaIds = [];
+    for (const i of result.members.subarray(0, 3)) segment.samplePersonaIds.push(matcherPersonaId(i));
+    const named = Boolean(segment.resolvedPlace?.communeCode);
+    const minSize = named ? MIN_PLACE_SEGMENT_SIZE : MIN_SEGMENT_SIZE;
+    const minCommunes = named ? 1 : MIN_COMMUNES;
+    const evaluated: Evaluated = { segment, filter, members: result.members };
     if (segment.membershipGaps.length > 0 || (segment.count === 0 && segment.countIncludingNarrativeRules > 0)) {
       segment.status = "incomplete_membership";
       segment.issue = segment.membershipGaps.length ? `Attributs absents des tags : ${segment.membershipGaps.join(", ")}` : "Seuls des tags issus du récit (non audités) permettraient de former ce groupe";
-    } else if (segment.count < 20 || segment.distinctCommunes < minCommunes) {
+    } else if (segment.count > maxSize) {
+      segment.status = "invalid_filter"; evaluated.tooLarge = true;
+      segment.issue = `Segment trop large : ${segment.count} profils (maximum ${maxSize}, soit ${MAX_SEGMENT_SHARE * 100} % de l’échantillon)`;
+    } else if (segment.count < minSize || segment.distinctCommunes < minCommunes) {
       segment.status = "insufficient_sample";
-      segment.issue = [segment.count < 20 && `${segment.count} profils (minimum 20)`, segment.distinctCommunes < minCommunes && `${segment.distinctCommunes} communes (minimum ${minCommunes})`].filter(Boolean).join(" · ");
+      segment.issue = [segment.count < minSize && `${segment.count} profils (minimum ${minSize})`, segment.distinctCommunes < minCommunes && `${segment.distinctCommunes} communes (minimum ${minCommunes})`].filter(Boolean).join(" · ");
     } else segment.status = "filterable_discovery_sample";
-  });
-  return {
+    return evaluated;
+  };
+  const matcherPersonaId = (index: number) => personaList[index].id;
+  const personaList = (await loadPersonas(personaPath())).personas;
+
+  /** Event-specificity and duplicate checks on a segment that already passes the size rules. */
+  const judge = (candidate: Evaluated, accepted: Evaluated[], opts: { specificity: boolean }) => {
+    const { segment } = candidate;
+    if (segment.status !== "filterable_discovery_sample") return;
+    if (opts.specificity && lacksEventSpecificity(segment, event)) {
+      segment.status = "invalid_filter";
+      segment.issue = "Segment générique (archétype habituel) sans lien avec le mécanisme de l’événement";
+      return;
+    }
+    const twin = accepted.find((other) => jaccard(other.members, candidate.members) > DUPLICATE_JACCARD);
+    if (twin) {
+      segment.status = "invalid_filter";
+      segment.issue = `Doublon : même public que « ${twin.segment.name} » (recouvrement > ${DUPLICATE_JACCARD * 100} %)`;
+    }
+  };
+
+  const accepted: Evaluated[] = [];
+  const rejected: Evaluated[] = [];
+  const consider = (proposals: SegmentProposal[]) => {
+    for (const proposal of proposals) {
+      const candidate = measure(prepare(proposal));
+      judge(candidate, accepted, { specificity: true });
+      if (candidate.segment.status === "filterable_discovery_sample") { if (accepted.length < 4) accepted.push(candidate); } else rejected.push(candidate);
+    }
+  };
+  const user = (extra: object) => JSON.stringify({ event, ...shared, ...extra });
+
+  const first = await callStructuredModel({ schema: eventMapSchema, schemaName: "radar_event_map_v2", stageName: "radar_event_map", system: SYSTEM, user: user({}) });
+  consider(first.data.segments.slice(0, 5));
+
+  for (let round = 1; round <= MAX_REPAIR_ROUNDS && accepted.length < TARGET_SEGMENTS; round++) {
+    const needed = Math.min(4, TARGET_SEGMENTS + 1) - accepted.length;
+    const repair = await callStructuredModel({
+      schema: eventMapSchema, schemaName: "radar_event_map_repair_v1", stageName: "radar_event_map_repair", system: REPAIR_SYSTEM,
+      user: user({
+        needed,
+        accepted: accepted.map(({ segment, members }) => ({ name: segment.name, all: segment.all, any: segment.any, none: segment.none, count: members.length })),
+        rejected: rejected.slice(-6).map(({ segment }) => ({ name: segment.name, all: segment.all, any: segment.any, none: segment.none, place: segment.place, count: segment.count, reason: segment.issue })),
+      }),
+    });
+    consider(repair.data.segments.slice(0, 5));
+  }
+
+  // Deterministic fallback: relax rejected segments until at least MIN_USABLE_SEGMENTS pass.
+  if (accepted.length < MIN_USABLE_SEGMENTS) {
+    for (const origin of [...rejected]) {
+      if (accepted.length >= MIN_USABLE_SEGMENTS) break;
+      const { segment } = origin;
+      if (segment.membershipGaps.length > 0) continue; // an absent attribute cannot be repaired by dropping tags
+      const lists = { all: [...segment.all], any: [...segment.any], none: [...segment.none] } as RadarFilter;
+      const unresolvedPlace = !origin.filter && Boolean(segment.place.department) && !segment.resolvedPlace;
+      // Place options, most to least specific: the named commune, its department, then nowhere in particular.
+      const placeOptions: { place: Place; note: string }[] = [{ place: unresolvedPlace ? null : segment.resolvedPlace, note: unresolvedPlace ? "lieu non résolu retiré" : "" }];
+      if (segment.resolvedPlace?.communeCode) placeOptions.push({ place: { communeCode: null, departmentCode: segment.resolvedPlace.departmentCode }, note: `commune « ${segment.place.commune} » peu ou pas présente dans l’échantillon : périmètre élargi au département` });
+      if (segment.resolvedPlace) placeOptions.push({ place: null, note: `lieu « ${segment.place.commune || segment.place.department} » peu ou pas présent dans l’échantillon : périmètre élargi à toute la France` });
+      const tryCandidate = (filter: RadarFilter, note: string, option: { place: Place; note: string }, restrict?: ArrayLike<number>, clusterLabel?: string): Evaluated | null => {
+        let valid: RadarFilter;
+        try {
+          const normalized = normalizeFilter(filter);
+          if (normalized.error) return null;
+          valid = validFilter({ ...segment, all: normalized.all, any: normalized.any, none: normalized.none } as SegmentProposal);
+        } catch { return null; }
+        const widened = option.place !== segment.resolvedPlace;
+        const copy: SegmentPreview = {
+          ...segment, ...valid, status: "insufficient_sample", issue: undefined, resolvedPlace: option.place,
+          // The filter changed: the name/mechanism must not keep describing the original audience.
+          ...(note ? clusterLabel
+            ? { name: clusterLabel, mechanism: `Public nommé retenu par repli automatique, en lien avec l’événement : ${event.title}` }
+            : { name: `${segment.name} (version élargie)` } : {}),
+          ...(widened && segment.place.commune ? { name: `${segment.name.replace(new RegExp(`\\s*(?:à|de|autour d[’']?|près d[’']?)\\s*${segment.place.commune}\\b`, "i"), "")} (lieu « ${segment.place.commune} » absent de l’échantillon, périmètre élargi)` } : {}),
+          place: option.place?.communeCode ? segment.place : option.place ? { commune: "", department: segment.place.department } : { commune: "", department: "" },
+          repairs: [...(segment.repairs ?? []), `Segment initial rejeté (${segment.issue}) ; repli automatique : ${[note, widened || option.note ? option.note : ""].filter(Boolean).join(" ; ") || "aucun changement de filtre"}`],
+        };
+        const candidate = measure({ segment: copy, filter: valid }, restrict);
+        judge(candidate, accepted, { specificity: false });
+        return candidate.segment.status === "filterable_discovery_sample" ? candidate : null;
+      };
+      const steps: { filter: RadarFilter; note: string; clusterLabel?: string }[] = [];
+      let found: Evaluated | null = null;
+      if (origin.tooLarge) {
+        const options = narrowings(lists).map((step) => tryCandidate(step.filter, step.note, placeOptions[0], origin.members)).filter((c): c is Evaluated => c !== null);
+        found = options.sort((a, b) => b.members.length - a.members.length)[0] ?? null;
+      } else steps.push({ filter: lists, note: "" });
+      if (!found) for (const step of [...steps, ...relaxations(lists)]) {
+        for (const option of placeOptions) { found = tryCandidate(step.filter, step.note, option, undefined, step.clusterLabel); if (found) break; }
+        if (found) break;
+      }
+      if (found) accepted.push(found);
+    }
+  }
+
+  // Counterfactual sanity: the intervention must be about the event itself.
+  for (const { segment } of accepted) {
+    if (!counterfactualRelevant(segment.counterfactual.intervention, event)) {
+      segment.repairs = [...(segment.repairs ?? []), `Contrefactuel remplacé par le gabarit : l’intervention proposée (« ${segment.counterfactual.intervention} ») ne se rattache pas à l’événement`];
+      segment.counterfactual = templateScenario(event, segment.counterfactual.outcomeToMeasure || undefined);
+    }
+  }
+
+  // Unusable proposals are dropped; they are kept (for transparency) only when too few segments are usable.
+  const kept = accepted.length >= MIN_USABLE_SEGMENTS ? accepted : [...accepted, ...rejected].slice(0, 4);
+  const segments = kept.map(({ segment }, index) => ({ ...segment, id: `segment_${index + 1}` }));
+    return {
     event, ontologyVersion: ONTOLOGY_VERSION, index: manifest,
     evidenceGrade: "hypothesis" as const,
-    globalScenarios: result.data.globalScenarios.slice(0, 2), segments,
+    globalScenarios: [globalScenario(event)], segments,
     note: "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   };
 }
