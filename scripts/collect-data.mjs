@@ -1,7 +1,7 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { loadKnownCandidates, validateFeed } from "./lib/validate.mjs";
-import { apiToEvents, fetchApiEvents, fetchOgImage } from "./lib/events-api.mjs";
+import { apiToEvents, enrichEvent, fetchApiEvents } from "./lib/events-api.mjs";
 import { SONDAX_CSV_URL, sondaxToPolls } from "./lib/sondax.mjs";
 
 // Polls default to the daily Sondax CSV (full history = backfill). POLLS_FEED_URL overrides it with a JSON feed.
@@ -51,7 +51,8 @@ if (!eventsUrl) {
   try { curation = JSON.parse(await readFile("data/events-curation.json", "utf8")); } catch (error) { if (error?.code !== "ENOENT") throw error; }
   const all = await fetchApiEvents();
   const events = apiToEvents(all, curation);
-  await Promise.all(events.map(async (event) => { event.image = (await fetchOgImage(event.sources[0].url)) ?? undefined; }));
+  // Resolve Google News links + thumbnails, 6 events at a time (polite to Google and the publishers).
+  for (let i = 0; i < events.length; i += 6) await Promise.all(events.slice(i, i + 6).map((event) => enrichEvent(event)));
   const payload = { schemaVersion: 1, events };
   check("events", payload);
   await write("events", payload);

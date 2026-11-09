@@ -37,3 +37,8 @@ test("curation: pin promotes any tier, hide wins", () => {
   const rows = apiToEvents([ev({ seed_source: "google:6", tier: "C" }), ev({ seed_source: "google:1", publisher_count: 9 })], { pin: ["google-6"], hide: ["google-1"] });
   assert.deepEqual(rows.map((r) => [r.id, r.importance]), [["google-6", "major"]]);
 });
+
+test("image: the API's own thumbnail is used, representative first", () => {
+  const [a, b] = apiToEvents([ev({ seed_source: "google:1", publisher_count: 6, source_image_urls: [null, "https://i/2.jpg"] }), ev({ seed_source: "google:2", publisher_count: 6, representative_image_url: "https://i/r.jpg", source_image_urls: ["https://i/1.jpg"] })]);
+  assert.deepEqual([a.image, b.image], ["https://i/2.jpg", "https://i/r.jpg"]);
+});

@@ -31,6 +31,36 @@ export function pickDescription(e) {
 
 const isGoogle = (u) => !u || u.includes("news.google.com");
 
+/** Publisher URL behind a Google News redirect (page signature -> batchexecute). Returns null on any failure. ponytail: unofficial Google endpoint, breaks if Google changes it. */
+export async function resolveGoogleUrl(url) {
+  if (!url?.includes("news.google.com")) return url ?? null;
+  try {
+    const id = new URL(url).pathname.split("/").pop();
+    const page = await (await fetch(`https://news.google.com/articles/${id}`, { headers: { "user-agent": "Mozilla/5.0" }, signal: AbortSignal.timeout(10_000) })).text();
+    const sg = page.match(/data-n-a-sg="([^"]+)"/)?.[1], ts = page.match(/data-n-a-ts="([^"]+)"/)?.[1];
+    if (!sg || !ts) return null;
+    const inner = JSON.stringify(["garturlreq", [["X", "X", ["X", "X"], null, null, 1, 1, "US:en", null, 1, null, null, null, null, null, 0, 1], "X", "X", 1, [1, 1, 1], 1, 1, null, 0, 0, null, 0], id, Number(ts), sg]);
+    const body = `f.req=${encodeURIComponent(JSON.stringify([[["Fbv4je", inner, null, "generic"]]]))}`;
+    const res = await fetch("https://news.google.com/_/DotsSplashUi/data/batchexecute", { method: "POST", headers: { "content-type": "application/x-www-form-urlencoded;charset=UTF-8", "user-agent": "Mozilla/5.0" }, body, signal: AbortSignal.timeout(10_000) });
+    const resolved = JSON.parse(JSON.parse((await res.text()).split("\n\n")[1])[0][2])[1];
+    return typeof resolved === "string" && resolved.startsWith("http") ? resolved : null;
+  } catch { return null; }
+}
+
+/** Resolve the links of an event's articles (in place) and pick a thumbnail: the API's own image, else the first og:image found. */
+export async function enrichEvent(event, tries = 4) {
+  let image = event.image ?? null;
+  for (const [i, article] of event.articles.entries()) {
+    if (image && i >= tries) break; // image found: remaining links stay as the API gave them
+    const url = await resolveGoogleUrl(article.url);
+    if (url) article.url = url;
+    if (!image && i < tries) image = await fetchOgImage(url);
+  }
+  const direct = event.articles.find((a) => !isGoogle(a.url));
+  if (direct) event.sources[0].url = direct.url; // "Lire l'article" now points at the publisher, not Google
+  event.image = image ?? undefined;
+}
+
 /** Thumbnail of a direct article URL (og:image). Google News redirects have none. Returns null on any failure. */
 export async function fetchOgImage(url) {
   if (isGoogle(url)) return null;
@@ -73,6 +103,7 @@ export function apiToEvents(items, curation = {}) {
       importance,
       candidateIds: e.candidate_ids,
       publisherCount: e.publisher_count,
+      image: e.representative_image_url || (e.source_image_urls ?? []).find(Boolean) || undefined, // from the API; enrichEvent fills the rest
       articles: buildArticles(e),
       // A direct publisher URL when the event has one (enables the thumbnail); else representative_url (usually a Google News redirect).
       sources: [{ title: e.publishers[0] || "Presse", url: [e.representative_url, ...(e.source_urls ?? [])].find((u) => !isGoogle(u)) || e.representative_url || `https://news.google.com/search?q=${encodeURIComponent(e.title)}` }],

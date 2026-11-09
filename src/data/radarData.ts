@@ -58,7 +58,7 @@ export type RadarEvent = {
   importance: "major" | "notable";
   title: string;
   summary: string;
-  /** CSS `background-image` value: the API events have no illustration. */
+  /** CSS `background-image` value: the article thumbnail, or a tag-coloured gradient when there is none. */
   image: string;
   color: string;
   sources: string;
@@ -94,7 +94,7 @@ export const radarEvents: RadarEvent[] = snapshot.events.map((event) => {
     title: event.title, summary: event.summary,
     articles: ((event as { articles?: { title: string; publisher: string; url: string }[] }).articles ?? []),
     publisherCount: (event as { publisherCount?: number }).publisherCount ?? 1,
-    image: thumbnail ? `url("${thumbnail}")` : "none",
+    image: thumbnail ? `url("${thumbnail}")` : `linear-gradient(140deg, ${type.color}, #15191b)`, // no thumbnail: tag-coloured card
     sources: `SOURCES : ${event.sources[0].title.toUpperCase()}`, sourceUrl: event.sources[0].url,
     shortDate: formatShortDate(isoDate),
     date: `${formatShortDate(isoDate)} ${frenchLong.format(Date.parse(isoDate))}`,
