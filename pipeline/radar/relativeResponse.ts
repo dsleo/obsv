@@ -1,8 +1,7 @@
 
 import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
 import path from "node:path";
-import readline from "node:readline";
+import { hydrate, loadPersonas } from "./personaIndex";
 import { z } from "zod";
 import { callStructuredModel } from "./openaiStructured";
 import { filterSchema, matchesFilter, type RadarPersona } from "../../src/lib/radar/ontology";
@@ -82,10 +81,7 @@ export async function sampleSegmentPersonas(event: RadarEvent, segment: SegmentP
   const index = global
     ? process.env.RADAR_GLOBAL_PERSONA_INDEX || path.join(process.cwd(), "data/radar/personas.jsonl")
     : process.env.RADAR_PERSONA_INDEX || path.join(process.cwd(), "data/radar/personas.jsonl");
-  const lines = readline.createInterface({ input: createReadStream(index), crlfDelay: Infinity });
-  for await (const line of lines) {
-    if (!line.trim()) continue;
-    const persona = JSON.parse(line) as RadarPersona;
+  for (const persona of (await loadPersonas(index)).personas) {
     const place = segment.resolvedPlace;
     if (place && (!persona.geography || persona.geography.departmentCode !== place.departmentCode ||
       (place.communeCode && persona.geography.communeCode !== place.communeCode && persona.geography.parentCommuneCode !== place.communeCode))) continue;
@@ -130,7 +126,7 @@ export async function sampleSegmentPersonas(event: RadarEvent, segment: SegmentP
     if (!selected.some((row) => row.geography?.communeCode === persona.geography?.communeCode)) selected.push(persona);
   }
   if (selected.length < 3) throw new Error("Fewer than three supported personas match this segment");
-  return { matches, selected: selected.slice(0, limit) };
+  return { matches, selected: await hydrate(index, selected.slice(0, limit)) }; // full rows only for the few selected
 }
 
 export async function evaluateSegmentContrast(event: RadarEvent, segment: SegmentPreview) {

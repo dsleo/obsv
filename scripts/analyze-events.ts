@@ -16,7 +16,9 @@ const onlyIndex = process.argv.indexOf("--only");
 const only = onlyIndex < 0 ? null : process.argv[onlyIndex + 1];
 const out = path.join(process.cwd(), "data/generated/analyses");
 
-try { process.loadEnvFile(".env.local"); } catch { /* optional */ }
+for (const file of [".env", ".env.local"]) { try { process.loadEnvFile(file); } catch { /* optional: CI passes real env vars */ } }
+const concurrencyIndex = process.argv.indexOf("--concurrency");
+const concurrency = Math.max(1, Number(concurrencyIndex < 0 ? process.env.ANALYZE_CONCURRENCY ?? 3 : process.argv[concurrencyIndex + 1]) || 3); // events analysed at once
 const personaIndex = process.env.RADAR_PERSONA_INDEX || "data/radar/personas.jsonl";
 const geographyIndex = process.env.RADAR_GEOGRAPHY_INDEX || "data/radar/geography-2026.json";
 const model = process.env.OPENAI_MODEL || PINNED_MODEL;
@@ -55,14 +57,13 @@ const sources = await Promise.all(["pipeline", "relativeResponse"].map((name) =>
 const indexManifest = await readFile(`${personaIndex}.manifest.json`, "utf8");
 await mkdir(out, { recursive: true });
 
-for (const { id, demo, ...event } of await loadEvents()) {
-  if (only && id !== only) continue;
+async function analyzeOne({ id, demo, ...event }: Input) {
   const file = path.join(out, `${id}.json`);
   // ponytail: hashing the prompt-bearing sources means any prompt edit invalidates the cache.
   const inputHash = createHash("sha256").update(JSON.stringify({ event, indexManifest, METHOD_VERSION, model, sources })).digest("hex").slice(0, 16);
   if (!force) {
     const previous = await readFile(file, "utf8").then(JSON.parse, () => null);
-    if (previous?.inputHash === inputHash) { console.log(`${id}: up to date (${inputHash})`); continue; }
+    if (previous?.inputHash === inputHash) { console.log(`${id}: up to date (${inputHash})`); return; }
   }
   console.log(`${id}: analyzing…`);
   const analysis = await analyzeRadarEvent(event);
@@ -72,15 +73,12 @@ for (const { id, demo, ...event } of await loadEvents()) {
     const { responses: _private, ...publicPart } = contrast; // per-persona answers stay offline
     contrasts[contrast.segmentId] = publicPart;
   };
-  for (const segment of analysis.segments) {
-    if (segment.status !== "filterable_discovery_sample") continue;
-    try { keep(await retry(() => evaluateSegmentContrast(analysis.event, segment))); }
-    catch (error) { console.warn(`${id}/${segment.id}: ${error instanceof Error ? error.message : error}`); }
-  }
-  for (const [index, scenario] of analysis.globalScenarios.entries()) {
-    try { keep(await retry(() => evaluateGlobalContrast(analysis.event, scenario, index))); }
-    catch (error) { console.warn(`${id}/global_${index + 1}: ${error instanceof Error ? error.message : error}`); }
-  }
+  const warn = (label: string) => (error: unknown) => console.warn(`${id}/${label}: ${error instanceof Error ? error.message : error}`);
+  await Promise.all([ // segments and global scenarios of one event are independent LLM calls
+    ...analysis.segments.filter((segment) => segment.status === "filterable_discovery_sample")
+      .map((segment) => retry(() => evaluateSegmentContrast(analysis.event, segment)).then(keep, warn(segment.id))),
+    ...analysis.globalScenarios.map((scenario, index) => retry(() => evaluateGlobalContrast(analysis.event, scenario, index)).then(keep, warn(`global_${index + 1}`))),
+  ]);
   const artifact = analysisArtifactSchema.parse({
     schemaVersion: ANALYSIS_SCHEMA_VERSION, review: { status: "pending" }, eventId: id, methodVersion: METHOD_VERSION, model,
     ontologyVersion: analysis.ontologyVersion, inputHash, computedAt: new Date().toISOString(),
@@ -91,3 +89,13 @@ for (const { id, demo, ...event } of await loadEvents()) {
   await writeFile(file, `${JSON.stringify(artifact, null, 2)}\n`);
   console.log(`${id}: wrote ${file}`);
 }
+
+// Worker pool: `concurrency` events at a time. A failed event never stops the others; the exit code reports it (for CI).
+const queue = (await loadEvents()).filter((event) => !only || event.id === only);
+const failed: string[] = [];
+await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
+  for (let event = queue.shift(); event; event = queue.shift()) {
+    try { await analyzeOne(event); } catch (error) { failed.push(event.id); console.error(`${event.id}: FAILED ${error instanceof Error ? error.message : error}`); }
+  }
+}));
+if (failed.length) { console.error(`${failed.length} event(s) failed: ${failed.join(", ")}`); process.exit(1); }

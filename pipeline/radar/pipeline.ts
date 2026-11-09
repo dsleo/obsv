@@ -1,9 +1,8 @@
 
 import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import readline from "node:readline";
+import { loadPersonas } from "./personaIndex";
 import { z } from "zod";
 import { callStructuredModel } from "./openaiStructured";
 import { CLUSTERS, filterSchema, matchesFilter, ONTOLOGY_VERSION, TAG_IDS, TAG_REGISTRY, tagIdSchema, type RadarFilter, type RadarPersona } from "../../src/lib/radar/ontology";
@@ -53,9 +52,9 @@ function personaPath() {
   return process.env.RADAR_PERSONA_INDEX || path.join(process.cwd(), "data/radar/personas.jsonl");
 }
 
+// In-memory slim view (tags, geography): no rescan of the multi-GB file per event. See personaIndex.ts.
 async function eachPersona(visitor: (persona: RadarPersona) => void) {
-  const stream = readline.createInterface({ input: createReadStream(personaPath()), crlfDelay: Infinity });
-  for await (const line of stream) if (line.trim()) visitor(JSON.parse(line) as RadarPersona);
+  for (const persona of (await loadPersonas(personaPath())).personas) visitor(persona);
 }
 
 async function tagCoverage() {
