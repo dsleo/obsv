@@ -108,6 +108,25 @@ Placebo-corrected (control mean subtracted per bloc, `BIAS_DIR=...`): no change,
 
 **Scale check (cumulative effects over the 99 events vs real poll drift, September → November):** radical left +27 pt vs +1.3 real; left +22 vs −0.8; centre −33 vs 0.0; right +0.3 vs +0.1; far right −97 vs −2.3. The effects are conditional on a persona being fully aware of the event; real exposure and persistence are a small fraction, so these numbers are not population effects.
 
+### 6. What the backtest teaches us (`scripts/backtest-learn.ts`, v2 run, ±14 d, 455 event×bloc pairs, 91 events)
+
+All 99 collected events are already used (91 have polls on both sides). The API only has events from 2026-09 (checked: 0 events before September), and there are ~13 first-round polls a month in Sept–Oct, so there is no more data to add from the API.
+
+| Slice | Sign agreement | Reading |
+|---|---|---|
+| overall | 57 % of 176 (majority-sign guess: 51 %) | barely above a constant guess |
+| **detrended** (per-bloc mean predicted and observed removed) | **53 % of 212**, slope −0.01, R² 0.0004 | the signal is gone once each bloc's overall drift is removed |
+| centre | 73 % raw, **56 % detrended** | the raw score only reflected "centre falls over the period" (predicted −0.36 pt, observed −0.77 pt) |
+| radical left / far right | 39 % / 44 % raw | model predicts far right −0.95 pt on average while polls show +0.08: the systematic bias costs accuracy |
+| \|predicted\| 0.5–1 / 1–2 / ≥ 2 pt | 70 % / 46 % / 36 % | **the bigger the prediction, the worse it is**: overconfidence |
+| major / notable events | 68 % / 54 % | small n (41 vs 135 pairs) |
+| endorsement, candidacy / campaign_visit | 65 % / 31 % | small n, to re-test |
+| global scenario only / segments only | 53 % / 58 % | no clear gain from the segments |
+| pairs with ≥ 8 polls around | 63 % of 127 | cleaner outcome helps a little |
+| regression observed = slope × predicted | slope 0.04, R² 0.003 | predicted effects ~25× larger than observed; explain < 1 % of variance |
+
+Learnings to apply (ordered): (1) do not publish magnitudes; (2) cap or shrink large predicted effects (large = least reliable); (3) remove the per-bloc bias with a larger control set (25–30) and verify the correction is stable; (4) anchor baselines on **current** 2026 poll levels instead of the 2022 survey prior; (5) test whether event type or importance genuinely predicts reliability on more data; (6) a richer outcome than 47 polls (more pollsters, daily trackers, or a past campaign) is the real bottleneck.
+
 ## Where each problem stands
 
 | # | Problem | Status |
