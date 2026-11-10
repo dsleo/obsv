@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-10797",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "46612fe89fa307b3",
+  "computedAt": "2026-11-09T20:36:25.290Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Natacha Polony annonce sa candidature à l'élection présidentielle, mais en choisissant de se présenter sous la bannière d'un nouveau mouvement centriste qu'elle fonde, visant à rassembler les électeurs déçus des partis traditionnels.",
+    "whatChanges": "L'annonce crée une dynamique centriste alternative, attirant un électorat modéré désenchanté plutôt que celui d'extrême droite ou d'extrême gauche potentiellement intéressé par sa candidature indépendante."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Cadres urbains diplômés de 35 à 49 ans sensibles aux valeurs traditionnelles",
+      "mechanism": "Ce segment représente des électeurs urbains et diplômés, potentiellement sensibles au discours critique de Natacha Polony sur la situation actuelle, et attirés par son attachement profond à la France et ses valeurs.",
+      "reason": "Intersection précise entre âge intermédiaire, statut socio-professionnel cadre en milieu urbain dense où le discours identitaire peut mobiliser.",
+      "all": [
+        "age.35_49",
+        "occupation.executive_professional",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention"
+      ],
+      "count": 4569,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "L'essayiste Natacha Polony annonce sa candidature à l'élection présidentielle",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Employés et ouvriers de 50 à 64 ans dans des communes intermédiaires",
+      "mechanism": "Ce groupe, exposé aux enjeux économiques et sociaux exprimés dans la prise de parole de Natacha Polony, est concerné par les critiques de la situation et les appels à un retour à des valeurs perçues comme fondatrices pour la France.",
+      "reason": "Limitation à un segment de classe populaire d'âge médian dans des zones urbaines moins denses, correspondant à une frange cruciale du corps électoral souvent sensible aux propositions protestataires et patriotiques.",
+      "all": [
+        "geo.intermediate",
+        "age.50_64"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention"
+      ],
+      "count": 315,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "L'essayiste Natacha Polony annonce sa candidature à l'élection présidentielle",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes agriculteurs de moins de 35 ans",
+      "mechanism": "Jeunes agriculteurs, partie intégrante d'une France rurale en renouvellement, concernés par les positions de Natacha Polony qui valorise la France profonde et les traditions rurales dans sa candidature.",
+      "reason": "Segment étroit en âge et occupation, ciblé pour mesurer la portée locale et générationnelle du discours ruraliste et patriotique.",
+      "all": [
+        "cluster.young_farmer"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention"
+      ],
+      "count": 145,
+      "distinctCommunes": 42,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "L'essayiste Natacha Polony annonce sa candidature à l'élection présidentielle",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "L'essayiste Natacha Polony annonce sa candidature à l'élection présidentielle",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Employés et ouvriers de 50 à 64 ans dans des communes intermédiaires",
+      "matchedCount": 315,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne connais pas trop cette Polony, ça me parait un peu compliqué tout ça. Je préfère voir si ça change vraiment quelque chose avant de m'intéresser plus.",
+        "Polony ? Je sais pas trop qui c’est, et puis encore une candidate qui va pas changer grand-chose. Moi je fais comme d’habitude, je vote pour ceux que je connais bien.",
+        "Une nouvelle candidate comme Polony ? Je suis assez indifférent, ça va pas changer mes habitudes, j’ai mes idées bien ancrées."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Cadres urbains diplômés de 35 à 49 ans sensibles aux valeurs traditionnelles",
+      "matchedCount": 4569,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Polony, franchement, je ne la voyais pas se lancer, mais ça me semble pas très marquant ni crédible face aux gros partis déjà en place. Ça ne me fera pas changer d'avis.",
+        "Une nouvelle candidate, encore ? Polony ou pas, je suis assez sceptique. Le centre ? Peu importe, ça n’influence pas trop ce que je pense. Je reste fidèle à mes idées.",
+        "Je connais Polony de nom, mais son engagement ne me touche pas plus que ça, surtout en candidat centristes. Ici à Béziers, je reste très attachée à mon vote traditionnel."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Polony, je ne la connais pas vraiment, ça ne changera rien à mon vote. Je reste prudent avec ces nouveaux candidats qui ne disent pas clairement d'où ils viennent.",
+        "Franchement je ne vois pas trop qui elle est, ni ce qu'elle pourrait apporter. Une candidate de plus, ça ne me fait pas bouger sur mon choix. Je reste plutôt sceptique.",
+        "Je ne suis pas très au courant d'elle, et ça ne change rien à ce que je prévois. Une nouvelle candidate ne me fera pas changer mes habitudes de vote qui sont bien ancrées."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes agriculteurs de moins de 35 ans",
+      "matchedCount": 145,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne connais pas vraiment Natacha Polony ni son programme, ça ne change rien à ce que je pense pour la présidentielle.",
+        "Natacha Polony en candidate centriste, ça peut peut-être rassembler ceux qui ne veulent ni des extrêmes ni des vieux partis, ça me parle un peu plus que sa candidature habituelle.",
+        "Je ne vois pas vraiment ce que Natacha Polony pourrait apporter ; sa candidature ne me fait pas changer d'avis."
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:16.676Z",
+    "contentHash": "c67c184e374d45050de6218a1cb0ccd6ec2973444dc2d67aba7e22c2313a8793"
+  }
+}

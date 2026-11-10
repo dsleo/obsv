@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-888",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "d8f8d940f3600aaa",
+  "computedAt": "2026-11-09T20:37:50.917Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "INFOGRAPHIES. Présidentielle 2027 : à gauche, les cinq candidats à la primaire bénéficient d'une couverture médiatique équitable, réduisant l'avance de Jean-Luc Mélenchon en visibilité.",
+    "whatChanges": "La médiatisation est répartie plus équitablement entre les candidats de gauche, limitant l'asymétrie en faveur de Mélenchon et offrant une meilleure visibilité aux autres candidats."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes diplômés urbains sensibles aux enjeux internationaux",
+      "mechanism": "Lors du débat de la primaire de la gauche du jeudi soir, les jeunes diplômés des communes denses sont particulièrement concernés par les thèmes internationaux tels que Gaza et l'Ukraine, domaines sur lesquels Jean-Luc Mélenchon est fortement médiatisé et engage la gauche.",
+      "reason": "Ce segment regroupe les jeunes de moins de 35 ans diplômés au moins d'un bac+3 habitant en milieu dense, susceptibles de suivre les débats politiques de la gauche et d'être sensibles aux thématiques internationales.",
+      "all": [
+        "education.bac_plus_3_4",
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to_primary_debate",
+        "interest.in_international_politics"
+      ],
+      "count": 4295,
+      "distinctCommunes": 71,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Gaza, Ukraine et Mélenchon… Un nouveau débat sous haute tension pour les 5 candidats à la primaire de la gauche ce jeudi soir",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Salariés modestes des communes intermédiaires à moyennes, engagés dans le débat",
+      "mechanism": "Les employés et ouvriers des communes intermédiaires constituent une base électorale importante pour la gauche et sont directement concernés par le débat à la primaire du jeudi, notamment par la médiatisation de Mélenchon et les questions sociales et internationales abordées.",
+      "reason": "Ce segment restreint aux salariés modestes dans des communes qui ne sont ni densément urbaines ni rurales permet de cibler des votants engagés dans les débats politiques de gauche sur des thèmes sociaux et internationaux.",
+      "all": [
+        "geo.intermediate"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [
+        "geo.dense",
+        "geo.rural"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to_primary_debate"
+      ],
+      "count": 1040,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Gaza, Ukraine et Mélenchon… Un nouveau débat sous haute tension pour les 5 candidats à la primaire de la gauche ce jeudi soir",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités urbains en couple potentiellement mobilisés par le débat",
+      "mechanism": "Les couples de retraités vivant en communes denses sont un public spécifique pour le débat de la primaire de gauche, qui engage notamment Mélenchon, avec des enjeux sociaux et de politique étrangère ayant un impact sur le pouvoir d'achat et la paix mondiale.",
+      "reason": "Ce segment combine le statut de retraité en couple et la résidence en milieu dense urbaine, rendant ce public sensible aux thématiques abordées dans le débat et à la médiatisation de Mélenchon.",
+      "all": [
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to_primary_debate"
+      ],
+      "count": 15215,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Gaza, Ukraine et Mélenchon… Un nouveau débat sous haute tension pour les 5 candidats à la primaire de la gauche ce jeudi soir",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Présidentielle 2027 : Gaza, Ukraine et Mélenchon… Un nouveau débat sous haute tension pour les 5 candidats à la primaire de la gauche ce jeudi soir",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains sensibles aux enjeux internationaux",
+      "matchedCount": 4295,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que le débat avec Mélenchon qui domine les médias, ça fait du bruit mais je me demande si ça changera vraiment quelque chose pour moi et mes idées.",
+        "Un débat tendu avec Mélenchon partout, ça me fatigue un peu, mais si jamais il appelle à l'unité à gauche, j'aurais peut-être plus envie de m'intéresser à ces candidats.",
+        "Je ne suis pas du tout sûre que ce débat sous haute tension change mon vote, je suis plus concentrée sur ce qui se passe ici à Béziers."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je n'ai guère suivi ce débat, la politique ça fait longtemps que ça me lasse, surtout avec ces tensions internationales qui ne changent rien pour moi.",
+        "C’est un débat qui me donne un peu mal à la tête avec tous ces sujets compliqués, mais je remarque que Mélenchon monopolise l’attention, ça ne me rassure pas forcément.",
+        "C’est compliqué tout ça, mais si Mélenchon calme le jeu et appelle à l’unité, ça pourrait redonner envie à la gauche de s’investir, moi qui y suis attentive."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités urbains en couple potentiellement mobilisés par le débat",
+      "matchedCount": 15215,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve qu'un débat sous haute tension, surtout avec Mélenchon très médiatisé, risque de polariser inutilement les choses. Cela ne changera pas vraiment mon vote, je reste fidèle à mes convictions.",
+        "Les débats avec Mélenchon sont souvent très vifs, ça me fatigue un peu, je ne vais pas changer d'avis à cause de ça. Je préfère quand on cherche à rassembler à gauche.",
+        "Un débat tendu, ça ne me surprend pas, mais ce que j'aimerais, c'est voir plus d'unité à gauche. Mélenchon qui appelle à ça, ça pourrait me faire réfléchir un peu plus à y aller."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes des communes intermédiaires à moyennes, engagés dans le débat",
+      "matchedCount": 1040,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Mélenchon qui monopolise encore les débats, ça ne m'étonne pas trop, mais je préfère qu'ils parlent plutôt de l'usine et de notre pouvoir d'achat que de la politique internationale.",
+        "Je ne regarde pas trop ces débats, Mélenchon est toujours fort en médias, mais ça ne me fera pas changer d'avis, je suis plus centriste.",
+        "C'est bien qu'il y ait un débat à gauche, avec Mélenchon si médiatique. Ce ton plus apaisé pourrait donner plus d'espoir pour une gauche unie."
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:54.578Z",
+    "contentHash": "e841336736b1519baba8174c7d1052c29aab58ecd3f7166095526304da3a6f69"
+  }
+}

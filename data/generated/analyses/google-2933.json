@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-2933",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "569c054d6206e8ca",
+  "computedAt": "2026-11-09T20:39:55.977Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Présidentielle 2027 : Éric Zemmour annonce officiellement sa candidature avec un discours recentré sur les questions économiques et sociales, minimisant ses propos passés controversés.",
+    "whatChanges": "Le changement de ton et de contenu du discours de Zemmour pourrait améliorer son image auprès des électeurs indécis, atténuant son image de candidat raciste."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Salariés modestes de 35 à 64 ans en communes intermédiaires",
+      "mechanism": "Éric Zemmour vise les catégories populaires soumises aux tensions économiques et culturelles, notamment les salariés modestes dans les communes intermédiaires, où son discours sur l'immigration et la sécurité peut résonner.",
+      "reason": "Ce segment combine la classe d'âge 35-64 ans, les salariés modestes (employés et ouvriers), et le contexte géographique de communes intermédiaires, ciblant un électorat central des discours populistes et sécuritaires.",
+      "all": [
+        "occupation.employee",
+        "geo.intermediate"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 381,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027: Éric Zemmour officialise sa candidature",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes sans activité en milieu urbain dense",
+      "mechanism": "Le discours d'Éric Zemmour peut provoquer une réaction spécifique chez les jeunes sans activité (étudiants, chômeurs) dans les centres urbains denses, souvent concernés par les débats sur l'exclusion et les tensions sociales.",
+      "reason": "Ce segment restreint s'intéresse aux jeunes sans activité professionnelle vivant dans les zones urbaines denses où le clivage identitaire est marqué.",
+      "all": [
+        "cluster.young_without_activity",
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027: Éric Zemmour officialise sa candidature",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Couples de retraités en commune dense",
+      "mechanism": "Éric Zemmour, en mettant l'accent sur la préservation des valeurs traditionnelles, cible également les retraités vivant en couple dans des communes urbaines denses, sensibles à ses discours conservateurs et sécuritaires.",
+      "reason": "Segment constitué de retraités en couple, souvent attentifs aux enjeux sociétaux et sécuritaires portés par Zemmour, vivant dans des communes à forte densité.",
+      "all": [
+        "cluster.retired_couple",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 15215,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027: Éric Zemmour officialise sa candidature",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Présidentielle 2027: Éric Zemmour officialise sa candidature",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes de 35 à 64 ans en communes intermédiaires",
+      "matchedCount": 381,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 17,
+          "away": 3,
+          "noClearChange": 28
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 10,
+          "noClearChange": 33
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas fan de Zemmour, son discours me semble agressif et ça me déplaît. Je ne changerai pas mes habitudes pour autant.",
+        "Zemmour me semble proche de certaines idées qui plaisent ici, même s'il n'est pas parfait. Son discours dur attire, donc son annonce me confirme dans mes idées.",
+        "Zemmour, trop extrême à mon goût, son annonce ne me donne aucune envie de changer de vote."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes sans activité en milieu urbain dense",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 5,
+          "noClearChange": 42
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 1,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que Zemmour, avec ses idées extrêmes, ne m'apporte rien dans ma vie quotidienne, ça ne change pas vraiment ma façon de voir les choses.",
+        "Zemmour, franchement, ça ne m'intéresse pas plus que ça, même s'il modère un peu son discours, je ne changerai pas d'avis.",
+        "Les discours trop durs comme celui de Zemmour me font peur, donc s'il devient plus modéré, ça m'inquiète quand même un peu, mais je reste plutôt indifférente pour l'instant."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Couples de retraités en commune dense",
+      "matchedCount": 15215,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "far_right": {
+          "toward": 11,
+          "away": 1,
+          "noClearChange": 36
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 6,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cette candidature décevante et inquiétante, surtout avec un discours raciste qui ne fait que diviser. Ça ne changera rien pour moi, je ne vote pas pour ces idées.",
+        "Zemmour qui se présente encore... Ce genre de discours me déplaît et ne correspond pas à mes valeurs. Je préfère clairement ne pas voter pour lui, ça pourrait même me pousser à être moins favorable à l'extrême droite.",
+        "Zemmour, toujours le même discours polémique... Je trouve ça excessif et pas constructif du tout, ça me donne plutôt envie de soutenir le centre ou la gauche modérée."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 16,
+          "away": 7,
+          "noClearChange": 73
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 9,
+          "noClearChange": 79
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je n'ai jamais aimé Zemmour, sa candidature ne change pas grand-chose pour moi, c'est plutôt une mauvaise nouvelle pour le pays.",
+        "Zemmour, ça me fait peur, mais s'il se modère, à la limite ça pourrait me faire réfléchir un peu, sinon je reste méfiante.",
+        "Je ne supporte pas Zemmour, sa candidature officielle en mode raciste ne me fait pas changer mes idées qui sont plutôt à gauche."
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:41.092Z",
+    "contentHash": "895d8f1f53061fd16f850c209d09ee2f274dfa8815632c2ae8cd29aae404b474"
+  }
+}

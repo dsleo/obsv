@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-16332",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "6b48f99dc8883190",
+  "computedAt": "2026-11-10T07:37:18.627Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Trois ans après l'attentat d'Arras, les commémorations s'accompagnent d'un hommage apaisé lors d'une cérémonie sobre, sans inauguration de sculpture monumentale, pour permettre une réflexion collective moins centrée sur un symbole fort.",
+    "whatChanges": "L'absence de sculpture monumentale rend l'hommage moins spectaculaire, ce qui pourrait apaiser certains électeurs sensibles au symbolisme tout en atténuant l'impact émotionnel sur les proches et partisans."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Retraités ruraux liés à Arras",
+      "mechanism": "Ce segment concerne les retraités vivant en commune rurale autour d'Arras, pour qui l'hommage vibrant à Dominique Bernard est un moment symbolique et poignant lié à leur cadre de vie et leur génération.",
+      "reason": "Les retraités ruraux sont susceptibles d'être sensibilisés à cet événement d'hommage local marquant, surtout s'ils vivent dans les communes rurales proches d'Arras.",
+      "all": [
+        "cluster.rural_retiree",
+        "geo.rural",
+        "commune_size.under_1000"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "mechanism",
+        "exposure"
+      ],
+      "count": 158,
+      "distinctCommunes": 68,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Attentat d'Arras : trois ans après, un hommage vibrant et une sculpture monumentale pour Dominique Bernard",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Femmes mariées de 35 à 64 ans en couple avec enfants du bassin d'Arras",
+      "mechanism": "Ce segment inclut des femmes mariées, âgées de 35 à 64 ans, vivant en couple avec enfants dans une zone intermédiaire, réceptives à la commémoration car elles représentent un tissu familial stable et local lié à la mémoire communautaire de l'attentat d'Arras.",
+      "reason": "Ce segment cible un public familial et stable socialement, vivant dans un cadre intermédiaire, pouvant être particulièrement sensible à l'hommage et à la sculpture monumentale qui ravivent la mémoire collective.",
+      "all": [
+        "sex.female"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
+        "household.single",
+        "household.single_parent",
+        "geo.dense"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "mechanism",
+        "exposure"
+      ],
+      "count": 1058,
+      "distinctCommunes": 94,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Attentat d'Arras : trois ans après, un hommage vibrant et une sculpture monumentale pour Dominique Bernard",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes diplômés urbains sensibles à la mémoire d'Arras",
+      "mechanism": "Ce segment formé de jeunes diplômés des villes, très nombreux dans ce type d'échantillon, est concerné par la mémoire et la commémoration locale de Dominique Bernard via leur engagement ou proximité avec les dynamiques culturelles et mémorielles urbaines.",
+      "reason": "Les jeunes diplômés en milieu urbain, bien que moins directement liés à Arras rural, sont souvent sensibles aux hommages et événements culturels qui marquent l'histoire locale et nationale.",
+      "all": [
+        "cluster.young_urban_graduate",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "mechanism",
+        "exposure"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Attentat d'Arras : trois ans après, un hommage vibrant et une sculpture monumentale pour Dominique Bernard",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Attentat d'Arras : trois ans après, un hommage vibrant et une sculpture monumentale pour Dominique Bernard",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 91
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ces commémorations importantes car elles honorent la mémoire des victimes, même si c'est toujours un moment difficile. La sculpture monumentale peut renforcer ce souvenir collectif.",
+        "Cet hommage me touche, mais je ne suis pas sûre que la sculpture monumentale change grand-chose à mon regard ou mon vote, je me concentre sur les questions qui impactent mon quotidien.",
+        "Je suis sensible au fait que cette commémoration reste douloureuse mais nécessaire. Une cérémonie sobre pourrait faciliter une réflexion plus apaisée, ce qui serait bienvenu."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.000841426918720621,
+          "lo": -0.001465515113523643,
+          "hi": -0.00026093148980331564,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0008347725346515783,
+          "lo": -0.0015521838028001802,
+          "hi": -0.00009125193152131519,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.003410576327439442,
+          "lo": -0.0041181786545228544,
+          "hi": -0.0025802102322432722,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0015392973257720346,
+          "lo": -0.0022380984382458767,
+          "hi": -0.0009774037901871663,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0014504598879832627,
+          "lo": -0.00003555660053620839,
+          "hi": 0.0030718026244000753,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005175613218600415,
+          "lo": 0.0034837523422555244,
+          "hi": 0.00733788158070398,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Retraités ruraux liés à Arras",
+      "matchedCount": 158,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que cet hommage montre qu'on n'oublie pas les drames vécus ici, c'est important pour la mémoire du village et des victimes. Une sculpture monumentale, ça peut sembler lourd, mais ça fixe un souvenir fort.",
+        "Les commémorations restent toujours une période douloureuse, même après plusieurs années. Je préfère une cérémonie sobre, ça évite un peu de jeter de l'huile sur le feu alors que ce n'est que du souvenir et du respect.",
+        "Un hommage marqué par une grande sculpture, ça ne me parle pas vraiment, je préfère quand c'est plus calme et tourné vers une vraie réflexion collective, sans trop d'effets."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0005433902054514944,
+          "lo": -0.0008711349057086331,
+          "hi": -0.00017392971561886023,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.00004589469143454969,
+          "lo": -0.0009231570966208306,
+          "hi": 0.0008330520504639995,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0033864440020639017,
+          "lo": -0.004489710021996588,
+          "hi": -0.002308429465697301,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0027120108367828543,
+          "lo": -0.003646629307773887,
+          "hi": -0.0018886409876714373,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0007634757810524388,
+          "lo": -0.001792830030028816,
+          "hi": 0.0034328628342047847,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005924263954680364,
+          "lo": 0.003101082836850473,
+          "hi": 0.008854755268439825,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Femmes mariées de 35 à 64 ans en couple avec enfants du bassin d'Arras",
+      "matchedCount": 1058,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 0,
+          "noClearChange": 40
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est triste ce qui s'est passé et c'est bien de se souvenir, mais un grand monument me paraît un peu trop, cela peut réveiller la douleur plutôt que d'apaiser.",
+        "C'est un événement difficile pour la communauté d'Arras, mais un hommage trop marqué par un monument peut diviser. Une commémoration sobre serait plus appropriée.",
+        "Je comprends la douleur, mais je préfère une cérémonie simple qui permette vraiment de réfléchir et d'avancer plutôt qu'une grosse sculpture qui marque trop les esprits."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0008333853183049591,
+          "lo": -0.0019011263471250834,
+          "hi": 0.00013581872213625713,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0006460611176191741,
+          "lo": -0.0019499340821961541,
+          "hi": 0.0007498929596730363,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0027120380387135744,
+          "lo": -0.004268881842094613,
+          "hi": -0.0009981138948119874,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0023746202590221826,
+          "lo": -0.0033952280100703453,
+          "hi": -0.0013806263238442286,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0020439937815986387,
+          "lo": -0.00414117365422156,
+          "hi": 0.0003791146602011679,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.008610098515258518,
+          "lo": 0.004323942920009034,
+          "hi": 0.012982574571440425,
+          "stable": true
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés urbains sensibles à la mémoire d'Arras",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cet hommage montre l'importance du souvenir mais une sculpture monumentale me semble un peu spectaculaire et peut-être polarisante.",
+        "Je respecte la douleur de cette famille et comprends le poids symbolique, mais je suis pour des commémorations qui unissent sans excès symbolique.",
+        "Ce genre d'hommage symbolique est loin de mes préoccupations quotidiennes. Cela ne change rien à mon vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.001194278145064843,
+          "lo": -0.0019719098773733393,
+          "hi": -0.00045565952887737855,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0012381024970703261,
+          "lo": -0.0022050178323870014,
+          "hi": -0.0001873345017097901,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0025813007369495156,
+          "lo": -0.004352711136530838,
+          "hi": -0.0007074164804264368,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0019037383798330577,
+          "lo": -0.0028741536375094055,
+          "hi": -0.0009717974389270471,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.00122285299784415,
+          "lo": -0.002578458030261528,
+          "hi": 0.0005669865338471346,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.008140272756761867,
+          "lo": 0.005426081373252907,
+          "hi": 0.010756641406844092,
+          "stable": true
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:26.888Z",
+    "contentHash": "51e0aab0d1450cffc6ca4d475ce4250030af37fd9b1075c88fbb87900192e417"
+  }
+}

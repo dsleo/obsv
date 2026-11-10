@@ -16,6 +16,18 @@ test("tiers and publisher counts decide importance", () => {
   assert.deepEqual(rows.map((r) => [r.id, r.importance]), [["google-1", "major"], ["google-2", "notable"], ["google-4", "notable"]]);
 });
 
+test("French society news is kept, foreign news is not", () => {
+  const soc = (over) => ev({ tier: "C", election_relevance: 0, event_type: "context:social", publisher_count: 6, ...over });
+  const rows = apiToEvents([
+    soc({ seed_source: "google:1", title: "Mobilisations en France" }),                                  // notable
+    soc({ seed_source: "google:2", event_type: "context:security", publisher_count: 30, source_descriptions: ["Hommage en France"] }), // major
+    soc({ seed_source: "google:3", title: "Manifestations à Belgrade" }),                              // foreign: dropped
+    soc({ seed_source: "google:4", title: "Grève en France", publisher_count: 3 }),                    // too few outlets: dropped
+    soc({ seed_source: "google:5", event_type: "context:international", title: "France et Ukraine" }),  // world news: dropped
+  ]);
+  assert.deepEqual(rows.map((r) => [r.id, r.importance]), [["google-1", "notable"], ["google-2", "major"]]);
+});
+
 test("description skips headline echoes; url comes from the API", () => {
   const e = ev({ title: "Roussel candidat à la présidentielle", publisher_count: 6, publishers: ["Le Monde"], representative_url: "https://x.fr/a",
     source_descriptions: ["Roussel candidat à la présidentielle Le Monde", "Le député du Nord annonce sa candidature."] });

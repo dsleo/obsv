@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-21433",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "3980e293e2a4b7a4",
+  "computedAt": "2026-11-09T22:25:15.536Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Le ministre du Travail Jean-Pierre Farandou a annoncé lundi que le Smic serait augmenté de 0,8 % dès le 1er décembre, pour atteindre environ 1.488 euros net, soit une augmentation mensuelle d'environ 12 euros.",
+    "whatChanges": "Le taux d'augmentation du Smic est réduit de moitié, ce qui pourrait provoquer une déception accrue parmi les salariés modestes et les syndicats, attisant davantage les tensions sociales lors de la conférence."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Salariés modestes de 25 à 49 ans en zone dense",
+      "mechanism": "Ces salariés modestes, principalement des employés et ouvriers âgés de 25 à 49 ans et vivant dans des communes à forte densité, sont directement concernés par l'augmentation du SMIC annoncée, car cette revalorisation impacte immédiatement leur pouvoir d'achat et leurs revenus.",
+      "reason": "L'intersection des tags occupation.modest_wage_earner (employés et ouvriers), age.25_34 et age.35_49, avec geo.dense permet d'identifier un public représentatif des bénéficiaires potentiels de la hausse du SMIC dans les zones urbaines.",
+      "all": [
+        "occupation.employee"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "smic_beneficiary_status"
+      ],
+      "count": 12334,
+      "distinctCommunes": 149,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Sébastien Lecornu à la manœuvre d’une conférence sociale incertaine, avec le smic au cœur du débat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Travailleurs indépendants urbains de 35 à 64 ans",
+      "mechanism": "Les indépendants exerçant dans les communes denses, âgés de 35 à 64 ans, sont concernés par le débat sur le SMIC, car cette augmentation influence leur compétitivité économique et les négociations salariales avec leurs salariés.",
+      "reason": "En combinant occupation.artisan_merchant_owner (sous-classe d'indépendants), age.35_49 ou age.50_64 et geo.dense, on cible un groupe étroit issu des professions indépendantes dans les zones urbaines où le débat économique sur le SMIC est particulièrement pertinent.",
+      "all": [
+        "occupation.artisan_merchant_owner",
+        "geo.dense"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "economic_perception"
+      ],
+      "count": 2946,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Sébastien Lecornu à la manœuvre d’une conférence sociale incertaine, avec le smic au cœur du débat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Femmes salariées modestes en couple avec enfants en zone dense",
+      "mechanism": "Les femmes salariées modestes vivant en couple avec enfants dans des communes denses sont directement concernées par l'augmentation du SMIC, car cette mesure peut améliorer le budget familial et influer sur leur soutien politique aux mesures sociales.",
+      "reason": "En combinant sex.female, cluster.modest_wage_earner, household.couple_with_children et geo.dense, on identifie un public familial et féminin parmi les bénéficiaires du SMIC dans les zones urbaines denses, groupe crucial pour l'impact social de la mesure.",
+      "all": [
+        "sex.female",
+        "household.couple_with_children",
+        "geo.dense",
+        "cluster.modest_wage_earner"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "family_income_effects"
+      ],
+      "count": 7163,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Sébastien Lecornu à la manœuvre d’une conférence sociale incertaine, avec le smic au cœur du débat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Sébastien Lecornu à la manœuvre d’une conférence sociale incertaine, avec le smic au cœur du débat",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes salariées modestes en couple avec enfants en zone dense",
+      "matchedCount": 7163,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est bien que le Smic augmente, même si 24 euros par mois, ce n'est pas énorme, ça aidera un peu pour le budget familial. Si c'était moins, ça me décevrait vraiment.",
+        "Une augmentation du Smic ça va dans le bon sens, mais j'aurais préféré quelque chose de plus marqué, cela reste une augmentation modeste qui ne change pas grand-chose dans la vie quotidienne.",
+        "Une augmentation du Smic est plutôt une bonne chose, même si je trouve que ça pourrait être plus significatif. C’est mieux que rien pour les gens qui gagnent peu."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Travailleurs indépendants urbains de 35 à 64 ans",
+      "matchedCount": 2946,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "L'augmentation du SMIC, ça aide un peu, mais 24 euros par mois, ce n'est pas énorme. Ça ne va pas changer beaucoup les choses pour nous, commerçants locaux, ni pour mes employés.",
+        "Une petite augmentation du SMIC, c'est bien, mais ça reste modeste. Pour nous, artisans, ça ne va pas fondamentalement changer la situation, alors niveau politique, ça ne me fait pas bouger.",
+        "Augmenter le SMIC c'est toujours un plus pour mes apprentis qui reçoivent des salaires modestes. Une hausse plus forte, je verrais ça plutôt d'un bon œil, car ça aide les petites familles comme la mienne."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 93
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cette augmentation du Smic un peu juste, moi qui vis avec une petite retraite, chaque euro compte vraiment au quotidien.",
+        "Cette hausse du Smic me semble correcte, ça peut aider un peu les plus modestes, même si ce n’est pas énorme.",
+        "Augmenter le Smic, même modestement, c’est un geste qui peut soulager certains, c’est important en cette période."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes de 25 à 49 ans en zone dense",
+      "matchedCount": 12334,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une augmentation du Smic, c’est toujours bon à prendre, même si 24 euros par mois, ça reste modeste. Je ne pense pas que ça va changer grand-chose à mes choix politiques.",
+        "Le Smic augmente un peu, c'est positif, mais ce n'est pas de quoi chambouler tout. Le plus important, c’est que le gouvernement pense aux plus modestes, mais je reste assez attachée à mes convictions politiques actuelles.",
+        "Une hausse du Smic, même modeste, est bonne à prendre. Cela ne va pas bouleverser mes intentions, mais je préfère un vrai effort sur le pouvoir d'achat."
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:35.283Z",
+    "contentHash": "6d97cb2fcfac28102390e5459a8794d46174113ea45f869e4b2e5b2bc0a5be03"
+  }
+}

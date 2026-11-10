@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-8965",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "8ff7c6e86c82f2cd",
+  "computedAt": "2026-11-10T07:37:18.957Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Le 24 octobre, les manifestations en France rassemblent environ 300 000 manifestants, soit moins que prévu, avec seulement 60 interpellations à Paris, dont 45 gardes à vue. La journée se déroule principalement dans le calme, malgré une surveillance renforcée.",
+    "whatChanges": "La baisse du nombre d'interpellations réduit la perception de tensions et de violences, ce qui pourrait apaiser certains électeurs inquiets par la sévérité des réactions policières."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Salariés modestes en couple avec enfants en zones urbaines denses",
+      "mechanism": "Les salariés modestes en couple avec enfants vivant dans des communes urbaines denses représentent un public directement concerné par les mobilisations sociales, notamment celles liées aux conditions de vie et travail débattues lors des manifestations du 24 octobre.",
+      "reason": "Ce segment intègre la dimension familiale et socio-professionnelle qui motive souvent la participation ou l'attention portée aux mobilisations sociales.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 14761,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Mobilisations en France : 135 interpellations en marge des manifestations du 24 octobre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes diplômés urbains",
+      "mechanism": "Les jeunes diplômés des villes, souvent engagés politiquement et socialement, sont concernés par les tensions et revendications exprimées lors des manifestations du 24 octobre dans les grandes agglomérations urbaines.",
+      "reason": "Ce segment rassemble un groupe sociologiquement actif dans les manifestations politiques en milieu urbain, relavant des enjeux évoqués le 24 octobre.",
+      "all": [
+        "cluster.young_urban_graduate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Mobilisations en France : 135 interpellations en marge des manifestations du 24 octobre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Hommes salariés ou ouvriers en zones urbaines intermédiaires",
+      "mechanism": "Ce segment désigne les hommes salariés ou ouvriers résidant dans des communes de densité intermédiaire, dont certains pourraient être mobilisés ou affectés par les manifestations et tensions du 24 octobre.",
+      "reason": "L'intersection de sexe, profession et densité urbaine intermédiaire permet d'isoler un groupe socioprofessionnel qui peut réagir aux événements de mobilisation sociale.",
+      "all": [
+        "sex.male",
+        "geo.intermediate"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 502,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Mobilisations en France : 135 interpellations en marge des manifestations du 24 octobre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Mobilisations en France : 135 interpellations en marge des manifestations du 24 octobre",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Hommes salariés ou ouvriers en zones urbaines intermédiaires",
+      "matchedCount": 502,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 5,
+          "away": 3,
+          "noClearChange": 40
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ces manifestations me paraissent un peu trop agitées, ça complique la vie sans vraiment aider. Je préfère que ça se passe calmement.",
+        "Ça fait beaucoup d'interpellations, je m'en inquiète un peu, ça donne une image bizarre. Si c'est calme, c'est sûrement mieux.",
+        "Trop d'arrestations, ça me fait penser que ça dérape souvent dans ces manifs, du coup j'ai un peu moins envie d'y croire."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0033761482281570846,
+          "lo": -0.005142832665786759,
+          "hi": -0.001396239953329881,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0024502491249945753,
+          "lo": -0.003327285743827662,
+          "hi": -0.001659152815904194,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.002807293012023542,
+          "lo": -0.0037453143667115648,
+          "hi": -0.0018488492234749719,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0005662434383067319,
+          "lo": -0.001151584898337247,
+          "hi": 0.000058321748827761944,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.003070468082041118,
+          "lo": 0.000040521507421870107,
+          "hi": 0.006057407167686605,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006129465721440813,
+          "lo": 0.003687526835488376,
+          "hi": 0.008769393335208523,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes en couple avec enfants en zones urbaines denses",
+      "matchedCount": 14761,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 45
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve qu'il y a trop de casse et d'interpellations lors de ces manifestations. Ça ne m'intéresse pas vraiment, ça ne change pas mon vote.",
+        "C'est impressionnant tout ce qui s'est passé le 24 octobre, mais honnêtement, ça ne me touche pas dans ma vie de tous les jours, donc ça ne changera pas mon vote.",
+        "Ces manifestations qui finissent souvent en violence, ça me dérange. Je préfère que ça reste calme, mais ça ne me fait pas changer d'avis sur qui je vais voter."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0012186151249330495,
+          "lo": -0.0016751683956591568,
+          "hi": 0.004261520076691209,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0002751316479096596,
+          "lo": -0.001478049676379895,
+          "hi": 0.0009029208155637397,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0034173055301070358,
+          "lo": -0.00456015491822481,
+          "hi": -0.002470239720704044,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.001563561019802365,
+          "lo": -0.0023508452997679304,
+          "hi": -0.0007102753639622711,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.00008701324878482239,
+          "lo": -0.002533248211158036,
+          "hi": 0.00259193706029869,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004124396321670829,
+          "lo": 0.002064560693465766,
+          "hi": 0.006306494105599923,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 92
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 1,
+          "noClearChange": 88
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ces violences pendant les manifs, ça ne me parle pas trop. Moi, je suis plutôt tranquille, pas sûr que ça change mon vote.",
+        "Encore des manifs qui dégénèrent, c'est inquiétant. Mais moi, à mon âge, je reste surtout prudent, ça ne bouge pas vraiment mon vote.",
+        "Cette histoire d'interpellations, ça me paraît un peu trop de bruit pour rien. Ça ne changera pas mon vote, je reste fidèle à mes idées."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.00040444593985726755,
+          "lo": -0.000612363138849231,
+          "hi": 0.0013492015079026164,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0010827692711717154,
+          "lo": -0.0017885667948112905,
+          "hi": -0.00030419665555408,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0035796316972572678,
+          "lo": -0.004365899144940822,
+          "hi": -0.002854512624124724,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0012811532618439384,
+          "lo": -0.002039828528694776,
+          "hi": -0.0005170665542830656,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0024270905722878354,
+          "lo": 0.0005055415082739819,
+          "hi": 0.004383723233995117,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0031120177181278123,
+          "lo": 0.0011626991521179566,
+          "hi": 0.005007979268405,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que les manifestations peuvent être un signe de colère, mais les violences et les nombreuses arrestations me déplaisent, ça ne fait que perturber notre quotidien à Paris.",
+        "Les manifestations, ça finit souvent mal, et ça complique la vie pour tout le monde. Avec ces interpellations, ça me semble plus trouble qu’utile, alors ça ne change rien à mon vote.",
+        "Je suis inquiète de ces manifestations violentes, mais je suis plutôt à droite donc je vois ça comme un désordre qui nuit à la France. Peu importe le nombre d'interpellations."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.005129603399086942,
+          "lo": 0.002813292248313176,
+          "hi": 0.007258948221202848,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0020049131895615545,
+          "lo": 0.0006970945731069742,
+          "hi": 0.0032197509241649186,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.005558393618032673,
+          "lo": -0.006679185478784377,
+          "hi": -0.004367480835183536,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0025999040848872974,
+          "lo": -0.003366584248992131,
+          "hi": -0.0019047268858869695,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.005412948702127392,
+          "lo": -0.007716864935382507,
+          "hi": -0.0032310470365035262,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006436729816398877,
+          "lo": 0.0029009043034934727,
+          "hi": 0.010592957803091248,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:55.608Z",
+    "contentHash": "c2f408a600bbf5288832d00e4f9e3fc7e22a01460f83b06b886be6ead8f601ec"
+  }
+}

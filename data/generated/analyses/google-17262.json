@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-17262",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "0612f2637ebb5cf7",
+  "computedAt": "2026-11-10T07:36:38.423Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Thierry Henry organise une grande conférence de presse pour appeler à l'unité nationale contre le racisme, en insistant sur la nécessité de renforcer les mesures de prévention et d'éducation plutôt que de simplement rendre hommage aux victimes.",
+    "whatChanges": "Le discours de Thierry Henry adopte un ton plus orienté vers l'action politique et la prévention, visant à mobiliser un large public au-delà de l'émotion liée à l'attentat."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Habitants d’âge moyen de communes denses proches de Trappes",
+      "mechanism": "Personnes âgées de 35 à 49 ans habitant dans des communes denses où l’attentat raciste de Trappes a eu lieu, concernées en raison de leur proximité géographique des événements.",
+      "reason": "Suppression du critère géographique trop précis sur Trappes, remplacé par geo.dense permettant encore de cibler la zone urbaine proche.",
+      "all": [
+        "geo.dense",
+        "age.35_49"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 26926,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Thierry Henry prend la parole après l’attentat raciste de Trappes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Femmes en couple avec enfants d’âge 35 à 64 ans en communes intermédiaires autour de Trappes",
+      "mechanism": "Femmes en foyer avec enfants, âgées de 35 à 64 ans, vivant dans des communes de densité intermédiaire proches des lieux de l’attentat, potentiellement sensibles aux questions raciales liées à l’événement.",
+      "reason": "Remplacement du tag de zone dense par geo.intermediate pour éviter trop grande taille, ajout d’une intersection plus resserrée par famille.",
+      "all": [
+        "sex.female",
+        "household.couple_with_children",
+        "geo.intermediate"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 396,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Thierry Henry prend la parole après l’attentat raciste de Trappes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Salariés modestes de 25 à 34 ans en communes denses proches de Trappes",
+      "mechanism": "Jeunes employés et ouvriers en communes denses susceptibles d’être exposés au racisme de proximité après l’attentat, constituant un public d’intérêt amid l’événement.",
+      "reason": "Segment resserré par classe sociale et âge, majeur dans zone dense pour cibler proche Trappes sans commune nommée.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "geo.dense",
+        "age.25_34"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 8798,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Thierry Henry prend la parole après l’attentat raciste de Trappes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes sans activité professionnelle de 18 à 24 ans en communes denses proches de Trappes",
+      "mechanism": "Jeunes inactifs ou étudiants vivant en communes denses dans la zone de Trappes, pouvant être sensibles aux discours contre le racisme et aux suites de l’attentat.",
+      "reason": "Segment étroit resserré par cluster et âge dans zone dense, sans filtrer sur commune précises.",
+      "all": [
+        "cluster.young_without_activity",
+        "geo.dense",
+        "age.18_24"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Thierry Henry prend la parole après l’attentat raciste de Trappes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Thierry Henry prend la parole après l’attentat raciste de Trappes",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Femmes en couple avec enfants d’âge 35 à 64 ans en communes intermédiaires autour de Trappes",
+      "matchedCount": 396,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "L’attentat raciste à Trappes, c’est atroce, et l’émotion de Thierry Henry me touche, mais ça ne change pas vraiment mon avis sur la politique.",
+        "Je comprends la douleur derrière cette parole de Thierry Henry, mais ça ne va pas vraiment influer sur mon vote, même si cet appel à l’unité nationale aurait pu m’intéresser.",
+        "Je suis sensible à cette déclaration de Thierry Henry, ça reflète quelque chose de profond contre le racisme, mais ça n’impacte pas énormément mes intentions de vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0028755749845100972,
+          "lo": -0.003833851575456049,
+          "hi": -0.001864830925364708,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.005154068088758412,
+          "lo": -0.006379748587402312,
+          "hi": -0.0039534699258200025,
+          "stable": true
+        },
+        "center": {
+          "mean": -0.0029510141107803984,
+          "lo": -0.004150449101796408,
+          "hi": -0.0015476444216948274,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0011356626036333791,
+          "lo": 0.0002535234257852457,
+          "hi": 0.0018847466758026236,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.00927730482424267,
+          "lo": 0.007624319730808251,
+          "hi": 0.011059741815930932,
+          "stable": true
+        },
+        "abstention": {
+          "mean": 0.0005676897561728648,
+          "lo": -0.0012449573376990906,
+          "hi": 0.0027962251097082193,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 90
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 91
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cet hommage de Thierry Henry me touche, c'est triste ce qui arrive près de chez nous. Mais ça ne changera pas grand-chose à mon vote, je reste méfiant envers les politiciens et leurs discours.",
+        "Je trouve l'hommage de Thierry Henry touchant, ça rappelle l'importance de lutter contre le racisme. Je suis prêt à soutenir un appel à l'unité qui se traduit par des actions concrètes, cela pourrait me faire réfléchir un peu plus.",
+        "Le message de Thierry Henry est fort, mais je préférerais une action plus structurée sur le long terme plutôt que de simples hommages. Une conférence sur la prévention serait plus en phase avec ce que je pense."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0031734548165557783,
+          "lo": -0.0039863326022463305,
+          "hi": -0.002369856313312244,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.00648679849490962,
+          "lo": -0.007152877879208596,
+          "hi": -0.0058439342726692165,
+          "stable": true
+        },
+        "center": {
+          "mean": -0.0023065328980302843,
+          "lo": -0.0034646157055031324,
+          "hi": -0.0009809737858161697,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0017858196118424449,
+          "lo": 0.0010654174063041055,
+          "hi": 0.0024319552939978204,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.010459654213688762,
+          "lo": 0.00882273265107051,
+          "hi": 0.01198454960105884,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.00027868761603553043,
+          "lo": -0.0023980616966754755,
+          "hi": 0.001855389719644133,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes de 25 à 34 ans en communes denses proches de Trappes",
+      "matchedCount": 8798,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est touchant de voir quelqu'un de connu exprimer autant d'empathie, ça rappelle que ces actes sont proches de nous tous.",
+        "C'est bien que Thierry Henry parle de racisme et appelle à l'unité, ça va peut-être aider à faire bouger les choses ici aussi.",
+        "J'apprécie qu'Henry rende hommage, ça me touche. Mais je préfère qu'il agisse aussi plus concrètement contre le racisme."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0031084521084521126,
+          "lo": -0.004716211757878426,
+          "hi": -0.0013766762933429672,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.005840915403415404,
+          "lo": -0.007290232081898752,
+          "hi": -0.0044422467339134,
+          "stable": true
+        },
+        "center": {
+          "mean": -0.0007513529388529413,
+          "lo": -0.002602106352106355,
+          "hi": 0.0011290043165043159,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.001475687913187913,
+          "lo": 0.00048329321245987883,
+          "hi": 0.0026788181163181174,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.005790810374143705,
+          "lo": 0.004182932141265476,
+          "hi": 0.007458032041365373,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.002434222163388828,
+          "lo": 0.00010026445443111927,
+          "hi": 0.004792393792393791,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes sans activité professionnelle de 18 à 24 ans en communes denses proches de Trappes",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est très poignant de voir Thierry Henry exprimer une telle empathie ; ça me touche beaucoup et me renforce dans la nécessité de lutter contre le racisme.",
+        "Je ne suis pas vraiment surpris par ces violences et Henry qui en parle, ça ne me fait ni chaud ni froid. Je me concentre plus sur la sécurité que sur les discours.",
+        "L'engagement de Thierry Henry comme ça, je trouve ça touchant. Ça parle vraiment à notre génération qui veut plus de justice et moins de racisme."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.002642723117074851,
+          "lo": -0.0036755534968665616,
+          "hi": -0.001667474904195839,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.004693485233541651,
+          "lo": -0.005648472322261788,
+          "hi": -0.003927403417228956,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.000290105053038529,
+          "lo": -0.0007798908293223791,
+          "hi": 0.0012990747031998275,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0010115569377837099,
+          "lo": 0.0003560181158292263,
+          "hi": 0.0017234462626766155,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.005673090198793396,
+          "lo": 0.004403062559529125,
+          "hi": 0.006947745705984776,
+          "stable": true
+        },
+        "abstention": {
+          "mean": 0.0003614561610008546,
+          "lo": -0.0007367143123355365,
+          "hi": 0.0016054615881588268,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Habitants d’âge moyen de communes denses proches de Trappes",
+      "matchedCount": 26926,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve la prise de parole de Thierry Henry touchante, ça montre que le racisme est un problème qui peut toucher n'importe qui, même les figures publiques.",
+        "C'est bien que Thierry Henry s'exprime sur ce drame, mais j'aurais préféré un appel à agir concrètement contre le racisme, ça me parle plus.",
+        "Thierry Henry qui parle après un attentat raciste, ça ne m'affecte pas vraiment, ça reste loin de ma vie quotidienne à Paris 16e."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.002569398296039425,
+          "lo": -0.004302193625301833,
+          "hi": -0.0008592877310308143,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0053494411179534984,
+          "lo": -0.006370293990157008,
+          "hi": -0.004199811421119559,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0020332835071079753,
+          "lo": -0.00357563892008793,
+          "hi": -0.00034843711965790603,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.001859339676534134,
+          "lo": 0.001090458357131153,
+          "hi": 0.0025886306747924842,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.008029598355400342,
+          "lo": 0.006358301230745006,
+          "hi": 0.009618751999874562,
+          "stable": true
+        },
+        "abstention": {
+          "mean": 0.00006318488916642075,
+          "lo": -0.0018043931903206935,
+          "hi": 0.001763468111312183,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:29.555Z",
+    "contentHash": "6ed67cc3c1d3333f04ba64fa50aa8985803116289eeda901ec6460fff288a5e6"
+  }
+}

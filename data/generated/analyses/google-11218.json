@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-11218",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "228d20f96717d6da",
+  "computedAt": "2026-11-09T20:36:07.802Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "La Cour de cassation annonce qu'elle repoussera l'examen des QPC concernant les assistants parlementaires du RN à après l'élection présidentielle de 2027, éliminant ainsi une source immédiate de pression judiciaire sur Marine Le Pen pendant la campagne.",
+    "whatChanges": "Le report de l'examen des QPC supprime une menace judiciaire immédiate pour Marine Le Pen, ce qui pourrait limiter l'impact négatif sur son image auprès des électeurs pendant la campagne présidentielle."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Sympathisants du RN parmi les salariés modestes des communes périurbaines",
+      "mechanism": "Ce segment regroupe des salariés modestes (employés et ouvriers) vivant dans des communes de densité intermédiaire qui sont vraisemblablement impliqués dans la campagne présidentielle de Marine Le Pen, en raison du procès qui pourrait influencer la perception de sa possible peine de prison avant 2027.",
+      "reason": "Ce public est un électorat populaire intermédiaire souvent sollicité par le RN, concerné par les enjeux judiciaires affectant la tête de liste.",
+      "all": [],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [
+        "geo.dense",
+        "geo.rural"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "exposure_to_campaign",
+        "perception_of_trial"
+      ],
+      "count": 1040,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Procès du RN : cette date cruciale pour la campagne présidentielle de Marine Le Pen (et sa peine de prison)",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Retraités en couple dans les communes rurales et périurbaines",
+      "mechanism": "Ces retraités en couple vivant hors des zones urbaines denses sont concernés par le procès des assistants parlementaires du RN car ils représentent une base électorale qui pourrait être sensibilisée à la campagne présidentielle de Marine Le Pen avant la date cruciale du 16 décembre.",
+      "reason": "Le procès et la date de la Cour de cassation peuvent affecter leur soutien au RN, notamment dans des zones où ce parti a un ancrage local fort.",
+      "all": [
+        "cluster.retired_couple"
+      ],
+      "any": [
+        "geo.rural",
+        "geo.intermediate"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "attitude_toward_trial",
+        "media_exposure"
+      ],
+      "count": 1051,
+      "distinctCommunes": 98,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Procès du RN : cette date cruciale pour la campagne présidentielle de Marine Le Pen (et sa peine de prison)",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes diplômés urbains susceptibles d'être attentifs au procès du RN",
+      "mechanism": "Ce segment inclut des jeunes adultes diplômés du supérieur vivant dans des communes denses, susceptibles de suivre et réagir au procès des assistants parlementaires du RN qui peut influencer la campagne de Marine Le Pen en vue de la présidentielle 2027.",
+      "reason": "Ils constituent un électorat urbain et éduqué auquel les questions judiciaires et politiques peuvent particulièrement parler, et dont l'opinion est stratégique pour la campagne.",
+      "all": [
+        "cluster.young_urban_graduate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "media_consumption",
+        "knowledge_of_trial"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Procès du RN : cette date cruciale pour la campagne présidentielle de Marine Le Pen (et sa peine de prison)",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Procès du RN : cette date cruciale pour la campagne présidentielle de Marine Le Pen (et sa peine de prison)",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Sympathisants du RN parmi les salariés modestes des communes périurbaines",
+      "matchedCount": 1040,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas vraiment intéressée par les histoires judiciaires des politiques, ça ne change pas grand-chose pour moi. J'essaie surtout de penser à mon boulot et à ma vie personnelle.",
+        "Je vois bien que les ennuis judiciaires de Marine Le Pen font beaucoup de bruit, mais ça ne me fait pas changer d'avis, je la soutiens quand même et j'espère qu'elle pourra mener sa campagne sans pression.",
+        "Ces histoires judiciaires ne m'intéressent pas trop, pour moi c'est surtout le programme des candidats qui compte. Que ça tombe avant ou après l'élection, ça ne me fait pas changer d'avis."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités en couple dans les communes rurales et périurbaines",
+      "matchedCount": 1051,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 7,
+          "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, un procès ça ne changera pas grand-chose à ma manière de voir Marine Le Pen. Je suis plutôt préoccupée par ma vie ici et pas par ces histoires judiciaires.",
+        "Je trouve ça un peu lourd toute cette pression judiciaire sur Le Pen. S'ils décident de reporter, au moins ça lui enlève un poids pendant la campagne. Ça me parle un peu plus.",
+        "Honnêtement, ce genre de procès ne me touche pas vraiment, ça semble loin de mon quotidien et je ne sais pas trop quoi en penser."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 6,
+          "noClearChange": 89
+        },
+        "abstention": {
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 86
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas très intéressé par ce procès, cela ne change pas grand-chose à mon vote, je vote plutôt en fonction des projets locaux et de la compétence.",
+        "Ah, ce procès risque de donner une image négative à Marine Le Pen, ça peut faire hésiter certains, même si j'ai toujours des réserves sur elle.",
+        "Ce procès médiatique sur Le Pen ne me touche pas vraiment, je préfère me concentrer sur les programmes et l'avenir culturel et social."
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:18.156Z",
+    "contentHash": "cd93e267b032f86657e9e415460f5787e49972e6ff8dbd9bf1036a02b7c07d22"
+  }
+}

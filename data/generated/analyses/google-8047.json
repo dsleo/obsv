@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-8047",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "dbf824aa06e023b9",
+  "computedAt": "2026-11-09T20:36:45.732Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "À Lyon, Gabriel Attal élargit son « pacte pour la jeunesse » en proposant également des mesures concrètes sur l'emploi des jeunes, notamment l'instauration d'un accompagnement personnalisé et d'un quota renforcé de contrats d'apprentissage dans les entreprises, mettant l'accent sur l'insertion professionnelle plutôt que sur des discours sur la fougue et le courage.",
+    "whatChanges": "Le programme d'Attal met davantage l'accent sur des mesures d'emploi concrètes pour les jeunes plutôt que sur une image de jeunesse fougueuse, ciblant ainsi plus efficacement les jeunes actifs et les familles préoccupées par l'insertion professionnelle."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes lycéens urbains scolarisés en année bac",
+      "mechanism": "Le « pacte pour la jeunesse » défendu par Gabriel Attal en réponse au mouvement lycéen concerne directement les jeunes scolarisés en terminale (baccalauréat) dans les communes denses, particulièrement en milieu urbain comme Lyon où l’événement s’est produit.",
+      "reason": "Ce segment regroupe les 18-24 ans scolarisés avec un niveau d'éducation baccalauréat dans les communes à forte densité, typique des lycéens en fin de cycle scolaire concernés par les revendications.",
+      "all": [
+        "age.18_24",
+        "education.baccalaureate",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.vote_intention",
+        "mechanism.perception_of_youth_pact",
+        "exposure.to_movement_media",
+        "survey.attitude_lyceen_movement"
+      ],
+      "count": 5921,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : en raison du mouvement lycéen, Gabriel Attal réajuste son programme et défend un « pacte pour la jeunesse »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes diplômés urbains actifs de 25 à 34 ans",
+      "mechanism": "Gabriel Attal se positionne comme candidat de la jeunesse pour contrer Mélenchon, visant les jeunes actifs diplômés des villes de 25 à 34 ans qui représentent une cible clé du pacte proposé et du débat présidentiel à Lyon et autres grandes villes.",
+      "reason": "Jeunes professionnels diplômés et urbains, âgés de 25 à 34 ans, contribuent à la dynamique électorale de la jeunesse et sont concernés par la proposition politique réajustée.",
+      "all": [
+        "age.25_34",
+        "education.bac_plus_3_4",
+        "geo.dense"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.intermediate",
+        "occupation.executive_professional"
+      ],
+      "none": [
+        "occupation.retired"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.vote_intention",
+        "mechanism.attitude_toward_youth_policy",
+        "exposure.campaign_message",
+        "survey.political_engagement"
+      ],
+      "count": 2393,
+      "distinctCommunes": 70,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : en raison du mouvement lycéen, Gabriel Attal réajuste son programme et défend un « pacte pour la jeunesse »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Parents de famille jeunes vivant en commune dense",
+      "mechanism": "Le pacte pour la jeunesse vise aussi les jeunes familles, notamment celles en communes denses où les enjeux d’éducation et de vie quotidienne associés au mouvement lycéen et à la jeunesse sont les plus visibles.",
+      "reason": "Les couples avec enfants de 25 à 49 ans en milieu urbain sont concernés par la jeunesse en tant que parents et citoyens encadrant ce contexte social, particulièrement sensibles aux propositions éducatives.",
+      "all": [
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.vote_intention",
+        "mechanism.perception_of_family_support",
+        "exposure.youth_policy",
+        "survey.concerns_about_education"
+      ],
+      "count": 25109,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : en raison du mouvement lycéen, Gabriel Attal réajuste son programme et défend un « pacte pour la jeunesse »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Présidentielle 2027 : en raison du mouvement lycéen, Gabriel Attal réajuste son programme et défend un « pacte pour la jeunesse »",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes lycéens urbains scolarisés en année bac",
+      "matchedCount": 5921,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis un peu sceptique sur ce pacte pour la jeunesse, je préfère des actions concrètes dans l'emploi plutôt que des promesses politiques.",
+        "C’est bien qu’Attal se rapproche des jeunes, mais j’aimerais voir plus d’écoute réelle, pas seulement un discours pour calmer les choses.",
+        "Je vois ça comme un plan un peu flou. Je préfère que les réformes restent, ça montre de la volonté."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Parents de famille jeunes vivant en commune dense",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas très concernée par ces histoires de jeunes qui manifestent, ça ne change rien à mon vote.",
+        "Ce pacte pour la jeunesse... Ça ne fait pas vraiment bouger ma vie d’ouvrier, mais qu’il essaie d’écouter les jeunes, ça peut être positif, même si j’attends des actes concrets.",
+        "Attal qui se présente comme le candidat de la jeunesse, ça me parle un peu. J’aimerais bien qu’il prenne vraiment en compte les voix des jeunes dans ses propositions."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains actifs de 25 à 34 ans",
+      "matchedCount": 2393,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est bien que le gouvernement pense à la jeunesse, surtout avec les mouvements lycéens, mais je reste sceptique sur ces promesses. Ça ne changera pas vraiment mon vote, j'attends des actions concrètes.",
+        "Un pacte pour la jeunesse, ça me parle un peu plus que d’habitude, surtout si ça inclut un vrai dialogue avec les jeunes. Mais je veux voir si ça tient sur la durée, ça ne me fera pas changer de vote facilement.",
+        "Je suis content que Gabriel Attal fasse un effort pour écouter les lycéens, même si je préfère un ton un peu plus ferme que juste conciliant. Ça peut me faire regarder un peu plus le centre, mais pas un changement radical."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, je ne m'intéresse pas trop à ces histoires de jeunesse et de pactes, ça paraît loin de ma réalité de chantier et de famille. Ça ne change rien pour moi.",
+        "Je trouve ça plutôt prometteur que le gouvernement propose un pacte pour la jeunesse. Peut-être que ça pourrait rapprocher les jeunes, mais j'attends de voir s'ils agissent vraiment.",
+        "À mon âge, ces promesses pour la jeunesse me laissent un peu distante, mais si ça peut calmer des jeunes qui s'agitent, pourquoi pas ?"
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:52.907Z",
+    "contentHash": "9b10d6dafdb0741112969cde371650bf578d8de3d3adb00d4c5ae37674f70a84"
+  }
+}

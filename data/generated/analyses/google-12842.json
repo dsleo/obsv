@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-12842",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "0cc0445c97837505",
+  "computedAt": "2026-11-09T20:33:44.739Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Présidentielle 2027 : lors de son meeting au Bourget, Jean-Luc Mélenchon dévoile un programme légèrement révisé, incluant une proposition inédite de réduction du temps de travail à 32 heures, tout en conservant ses critiques envers Marine Le Pen.",
+    "whatChanges": "Le contenu du programme est enrichi avec une mesure sociale spécifique, visant à attirer davantage d'électeurs ouvriers et de la classe moyenne, plutôt que de se concentrer uniquement sur une ligne politique clivante."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes diplômés urbains de gauche",
+      "mechanism": "Ce segment comprend les jeunes diplômés vivant en milieu densément peuplé, principaux candidats à soutenir la ligne 'clivante' de Jean-Luc Mélenchon présentée au Bourget, manifestant un intérêt marqué pour les programmes progressistes et engagés dans les grandes villes.",
+      "reason": "Les jeunes adultes diplômés, notamment en milieu urbain dense, sont particulièrement concernés par les propositions de Mélenchon, qui s'adresse à un électorat éduqué et souvent militant dans les grandes agglomérations.",
+      "all": [
+        "age.18_24",
+        "education.bac_plus_3_4",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [
+        "household.single_parent"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.electoral_preference",
+        "exposure.to_meeting_communications",
+        "mechanism.support_for_Mélenchon_prog_2027",
+        "survey.participation"
+      ],
+      "count": 943,
+      "distinctCommunes": 65,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Jean-Luc Mélenchon présente son nouveau programme ce samedi au Bourget",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Employés et ouvriers des communes intermédiaires de 35 à 64 ans",
+      "mechanism": "Ce groupe inclut des salariés modestes âgés de 35 à 64 ans vivant dans des communes à densité intermédiaire, sensibles au contenu social et économique du programme de Mélenchon au Bourget, notamment son positionnement face à des adversaires comme Marine Le Pen.",
+      "reason": "Ce segment constitue une catégorie socio-professionnelle potentiellement touchée par les discours sur la justice sociale, la transformation économique et critique des rivalités politiques, crucial au meeting de Mélenchon.",
+      "all": [
+        "occupation.employee",
+        "geo.intermediate"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.electoral_preference",
+        "exposure.to_meeting_communications",
+        "mechanism.impact_of_program_on_workers",
+        "survey.participation"
+      ],
+      "count": 381,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Jean-Luc Mélenchon présente son nouveau programme ce samedi au Bourget",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités ruraux éloignés des grandes villes",
+      "mechanism": "Ce public rassemble des retraités vivant en milieu rural, souvent éloignés du clivage urbain, mais concernés par les propositions sociales et économiques du programme de Jean-Luc Mélenchon au Bourget et par son discours critique envers Marine Le Pen.",
+      "reason": "Les retraités ruraux, bien que moins exposés aux débats urbains, sont sensibles aux enjeux socio-économiques et politiques soulevés lors du meeting, en particulier autour des questions de justice sociale et de protection des droits.",
+      "all": [
+        "occupation.retired",
+        "geo.rural"
+      ],
+      "any": [],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.electoral_preference",
+        "exposure.to_meeting_communications",
+        "mechanism.attitudes_toward_Mélenchon_program",
+        "survey.participation"
+      ],
+      "count": 784,
+      "distinctCommunes": 91,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Jean-Luc Mélenchon présente son nouveau programme ce samedi au Bourget",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Présidentielle 2027 : Jean-Luc Mélenchon présente son nouveau programme ce samedi au Bourget",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains de gauche",
+      "matchedCount": 943,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Mélenchon est toujours très direct, ça ne me surprend pas mais ça ne change pas grand-chose pour moi, je me concentre surtout sur ce qui peut améliorer notre quotidien à Martigues.",
+        "Je ne suis pas vraiment fan de Mélenchon, son ton clivant me rebuterait, mais s'il prône l'unité et une vraie politique sociale, ça peut me parler un peu plus.",
+        "Mélenchon fait encore son show, ça parle surtout aux militants, moi je suis plus attentif au concret et au climat, alors l'appel à l'unité et l'écologie me semble plus intéressant."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités ruraux éloignés des grandes villes",
+      "matchedCount": 784,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Jean-Luc Mélenchon qui repasse par là avec ses discours un peu durs, ça ne changera pas grand-chose pour moi, je préfère ceux qui parlent simplement de la vie de tout le jour.",
+        "Mélenchon qui attaque Marine Le Pen, ça ne me plaît pas trop, ce genre de clash ne change rien à ce que je pense, j'aimerais bien qu'on parle plus de ce qui fait avancer vraiment les choses.",
+        "Je ne suis pas très fan de Mélenchon, ses discours trop passionnés me fatiguent, et la façon dont il parle des autres partis me dérange plus qu'autre chose."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Employés et ouvriers des communes intermédiaires de 35 à 64 ans",
+      "matchedCount": 381,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je n'ai pas vraiment le temps ni l'envie de suivre Mélenchon, ses programmes me semblent parfois trop mouvementés pour mon quotidien tranquille.",
+        "Mélenchon qui s'attaque à Le Pen comme ça, ça me fatigue, j'aimerais vraiment un discours plus rassembleur et moins agressif.",
+        "Je respecte Mélenchon mais ses attaques contre Le Pen me paraissent vaines, un ton plus apaisé me plairait mieux."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Michel m’intéresse peu, son discours clivant ne change rien à ma façon de voir les choses. Je préfère la stabilité dans ma commune, pas ces débats politiques vifs.",
+        "Mélenchon reste trop conflictuel pour moi, ça me lasse. Si par contre il propose un discours plus apaisé et écologique, je pourrais l’écouter davantage.",
+        "Je respecte son engagement, mais ses attaques contre Le Pen me semblent contre-productives. Un ton plus uni à gauche pourrait me convaincre davantage."
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:24.257Z",
+    "contentHash": "1a53a58fef02ca34b5064c05531e92a3ec3908d455565f9fc6c53cbafc43e5b4"
+  }
+}

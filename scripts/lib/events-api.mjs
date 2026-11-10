@@ -11,8 +11,13 @@ export function classify(e, { pin = [], hide = [] } = {}, key) {
   if (e.tier === "A" && e.publisher_count >= 5) return "major"; // candidacies, endorsements, debates... widely relayed
   if (e.tier === "A" && e.publisher_count >= 2) return "notable";
   if (e.tier === "B" && e.publisher_count >= 3 && e.election_relevance >= 0.5) return "notable"; // statements/proposals picked up by several outlets
-  return null; // tier C (world news, relevance ~0) and single-outlet items are dropped
+  if (SOCIETY.test(e.event_type) && e.publisher_count >= 5 && FRANCE.test(mentionText(e))) return e.publisher_count >= 20 ? "major" : "notable"; // French society news (protests, attacks, institutions): tier C, relevance ~0, but widely relayed
+  return null; // other tier C (world news) and single-outlet items are dropped
 }
+
+const SOCIETY = /^context:(social|security|institutional|economy)$/;
+const FRANCE = /\bfrance\b|fran[çc]ais|\bhexagone\b/i; // ponytail: keyword check, the API has no country field. Foreign items that mention France slip in.
+const mentionText = (e) => [e.title, ...(e.source_descriptions ?? []), ...(e.key_terms ?? [])].join(" ");
 
 const norm = (t) => t.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 const words = (t) => new Set(norm(t).split(" "));

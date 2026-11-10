@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-2331",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "b0dc75f08b0cb5ab",
+  "computedAt": "2026-11-09T20:40:45.787Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "À la Fête de « L’Humanité », Fabien Roussel annonce un retrait de sa candidature communiste pour soutenir une candidature de gauche unie, soulignant l'importance de la coalition pour contrer la droite et l’extrême droite.",
+    "whatChanges": "Fabien Roussel choisit de soutenir une candidature unique de gauche au lieu de défendre sa propre candidature, ce qui modifie la dynamique électorale en faveur de l’unité à gauche, impactant les électeurs communistes et socialistes."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes diplômés urbains sceptiques",
+      "mechanism": "Fabien Roussel doit prouver l'utilité de sa candidature communiste aux jeunes urbains diplômés, un public souvent plus critique ou éloigné de la gauche radicale, présent lors de la Fête de l'Humanité.",
+      "reason": "Segment composé des jeunes diplômés universitaires en communes denses, susceptibles d'être présents sur le lieu événementiel mais plus éloignés des idées communistes traditionnelles.",
+      "all": [
+        "cluster.young_urban_graduate",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote intention",
+        "perception de la candidature communiste"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle: à la Fête de l'Huma, Fabien Roussel au défi de prouver l'utilité d'une candidature communiste",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Retraités peu diplômés ruraux",
+      "mechanism": "La candidature communiste est aussi jugée par les retraités peu diplômés vivant en milieu rural, sensibles aux questions sociales portées par Fabien Roussel à la Fête de l'Humanité.",
+      "reason": "Retraités sans diplôme dans des communes rurales, un segment potentiellement très concerné par les politiques sociales du PCF à défendre.",
+      "all": [
+        "cluster.retiree_no_diploma",
+        "geo.rural"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote intention",
+        "intérêt pour les politiques sociales communistes"
+      ],
+      "count": 351,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle: à la Fête de l'Huma, Fabien Roussel au défi de prouver l'utilité d'une candidature communiste",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Employés et ouvriers vivant en couple avec enfants en communes intermédiaires",
+      "mechanism": "Le candidat communiste vise les familles populaires actives avec enfants, en particulier les employés et ouvriers des communes intermédiaires, sensibles aux propositions de gauche lors de la Fête de l'Humanité.",
+      "reason": "Remplace un segment trop large sur salariés modestes urbains par un groupe plus restreint combinant catégorie socio-professionnelle, type de foyer et densité intermédiaire.",
+      "all": [
+        "household.couple_with_children",
+        "geo.intermediate"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 474,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle: à la Fête de l'Huma, Fabien Roussel au défi de prouver l'utilité d'une candidature communiste",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Présidentielle: à la Fête de l'Huma, Fabien Roussel au défi de prouver l'utilité d'une candidature communiste",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités peu diplômés ruraux",
+      "matchedCount": 351,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne comprends pas très bien pourquoi Fabien Roussel doit prouver son utilité à la Fête de l'Humanité, tout cela semble assez lointain de ma vie quotidienne. Une candidature communiste, ça ne me parle pas vraiment.",
+        "Fabien Roussel qui renonce pour soutenir Mélenchon ? Ça pourrait peut-être clarifier un peu la gauche radicale, ça devient compliqué de suivre tous ces petits partis.",
+        "Fabien Roussel à la Fête de l'Huma ? Je ne le connais pas vraiment. Cette histoire de candidature communiste me paraît peu importante pour moi."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés et ouvriers vivant en couple avec enfants en communes intermédiaires",
+      "matchedCount": 474,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve intéressant que Fabien Roussel essaie de montrer que sa candidature communiste a vraiment un sens, même si je ne suis pas très proche de leur discours. Je suis plutôt attachée aux valeurs concrètes.",
+        "Honnêtement, je m’en fiche un peu, je suis plus préoccupé par la stabilité pour ma famille et la sécurité. Que Fabien Roussel fasse campagne ou qu’il soutienne Mélenchon, ça ne me touche pas vraiment.",
+        "Vu que je préfère la stabilité, savoir que Roussel essaie de prouver son utilité me fait penser que ces divisions à gauche ne sont pas très bonnes pour nous. L’idée d’une union me plaît plus."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas vraiment concernée par les débats politiques à la fête de l'Huma, ça me semble trop éloigné de ma vie quotidienne et je reste fidèle à mes habitudes.",
+        "Je suis un peu déçue que Fabien Roussel veuille prouver son utilité, je préfère qu’il s’allie à Mélenchon, ça aurait plus de poids pour changer les choses.",
+        "Je trouve que cette histoire de candidature communiste, c’est un peu compliqué, ça ne change pas grand-chose pour moi. Je reste plutôt centré sur mes priorités personnelles."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains sceptiques",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, je trouve que c'est compliqué de suivre tous ces débats entre candidats à la Fête de l'Humanité, ça ne change pas vraiment mon vote perso.",
+        "Si Roussel se retire pour soutenir Mélenchon, ça pourrait renforcer la gauche radicale, ce qui pourrait m'intéresser un peu plus pour voter à gauche.",
+        "Je suis un peu sceptique, mais je ne crois pas que cette histoire à la Fête de l’Humanité va me faire changer d'avis pour 2027."
+      ]
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T07:38:36.423Z",
+    "contentHash": "894915c12d6d5fa9f228851e28d1c825cafb5cbb3fd9ff59e91ae1c3ce676580"
+  }
+}
