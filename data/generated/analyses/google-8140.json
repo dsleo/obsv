@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-8140",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "1c431aa12f619ea5",
+  "computedAt": "2026-11-10T22:06:20.137Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Mobilisation lycéenne : le ministère annonce que seuls trois personnels de l’éducation nationale ont été blessés lundi, avec 98 % d’établissements ouverts.",
+    "whatChanges": "Le ministère rapporte un bilan moins grave avec moins de personnels blessés et un taux d’ouverture supérieur des établissements, atténuant la perception de la mobilisation pour le grand public."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Personnes en couple avec enfants, liées à la mobilité familiale",
+      "mechanism": "Ce segment est composé de foyers en couple avec enfants vivant en zones où les déplacements en avion vers ou depuis la Corse sont courants, impactés par la grève des pilotes d'Air Corsica.",
+      "reason": "Les familles avec enfants ont des besoins de déplacement spécifiques, susceptibles d'être perturbés par les annulations de vols et les grèves dans le transport aérien régional.",
+      "all": [
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to.flight_cancellation"
+      ],
+      "count": 24731,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Grève des pilotes d'Air Corsica, près d'un quart des vols annulés",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Travailleurs salariés modestes affectés par les perturbations de transport",
+      "mechanism": "La grève des pilotes entraîne des perturbations pour les salariés employés et ouvriers qui utilisent le transport aérien pour leurs déplacements professionnels ou personnels, notamment dans les zones urbaines denses.",
+      "reason": "Ce groupe est directement concerné par les annulations de vols, ce qui peut influer sur leur travail et leur vie quotidienne.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to.flight_cancellation"
+      ],
+      "count": 28414,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Grève des pilotes d'Air Corsica, près d'un quart des vols annulés",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes actifs résidant en Corse dense",
+      "mechanism": "Ce segment comprend des adultes jeunes et actifs (25 à 34 ans) habitant dans une commune à densité élevée, plus susceptibles d’utiliser les vols d’Air Corsica perturbés par la grève.",
+      "reason": "Segment resserré en ajoutant une tranche d'âge spécifique et géographie dense pour cibler une population susceptible d'être utilisateur du transport aérien régional.",
+      "all": [
+        "geo.dense",
+        "age.25_34"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.intermediate",
+        "occupation.worker",
+        "occupation.artisan_merchant_owner",
+        "occupation.executive_professional"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 17214,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Grève des pilotes d'Air Corsica, près d'un quart des vols annulés",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Salariés modestes en commune intermédiaire impactés par la grève",
+      "mechanism": "Ce groupe rassemble des employés, ouvriers et artisans vivant dans des communes à densité intermédiaire, catégories professionnelles et géographiques concernées par les perturbations du transport aérien et la grève.",
+      "reason": "Segment mixant profession modeste et commune intermédiaire, ciblant un public impacté mais plus resserré que généralités géographiques seules.",
+      "all": [
+        "geo.intermediate",
+        "cluster.modest_wage_earner"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 601,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Grève des pilotes d'Air Corsica, près d'un quart des vols annulés",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Grève des pilotes d'Air Corsica, près d'un quart des vols annulés",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Travailleurs salariés modestes affectés par les perturbations de transport",
+      "matchedCount": 28414,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Le quart des vols annulés sur Air Corsica, ça complique les choses pour ceux qui veulent juste voyager tranquillement. Par contre, la mobilisation lycéenne avec si peu d'établissements fermés, ça ne me semble pas si dramatique.",
+        "Une grève impactant les vols, surtout en Corse, c'est embêtant mais ça ne me touche pas directement. Pour la mobilisation lycéenne, les chiffres de blessures de personnels me paraissent exagérés mais le fait que la majorité des établissements étaient ouverts est rassurant.",
+        "Je ne prends pas souvent l'avion, donc la grève Air Corsica ne change pas grand-chose pour moi. Par contre, la mobilisation lycéenne avec autant de personnels blessés, ça me paraît assez inquiétant et peut faire monter la tension."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.002801366455804115,
+          "lo": 0.0013040516643224136,
+          "hi": 0.004236264557743103,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0016684511145643795,
+          "lo": 0.00021740546544659194,
+          "hi": 0.003024076559130716,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.00213747789552123,
+          "lo": -0.003657179649896151,
+          "hi": -0.0008759978821200716,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0015257546948406482,
+          "lo": -0.0025041121697394037,
+          "hi": -0.0007009139194790385,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.002058015293650921,
+          "lo": -0.004124876014884054,
+          "hi": 0.0003535240800865783,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0012514303136442976,
+          "lo": -0.0006843859666798355,
+          "hi": 0.0032078961287840897,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes actifs résidant en Corse dense",
+      "matchedCount": 17214,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis un peu exaspérée par ces grèves qui perturbent les voyages, surtout quand je planifie tout au détail. Pour la mobilisation lycéenne, ça ne change pas vraiment mon avis, ça me semble un peu exagéré.",
+        "Les grèves me compliquent la vie, c'est toujours frustrant. Quant aux blessés dans les lycées, je doute qu'on ait besoin d'en faire trop, il faut rester mesuré.",
+        "Une grève à Air Corsica, ça ne me touche pas directement ici à Dunkerque, donc ça ne change rien. Pour les lycéens, c'est important que ce soit moins violent que prévu, ça rassure."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0034243736343287277,
+          "lo": 0.002161069580979762,
+          "hi": 0.004739066094854523,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0020805402126509906,
+          "lo": 0.0012364179116923617,
+          "hi": 0.0030165908340808564,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.003077392264767514,
+          "lo": -0.004328475143095901,
+          "hi": -0.00187772644022644,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.000972159212553424,
+          "lo": -0.0016802182785216717,
+          "hi": -0.0001815302611210804,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.001827815174746307,
+          "lo": -0.00284687896464342,
+          "hi": -0.0005705234517609745,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0003724528050875348,
+          "lo": -0.0015321372293677679,
+          "hi": 0.0021876362709696024,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Personnes en couple avec enfants, liées à la mobilité familiale",
+      "matchedCount": 24731,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça agaçant que les pilotes fassent grève, ça complique mes déplacements, et les lycéens qui se mobilisent, ça ne change pas grand-chose à ma vie.",
+        "Une grève qui perturbe les vols, ça m'embête surtout si je dois voyager. Quant aux lycéens, je suis un peu préoccupée par leurs actions, surtout si ça implique des blessés.",
+        "Je comprends les tensions, mais une grève chez Air Corsica ne m'affecte pas directement. Concernant la mobilisation lycéenne, avec si peu d'établissements fermés, ça ne me touche pas spécialement."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0027550560727764503,
+          "lo": 0.001911788148514806,
+          "hi": 0.003630216439955401,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0021483715205689946,
+          "lo": 0.0012505675230502623,
+          "hi": 0.0030897857198058094,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0027169132835650656,
+          "lo": -0.003448386070421802,
+          "hi": -0.001972843649202294,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.001597846607311565,
+          "lo": -0.002053772104208318,
+          "hi": -0.001183495741058902,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0014273315131780196,
+          "lo": -0.003008331854466126,
+          "hi": -0.00008475521992414951,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0008386638107092358,
+          "lo": -0.0005595049466914631,
+          "hi": 0.0023312651474109206,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Salariés modestes en commune intermédiaire impactés par la grève",
+      "matchedCount": 601,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "La grève des pilotes d'Air Corsica, ça me fait plutôt penser aux problèmes des salariés qui veulent se faire entendre, c'est embêtant pour les voyageurs mais je comprends la colère. Pour la mobilisation lycéenne, ça ne change rien pour moi.",
+        "Une grève d'Air Corsica, ça ne me touche pas directement, ça ne change pas grand-chose à ma vie. Pour la mobilisation lycéenne et les blessés, ça semble moins grave que ce qu'on dit parfois, mais ça ne modifie pas mon choix politique.",
+        "La grève des pilotes d'Air Corsica ne m'impacte pas, et même les soucis liés à la mobilisation lycéenne ne changent pas mon opinion. Je reste préoccupé par les questions sociales et la justice."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0010794599784103626,
+          "lo": 0.00013411779866199462,
+          "hi": 0.0019753074886557924,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0002959833173118342,
+          "lo": -0.0009911094227710116,
+          "hi": 0.0004297987383105392,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0009435664960861703,
+          "lo": -0.0016187532743991123,
+          "hi": -0.0003159131864635256,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0006684213037731574,
+          "lo": -0.000998593035653934,
+          "hi": -0.00035564707432226135,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0034431979359186536,
+          "lo": -0.005558486145687491,
+          "hi": -0.0017834475714439714,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004271709074679453,
+          "lo": 0.0030704078311722936,
+          "hi": 0.005473229980066257,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 92
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette grève des pilotes d'Air Corsica me contrarie un peu car elle perturbe les déplacements, mais la mobilisation lycéenne avec si peu d'établissements fermés et quelques blessés ne me touche pas beaucoup.",
+        "Je ne suis pas directement concerné par la grève en Corse, ça ne change pas grand-chose pour moi. Concernant la mobilisation lycéenne, je trouve que le ministère exagère peut-être un peu sur le nombre de blessés, c'est mieux s'ils sont moins nombreux.",
+        "La grève en Corse ne m'affecte pas et la mobilisation lycéenne avec si peu d'établissements fermés ne me semble pas une urgence. La question des personnels blessés me parait trop amplifiée dans le premier bilan."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0012872978652996195,
+          "lo": 0.0005567816468778057,
+          "hi": 0.0019574621394604814,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0010539389243932307,
+          "lo": 0.00037007604479960733,
+          "hi": 0.00172381108106511,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.002927754765466209,
+          "lo": -0.0037195475625106922,
+          "hi": -0.0021802891059955593,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0013578806782169961,
+          "lo": -0.0019498318870927638,
+          "hi": -0.0008468942786417024,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0006532416840286549,
+          "lo": -0.0018920181776345818,
+          "hi": 0.0007248440980864752,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0025976403380190125,
+          "lo": 0.0014832365787945277,
+          "hi": 0.0037783411410529503,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:56.971Z",
+    "contentHash": "99daae90828370c9b8819679246d195136ae6f2455ed93d5a11e4294a4b4670a"
+  }
+}

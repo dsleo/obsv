@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-9582",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "50c5db043f853110",
+  "computedAt": "2026-11-10T22:04:01.298Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Alsace. Mobilisation du 24 octobre : la manifestation à Strasbourg, organisée par des jeunes aux profils variés, s'est déroulée pacifiquement sans aucune interpellation ni garde à vue.",
+    "whatChanges": "L'absence d'arrestations lors de la manifestation de Strasbourg change la perception de l'ordre public, rassurant les électeurs modérés et évitant un durcissement des positions sur la sécurité."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes manifestants en milieu urbain dense",
+      "mechanism": "Ce segment correspond aux jeunes adultes manifestant dans les villes denses comme Paris et Strasbourg lors de la manifestation du 24 octobre, leur profil varié est explicitement mentionné dans la mobilisation.",
+      "reason": "Les jeunes de 18 à 24 ans vivant dans des communes densément peuplées constituent une part clé de la mobilisation déclarée comme sauvage et variée.",
+      "all": [
+        "age.18_24",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "mécanisme de participation à la manifestation"
+      ],
+      "count": 14650,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 24 octobre : 126 personnes en garde à vue à Paris",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Les jeunes diplômés des villes, bien qu’appartenant à une catégorie plus aisée, peuvent participer à des manifestations urbaines ; ils sont souvent impliqués dans des actions collectives et constituent un public à profils variés.",
+      "reason": "Ce segment sélectionne des jeunes diplômés vivant en commune dense, reflétant la diversité mentionnée dans la mobilisation.",
+      "all": [
+        "cluster.young_urban_graduate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "engagement dans la manifestation"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 24 octobre : 126 personnes en garde à vue à Paris",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes sans activité en milieu urbain dense",
+      "mechanism": "Les jeunes sans activité professionnelle ou étudiante, souvent peu intégrés socialement, peuvent être à l'origine de manifestations sauvages et sont un public clairement mentionné dans le contexte alsacien avec profils variés.",
+      "reason": "Ce segment cible précisément des jeunes 18-24 ans sans activité, en milieu urbain dense, correspondant à une base probable de manifestants lors de l'événement.",
+      "all": [
+        "cluster.young_without_activity",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "type d'activité ou d'inactivité au moment de la manifestation"
+      ],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 24 octobre : 126 personnes en garde à vue à Paris",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Manifestation du 24 octobre : 126 personnes en garde à vue à Paris",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes manifestants en milieu urbain dense",
+      "matchedCount": 14650,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Les gardes à vue pour une manifestation sauvage en plein Paris, ça me choque un peu, je comprends la frustration des jeunes mais j'espère qu'on ne criminalise pas trop vite les mouvements sociaux.",
+        "Une manifestation sauvage qui finit en garde à vue, ça ne me parle pas vraiment, c’est un peu trop violent pour moi, je préfère les actions pacifiques.",
+        "Je vis à Dunkerque, un peu loin de ces histoires parisiennes. Cette affaire de jeune qui se font interpeller dans une manif me semble loin de mes préoccupations du quotidien."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0014759018861235955,
+          "lo": -0.002700784648855644,
+          "hi": 0.004911484181196774,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.004884886187497249,
+          "lo": -0.007170423849355825,
+          "hi": -0.0024560827998123536,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0076038815978907645,
+          "lo": -0.010069769573504249,
+          "hi": -0.005176455377941522,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0024854374728835262,
+          "lo": -0.005078030065476119,
+          "hi": -0.00016509778668799272,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0044128188006249645,
+          "lo": 0.0009308072503430494,
+          "hi": 0.007900369239604755,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.009085484571522967,
+          "lo": 0.005031715547052709,
+          "hi": 0.013327817215918992,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 5,
+          "away": 1,
+          "noClearChange": 42
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ces manifestations qui dégénèrent, ça me dérange. Je préfère une ville calme pour travailler et vivre.",
+        "Encore une manifestation violente qui ne fait que mettre le trouble. Je fuis ce genre d'événement, ça ne m'intéresse pas vraiment.",
+        "Je m'inquiète un peu quand il y a des arrestations, ça me paraît trop violent. Une manifestation pacifique serait plus acceptable."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0004660955532422003,
+          "lo": -0.0032411060328973854,
+          "hi": 0.002714382973868532,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.005281000572429474,
+          "lo": -0.006922762191048769,
+          "hi": -0.003897713384229763,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.007356819275765441,
+          "lo": -0.009375507715598709,
+          "hi": -0.0053994298609672245,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0014420598613818962,
+          "lo": -0.0031762341131249586,
+          "hi": 0.0003994061010041221,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.005275939258552892,
+          "lo": 0.0017807152153450443,
+          "hi": 0.009052386706502996,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00927003600426611,
+          "lo": 0.005614824899405711,
+          "hi": 0.013011614795898184,
+          "stable": true
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité en milieu urbain dense",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est inquiétant de voir autant d'arrestations à Paris, ça me fait penser que les manifs dégénèrent trop souvent et ça n'aide pas ceux qui veulent vraiment changer les choses pacifiquement.",
+        "Je trouve ça dommage que ça dégénère, mais ça ne change pas vraiment mon avis, je préfère les actions pacifiques et réfléchies pour faire bouger les choses.",
+        "Les gardes à vue à Paris, ça me dépasse un peu, ici à Dunkerque c'est différent, mais je ne suis pas trop concernée donc ça ne change pas vraiment mon vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.00467873500820288,
+          "lo": 0.0009687939615656543,
+          "hi": 0.008574535655869206,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0017928097096454878,
+          "lo": -0.004430700020040112,
+          "hi": 0.0011191736414913871,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.007535079134606676,
+          "lo": -0.009697669137325539,
+          "hi": -0.005617189921871028,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.004739282789094524,
+          "lo": -0.007520578836322672,
+          "hi": -0.00216220719851971,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.004028693854692388,
+          "lo": -0.007887167244286866,
+          "hi": -0.00018737650547352944,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.013417130479836172,
+          "lo": 0.007564816921365893,
+          "hi": 0.0200000506679611,
+          "stable": true
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 5,
+          "noClearChange": 87
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ces manifestations violentes et les gardes à vue à Paris, ça ne me concerne pas trop et ça me fatigue un peu. Tant que ça perturbe pas la vie tranquille ici, je ne changerai pas d'avis.",
+        "La manifestation sauvage avec des arrestations, je trouve ça inquiétant, ça montre un climat tendu, ça ne me donne pas envie de bouger. Si c'était pacifique, je serais un peu plus ouverte, mais ça change pas grand-chose à mon vote.",
+        "La garde à vue de 126 personnes, ça me choque, surtout en Seine-Saint-Denis où ça peut s'envenimer. Je suis peut-être plus sensible à ça que d'autres. Si c'était pacifique, je serais plus tranquille."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0007478646067383601,
+          "lo": -0.002269451698927961,
+          "hi": 0.0011349360640901774,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.004769179976652609,
+          "lo": -0.0058674015755793415,
+          "hi": -0.003680125264470867,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.005577507867684787,
+          "lo": -0.006655518514437605,
+          "hi": -0.004295328199511217,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0008187980548204463,
+          "lo": -0.001905617910681989,
+          "hi": 0.0005220749701016548,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.007998734602797234,
+          "lo": 0.004985259494029163,
+          "hi": 0.010996377013142022,
+          "stable": true
+        },
+        "abstention": {
+          "mean": 0.00391461590309896,
+          "lo": 0.0018686639516220576,
+          "hi": 0.006216559490403804,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:12:01.186Z",
+    "contentHash": "b3fca50c982126f4cfa3cba2b7f5f5929cd81364ba05f16adf5a91fd4178c070"
+  }
+}

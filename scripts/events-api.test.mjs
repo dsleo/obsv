@@ -19,13 +19,22 @@ test("tiers and publisher counts decide importance", () => {
 test("French society news is kept, foreign news is not", () => {
   const soc = (over) => ev({ tier: "C", election_relevance: 0, event_type: "context:social", publisher_count: 6, ...over });
   const rows = apiToEvents([
-    soc({ seed_source: "google:1", title: "Mobilisations en France" }),                                  // notable
+    soc({ seed_source: "google:1", title: "Mobilisations en France" }),                                  // old API (no scope): keyword, notable
     soc({ seed_source: "google:2", event_type: "context:security", publisher_count: 30, source_descriptions: ["Hommage en France"] }), // major
     soc({ seed_source: "google:3", title: "Manifestations à Belgrade" }),                              // foreign: dropped
-    soc({ seed_source: "google:4", title: "Grève en France", publisher_count: 3 }),                    // too few outlets: dropped
+    soc({ seed_source: "google:4", title: "Grève en France", publisher_count: 2 }),                    // too few outlets: dropped
     soc({ seed_source: "google:5", event_type: "context:international", title: "France et Ukraine" }),  // world news: dropped
+    soc({ seed_source: "google:6", scope: "fr", scope_source: "marker", event_type: "context:justice" }),  // API scope: notable
+    soc({ seed_source: "google:7", scope: "fr", scope_source: "default" }),                            // no term decided the scope: dropped
+    soc({ seed_source: "google:8", scope: "international", scope_source: "marker", title: "Grève en France" }), // API scope wins over keywords
   ]);
-  assert.deepEqual(rows.map((r) => [r.id, r.importance]), [["google-1", "notable"], ["google-2", "major"]]);
+  assert.deepEqual(rows.map((r) => [r.id, r.importance]), [["google-1", "notable"], ["google-2", "major"], ["google-6", "notable"]]);
+});
+
+test("one story shows at most two society events, the widest covered", () => {
+  const s = (n, count, story) => ev({ seed_source: `google:${n}`, tier: "C", event_type: "context:security", scope: "fr", scope_source: "marker", election_relevance: 0, publisher_count: count, story_id: story });
+  const rows = apiToEvents([s(1, 5, 9), s(2, 50, 9), s(3, 7, 9), s(4, 4, 8)]);
+  assert.deepEqual(rows.map((r) => r.id), ["google-2", "google-3", "google-4"]); // google-1 is the third of story 9
 });
 
 test("description skips headline echoes; url comes from the API", () => {

@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-15702",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "6ce5475089b4e0bb",
+  "computedAt": "2026-11-10T22:11:07.639Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Il discute avec l'intelligence artificielle et tente d'organiser un attentat à Lille, mais grâce à une intervention rapide des services français, il est arrêté avant toute alerte du FBI.",
+    "whatChanges": "L'arrestation précipitée par les services français évite l'alerte internationale ; cela montre une efficacité immédiate nationale, risquant de rassurer les électeurs sur la sécurité intérieure."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes de 18 à 24 ans résidant en communes denses",
+      "mechanism": "Les jeunes âgés de 18 à 24 ans représentent une population vulnérable et préoccupée par les questions de sécurité publique, notamment après le signalement d'un projet d'attentat fomenté via l'intelligence artificielle.",
+      "reason": "Leur âge et leur présence dans des communes denses les rendent des cibles ou témoins potentiels d'actions terroristes, augmentant leur exposition à la peur et à la prévention.",
+      "all": [
+        "age.18_24",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 14650,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Déraillement d'un train en Normandie: \"à ce stade\", aucun élément ne permet d'évoquer un attentat, selon le procureur",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Salariés modestes de 25 à 49 ans en communes denses",
+      "mechanism": "Les salariés modestes actifs entre 25 et 49 ans, résidant dans des communes denses, sont concernés par la sécurité du transport ferroviaire au quotidien, particulièrement après l'alerte du FBI et l'arrestation liée à un projet d'attentat.",
+      "reason": "Ils sont en contact fréquent avec les infrastructures de transport, aussi bien pour leurs trajets domicile-travail que professionnels, ce qui les place au cœur du mécanisme de menace évoqué.",
+      "all": [
+        "cluster.modest_wage_earner"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [
+        "geo.rural"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 21033,
+      "distinctCommunes": 96,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Déraillement d'un train en Normandie: \"à ce stade\", aucun élément ne permet d'évoquer un attentat, selon le procureur",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Cadres urbains de 35 à 49 ans en couple sans enfant",
+      "mechanism": "Ce segment de cadres urbains âgés de 35 à 49 ans et vivant en couple sans enfant est concerné par la sécurité urbaine et la prévention du terrorisme, notamment après le signalement et l'arrêt d'un individu discutant avec une IA pour organiser un attentat à Lille.",
+      "reason": "Ils vivent et travaillent dans des zones denses où les mesures de sécurité et d'alerte sont potentielles et pertinentes, et peuvent être sensibles aux aspects liés à l'intelligence artificielle et à la cybercriminalité associée.",
+      "all": [
+        "cluster.urban_executive",
+        "age.35_49",
+        "household.couple_no_children"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 543,
+      "distinctCommunes": 60,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Déraillement d'un train en Normandie: \"à ce stade\", aucun élément ne permet d'évoquer un attentat, selon le procureur",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Déraillement d'un train en Normandie: \"à ce stade\", aucun élément ne permet d'évoquer un attentat, selon le procureur",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes de 18 à 24 ans résidant en communes denses",
+      "matchedCount": 14650,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 6,
+          "away": 1,
+          "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 1,
+          "noClearChange": 39
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ça me fait un peu peur de savoir que des gens peuvent vraiment préparer des attentats, même si là ce n'est pas un attentat d'après le procureur. C'est important que la police veille à ça.",
+        "Je suis rassurée que les services français aient pu arrêter ce type rapidement, ça démontre l'efficacité de notre sécurité intérieure, ça me donne un peu plus confiance dans l'État.",
+        "Les tentatives d'attentat, ça me fait peur et ça me rend un peu méfiant envers certains discours politiques. Heureusement que la police a réagi à temps."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0016413832817203115,
+          "lo": -0.0023047842366761225,
+          "hi": -0.0008795609877552991,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0015442293072246446,
+          "lo": -0.0021900708020239465,
+          "hi": -0.0008974801040795233,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0033900136776113597,
+          "lo": -0.004371498032125343,
+          "hi": -0.00235592661308309,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.00024930664571950974,
+          "lo": -0.0008112223044962613,
+          "hi": 0.0004121810359213162,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.003231624482795174,
+          "lo": 0.0013499422737989347,
+          "hi": 0.005457531248702892,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.003593308429480638,
+          "lo": 0.000898032978595424,
+          "hi": 0.006175589442829807,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Cadres urbains de 35 à 49 ans en couple sans enfant",
+      "matchedCount": 543,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est grave et inquiétant, mais je trouve rassurant qu'il n'y ait pour l'instant aucune preuve d'attentat. Ça reste un fait divers, pas un nouvel élément politique.",
+        "Ce genre d'affaires renforce la peur du terrorisme et nourrit mes préventions vis-à-vis des extrêmes, surtout en région urbaine comme Marseille.",
+        "Ce n'est pas forcément une surprise, malheureusement, mais tant que ça reste préventif et sans attentat, ça ne change rien à ce que je pense."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0015799107958357056,
+          "lo": -0.0024204681093309343,
+          "hi": -0.0005852898337043482,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0022826932492543616,
+          "lo": -0.003336208472668673,
+          "hi": -0.001311997399205278,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.004729113278539085,
+          "lo": -0.006452019628810607,
+          "hi": -0.003142493132320783,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0010688257328975925,
+          "lo": -0.0018827939515746982,
+          "hi": -0.0004678900608855676,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.004967302798518913,
+          "lo": 0.0020073391984671545,
+          "hi": 0.0077323859026333175,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004693240258007831,
+          "lo": 0.0013805408166890712,
+          "hi": 0.008292207478832213,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes de 25 à 49 ans en communes denses",
+      "matchedCount": 21033,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 1,
+          "noClearChange": 43
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est inquiétant, mais heureusement qu'on peut faire confiance aux autorités pour écarter la menace d'un attentat ici. Cela ne change pas vraiment ce que je pense ni pour qui je voterai.",
+        "Je suis soulagée que l'homme ait été arrêté et qu'il n'y ait pas eu d'attaque ici. Cela confirme que la vigilance fonctionne, mais ça ne me fera pas changer mes intentions de vote.",
+        "Une affaire grave, mais elle reste assez lointaine de mon quotidien. Je ne pense pas que ça impacte mon choix politique, même en sachant que les services ont bien fait leur travail."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0010097789882698427,
+          "lo": -0.0016303404756655003,
+          "hi": -0.0005081356500997091,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0004913025247557964,
+          "lo": -0.0008586169896584371,
+          "hi": -0.0001265412248967732,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0026226958141276104,
+          "lo": -0.0033641552013963043,
+          "hi": -0.0018116217858363483,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.001311478202414797,
+          "lo": -0.001790818796393935,
+          "hi": -0.0008173553317828631,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0023840040120349302,
+          "lo": 0.00019145265960110458,
+          "hi": 0.004551061811053591,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.003051251517533113,
+          "lo": 0.0007543050452714402,
+          "hi": 0.00536717455672385,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 11,
+          "away": 3,
+          "noClearChange": 82
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 2,
+          "noClearChange": 88
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis soulagée que ce ne soit pas un attentat, même si ça me fait un peu peur de savoir que des gens peuvent organiser ça en discutant avec une intelligence artificielle.",
+        "Ce genre d'événement est inquiétant, mais tant qu'on n'a pas d'impact direct sur ma vie ou mes valeurs, ça ne changera pas mon vote.",
+        "C'est effrayant de penser que quelqu'un ait voulu organiser un attentat et que ça ait été juste évité de justesse."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.00048757742434201346,
+          "lo": -0.0009320494842302108,
+          "hi": -0.00007400782400612375,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.00055225488179778,
+          "lo": -0.0010343003192547892,
+          "hi": -0.00007533259523557611,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0027159717506321534,
+          "lo": -0.0036981157867793063,
+          "hi": -0.0017996496529407004,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0018633582870787324,
+          "lo": -0.0025978508354878695,
+          "hi": -0.0012649562706613696,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0031384588489459836,
+          "lo": 0.0010970467940684472,
+          "hi": 0.005345202153113158,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.002480703494904698,
+          "lo": 0.0009192518225249006,
+          "hi": 0.003832127414559848,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:25.302Z",
+    "contentHash": "5f5c8ec21b4974ca66d9091d82fdc2b525aa4966e0921d3b836fa0497a421490"
+  }
+}

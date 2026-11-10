@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-8444",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "d77500fbaa5ffe50",
+  "computedAt": "2026-11-10T22:05:32.304Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Le parquet réclame cinq ans d'inéligibilité et un an de prison ferme contre l'eurodéputée Rima Hassan, jugeant que ses propos constituent une apologie aggravée du terrorisme.",
+    "whatChanges": "la peine requise est plus sévère, ce qui pourrait radicaliser l'opinion publique et durcir le débat autour des limites de la liberté d'expression chez les électeurs concernés"
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Habitants d’Aubagne actifs en milieu urbain dense",
+      "mechanism": "Le procès concerne l’attaque terroriste dans un collège d’Aubagne, ville située dans une grande zone urbaine dense ; ce segment regroupe les actifs locaux susceptibles d’être directement impactés ou concernés par les enjeux de sécurité liés à cet attentat.",
+      "reason": "Segment précisément localisé à Aubagne, avec une activité professionnelle qui rapproche de la vie sociale et du vécu urbain potentiellement marqué par la menace terroriste.",
+      "all": [
+        "geo.dense",
+        "commune_size.1000_plus",
+        "occupation.employee"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "residence.verified",
+        "exposure.news_coverage",
+        "perception.security_concern"
+      ],
+      "count": 16322,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Procès de Rima Hassan : le parquet réclame deux ans d'inéligibilité et dix mois de prison avec sursis contre l'eurodéputée, jugée pour apologie du terrorisme",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes sans activité professionnelle en milieu urbain dense",
+      "mechanism": "Le procès survient alors que la mouvance True Crime Community, active majoritairement sur internet, influence certains jeunes sans activité professionnelle, notamment en milieu urbain dense où la présence de réseaux militants est plus forte.",
+      "reason": "Segment ciblant spécifiquement les jeunes (18-24 ans) sans activité, susceptibles d’être réceptifs à la mouvance True Crime Community et donc particulièrement concernés par le débat autour du procès de Rima Hassan.",
+      "all": [
+        "cluster.young_without_activity",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "internet_usage",
+        "Exposure.social_media_influence"
+      ],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Procès de Rima Hassan : le parquet réclame deux ans d'inéligibilité et dix mois de prison avec sursis contre l'eurodéputée, jugée pour apologie du terrorisme",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Habitants retraités en communes intermédiaires hors grandes métropoles",
+      "mechanism": "Ce segment comprend les retraités vivant dans des communes denses ou intermédiaires, non situées dans Paris, Lyon ou Marseille, qui peuvent être attentifs aux conséquences sociétales du procès et des questions de sécurité nationale.",
+      "reason": "Segment des retraités en communes non métropolitaines des grandes agglomérations, pour capter une population plus âgée et potentiellement sensible à la justice et à la sécurité intérieure.",
+      "all": [
+        "occupation.retired",
+        "geo.intermediate"
+      ],
+      "any": [
+        "age.65_74",
+        "age.75_plus"
+      ],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "concern.terrorism",
+        "media.exposure_political_news"
+      ],
+      "count": 975,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Procès de Rima Hassan : le parquet réclame deux ans d'inéligibilité et dix mois de prison avec sursis contre l'eurodéputée, jugée pour apologie du terrorisme",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Procès de Rima Hassan : le parquet réclame deux ans d'inéligibilité et dix mois de prison avec sursis contre l'eurodéputée, jugée pour apologie du terrorisme",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Habitants d’Aubagne actifs en milieu urbain dense",
+      "matchedCount": 16322,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne comprends pas trop toute cette histoire, ça me semble compliqué et un peu loin de ma vie de tous les jours. Je ne pense pas que ça change mon vote.",
+        "C'est inquiétant quand une élue fait un tel discours. Je pense qu'il faut être ferme contre l'apologie du terrorisme, ça me rend plus prudente et je punirais plus sévèrement cette personne.",
+        "Je trouve que c'est grave une élue qui pourrait faire l'apologie du terrorisme. Je serais plus vigilante dans mon vote et je pense que la sanction devrait être plus dure."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0037571368695324993,
+          "lo": 0.0025626655293722552,
+          "hi": 0.004987253152948539,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.004211773695317296,
+          "lo": 0.0032960322819121837,
+          "hi": 0.00509443271211882,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.0027418941475716384,
+          "lo": 0.0012377715246695072,
+          "hi": 0.004155579243993484,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.002500817263585685,
+          "lo": -0.003388746303993825,
+          "hi": -0.0015737943943585186,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.006924374667558943,
+          "lo": -0.009418284415561811,
+          "hi": -0.00439847258203054,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.0012856127812767924,
+          "lo": -0.003837964534873452,
+          "hi": 0.0010598924500653105,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 8,
+          "away": 1,
+          "noClearChange": 87
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 94
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ce procès me paraît sévère, mais je ne vois pas en quoi cela affecterait mon vote, cela reste trop éloigné de ma vie quotidienne.",
+        "Je trouve que ce procès est complexe, mais ça ne va pas changer mon choix aux présidentielles, ce genre d’affaire est trop loin de mes préoccupations.",
+        "Ces affaires de terrorisme me concernent, mais ça ne me fera pas changer d’avis : la sécurité oui, mais ce procès ne m’émeut pas au point de bouleverser mon vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.003313334333960872,
+          "lo": 0.0024390714065807787,
+          "hi": 0.004144540844874132,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0032569863068103028,
+          "lo": 0.002532126871494489,
+          "hi": 0.004021133359478375,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.004276468140351493,
+          "lo": 0.0032513281837545905,
+          "hi": 0.005278835691647198,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0006258559527601864,
+          "lo": -0.00023629448586634465,
+          "hi": 0.0014908035525677465,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.006116051277445599,
+          "lo": -0.008376569121478413,
+          "hi": -0.003643468003732155,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.005356593456437249,
+          "lo": -0.007161933659104066,
+          "hi": -0.003161272529001105,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Habitants retraités en communes intermédiaires hors grandes métropoles",
+      "matchedCount": 975,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est grave s'il y a eu apologie du terrorisme, il faut protéger la France. Deux ans d'inéligibilité ça me semble sérieux, mais cinq ans, ça me paraît peut-être exagéré.",
+        "Je ne connais pas très bien cette eurodéputée, mais faire l'apologie du terrorisme, c'est très grave. Je trouve que la justice doit être ferme. 5 ans d'inéligibilité, ça me paraît justifié.",
+        "C'est inquiétant une eurodéputée qui ferait l'apologie du terrorisme. Je vais me méfier un peu plus des extrêmes. La peine sévère me semble correcte, même si je ne suis pas très attentive à ce genre d'affaires."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0019889647619712016,
+          "lo": 0.0010822934023564114,
+          "hi": 0.002982327190540058,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.002974875776099508,
+          "lo": 0.002187259950843906,
+          "hi": 0.0037808408794228316,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.005442241165832323,
+          "lo": 0.004110624946376023,
+          "hi": 0.006918862795390337,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0013162879730900124,
+          "lo": -0.002914632466814245,
+          "hi": 0.00044829388643678487,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.003994941209399635,
+          "lo": -0.007154758535377012,
+          "hi": -0.0007086212348459837,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.005094852521413386,
+          "lo": -0.009049902941911258,
+          "hi": -0.001587652577194998,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes sans activité professionnelle en milieu urbain dense",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça grave qu’une élue puisse être accusée d'apologie du terrorisme, surtout dans un contexte de nouvelles menaces. Ça me semble un sujet très sérieux qui mérite une réponse ferme.",
+        "Je suis choqué par ce procès et les accusations lourdes qui pèsent sur cette eurodéputée. Ça renforce mon inquiétude face à la montée des violences et au climat qui devient plus strict.",
+        "J'entends parler de ce procès, mais ça ne change pas vraiment ce que je pense ou pour qui je vote, ça me semble une affaire compliquée qui me dépasse un peu."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.004579187510560947,
+          "lo": 0.0029184222817343723,
+          "hi": 0.006493773252518678,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0029363709195503276,
+          "lo": 0.0017380176318975886,
+          "hi": 0.00403531379127655,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.003207669853780253,
+          "lo": 0.001572958968219333,
+          "hi": 0.0047579909704623955,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0011803149861484017,
+          "lo": -0.0021921857221568653,
+          "hi": -0.000301794863646256,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.003263390357077076,
+          "lo": -0.005783452921406568,
+          "hi": -0.0009620212196930407,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.006279522940666045,
+          "lo": -0.009397001632310208,
+          "hi": -0.003505055528072755,
+          "stable": true
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:57.732Z",
+    "contentHash": "ca3b794732fee4b37d3290e517920f232a42ad12e5c21f65e96a675e25714422"
+  }
+}

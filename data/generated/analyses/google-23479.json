@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-23479",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "52c6c80096f626f4",
+  "computedAt": "2026-11-10T22:08:00.999Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Mobilisation du 29 septembre : les candidats à l’élection présidentielle proposent de ne pas revaloriser les salaires des fonctionnaires mais d’engager une révision profonde des missions de la fonction publique.",
+    "whatChanges": "Les propositions se focalisent sur la réforme structurelle au lieu des augmentations salariales, ce qui pourrait diviser les fonctionnaires entre ceux craignant une dégradation de leurs conditions et ceux prêts à soutenir un changement du service public."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Fonctionnaires cadres urbains de 35 à 64 ans",
+      "mechanism": "Candidats à la présidentielle proposent des mesures spécifiques pour les fonctionnaires cadres, notamment en milieu urbain, où ces professionnels concentrent leurs activités et leurs revendications.",
+      "reason": "Les cadres urbains fonctionnaires sont directement concernés par les propositions électorales visant cette catégorie professionnelle impliquée dans la mobilisation du 29 septembre.",
+      "all": [
+        "occupation.executive_professional",
+        "geo.dense"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
+        "cluster.independent"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "candidate_position_functionnaires"
+      ],
+      "count": 7315,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Fonctionnaires : une mobilisation sur fond de montée des tensions sociales",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Fonctionnaires employés et ouvriers de 25 à 49 ans en commune dense",
+      "mechanism": "La mobilisation du 29 septembre et les propositions présidentielles ciblent particulièrement les employés et ouvriers fonctionnaires jeunes à moyens, qui résident majoritairement en communes denses et subissent plus directement les tensions sociales liées à leur statut.",
+      "reason": "Ce segment combine jeunes professionnels de statut modeste en milieu urbain, au cœur des enjeux sociaux et politiques soulevés lors de la mobilisation.",
+      "all": [
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [
+        "cluster.independent"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "vote_intention",
+        "candidate_position_functionnaires"
+      ],
+      "count": 11776,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Fonctionnaires : une mobilisation sur fond de montée des tensions sociales",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Fonctionnaires cadres de 50 à 64 ans en commune dense",
+      "mechanism": "Ce segment correspond aux fonctionnaires cadres âgés de 50 à 64 ans vivant en commune dense, directement concernés par la mobilisation du 29 septembre et par les propositions des candidats à la présidentielle sur leur statut et conditions de travail.",
+      "reason": "Remplace un segment trop large incluant 35-64 ans avec un segment resserré sur 50-64 ans.",
+      "all": [
+        "occupation.executive_professional",
+        "geo.dense",
+        "age.50_64"
+      ],
+      "any": [],
+      "none": [
+        "cluster.independent"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 2746,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Fonctionnaires : une mobilisation sur fond de montée des tensions sociales",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Fonctionnaires employés de 35 à 49 ans en commune dense",
+      "mechanism": "Ce segment représente les fonctionnaires employés entre 35 et 49 ans vivant en commune dense, concernés par la mobilisation fonction publique et ses propositions électorales.",
+      "reason": "Resserrement du segment plus large 25-49 ans pour mieux cibler l'âge médian des fonctionnaires employés.",
+      "all": [
+        "occupation.employee",
+        "geo.dense",
+        "age.35_49"
+      ],
+      "any": [],
+      "none": [
+        "cluster.independent"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 6646,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Fonctionnaires : une mobilisation sur fond de montée des tensions sociales",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Fonctionnaires : une mobilisation sur fond de montée des tensions sociales",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Fonctionnaires employés et ouvriers de 25 à 49 ans en commune dense",
+      "matchedCount": 11776,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis inquiète pour les fonctionnaires, mais je comprends qu'il faut aussi faire attention aux finances publiques. Voir les propositions concrètes des candidats m'intéresse un peu, mais ce n'est pas ma priorité absolue.",
+        "En tant qu'employé dans les services municipaux, je suis concerné par ces débats sur les fonctionnaires. Une vraie revalorisation des salaires me semblerait juste, sinon ça risque d’amplifier les tensions.",
+        "Je ne suis pas fonctionnaire, mais je vois que ça gronde. Si on ne revalorise pas les salaires, je crains que ce soit mal perçu, même par nous qui travaillons dans le privé."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.013937757227330096,
+          "lo": 0.010248433913006784,
+          "hi": 0.01708559246059247,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.013979761944272,
+          "lo": 0.010906331710351812,
+          "hi": 0.017711748899248907,
+          "stable": true
+        },
+        "center": {
+          "mean": -0.01175291612173941,
+          "lo": -0.015163143490300112,
+          "hi": -0.007823508588165206,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.007063216000087862,
+          "lo": -0.008409020658392522,
+          "hi": -0.0057213495332213956,
+          "stable": true
+        },
+        "far_right": {
+          "mean": -0.005908086413530297,
+          "lo": -0.00897008778258778,
+          "hi": -0.0031536555757661275,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.00319330063624452,
+          "lo": -0.0063960867556973056,
+          "hi": -0.00021044641427807263,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Fonctionnaires cadres urbains de 35 à 64 ans",
+      "matchedCount": 7315,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "En tant que cadre dans une grande ville comme Marseille, cette mobilisation ne me touche pas vraiment, je vois cela un peu comme une agitation qui ne changera pas grand-chose dans ma vie quotidienne.",
+        "Cette idée de revoir profondément les missions de la fonction publique sans revalorisation salariale me paraît injuste : les fonctionnaires méritent d'être reconnus par des augmentations, pas seulement des réformes.",
+        "Je suis plutôt distant de cette mobilisation, ça ne m'empêchera pas de voter selon mes convictions personnelles, surtout centrées sur l'innovation et l'avenir européen."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.008392852055138685,
+          "lo": 0.005056686021596362,
+          "hi": 0.01104303669184267,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.009362421615551656,
+          "lo": 0.006640306761423599,
+          "hi": 0.01199193192801868,
+          "stable": true
+        },
+        "center": {
+          "mean": -0.005809114075976111,
+          "lo": -0.009933439747199511,
+          "hi": -0.0004737803780855707,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.006654892070287147,
+          "lo": -0.008464411722763632,
+          "hi": -0.0051178279684201,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0048498535682222794,
+          "lo": -0.007358859148509803,
+          "hi": -0.0027057087845313876,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.00044141395620480445,
+          "lo": -0.003730461651788551,
+          "hi": 0.0023633940553425613,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Fonctionnaires employés de 35 à 49 ans en commune dense",
+      "matchedCount": 6646,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la mobilisation des fonctionnaires, leur salaire est important pour eux, mais ça ne change pas vraiment ma façon de voir les choses, je ne suis pas fonctionnaire.",
+        "Cette actualité m'interpelle un peu parce que je travaille dans le public, même si je ne suis pas fonctionnaire. La question des salaires est importante, je serais plus attentive à ceux qui veulent les défendre.",
+        "Ça me concerne un peu car je travaille dans la mairie, si les salaires des fonctionnaires sont revalorisés, ce serait bien ; sinon, je comprends qu'on pense à revoir les missions mais ça fait peur aux agents."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.015415742586845936,
+          "lo": 0.013204646477234972,
+          "hi": 0.017910512926292647,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.014369294453747475,
+          "lo": 0.011940972222222228,
+          "hi": 0.01661851000030213,
+          "stable": true
+        },
+        "center": {
+          "mean": -0.005553920615661596,
+          "lo": -0.009901984588725569,
+          "hi": -0.0007629213226656618,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.00570402650829224,
+          "lo": -0.007032949881270945,
+          "hi": -0.004498308164149748,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.012889661556717322,
+          "lo": -0.015990250782306547,
+          "hi": -0.010106641914191422,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.005637428359922233,
+          "lo": -0.010650062435829824,
+          "hi": -0.0006861144785340941,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Fonctionnaires cadres de 50 à 64 ans en commune dense",
+      "matchedCount": 2746,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 43
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "En tant que médiateur culturel à Marseille, la mobilisation des fonctionnaires me semble importante, surtout quand il s'agit de leurs conditions de travail. Cela donne du poids aux revendications sociales qui peuvent aussi bénéficier à la ville.",
+        "Proposer une revalorisation pour les fonctionnaires, ça peut améliorer le moral et la qualité des services. Mais changer profondement les missions sans augmentation, ça risque de créer beaucoup de frustrations.",
+        "Travaillant dans l'environnement et les collectivités, je comprends l'enjeu des fonctionnaires. Une vraie revalorisation est nécessaire, sinon ce serait juste une remise en cause injuste de leurs missions."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.013587506090105186,
+          "lo": 0.01087019408611264,
+          "hi": 0.016205327393111497,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.013423106241514571,
+          "lo": 0.011362103910659442,
+          "hi": 0.015739835023931125,
+          "stable": true
+        },
+        "center": {
+          "mean": -0.009654169579245545,
+          "lo": -0.013239143829063799,
+          "hi": -0.006021084241642327,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.007471596923067929,
+          "lo": -0.008404445680315755,
+          "hi": -0.0064676031479241405,
+          "stable": true
+        },
+        "far_right": {
+          "mean": -0.009871970890417804,
+          "lo": -0.013074482708764696,
+          "hi": -0.007380386398179359,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.000012874938888486157,
+          "lo": -0.0036171242314814254,
+          "hi": 0.0037593081347832343,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 90
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 93
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "En tant qu'ancienne employée municipale, je comprends la mobilisation des fonctionnaires, c'est important pour ceux qui ont un service public stable. Je suis mitigée sur une révision des missions sans revalorisation des salaires.",
+        "Je travaille dans le privé mais je connais des fonctionnaires qui galèrent. Si on ne touche pas aux salaires et qu'on change tout dans les missions, je crains le pire pour la qualité du service.",
+        "Fonctionnaires en grève encore... Je me demande si ces débats changeront vraiment quelque chose pour nous les retraités, ça me laisse un peu froide."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.006533930949466044,
+          "lo": 0.004229491034682846,
+          "hi": 0.008756423838918042,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.009456733818468383,
+          "lo": 0.007566220801505468,
+          "hi": 0.01140953528959407,
+          "stable": true
+        },
+        "center": {
+          "mean": 0.0010502433336768157,
+          "lo": -0.0011094544995392797,
+          "hi": 0.0032798417383573674,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.004653613956528236,
+          "lo": -0.005961160377649992,
+          "hi": -0.003355870897362714,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.007059296064583196,
+          "lo": -0.010653434112846657,
+          "hi": -0.004209673978739596,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.005327998080499816,
+          "lo": -0.007844960132236628,
+          "hi": -0.003085596724746939,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:35.125Z",
+    "contentHash": "045522dc3455f8963c5136bc8a40dba19be65b7bfb84a20e8cec19a0d842d6bc"
+  }
+}

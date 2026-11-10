@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-23708",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "73866c29aa0a7909",
+  "computedAt": "2026-11-10T22:06:55.099Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Une intersyndicale annonce une mobilisation progressive à partir du 12 novembre, avec des journées de grève ciblées uniquement sur les salaires, tout en excluant les services publics, l’emploi et l’industrie de ses revendications immédiates.",
+    "whatChanges": "La mobilisation est plus limitée dans son contenu et plus étalée dans le temps, ce qui pourrait être mieux perçu par certains électeurs modérés préoccupés par la continuité des services publics."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Ouvriers âgés de 50 à 64 ans concernés par l'industrie et l'emploi",
+      "mechanism": "Ce segment regroupe les ouvriers proches de la retraite, souvent exposés aux restructurations industrielles et aux évolutions de l'emploi, ciblés par l'appel à la grève du 5 novembre qui vise à défendre les salaires, les emplois et les services publics.",
+      "reason": "Les ouvriers d'âge moyen sont une catégorie sociale exposée aux enjeux des luttes industrielles et très concernée par la menace sur leur emploi et leurs conditions de travail.",
+      "all": [
+        "cluster.older_worker"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 3663,
+      "distinctCommunes": 136,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Une intersyndicale appelle à la grève le 5 novembre « pour les salaires, les services publics, l’emploi et l’industrie »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes actifs ouvriers et employés de 25 à 34 ans en communes de taille moyenne à grande",
+      "mechanism": "Ce segment cible les jeunes travailleurs salariés modestes âgés de 25 à 34 ans, occupés comme employés ou ouvriers, qui résident dans des communes de plus de 1000 habitants, et qui sont concernés par les revendications salariales et industrielles de la grève du 5 novembre.",
+      "reason": "Segment ajusté pour être suffisamment restreint et atteindre la taille minimale, en combinant âge, profession et taille de commune.",
+      "all": [
+        "age.25_34",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 9169,
+      "distinctCommunes": 119,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Une intersyndicale appelle à la grève le 5 novembre « pour les salaires, les services publics, l’emploi et l’industrie »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Employés de 35 à 49 ans en communes intermédiaires",
+      "mechanism": "Employés âgés de 35 à 49 ans résidant dans des communes de densité intermédiaire, qui sont particulièrement concernés par les revendications salariales et la défense des services publics lors de l'appel à la grève du 5 novembre.",
+      "reason": "Segment resserré par définition d'âge et géographie pour ne pas dépasser la taille maximale et atteindre un effectif suffisant.",
+      "all": [
+        "occupation.employee",
+        "age.35_49",
+        "geo.intermediate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 210,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Une intersyndicale appelle à la grève le 5 novembre « pour les salaires, les services publics, l’emploi et l’industrie »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Ouvriers salariés de 25 à 49 ans en communes moyennes à grandes pour l'emploi et l'industrie",
+      "mechanism": "Ouvriers âgés de 25 à 49 ans vivant dans des communes de plus de 1000 habitants, ciblés par l'intersyndicale pour leur implication dans l'industrie et l'emploi, objets de l'appel à la grève du 5 novembre.",
+      "reason": "Segment combiné pour répondre aux contraintes de taille en précisant l'âge et la taille de commune, limitant ainsi la population concernée tout en assurant une représentation notable.",
+      "all": [
+        "occupation.worker",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 9082,
+      "distinctCommunes": 119,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Une intersyndicale appelle à la grève le 5 novembre « pour les salaires, les services publics, l’emploi et l’industrie »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Une intersyndicale appelle à la grève le 5 novembre « pour les salaires, les services publics, l’emploi et l’industrie »",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Ouvriers âgés de 50 à 64 ans concernés par l'industrie et l'emploi",
+      "matchedCount": 3663,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "center": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 9,
+          "noClearChange": 39
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette nouvelle renforce mes inquiétudes sur ma paie et le futur de mon boulot, je suis plutôt pour la grève si ça défend nos salaires et l'emploi, même si ça peut embêter un peu l'usine et le boulot.",
+        "À Marseille, avec mon boulot et le quotidien difficile, une grève qui touche tout risque de trop compliquer les choses, je pense que viser juste les salaires ça serait plus raisonnable.",
+        "Si la grève vient, spécial sur les salaires, ça me parle, c'est important pour garder mon travail et un bon revenu. Mais je veux pas que ça déraille sur plein d'autres trucs qui peuvent embrouiller les choses."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.006659404356124214,
+          "lo": 0.005229542027456309,
+          "hi": 0.008361486315803733,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0052835479976482405,
+          "lo": 0.0037647205738376485,
+          "hi": 0.0066567834768785986,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.007154936292929161,
+          "lo": -0.008683382316579754,
+          "hi": -0.005601046136532432,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0037373628688420514,
+          "lo": -0.004546745439469321,
+          "hi": -0.0030494303396741544,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0057074288106888785,
+          "lo": -0.007313649833433327,
+          "hi": -0.003874968936692013,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004656775618687666,
+          "lo": 0.002248536942590244,
+          "hi": 0.00660204925052846,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes actifs ouvriers et employés de 25 à 34 ans en communes de taille moyenne à grande",
+      "matchedCount": 9169,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 13,
+          "away": 0,
+          "noClearChange": 35
+        },
+        "left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 43
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une grève pour les salaires et les services publics, ça me parle un peu, surtout que je bosse en mairie, mais honnêtement je ne vais pas changer d'avis pour la présidentielle à cause de ça.",
+        "Une nouvelle grève pour les salaires et l'industrie, ça me touche directement, mais je trouve ça un peu trop global. La mobilisation ciblée à partir du 12 novembre sur les salaires, ça me semblerait plus raisonnable.",
+        "Je comprends la colère sur les salaires, mais ça ne changera pas vraiment mon vote pour la présidentielle, ça reste un sujet important mais pas décisif pour moi."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.007611563924943031,
+          "lo": 0.005406087004410999,
+          "hi": 0.009390793417595524,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.0034940296161986434,
+          "lo": 0.001733510638476694,
+          "hi": 0.0056480214407187744,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.006585027274954716,
+          "lo": -0.007937576581903893,
+          "hi": -0.005298373300800743,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.00259135405164135,
+          "lo": -0.00327051155791922,
+          "hi": -0.0019365009990009987,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.004098868387814773,
+          "lo": -0.006219175841455559,
+          "hi": -0.0017106716641489387,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0021696561732691753,
+          "lo": -0.00003783037258320877,
+          "hi": 0.004457716266385669,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Ouvriers salariés de 25 à 49 ans en communes moyennes à grandes pour l'emploi et l'industrie",
+      "matchedCount": 9082,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 8,
+          "noClearChange": 40
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends les revendications, surtout sur les salaires, vu les efforts qu'on fait à la conserverie, mais je crains que la grève génère trop de désordre et mette en difficulté notre travail quotidien.",
+        "Une grève pour les salaires, l'emploi et les services publics, ça me parle vraiment, surtout dans le BTP où on sent la pression. Je pourrais être un peu plus sensible à la gauche qui porte ces revendications.",
+        "J'entends parler de grève, mais franchement, ça ne va pas changer grand-chose pour moi ; qu'ils revendiquent tout ou juste les salaires, ça m'éloigne un peu du vote en ce moment."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.005209864909808309,
+          "lo": 0.0035941872527693428,
+          "hi": 0.006626388272221609,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0030063524712640676,
+          "lo": 0.00175178024001273,
+          "hi": 0.004192843824470499,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.006079752807370335,
+          "lo": -0.006935587998088001,
+          "hi": -0.005283270696516966,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0022961112158072726,
+          "lo": -0.002977578565024943,
+          "hi": -0.0016875000000000015,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.005144918202407706,
+          "lo": -0.0066443133837058715,
+          "hi": -0.003657055603537645,
+          "stable": true
+        },
+        "abstention": {
+          "mean": 0.005304564844512934,
+          "lo": 0.003546917177808379,
+          "hi": 0.007162435939160476,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés de 35 à 49 ans en communes intermédiaires",
+      "matchedCount": 210,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une grève pour de meilleures salaires et la défense des services publics, ça me parle, je ressens la pression sur mon travail et la vie quotidienne. J'espère que ça fera bouger les choses.",
+        "Je suis plutôt sensible aux questions de salaire mais moins concerné par les services publics, donc une grève limitée aux salaires, ça m'irait mieux que le grand bordel habituel.",
+        "La grève sur les salaires, l’industrie et les services publics me semble normale, c’est le service public que je côtoie tous les jours. Ce sujet est important mais ne changera pas trop mon vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.006112142310305403,
+          "lo": 0.004764348009139289,
+          "hi": 0.007849723053525477,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.003210208089565557,
+          "lo": 0.002029331635996581,
+          "hi": 0.004398138358330882,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.00429869536203284,
+          "lo": -0.0049963624825079675,
+          "hi": -0.003652862028699509,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.001833876002154076,
+          "lo": -0.0022565503352885196,
+          "hi": -0.0013800646969018354,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.005562371680552943,
+          "lo": -0.00682373385942622,
+          "hi": -0.004285759058102834,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.002372592644868906,
+          "lo": 0.00044240876084294657,
+          "hi": 0.004407595754523813,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 86
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends qu'ils veulent défendre les salaires et les services publics, c'est important, mais je ne suis pas sûre que le 5 novembre soit le meilleur moment pour une grève dans mon village.",
+        "Une grève générale le 5 novembre, ça risque de perturber les services et ça m'inquiète un peu. Mieux vaut peut-être une mobilisation plus ciblée sur les salaires.",
+        "Je suis attentivement ce genre de mobilisation, ça me parle car les salaires et les services publics sont cruciaux pour nous ici."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0033720674132270297,
+          "lo": 0.002534898735325444,
+          "hi": 0.004199925402287665,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0016694069835462254,
+          "lo": 0.0007815732910338818,
+          "hi": 0.0026158409966442826,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.004703574373080072,
+          "lo": -0.005305014617900992,
+          "hi": -0.004072344562163915,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0019053683350308687,
+          "lo": -0.0023481757565724046,
+          "hi": -0.0014954410148351651,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.003318839742563364,
+          "lo": -0.00424710459631,
+          "hi": -0.002189463320121017,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004886308053901047,
+          "lo": 0.0034416153569651886,
+          "hi": 0.0064833728126096266,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:35.491Z",
+    "contentHash": "166ecb64d4de2b652058da67d74c6b9c2e06fcb713cc45e7635603fd184ba17b"
+  }
+}

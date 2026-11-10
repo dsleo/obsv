@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-28632",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "d47ada2c1361f389",
+  "computedAt": "2026-11-10T22:01:41.865Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Manifestations du 7 novembre : malgré une mobilisation en baisse, la rue appelle à une nouvelle journée de grève interprofessionnelle dans les deux semaines à venir, pour \"intensifier la pression\" sur le gouvernement.",
+    "whatChanges": "Le mouvement social décide d'intensifier ses actions avec une grève générale annoncée à court terme, ce qui pourrait accroître la pression sur le gouvernement et toucher plus directement les salariés."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes actifs urbains engagés",
+      "mechanism": "Ce segment rassemble les jeunes actifs en emploi dans des communes à forte densité (zones urbaines), plausiblement touchés par ou engagés dans les manifestations du 7 novembre car ils sont souvent mobilisés dans les mouvements sociaux urbains et liés à la contestation de réformes.",
+      "reason": "Jeunes salariés ou professions intermédiaires en milieu urbain sont un public clé de la mobilisation sociale, notamment dans le contexte des manifestations.",
+      "all": [
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "none": [
+        "occupation.retired",
+        "occupation.other_inactive"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure_to_manifestations_7_november"
+      ],
+      "count": 23521,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestations du 7 novembre : malgré une mobilisation en baisse, la rue veut \"maintenir la pression\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes en famille avec enfants en zone dense",
+      "mechanism": "Ce segment comprend les couples âgés de 25 à 49 ans avec enfants vivant en zone dense, qui peuvent être touchés par les questions sociales et économiques qui motivaient les manifestations du 7 novembre, et potentiellement concernés par la nécessité de maintenir la pression sociale exprimée par la rue.",
+      "reason": "Les jeunes familles urbaines sont souvent concernées par les enjeux socio-économiques liés aux réformes et à la mobilisation sociale.",
+      "all": [
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure_to_manifestations_7_november"
+      ],
+      "count": 25109,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestations du 7 novembre : malgré une mobilisation en baisse, la rue veut \"maintenir la pression\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes sans activité en milieu urbain",
+      "mechanism": "Ce segment regroupe les jeunes de 18 à 24 ans sans activité professionnelle (étudiants, chômeurs, inactifs) vivant en milieu urbain dense, qui constituent un groupe spécifique très présent dans les manifestations nationales du type de celles du 7 novembre.",
+      "reason": "Les jeunes sans activité en milieu urbain sont souvent les plus visibles et mobilisés dans les mouvements de protestation sociale comme les manifestations dont il est question.",
+      "all": [
+        "cluster.young_without_activity",
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure_to_manifestations_7_november"
+      ],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestations du 7 novembre : malgré une mobilisation en baisse, la rue veut \"maintenir la pression\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Manifestations du 7 novembre : malgré une mobilisation en baisse, la rue veut \"maintenir la pression\"",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité en milieu urbain",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça important que les jeunes et les travailleurs continuent à se mobiliser. Même si c’est moins nombreux, ce maintien de pression montre que les gens veulent un vrai changement.",
+        "Je ne suis pas trop fan de ces manifs, ça fait du bruit mais ça n’avance pas toujours. Une nouvelle grève me semble juste fatigante, ça ne changera pas grand-chose pour nous.",
+        "Je comprends que les gens veuillent continuer à lutter et garder la pression. Cela me parle, mais je sens un peu de fatigue aussi. Peut-être que d’autres actions feraient du bien."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.004911249529665311,
+          "lo": -0.00768882649866125,
+          "hi": -0.001955042046672112,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0021732518582917204,
+          "lo": -0.0038739365891650207,
+          "hi": -0.00032074844144586455,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.0057352943275946035,
+          "lo": 0.004745380069538515,
+          "hi": 0.006738246408299203,
+          "stable": true
+        },
+        "right": {
+          "mean": 0.0021233177574409394,
+          "lo": 0.0008257443124974035,
+          "hi": 0.0034542552531085604,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.005378326042262539,
+          "lo": 0.0034119483220202158,
+          "hi": 0.007331311386583224,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.006152436739341024,
+          "lo": -0.010081570097822413,
+          "hi": -0.0034420827478005207,
+          "stable": true
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ces manifs ne changent pas grand-chose pour moi, je préfère rester tranquille et m'occuper de mes ateliers.",
+        "Je vois que la mobilisation baisse, mais si ça pousse à plus de grèves, ça me fait un peu peur pour le boulot et les services ici.",
+        "Je comprends la colère dans la rue, mais perso, ça ne change pas ce que je vais faire, la politique est trop compliquée pour moi."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.00597437797051772,
+          "lo": -0.0072007962824725755,
+          "hi": -0.004830302501242358,
+          "stable": true
+        },
+        "left": {
+          "mean": -0.003746598391230671,
+          "lo": -0.004783344417290676,
+          "hi": -0.0026070046514401787,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.006223656525244072,
+          "lo": 0.005342685246796559,
+          "hi": 0.007058346905578755,
+          "stable": true
+        },
+        "right": {
+          "mean": 0.0032359902017215364,
+          "lo": 0.0024134850657360814,
+          "hi": 0.0040275857644074655,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.004493265391488022,
+          "lo": 0.0022819908839085876,
+          "hi": 0.006263660947135875,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.004231935756705244,
+          "lo": -0.0069215268860637015,
+          "hi": -0.0015382441955734578,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes actifs urbains engagés",
+      "matchedCount": 23521,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je vois que la mobilisation est moins forte, mais quand je vois que la rue veut maintenir la pression, ça me parle, surtout pour défendre des causes sociales. J'y suis un peu sensible, même si je ne suis pas sûre d'aller manifester cette fois.",
+        "Je remarque que les manifs sont moins nombreuses, ça ne me touche pas trop. Par contre, l'idée d'une nouvelle grève me fait un peu peur pour le boulot. Je suis plus préoccupé par la stabilité et l'économie.",
+        "Les manifs, c'est toujours compliqué. Je ne participe pas, mais si ça mène à plus de pression sur le gouvernement, pourquoi pas. L'idée d'une grève interprofessionnelle me semble un peu lourde, ça pourrait me déranger au boulot."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.00920670487849144,
+          "lo": -0.01092597055505909,
+          "hi": -0.007192906177192741,
+          "stable": true
+        },
+        "left": {
+          "mean": -0.0050896514983020036,
+          "lo": -0.006758878105028611,
+          "hi": -0.003511802779364175,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.007683191626723186,
+          "lo": 0.00612073755452468,
+          "hi": 0.009170862008882433,
+          "stable": true
+        },
+        "right": {
+          "mean": 0.0038369048801849583,
+          "lo": 0.0029097142902468425,
+          "hi": 0.00475542386120394,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.006439821070591818,
+          "lo": 0.004480868925377293,
+          "hi": 0.008273154403925148,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.003663561200706524,
+          "lo": -0.005453221077602269,
+          "hi": -0.0020090085845368547,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes en famille avec enfants en zone dense",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la volonté de certains de manifester, mais cette baisse de mobilisation me fait penser que beaucoup savent que ça ne changera pas grand-chose. Ça ne va pas me pousser à changer ma façon de voter.",
+        "Je suis un peu lassée par ces manifestations qui divisent plus qu'autre chose. Même si la mobilisation baisse, ça ne me fait pas changer d'avis sur mon vote, et encore moins si c'est juste pour appeler à intensifier la grève.",
+        "Je vois ces manifestations comme un signe d'espoir pour ceux qui veulent plus de justice sociale, même si la mobilisation baisse. Si ça appelle à une nouvelle grève, ça pourrait réveiller les consciences, peut-être que ça me donnerait un peu plus envie de voter à gauche."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.009698815746208714,
+          "lo": -0.012219893391068772,
+          "hi": -0.00736215618958157,
+          "stable": true
+        },
+        "left": {
+          "mean": -0.005910052073808368,
+          "lo": -0.007437972190459756,
+          "hi": -0.004423751362495143,
+          "stable": true
+        },
+        "center": {
+          "mean": 0.007713685998584137,
+          "lo": 0.006466893465494214,
+          "hi": 0.0090913202058926,
+          "stable": true
+        },
+        "right": {
+          "mean": 0.0043566505634247,
+          "lo": 0.0036066152028482964,
+          "hi": 0.005212251695927071,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0077990908812221845,
+          "lo": 0.005640934708918001,
+          "hi": 0.010133112060745325,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.004260559623213962,
+          "lo": -0.006452005264505271,
+          "hi": -0.0017667481426809812,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:48.635Z",
+    "contentHash": "8e080576d360065531723212c7938ce5686fadc5c539c7a0678ce8241801eac3"
+  }
+}

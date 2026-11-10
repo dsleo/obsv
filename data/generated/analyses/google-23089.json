@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-23089",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "39a366e1841f8201",
+  "computedAt": "2026-11-10T22:11:09.664Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Les pompiers français maintiennent leur mobilisation nationale mais annoncent un calendrier échelonné sur plusieurs mois, pour permettre un dialogue progressif avec l'État après un été marqué par des incendies d’une virulence inédite.",
+    "whatChanges": "Le calendrier étalé de la mobilisation change l'impact immédiat de la grève sur les populations tout en maintenant la pression sur l'État, influençant les électeurs préoccupés par la sécurité et la gestion des crises."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Familles avec enfants vivant en commune dense",
+      "mechanism": "Ce groupe est concerné par l'appel des pompiers en grève, car il est exposé aux services de secours dans les zones urbaines denses où l'incendie a été virulent cet été.",
+      "reason": "Ce segment réunit familles avec enfants domiciliées en zone dense, croisement thématique pertinent lié à la localisation des incendies.",
+      "all": [
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "profession.firefighter"
+      ],
+      "count": 25109,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "En grève, les pompiers français en appellent à l'État : \"On est traités comme du bétail !\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Les jeunes diplômés, vivant et travaillant en zone urbaine dense, sont souvent mobilisés par des questions sociales et pourraient être sensibles à l'appel des pompiers pour de meilleures conditions, notamment via les réseaux sociaux urbains.",
+      "reason": "Segment stricto sensu, intersectant âge, cluster jeune diplômé urbain, pour cibler une population active jeune et mobilisable.",
+      "all": [
+        "cluster.young_urban_graduate",
+        "geo.dense",
+        "age.18_24"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "profession.firefighter"
+      ],
+      "count": 1478,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "En grève, les pompiers français en appellent à l'État : \"On est traités comme du bétail !\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "En grève, les pompiers français en appellent à l'État : \"On est traités comme du bétail !\"",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Familles avec enfants vivant en commune dense",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "En tant que technicien scénique qui apprécie la rigueur et la dimension humaine, je comprends la difficulté des pompiers, mais j'ai l'impression que ce genre de conflit social est un peu trop récurrent pour changer vraiment les choses.",
+        "Je trouve que les pompiers ont un métier essentiel, surtout après ces été difficile, mais je reste prudente sur les grèves qui peuvent perturber notre quotidien.",
+        "Je soutiens les pompiers : ils font un travail vital et méritent vraiment plus de moyens, surtout face à la montée des incendies."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.003585632882495445,
+          "lo": 0.0027934277561143263,
+          "hi": 0.004418966215828776,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0030749705720487085,
+          "lo": 0.0023544615057685004,
+          "hi": 0.003787744291041332,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.003398072183420355,
+          "lo": -0.004246009361892362,
+          "hi": -0.0025840140332303667,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0008567394411474982,
+          "lo": -0.001388265442058974,
+          "hi": -0.00043050623302881607,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0030648491067365754,
+          "lo": -0.0039416499833166505,
+          "hi": -0.0020900356739007517,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0006590572767602888,
+          "lo": -0.0002341156454962398,
+          "hi": 0.001602380365440071,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la colère des pompiers, c'est important qu'ils aient plus de moyens face aux incendies. Ça me touche un peu, même si ce n'est pas mon quotidien direct.",
+        "Les pompiers ont raison de demander plus de moyens, c'est un métier dur et essentiel. Leur mobilisation me semble justifiée et devrait pousser le gouvernement à agir rapidement.",
+        "Je salue le courage des pompiers, leur combat est légitime. Un calendrier échelonné aurait du sens pour garder un dialogue constructif avec l'État."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.002101819117513084,
+          "lo": 0.0016750255236612193,
+          "hi": 0.002548825194613047,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0022943762056318634,
+          "lo": 0.001812407439314205,
+          "hi": 0.00284053722246637,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.002195052815799797,
+          "lo": -0.0026028022259111327,
+          "hi": -0.0017123332590332876,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0010878042772819888,
+          "lo": -0.0013516124536289646,
+          "hi": -0.000810239892726143,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0023566858821240625,
+          "lo": -0.0030525445848287504,
+          "hi": -0.001637988523405171,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0012433476520609026,
+          "lo": 0.0003167991574808011,
+          "hi": 0.0020819587600172497,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 1478,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la colère des pompiers, c’est vrai que ce sont eux qui nous sauvent la vie. Ça me donne envie de soutenir ceux qui se battent pour plus de moyens.",
+        "Les pompiers en grève, c'est un vrai signal d'alerte. Il faut que l'État prenne ça au sérieux, sinon ça pourrait dégénérer. J'apprécie le dialogue progressif en scénario alternatif.",
+        "Je trouve normal que les pompiers réclament plus de moyens, ils risquent leur vie pour nous. Leur mobilisation me touche, ça me donne envie de mieux m'informer sur la politique sociale."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0036779033122017763,
+          "lo": 0.0031069901961153935,
+          "hi": 0.0042352291972605925,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0026370514673906276,
+          "lo": 0.0017969613773005384,
+          "hi": 0.0033784684206475137,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.003388736337356406,
+          "lo": -0.004101768435101759,
+          "hi": -0.0026348628030180483,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0015739149602260628,
+          "lo": -0.002025468897988891,
+          "hi": -0.001148736254082498,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0032089783387682213,
+          "lo": -0.004010385991355297,
+          "hi": -0.002428996940826923,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.001856674856758304,
+          "lo": 0.0009276307364318627,
+          "hi": 0.002828508969078787,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:30.751Z",
+    "contentHash": "8e81000bca3f707f0b06280f6e774215456b86ae22eb71e2ff2be8fbb405a93f"
+  }
+}

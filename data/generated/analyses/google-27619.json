@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-27619",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "548680e46df0878d",
+  "computedAt": "2026-11-10T22:04:28.107Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Incendie de la mairie de Limoges : les deux suspects mis en examen mais placés sous contrôle judiciaire avec interdiction de contact entre eux en attendant le procès.",
+    "whatChanges": "Les suspects ne sont pas placés en détention provisoire mais restent sous contrôle judiciaire, ce qui peut apaiser les critiques sur la sévérité de la justice tout en maintenant une surveillance, impactant l'opinion publique concernée par la sécurité et la justice."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Salariés modestes âgés de 35 à 64 ans vivant en communes denses",
+      "mechanism": "Ce segment regroupe des salariés employés et ouvriers de 35 à 64 ans résidant en communes denses, un groupe social susceptible d'être concerné par l'actualité judiciaire des policiers, qui touche souvent les questions de sécurité, dans leur vie quotidienne et professionnelle.",
+      "reason": "Le mécanisme repose sur la composition sociale (salariés modestes) et la localisation (communes denses) qui font de ce groupe une base spécifique de publics potentiellement concernés par la remise en liberté des policiers mis en examen.",
+      "all": [
+        "cluster.modest_wage_earner"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
+        "geo.rural"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 20301,
+      "distinctCommunes": 96,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Remise en liberté de deux policiers mis en examen pour viols au dépôt du tribunal de Bobigny",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes femmes seules en communes denses",
+      "mechanism": "Ce segment cible les jeunes femmes vivant seules en communes denses qui sont particulièrement concernées par les problématiques de violences sexuelles et de sécurité, thématiques centrales de l'affaire des policiers mis en examen pour viols et leur remise en liberté.",
+      "reason": "Le mécanisme combine le facteur sexe, le statut de foyer et la localisation en milieu urbain dense pour cerner le public le plus exposé à ce type d'événement judiciaire.",
+      "all": [
+        "sex.female",
+        "household.single",
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 8104,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Remise en liberté de deux policiers mis en examen pour viols au dépôt du tribunal de Bobigny",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Hommes employés ou ouvriers de 35 à 64 ans en communes denses de la proche banlieue",
+      "mechanism": "Hommes employés ou ouvriers âgés de 35 à 64 ans vivant dans des communes denses proches de Bobigny, susceptibles d'être concernés par la remise en liberté de policiers mis en examen dans ce secteur urbain et judiciaire spécifique.",
+      "reason": "Segment resserré par sexe, profession, âge et densité géographique pour ne pas être trop large.",
+      "all": [
+        "sex.male",
+        "geo.dense"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 16026,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Remise en liberté de deux policiers mis en examen pour viols au dépôt du tribunal de Bobigny",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Résidents de communes denses autour de Bobigny de 25 à 49 ans vivant en couple avec enfants",
+      "mechanism": "Adultes de 25 à 49 ans vivant en couple avec enfants dans les communes denses proches de Bobigny, concernés par les événements judiciaires locaux, notamment la remise en liberté de policiers mis en examen au tribunal de Bobigny.",
+      "reason": "Population ciblée par âge, type de foyer et densité géographique à proximité de Bobigny, afin de rester sous la taille maximale.",
+      "all": [
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 25109,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Remise en liberté de deux policiers mis en examen pour viols au dépôt du tribunal de Bobigny",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Remise en liberté de deux policiers mis en examen pour viols au dépôt du tribunal de Bobigny",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Résidents de communes denses autour de Bobigny de 25 à 49 ans vivant en couple avec enfants",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 42
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ces histoires de policiers mis en examen pour viols me révoltent, ça me donne peu confiance dans la justice et la police. L'incendie de la mairie aussi, c'est grave pour la ville, mais je n'y vois pas trop de lien direct avec ma vie.",
+        "J'entends parler de ces accusations graves contre des policiers, c'est choquant, mais je préfère attendre les faits avant de juger. L'incendie de la mairie est préoccupant mais trop local, ça n'influence pas trop ma manière de voter.",
+        "C'est écœurant d'apprendre ces faits de viols impliquant des policiers, ça remet en question beaucoup de choses. L'incendie de la mairie me perturbe mais c'est surtout ces violences qui m'indignent."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.007098583672153593,
+          "lo": 0.005769204717774636,
+          "hi": 0.008324098136180643,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.003837829098205287,
+          "lo": 0.0027961156143183224,
+          "hi": 0.004906511864764239,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.004094687864401059,
+          "lo": -0.005091379012512948,
+          "hi": -0.0031360007182139084,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0038025776375791875,
+          "lo": -0.004744898246689923,
+          "hi": -0.002963626622317216,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.00710013232591277,
+          "lo": -0.008966470413192741,
+          "hi": -0.005106233455622782,
+          "stable": true
+        },
+        "abstention": {
+          "mean": 0.0040609850575341585,
+          "lo": 0.0020454477948632973,
+          "hi": 0.006667539624703955,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes âgés de 35 à 64 ans vivant en communes denses",
+      "matchedCount": 20301,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ces histoires de policiers en liberté malgré des accusations graves me révoltent, ça me fait douter de la justice, mais ça ne changera pas mon vote habituel.",
+        "La remise en liberté de policiers accusés de viols me choque profondément. Cela me renforce dans l'idée de soutenir ceux qui militent pour plus de justice.",
+        "Peu importe si ce sont des policiers à Béziers, ça ne change rien, je reste sur mon choix politique, j'attends de voir la justice faire son travail."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.005779759071049782,
+          "lo": 0.004804798957379423,
+          "hi": 0.006736232755349537,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.0029765854405424566,
+          "lo": 0.0016369252907508,
+          "hi": 0.004358664386097828,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0032636124854406308,
+          "lo": -0.004206395102907211,
+          "hi": -0.002220774815590267,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.003556283488739792,
+          "lo": -0.0042599599341316685,
+          "hi": -0.0028311109808254534,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.004366218187073224,
+          "lo": -0.006073046918131209,
+          "hi": -0.002782505443455542,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0024297696496614184,
+          "lo": 0.00006244834636487337,
+          "hi": 0.00489992746784433,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Hommes employés ou ouvriers de 35 à 64 ans en communes denses de la proche banlieue",
+      "matchedCount": 16026,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Honnêtement, ces histoires de policiers mis en examen pour viol et qui sont remis en liberté, ça me fait surtout penser que la justice est vraiment compliquée. Mais ça ne changera pas vraiment mon vote, je vote avant tout pour mes idées et ce qui touche mon boulot.",
+        "Je suis un peu choqué par ces affaires de violences, surtout quand ce sont des policiers. Ça ne donne pas confiance dans l'autorité. Mais je me concentre surtout sur ce qui me touche au quotidien et mon avenir professionnel, donc ça ne va pas vraiment faire bouger mon vote.",
+        "Ces histoires, c'est grave, mais ce n'est pas vraiment mon combat ni mon quotidien. Ça me laisse plutôt indifférent quand je pense à mon boulot à voirie et à la sécurité locale."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.005323418459934396,
+          "lo": 0.004187559641809872,
+          "hi": 0.006441846978497386,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.0020598523524037377,
+          "lo": 0.0012309629080629108,
+          "hi": 0.00295749450687577,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.003549658143650429,
+          "lo": -0.004788796569226246,
+          "hi": -0.00237349621139917,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.00251461926334303,
+          "lo": -0.003231379589753366,
+          "hi": -0.0018080805493267485,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0028726446624854373,
+          "lo": -0.00453772027667205,
+          "hi": -0.0010812957357490469,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0015536512571407573,
+          "lo": -0.00023733650169757933,
+          "hi": 0.003562509052951091,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 10,
+          "noClearChange": 84
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 91
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça inquiétant, mais honnêtement, ce n'est pas mon genre de suivre ce genre d'affaires, ça fait un peu loin de ma vie de famille et de mes projets.",
+        "Ce genre d'affaire me choque. Je suis plutôt pour que la justice soit ferme, mais je ne vois pas cela changer mon vote, j'ai d'autres priorités.",
+        "Des policiers accusés de viol, ça me révolte, mais franchement, ça ne va pas me faire changer d'opinion pour le vote, je suis plutôt centré sur ma région et mes proches."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.002497388279557423,
+          "lo": 0.0018565106673009413,
+          "hi": 0.0030615552807223543,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0013472211020513622,
+          "lo": 0.0007054945481831013,
+          "hi": 0.0019801394647591297,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0021219259026820556,
+          "lo": -0.0026806064532244084,
+          "hi": -0.0015748215010359978,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0020794044382397817,
+          "lo": -0.0025585879996432447,
+          "hi": -0.0016336472481657779,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.003395718163755498,
+          "lo": -0.005121425071796157,
+          "hi": -0.001554572557800742,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0037524391230685486,
+          "lo": 0.0023457691681235734,
+          "hi": 0.004993845747596284,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes femmes seules en communes denses",
+      "matchedCount": 8104,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 7,
+          "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 2,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est inquiétant que des policiers mis en examen soient remis en liberté, ça donne une mauvaise image de la justice. L'incendie à Limoges, ça me touche moins, loin de chez moi.",
+        "Entendre parler d'une remise en liberté de policiers mis en examen pour viol, ça me choque vraiment. Pour l'incendie à Limoges, je suis un peu perdue, ça ne me parle pas trop.",
+        "La libération de policiers mis en examen pour viol me trouble, ça questionne la justice. Pour l'incendie à Limoges, j'attends plus d'informations pour me forger un avis."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.007725403812548791,
+          "lo": 0.006141726694837018,
+          "hi": 0.009650076850778172,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.004920319824903679,
+          "lo": 0.0031694323451429574,
+          "hi": 0.007297854785478547,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.004597362805068615,
+          "lo": -0.005677480285754935,
+          "hi": -0.003514382613186248,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.003090566092593937,
+          "lo": -0.003736399425927272,
+          "hi": -0.002486507396985945,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.004886829018572036,
+          "lo": -0.006681993255631871,
+          "hi": -0.0030843084496137286,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.00007096572121790291,
+          "lo": -0.003227914336499854,
+          "hi": 0.002638161150156793,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:47.831Z",
+    "contentHash": "c17534bea9b9739d23b1444f21705632b42b1f7790188af61c49c70b4c606524"
+  }
+}

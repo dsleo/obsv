@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-14718",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "95c8c0b28986a270",
+  "computedAt": "2026-11-10T22:02:57.639Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "INFO BFMTV. La manifestation du 31 octobre à Paris attire une mobilisation plus importante que prévu, avec de nombreux groupes divers manifestant pacifiquement, et le périphérique reste dégagé malgré une forte présence policière.",
+    "whatChanges": "La mobilisation est plus importante et pacifique, apaisant les craintes des autorités et influençant positivement l'opinion des électeurs modérés et urbains."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes salariés urbains sensibles aux manifestations",
+      "mechanism": "Ce segment regroupe les jeunes actifs salariés urbains, notamment ceux de 18 à 34 ans, qui sont plus susceptibles d'être concernés par les manifestations à Paris notamment visées par l'envahissement du périphérique et les lieux de pouvoir ciblés.",
+      "reason": "Intersection d'un âge jeune (18-34 ans), d'une activité salariée (employés ou professions intermédiaires) en zones urbaines denses où la manifestation se déroule principalement.",
+      "all": [
+        "geo.dense",
+        "occupation.employee"
+      ],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to.paris_manifestation",
+        "perception.of_public_safety"
+      ],
+      "count": 7721,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 31 octobre : une faible mobilisation dans les Landes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Activités indépendantes des communes urbaines",
+      "mechanism": "Les artisans, commerçants et chefs d'entreprise (indépendants) dans des communes urbaines denses peuvent être directement concernés par les perturbations liées à la manifestation et la crainte des autorités.",
+      "reason": "Le segment combine la profession indépendante et la localisation en zone dense, s'intéressant aux impacts économiques et sécuritaires de l'événement.",
+      "all": [
+        "cluster.independent",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to.paris_manifestation",
+        "economic_impact_perception"
+      ],
+      "count": 3736,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 31 octobre : une faible mobilisation dans les Landes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes étudiants et inactifs des villes denses",
+      "mechanism": "Les jeunes sans activité professionnelle (étudiants, chômeurs) dans des communes urbaines denses sont particulièrement exposés aux effets de la manifestation, notamment sur la mobilité et la sécurité dans l'espace public ciblé par la police.",
+      "reason": "Ce segment couvre les jeunes de 18-24 ans inactifs professionnels en milieu urbain dense, tous concernés par les mobilisations étudiantes ou de jeunes actifs.",
+      "all": [
+        "cluster.young_without_activity",
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure.to.paris_manifestation",
+        "impact.on.daily_movements"
+      ],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 31 octobre : une faible mobilisation dans les Landes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Population retraitée en zones rurales des Landes",
+      "mechanism": "Les retraités vivant dans les zones rurales similaires aux Landes sont concernés indirectement par la faible mobilisation locale et la perception sécuritaire liée à la manifestation.",
+      "reason": "Segment construit pour capter la population âgée vivant hors des grandes agglomérations, potentiellement sensible au contexte local et aux enjeux liés à la manifestation dans leur département.",
+      "all": [
+        "cluster.rural_retiree"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "local_perception_of_security",
+        "awareness_of_manifestation"
+      ],
+      "count": 784,
+      "distinctCommunes": 91,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 31 octobre : une faible mobilisation dans les Landes",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Manifestation du 31 octobre : une faible mobilisation dans les Landes",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Activités indépendantes des communes urbaines",
+      "matchedCount": 3736,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, cette faible mobilisation à Paris me laisse un peu indifférente, ce n'est pas mon quotidien ni un sujet dont je me sens proche.",
+        "Une faible mobilisation dans ces manifestations ne change rien à ma manière de voir les choses, je suis un artisan avec mes préoccupations professionnelles avant tout.",
+        "J'entends parler de ces manifestations à Paris, mais ça ne me touche pas vraiment, surtout si ça reste pacifique sans encombre."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.007163683472475418,
+          "lo": -0.009110692744629032,
+          "hi": -0.005369978011958188,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.005953973868971128,
+          "lo": -0.007732535693783338,
+          "hi": -0.004103055122219047,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.003506490781274582,
+          "lo": 0.0016954667663813012,
+          "hi": 0.005494188429793686,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0036378596788603002,
+          "lo": 0.002064506820985378,
+          "hi": 0.005401038124448726,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.003233179013794854,
+          "lo": 0.0008012322196170937,
+          "hi": 0.0057081514959080315,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0027401278675167964,
+          "lo": -0.001448595766185139,
+          "hi": 0.007750566435123673,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes salariés urbains sensibles aux manifestations",
+      "matchedCount": 7721,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas surprise par cette faible mobilisation, à Paris les grosses manifs font souvent beaucoup de bruit mais peu d'impact réel sur ma vie. Du coup ça ne change rien à mon vote.",
+        "Une grosse manif pacifique qui réunit du monde, c'est rare. Ça pourrait montrer que les gens veulent plus de justice sociale, ça me parle un peu, mais ça ne changera pas mon vote de base.",
+        "À Béziers, on ne voit pas grand-chose de ces manifs parisiennes. Une grosse manif pacifique, ça ne m'impressionne pas plus que ça, ça ne change rien à mon vote qui est plutôt tourné vers le RN."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.008932933191735786,
+          "lo": -0.010366079611955356,
+          "hi": -0.007415895263255419,
+          "stable": true
+        },
+        "left": {
+          "mean": -0.007218055576647081,
+          "lo": -0.008333052772952645,
+          "hi": -0.005946896423600169,
+          "stable": true
+        },
+        "center": {
+          "mean": 0.004014353063449561,
+          "lo": 0.002027060570511145,
+          "hi": 0.005892631909577833,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0021755960965287023,
+          "lo": 0.0009615558532674699,
+          "hi": 0.003264578636902752,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.004812475739421541,
+          "lo": 0.002599084462397447,
+          "hi": 0.006822835132247882,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0051485638689830185,
+          "lo": 0.0005715824917312337,
+          "hi": 0.010248730763202025,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas trop touché par ces histoires de manif à Paris, ça me semble loin de mes soucis quotidiens en Drôme et je préfère régler mes trucs perso que de suivre ça de près.",
+        "Une manif à Paris, je trouve ça un peu trop bruyant et ça me fatigue… Si ça reste calme et peu nombreux, tant mieux, ça évite des embrouilles.",
+        "Je trouve ça inquiétant quand ça fait beaucoup de bruit, mais une manif pacifique, ça peut montrer que les gens veulent dialoguer, moi ça me parle un peu plus."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0044447967451426715,
+          "lo": -0.005616162763049458,
+          "hi": -0.003326286448870294,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0036164640032337763,
+          "lo": -0.004547241286818113,
+          "hi": -0.002509446308163931,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.0004787131145765541,
+          "lo": -0.0005324849602635022,
+          "hi": 0.0013750122063837065,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0020450024979268466,
+          "lo": 0.0012471902231525201,
+          "hi": 0.0028268096601352295,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.007109731244869477,
+          "lo": 0.005256074500966035,
+          "hi": 0.009019830032296035,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.0015721861089964333,
+          "lo": -0.0037399357266077403,
+          "hi": 0.0005194182232676538,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes étudiants et inactifs des villes denses",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas surpris que dans les Landes, une manif attire peu de monde, ça fait souvent le grand écart avec Paris où il y a plus d'activisme. Ça ne change pas grand-chose pour moi.",
+        "Une faible mobilisation dans les Landes, c'est un peu dommage, j'espère que les revendications liées à la justice sociale ne sont pas ignorées, mais ça ne me fera pas changer d'avis.",
+        "Une faible manif dans les Landes ? Pas étonnant, ça bouge pas assez ici pour moi. Je suis surtout préoccupée par la stabilité locale, pas par ça."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.007921107309072016,
+          "lo": -0.010107988497190828,
+          "hi": -0.005638579978484506,
+          "stable": true
+        },
+        "left": {
+          "mean": -0.00568577987394091,
+          "lo": -0.007704521588842032,
+          "hi": -0.0032303464451625672,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.0011545093863342606,
+          "lo": -0.00043800247679234866,
+          "hi": 0.0029408096029383147,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0008125582613499313,
+          "lo": -0.00036390495407468483,
+          "hi": 0.002005239548709438,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.00401328622092861,
+          "lo": 0.0017984738034242983,
+          "hi": 0.00611285178973039,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.007626533314400115,
+          "lo": 0.003281782985990902,
+          "hi": 0.012793987177133323,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Population retraitée en zones rurales des Landes",
+      "matchedCount": 784,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette histoire de manif à Paris, ça me parle pas trop, ça se passe loin et ça fait peur avec tout ce qu'on entend à la télé. Peu m'importe si c'est beaucoup ou peu de monde.",
+        "Ces manifs à Paris, je trouve que ça n'a pas beaucoup d'impact sur ma vie ici. Que ce soit beaucoup ou peu de monde, ça ne va pas changer mon vote.",
+        "Je regarde ces infos sur les manifs, mais franchement ça me fait ni chaud ni froid. Paris, c'est loin, et ça ne me touche pas directement."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0009606181316130722,
+          "lo": -0.0018863025452903568,
+          "hi": -0.0000724887785897484,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0018766783440748293,
+          "lo": -0.003105234627530328,
+          "hi": -0.0006521644517248191,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.00010063133149173023,
+          "lo": -0.0015451188683326285,
+          "hi": 0.001444294083951615,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0004410285958060067,
+          "lo": -0.0006604667072834302,
+          "hi": 0.0015740622513939718,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0024524153061058367,
+          "lo": -0.000900708261745454,
+          "hi": 0.004773149493269019,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.000044483905267793854,
+          "lo": -0.0048229437436526955,
+          "hi": 0.005804240080163614,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:24.865Z",
+    "contentHash": "2780c25909d9ab97f3671eb3e843eaedea70a84f2c8d11cd2a7b84b422b5c196"
+  }
+}

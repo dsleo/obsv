@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-26141",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "209f423974bf4a3b",
+  "computedAt": "2026-11-10T22:00:59.184Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "EN DIRECT, Sébastien Lecornu annonce un report de la réforme de Parcoursup à la fin de l'année prochaine, dans le but d'associer davantage les représentants des lycéens et étudiants à la co-construction du dispositif. Une rencontre élargie est organisée avec ces acteurs dès la semaine suivante pour recueillir leurs propositions.",
+    "whatChanges": "Le report et la co-construction de la réforme apaisent partiellement les tensions et reçoivent un accueil plus favorable des lycéens et étudiants, qui n'exigent plus une abrogation immédiate."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes actifs modestes et employés urbains à Dijon",
+      "mechanism": "Ce groupe d'employés modestes vivant en milieu dense comme Dijon peut être indirectement concerné par la mobilisation éducative et l'annonce gouvernementale sur Parcoursup, car cela peut impacter leurs enfants ou leurs perspectives de formation.",
+      "reason": "Ce segment combine employés et ouvriers avec un contexte urbain dense et taille communale importante, susceptible d'être sensible à ces thématiques éducatives et sociales.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "geo.dense",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposition_communication_gouvernementale",
+        "attitude_reforme_Parcoursup"
+      ],
+      "count": 20432,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "Lacune « implication_familiale_éducation » ignorée : cet attribut existe déjà dans les tags"
+      ],
+      "counterfactual": {
+        "intervention": "Dijon : nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes sans activité professionnelle de 18 à 24 ans en milieu urbain",
+      "mechanism": "Ce segment regroupe les jeunes de 18 à 24 ans sans activité professionnelle (étudiants, chômeurs, inactifs) résidant dans des communes denses de plus de 1000 habitants, qui sont directement concernés par les annonces du premier ministre et le débat sur l'abrogation de Parcoursup.",
+      "reason": "Remplacement du segment initial lycéens/étudiants, absence de statut étudiant explicite dans les tags, emploi du cluster jeune sans activité distinct et précis.",
+      "all": [
+        "age.18_24",
+        "cluster.young_without_activity",
+        "geo.dense",
+        "commune_size.1000_plus"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Dijon : nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes cadres urbains diplômés concernés par la réforme éducative",
+      "mechanism": "Les jeunes cadres et professions intellectuelles supérieures de moins de 35 ans vivant dans des communes denses et de plus de 1000 habitants, qui peuvent être concernés par la réforme Parcoursup et la mobilisation éducative, tant pour eux-mêmes que pour leurs proches.",
+      "reason": "Segment étroit complémentaire ciblant un public diplômé et urbain susceptible d'être informé et concerné par les annonces gouvernementales sur l'éducation et Parcoursup.",
+      "all": [
+        "cluster.urban_executive",
+        "age.25_34",
+        "geo.dense",
+        "commune_size.1000_plus"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 2948,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Dijon : nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Dijon : nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes sans activité professionnelle de 18 à 24 ans en milieu urbain",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve important de soutenir les lycéens et étudiants qui protestent contre Parcoursup, ce système est vraiment injuste pour beaucoup d'entre nous.",
+        "Franchement, ces grèves ça ne me concerne pas trop, je suis plus concentrée sur mon travail et ma famille. Parcoursup, c'est trop loin de mes préoccupations.",
+        "Ces grèves, ça me rappelle les galères qu’on a eu avec les études et l’emploi. Je pense que c’est légitime de vouloir changer Parcoursup, ça touche notre avenir direct."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.008586569170061004,
+          "lo": 0.006348223523681058,
+          "hi": 0.010888530008805962,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.0007452355952878442,
+          "lo": -0.0008291419190444923,
+          "hi": 0.0025670024258260074,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.00870123640155965,
+          "lo": -0.010390349793554661,
+          "hi": -0.006934468063113916,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0021381569392228015,
+          "lo": -0.003014953911603148,
+          "hi": -0.0013057962972240174,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0027631902582576314,
+          "lo": -0.004514216980448641,
+          "hi": -0.001173613721071354,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004270778833691236,
+          "lo": 0.0019853854248378,
+          "hi": 0.006596014771354543,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes cadres urbains diplômés concernés par la réforme éducative",
+      "matchedCount": 2948,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est frustrant de voir que le gouvernement continue à imposer cette réforme alors que les jeunes et les enseignants manifestent. Ça me motive à soutenir plus la gauche radicale qui défend vraiment leurs revendications.",
+        "Je trouve bien que le premier ministre engage enfin un dialogue avec les lycéens et étudiants. Ça reflète une volonté d'améliorer la concertation, donc je reste plutôt centrée, mais un peu plus confiante.",
+        "Ce genre de mobilisation à Dijon me parle peu, ça ne change rien à ma manière de voir les choses sur Parcoursup ni mon vote à venir."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.007067800168259343,
+          "lo": 0.0052586399708978255,
+          "hi": 0.009092840405557431,
+          "stable": true
+        },
+        "left": {
+          "mean": -0.001450219217620766,
+          "lo": -0.0031347992049312154,
+          "hi": 0.00016154889757913175,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.008720842451955257,
+          "lo": -0.010741613378370804,
+          "hi": -0.0066629713335302695,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0021134945415875257,
+          "lo": -0.003297580208221623,
+          "hi": -0.000906265351809906,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.000012705211422358217,
+          "lo": -0.001894097289596602,
+          "hi": 0.0017217315342315399,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005229461254326581,
+          "lo": 0.0026976597225250513,
+          "hi": 0.007793872090489252,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes actifs modestes et employés urbains à Dijon",
+      "matchedCount": 20432,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça bien que le gouvernement écoute les lycéens et étudiants, mais franchement, je ne suis pas sûre que ça change grand-chose pour moi ou ma famille à Paris 16e.",
+        "À Martigues, ce genre de grèves dans l’éducation, je m’en fiche un peu, ça n’a pas vraiment d’impact sur mes préoccupations. Ils peuvent discuter Parcoursup autant qu’ils veulent, ça ne changera pas mon vote.",
+        "Je comprends les lycéens, cette réforme de Parcoursup ça concerne directement des jeunes comme mes cousins. Si le gouvernement discute avec eux, ça peut peut-être les aider. Je me sens un peu concernée."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.008723891123317326,
+          "lo": 0.006454654881893687,
+          "hi": 0.011415464905203718,
+          "stable": true
+        },
+        "left": {
+          "mean": -0.0001905025511179825,
+          "lo": -0.001936699207532543,
+          "hi": 0.0017120234201268996,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.009047550064119681,
+          "lo": -0.011293590643493593,
+          "hi": -0.007011137671764456,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0033671204530211925,
+          "lo": -0.004407762754466739,
+          "hi": -0.0023853862112568594,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0006787106891440383,
+          "lo": -0.0008166753791753797,
+          "hi": 0.002259531291592025,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0032025712557974726,
+          "lo": 0.000564075703690126,
+          "hi": 0.005778862629919839,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 91
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cette grève un peu lointaine de ma réalité quotidienne rurale, ça ne change pas vraiment mon opinion, même si je comprends les inquiétudes des jeunes.",
+        "Cette grève me paraît légitime, surtout si elle touche à la réussite de nos jeunes. Mais je reste prudent quant à son impact sur mes choix politiques habituels.",
+        "Je suis sensible aux revendications des jeunes, mais cette agitation ne change pas grand-chose à ma vie quotidienne ni à mes intentions de vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.004321593774750045,
+          "lo": 0.003115701280212926,
+          "hi": 0.005539941672578847,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0005092986689234596,
+          "lo": -0.00031449225106166667,
+          "hi": 0.0012084519319865105,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.006141450826085168,
+          "lo": -0.007115973055856112,
+          "hi": -0.005082523277439952,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0015687151192040148,
+          "lo": -0.0023037923592142072,
+          "hi": -0.0008915697638472716,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0009797205179212364,
+          "lo": -0.002299960993080694,
+          "hi": 0.000591242807787167,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0038589940195369113,
+          "lo": 0.0022034827412360874,
+          "hi": 0.005331147999849923,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:41.710Z",
+    "contentHash": "56159e4ad6479de59cda55dcc79d95977284081a4dd4a2123e64143be350a091"
+  }
+}

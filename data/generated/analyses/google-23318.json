@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-23318",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "85317199ae49bbbe",
+  "computedAt": "2026-11-10T22:09:21.012Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Appel à la grève : seuls deux syndicats minoritaires appellent à des manifestations dans certaines villes de Loire-Atlantique le 29 septembre, tandis que la majorité des syndicats appelle à poursuivre le dialogue sans mouvement social.",
+    "whatChanges": "Le nombre de syndicats appelant à la grève est réduit, ce qui diminue l'ampleur des manifestations et impacte davantage les électeurs modérés et les salariés attachés au dialogue social."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Employés et ouvriers de 35 à 49 ans en commune dense",
+      "mechanism": "L'appel à la grève concerne particulièrement les salariés intermédiaires et ouvriers actifs d'âge moyen, dans les communes denses où les mobilisations syndicales sont fréquentes.",
+      "reason": "Segment resserré dans un cadre urbain, sans référence départementale impossible à tagger.",
+      "all": [
+        "age.35_49",
+        "geo.dense"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 11634,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Appel à la grève du 29 septembre dans le 44",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Ouvriers de 50 à 64 ans vivant en communes intermédiaires ou denses",
+      "mechanism": "Les ouvriers seniors, souvent concernés par les enjeux sociaux et retraites, sont ciblés par l'appel à la grève dans les zones non rurales, favorables aux mobilisations syndicales.",
+      "reason": "Segment resserré par âge, profession et densité, sans référence départementale.",
+      "all": [
+        "occupation.worker",
+        "age.50_64"
+      ],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 3580,
+      "distinctCommunes": 96,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Appel à la grève du 29 septembre dans le 44",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes sans activité professionnelle de 18 à 24 ans en communes denses",
+      "mechanism": "Les jeunes inactifs, notamment étudiants ou chômeurs urbains, sont une cible stratégique des syndicats en appelant à la grève dans les zones urbaines.",
+      "reason": "Segment ciblé sur la jeunesse inactive et la densité urbaine pour restreindre le public sans mention départementale.",
+      "all": [
+        "cluster.young_without_activity",
+        "age.18_24",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Appel à la grève du 29 septembre dans le 44",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Appel à la grève du 29 septembre dans le 44",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Ouvriers de 50 à 64 ans vivant en communes intermédiaires ou denses",
+      "matchedCount": 3580,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette grève dans ma région, ça ne me touche pas vraiment, je ne suis pas très impliqué dans ce genre de mouvements.",
+        "Une grève qui touche la région me parle un peu, mais je me demande si ça va vraiment améliorer les choses.",
+        "Une grève générale, ça me parle. Je pourrais être plus sensible aux idées de gauche avec ce genre d'événement."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.006328479635289007,
+          "lo": 0.00415953552123231,
+          "hi": 0.008519527505430209,
+          "stable": true
+        },
+        "left": {
+          "mean": 0.0039610081503383,
+          "lo": 0.0023950616266803313,
+          "hi": 0.005545760033977967,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.004537835068180986,
+          "lo": -0.005760702907698259,
+          "hi": -0.0030844424761436082,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.001728747376445291,
+          "lo": -0.002792361409254832,
+          "hi": -0.0008968909820888972,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.004966198821440206,
+          "lo": -0.007094307637419432,
+          "hi": -0.002577764450025409,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0009432934804391828,
+          "lo": -0.0004542549715192441,
+          "hi": 0.0023985634832538456,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Employés et ouvriers de 35 à 49 ans en commune dense",
+      "matchedCount": 11634,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je n'habite pas en Loire-Atlantique, donc cet appel à la grève ne me concerne pas vraiment et ne change rien à ma façon de voter.",
+        "Je trouve ça normal que les syndicats se mobilisent, on a souvent besoin de défendre nos droits, donc je suis un peu plus attentive à leur appel. Si c'est l'appel de tous les syndicats, ça me donnerait peut-être plus envie de soutenir la grève ou au moins leurs revendications.",
+        "Je travaille dans l'administration locale et ces appels à la grève à l'autre bout du pays ne modifient pas ma manière de voir les choses. Ce genre de manifestation loin de chez moi ne me touche pas vraiment."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0030137157654763283,
+          "lo": 0.001753267565767566,
+          "hi": 0.004534549098809661,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0023312301692583392,
+          "lo": 0.0010672835813680893,
+          "hi": 0.00372916666666667,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0023574045974280706,
+          "lo": -0.0038608802884037593,
+          "hi": -0.0010587865488100245,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0012099766028756639,
+          "lo": -0.0021556531647494086,
+          "hi": -0.0004561688311688308,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0023782925446657823,
+          "lo": -0.004224400599400593,
+          "hi": -0.00046639194526518446,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0006007278102348537,
+          "lo": -0.00038084831834832067,
+          "hi": 0.001520833333333334,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 93
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis plus très concerné par les grèves, surtout loin de chez moi en Loire-Atlantique, cela ne change rien à ma manière de voir la présidentielle.",
+        "Une grande grève ici, ça me paraît compliqué, ça risque de faire du bruit pour pas grand-chose, même si je comprends la colère de certains.",
+        "Les mouvements sociaux dans d'autres régions me laissent sceptique, ça perturbe le pays sans apporter de solution pour mon atelier ici à Dijon."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0027989622668255546,
+          "lo": 0.001678991021710495,
+          "hi": 0.0040296532662662055,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0019703823281515477,
+          "lo": 0.0008892517127871696,
+          "hi": 0.0029723222399348583,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0035908378065875684,
+          "lo": -0.004691131325819174,
+          "hi": -0.0024372036612404107,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0017640397664961671,
+          "lo": -0.0024033289661326996,
+          "hi": -0.0011805737253420146,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.002119913162846982,
+          "lo": -0.00349641857741982,
+          "hi": -0.0007333903767987055,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0027054461409536084,
+          "lo": 0.0013664232987291051,
+          "hi": 0.004207749858848228,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnelle de 18 à 24 ans en communes denses",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cet appel à la grève en Loire-Atlantique un peu lointain pour moi, ça ne change pas vraiment ma manière de voir les choses ici à Marseille.",
+        "Je n'ai pas vraiment d'avis sur une grève en Loire-Atlantique, ça me semble un peu éloigné de mes préoccupations ici à Béziers.",
+        "Une grève en Loire-Atlantique, même si ce n’est pas chez moi, ça me parle un peu, mais ce n’est pas quelque chose qui va influencer mon vote pour l’instant."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0033230663855663856,
+          "lo": 0.001857885732885733,
+          "hi": 0.0052156945906945895,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0012584853834853834,
+          "lo": 0.00011344905094905096,
+          "hi": 0.0024996339371339375,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.002155560238893573,
+          "lo": -0.003238727072060405,
+          "hi": -0.0013386821511821533,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.00068460905960906,
+          "lo": -0.0010576110576110585,
+          "hi": -0.000327547452547453,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0025894396936063623,
+          "lo": -0.004545454545454548,
+          "hi": -0.0010142024308690985,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0008480572230572218,
+          "lo": 0.00006638056638056816,
+          "hi": 0.0016340306965306958,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:33.291Z",
+    "contentHash": "ac938e29224dc9afbf8832b4eb2e18fad028d6bbf84ac0b45170e5ed92b1b02e"
+  }
+}

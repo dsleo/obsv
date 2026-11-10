@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-16253",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "d96b369a185d5b1f",
+  "computedAt": "2026-11-10T22:06:27.157Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "À Arras, lors de la cérémonie d'hommage à Dominique Bernard trois ans après l'attentat déjoué, le discours officiel met davantage l'accent sur la résilience des services de renseignement français et la solidarité nationale, sans mentionner spécifiquement le lien avec le groupe islamiste pro-iranien.",
+    "whatChanges": "Le contenu de la cérémonie est modifié pour insister sur l'action des forces françaises et l'unité nationale plutôt que sur l'origine terroriste, ce qui modère l'impact émotionnel lié à l'aspect géopolitique et sécuritaire pour le grand public."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Habitants d'Arras adultes en communes moyennes ou denses",
+      "mechanism": "La cérémonie d'hommage à Dominique Bernard à Arras concerne principalement les adultes vivant dans cette commune ainsi que des communes proches de taille moyenne à dense, car ce sont les populations directement touchées par l'événement local.",
+      "reason": "Ce segment inclut les adultes âgés de 25 à 64 ans résidant dans des communes de plus de 1000 habitants à densité intermédiaire ou dense pour couvrir la proximité géographique et la taille significative de la population.",
+      "all": [
+        "geo.intermediate",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 2222,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.25_34 ou age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Arras : trois ans après l'attentat, le programme de la cérémonie d'hommage à Dominique Bernard",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes urbains diplômés et sensibilisés aux questions de terrorisme",
+      "mechanism": "Les jeunes diplômés urbains, notamment en communes denses comme Arras, sont un public concerné par le thème de l’attentat déjoué et de l'ubérisation du terrorisme, souvent sensibilisés aux débats géopolitiques et sécuritaires.",
+      "reason": "Ce segment prend les personnes jeunes de moins de 35 ans, titulaires d'un diplôme bac+3 et plus, vivant en milieu urbain dense, pour approximativement cibler ceux susceptibles d'être engagés sur ces sujets.",
+      "all": [
+        "education.bac_plus_3_4",
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 4295,
+      "distinctCommunes": 71,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Arras : trois ans après l'attentat, le programme de la cérémonie d'hommage à Dominique Bernard",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Salariés modestes des communes moyennes ou denses concernés par l’événement sécuritaire",
+      "mechanism": "Les salariés modestes employés ou ouvriers en milieu urbain ou intermédiaire sont concernés par les conséquences sociales et sécuritaires liées à l’attentat à Paris et son écho à Arras.",
+      "reason": "Ce segment rassemble les employés et ouvriers âgés de 25 à 64 ans dans des communes plus peuplées, car ce groupe socioprofessionnel est potentiellement sensible aux questions de sécurité et d’intégration dans ces contextes.",
+      "all": [
+        "geo.intermediate",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 1040,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Arras : trois ans après l'attentat, le programme de la cérémonie d'hommage à Dominique Bernard",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Arras : trois ans après l'attentat, le programme de la cérémonie d'hommage à Dominique Bernard",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Habitants d'Arras adultes en communes moyennes ou denses",
+      "matchedCount": 2222,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 11,
+          "away": 0,
+          "noClearChange": 37
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis touchée par cet hommage et par la complexité des enjeux de sécurité, même si ces attentats paraissent loin de mon quotidien à Orléans.",
+        "Je trouve important de saluer le travail des services de renseignement, ça me rassure un peu sur la sécurité, même si je ne suis pas très politisé.",
+        "Ce genre d’attentat me fait peur et me conforte dans mon vote plus à droite, même si je n’aime pas qu’on parle trop de groupes étrangers."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.002909875090785168,
+          "lo": -0.003782060000006162,
+          "hi": -0.0020599182644448657,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0037248314208887363,
+          "lo": -0.004629437313185732,
+          "hi": -0.00282298785174976,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.006975164972937189,
+          "lo": -0.008598206925371044,
+          "hi": -0.005541911042661309,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.002478797832033459,
+          "lo": -0.003577168113918921,
+          "hi": -0.001472305858997212,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.017642862262564743,
+          "lo": 0.015077033793387025,
+          "hi": 0.0206932720642963,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.001554192945920194,
+          "lo": -0.0038904261749189376,
+          "hi": 0.0004932946376352346,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes urbains diplômés et sensibilisés aux questions de terrorisme",
+      "matchedCount": 4295,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cet hommage me rappelle l'importance de la vigilance et la valeur du travail des services de renseignement pour notre sécurité. Je trouve le lien avec le terrorisme complexe, mais c'est un sujet important à connaître.",
+        "Franchement, je ne suis pas trop touchée par ce genre d'événement, ça ne change pas vraiment ma façon de voir les choses ni mon vote.",
+        "C'est important de se souvenir de ces attentats et de soutenir les services de renseignement qui protègent notre pays. Cette cérémonie renforce mon sentiment de sécurité."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.002437719981307155,
+          "lo": -0.0032853623914495676,
+          "hi": -0.0015936739061739062,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.002668511797561564,
+          "lo": -0.003491366849583283,
+          "hi": -0.0019006375545704182,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.003026388154310663,
+          "lo": -0.0042187790967016065,
+          "hi": -0.0019250895976012858,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.00033108050202655974,
+          "lo": -0.0009101608978863482,
+          "hi": 0.0003760423405129492,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.007942452221635591,
+          "lo": 0.006279336154336156,
+          "hi": 0.0102612821987822,
+          "stable": true
+        },
+        "abstention": {
+          "mean": 0.000521248213570356,
+          "lo": -0.0012757890882890849,
+          "hi": 0.002296560457632602,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 25,
+          "away": 0,
+          "noClearChange": 71
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 6,
+          "noClearChange": 89
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cet hommage important, c'est essentiel de se souvenir du courage des services de sécurité, même si les détails politiques me dépassent un peu.",
+        "C'est bien que cette histoire d'attentat soit rappelée, ça montre que la menace est réelle. Ça renforce mon attention à tout ce qui touche la sécurité.",
+        "Cet hommage me touche. Je préfère quand on met en avant la résilience et l'unité nationale plutôt que des divisions sur les origines des groupes terroristes."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0021741590765119727,
+          "lo": -0.0029314374200411276,
+          "hi": -0.0015159135038061956,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.002366242113625011,
+          "lo": -0.003035716100269356,
+          "hi": -0.001669103307543084,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.006640730015307308,
+          "lo": -0.008197539671100235,
+          "hi": -0.00528592891263379,
+          "stable": true
+        },
+        "right": {
+          "mean": -0.0019473025486376038,
+          "lo": -0.003063769379579351,
+          "hi": -0.0009720422071809832,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.014611467043622891,
+          "lo": 0.011668144751885568,
+          "hi": 0.01753402731562063,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.0014830332895410022,
+          "lo": -0.0038290944420546857,
+          "hi": 0.0015366739119405946,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes des communes moyennes ou denses concernés par l’événement sécuritaire",
+      "matchedCount": 1040,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve important de rendre hommage et de ne pas oublier ce qui s'est passé, même si ça ne change pas vraiment ma façon de voir la politique.",
+        "C'est triste, mais je ne suis pas très attentive aux détails complexes comme les groupes terroristes et leurs origines, ça ne modifie pas trop mon vote.",
+        "Je comprends l'importance de lutter contre le terrorisme, même si ça ne change pas vraiment mes choix politiques au quotidien."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.001760830482546484,
+          "lo": -0.0026621473652317616,
+          "hi": -0.000995741256476652,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0017025264235605373,
+          "lo": -0.0023395399599692225,
+          "hi": -0.0011164768461666532,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.004493363270430285,
+          "lo": -0.005653329508624227,
+          "hi": -0.0032810513266561445,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0007729619249335912,
+          "lo": -0.0014563785287447634,
+          "hi": -0.00014639157317479742,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.012515183459066987,
+          "lo": 0.009925512356256393,
+          "hi": 0.015370027222881812,
+          "stable": true
+        },
+        "abstention": {
+          "mean": -0.0037855013575961035,
+          "lo": -0.006188186783734589,
+          "hi": -0.001584149905457995,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:26.505Z",
+    "contentHash": "0472126ae961213bdcc1660833f307c267ef8dd7ca1d342a9a03586d9689c1a2"
+  }
+}

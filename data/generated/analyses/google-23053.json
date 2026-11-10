@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-23053",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "142c33376783e86d",
+  "computedAt": "2026-11-10T22:11:12.890Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Les syndicats de la fonction publique annoncent une grève partielle et ciblée le 29 septembre, limitée aux secteurs de l'éducation et de la santé, afin de maximiser l'impact sur les services publics essentiels tout en minimisant les perturbations totales.",
+    "whatChanges": "Le mouvement de grève devient sectoriel plutôt que général, ce qui modifie l'ampleur de la mobilisation et l'impact ressenti par l'ensemble des fonctionnaires et des usagers des services publics."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Fonctionnaires de 35 à 64 ans en commune dense",
+      "mechanism": "Les fonctionnaires âgés de 35 à 64 ans vivant en milieu urbain dense sont directement concernés par l'appel à la \"grande grève\" le 29 septembre lancé par Sophie Binet (CGT) pour défendre les salaires des agents publics, car ils constituent la principale base militante visée et le cœur du secteur public mobilisable.",
+      "reason": "Ce segment combine l'âge des actifs proches ou en milieu de carrière et la densité géographique urbaine où les syndicats sont les plus organisés et visibles.",
+      "all": [
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
+        "occupation.retired"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.expectation_of_participation_in_strike"
+      ],
+      "count": 11192,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Les syndicats de la fonction publique appellent à la grève le 29 septembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Agents de la fonction publique âgés de 50 à 64 ans en commune intermédiaire",
+      "mechanism": "Les fonctionnaires âgés de 50 à 64 ans vivant en communes de densité intermédiaire sont concernés par la mobilisation pour la hausse des salaires dans la fonction publique prévue le 29 septembre, particulièrement sensibles aux réductions potentielles de leurs revenus et à la défense de leurs acquis sociaux.",
+      "reason": "Ce segment croise l'âge des seniors actifs en fonction publique avec le cadre territorial des communes moyennement denses où la mobilisation syndicale est aussi significative.",
+      "all": [
+        "age.50_64",
+        "occupation.employee",
+        "geo.intermediate"
+      ],
+      "any": [],
+      "none": [
+        "occupation.retired"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.expectation_of_participation_in_strike"
+      ],
+      "count": 171,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Les syndicats de la fonction publique appellent à la grève le 29 septembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Femmes de 25 à 49 ans en emploi dans la fonction publique en commune dense",
+      "mechanism": "Les femmes fonctionnaires actives âgées de 25 à 49 ans travaillant en commune dense sont ciblées par l'appel à la grève du 29 septembre par les syndicats de la fonction publique, étant une catégorie professionnelle et démographique importante pour le mouvement social et la défense des salaires.",
+      "reason": "Ce segment associe le sexe féminin, un âge d'activité professionnelle étendue, le statut d'emploi dans la fonction publique et la localisation urbaine dense propice à la mobilisation collective.",
+      "all": [
+        "sex.female",
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [
+        "occupation.retired"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "result.expectation_of_participation_in_strike"
+      ],
+      "count": 8676,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Les syndicats de la fonction publique appellent à la grève le 29 septembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Les syndicats de la fonction publique appellent à la grève le 29 septembre",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 6,
+          "noClearChange": 89
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 91
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la colère des fonctionnaires pour leurs salaires, mais j'espère que la grève ne va pas trop perturber nos services dans le village.",
+        "Je suis un peu inquiète pour cette grève, surtout si ça touche trop les services publics que j'utilise, mais je comprends que les salaires soient un problème.",
+        "Une grève générale de la fonction publique me semble importante pour faire bouger les choses, surtout sur les salaires qui stagnent."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0012174216704978905,
+          "lo": 0.0002308282051240744,
+          "hi": 0.002141888144542511,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.000007450980294461844,
+          "lo": -0.0007654582315824976,
+          "hi": 0.0008411943029133243,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.002800862320535818,
+          "lo": -0.003468655497773408,
+          "hi": -0.0019547367956702505,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0012475914051470005,
+          "lo": -0.0016674294886249094,
+          "hi": -0.000792551707258397,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0007640304199150252,
+          "lo": -0.0020679920107108895,
+          "hi": 0.0006609898257600404,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.003587611494805487,
+          "lo": 0.0025162632213018544,
+          "hi": 0.004405065734963049,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes de 25 à 49 ans en emploi dans la fonction publique en commune dense",
+      "matchedCount": 8676,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que cette grève est importante, surtout pour faire reconnaître nos conditions de travail dans la fonction publique. Ça me parle directement en tant qu'agente dans une mairie.",
+        "Une grève générale dans la fonction publique me semble un peu trop disruptive, mais une grève ciblée sur l'éducation et la santé me paraît plus raisonnable et efficace.",
+        "La grève, en particulier limitée à l'éducation et la santé, ça risque de créer des problèmes pour mes enfants et moi. Ça m'inquiète un peu, même si la cause est juste."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.002964168228849423,
+          "lo": 0.0015800988438542847,
+          "hi": 0.0042303234754578565,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0010601517915696794,
+          "lo": -0.0001584801463767434,
+          "hi": 0.0021168581981144325,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0027417913163373976,
+          "lo": -0.0035434247655264125,
+          "hi": -0.0018292865724044971,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0016620228225438672,
+          "lo": -0.0021467374145842867,
+          "hi": -0.001121658079685635,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.002151791672841827,
+          "lo": -0.003599865778237815,
+          "hi": -0.0007897147488479679,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.002531285791303989,
+          "lo": 0.0005547239177986439,
+          "hi": 0.004767829036971222,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Fonctionnaires de 35 à 64 ans en commune dense",
+      "matchedCount": 11192,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Le fait que les syndicats appellent à une grande grève me touche, surtout en tant qu'employé polyvalent dans la fonction publique. Je comprends leur revendication sur les salaires, c'est un sujet important pour nous.",
+        "Je vois cette grève comme un rappel des difficultés de la fonction publique, mais une grève très massive pourrait compliquer le quotidien des Parisiens. Une grève ciblée serait plus raisonnable pour limiter les impacts.",
+        "Cette grève me semble un peu excessive. Ça pourrait causer des soucis dans les services publics, ça me stresse un peu. Une grève partielle serait plus acceptable pour moi."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.002942766853819091,
+          "lo": 0.0015299487266261888,
+          "hi": 0.004250074290015226,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.000702186858509701,
+          "lo": -0.0005840251363675558,
+          "hi": 0.0017933208357455166,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0037900250145326765,
+          "lo": -0.00458115353385574,
+          "hi": -0.0028590850698971154,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0015916672533316332,
+          "lo": -0.0021701840186896058,
+          "hi": -0.0009970855757962373,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0026051001834570754,
+          "lo": -0.0038194444656702406,
+          "hi": -0.001374556132736269,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004341838738992593,
+          "lo": 0.002674964497713593,
+          "hi": 0.00592939170040271,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Agents de la fonction publique âgés de 50 à 64 ans en commune intermédiaire",
+      "matchedCount": 171,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis un peu fatiguée par ces appels fréquents à la grève, ça complique notre boulot à la mairie, mais je comprends que les fonctionnaires veulent de meilleures conditions.",
+        "Cette grève générale annoncée risque de perturber pas mal de monde, mais je soutiens la défense des salaires dans la fonction publique, surtout dans l'éducation.",
+        "Une grande grève me dérange, ça complique les courses au supermarché mais si c'est pour réclamer de meilleurs salaires, je comprends."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.00028000417679160933,
+          "lo": -0.0006528473613894461,
+          "hi": 0.0010985489141199622,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0007224907277329521,
+          "lo": -0.0015704902046334906,
+          "hi": 0.00007889964005847805,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0019489606833318158,
+          "lo": -0.0028190130260521023,
+          "hi": -0.0010848973973973987,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0007952651003551945,
+          "lo": -0.0011489521207088814,
+          "hi": -0.0004588129796463134,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0021034332337711015,
+          "lo": -0.003249266567104437,
+          "hi": -0.0007491232464929843,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0052901455683994495,
+          "lo": 0.00373578626221412,
+          "hi": 0.007334468277562797,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:30.376Z",
+    "contentHash": "5332a67ab7eec951ce359de376ffed661affb2f13237d1bc8c9cf68c0f9e79b1"
+  }
+}

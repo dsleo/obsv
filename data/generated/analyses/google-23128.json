@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-23128",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "41c00475f9881085",
+  "computedAt": "2026-11-10T22:10:47.247Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Les syndicats des IEG appellent à la grève le 29 septembre pour défendre le « tarif agent ».",
+    "whatChanges": "Le report de la grève au 29 septembre modère la pression immédiate sur les employeurs et laisse plus de temps au gouvernement pour négocier avec les syndicats, ce qui peut influencer l'opinion des salariés et usagers concernés."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Salariés modestes des communes denses",
+      "mechanism": "Les syndicats des Industries Électriques et Gazières (IEG) appellent à la grève le 29 septembre pour défendre le « tarif agent », une mesure directement liée aux conditions de travail et rémunération dans les secteurs industriels, ciblant notamment les salariés modestes dans les communes à forte densité de population, où les mobilisations syndicales sont historiquement présentes.",
+      "reason": "Segment composé d'actifs salariés modestes très exposés à la revendication syndicale sur le « tarif agent » dans les zones urbaines denses.",
+      "all": [
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "exposure_to_union_communication",
+        "attitude_to_strike"
+      ],
+      "count": 16322,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Salaires : tous en grève le 29 septembre !",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Ouvriers âgés de 50 à 64 ans en communes intermédiaires",
+      "mechanism": "Les ouvriers de 50 à 64 ans sont particulièrement concernés par la défense du « tarif agent » et comptent parmi les effectifs les plus mobilisés dans la grève du 29 septembre, notamment en zones à densité intermédiaire où les conditions de travail restent prégnantes.",
+      "reason": "Segment qui recoupe la catégorie d'ouvriers seniors potentiellement fortement impliqués dans la grève des IEG, dans un contexte géographique moins urbain.",
+      "all": [
+        "occupation.worker",
+        "age.50_64",
+        "geo.intermediate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "union_membership",
+        "strike_participation_intent"
+      ],
+      "count": 144,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Salaires : tous en grève le 29 septembre !",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Cadres urbains dans les grandes agglomérations",
+      "mechanism": "Les cadres et professions intellectuelles supérieures dans les grandes agglomérations parisiennes, lyonnaises ou marseillaises peuvent être affectés par les perturbations liées à la grève du 29 septembre, notamment en lien avec la défense du « tarif agent » dans les syndicats des IEG, ce qui cadre leurs réactions et opinions sur ce mouvement social.",
+      "reason": "Segment touché indirectement par la mobilisation et en capacité d'influencer l'opinion sur la grève liée au « tarif agent » dans des zones urbaines très denses.",
+      "all": [
+        "cluster.urban_executive",
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "perception_of_strike",
+        "impact_on_daily_life"
+      ],
+      "count": 9793,
+      "distinctCommunes": 48,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Salaires : tous en grève le 29 septembre !",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes employés autonomes en couples avec enfants",
+      "mechanism": "Les jeunes salariés employés, vivant en couple avec enfants, sont concernés par la grève des syndicats IEG du 29 septembre qui porte sur le « tarif agent », une revendication touchant leur pouvoir d'achat et conditions salariales.",
+      "reason": "Segment resserré sur les jeunes familles actives salariées, souvent sensibles aux enjeux de salaire défendus par les syndicats.",
+      "all": [
+        "age.25_34",
+        "occupation.employee",
+        "household.couple_with_children"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "intention_to_support_strike",
+        "union_contact"
+      ],
+      "count": 2099,
+      "distinctCommunes": 114,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Salaires : tous en grève le 29 septembre !",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Salaires : tous en grève le 29 septembre !",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 93
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une grève pour défendre un tarif agent, ça ne me parle pas vraiment, je suis plus préoccupé par mes produits et ma petite entreprise au village.",
+        "Une grève dans les industries électriques, ça pourrait faire bouger les choses, ça me concerne un peu, ça montre que les salariés veulent défendre leurs droits.",
+        "La grève des syndicats des IEG, ce n’est pas mon quotidien, je suis plus concentrée sur mon travail à la mairie, ça me fait ni chaud ni froid."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0015559903134458968,
+          "lo": 0.0007859924601147098,
+          "hi": 0.002295672727250561,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0014796190235593781,
+          "lo": 0.0007722931577098237,
+          "hi": 0.002158979874134272,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0014184707721086743,
+          "lo": -0.002095454803788136,
+          "hi": -0.0008766515844561527,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0008884980366579356,
+          "lo": -0.001267527043013507,
+          "hi": -0.0005198243844077181,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0012288819415511444,
+          "lo": -0.0022578138454830495,
+          "hi": -0.0003634161550828211,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0005002414133124791,
+          "lo": 0.00008779095237428554,
+          "hi": 0.0010125016928104911,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Ouvriers âgés de 50 à 64 ans en communes intermédiaires",
+      "matchedCount": 144,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 9,
+          "noClearChange": 39
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "La grève des IEG me paraît justifiée, c'est important de défendre nos salaires, ça m'inquiète un peu pour l'avenir du pouvoir d'achat.",
+        "Une grève comme ça me semble normale pour défendre le salaire, je ne suis pas directement concerné mais ça me parle un peu, ça renforce mon soutien à la gauche.",
+        "Je suis technicien, cette grève me paraît un peu trop politique, ça ne change pas grand-chose pour moi au quotidien."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.002216859221058927,
+          "lo": 0.0010683148433478834,
+          "hi": 0.003464573125757336,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0015774927103242014,
+          "lo": 0.0006436850239720312,
+          "hi": 0.002611942440612979,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0012856644372171181,
+          "lo": -0.0021482855730517725,
+          "hi": -0.00037733466814173595,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0005867940953353936,
+          "lo": -0.0011299215938670283,
+          "hi": -0.000144458617863762,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0027240278582621826,
+          "lo": -0.0042483361325704565,
+          "hi": -0.0010718630264536025,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0008021344594315548,
+          "lo": -0.0007398835612542754,
+          "hi": 0.002297547547547542,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Cadres urbains dans les grandes agglomérations",
+      "matchedCount": 9793,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "En tant que jeune cadre dans une startup, je comprends que la grève puisse être un moyen de pression, mais ça ne m'affecte pas directement, et ça ne changera pas mon vote.",
+        "Cette grève me semble relever d'un mouvement syndical classique, ce n'est pas vraiment mon quotidient et ça ne modifie pas ma position sur les candidats.",
+        "Les grèves pour défendre les salaires, c'est important, mais je reste surtout attentive aux questions écologiques. Ce coup de grève ne changera pas mon vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0011199638013285856,
+          "lo": 0.00015417015601078767,
+          "hi": 0.002005997301469257,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0009493671396925456,
+          "lo": 0.00004656468281251004,
+          "hi": 0.0019107348524242066,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.001992403133573366,
+          "lo": -0.003287972130634902,
+          "hi": -0.0008770845709437511,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0003786218108740556,
+          "lo": -0.0008736027404751979,
+          "hi": 0.000021329763454636802,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.00015361233453149367,
+          "lo": -0.0013311532609341329,
+          "hi": 0.0010836232470541995,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0004553063379577783,
+          "lo": -0.0007946986731429921,
+          "hi": 0.0016794498908171047,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes des communes denses",
+      "matchedCount": 16322,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que les syndicats veulent défendre les salaires, mais pour moi, ça ne change rien à mon vote, je suis plus préoccupée par l'emploi et le coût de la vie ici à Dunkerque.",
+        "Une grève pour défendre les salaires, c'est légitime, ça me parle un peu en tant qu'employée. Ça peut me donner un peu plus envie de soutenir la gauche, qui défend les travailleurs.",
+        "Ça ne me touche pas directement, les grèves dans les IEG, ce n'est pas mon secteur. Je ne changerai pas pour autant mon vote."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.003301969754855487,
+          "lo": 0.0023649187459669455,
+          "hi": 0.004387565141455072,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0031140149262972624,
+          "lo": 0.002038378981078296,
+          "hi": 0.004059841639885499,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.003669061582505058,
+          "lo": -0.004927181255579586,
+          "hi": -0.0026356616274729335,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0008005315270640387,
+          "lo": -0.0011883171202580172,
+          "hi": -0.00034772633700555863,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0030640337994569896,
+          "lo": -0.003997699747788992,
+          "hi": -0.00215264030641992,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.001117642227873353,
+          "lo": -0.0004166666666666653,
+          "hi": 0.003278776472118733,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes employés autonomes en couples avec enfants",
+      "matchedCount": 2099,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la nécessité de défendre les salaires, surtout dans nos petites communes où la vie n'est pas toujours facile, donc cette grève m'intéresse un peu.",
+        "Une grève pour les salaires ? Je me demande si ça changera vraiment les choses, mais je peux comprendre que les salariés veuillent se faire entendre.",
+        "Je note cette grève, mais honnêtement ça ne va pas bouleverser ce que je pense ni mon vote, je privilégie d'autres sujets plus larges."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0022327536967264535,
+          "lo": 0.0010673653798653796,
+          "hi": 0.0035977276718385247,
+          "stable": false
+        },
+        "left": {
+          "mean": 0.0019384427799008566,
+          "lo": 0.000886581119316843,
+          "hi": 0.003177491274099685,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.001064053572781292,
+          "lo": -0.0017000424614966427,
+          "hi": -0.0005120912440500057,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.0005454564163405669,
+          "lo": -0.0009073442572067834,
+          "hi": -0.00022791908208574853,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.001421111772398366,
+          "lo": -0.0023797016123611784,
+          "hi": -0.00045612653497779584,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.001140574715107079,
+          "lo": -0.003202104702919909,
+          "hi": 0.0002676199729462943,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:31.475Z",
+    "contentHash": "7ecef9f81848e89ff07ce6844e10a4a642d3356e40844951de3bd518bff71515"
+  }
+}

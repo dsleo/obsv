@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-24988",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "3c80709488829cf5",
+  "computedAt": "2026-11-10T22:03:02.902Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Parcours, objets interdits, mesures pour les commerçants… Ce qu’il faut savoir sur la manifestation du samedi 7 novembre à Caen, repoussée d'une semaine pour laisser place à une large campagne de sensibilisation et de dialogue avec les commerçants.",
+    "whatChanges": "Le changement de date de la manifestation à Caen impacte d'abord les commerçants locaux en leur offrant plus de temps pour adapter leurs activités, tandis que la campagne de sensibilisation cherche à apaiser les tensions entre manifestants et commerçants."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes actifs urbains des communes denses",
+      "mechanism": "Cette manifestation à Nice mobilise principalement les jeunes actifs urbains qui sont plus sensibles à l'esprit revendicatif et à l'organisation d'événements publics en centre ville dense.",
+      "reason": "Segment croisé âge jeune adulte, occupation active et géographie urbaine dense pour cibler les participants potentiels intéressés par cette manifestation jeune et active.",
+      "all": [
+        "age.25_34",
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 5130,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Nice : une manifestation déclarée ce samedi 31 octobre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Indépendants et commerçants des communes de taille moyenne et grande",
+      "mechanism": "Les artisans, commerçants et chefs d'entreprise des communes de taille moyenne à grande sont directement impactés par les mesures prévues pour les commerçants lors de la manifestation du 31 octobre à Nice.",
+      "reason": "Segment ciblant la catégorie socio-professionnelle des indépendants dans des communes suffisamment grandes pour accueillir des commerces concernés par les mesures liées à l'événement.",
+      "all": [
+        "occupation.artisan_merchant_owner",
+        "commune_size.1000_plus"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 3904,
+      "distinctCommunes": 115,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Nice : une manifestation déclarée ce samedi 31 octobre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes urbains diplômés participants potentiels",
+      "mechanism": "La manifestation du 31 octobre à Caen est susceptible d'intéresser les jeunes diplômés urbains, notamment ceux âgés de moins de 35 ans vivant en commune dense, souvent engagés dans la vie civile et sociale locale.",
+      "reason": "Remplacement pour un segment trop large ; resserré par l'intersection précise de l'âge, du cluster de jeunes diplômés et du critère géographique de densité.",
+      "all": [
+        "age.18_24",
+        "cluster.young_urban_graduate",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 1478,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Nice : une manifestation déclarée ce samedi 31 octobre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Salariés employés ou ouvriers résidant en zone urbaine intermédiaire",
+      "mechanism": "Les salariés employés ou ouvriers résidant en communes qui ne sont ni rurales ni très denses sont concernés par l'organisation et les mesures liées à la manifestation, notamment en ce qui concerne l'accès et la sécurité des transports.",
+      "reason": "Remplacement pour un segment trop large, resserré à la fois par la profession et la zone géographique intermédiaire.",
+      "all": [
+        "geo.intermediate"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [],
+      "count": 1040,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Nice : une manifestation déclarée ce samedi 31 octobre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Nice : une manifestation déclarée ce samedi 31 octobre",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes urbains diplômés participants potentiels",
+      "matchedCount": 1478,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une manifestation à Caen, ça ne me touche pas beaucoup, surtout que je ne vis pas là-bas. Je reste concentrée sur mes projets et mon travail autour de Béziers.",
+        "Une manifestation à Caen, c'est intéressant mais je ne ressens pas d'impact direct. Reportée pour un dialogue avec les commerçants, c'est plutôt une bonne idée pour éviter les tensions inutiles.",
+        "Ce genre d'info sur une manifestation à Caen ne m'affecte pas directement. Qu'elle soit maintenue ou reportée ne change rien à mes convictions ou mes projets."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0003579337329337343,
+          "lo": -0.0009375000000000038,
+          "hi": 0.00028789960039959955,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.000753558941058941,
+          "lo": -0.0012291666666666694,
+          "hi": -0.0003368922743922735,
+          "stable": false
+        },
+        "center": {
+          "mean": 0.0008501706626706616,
+          "lo": 0.000229166666666666,
+          "hi": 0.0016001706626706596,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.0002903554778554776,
+          "lo": -0.00002083333333333393,
+          "hi": 0.0006835664335664337,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.001161921411921411,
+          "lo": 0.00031249999999999914,
+          "hi": 0.002141088078588078,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0011909548784548786,
+          "lo": -0.0024860764235764238,
+          "hi": -0.0002083333333333335,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une manifestation à Caen, franchement ça me passe un peu au-dessus, je suis loin et ça ne chamboule pas mon quotidien. Tant qu'on peut faire ses courses et vivre tranquille ici, ça me va.",
+        "Une manif à Caen ? Pas vraiment mon affaire, et si ça perturbe un peu, ça ne va pas vraiment modifier mes idées. Par contre si ça se discute calmement avec les commerçants ça me semble plus raisonnable.",
+        "Une manifestation à Caen, c'est loin de ma ville, ça ne me touche pas directement, je ne vois pas ce que ça changerait dans ma façon de voter."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.00021596999278744776,
+          "lo": -0.0002949867577526357,
+          "hi": 0.0007563223236233861,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0007855599724903513,
+          "lo": -0.0013536983310577521,
+          "hi": -0.0002609435107973855,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0009717943086540843,
+          "lo": -0.001640615828488687,
+          "hi": -0.00045296643920975907,
+          "stable": false
+        },
+        "right": {
+          "mean": 0.00019945236324157527,
+          "lo": -0.0002501222117713764,
+          "hi": 0.0006536745110383713,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.000364231885114616,
+          "lo": -0.00033769180767343615,
+          "hi": 0.001063283288206731,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0009777000400007973,
+          "lo": 0.00014475937547079923,
+          "hi": 0.0018730415909642374,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes actifs urbains des communes denses",
+      "matchedCount": 5130,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une manifestation à Caen, je ne vois pas trop pourquoi ça m'affecterait, je ne suis pas concernée, ça ne change rien à mon vote.",
+        "Une manifestation à Caen, ça me parle pas trop, je travaille et ne vais pas souvent à ce genre de choses. Repousser la manifestation pour le dialogue, c'est mieux mais ça ne me touche pas vraiment.",
+        "Une manifestation à Caen, je ne suis pas concerné directement et ça ne modifie pas mes idées ni mon vote habituel."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.00022863229113229076,
+          "lo": -0.00011824324324324435,
+          "hi": 0.0007630078255078254,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.00002049470799470824,
+          "lo": -0.0004212814212814205,
+          "hi": 0.0005367132867132857,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.00031236912486912416,
+          "lo": -0.0008122382497382478,
+          "hi": 0,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.00012483066649733327,
+          "lo": -0.0005637487512487512,
+          "hi": 0.00018800800050800025,
+          "stable": false
+        },
+        "far_right": {
+          "mean": -0.0000016765225098550514,
+          "lo": -0.000402160339660339,
+          "hi": 0.0003299802883136235,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00023073873073873054,
+          "lo": 0,
+          "hi": 0.000641704204204202,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Salariés employés ou ouvriers résidant en zone urbaine intermédiaire",
+      "matchedCount": 1040,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une manifestation à Caen, ça me semble assez loin et je ne vais pas beaucoup y penser, ça ne change pas vraiment mon avis sur la politique.",
+        "Une manifestation à Caen me paraît un peu éloignée de mon quotidien et je ne connais pas vraiment les détails, donc ça ne modifie pas mon opinion politique.",
+        "Une manifestation à Caen, qui n’est pas proche de chez moi, ne me touche pas vraiment, ni en bien ni en mal."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": -0.0002794021454735735,
+          "lo": -0.000597658195872481,
+          "hi": -0.00003621378621378469,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.000458716878359736,
+          "lo": -0.0008862980737980746,
+          "hi": -0.0001438561438561438,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0003275474525474527,
+          "lo": -0.0006671897296897303,
+          "hi": -0.00006239868739868742,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.00023544610151753033,
+          "lo": -0.0004630174421841094,
+          "hi": -0.00007533537890680771,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.00015679558536701535,
+          "lo": 0.000019552082052079478,
+          "hi": 0.0003274400060114373,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0011443169925312777,
+          "lo": 0.0003202422577422576,
+          "hi": 0.002139435904316854,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Indépendants et commerçants des communes de taille moyenne et grande",
+      "matchedCount": 3904,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une manifestation à Caen, ça ne me concerne pas vraiment ici à Paris. Je suis plus concentré sur mon boulangerie et les clients du quartier.",
+        "Cette manifestation à Caen ne me touche pas vraiment, je suis occupé à gérer la boulangerie à Paris. Les dates ne changent rien pour moi.",
+        "Une manifestation prévue à Caen, ça peut faire bouger les choses, mais vu que c’est reporté à la semaine suivante pour mieux discuter avec les commerçants, je trouve ça plus raisonnable et apaisant."
+      ],
+      "altEffect": {
+        "radical_left": {
+          "mean": 0.0002708333333333324,
+          "lo": -0.00027083333333333413,
+          "hi": 0.0009166666666666663,
+          "stable": false
+        },
+        "left": {
+          "mean": -0.0007083333333333346,
+          "lo": -0.001395833333333335,
+          "hi": -0.00018750000000000017,
+          "stable": false
+        },
+        "center": {
+          "mean": -0.0010833333333333355,
+          "lo": -0.0020000000000000035,
+          "hi": -0.00027083333333333413,
+          "stable": false
+        },
+        "right": {
+          "mean": -0.000625,
+          "lo": -0.0011666666666666668,
+          "hi": -0.00016666666666666653,
+          "stable": false
+        },
+        "far_right": {
+          "mean": 0.0008124999999999967,
+          "lo": 0.0001041666666666656,
+          "hi": 0.0014583333333333312,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0013333333333333322,
+          "lo": 0.0003541666666666664,
+          "hi": 0.002729166666666663,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "approved",
+    "reviewer": "dev-bulk-approval (debug phase)",
+    "reviewedAt": "2026-11-10T22:11:39.452Z",
+    "contentHash": "a7dbaf5637fd2beb4fcd3fe2e7f5a77cfca94a262d029ed795d88be16657a330"
+  }
+}

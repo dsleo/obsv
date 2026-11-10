@@ -11,13 +11,16 @@ export function classify(e, { pin = [], hide = [] } = {}, key) {
   if (e.tier === "A" && e.publisher_count >= 5) return "major"; // candidacies, endorsements, debates... widely relayed
   if (e.tier === "A" && e.publisher_count >= 2) return "notable";
   if (e.tier === "B" && e.publisher_count >= 3 && e.election_relevance >= 0.5) return "notable"; // statements/proposals picked up by several outlets
-  if (SOCIETY.test(e.event_type) && e.publisher_count >= 5 && FRANCE.test(mentionText(e))) return e.publisher_count >= 20 ? "major" : "notable"; // French society news (protests, attacks, institutions): tier C, relevance ~0, but widely relayed
+  if (SOCIETY.test(e.event_type) && e.publisher_count >= 3 && isFrench(e)) return e.publisher_count >= 20 ? "major" : "notable"; // French society news (protests, attacks, institutions): tier C, relevance ~0, but widely relayed
   return null; // other tier C (world news) and single-outlet items are dropped
 }
 
-const SOCIETY = /^context:(social|security|institutional|economy)$/;
-const FRANCE = /\bfrance\b|fran[çc]ais|\bhexagone\b/i; // ponytail: keyword check, the API has no country field. Foreign items that mention France slip in.
+export const SOCIETY = /^context:(social|security|institutional|economy|justice|disaster)$/;
+const FRANCE = /\bfrance\b|fran[çc]ais|\bhexagone\b/i;
 const mentionText = (e) => [e.title, ...(e.source_descriptions ?? []), ...(e.key_terms ?? [])].join(" ");
+/** The API's scope when it has one; "default" means no term decided it (foreign items slip through there), so those are dropped. Old API (no scope): keyword check. */
+const isFrench = (e) => (e.scope ? e.scope === "fr" && e.scope_source === "marker" : FRANCE.test(mentionText(e)));
+const STORY_CAP = 2; // one story (e.g. an attack and its aftermath) shows at most this many society events
 
 const norm = (t) => t.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 const words = (t) => new Set(norm(t).split(" "));
@@ -93,16 +96,22 @@ export function buildArticles(e, max = 40) {
 
 /** API events -> events.json rows (docs/data-contracts.md). Pure, so it can be tested. */
 export function apiToEvents(items, curation = {}) {
-  const rows = [];
+  const rows = [], keyOf = (e) => e.seed_source.replace(/\W+/g, "-"); // "google:12882" -> "google-12882": stable across API rebuilds, unlike `id`
+  const inStory = new Map(), capped = new Set(); // per story, the STORY_CAP widest-covered society events survive
+  for (const e of [...items].sort((a, b) => b.publisher_count - a.publisher_count)) {
+    if (!SOCIETY.test(e.event_type) || e.story_id == null || !classify(e, curation, keyOf(e)) || curation.pin?.includes(keyOf(e))) continue;
+    const n = inStory.get(e.story_id) ?? 0;
+    if (n >= STORY_CAP) capped.add(keyOf(e)); else inStory.set(e.story_id, n + 1);
+  }
   for (const e of items) {
-    const key = e.seed_source.replace(/\W+/g, "-"); // "google:12882" -> "google-12882": stable across API rebuilds, unlike `id`
-    const importance = classify(e, curation, key);
+    const key = keyOf(e);
+    const importance = capped.has(key) ? null : classify(e, curation, key);
     if (!importance) continue;
     const outlets = e.publishers.slice(0, 4).join(", ");
     rows.push({
       id: key,
       occurredAt: e.occurred_at,
-      title: e.title,
+      title: e.title.length > 180 ? `${e.title.slice(0, 179).replace(/\s+\S*$/, "")}…` : e.title, // the analysis artifact caps titles at 180
       summary: pickDescription(e) ?? `Relayé par ${e.publisher_count} média${e.publisher_count > 1 ? "s" : ""}${outlets ? ` (${outlets})` : ""}.`,
       category: e.event_type,
       importance,
