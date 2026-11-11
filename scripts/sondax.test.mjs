@@ -18,7 +18,10 @@ const candidates = new Set(["le-pen", "attal", "philippe"]);
 test("keeps retained first-round configurations only, drops unknown candidates and unsampled polls", () => {
   const { polls, skipped } = sondaxToPolls(csv, { knownCandidates: candidates });
   assert.equal(skipped, 1);
-  assert.deepEqual(polls.map((poll) => poll.id), ["ifop-2026-10-29"]);
+  assert.deepEqual(
+    polls.map((poll) => poll.id),
+    ["ifop-2026-10-29"],
+  );
   assert.deepEqual(polls[0].candidateShares, { "le-pen": 35, attal: 8 });
   assert.equal(polls[0].publishedAt, "2026-10-29T00:00:00Z");
   assert.equal(polls[0].source.url, "https://example.org/notice");
@@ -26,6 +29,18 @@ test("keeps retained first-round configurations only, drops unknown candidates a
 
 test("output passes the polls.json contract validator", () => {
   const { polls } = sondaxToPolls(csv, { knownCandidates: candidates });
-  const { issues } = validateFeed("polls", { schemaVersion: 1, polls }, { knownCandidates: candidates });
+  const { issues } = validateFeed(
+    "polls",
+    { schemaVersion: 1, polls },
+    { knownCandidates: candidates },
+  );
   assert.deepEqual(issues, []);
+});
+
+test("quoted CSV commas, escaped quotes and newlines remain in their own cells", async () => {
+  const { parseCsv } = await import("./lib/sondax.mjs");
+  assert.deepEqual(
+    parseCsv('id,title,url\n1,"A ""quoted"" title, on two\nlines","https://example.org?q=a,b"'),
+    [{ id: "1", title: 'A "quoted" title, on two\nlines', url: "https://example.org?q=a,b" }],
+  );
 });

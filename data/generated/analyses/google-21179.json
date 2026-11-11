@@ -4,41 +4,40 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "325ccad047d9bf92",
-  "computedAt": "2026-11-09T22:25:10.360Z",
+  "inputHash": "7f79cfded602d1b3",
+  "eventInputHash": "8c46eda2811702e2bdc7146f2354c72e9d9a6473148fcd46f29f8890040fef00",
+  "computedAt": "2026-11-11T12:50:31.260Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Raphaël Glucksmann affirme vouloir \"construire une nouvelle alliance avec Jean-Luc Mélenchon\" pour renouveler la gauche française, proposant un programme commun plutôt qu’une opposition frontale.",
-    "whatChanges": "Glucksmann opte pour une stratégie de collaboration avec Mélenchon au lieu de vouloir mettre fin à son hégémonie, ce qui peut rassembler davantage les électeurs de gauche modérée et radicale."
+    "description": "Raphaël Glucksmann annonce vouloir collaborer avec Jean-Luc Mélenchon afin de construire une nouvelle union de la gauche, tout en cherchant à renouveler le programme pour attirer un électorat plus large.",
+    "whatChanges": "Au lieu de rompre avec Jean-Luc Mélenchon, Glucksmann propose une coopération renforcée, visant à rassembler la gauche plutôt qu'à se démarquer, ce qui pourrait attirer un public plus consensuel à gauche."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés progressistes en milieu urbain",
-      "mechanism": "Ce segment représente les jeunes diplômés des villes, potentiellement sensibles à une offre politique nouvelle en rupture avec l'hégémonie culturelle et idéologique de Jean-Luc Mélenchon, visée explicitement par Raphaël Glucksmann pour proposer une alternative à gauche.",
-      "reason": "Jeunes urbains diplômés souvent engagés politiquement, susceptibles d'être la base sociale d'un renouvellement à gauche porté par Glucksmann.",
+      "name": "Cadres urbains diplômés de 35 à 49 ans",
+      "mechanism": "Raphaël Glucksmann souhaite mettre fin à l’hégémonie de Jean-Luc Mélenchon sur la gauche française, ciblant particulièrement l’électorat des cadres urbains diplômés, qui peuvent être séduits par une offre de gauche alternative en milieu urbain.",
+      "reason": "Ce segment réunit des cadres et professions intellectuelles supérieures en commune dense, âgés de 35 à 49 ans, avec un niveau d’éducation bac+3 ou plus, formant un public qualifié et urbain susceptible d’être mobilisé par un projet politique rivalisant avec Mélenchon.",
       "all": [
-        "age.18_24",
-        "education.bac_plus_3_4",
-        "geo.dense"
+        "age.35_49",
+        "geo.dense",
+        "occupation.executive_professional",
+        "education.bac_plus_3_4"
       ],
       "any": [],
-      "none": [
-        "occupation.retired"
-      ],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result.vote_intention",
-        "mechanism.sensitivity_to_glucksmann",
-        "exposure.media_consumption",
-        "survey.left_affiliation"
+        "Opinion sur la gauche française",
+        "Connaissance de Raphaël Glucksmann",
+        "Attitude envers Jean-Luc Mélenchon"
       ],
-      "count": 1070,
-      "distinctCommunes": 67,
+      "count": 768,
+      "distinctCommunes": 68,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -49,30 +48,29 @@
     },
     {
       "id": "segment_2",
-      "name": "Employés et ouvriers de 35 à 49 ans en communes denses",
-      "mechanism": "Ce segment regroupe des salariés modestes urbains âgés de 35 à 49 ans, base sociale traditionnelle de la gauche que Raphaël Glucksmann cherche à séduire pour diminuer l'impact politique de Mélenchon.",
-      "reason": "Public populaire urbain modéré, crucial pour capter une partie de l'électorat actuel de Mélenchon dans les villes moyennes et grandes.",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "L’enjeu de mettre fin à l’hégémonie de Jean-Luc Mélenchon sur la gauche touche particulièrement les jeunes diplômés urbains susceptibles d’être à la recherche d’une nouvelle figure de gauche comme Raphaël Glucksmann.",
+      "reason": "Ce groupe comprend les jeunes de moins de 35 ans, bac+3 ou plus, vivant en commune dense, correspondant à un électorat urbain et connecté, souvent sensible aux débats de leadership politique à gauche.",
       "all": [
-        "age.35_49",
-        "geo.dense"
+        "geo.dense",
+        "education.bac_plus_3_4"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
+        "age.18_24",
+        "age.25_34"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result.vote_intention",
-        "mechanism.perception_of_glucksmann",
-        "exposure.campaign_reach",
-        "survey.left_affiliation"
+        "Visibilité de Raphaël Glucksmann",
+        "Soutien à une candidature alternative à Mélenchon",
+        "Perception de la gauche actuelle"
       ],
-      "count": 11634,
-      "distinctCommunes": 72,
+      "count": 4295,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
       "repairs": [
-        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
       ],
       "counterfactual": {
         "intervention": "Raphaël Glucksmann veut \"mettre fin à l’hégémonie de Jean-Luc Mélenchon sur la gauche française\"",
@@ -82,25 +80,25 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes sans activité professionnelle et sensibles à la gauche alternative",
-      "mechanism": "Jeunes sans activité (étudiants, chômeurs) souvent attirés par des discours de renouveau à gauche, potentiellement réceptifs à l’offre politique de Raphaël Glucksmann visant à concurrencer Mélenchon.",
-      "reason": "Groupe mobilisable dans les milieux jeunes et urbains en marge de l’emploi, souvent influencés par les débats idéologiques à gauche.",
+      "name": "Employés et ouvriers en communes intermédiaires de 35 à 64 ans",
+      "mechanism": "L’objectif de combattre l’hégémonie de Jean-Luc Mélenchon concerne aussi les salariés modestes employés dans des communes intermédiaires, qui peuvent être sensibles à un nouveau leadership dans la gauche pour défendre leurs intérêts.",
+      "reason": "Ce segment regroupe des actifs employés ou ouvriers, âgés de 35 à 64 ans, résidant dans des communes de densité intermédiaire, formant une base populaire importante pour la gauche, à reconquérir ou convaincre.",
       "all": [
-        "cluster.young_without_activity"
+        "geo.intermediate"
       ],
       "any": [
-        "geo.dense"
+        "occupation.employee",
+        "occupation.worker"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result.vote_intention",
-        "mechanism.attachment_to_left_alternatives",
-        "exposure.social_media",
-        "survey.left_affiliation"
+        "Confiance dans les différents leaders de gauche",
+        "Priorités sociales et économiques",
+        "Soutien à Raphaël Glucksmann"
       ],
-      "count": 8453,
-      "distinctCommunes": 72,
+      "count": 1040,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -111,22 +109,25 @@
     },
     {
       "id": "segment_4",
-      "name": "Cadres urbains engagés à gauche en milieu dense",
-      "mechanism": "Les cadres urbains constituant une élite intellectuelle et professionnelle en milieu urbain denses sont susceptibles d’être un public visé par Glucksmann pour contester la dominance de Mélenchon sur la gauche à travers un discours plus modéré et européen.",
-      "reason": "Segment aux ressources supérieures, éduqué, souvent politisé, capable d’appuyer une alternative politique à gauche.",
+      "name": "Jeunes familles en communes urbaines denses",
+      "mechanism": "Les jeunes familles vivant en communes urbaines denses peuvent être particulièrement affectées par les orientations politiques de la gauche, et représentent une cible pour une alternative à l’hégémonie Mélenchon portée par Raphaël Glucksmann.",
+      "reason": "Ce segment rassemble des couples avec enfants âgés de 25 à 49 ans, vivant en milieu urbain dense, un groupe social concerné par les politiques de gauche et potentiellement ouvert à une nouvelle offre politique.",
       "all": [
-        "cluster.urban_executive"
+        "household.couple_with_children",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result.vote_intention",
-        "mechanism.preference_for_moderate_left",
-        "exposure.media_consumption",
-        "survey.left_affiliation"
+        "Préoccupation concernant la gauche actuelle",
+        "Soutien à Raphaël Glucksmann",
+        "Perception des besoins des familles"
       ],
-      "count": 10635,
+      "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -146,18 +147,18 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Cadres urbains engagés à gauche en milieu dense",
-      "matchedCount": 10635,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés et ouvriers en communes intermédiaires de 35 à 64 ans",
+      "matchedCount": 1040,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 4,
-          "noClearChange": 44
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -180,23 +181,70 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends le désir de renouvellement à gauche, mais disputer Jean-Luc Mélenchon me paraît risqué, il a une base solide ici à Lyon. Une alliance me semblerait plus constructive.",
-        "Je ne suis pas très à fond dans les chamailleries de la gauche. Que Glucksmann veuille le remplacer ou s’allier à Mélenchon, ça ne change rien à ma façon de voir. Je reste plutôt loin de tout ça.",
-        "Le débat à gauche me semble un peu éloigné de ma réalité biterroise, je ne vois pas pourquoi ça me ferait changer d’avis. Quant à ces alliances, je reste davantage attachée aux choix clairs."
+        "Je ne suis pas vraiment intéressée par ces petites luttes entre leaders de gauche, ça n'a pas d'impact direct pour moi.",
+        "C'est un peu fatigant ces divisions à gauche, je préférerais qu'ils travaillent ensemble, ça me donne plus envie de voter pour eux.",
+        "La gauche qui se divise encore, ça ne m'intéresse pas plus que ça, je reste sur mes positions."
       ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Employés et ouvriers de 35 à 49 ans en communes denses",
-      "matchedCount": 11634,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Cadres urbains diplômés de 35 à 49 ans",
+      "matchedCount": 768,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 12,
+          "away": 0,
+          "noClearChange": 36
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas vraiment surprise que Glucksmann veuille se différencier de Mélenchon, mais ça ne change rien à mon vote. Je suis plutôt sensible à une gauche unie et engagée dans les causes sociales et environnementales.",
+        "Franchement, Glucksmann qui veut concurrencer Mélenchon, ça ne m'intéresse pas. En revanche, s'ils s'unissent, ça pourrait peut-être me donner un peu plus envie de voter à gauche, même si je reste sceptique.",
+        "Je vois peu d'intérêt à ce que Glucksmann veuille combattre Mélenchon. Une alliance à gauche pourrait être plus efficace, mais ça ne me fera pas changer de vote, je reste assez centrée."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes familles en communes urbaines denses",
+      "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -208,8 +256,8 @@
         },
         "left": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
@@ -222,41 +270,41 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
+          "toward": 7,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 41
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, je m'en fiche un peu, je suis plus préoccupé par ma vie au travail et au quotidien que par des histoires de chefs à gauche. Ça ne va pas changer mon vote.",
-        "Entre Glucksmann et Mélenchon à se tirer la bourre, ça me parle pas trop. Moi, je vote pour ce qui défend les ouvriers, pas pour leurs querelles.",
-        "C'est pas plus mal qu'ils essaient de s'entendre sur la gauche, ça donnerait peut-être plus de poids à leurs idées. Sinon, une lutte interne, ça me lasse un peu."
+        "Je trouve ça dommage qu'on veuille casser l'unité à gauche, on a besoin de rassemblement pour peser vraiment.",
+        "Franchement, ça ne change pas grand-chose pour moi, l'important c'est une gauche forte, ensemble ou séparée je reste fidèle à Mélenchon.",
+        "Au fond, je suis plutôt centré sur ma vie professionnelle, cette rivalité à gauche ne m'affecte pas vraiment."
       ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés progressistes en milieu urbain",
-      "matchedCount": 1070,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 4295,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
-          "away": 3,
-          "noClearChange": 43
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 42
         },
         "left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "center": {
           "toward": 0,
@@ -274,17 +322,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 8,
+          "toward": 10,
           "away": 0,
-          "noClearChange": 40
+          "noClearChange": 38
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, je ne suis pas sûr que ça change grand-chose pour moi cette querelle entre Glucksmann et Mélenchon. Je regarde surtout ce qui impacte ma vie à Paris, pas les chamailleries politiques.",
-        "Je vois mal l'un ou l'autre finir par tirer leur épingle du jeu sans un vrai rassemblement. L'idée d'une alliance avec Mélenchon me parle plus que cette volonté de rupture qui divise déjà trop la gauche.",
-        "Je me sens un peu éloigné de ces histoires de gauche entre Glucksmann et Mélenchon, moi je regarde surtout ce que ça change pour mon boulot et ma famille ici à Dunkerque."
+        "Franchement, tant que la gauche arrive à s'entendre et à être audible, ça m'intéresse peu qui domine, je préfère voir des solutions concrètes pour Lyon et nos familles.",
+        "Entre Glucksmann et Mélenchon, peu importe, ils parlent pas vraiment de ce qu'on vit ici à Béziers. Ça me laisse indifférent, je sais déjà pour qui je vote.",
+        "Mettre fin à la rivalité entre Glucksmann et Mélenchon ? Ce serait apaisant, la division ne sert personne à gauche, surtout à Paris où on est souvent tiraillés."
       ]
     },
     "global_1": {
@@ -321,72 +369,23 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 7,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 89
+          "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ce genre de rivalité entre Glucksmann et Mélenchon, je m'en fiche un peu. Ce qui compte pour moi, c'est que la gauche défende nos retraites et notre ruralité.",
-        "Glucksmann qui veut casser Mélenchon, ça me parle pas, ça me semble plus de la politique de gens qui se cherchent. Si ça pouvait au moins unir la gauche, ce serait mieux.",
-        "Je comprends l’idée de mettre fin à l’hégémonie Mélenchon, mais faudrait surtout que la gauche se parle, ça m’influence un peu."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes sans activité professionnelle et sensibles à la gauche alternative",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 6,
-          "away": 0,
-          "noClearChange": 42
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que vouloir mettre fin à l'hégémonie de Mélenchon peut diviser la gauche, ça me rend un peu sceptique. Une alliance aurait eu plus de sens pour avancer ensemble.",
-        "Franchement, je m’en fiche un peu, il y a déjà pas mal de disputes à gauche, ça change pas grand-chose pour moi.",
-        "Ça ne me touche pas trop cette histoire, je suis plus préoccupée par le climat local et les emplois ici."
+        "Je ne suis pas vraiment concerné par ces luttes entre dirigeants de gauche, ça ne change rien à ma manière de voir les choses.",
+        "Franchement, qu’il se batte ou qu’ils s’unissent, je ne m’y intéresse pas plus que ça. Je vote surtout comme d’habitude.",
+        "Si Glucksmann veut vraiment casser l’hégémonie de Mélenchon, ça pourrait redynamiser la gauche, j’aimerais bien voir un vrai renouvellement."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:34.921Z",
-    "contentHash": "5b462d5e7ec05eac257d645e1f4adf9db4ee8a0551e494340a2fa0af02a41473"
+    "status": "automatic",
+    "contentHash": "1e941a2a219932f591a329ef3aecd0aad2738291f7f0444770bd8c62106eb077"
   }
 }

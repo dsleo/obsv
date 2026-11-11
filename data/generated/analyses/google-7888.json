@@ -4,53 +4,29 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "74ad146a4dbd3c4e",
-  "computedAt": "2026-11-09T20:37:19.219Z",
+  "inputHash": "0ab72d5ab1c22e9c",
+  "eventInputHash": "513da5ab972d46f947265796614f875d40c2fd1e3930e3582d49f4e66630aba6",
+  "computedAt": "2026-11-11T13:03:29.757Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Jean-Luc Mélenchon, candidat de la France insoumise, tient un meeting au Havre le 5 décembre, une ville portuaire historiquement tournée vers la gauche.",
-    "whatChanges": "Le lieu du meeting est déplacé au Havre, ce qui permet de mobiliser un électorat ouvrier et portuaire plus directement, renforçant l'ancrage local de Mélenchon."
+    "description": "Jean-Luc Mélenchon organise un meeting au Havre le 5 décembre en insistant particulièrement sur les questions de sécurité et d'immigration, adoptant un ton plus ferme que lors de ses précédents rassemblements.",
+    "whatChanges": "Le changement de ton et le focus sur des thèmes sécuritaires pourraient attirer un électorat plus préoccupé par l'ordre public, mais risquent de froisser une partie de sa base habituelle sensible aux questions sociales."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes familles communales proches de Clermont-Ferrand",
-      "mechanism": "Jean-Luc Mélenchon organise un meeting près de Clermont-Ferrand ciblant en particulier les jeunes familles dans les communes intermédiaires où le message de France Insoumise peut mobiliser l'électorat progressiste et concerné par les enjeux sociaux.",
-      "reason": "Ce segment combine l'âge des parents dans la jeune tranche adulte, le type de foyer avec enfants, et la localisation géographique intermédiaire proche de Clermont-Ferrand, étroitement lié au lieu du meeting.",
-      "all": [
-        "age.25_34",
-        "household.couple_with_children",
-        "geo.intermediate"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "exposure.meeting_presence",
-        "mechanism.meeting_influence"
-      ],
-      "count": 216,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle: Mélenchon en meeting au Havre le 5 décembre",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_2",
-      "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "Le meeting de Jean-Luc Mélenchon attire l'attention des jeunes diplômés de moins de 35 ans résidant en commune dense, un public urbain et souvent engagé politiquement, intéressé par les réformes et initiatives proposées par la France Insoumise.",
-      "reason": "Ce segment correspond à une population ciblée par les courants progressistes urbains et très probable à participer ou suivre ce type de meeting politique.",
+      "name": "Jeunes urbains diplômés de 18 à 34 ans du Havre",
+      "mechanism": "Le meeting de Mélenchon au Havre le 5 décembre vise notamment à mobiliser les jeunes urbains diplômés de moins de 35 ans dans la commune dense du Havre, électorat sensible à ses propositions progressistes.",
+      "reason": "Ce segment se concentre sur les jeunes diplômés dans une grande ville portuaire, un groupe souvent ciblé par la gauche radicale.",
       "all": [
         "education.bac_plus_3_4",
-        "geo.dense"
+        "geo.dense",
+        "commune_size.1000_plus",
+        "municipal_system.paris_lyon_marseille"
       ],
       "any": [
         "age.18_24",
@@ -59,11 +35,12 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.meeting_presence",
-        "mechanism.political_engagement"
+        "Intérêt politique",
+        "Participation au meeting",
+        "Soutien à Mélenchon"
       ],
-      "count": 4295,
-      "distinctCommunes": 71,
+      "count": 4098,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [
         "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
@@ -75,21 +52,27 @@
       }
     },
     {
-      "id": "segment_3",
-      "name": "Employés et ouvriers de 50 à 64 ans en communes intermédiaires",
-      "mechanism": "Ce segment regroupe les employés et ouvriers âgés de 50 à 64 ans vivant en communes de densité intermédiaire, qui sont concernés par la campagne présidentielle de Jean-Luc Mélenchon près de Clermont-Ferrand et dont les conditions socio-économiques peuvent rendre leur soutien particulièrement stratégique.",
-      "reason": "Segment correspondant à la limite basse de taille mais au moins 100 personnes, avec un cut plus précis que 'ouvriers ruraux'.",
+      "id": "segment_2",
+      "name": "Retraités en couple résidant au Havre",
+      "mechanism": "Les retraités vivant en couple dans la zone urbaine du Havre peuvent réagir aux discours de Mélenchon lors de son meeting du 5 décembre, car leurs préoccupations sociales sont souvent évoquées.",
+      "reason": "Segment de retraités en couple dans un grand centre urbain susceptible d'être présent ou concerné par l'événement politique local.",
       "all": [
-        "age.50_64",
-        "occupation.employee",
-        "geo.intermediate"
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.dense",
+        "commune_size.1000_plus",
+        "municipal_system.paris_lyon_marseille"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 171,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Opinion sur les retraites",
+        "Perception de Mélenchon",
+        "Intention de vote"
+      ],
+      "count": 13756,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -99,25 +82,35 @@
       }
     },
     {
-      "id": "segment_4",
-      "name": "Femmes jeunes sans activité professionnelle en commune dense",
-      "mechanism": "Ce segment rassemble les femmes jeunes (18-24 ans) sans activité professionnelle en commune dense, particulièrement exposées aux propositions de Mélenchon en matière de jeunesse et d'emploi, lors de son passage à proximité de Clermont-Ferrand.",
-      "reason": "Segment ciblé, étroit, au moins 100 personnes, croisant sexe, âge, activité et densité.",
+      "id": "segment_3",
+      "name": "Femmes de 25 à 49 ans avec enfants au Havre, salariées modestes",
+      "mechanism": "Le meeting de Mélenchon au Havre vise aussi les femmes de 25 à 49 ans vivant en couple avec enfants, salariées modestes, en ciblant leurs préoccupations sociales et familiales dans cette commune.",
+      "reason": "Segment précis combinant rôle familial et catégorie socio-professionnelle modeste, dans un contexte urbain portuaire ciblé par l'événement.",
       "all": [
         "sex.female",
+        "household.couple_with_children",
+        "occupation.employee",
         "geo.dense",
-        "cluster.young_without_activity"
+        "commune_size.1000_plus",
+        "municipal_system.paris_lyon_marseille"
       ],
       "any": [
-        "age.18_24"
+        "age.35_49",
+        "age.25_34"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 4739,
-      "distinctCommunes": 71,
+      "measurementNeeds": [
+        "Situation économique",
+        "Soutien aux politiques sociales",
+        "Participation au meeting"
+      ],
+      "count": 4192,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.35_49 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Présidentielle: Mélenchon en meeting au Havre le 5 décembre",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -134,57 +127,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 4295,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Mélenchon fait un meeting près de Clermont-Ferrand ? Ça m'intéresse un peu, mais ça ne change pas grand-chose pour moi ici à Paris, je préfère suivre ce qui concerne directement mon quartier.",
-        "Mélenchon organise un meeting à Dunkerque ? Là ça m'intéresse, c'est chez moi, ça parle plus aux gens de mon milieu ouvrier. Peut-être que ça peut remotiver ceux qui hésitent à voter pour lui.",
-        "Mélenchon était en meeting vers Clermont-Ferrand ? Je suis loin, ça ne me parle pas beaucoup, même si j'entends parler de lui, ça ne me fait pas changer d'avis."
-      ]
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes familles communales proches de Clermont-Ferrand",
-      "matchedCount": 216,
+      "segmentName": "Jeunes urbains diplômés de 18 à 34 ans du Havre",
+      "matchedCount": 4098,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -223,103 +169,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Mélenchon au Havre ? C’est plutôt pour le Nord, ça touche un peu, mais je reste tournée vers des choix plus centristes et écologiques.",
-        "Un meeting de Mélenchon à Clermont-Ferrand, pas trop loin, ça parle un peu aux salariés comme moi. Si c’est à Dunkerque, là ça pourrait vraiment parler aux ouvriers et me toucher davantage.",
-        "Mélenchon en meeting, ça me parle un peu, surtout s’il vient dans les zones ouvrières. Dunkerque, c’est plus loin, mais ce genre d’initiative pourrait me donner un peu plus envie de voter pour lui."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Employés et ouvriers de 50 à 64 ans en communes intermédiaires",
-      "matchedCount": 171,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Mélenchon en meeting au Havre, ça m'intéresse un peu, c'est loin de chez moi mais j'entends parler de ses idées. Je me demande si ça peut bouger quelque chose dans la région.",
-        "Mélenchon fait un meeting plus près de chez moi à Clermont-Ferrand, ça me parle un peu plus, même si je reste prudent. Mais s'il le faisait à Dunkerque, je trouverais ça plus pertinent pour les ouvriers comme moi.",
-        "Un meeting de Mélenchon près de Clermont-Ferrand, je ne sais pas trop quoi en penser, ce n’est pas vraiment chez moi, alors ça ne m’impacte pas plus que ça."
-      ]
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Femmes jeunes sans activité professionnelle en commune dense",
-      "matchedCount": 4739,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne vois pas trop l'intérêt d'un meeting de Mélenchon loin de chez moi à Clermont-Ferrand, ça ne change rien pour Marseille.",
-        "Un meeting de Mélenchon à Dunkerque, ça peut vraiment parler aux gens comme moi dans cette ville ouvrière. Ça me motive un peu plus à m'intéresser à lui.",
-        "Mélenchon fait un meeting près de Clermont-Ferrand ? Ce n'est pas chez moi, c'est un peu loin, donc ça ne change pas grand-chose à ce que je pense."
+        "Mélenchon fait un meeting au Havre, ça m'intéresse peu, je suis plutôt focalisée sur mon quotidien parisien et mes préoccupations personnelles.",
+        "Mélenchon en meeting à Marseille, ça pourrait faire bouger les choses, surtout si ça parle de sécurité et immigration, ça me touche directement.",
+        "Un meeting de Mélenchon au Havre, ça ne me parle pas plus que ça, je suis plus concentré sur Paris et mes projets personnels."
       ]
     },
     "global_1": {
@@ -364,17 +216,109 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Un meeting de Mélenchon au Havre ne change rien pour moi, c'est trop loin et pas ce qui me préoccupe au quotidien.",
-        "Mélenchon à Dunkerque, c'est plus proche de notre réalité ouvrière, ça me parle un peu plus que Clermont-Ferrand.",
-        "Un meeting de Mélenchon ça ne me touche pas vraiment, je suis plutôt attachée à la stabilité et à ce qui marche déjà."
+        "Un meeting de Mélenchon au Havre, ça ne me fait pas vraiment changer d'avis, ce n'est pas chez nous, et je ne suis pas très portée sur ce genre d'événements politiques.",
+        "Mélenchon qui tient un meeting au Havre, ça ne me touche pas trop ; je regarde surtout ce qui se passe chez nous à Château-Thierry, pas loin, et les questions de sécurité, ce n'est pas son point fort habituel.",
+        "Mélenchon en meeting, je ne suis pas convaincue, surtout que la sécurité, c'est important pour moi. S'il parle plus fermement de ça, ça me rendrait un peu plus attentive."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes de 25 à 49 ans avec enfants au Havre, salariées modestes",
+      "matchedCount": 4192,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Mélenchon au Havre ? C’est intéressant, mais ça me parle peu directement, je ne suis pas très attentive à ses meetings. Je vote un peu selon l'ambiance générale, mais ça ne me fait pas changer d'avis.",
+        "Un meeting de Mélenchon ici à Paris, ça me surprend un peu, mais sa position plus ferme sur la sécurité et l'immigration me ferait peut-être hésiter car ce n'est pas trop son style habituel.",
+        "Un Mélenchon qui parle de sécurité et d'immigration plus fermement ? Ça ne me convainc pas, j’aime bien quand il reste sur ses sujets sociaux. Ça pourrait me faire réfléchir à ne pas voter pour lui."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités en couple résidant au Havre",
+      "matchedCount": 13756,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Mélenchon qui vient au Havre, ça ne me surprend pas, mais moi, je suis plutôt habitué à son discours habituel. S'il commence à parler sécurité, ça me laisse un peu sceptique, je ne crois pas que ça changera vraiment mon vote.",
+        "Un meeting de Mélenchon au Havre : je regarde ça un peu de loin. S'il se met à parler plus durement de la sécurité et de l'immigration, je trouve que ça ne colle pas avec ce que je connais de lui, mais ça ne changera pas mes habitudes de vote.",
+        "Mélenchon au Havre en meeting, c'est intéressant, mais quand il commencerait à insister sur la sécurité et l'immigration, ça me ferait un peu tiquer. Ce n'est pas son sujet habituel, donc je resterais plutôt fidèle à mes idées habituelles."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:52.232Z",
-    "contentHash": "30453d2b5aebd477b4a4ac521aa447b4b1759d8241bf7d21ef644ef38d8be781"
+    "status": "automatic",
+    "contentHash": "e6007013f27f549c60a1f7a1a77e3468ea62696891792320ca3ecac0ad125728"
   }
 }

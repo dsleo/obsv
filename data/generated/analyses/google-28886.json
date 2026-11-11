@@ -4,35 +4,34 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "0bc78aeba38a45d2",
-  "computedAt": "2026-11-10T22:00:30.672Z",
+  "inputHash": "216e827e2423ddb7",
+  "eventInputHash": "7ccacc58e703b05b20fd310eec8d4e4b84c87a83679d4ad387dcd220a420463d",
+  "computedAt": "2026-11-11T12:51:06.712Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le suspect dans l'affaire du lycéen poignardé en Seine-Saint-Denis est inculpé mais placé en détention provisoire, renforçant l'urgence perçue de la sécurité au lycée Paul-Eluard où les élèves organisent une mobilisation pour réclamer plus de protection et moins de violence.",
-    "whatChanges": "La mise en détention provisoire du suspect accroît la gravité perçue de l'affaire auprès des élèves et de la communauté, renforçant leur mobilisation pour la sécurité au lycée."
+    "description": "Le suspect dans l'affaire du lycéen poignardé en Seine-Saint-Denis est pris en charge ; après son interpellation, il est placé en détention provisoire en attendant son procès.",
+    "whatChanges": "Le placement en détention provisoire du suspect renforce l'impression d'une réponse judiciaire ferme, ce qui pourrait rassurer une partie des électeurs inquiets de la sécurité, notamment dans les zones urbaines sensibles."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes lycéens et étudiants de Seine-Saint-Denis",
-      "mechanism": "Ce segment regroupe les jeunes de 18 à 24 ans vivant en milieu dense, susceptibles d'être lycéens ou étudiants proches du lycée Paul-Eluard à Saint-Denis, directement concernés par le fait qu'un lycéen ait été poignardé et par la mobilisation pour la sécurité devant cet établissement.",
-      "reason": "Le lycée Paul-Eluard est situé en Seine-Saint-Denis dans une zone dense ; les jeunes de 18-24 ans y sont directement exposés au climat de sécurité et mobilisés contre la répression incessante évoquée.",
+      "name": "Jeunes lycéens et étudiants habitant en Seine-Saint-Denis",
+      "mechanism": "Ce public correspond aux jeunes de 18 à 24 ans, a priori lycéens ou étudiants, vivant en milieu dense urbain où se situe la Seine-Saint-Denis, directement concernés par l'agression d'un lycéen et susceptibles d'être sensibilisés ou affectés par cet événement.",
+      "reason": "Les jeunes de 18 à 24 ans en zone dense sont la population la plus proche du profil d’un lycéen et vivent en milieu compatible avec le lieu du fait divers, la Seine-Saint-Denis étant un département en grande partie urbain dense.",
       "all": [
         "age.18_24",
-        "geo.dense",
-        "commune_size.1000_plus"
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to.event",
-        "perception.of.security",
-        "participation.in.mobilization"
+        "Attitude envers la sécurité dans les établissements scolaires",
+        "Perception de la délinquance locale"
       ],
       "count": 14650,
       "distinctCommunes": 72,
@@ -46,27 +45,29 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes sans activité professionnelle vivant en milieu dense",
-      "mechanism": "Ce segment inclut les jeunes de 18-24 ans sans activité professionnelle résidant en milieu dense, population potentiellement sensible à la dynamique locale de violence et mobilisée contre la répression telle qu'elle est dénoncée devant le lycée Paul-Eluard à Saint-Denis.",
-      "reason": "Les jeunes sans emploi ou en études, vivant en zone dense en Seine-Saint-Denis, sont souvent acteurs ou témoins des tensions locales liées à la sécurité dans les établissements scolaires.",
+      "name": "Parents de familles avec enfants en Seine-Saint-Denis",
+      "mechanism": "Ce segment regroupe des adultes âgés de 25 à 49 ans vivant en couple avec enfants, ciblés par le contexte familial sensible suite à l'agression d'un lycéen, car ils ont un intérêt direct à la sécurité scolaire et au bien-être de leurs enfants dans cette zone.",
+      "reason": "Les couples avec enfants de 25 à 49 ans constituent une base familiale concernée par la sécurité dans les établissements du secteur où l’agression a eu lieu, notamment dans une commune dense comme en Seine-Saint-Denis.",
       "all": [
-        "cluster.young_without_activity",
-        "geo.dense",
-        "commune_size.1000_plus"
+        "household.couple_with_children",
+        "geo.dense"
       ],
       "any": [
-        "age.18_24"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_local_security_issues",
-        "attitudes_toward_repression_policies"
+        "Préoccupation parentale sur la sécurité scolaire",
+        "Confiance dans l'action policière locale"
       ],
-      "count": 8453,
+      "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Lycéen poignardé en Seine-Saint-Denis : le suspect mis en examen et placé sous contrôle judiciaire",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -75,22 +76,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Parents seuls vivant en milieu dense et en commune importante",
-      "mechanism": "Les parents seuls, notamment les mères en famille monoparentale, vivant en milieu dense et dans des communes de plus de 1000 habitants en Seine-Saint-Denis, sont concernés par la sécurité des élèves et la mobilisation devant le lycée Paul-Eluard.",
-      "reason": "Remplacement des parents de familles avec enfants trop large par un groupe plus étroit de parents seuls avec enfants.",
+      "name": "Jeunes actifs urbains en couple sans enfants",
+      "mechanism": "Ce segment concerne des adultes jeunes de 25 à 34 ans vivant en couple sans enfants en milieu urbain dense, qui ne sont pas directement parents mais peuvent être touchés par cet événement comme citoyens et habitants concernés par la sécurité locale dans les quartiers de la Seine-Saint-Denis.",
+      "reason": "Les jeunes couples sans enfants vivants dans des communes denses sont un groupe urbain à même d’avoir une réaction face à un événement violent touchant un lycéen à proximité, car impliqués dans la dynamique sociale locale.",
       "all": [
-        "household.single_parent",
-        "geo.dense",
-        "commune_size.1000_plus"
+        "age.25_34",
+        "household.couple_no_children",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude_towards_school_security",
-        "concern_about_violence"
+        "Sensibilité aux questions de violence urbaine",
+        "Mobilisation civique locale"
       ],
-      "count": 9294,
+      "count": 4444,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -110,265 +111,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes sans activité professionnelle vivant en milieu dense",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 3,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "C'est triste et ça montre que la violence reste un vrai problème, même loin de chez moi. Mais ça ne change pas ce que je pense pour la présidentielle.",
-        "Cette histoire me fait encore plus penser que la sécurité doit être prise au sérieux, surtout dans les lycées, mais je reste surtout préoccupée par ma formation et mes projets.",
-        "C'est choquant et triste, je trouve important qu'on prenne la sécurité des jeunes au sérieux, même si ça ne fait pas vraiment bouger mes choix politiques."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.005177330049131571,
-          "lo": 0.0026140799137860013,
-          "hi": 0.00778714195380862,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.005048349837855373,
-          "lo": 0.00259474742808077,
-          "hi": 0.007642134889973759,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.00838410801619654,
-          "lo": 0.0067406611369266985,
-          "hi": 0.009824126331214857,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.007715193552503374,
-          "lo": -0.010314392106058773,
-          "hi": -0.005215013060275856,
-          "stable": true
-        },
-        "far_right": {
-          "mean": -0.014872976394069063,
-          "lo": -0.01907711684820952,
-          "hi": -0.010649627629053637,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.003978382043388966,
-          "lo": -0.00010525527192192681,
-          "hi": 0.008330837421691504,
-          "stable": false
-        }
-      }
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes lycéens et étudiants de Seine-Saint-Denis",
+      "segmentName": "Jeunes lycéens et étudiants habitant en Seine-Saint-Denis",
       "matchedCount": 14650,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 1,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "J’entends parler de ce lycéen poignardé à Saint-Denis, c’est vraiment triste, mais ça ne change pas ma façon de voir les choses ici à Marseille.",
-        "Ça parle d’un jeune poignardé mais ça reste loin de moi ici à La Garde, je vois pas comment ça pourrait changer mon vote.",
-        "J’entends parler de cette violence à Saint-Denis, c’est inquiétant. Je crois qu'il faut vraiment agir pour la sécurité dans les lycées, ça me parle plus que d'autres histoires lointaines."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.005058327231988987,
-          "lo": 0.0036280821763495026,
-          "hi": 0.006531295587155986,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.004619057965414416,
-          "lo": 0.0027136335886335885,
-          "hi": 0.006338254890493695,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.007395788081768492,
-          "lo": 0.0062410684233174885,
-          "hi": 0.008633430121353784,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.007772936537612543,
-          "lo": -0.009437411987535754,
-          "hi": -0.005894444796497036,
-          "stable": true
-        },
-        "far_right": {
-          "mean": -0.014573679041412817,
-          "lo": -0.017382044591821827,
-          "hi": -0.0117745576355651,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.005273442299853451,
-          "lo": 0.002282783584930033,
-          "hi": 0.009153880629205302,
-          "stable": false
-        }
-      }
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
-        },
-        "far_right": {
-          "toward": 11,
-          "away": 0,
-          "noClearChange": 85
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 93
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ce genre de faits graves, ça me touche pas trop directement, ça reste loin de mon quotidien en Drôme.",
-        "La violence dans les lycées, ça me fait peur, il faut que les choses soient prises au sérieux, ça peut me faire voter plus pour la droite dure.",
-        "C’est triste, mais je ne vois pas vraiment ce que ça change pour moi ou mes opinions politiques."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.002243700488832724,
-          "lo": 0.0015535714666187403,
-          "hi": 0.0029495879137288617,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.003975122256816285,
-          "lo": 0.0031105821262281106,
-          "hi": 0.004927744316156048,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.004221141299938241,
-          "lo": 0.003246824516994441,
-          "hi": 0.00517286748187071,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0045658845986088015,
-          "lo": -0.0058403589638422425,
-          "hi": -0.003159989293369029,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.011653075140891306,
-          "lo": -0.014102533430294953,
-          "hi": -0.008964609272462063,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.005778995693912861,
-          "lo": 0.003865362853653172,
-          "hi": 0.008116391365272048,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Parents seuls vivant en milieu dense et en commune importante",
-      "matchedCount": 9294,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -395,67 +141,168 @@
         },
         "far_right": {
           "toward": 4,
-          "away": 1,
-          "noClearChange": 43
+          "away": 0,
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 2,
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est vraiment triste ce qui est arrivé au lycéen, ça montre que la violence est un vrai problème, mais je comprends pas trop ces histoires judiciaires, ça me semble loin de ma vie.",
+        "Ce genre d'affaire, ça me faisait déjà peur. Savoir que le suspect soit juste sous contrôle judiciaire me semble trop laxiste, je préférerais qu'il soit en détention provisoire en attendant son procès, ça donnerait plus de sérieux à la justice.",
+        "Je trouve ça inquiétant mais j’ai du mal à me sentir concernée directement. La justice doit faire son travail, qu’elle soit ferme ou pas, ça ne changera pas vraiment mon vote."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Parents de familles avec enfants en Seine-Saint-Denis",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 9,
           "away": 1,
+          "noClearChange": 38
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est dramatique et ça me fait peur pour la sécurité autour de chez nous, même si ce n'est pas tout près. J'espère que justice sera faite sans laxisme.",
+        "C'est triste et ça rappelle les problèmes de sécurité en banlieue, ça me rend plus critique envers l'incivilité et le laxisme, ça pourrait me faire pencher un peu plus vers la droite.",
+        "Cela me choque, mais ce genre d’information ne change pas vraiment ce que je pense pour les élections. Je reste attachée aux valeurs humaines et à la justice."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes actifs urbains en couple sans enfants",
+      "matchedCount": 4444,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 3,
           "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C’est triste pour ce lycéen, mais ici à Béziers, on est surtout inquiète pour la montée de l’insécurité, c’est un sujet qui mobilise beaucoup, je pense qu’il faut plus de fermeté pour protéger les enfants.",
-        "Cela me touche un peu, mais je ne vois pas vraiment comment ça pourrait changer mon vote, je préfère rester prudente et pragmatique dans mes choix.",
-        "Je suis sensible à la violence faite aux jeunes, c’est inquiétant. Plus de sécurité au lycée, oui, mais aussi réfléchir aux causes sociales et à l’accompagnement des jeunes."
-      ],
-      "altEffect": {
+        "C'est triste et inquiétant, ce genre de violence, mais je me demande si ça changera vraiment les choses ici à Béziers.",
+        "C'est une affaire triste et qui montre la complexité de la justice ; je préfère que le suspect soit placé en détention, ça m'apparaît plus sûr.",
+        "C'est une affaire grave, mais ça ne me fait pas vraiment changer d'avis politique, je suis plutôt concentré sur des enjeux plus globaux."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.007432091478640282,
-          "lo": 0.0054278181173371964,
-          "hi": 0.009653998004687159,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         },
         "left": {
-          "mean": 0.006328604942787072,
-          "lo": 0.00439390624225515,
-          "hi": 0.00848749846303267,
-          "stable": false
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
         },
         "center": {
-          "mean": 0.00530139092956769,
-          "lo": 0.002921171394013809,
-          "hi": 0.007430011937014387,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         },
         "right": {
-          "mean": -0.008302070531693616,
-          "lo": -0.011041875035318257,
-          "hi": -0.005233713355327671,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         },
         "far_right": {
-          "mean": -0.014155055570489012,
-          "lo": -0.02028260781178136,
-          "hi": -0.008727077978740493,
-          "stable": true
+          "toward": 11,
+          "away": 0,
+          "noClearChange": 85
         },
         "abstention": {
-          "mean": 0.003395038751187593,
-          "lo": -0.0005356175741372734,
-          "hi": 0.006809058172987922,
-          "stable": false
+          "toward": 4,
+          "away": 3,
+          "noClearChange": 89
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est triste d'apprendre ça, surtout avec la hausse de la violence dans certains quartiers. Je préfère quand la justice fait son travail rapidement pour rassurer tout le monde.",
+        "Un jeune blessé, c'est toujours grave. Je pense que la justice doit être ferme, une détention provisoire me semble justifiée pour protéger la société.",
+        "Je suis un peu indifférente, ça me semble loin de ma vie. Mais la violence m'inquiète, je préfère que l'on soit strict avec les coupables."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:50.092Z",
-    "contentHash": "c19a42a1b66586663792a0a97fb01a801b7d21949c6b932e23fa985b1dee58d6"
+    "status": "automatic",
+    "contentHash": "a0c9267025c1c9b216c6e81fa107e3a387a4ec1e7c3f59f3b4c04e07bd6cae1e"
   }
 }

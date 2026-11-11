@@ -4,23 +4,54 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "65b12a911df710b2",
-  "computedAt": "2026-11-09T20:38:57.355Z",
+  "inputHash": "368983358a8dc80b",
+  "eventInputHash": "3faef7463c8e5c40f54dd5f2be6aa1743cba40917ffab249f380dc5b212481f5",
+  "computedAt": "2026-11-11T13:09:18.439Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Yannick Jadot reçoit un avertissement officiel de la direction des Écologistes pour son soutien à Raphaël Glucksmann, mais n'est pas suspendu et reste actif au sein du parti.",
-    "whatChanges": "Cette approche plus conciliatrice évite une division brutale au sein des militants écologistes et maintient une certaine unité, affectant positivement l'image d'ouverture du parti auprès des électeurs modérés."
+    "description": "Yannick Jadot est sanctionné par un blâme officiel, sans suspension, pour son soutien à Raphaël Glucksmann, lui permettant de garder toutes ses fonctions au sein des Écologistes.",
+    "whatChanges": "La sanction moindre préserve l'image d'unité des Écologistes et atténue l'impact négatif sur les électeurs écologistes sensibles à la cohésion interne."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes urbains diplômés engagés écologistes",
-      "mechanism": "Ce segment regroupe les jeunes diplômés urbains susceptibles de se sentir concernés par la suspension temporaire de Yannick Jadot chez Les Écologistes, car il s'agit d'une figure importante au sein de ce mouvement et ces électeurs sont les bases potentielles de son soutien.",
-      "reason": "Ils sont jeunes, diplômés et résident en commune dense, catégories souvent actives dans les débats écologistes et en contact avec les dynamiques internes de ce parti.",
+      "name": "Électeurs écologistes urbains diplômés de 25 à 49 ans",
+      "mechanism": "Ce segment rassemble les citoyens urbains diplômés, en âge d’être actifs politiquement, susceptibles d’être concernés par la suspension de Yannick Jadot au sein des Écologistes pour son soutien à Raphaël Glucksmann, car ils forment une base sensible à l’évolution des alliances à gauche dans les grandes villes.",
+      "reason": "Il s'agit d'un groupe urbain, instruit et en âge actif, potentiellement impliqué dans les débats internes d'une formation politique comme les Écologistes.",
+      "all": [
+        "geo.dense",
+        "education.bac_plus_3_4"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Opinion sur Yannick Jadot",
+        "Attitude envers la suspension au sein des Écologistes",
+        "Soutien à Raphaël Glucksmann"
+      ],
+      "count": 7534,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Yannick Jadot suspendu temporairement des Écologistes pour son soutien à Raphaël Glucksmann",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Les jeunes diplômés des villes sont particulièrement sensibles aux choix stratégiques des formations écologistes et à la suspension de leur leader Yannick Jadot, car ils sont souvent engagés dans ces mouvements et attentifs aux alliances politiques pour la présidentielle 2027.",
+      "reason": "Cette population jeune, diplômée et urbaine compose un noyau militant ou électoral important pour les écologistes et leurs développements stratégiques.",
       "all": [
         "age.18_24",
         "education.bac_plus_3_4",
@@ -29,7 +60,11 @@
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
+      "measurementNeeds": [
+        "Perception de la suspension de Yannick Jadot",
+        "Connaissance de Raphaël Glucksmann",
+        "Préférences électorales à gauche"
+      ],
       "count": 1070,
       "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
@@ -41,42 +76,26 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Cadres urbains soutenant potentiellement Jadot",
-      "mechanism": "Ce segment correspond à des cadres urbains qui sont socialement intégrés et pourraient être impactés par la suspension de Jadot, car ils suivent les enjeux politiques internes aux Écologistes et pourraient réagir à ce soutien controversé.",
-      "reason": "Les cadres urbains sont un groupe influent dans les communes denses et susceptibles de suivre les divisions politiques au sein des mouvements écologistes et de la gauche.",
-      "all": [
-        "cluster.urban_executive"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 10635,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : Yannick Jadot suspendu temporairement des Écologistes pour son soutien à Raphaël Glucksmann",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
       "id": "segment_3",
-      "name": "Jeunes salariés modestes en communes denses",
-      "mechanism": "Jeunes salariés modestes des communes denses, susceptibles de suivre ou réagir à la suspension de Yannick Jadot par Les Écologistes, avec une attention aux dynamiques internes à la gauche écologiste.",
-      "reason": "Segment plus étroit que le rejeté trop large, limité en âge et densité géographique pour cohérence et restrictions d'effectif.",
+      "name": "Salariés modestes urbains de 35 à 64 ans",
+      "mechanism": "Les salariés modestes urbains sont un groupe social majeur pour les écologistes et pourraient être touchés par la suspension de Yannick Jadot qui symbolise un désaccord sur les soutiens à la présidentielle, impactant leur engagement politique.",
+      "reason": "Il s'agit d'une base populaire travaillant en zone urbaine, souvent ciblée par les discours écologistes motivés par des enjeux sociaux et environnementaux.",
       "all": [
         "cluster.modest_wage_earner",
-        "age.25_34",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8798,
+      "measurementNeeds": [
+        "Réaction à la suspension de Jadot",
+        "Opinion sur la stratégie électorale des écologistes",
+        "Intérêt pour les alliances de gauche"
+      ],
+      "count": 19616,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -96,57 +115,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes salariés modestes en communes denses",
-      "matchedCount": 8798,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas trop sûr de l'importance de cette histoire de suspension au sein des écologistes, ça ne change pas vraiment ce que je pense pour l'élection.",
-        "Franchement, ça me donne l'impression que les écologistes ne sont pas très unis, ça me fait douter un peu, mais ça ne me fera pas changer d'avis sur mon vote.",
-        "Les disputes politiques internes, ça me touche pas vraiment, je regarde ce qui peut améliorer ma vie, pas les histoires de partis."
-      ]
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes urbains diplômés engagés écologistes",
-      "matchedCount": 1070,
+      "segmentName": "Électeurs écologistes urbains diplômés de 25 à 49 ans",
+      "matchedCount": 7534,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -177,23 +149,23 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça dommage que Yannick Jadot soit suspendu pour un soutien politique, ça donne une image de division qui ne m'intéresse pas vraiment.",
-        "Franchement, suspendre Jadot à cause d’un soutien, ça me parait exagéré. Ça risque de faire du tort à la gauche écologiste.",
-        "Ça m’intéresse pas trop ce genre d’histoires entre écologistes, moi je regarde plutôt ce qui me concerne au quotidien."
+        "Je suis un peu déçue de voir des divisions au sein des écologistes, ça ne donne pas une image très unie. Mais honnêtement, ça ne change pas ma façon de voir les choses pour le moment.",
+        "C'est regrettable cette suspension, Jadot représente un peu l'écologie apaisée. Mais je comprends que les partis doivent garder une cohérence. Ça me rend un peu moins confiante dans cette aile politique.",
+        "Je ne suis pas trop concernée par les chamailleries écologistes. Moi, je cherche surtout un candidat qui s'occupe des vrais problèmes du travail et du pouvoir d'achat."
       ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Cadres urbains soutenant potentiellement Jadot",
-      "matchedCount": 10635,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes urbains de 35 à 64 ans",
+      "matchedCount": 19616,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -224,17 +196,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, cette histoire de suspension de Jadot pour soutenir Glucksmann, ça ne me parle pas trop, je ne suis pas très branchée politique comme ça.",
-        "Entre Jadot et Glucksmann, ce n’est pas clair, ça me semble compliqué. Ça ne change pas grand-chose à ce que je pensais, je reste sur mes positions.",
-        "Je connais un peu les écologistes. Une suspension de Jadot pour ça, ça me semble une querelle interne, ça ne change rien à mon vote."
+        "Je ne suis pas très au fait des petites histoires internes des écologistes, ça ne change pas grand-chose à ma manière de voir les choses.",
+        "Le soutien de Jadot à Glucksmann, ça ne me bouleverse pas. La sanction me semble un peu excessive, mais ça ne changera pas mon vote.",
+        "Je suis plutôt à gauche et attentive à l'écologie. La suspension de Jadot me déçoit un peu, mais ça ne me fera pas changer d'avis."
       ]
     },
     "global_1": {
@@ -279,17 +251,62 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, je ne comprends pas pourquoi Yannick Jadot se serait fait suspendre simplement pour avoir soutenu quelqu'un d'autre. Ça ne me touche pas vraiment, je reste fidèle à mes idées.",
-        "Je ne suis pas très branché politique écolo aussi pointue, mais une suspension de Jadot, ça fait débat. Moi, je suis plus concerné par les idées claires. Ça ne me fait pas vraiment changer d'avis sur mes choix.",
-        "Je trouve ça un peu compliqué, cette suspension pour soutien politique. Je suis plutôt méfiante à ce genre d'affaires internes, ça ne m'incite pas à changer mon vote."
+        "Je ne comprends pas trop ces histoires de sanctions entre écologistes, ça ne change rien à ma vie quotidienne.",
+        "C'est surtout un truc pour les initiés, ce soutien et la sanction de Jadot, ça ne me pousse pas à changer mon vote.",
+        "Entre Jadot et Glucksmann, ce genre de querelle ne m'intéresse pas, j'attends des choix clairs pour l'écologie."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 1070,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve dommage que Yannick Jadot soit suspendu alors qu'il soutient quelqu'un qui partage des idées proches. Ça ressemble à des divisions inutiles qui ne vont pas aider les écologistes à avancer.",
+        "Ce genre de sanction contre un leader écologiste ne m'intéresse pas trop, ça ne change rien à ma façon de voir les choses ni à mon vote. Je suis plus préoccupé par les questions concrètes du travail et de la vie de famille.",
+        "Ça ne m'intéresse pas vraiment. Je suis plutôt attiré par les partis plus à droite, donc ces disputes à gauche n'ont pas d'impact pour moi."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:44.736Z",
-    "contentHash": "9676a1773c9ebd633e6f669a44b11977b849d1c9e76ba5c10048dbe5ce1ba0da"
+    "status": "automatic",
+    "contentHash": "cef9aec43c0647688252c9454e492039a5f600df6091fc465af60e7718d8491c"
   }
 }

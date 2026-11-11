@@ -38,8 +38,8 @@ const chapters = [
   },
   {
     eyebrow: "LA MISE À L’ÉPREUVE",
-    title: "Chaque profil est interrogé, deux fois.",
-    text: "Pour chaque groupe concerné, on tire au sort des profils synthétiques. Un modèle de langage se met à la place de chacun — son âge, son métier, sa commune, son histoire — et répond deux fois : comme si l’événement n’avait pas eu lieu, puis après l’avoir appris. L’écart entre les deux réponses mesure la réaction. On répète l’exercice plusieurs fois pour vérifier que le résultat reste stable, et on affiche un intervalle d’incertitude. Aucune personne réelle n’est interrogée.",
+    title: "Comparer deux situations pour chaque profil.",
+    text: "Pour chaque groupe concerné, on tire au sort des profils synthétiques. Un modèle de langage se met à la place de chacun — son âge, son métier, sa commune, son histoire — et produit deux intentions : comme si l’événement n’avait pas eu lieu, puis après l’avoir appris. L’écart entre les deux réponses mesure la réaction. On répète l’exercice plusieurs fois pour étudier sa stabilité. Les effets chiffrés restent non publiés tant que la méthode n’est pas validée. Aucune personne réelle n’est interrogée.",
     image: "enquetes.webp",
     alt: "Illustration dessinée de deux personnes examinant des feuilles d’enquête à une table de travail.",
     caption: "Deux réponses par profil : avant, puis après l’événement.",
@@ -56,11 +56,32 @@ const chapters = [
 
 type Chapter = (typeof chapters)[number];
 
-function StoryArtwork({ chapter, index, active = true, mobile = false }: { chapter: Chapter; index: number; active?: boolean; mobile?: boolean }) {
-  return <figure className={`method-artwork ${mobile ? "method-artwork-mobile" : active ? "is-active" : ""}`} aria-hidden={!mobile && !active ? true : undefined}>
-    <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/method/${chapter.image}`} alt={chapter.alt} loading={index > 0 ? "lazy" : "eager"} />
-    <figcaption><strong>{chapter.caption}</strong></figcaption>
-  </figure>;
+function StoryArtwork({
+  chapter,
+  index,
+  active = true,
+  mobile = false,
+}: {
+  chapter: Chapter;
+  index: number;
+  active?: boolean;
+  mobile?: boolean;
+}) {
+  return (
+    <figure
+      className={`method-artwork ${mobile ? "method-artwork-mobile" : active ? "is-active" : ""}`}
+      aria-hidden={!mobile && !active ? true : undefined}
+    >
+      <img
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/method/${chapter.image}`}
+        alt={chapter.alt}
+        loading={index > 0 ? "lazy" : "eager"}
+      />
+      <figcaption>
+        <strong>{chapter.caption}</strong>
+      </figcaption>
+    </figure>
+  );
 }
 
 export function MethodExplainer() {
@@ -70,38 +91,107 @@ export function MethodExplainer() {
   useEffect(() => {
     const nodes = chapterRefs.current.filter((node): node is HTMLElement => node !== null);
     if (!nodes.length) return;
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) {
-        const index = nodes.indexOf(visible.target as HTMLElement);
-        if (index >= 0) setActiveChapter(index);
-      }
-    }, { rootMargin: "-26% 0px -44% 0px", threshold: [0, 0.15, 0.35, 0.6] });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) {
+          const index = nodes.indexOf(visible.target as HTMLElement);
+          if (index >= 0) setActiveChapter(index);
+        }
+      },
+      { rootMargin: "-26% 0px -44% 0px", threshold: [0, 0.15, 0.35, 0.6] },
+    );
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
 
-  return <section className="method-section" id="method" aria-labelledby="method-title">
+  return (
+    <section className="method-section" id="method" aria-labelledby="method-title">
       <header className="method-heading">
-        <div className="method-heading-main"><h2 id="method-title">Comment ça <em>marche&nbsp;?</em></h2></div>
-        <p>Du réel aux hypothèses&nbsp;: suivez une information, les personnes qu’elle concerne et ce qu’elle pourrait changer dans leurs choix.</p>
+        <div className="method-heading-main">
+          <h1 id="method-title">
+            Comment ça <em>marche&nbsp;?</em>
+          </h1>
+        </div>
       </header>
 
       <div className="method-story-layout">
         <div className="method-chapters">
-          {chapters.map((chapter, index) => <article className={`method-chapter ${activeChapter === index ? "is-current" : ""}`} key={chapter.title} ref={(node) => { chapterRefs.current[index] = node; }}>
-            <div className="method-chapter-copy"><span className="method-story-label">{chapter.eyebrow}</span><h3>{chapter.title}</h3><p>{chapter.text}</p></div>
-            <StoryArtwork chapter={chapter} index={index} mobile />
-          </article>)}
+          {chapters.map((chapter, index) => (
+            <article
+              className={`method-chapter ${activeChapter === index ? "is-current" : ""}`}
+              key={chapter.title}
+              ref={(node) => {
+                chapterRefs.current[index] = node;
+              }}
+            >
+              <div className="method-chapter-copy">
+                <span className="method-story-label">{chapter.eyebrow}</span>
+                <h3>{chapter.title}</h3>
+                <p>{chapter.text}</p>
+              </div>
+              <StoryArtwork chapter={chapter} index={index} mobile />
+            </article>
+          ))}
         </div>
 
-        <section className="method-sticky-visual" aria-label="Illustrations du fonctionnement du modèle">
+        <section
+          className="method-sticky-visual"
+          aria-label="Illustrations du fonctionnement du modèle"
+        >
           <div className="method-visual-masthead">DU FAIT AU SCÉNARIO</div>
           <div className="method-visual-window">
-            {chapters.map((chapter, index) => <StoryArtwork key={chapter.title} chapter={chapter} index={index} active={index === activeChapter} />)}
+            {chapters.map((chapter, index) => (
+              <StoryArtwork
+                key={chapter.title}
+                chapter={chapter}
+                index={index}
+                active={index === activeChapter}
+              />
+            ))}
           </div>
         </section>
       </div>
-    </section>;
+
+      <div className="method-essential method-essential-bottom">
+        <p>
+          <strong>Les sondages sont des observations.</strong> Ils proviennent de Sondax, d’après
+          Wikipédia. Les points du graphique correspondent à la fin du terrain ; les courbes
+          décrivent une moyenne lissée. Chaque observation renvoie à sa source.
+        </p>
+        <p>
+          <strong>Les hypothèses sont des simulations.</strong> Un modèle de langage répond à partir
+          de profils synthétiques. Aucune personne réelle n’est interrogée. Les pourcentages
+          décrivent les réponses simulées, sans mesurer une part des électeurs.
+        </p>
+        <details>
+          <summary>Ce que l’on ne peut pas en conclure</summary>
+          <p>
+            Un mouvement dans les sondages ne peut pas être attribué à un événement à partir de ces
+            graphiques. La capacité du modèle à prévoir des effets spécifiques reste à établir. Les
+            groupes sont exploratoires, parfois superposés, et ne forment pas un échantillon
+            représentatif de l’électorat. Une simulation stable peut néanmoins être erronée.
+          </p>
+        </details>
+        <details>
+          <summary>Sondages, sources et calcul de la moyenne</summary>
+          <p>
+            Source : <a href="https://sondax.fr">Sondax</a>, d’après Wikipédia, CC BY-SA 4.0. Nous
+            retenons la configuration principale au premier tour, avec une taille d’échantillon
+            renseignée. Le lissage utilise une pondération gaussienne autour de chaque date
+            (écart-type d’environ 4,5 jours), sans pondération par la taille d’échantillon. Les
+            configurations testées et les instituts varient ; la moyenne n’est ni une prévision ni
+            une mesure d’effet causal. Les absences de données ne valent pas zéro.
+          </p>
+          <p>
+            Les instituts, périodes de terrain, tailles d’échantillon et notices sont accessibles
+            depuis les liens Sondax. Les graphiques affichent les observations publiées ; les
+            courbes servent uniquement à en rendre l’évolution lisible.
+          </p>
+        </details>
+      </div>
+    </section>
+  );
 }

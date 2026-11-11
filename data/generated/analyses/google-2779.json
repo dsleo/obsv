@@ -4,39 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "79e88fa1a118504a",
-  "computedAt": "2026-11-09T20:40:26.070Z",
+  "inputHash": "4ce0a58f6e3e528e",
+  "eventInputHash": "0371c45813eb939146640e949aa783c8a273620889f45b3dc0b66733e06a4115",
+  "computedAt": "2026-11-11T13:12:45.110Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Au lieu de se rendre au Salon du végétal à Angers, Édouard Philippe choisit de visiter une exploitation agricole biologique locale afin de rencontrer des agriculteurs engagés dans des pratiques durables.",
-    "whatChanges": "L'accent est mis sur l'agriculture biologique et durable, ciblant un électorat sensible aux enjeux environnementaux et économiques ruraux, plutôt que sur le secteur horticole professionnel."
+    "description": "Candidat à l'élection présidentielle, Édouard Philippe annule son déplacement à Angers cette semaine pour se concentrer sur la préparation d'un grand meeting national la semaine suivante.",
+    "whatChanges": "Le report du déplacement limite l'impact local immédiat mais vise à renforcer sa visibilité nationale, affectant davantage les électeurs au niveau national que local."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains habitant Angers",
-      "mechanism": "Édouard Philippe se déplace au Salon du végétal à Angers, qui peut avoir un impact indirect sur les jeunes diplômés des villes regardant les politiques économiques et environnementales de ses projets.",
-      "reason": "Ce segment rassemble les jeunes urbains diplômés vivant dans une commune dense comme Angers, susceptibles d'intéresser une offre politique liée aux innovations agricoles et au développement durable.",
+      "name": "Cadres et professions intellectuelles en milieu urbain à Angers",
+      "mechanism": "Édouard Philippe, candidat à l'élection présidentielle, se déplace à Angers, une ville de densité importante, où les cadres et professions intellectuelles supérieures constituent une cible clé pour présenter son programme et gagner du soutien.",
+      "reason": "Ce segment rassemble les cadres et professionnels supérieurs vivant en milieu urbain denses comme Angers, population directement concernée par le déplacement local de la candidature présidentielle.",
       "all": [
-        "cluster.young_urban_graduate",
-        "geo.dense",
-        "commune_size.1000_plus"
+        "occupation.executive_professional",
+        "geo.dense"
       ],
       "any": [
-        "age.18_24",
-        "age.25_34"
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_event",
-        "candidate_support_intention"
+        "Attitude envers Édouard Philippe",
+        "Connaissance de la venue d'Édouard Philippe à Angers",
+        "Intention de vote pour Édouard Philippe"
       ],
-      "count": 11394,
+      "count": 10263,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -48,12 +50,11 @@
     },
     {
       "id": "segment_2",
-      "name": "Couples avec enfants dans les communes de taille moyenne autour d’Angers",
-      "mechanism": "Le déplacement d’Édouard Philippe à Angers et sa participation au Salon du végétal concernent aussi les familles jeunes à Angers, intéressées par les questions environnementales et agricoles pour l'avenir de leurs enfants.",
-      "reason": "Les jeunes familles en couple avec enfants dans les communes de taille moyenne et densément peuplées autour d’Angers constituent un électorat sensible aux enjeux environnementaux et agricoles mis en lumière par le candidat lors de son déplacement.",
+      "name": "Jeunes familles actives en communes intermédiaires autour d'Angers",
+      "mechanism": "Le déplacement d'Édouard Philippe à Angers vise également les jeunes couples avec enfants, souvent engagés socialement et électoralement, qui peuvent être sensibles aux propositions liées à la famille et à l'emploi local.",
+      "reason": "Ce segment cible les jeunes familles (25-49 ans) vivant en communes de densité intermédiaire proches d'Angers, qui sont un groupe représentatif influencé par les discours de campagne.",
       "all": [
         "household.couple_with_children",
-        "commune_size.1000_plus",
         "geo.intermediate"
       ],
       "any": [
@@ -63,8 +64,9 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_event",
-        "candidate_support_intention"
+        "Opinion sur les mesures familiales d'Édouard Philippe",
+        "Perception du développement local à Angers",
+        "Intention de vote à l'élection présidentielle"
       ],
       "count": 717,
       "distinctCommunes": 24,
@@ -78,13 +80,13 @@
     },
     {
       "id": "segment_3",
-      "name": "Salariés modestes habitants des communes intermédiaires à proximité d’Angers",
-      "mechanism": "Salariés employés et ouvriers vivant dans des communes de taille moyenne et à densité intermédiaire proches d’Angers, population susceptible d’être concernée par les mesures politiques en matière d’agriculture et d’emploi annoncées par Édouard Philippe lors de son déplacement au Salon du végétal.",
-      "reason": "Segment additionnel pour inclure un public populaire localement enraciné lié aux enjeux du déplacement.",
+      "name": "Salariés modestes masculins de 35 à 64 ans en zone urbaine proche d'Angers",
+      "mechanism": "Le déplacement à Angers s'adresse aussi aux salariés modestes masculins, souvent employés ou ouvriers, dont les enjeux sociaux et économiques locaux sont centraux dans la campagne présidentielle d'Édouard Philippe.",
+      "reason": "Ce segment combine l'âge, le sexe et la catégorie socio-professionnelle pour cibler un groupe professionnellement exposé aux politiques sociales, résidant en communes urbaines autour d'Angers.",
       "all": [
-        "cluster.modest_wage_earner",
-        "geo.intermediate",
-        "commune_size.1000_plus"
+        "sex.male",
+        "geo.dense",
+        "cluster.modest_wage_earner"
       ],
       "any": [
         "age.35_49",
@@ -92,9 +94,13 @@
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 685,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Perception des propositions économiques d'Édouard Philippe",
+        "Prise en compte de la venue à Angers dans la décision de vote",
+        "Satisfaction vis-à-vis des conditions de travail"
+      ],
+      "count": 9183,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -113,9 +119,56 @@
     }
   ],
   "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes masculins de 35 à 64 ans en zone urbaine proche d'Angers",
+      "matchedCount": 9183,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Édouard Philippe passe à Angers ? Ça ne me touche pas vraiment, je suis plus concerné par ce qui se passe à Béziers, et lui ce n'est pas mon vote habituel.",
+        "Philippe vient à Angers, ça n'a pas grand intérêt pour moi à Paris. Je suis plutôt attentif aux candidats d'où je vis, donc ça ne va pas changer mon vote.",
+        "Philippe à Angers, c'est pas dans mon coin, ça bouge pas mon vote. De toute façon, je suis plus tenté par Mélenchon ou Marine Le Pen."
+      ]
+    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Couples avec enfants dans les communes de taille moyenne autour d’Angers",
+      "segmentName": "Jeunes familles actives en communes intermédiaires autour d'Angers",
       "matchedCount": 717,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -155,9 +208,56 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis content qu'Édouard Philippe vienne à Angers, ça montre qu'il s'intéresse à des secteurs économiques importants comme le végétal, même si ce n'est pas mon domaine direct.",
-        "Je ne suis pas très concernée par sa visite au Salon du végétal, ça ne change rien à ce que je pense, je suis trop prise avec ma vie familiale.",
-        "C'est bien qu'il aille au Salon du végétal, ça montre une attention à l'agriculture, même si j'aimerais qu'il aille plus vers des pratiques durables."
+        "Je trouve intéressant qu'Édouard Philippe vienne à Angers, ça montre qu'il se rapproche un peu de notre région, mais ça ne changera pas vraiment mon vote, je reste centré sur ce que je connais.",
+        "Je ne suis pas spécialement intéressée par les déplacements d’Édouard Philippe, ça ne me touche pas vraiment vu ma situation et mes priorités.",
+        "Je vois qu'Édouard Philippe vient à Angers, mais ça ne modifie pas vraiment mes choix politiques, je reste focalisée sur ce qui impacte ma vie ici."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Cadres et professions intellectuelles en milieu urbain à Angers",
+      "matchedCount": 10263,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Édouard Philippe à Angers ? Ce n'est pas chez moi et je ne vois pas ce que cela changerait ici, cela ne va pas influencer mon vote à Béziers.",
+        "Philippe à Angers ? Ça ne me parle pas vraiment, c'est loin de chez moi et peu intéressant pour mon vote personnel à Paris.",
+        "Philippe en déplacement à Angers, c'est une vision plutôt régionale. Cela ne change pas grand-chose à ma manière de voir la présidentielle à Marseille."
       ]
     },
     "global_1": {
@@ -190,8 +290,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 2,
+          "noClearChange": 94
         },
         "abstention": {
           "toward": 0,
@@ -202,111 +302,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Édouard Philippe qui vient au Salon du végétal à Angers ? Ce n'est pas très proche de chez moi, mais le végétal c'est important, je suppose que ça concerne l'agriculture moderne. Ça m'intéresse plus s'il vient voir une exploitation bio, au moins on parle d'agriculture durable.",
-        "Philippe à Angers au Salon du végétal, je m'en fiche un peu, c'est pas mon coin. Si c'était une visite dans une ferme bio locale, ça m'intéresserait un peu plus. J'aime bien quand on soutient les agri qui font attention à la terre, même si je suis pas bio.",
-        "Édouard Philippe au Salon du végétal à Angers ? Bof, je suis à Paris, ça me parle pas trop. Si par contre il allait voir une ferme bio, ça montrerait un vrai engagement, ça me plairait plus, même si ça ne changera pas trop ce que je pense."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains habitant Angers",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas très intéressée par les visites politiques, surtout que ce genre d'événement semble un peu éloigné de mes préoccupations quotidiennes à Dunkerque.",
-        "Une visite d'Édouard Philippe à un salon du végétal me semble assez neutre, cela ne va pas modifier mon choix de vote, même si la thématique agriculture durable me parle un peu plus.",
-        "Je trouve ça bien qu'un candidat aille au Salon du végétal, mais ça ne change pas vraiment ma vision d'ensemble sur lui ni mon vote habituel."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Salariés modestes habitants des communes intermédiaires à proximité d’Angers",
-      "matchedCount": 685,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Édouard Philippe vient à Angers ? Ça ne change pas grand-chose pour moi, c'est trop loin et je ne m'intéresse pas trop à ce genre d'événements.",
-        "Édouard Philippe à Angers, bof, ça ne me parle pas. Je suis plus préoccupé par nos problèmes locaux. Ce déplacement ne changera pas ma manière de voter.",
-        "Je suis sensible à l'agriculture : mieux vaut qu'Édouard Philippe visite une exploitation bio, ça correspond plus à mes valeurs écologiques."
+        "Je ne suis pas particulièrement intéressé par la venue d'Édouard Philippe à Angers, cela ne change rien à mon vote.",
+        "Édouard Philippe qui vient à Angers, ça ne me concerne pas, je suis plus attentif à ce qui se passe ici dans le Pas-de-Calais, ça n'aura pas d'impact sur mon vote.",
+        "Le déplacement d'Édouard Philippe à Angers ne change rien pour moi, je ne suis pas vraiment sensible à ses déplacements locaux, ma priorité est ailleurs."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:37.935Z",
-    "contentHash": "1490aa3435d59df1d13cc9577f69968a173d02277fe1b1f6e696a0225b427eca"
+    "status": "automatic",
+    "contentHash": "e6a7f2ce346b81459bfcdb7bad7dd0b08b03e50642d8766a615352fcc6375383"
   }
 }

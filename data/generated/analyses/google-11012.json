@@ -4,36 +4,45 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "a387f28f696d72bb",
-  "computedAt": "2026-11-09T20:36:10.011Z",
+  "inputHash": "e5c3c06f6fa6371e",
+  "eventInputHash": "4b4f6354652114d0a5156b9a23dbb750354dd0c6e56b9b7f9647a9452390229e",
+  "computedAt": "2026-11-11T13:00:45.563Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Les militants de Place publique 65 annoncent leur soutien à une candidature commune avec Raphaël Glucksmann, approuvant une stratégie de rassemblement large à gauche plutôt qu'une division.",
-    "whatChanges": "Le soutien passe d'un choix individuel à un appel à une alliance renforcée, ce qui pourrait consolider la gauche aux yeux des électeurs."
+    "description": "Les militants de Place publique 65 appellent à voter en troisième position à gauche, soutenant ainsi fermement la candidature d'un autre candidat de gauche plutôt que Raphaël Glucksmann.",
+    "whatChanges": "Le soutien des militants bascule vers un autre candidat de gauche, ce qui divise davantage l'électorat progressiste local au lieu de consolider le vote autour de Glucksmann."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains soutenant Glucksmann",
-      "mechanism": "Ce segment correspond aux jeunes diplômés de moins de 35 ans vivant en communes denses et urbaines, typiquement la base militante de Place publique qui soutient Raphaël Glucksmann comme \"le seul vote utile à gauche\" et qui est sensible à ses stratégies ainsi qu'à son actualisation politique.",
-      "reason": "Les jeunes diplômés urbains sont souvent engagés dans les mouvements de gauche et participent activement au militantisme politique, particulièrement en soutien à des figures progressistes et écologistes, comme Raphaël Glucksmann au sein de Place publique.",
+      "name": "Jeunes diplômés urbains engagés à gauche",
+      "mechanism": "Les militants de Place publique sont souvent jeunes, diplômés et urbains. Ce segment correspond aux jeunes de moins de 35 ans diplômés d'au moins Bac+3 vivant dans des communes denses, susceptibles de soutenir Raphaël Glucksmann à travers Place publique.",
+      "reason": "Ce groupe partage les caractéristiques sociodémographiques typiques des militants et sympathisants de Place publique mentionnés dans l'événement, donc un segment pertinent pour mesurer leur soutien.",
       "all": [
-        "age.18_24",
         "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 1070,
-      "distinctCommunes": 67,
+      "measurementNeeds": [
+        "Soutien à Raphaël Glucksmann",
+        "Identification avec Place publique",
+        "Participation électorale"
+      ],
+      "count": 4295,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Présidentielle. \"Le seul vote utile à gauche\" : les militants de Place publique 65 affichent leur soutien à Raphaël Glucksmann",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -42,23 +51,30 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles de gauche progressiste en moyenne agglomération",
-      "mechanism": "Ce segment constitue les jeunes couples avec enfants âgés de 25 à 49 ans, souvent engagés ou sensibles aux revendications sociétales défendues par Place publique et au soutien à Raphaël Glucksmann dans la présidentielle, en particulier dans des communes intermédiaires.",
-      "reason": "Les jeunes familles représentent un groupe social important susceptible d'adhérer aux thèmes de justice sociale et environnementale portés par Place publique et Glucksmann, surtout en milieu urbain ou intermédiaire.",
+      "name": "Jeunes familles urbaines progressistes",
+      "mechanism": "Les couples avec enfants entre 25 et 49 ans vivant en communes denses forment un public familial souvent sensible aux discours progressistes portés par Place publique et Raphaël Glucksmann, notamment sur les questions sociétales et environnementales.",
+      "reason": "Ce segment combine jeunes parents avec la dimension urbaine, cohérente avec le profil ciblé par Place publique pour attirer un électorat familial de gauche.",
       "all": [
         "household.couple_with_children",
-        "age.25_34"
+        "geo.dense"
       ],
       "any": [
-        "geo.intermediate"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 216,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Adhésion au projet de Place publique",
+        "Intention de vote",
+        "Sensibilité aux enjeux sociétaux"
+      ],
+      "count": 25109,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Présidentielle. \"Le seul vote utile à gauche\" : les militants de Place publique 65 affichent leur soutien à Raphaël Glucksmann",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -67,17 +83,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Militants urbains cadres et professions intellectuelles",
-      "mechanism": "Ce groupe inclut les cadres et professions intellectuelles supérieures des communes denses, un électorat féministe et progressiste souvent mobilisé par Place publique et sensible au positionnement et aux stratégies électorales de Raphaël Glucksmann.",
-      "reason": "Les cadres urbains sont un public militant ou sympathisant important pour Place publique, qui défend un positionnement de gauche progressiste et écologiste dans la présidentielle ciblant des acquis sociaux et culturels.",
+      "name": "Artisans indépendants urbains sensibilisés à la gauche",
+      "mechanism": "Les artisans, commerçants et chefs d’entreprise urbains représentent une catégorie indépendante parfois proche de la gauche progressiste, concernés par les propos de Raphaël Glucksmann au sein de Place publique, qui plaide pour un ajustement social équilibré.",
+      "reason": "Ce groupe, spécifiquement limité aux indépendants en commune dense, correspond à une niche intéressante de soutien potentiel souvent sous-estimée dans les discours politiques de gauche.",
       "all": [
-        "cluster.urban_executive"
+        "cluster.independent",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 10635,
+      "measurementNeeds": [
+        "Perception de Place publique",
+        "Confiance en Raphaël Glucksmann",
+        "Participation électorale"
+      ],
+      "count": 3736,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -97,104 +118,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains soutenant Glucksmann",
-      "matchedCount": 1070,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça bien que les militants de Place publique soutiennent Glucksmann, ça montre qu'il y a une volonté d'unité à gauche, même si je ne suis pas sûre que ça change grand-chose pour moi.",
-        "Que Place publique soutienne Glucksmann sans alliance, ça me laisse un peu dubitatif, ça risque de diviser la gauche. Par contre, un soutien commun large à gauche, ça me paraît plus pertinent.",
-        "J’apprécie l’idée d’un rassemblement large à gauche, ça peut rendre la gauche plus forte. Un soutien isolé à Glucksmann, ça me paraît un peu risqué."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Militants urbains cadres et professions intellectuelles",
-      "matchedCount": 10635,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 11,
-          "away": 0,
-          "noClearChange": 37
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Quitter l’antagonisme stérile pour un vrai rassemblement à gauche, ça me parle, surtout en matière d’écologie et d’aménagement territorial à Lyon.",
-        "Je suis un peu sceptique sur Glucksmann, mais une alliance large à gauche me donnerait plus envie de voter pour ce bloc plutôt que de rester distant.",
-        "Je me méfie un peu de la stratégie « anti-alliance », mais ici un vrai rassemblement à gauche correspondrait à ce que je souhaite pour mon avenir et celui de Martigues."
-      ]
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes familles de gauche progressiste en moyenne agglomération",
-      "matchedCount": 216,
+      "segmentName": "Jeunes familles urbaines progressistes",
+      "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -205,6 +132,53 @@
           "noClearChange": 47
         },
         "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je me demande si ce soutien à Glucksmann va vraiment changer quelque chose, je reste un peu sceptique sur l'efficacité d'un vote utile à gauche.",
+        "Franchement, je ne connais pas trop ce Glucksmann, et ce soutien là ne va pas trop me faire changer d'avis, je vote surtout selon ce qui impacte ma vie au quotidien.",
+        "Ce genre d'appel politique me semble un peu lointain de mon quotidien, je ne change pas vraiment d'aventure, je reste sur mes idées actuelles."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains engagés à gauche",
+      "matchedCount": 4295,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
@@ -220,9 +194,9 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -233,9 +207,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, entre Place publique et Glucksmann, je ne vois pas trop d'impact sur ma façon de voter, ça reste un peu flou pour moi et ça ne va pas changer mon choix.",
-        "Ce genre d'union à gauche pourrait peut-être faire bouger les choses, mais je reste un peu sceptique. Ça ne me touche pas vraiment dans ma vie de tous les jours.",
-        "Je fais plutôt attention à ce qu'il se passe à gauche, mais cette histoire de Place publique, je n'y suis pas très attentive. Je continue comme avant."
+        "Je ne suis pas très sensible aux batailles internes à gauche, surtout ici à Béziers où la droite dure est très présente. Ce soutien à Glucksmann ne change pas grand-chose à mon intention de vote.",
+        "C'est bien que la gauche essaie de se rassembler, mais je ne suis pas convaincu que Glucksmann ait assez de poids pour rassembler vraiment. Si d'autres candidats de gauche émergent, ça pourrait me faire réfléchir.",
+        "Je trouve intéressant que ces militants affichent clairement leur vote utile, ça peut encourager à ne pas disperser les voix à gauche. Je pourrais considérer Glucksmann davantage."
       ]
     },
     "global_1": {
@@ -268,29 +242,74 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "abstention": {
-          "toward": 2,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne connaissais pas trop Place publique, mais c’est bien qu’ils soutiennent quelqu’un à gauche, ça évite de disperser les voix. J’espère que ce Glucksmann saura vraiment défendre nos idées.",
-        "Je suis un peu à côté de tout ça, Glucksmann et Place publique, ça ne me parle pas trop. Ce genre de soutien ne change pas beaucoup ma façon de voir les choses.",
-        "Moi, je suis plutôt sensible à l’idée d’un rassemblement à gauche, ça me semble plus fort que des divisions inutiles. Je soutiens cette idée de candidature commune."
+        "Je suis un peu sceptique, je ne suis pas très engagée politiquement et ce soutien à Glucksmann ne me fait ni chaud ni froid.",
+        "Je trouve ça intéressant, parce que ça peut peut-être rassembler un peu la gauche, même si je suis pas sûr de bien connaître Glucksmann.",
+        "Ça ne me fait pas vraiment changer mon avis, je reste assez éloignée de la politique classique, je préfère mon petit monde artistique."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Artisans indépendants urbains sensibilisés à la gauche",
+      "matchedCount": 3736,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne vois pas trop l’intérêt de ce genre d’appels qui ne changent rien pour moi, ça reste entre militants, moi je fais ce que j’ai toujours fait.",
+        "C’est bien que les militants de Place publique soutiennent Glucksmann, ça peut aider à rassembler à gauche, même si ce n’est pas ma priorité absolue.",
+        "Soutenir Glucksmann, ça ne me touche pas trop, je reste fidèle à mes convictions, ça ne changera pas mon vote."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:17.367Z",
-    "contentHash": "289755d093ae074e5d7847ee5742d2c91cb4f9a4260691b117454bae09ad6a85"
+    "status": "automatic",
+    "contentHash": "eca714c752ca244e3960cd7d73c01d0ace8006be6d15bd482d4df5e1a9caa252"
   }
 }

@@ -4,39 +4,43 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "fe0bb694a0b25e11",
-  "computedAt": "2026-11-09T20:38:48.024Z",
+  "inputHash": "a93947852cc9460b",
+  "eventInputHash": "0242787b4ef8221059a93181b688a8f741e5cfe14a3be15188642070792627b7",
+  "computedAt": "2026-11-11T13:09:05.731Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Nathalie Arthaud annonce sa quatrième candidature à la Présidentielle à la fête lyonnaise de Lutte ouvrière mais renonce à cibler explicitement Jean-Luc Mélenchon, préférant axer son discours uniquement sur la critique du capitalisme et la défense des travailleurs.",
-    "whatChanges": "Nathalie Arthaud évite la confrontation directe avec Mélenchon, ce qui pourrait limiter les divisions à gauche et rendre son message plus consensuel auprès des électeurs ouvriers et militants."
+    "description": "Nathalie Arthaud annonce qu'elle ne se présentera pas à la prochaine élection présidentielle et appelle à soutenir un autre candidat de gauche radicale lors de la fête lyonnaise de Lutte ouvrière.",
+    "whatChanges": "Nathalie Arthaud abandonne sa candidature et cherche à rassembler la gauche radicale, modifiant ainsi la dynamique électorale en faveur d'un candidat unifié du même courant auprès des électeurs de Lutte ouvrière."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Ouvriers âgés en communes denses du bassin lyonnais",
-      "mechanism": "Nathalie Arthaud annonce sa candidature à la présidentielle à la fête lyonnaise de Lutte ouvrière, ciblant particulièrement les ouvriers âgés de 50 à 64 ans vivant dans des communes denses autour de Lyon, base sociologique clé du mouvement ouvrier.",
-      "reason": "Ce segment associe la catégorie d'âge 50-64 ans, la profession d'ouvrier et la localisation en zone dense géographiquement proche du système municipal Lyonnais, correspondant au cœur des militants potentiels de Lutte ouvrière en contexte lyonnais.",
+      "name": "Ouvriers de 35 à 64 ans en communes denses hors très grandes villes",
+      "mechanism": "Annonce de la quatrième candidature de Nathalie Arthaud touchant les ouvriers adultes des classes populaires, vivant en communes denses mais hors du système municipal très concentré de Paris/Lyon/Marseille, souvent sensibles aux enjeux sociaux portés par Lutte ouvrière.",
+      "reason": "Les ouvriers âgés adulte constituent une base centrale du vote traditionnel de Lutte ouvrière, souvent touchés par les discours sociaux et ouvriers du parti, vivant en densité urbaine qui facilite la réception du message sans recouvrir les très grandes métropoles.",
       "all": [
-        "age.50_64",
         "occupation.worker",
-        "geo.dense",
+        "geo.dense"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
         "municipal_system.paris_lyon_marseille"
       ],
-      "any": [],
-      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "mechanism",
-        "exposure",
-        "result"
+        "Réception de l'annonce",
+        "Perception du message ouvrier",
+        "Opinions sur l'extrême gauche"
       ],
-      "count": 3107,
-      "distinctCommunes": 48,
+      "count": 668,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -47,26 +51,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes employés ou ouvriers en couples avec enfants en région urbaine",
-      "mechanism": "La candidature de Nathalie Arthaud vise les jeunes actifs employés ou ouvriers, en couple avec enfants, en milieu urbain, reflet d'une base électorale jeune et ouvrière sensible aux thèmes de la fête lyonnaise et du message syndical.",
-      "reason": "Ce groupe combine l'âge 25-34 ans, les professions salarié employé ou ouvrier, foyer en couple avec enfants et résidence en zones denses, ce qui précisera l'impact dans les familles actives socialement mobilisées.",
+      "name": "Soutiens potentiels parmi les jeunes sans activité en communes urbaines denses",
+      "mechanism": "La candidature de Nathalie Arthaud à la présidentielle vise particulièrement les jeunes sans activité professionnelle, présents en milieu urbain dense, qui peuvent être sensibles aux propositions et discours de Lutte ouvrière en contexte de précarité.",
+      "reason": "Ce groupe rassemble les jeunes 18-24 ans sans activité professionnelle, souvent en situation d'étude ou de chômage, dans des zones urbaines denses où les idées contestataires circulent fortement, potentiellement mobilisables par Lutte ouvrière.",
       "all": [
-        "age.25_34",
-        "household.couple_with_children",
+        "cluster.young_without_activity",
         "geo.dense"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
+        "age.18_24"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "mechanism",
-        "exposure",
-        "result"
+        "Niveau de mobilisation",
+        "Soutien à la candidature Arthaud",
+        "Opinion sur lutte ouvrière"
       ],
-      "count": 3515,
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -78,29 +80,56 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes diplômés urbains masculins non en couple hors Lutte ouvrière",
-      "mechanism": "La campagne de Nathalie Arthaud cherche à distinguer son électorat de celui de Jean-Luc Mélenchon, ciblant une exclusion et polarisation vis-à-vis des jeunes diplômés urbains masculins sans attache familiale, qui sont potentiellement moins réceptifs au discours ouvrier porté à Lyon.",
-      "reason": "Ce segment vise les jeunes diplômés hommes, non en couple ni avec enfants, en communes denses, excluant explicitement les foyers en couple pour mieux isoler une catégorie démographiquement distincte souvent proche de Mélenchon.",
+      "name": "Ensemble des ouvriers de 35 à 49 ans en communes urbaines denses hors Paris-Lyon-Marseille",
+      "mechanism": "Les ouvriers de 35 à 49 ans vivant en communes urbaines denses hors systèmes municipaux très grands sont susceptibles d'entendre et être concernés par la quatrième candidature de Nathalie Arthaud à la Présidentielle, portée par Lutte ouvrière, un parti traditionnellement soutenu par la classe ouvrière.",
+      "reason": "segment adéquat par profession, tranche d'âge et géographie, couvrant plusieurs communes, taille adaptée",
       "all": [
-        "age.18_24",
-        "sex.male",
-        "education.bac_plus_3_4",
-        "geo.dense"
+        "occupation.worker",
+        "geo.dense",
+        "age.35_49"
       ],
       "any": [],
       "none": [
-        "household.couple_no_children",
-        "household.couple_with_children",
-        "household.single_parent"
+        "municipal_system.paris_lyon_marseille"
       ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "mechanism",
-        "exposure",
-        "result"
+        "intentions de vote",
+        "sensibilité au discours ouvrier"
       ],
-      "count": 239,
-      "distinctCommunes": 48,
+      "count": 339,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Nathalie Arthaud annonce sa quatrième candidature à la Présidentielle à la fête lyonnaise de Lutte ouvrière",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Employés et ouvriers de 50 à 64 ans en communes urbaines denses hors très grandes villes",
+      "mechanism": "Les salariés modestes âgés de 50 à 64 ans en communes urbaines denses hors Paris, Lyon et Marseille sont ciblés par la candidature de Nathalie Arthaud, qui vise les classes populaires et leurs inquiétudes économiques.",
+      "reason": "intersection ciblée pour resserrer sur des salariés modestes proches de la retraite, en milieu urbain dense hors grandes métropoles",
+      "all": [
+        "geo.dense",
+        "age.50_64"
+      ],
+      "any": [
+        "occupation.worker",
+        "occupation.employee"
+      ],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "attitudes envers Lutte ouvrière",
+        "intérêt pour la candidature"
+      ],
+      "count": 723,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -121,8 +150,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Ouvriers âgés en communes denses du bassin lyonnais",
-      "matchedCount": 3107,
+      "segmentName": "Ouvriers de 35 à 64 ans en communes denses hors très grandes villes",
+      "matchedCount": 668,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -153,17 +182,64 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Nathalie Arthaud se représente encore, ça montre sa ténacité mais je ne suis pas sûre que ça change grand-chose pour nous ici à Marseille.",
-        "Je connais Arthaud, même si elle a du courage, ce ciblage sur Mélenchon ne me parait pas utile, j'aime mieux l'idée d'une union ouvrière.",
-        "Arthaud qui revient, ça me laisse un peu indifférent, mais cette histoire d'union ouvrière à Paris me parle plus que les petits coups contre Mélenchon."
+        "Encore Nathalie Arthaud qui se présente, elle revient toujours, je ne sais pas si ça va vraiment changer quelque chose pour nous ouvriers, ça fait déjà longtemps qu'on n'a pas vu d'amélioration. Peu m'importe son annonce.",
+        "Je vois que Nathalie Arthaud se présente encore, ça fait partie du paysage, mais je ne suis pas sûr que ça change beaucoup, on reste sur nos positions. Si elle ne se présente pas et appelle à soutenir un autre, ça pourrait rassembler un peu plus la gauche radicale.",
+        "Nathalie Arthaud annonce qu'elle se présente encore ? Ça ne changera pas beaucoup mes choix, ça fait longtemps que je vote plutôt Le Pen ou Macron, elle est trop à gauche pour moi."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Soutiens potentiels parmi les jeunes sans activité en communes urbaines denses",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Arthaud, ça fait longtemps qu'elle se présente, mais je ne pense pas vraiment que ça change grand-chose, elle n'est pas dans le radar de beaucoup de jeunes comme moi dans le 20e.",
+        "Arthaud, je la connais de nom, mais franchement, sa candidature ne me touche pas trop. Si elle se retire pour soutenir un autre candidat qu'elle juge plus fort, ça m'intéresse un peu plus.",
+        "Je ne suis pas vraiment intéressée par Arthaud, et son annonce ne change rien pour moi. Si elle ne se présente pas et soutient un autre candidat, peut-être que ça me ferait regarder un peu plus à gauche."
       ]
     },
     "global_1": {
@@ -208,90 +284,43 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Quatre fois déjà ? Je ne comprends pas trop l'intérêt de persister autant, surtout qu'elle vise Mélenchon, ça ne me parle pas vraiment.",
-        "Encore une candidature de Nathalie Arthaud ? Je ne sais pas trop quoi penser, ça ne va pas changer grand-chose pour moi, je ne suis pas très attentive à ces luttes entre candidats à gauche.",
-        "Je connais Nathalie Arthaud, mais comme elle cible Mélenchon à nouveau, ça me fait un peu penser à une division qui affaiblit la gauche radicale. Ça ne va pas m'encourager à changer de choix, d'ailleurs."
+        "Franchement, je ne suis pas trop au fait de ces candidatures à gauche radicale, ça ne change pas grand-chose à ma manière de voir les choses.",
+        "Je ne suis pas vraiment intéressée par ces annonces de candidature à l’extrême gauche, ça m’éloigne un peu de la politique.",
+        "Ça ne me fait ni chaud ni froid que Nathalie Arthaud soit candidate ou pas, je soutiens plutôt Mélenchon et l’Union Populaire."
       ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains masculins non en couple hors Lutte ouvrière",
-      "matchedCount": 239,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Employés et ouvriers de 50 à 64 ans en communes urbaines denses hors très grandes villes",
+      "matchedCount": 723,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "right": {
           "toward": 0,
           "away": 1,
           "noClearChange": 47
         },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
         "far_right": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "J'apprécie qu'Arthaud défende les ouvriers, mais viser Mélenchon, ça ne changera pas grand-chose pour moi, je suis plus concentré sur mes conditions au travail.",
-        "Je connais peu Arthaud, sa candidature ne me parle pas vraiment, même avec sa critique de Mélenchon ou son appel à l'union ouvrière, je reste plutôt centré sur mes idées modérées.",
-        "Arthaud qui se présente, ça fait plaisir, c’est une voix pour les ouvriers comme moi. Si elle met Mélenchon dans son collimateur, ça me plaît, il faut qu'on défende nos intérêts clairement."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes employés ou ouvriers en couples avec enfants en région urbaine",
-      "matchedCount": 3515,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "abstention": {
           "toward": 1,
@@ -302,17 +331,62 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne connais pas bien Nathalie Arthaud, ça ne change pas vraiment mon avis ni ma façon de voter.",
-        "J'apprécie qu'Arthaud lance sa campagne en ciblant Mélenchon, mais ça ne va pas me faire changer d'avis. Je suis centriste mais ouverte à la gauche.",
-        "Je trouve que c’est bien qu’Arthaud parle d’union ouvrière, ça peut rassembler, même si je vote plutôt centre-gauche chez moi."
+        "Ça me fait toujours plaisir de voir Nathalie Arthaud continuer son combat, même si je doute que ça change grand-chose pour nous en usine.",
+        "Je ne suis pas vraiment surpris qu'Arthaud se représente, elle est tenace. Si elle se retire, ça pourrait faire bouger un peu à gauche radicale, mais je ne suis pas sûr que ça me concerne trop.",
+        "Je ne suis pas spécialement intéressée par la candidature d'Arthaud, ça ne change pas grand-chose à mes choix personnels."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Ensemble des ouvriers de 35 à 49 ans en communes urbaines denses hors Paris-Lyon-Marseille",
+      "matchedCount": 339,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas surprise qu'elle se représente, elle parle toujours pour défendre les ouvriers comme moi, ça me parle un peu.",
+        "Je ne suis pas très à fond dans la politique radicale, ça ne change pas grand-chose pour moi cette annonce.",
+        "C'est intéressant qu'elle se représente, ça montre qu'elle ne lâche rien pour les plus précaires, ça peut me motiver un peu."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:45.081Z",
-    "contentHash": "c57e0ac618bc4cd83dd4c3aa1dea88b05feb46087a79e0cc2df0fc30dca0a956"
+    "status": "automatic",
+    "contentHash": "aedeee7f7a98dfcdae53bae24ca1e1a142d4bf1f98355204fcc57cebf9b210e5"
   }
 }

@@ -4,39 +4,45 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "e0d88b1eb03441a0",
-  "computedAt": "2026-11-10T22:00:16.805Z",
+  "inputHash": "f10b6128b01523cd",
+  "eventInputHash": "e3c5831209df92bfb9bc20b8a8d350d8e8b14fa5cf0464524bc5b22f3f9e9630",
+  "computedAt": "2026-11-11T12:50:47.913Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Un appel à la grève et à manifester est lancé pour le 10 novembre à Montpellier dans l’éducation, l’enseignement supérieur et la recherche, mais limité aux enseignants seulement, excluant le personnel administratif et les chercheurs.",
-    "whatChanges": "La grève touche un public plus restreint, réduisant son impact et modérant la pression sur le gouvernement dans le secteur éducatif."
+    "description": "Les syndicats du secteur de l'éducation sont invités individuellement à Matignon pour des réunions de concertation, tandis que plusieurs collectifs syndicaux appellent à une manifestation nationale mais sans grève générale annoncée, ce qui modère la tension sociale dans l'éducation pendant la semaine.",
+    "whatChanges": "La convocation individuelle remplace une rencontre collective syndicale, et l'absence d'appel à une grève générale dans l'éducation réduit l'impact de la contestation pour les enseignants et les familles."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes sans activité professionnelle ni emploi dans les communes denses de Montpellier",
-      "mechanism": "Ce groupe rassemble les jeunes sans activité professionnelle, tels que étudiants ou chômeurs, vivant dans les communes denses de la métropole de Montpellier, potentiellement concernés par les mobilisations dans l'enseignement supérieur et la recherche.",
-      "reason": "Segment nouveau et plus resserré qui remplace ceux avec profession absente ou trop large",
+      "name": "Ouvriers de 35 à 64 ans en zones intermédiaires",
+      "mechanism": "La grève dans l'éducation et la tension sociale sont particulièrement ressenties par les ouvriers de 35 à 64 ans qui sont impactés par les conditions de travail et les réformes liées au secteur public dans les communes de densité intermédiaire.",
+      "reason": "Ce segment regroupe des ouvriers adultes d'âge moyen vivant dans des communes ni très denses ni très rurales, directement concernés par les mouvements sociaux dans l'éducation à cause de leur position professionnelle et âge.",
       "all": [
-        "cluster.young_without_activity",
-        "geo.dense",
-        "commune_size.1000_plus"
+        "occupation.worker",
+        "geo.intermediate"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.grievance_call_Montpellier",
-        "vote_intention"
+        "Opinion sur la grève dans l'éducation",
+        "Sentiment d'impact des réformes sociales",
+        "Soutien aux syndicats"
       ],
-      "count": 8453,
-      "distinctCommunes": 72,
+      "count": 304,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Syndicats à Matignon, grève dans l'éducation… Une nouvelle semaine qui s'annonce tendue sur le front social",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -45,31 +51,59 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes actifs dans l’éducation et secteurs liés à Montpellier (version élargie)",
-      "mechanism": "Ce groupe comprend les employés et ouvriers salariés modestes dans les secteurs liés à l’éducation et la recherche dans la zone de Montpellier, susceptibles d'être directement mobilisés par l'appel à la grève et aux manifestations du 10 novembre.",
-      "reason": "Les salariés modestes comprennent de nombreux personnels de l’éducation et de services liés, qui peuvent être appelés à participer à la grève; en ciblant la zone de Montpellier, ce segment se concentre sur le lieu précis de l’événement.",
+      "name": "Jeunes familles salariées en communes denses",
+      "mechanism": "Les jeunes familles actives salariées résidant en communes denses sont concernées par la grève et la tension sociale, notamment avec les impacts sur les enfants scolarisés et la gestion de la vie familiale pendant les mouvements sociaux.",
+      "reason": "Ce segment cible les couples avec enfants de moins de 50 ans, salariés, vivant en commune dense, directement touchés par les perturbations dans l’éducation et le climat social tendu.",
       "all": [
-        "cluster.modest_wage_earner",
-        "commune_size.1000_plus",
+        "household.couple_with_children",
+        "geo.dense",
         "occupation.employee"
       ],
       "any": [
-        "geo.dense",
-        "geo.intermediate"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_greve_call",
-        "participation_intent"
+        "Impacts sur la vie familiale",
+        "Gestion des perturbations scolaires",
+        "Opinion sur le mouvement social"
       ],
-      "count": 19549,
-      "distinctCommunes": 96,
+      "count": 6184,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [
-        "Lacune « employment_sector_education_research » ignorée : cet attribut existe déjà dans les tags",
-        "Segment initial rejeté (Segment trop large : 34085 profils (maximum 28752, soit 25 % de l’échantillon)) ; repli automatique : tag « occupation.employee » ajouté pour resserrer le public"
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
       ],
+      "counterfactual": {
+        "intervention": "Syndicats à Matignon, grève dans l'éducation… Une nouvelle semaine qui s'annonce tendue sur le front social",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Retraités ruraux sans diplôme",
+      "mechanism": "Les retraités résidant en communes rurales et sans diplôme sont concernés par la tension sociale car ils peuvent ressentir l'impact indirect des mouvements sociaux sur leur environnement local et être sensibles aux discours sur les conditions de travail des actifs.",
+      "reason": "Ce groupe combine la retraite, vie en zone rurale et faible niveau de diplôme, un segment spécifique touché par les évolutions sociales dans leur commune et pouvant être une base sociale à mobiliser ou inquiète face aux tensions.",
+      "all": [
+        "occupation.retired",
+        "cluster.rural_retiree",
+        "education.no_diploma"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception des mouvements sociaux",
+        "Impact local des grèves",
+        "Opinion sur les politiques sociales"
+      ],
+      "count": 277,
+      "distinctCommunes": 65,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
       "counterfactual": {
         "intervention": "Syndicats à Matignon, grève dans l'éducation… Une nouvelle semaine qui s'annonce tendue sur le front social",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -86,108 +120,23 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Salariés modestes actifs dans l’éducation et secteurs liés à Montpellier (version élargie)",
-      "matchedCount": 19549,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, une grève dans l'éducation à Montpellier, ça ne change rien pour moi ici à Laon. Ce n'est pas vraiment mon quotidien, alors ça ne me touche pas vraiment.",
-        "Une grève dans l’éducation, ça me parle un peu plus, même à Paris. Si ça dure, je comprends les enseignants un peu fatigués. Mais ça ne me fera pas changer d’avis pour autant.",
-        "Grève dans l’éducation ? Je vois ça à la télé mais ça me touche peu. Je compatis mais ça n'influence pas tellement mon vote, je reste plutôt pragmatique."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.003044567717143167,
-          "lo": 0.0017897032294018616,
-          "hi": 0.004317513185780857,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0023417904450980472,
-          "lo": 0.0012572524728461365,
-          "hi": 0.0033937756814390128,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0029001749065357737,
-          "lo": -0.0036844338433781147,
-          "hi": -0.0020990573503018653,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0016566583033507058,
-          "lo": -0.0025348426466519666,
-          "hi": -0.000796894040675471,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0027596810449809443,
-          "lo": -0.003797259203376032,
-          "hi": -0.001697485101750477,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0019301560926262035,
-          "lo": 0.0003489066136361807,
-          "hi": 0.0031781123329358246,
-          "stable": false
-        }
-      }
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes sans activité professionnelle ni emploi dans les communes denses de Montpellier",
-      "matchedCount": 8453,
+      "segmentName": "Ouvriers de 35 à 64 ans en zones intermédiaires",
+      "matchedCount": 304,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "center": {
           "toward": 0,
@@ -201,60 +150,22 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 3,
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends la colère des enseignants qui lancent cette grève, ça impactera sûrement le service public, mais ça ne change pas vraiment mon vote.",
-        "Une grève dans l'éducation ? Ça ne me touche pas trop directement, et je suis plutôt préoccupée par d'autres choses. Je ne pense pas que cela modifie mon choix de vote.",
-        "Cette grève montre que les enseignants ne sont pas entendus, ça me touche en tant que mère, mais ça ne me fait pas changer ma volonté de voter."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0035988727116881645,
-          "lo": 0.002464792950986648,
-          "hi": 0.004954862504635207,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0032070788912636275,
-          "lo": 0.002200019233577117,
-          "hi": 0.004546014798711555,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0030023588427579534,
-          "lo": -0.004191655287012667,
-          "hi": -0.0021108533972277904,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0020423253368372645,
-          "lo": -0.00299284804044323,
-          "hi": -0.0012284315617293957,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.00304049474645757,
-          "lo": -0.0043650911399417455,
-          "hi": -0.0019450365819863782,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0012792273231009964,
-          "lo": 0.00011473722504116064,
-          "hi": 0.003171672171582919,
-          "stable": false
-        }
-      }
+        "Je vois beaucoup de tension dans les médias mais ça ne change pas vraiment ce que je pense : je suis surtout préoccupée par mon travail et ma famille.",
+        "Une grève dans l'éducation, ça pourrait me déranger dans mon quotidien, mais sans grève générale je suis moins inquiet. Ça renforce mon choix habituel.",
+        "Les syndicats à Matignon, ça fait toujours du bruit. Une grève dans l'éducation ? Pas sûr que ça change mon vote, je ne suis pas directement concerné."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -265,14 +176,14 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "center": {
           "toward": 0,
@@ -285,68 +196,122 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
+          "toward": 5,
           "away": 2,
-          "noClearChange": 94
+          "noClearChange": 89
         },
         "abstention": {
           "toward": 1,
-          "away": 0,
-          "noClearChange": 95
+          "away": 1,
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que les enseignants soient inquiets, mais ça ne change rien pour moi, car je ne suis pas dans l'éducation et ça ne touche pas vraiment ma vie quotidienne.",
-        "Ces grèves dans l'éducation ? Ça m'embête un peu, mais comme je ne suis plus concerné directement, ça ne va pas changer mon vote, même si je comprends la tension sociale.",
-        "Une grève dans l’éducation ? Je ne travaille pas là-dedans, donc je ne m'y attarde pas trop, c’est un problème qui ne me touche pas directement."
-      ],
-      "altEffect": {
+        "Des grèves dans l'éducation, ça perturbe tout alors qu'on essaie juste de faire tourner la mairie normalement. Ça ne va pas faciliter les choses, même si ce n'est pas mon domaine direct.",
+        "Je vois ces grèves comme une nuisance. J'espère que ça ne dure pas trop, parce que ça complique la vie de tout le monde, surtout quand on est retraité et qu'on aime la tranquillité.",
+        "Une grève dans l'éducation, ça me parle un peu, mais tant que ça ne touche pas trop mon boulot direct, ça ne change pas trop mon avis sur la politique."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes familles salariées en communes denses",
+      "matchedCount": 6184,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.002169755709824472,
-          "lo": 0.0015717463288531079,
-          "hi": 0.0029538057766917408,
-          "stable": false
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "left": {
-          "mean": 0.0021058684295785623,
-          "lo": 0.0014727828702663676,
-          "hi": 0.0028846690462536136,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.0018687822982976232,
-          "lo": -0.0024115231664448215,
-          "hi": -0.0014328890805717128,
-          "stable": false
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
         },
         "right": {
-          "mean": -0.0014580717598970973,
-          "lo": -0.0019567365198432745,
-          "hi": -0.0009641812392823492,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.0023284941991131643,
-          "lo": -0.0030983739918883286,
-          "hi": -0.0015617532218107448,
-          "stable": false
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
         },
         "abstention": {
-          "mean": 0.0013797241179048442,
-          "lo": 0.000749348849801728,
-          "hi": 0.0019874168201595493,
-          "stable": false
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, cette nouvelle sur la tension sociale ne me surprend pas, mais ça me stresse un peu. Entre le boulot et la famille, j'ai pas besoin de plus de conflit, surtout que ça ne changerait pas grand-chose pour moi.",
+        "Je vois qu'ils sont encore en train de faire du bruit dans l'éducation. Moi, je préfère quand ça reste calme, ça soulage un peu mon quotidien déjà bien rempli.",
+        "Une nouvelle semaine tendue dans l'éducation, ça me rend un peu anxieuse, mais honnêtement ça ne changera pas mon vote, je fais ce que je peux pour que tout roule au boulot."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités ruraux sans diplôme",
+      "matchedCount": 277,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je vois souvent ces histoires de grèves à la télé, ça ne m'intéresse pas tellement, ça ne change pas vraiment ma vie au village.",
+        "Ces histoires de grèves dans l'éducation, ça me fatigue un peu. Si ça se passe plus calmement, ce serait peut-être mieux pour tous, je suis un peu préoccupé par le désordre sur la route et les écoles fermées.",
+        "Je suis habituée à ce genre de nouvelles, mais elles ne me touchent pas directement. J'espère juste que ça ne va pas trop perturber la vie du village."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:42.069Z",
-    "contentHash": "3ac6dd2cbc5ce34f2279df38606ad0bfd317c5feddaa26856ae53349341415cc"
+    "status": "automatic",
+    "contentHash": "493df69828cb6461fe6f439fa1434abe8f70feb02832dc3f37122a7a980d05f4"
   }
 }

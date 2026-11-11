@@ -4,37 +4,40 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "bdb27f9d5995706d",
-  "computedAt": "2026-11-09T20:41:25.235Z",
+  "inputHash": "81c3d15bd9c31278",
+  "eventInputHash": "5696ad4440414bdc08c2e4d5e62c87a4bf331781f38ec832b85ffd259c8d9b01",
+  "computedAt": "2026-11-11T13:16:18.447Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Bruno Retailleau dénonce l'amateurisme supposé de Jordan Bardella et du RN tout en appelant ses électeurs à ne pas soutenir Bardella mais à s'abstenir au premier tour.",
-    "whatChanges": "Retailleau modifie sa stratégie en incitant ses électeurs à l'abstention plutôt qu'à soutenir Bardella, ce qui pourrait réduire les votes en faveur du RN en faveur d'une démobilisation."
+    "description": "Bruno Retailleau critique sévèrement la stratégie de Jordan Bardella et du RN, mais refuse d'appeler explicitement leurs électeurs à le soutenir, se limitant à une invitation à un débat de fond entre la droite et l'extrême droite.",
+    "whatChanges": "Retailleau critique toujours l'amateurisme de Bardella mais ne cherche pas à capter directement l'électorat du RN, ce qui limite l'impact sur les électeurs frontistes et maintient une distance politique entre la droite traditionnelle et l'extrême droite."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Salariés modestes en communes intermédiaires ou rurales",
-      "mechanism": "L’appel de Bruno Retailleau aux électeurs du RN vise aussi les salariés modestes, notamment employés et ouvriers, résidant dans des communes à densité intermédiaire ou rurale où le vote RN est traditionnellement fort.",
-      "reason": "Ce segment rassemble les salariés populaires, socialement vulnérables, vivant hors des grandes villes et susceptibles d’être interpellés par un soutien politique ciblé au RN.",
+      "name": "Électeurs salariés modestes de communes moyennes et denses",
+      "mechanism": "Bruno Retailleau appelle les électeurs du Rassemblement National à le soutenir, ciblant particulièrement ceux issus des salariés modestes dans des communes moyennes et denses, où l'influence du RN est notable et où ces travailleurs sont potentiellement sensibles aux critiques du RN.",
+      "reason": "Ce segment regroupe les salariés modestes qui constituent une part importante de l'électorat populaire du RN dans des zones urbaines denses ou intermédiaires, susceptibles d'entendre l'appel de Retailleau et d'être concernés par la dynamique politique autour du RN.",
       "all": [
         "occupation.employee"
       ],
       "any": [
-        "geo.intermediate",
-        "geo.rural"
+        "geo.dense",
+        "geo.intermediate"
       ],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 947,
-      "distinctCommunes": 95,
+      "measurementNeeds": [
+        "Attitude envers Bruno Retailleau",
+        "Perception du RN et de Jordan Bardella",
+        "Disposition à soutenir Bruno Retailleau"
+      ],
+      "count": 19549,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -45,20 +48,55 @@
     },
     {
       "id": "segment_2",
-      "name": "Retraités ruraux sans diplôme relevant du RN",
-      "mechanism": "Les retraités ruraux peu diplômés, souvent électorat de base du RN, sont nommément concernés par la dénonciation de Bardella et l’appel au soutien de Retailleau, notamment en zones rurales éloignées des grandes agglomérations.",
-      "reason": "Ce public cumule condition sociale et lieu de résidence qui expliquent un positionnement politique cohérent avec le message adressé.",
+      "name": "Jeunes familles vivant en couple dans les villes",
+      "mechanism": "L'appel de Bruno Retailleau peut viser les jeunes familles vivant en couple avec enfants dans des communes denses, puisque ce public est au cœur des préoccupations sociales et électorales, notamment en matière de stabilité familiale et sécurité, questions fréquemment abordées par le RN et Retailleau.",
+      "reason": "Les jeunes familles urbaines en couple sont un groupe électoral important, directement concerné par les débats sur la sécurité et la société qui traversent la campagne présidentielle, et utilisateurs potentiels de la voix appelant à soutenir Retailleau plutôt que le RN.",
       "all": [
-        "occupation.retired",
-        "geo.rural",
-        "education.no_diploma"
+        "household.couple_with_children",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 277,
-      "distinctCommunes": 65,
+      "measurementNeeds": [
+        "Sensibilité aux discours politiques sécuritaires",
+        "Tendance de vote chez les jeunes familles",
+        "Réception de l'appel de Bruno Retailleau"
+      ],
+      "count": 25109,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Bruno Retailleau dénonce « l’amateurisme » de Jordan Bardella et du RN et appelle leurs électeurs à le soutenir",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Couples de retraités en commune rurale et intermédiaire",
+      "mechanism": "Les couples de retraités habitant les communes rurales ou intermédiaires constituent un segment qui peut être sensible à l'appel de Bruno Retailleau contre le RN, car ils sont souvent préoccupés par la stabilité sociale et la gestion politique locale que Retailleau défend face à l'amateurisme dénoncé du RN.",
+      "reason": "Les retraités en couple dans des communes plus calmes constituent une base électorale stable et localement influente, concernés par la direction politique du pays et susceptibles d'entendre et de réagir à cet appel spécifique.",
+      "all": [
+        "cluster.retired_couple"
+      ],
+      "any": [
+        "geo.intermediate",
+        "geo.rural"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Confiance en Bruno Retailleau",
+        "Sensibilité aux critiques du RN",
+        "Intention de vote parmi les retraités"
+      ],
+      "count": 1051,
+      "distinctCommunes": 98,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -77,57 +115,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Salariés modestes en communes intermédiaires ou rurales",
-      "matchedCount": 947,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 4,
-          "away": 9,
-          "noClearChange": 35
-        },
-        "abstention": {
-          "toward": 8,
-          "away": 0,
-          "noClearChange": 40
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas trop intéressée par ces jeux de politiciens, ça ne change pas vraiment mon vote, je choisis selon ce qui me semble le plus stable et sûr.",
-        "Si Retailleau critique Bardella mais appelle quand même à soutenir le RN, ça me conforte un peu dans le vote RN, ça montre qu'ils restent proches. Sinon, s'il suggère d'examiner toutes les options, ça me laisserait un peu plus d'hésitation dans mon vote.",
-        "Je ne comprends pas trop ces tensions dans la droite, ça me laisse plutôt indifférente, je vote surtout selon mes convictions plutôt que leurs chamailleries."
-      ]
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Retraités ruraux sans diplôme relevant du RN",
-      "matchedCount": 277,
+      "segmentName": "Jeunes familles vivant en couple dans les villes",
+      "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -153,22 +144,116 @@
           "noClearChange": 48
         },
         "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
           "toward": 2,
           "away": 0,
           "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça un peu surprenant, Retailleau qui critique Bardella, ce n'est pas une évidence pour moi, ça ne va pas me faire changer d'avis.",
-        "Retailleau qui critique Bardella, ça me laisse un peu perplexe, mais comme c'est pas mon camp, je ne vais pas changer mes habitudes de vote.",
-        "Je ne suis pas trop sûre de savoir quoi penser de ces disputes politiques, ça ne change pas vraiment ma manière de voter."
+        "Je trouve étrange que Retailleau s'adresse aux électeurs du RN, ce n'est pas mon monde politique et ça ne m'influence pas du tout.",
+        "Retailleau qui critique Bardella, ça m'agace un peu, mais je ne suis pas concerné directement, ça ne change rien à mes intentions de vote.",
+        "Retailleau qui appelle à soutenir le RN ? Ce n'est pas crédible pour moi, je resterai fidèle à la gauche et au centre."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Électeurs salariés modestes de communes moyennes et denses",
+      "matchedCount": 19549,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ce genre de polémique entre gens de droite, ça me dépasse un peu et ne changera rien à mon vote.",
+        "Retailleau qui appelle les électeurs du RN à le soutenir ? Je suis pas sûr que ça me donne plus envie de voter pour lui, je suis plus proche du RN moi.",
+        "Retailleau qui critique Bardella et appelle à soutenir le RN, ça me fait lever un sourcil. Pas sûr que ça rapproche la droite et l'extrême droite comme il pense."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Couples de retraités en commune rurale et intermédiaire",
+      "matchedCount": 1051,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 6,
+          "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je vois ça un peu comme une querelle de chefs qui ne changera rien à ma façon de voter, je pense rester fidèle à mes habitudes.",
+        "Cette critique de Retailleau ne va pas me faire changer d'avis, je ne suis pas une grande fan de ces jeux d'alliance entre droite et extrême droite.",
+        "Je suis plutôt méfiante envers ce genre de chamaillerie politique, ça ne me motive pas à changer mon vote, ça ne me concerne pas directement."
       ]
     },
     "global_1": {
@@ -190,19 +275,19 @@
           "noClearChange": 96
         },
         "center": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 94
         },
         "right": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 94
         },
         "far_right": {
-          "toward": 2,
-          "away": 4,
-          "noClearChange": 90
+          "toward": 1,
+          "away": 9,
+          "noClearChange": 86
         },
         "abstention": {
           "toward": 8,
@@ -213,17 +298,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, je ne suis pas très au courant de ces querelles entre politiques. Que Bruno Retailleau critique Bardella, ça ne change rien pour moi.",
-        "Retailleau qui appelle les électeurs du RN à le soutenir ? Je trouve ça un peu surprenant et ça ne me donne pas plus envie de suivre ces partis.",
-        "Cet appel de Retailleau aux électeurs du RN me semble risqué, mais cela montre un peu de solidarité à droite. Je reste prudente mais ça ne me fait pas changer d'avis."
+        "Je ne suis pas très au fait des chamailleries entre politiques, surtout quand ça concerne des figures un peu trop à droite pour moi. Ça ne va pas me faire changer d'avis.",
+        "Franchement, les questions de stratégie entre la droite et l’extrême droite ne me passionnent pas trop. Je choisis surtout celui qui me semble le plus crédible pour l'emploi et mon futur.",
+        "Retailleau critiquant Bardella ? Je trouve ça intéressant, ça montre qu'il y a des divisions qui pourraient profiter à des options modérées. J'aurais tendance à me sentir un peu moins proche du RN à cause de ça."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:30.909Z",
-    "contentHash": "836fa8ddcda401ba1b61cd9f89ae0d321abca0a9bf1d4aa60b5f9a12cfc8a8d1"
+    "status": "automatic",
+    "contentHash": "7f0fd098f5c628cfe30ee6ebcaa9837256d539b2256d0d556f7fb50d79031fb8"
   }
 }

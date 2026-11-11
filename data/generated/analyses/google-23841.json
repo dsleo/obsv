@@ -4,39 +4,44 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "6301fffb8547d2b4",
-  "computedAt": "2026-11-10T22:05:44.038Z",
+  "inputHash": "42d1e5c7fb3734bc",
+  "eventInputHash": "ba83b3657644be89b59e02c9e766b1a0dd609322aa27f1fbe16a01444db1b666",
+  "computedAt": "2026-11-11T13:02:19.079Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le mardi 13 octobre 2026, l'UFSE-CGT annonce une journée de mobilisation symbolique sans appel à la grève, privilégiant des actions de sensibilisation dans les établissements scolaires et espaces publics avec la jeunesse.",
-    "whatChanges": "L'UFSE-CGT opte pour une mobilisation moins disruptive en ne lançant pas une grève mais des actions symboliques, ce qui modère l'impact attendu sur les électeurs liés à l'éducation et la jeunesse."
+    "description": "Le mardi 13 octobre, plusieurs syndicats enseignants appellent à une grève partielle ciblée uniquement sur les écoles des zones rurales, mettant en avant les difficultés spécifiques rencontrées par ces établissements.",
+    "whatChanges": "La grève concerne uniquement les écoles rurales au lieu de l’ensemble de l’école publique, ce qui mobilise davantage l’attention sur les enjeux ruraux et peut diviser l’opinion parmi les électeurs urbains et ruraux."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes engagés en milieu urbain dense",
-      "mechanism": "Ce segment rassemble les jeunes de moins de 25 ans, souvent étudiants ou sans activité professionnelle, vivant dans des communes denses et urbaines. Ils sont directement visés par l'appel à la mobilisation du mardi 13 octobre 2026 avec et aux côtés de la jeunesse pour défendre l'Ecole publique et la jeunesse dans la rue.",
-      "reason": "Les jeunes sans activité professionnelle sont explicitement nommés dans l'appel comme partenaires de la mobilisation, et leur résidence en milieu urbain dense correspond aux lieux principaux de rassemblement et manifestation.",
+      "name": "Jeunes familles avec enfants dans des communes denses",
+      "mechanism": "Ce segment rassemble les jeunes familles en couple avec enfants vivant dans des communes denses, directement concernées par la grève pour l'école publique et la jeunesse, car elles sont touchées par les enjeux éducatifs et les conditions d'accueil et d'enseignement dans ces zones urbanisées.",
+      "reason": "Les jeunes familles sont souvent mobilisées pour des questions liées à l'éducation de leurs enfants, notamment dans les zones urbaines où la densité scolaire est forte et les revendications pour l'école publique fréquentes.",
       "all": [
-        "age.18_24",
-        "geo.dense",
-        "occupation.other_inactive"
+        "household.couple_with_children",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_campaign",
-        "political_attitudes"
+        "Intérêt pour la défense de l'école publique",
+        "Impact des conditions scolaires sur la mobilisation"
       ],
-      "count": 8453,
+      "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Mardi 13 octobre : en grève pour l'Ecole publique et la jeunesse !",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -45,22 +50,20 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes parents en couples avec enfants en milieu urbain",
-      "mechanism": "Ce segment concerne les salariés employés ou ouvriers, bien souvent en couple avec enfants, vivant dans des communes urbaines denses. Ils sont concernés par la défense de l'école publique et la jeunesse car ils ont un intérêt direct à la qualité et au financement de l'éducation pour leurs enfants, et forment une base sociale importante de la mobilisation interprofessionnelle du 13 octobre.",
-      "reason": "La mobilisation pour l'école publique vise notamment les familles populaires soucieuses de l'avenir éducatif de leurs enfants, souvent salariées modestes en milieu urbain où se concentrent les protestations.",
+      "name": "Jeunes diplômés urbains engagés pour l'école",
+      "mechanism": "Ce groupe comprend les jeunes adultes de moins de 35 ans, diplômés au moins bac+3, vivant en commune dense, susceptibles de soutenir la grève pour l'école publique et la jeunesse en raison de leur proximité avec les milieux éducatifs et leur sensibilité aux enjeux éducatifs et sociaux.",
+      "reason": "Les jeunes diplômés urbains forment un public sensibilisé aux questions éducatives et peuvent être acteurs ou soutiens des mouvements en faveur de l'école publique, notamment dans les milieux universitaires et professionnels urbains.",
       "all": [
-        "household.couple_with_children",
-        "cluster.modest_wage_earner",
-        "geo.dense"
+        "cluster.young_urban_graduate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_campaign",
-        "policy_opinion"
+        "Soutien à la grève éducative",
+        "Attitude envers les réformes scolaires"
       ],
-      "count": 14761,
+      "count": 11394,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -72,11 +75,10 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes familles monoparentales féminines en milieu urbain",
-      "mechanism": "Ce segment cible les femmes jeunes en famille monoparentale vivant dans des communes urbaines denses, qui sont concernées par la défense de l'école publique et la jeunesse en raison de leur rôle parentale direct souvent en conditions précaires, mobilisées avec et aux côtés de la jeunesse le 13 octobre 2026.",
-      "reason": "Les mères seules, souvent jeunes et en milieu urbain, sont un public vulnérable et mobilisable autour des enjeux éducatifs et sociaux mis en avant dans cet appel à la grève.",
+      "name": "Parents isolés en commune dense avec enfants en âge scolaire",
+      "mechanism": "Ce segment cible les parents isolés vivant en commune dense avec enfants, particulièrement concernés par la grève pour l'école publique et la jeunesse par leur situation familiale et leur intérêt pour les services éducatifs publics.",
+      "reason": "Les familles monoparentales en milieu urbain peuvent être très concernées par les conditions d'accueil scolaire et les revendications liées à l'école publique, animées par la protection de leurs enfants.",
       "all": [
-        "sex.female",
         "household.single_parent",
         "geo.dense"
       ],
@@ -87,10 +89,10 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_campaign",
-        "socioeconomic_status"
+        "Mobilisation liée à la parentalité",
+        "Attitude envers l'école publique"
       ],
-      "count": 4091,
+      "count": 5004,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -112,8 +114,102 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes parents en couples avec enfants en milieu urbain",
-      "matchedCount": 14761,
+      "segmentName": "Jeunes diplômés urbains engagés pour l'école",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve important de soutenir l'école publique, surtout à Paris où les enjeux éducatifs sont déjà lourds, mais cette grève ne va sans doute pas changer grand-chose à mon vote.",
+        "Une grève pour défendre l'école publique ? Ce serait bien si elle touchait aussi ma ville, parce qu'à Dunkerque on voit bien que tout ne va pas bien dans l'éducation.",
+        "À Marseille, je comprends que la défense de l'école publique concerne tout le monde, même si je ne suis pas sûre que ça me fasse changer d'avis pour la présidentielle."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes familles avec enfants dans des communes denses",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "La grève pour l’école publique, ça me parle un peu, mais honnêtement, c’est pas ma priorité et je vois pas trop ce que ça va changer ici à Marseille.",
+        "Une grève pour l'école publique, c’est important, surtout quand on a des enfants ; cela montre qu’il faut vraiment soutenir les enseignants et améliorer les conditions d'apprentissage.",
+        "Une grève pour l'école publique ? Pas que ça change grand-chose pour moi, j’ai pas trop le temps d’y penser, et en ville, c’est souvent juste une histoire de petits trucs entre syndicats, ça me paraît lointain."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Parents isolés en commune dense avec enfants en âge scolaire",
+      "matchedCount": 5004,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -130,8 +226,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 46
         },
         "right": {
           "toward": 0,
@@ -140,60 +236,22 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis plutôt favorable à la défense de l'école publique, c'est important pour mes enfants, donc cette grève me parle un peu, même si ça complique parfois la vie.",
-        "Je ne suis pas trop du genre à aller en manif, mais défendre l'école, c'est important. Une journée sans grève, plus symbolique, ça m'agace moins.",
-        "La lutte pour l'école publique est importante, surtout avec des enfants en âge scolaire. Je soutiens ce genre de mobilisation, même si je ne sors pas forcément dans la rue."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.006035189569611392,
-          "lo": 0.004963785416837064,
-          "hi": 0.0070490618081919575,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.004209448256738759,
-          "lo": 0.003252379685820424,
-          "hi": 0.005227435710545565,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.004576685876270996,
-          "lo": -0.005432385010721917,
-          "hi": -0.0037442553284829706,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0023602481118568924,
-          "lo": -0.00282112041012959,
-          "hi": -0.0019031072928793822,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.004506488861167596,
-          "lo": -0.005552648982111913,
-          "hi": -0.0032575330368056796,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.001198785022945341,
-          "lo": -0.00004079270030762106,
-          "hi": 0.0025519319847675456,
-          "stable": false
-        }
-      }
+        "Cette grève pour l'école publique me paraît importante car l'éducation est un enjeu fondamental, même à Paris où les problèmes scolaires sont aussi présents.",
+        "Une grève pour l’école publique, surtout si elle concerne les zones rurales, ça ne me touche pas directement ici à Dunkerque. Je suis un peu sceptique sur l’impact pour nous.",
+        "En tant qu'actrice culturelle à Paris, je soutiens les enseignants et la jeunesse, mais cette grève ne change pas vraiment mon intention de vote."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -204,258 +262,48 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 94
+        },
+        "abstention": {
           "toward": 2,
           "away": 0,
           "noClearChange": 94
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 93
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que certains veulent défendre l'école publique, mais arrêtons de tout bloquer pour ça, ça perturbe la vie normale et ne m'enthousiasme pas vraiment.",
-        "Une journée de grève, ça risque de me déranger dans mes activités, mais je comprends que la jeunesse ait envie d'être entendue. J'espère que ça ne crée pas trop de tensions en ville.",
-        "Une grève pour l'école publique, je peux comprendre, ça touche à l'avenir des jeunes. Ça me donne un peu plus envie de soutenir les candidats de gauche qui défendent ces causes."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0025516455337032894,
-          "lo": 0.001758480641873169,
-          "hi": 0.0034938193582587456,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0010618310794898772,
-          "lo": 0.0003615654100318796,
-          "hi": 0.0017892392582047935,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.003335943419258707,
-          "lo": -0.003989568272062076,
-          "hi": -0.0026631334455984508,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.002063505105876346,
-          "lo": -0.0024311088397793693,
-          "hi": -0.001670295371168054,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.002316281884003039,
-          "lo": -0.00325640511419488,
-          "hi": -0.0013147915370018658,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.004102253795944931,
-          "lo": 0.003037766161205944,
-          "hi": 0.005326736123286009,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes engagés en milieu urbain dense",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 6,
-          "away": 0,
-          "noClearChange": 42
-        },
-        "left": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        },
-        "center": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 1,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne me sens pas concernée par cette grève, ça ne changera rien à ma façon de voir les choses ou à mon vote.",
-        "En tant que jeune engagé et concerné par l'éducation, la grève pour l'école publique me parle et me donne un peu plus envie de soutenir la gauche radicale.",
-        "Je trouve cette grève importante, ça montre qu'on se bat pour la jeunesse et l'école, ça me donne un peu plus d'espoir pour la gauche."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.005561310356400503,
-          "lo": 0.003713494257875836,
-          "hi": 0.007266396100591107,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.003393567922291022,
-          "lo": 0.0016552919022836312,
-          "hi": 0.005177306061321632,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.004114377849776511,
-          "lo": -0.005174070627583331,
-          "hi": -0.003134116940739655,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.002106359422640109,
-          "lo": -0.0028127106673004553,
-          "hi": -0.0014839329864644816,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0033868607762933055,
-          "lo": -0.004874610251769951,
-          "hi": -0.0019854538506262026,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0006527197700183946,
-          "lo": -0.0015834922462061793,
-          "hi": 0.003166185378577137,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes familles monoparentales féminines en milieu urbain",
-      "matchedCount": 4091,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends le souci pour l'école publique, mais une journée de grève risque de compliquer le quotidien sans grande efficacité à court terme. Je préfère voir des actions moins disruptives.",
-        "La mobilisation pour l'école, c'est bien beau, mais une grève me dérange, surtout que je ne travaille pas. Je trouve plus utile une sensibilisation sans perturber les familles.",
-        "Soutenir la jeunesse et l'école publique me parle, même si la grève n'est pas évidente à vivre. J'apprécie l'idée d'actions de sensibilisation plus constructives."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.005008627108345365,
-          "lo": 0.004124631575192251,
-          "hi": 0.005919800699931325,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0023982865256447976,
-          "lo": 0.0013771477663230187,
-          "hi": 0.0032092937069226244,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0041748775109384266,
-          "lo": -0.004833585038458321,
-          "hi": -0.00352237041515599,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0014565061683320163,
-          "lo": -0.0017997747855921823,
-          "hi": -0.0011610824742268049,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.004219270461675751,
-          "lo": -0.005200215516769102,
-          "hi": -0.003160451965357261,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0024437405069560234,
-          "lo": 0.0013551401076557876,
-          "hi": 0.0036156742395895922,
-          "stable": false
-        }
-      }
+        "Cette grève me parle, car l'école publique en milieu rural a vraiment besoin d'attention et de soutien. J'espère que ça fera bouger les choses pour nos enfants.",
+        "Une grève pour l'école, ça ne me touche pas trop, surtout si c’est localisé ailleurs que chez nous. Je ne vois pas pourquoi ça changerait mon vote.",
+        "Une journée de grève pour l'école publique, c’est un signe que la jeunesse est importante. Même si je suis pas directement concerné, ça m’intéresse un peu."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:36.567Z",
-    "contentHash": "38dcd6c499747ed35c168689103b9faa48945d16cc26b54425b42bff2f81d224"
+    "status": "automatic",
+    "contentHash": "12306bf9697dbe52b33b9c994773445d96475c16b855ab0164e6d5b0a762dffa"
   }
 }

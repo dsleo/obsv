@@ -4,37 +4,38 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "b1d2da30f503b966",
-  "computedAt": "2026-11-10T22:01:42.733Z",
+  "inputHash": "7069dd0e9dcfaa58",
+  "eventInputHash": "9f2eceb76747c2f7af95f1a0415045bf97768bb83cc2a9ec39ee72630d99dd23",
+  "computedAt": "2026-11-11T13:18:03.638Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Manifestations du 7 novembre : environ 400.000 personnes ont défilé en France, avec une présence notable des gilets jaunes dans plusieurs grandes villes, dont Paris où le cortège a été particulièrement dense Place de la Nation ; malgré quelques tensions ponctuelles, la plupart des manifestations sont restées pacifiques.",
-    "whatChanges": "L'ampleur de la mobilisation est plus importante, ce qui renforce la perception de la contestation auprès des électeurs sympathisants des gilets jaunes et accroît la pression politique."
+    "description": "Le 7 novembre, entre 400.000 et 500.000 personnes ont défilé en France, marquant une mobilisation massive et en forte hausse par rapport aux précédentes manifestations.",
+    "whatChanges": "L'ampleur de la mobilisation est nettement plus forte, indiquant un regain de soutien aux revendications des manifestants, ce qui pourrait accroître la pression sur le gouvernement auprès des électeurs concernés."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes sans activité de 18 à 24 ans en communes très peuplées (Paris, Lyon, Marseille)",
-      "mechanism": "Ce segment correspond aux jeunes sans emploi ou en formation dans les grandes villes, un groupe souvent mobilisé pour soutenir ou participer aux manifestations urbaines, notamment celles des Gilets jaunes, sensibles aux enjeux de précarité sociale et politique urbaine.",
-      "reason": "Croisement des tags d'âge, cluster jeunes sans activité, et occupants de communes des grands systèmes municipaux Paris/Lyon/Marseille.",
+      "name": "Jeunes actifs employés et ouvriers en communes denses",
+      "mechanism": "Cette manifestation mobilise principalement les catégories populaires et salariées jeunes qui sont souvent très engagées dans les mouvements sociaux, notamment les employés et ouvriers vivant en communes denses où les rassemblements sont fréquents.",
+      "reason": "Groupe représentatif des jeunes actifs de la classe salariée, vivant en zones urbaines denses où la mobilisation est courante.",
       "all": [
         "age.18_24",
-        "cluster.young_without_activity",
-        "municipal_system.paris_lyon_marseille"
+        "occupation.employee",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "degré d'implication dans les manifestations",
-        "exposition aux discours politiques urbains"
+        "Fréquentation des manifestations",
+        "Motivations de participation aux mouvements sociaux"
       ],
-      "count": 7933,
-      "distinctCommunes": 48,
+      "count": 2591,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -45,21 +46,21 @@
     },
     {
       "id": "segment_2",
-      "name": "Couples de retraités vivant en commune urbaine dense",
-      "mechanism": "Les retraités en couple vivant en milieu urbain dense constituent un groupe à prendre en compte, car certains sont présents dans les manifestations pour soutenir ou critiquer la mobilisation, concernés par les questions économiques et sociales générales soulevées lors des manifestations du 7 novembre.",
-      "reason": "Intersection du cluster des couples retraités avec la géographie urbaine dense.",
+      "name": "Jeunes diplômés des communes urbaines denses",
+      "mechanism": "Les jeunes diplômés vivant en zones urbaines denses forment une base souvent engagée dans les débats politiques et sociaux qui entourent ce type de mobilisation, notamment sur les questions économiques et sociales portées par le mouvement.",
+      "reason": "Ce public combine jeunesse, haut niveau d'études et habitat urbain dense, souvent associé à un engagement militant spécifique.",
       "all": [
-        "cluster.retired_couple",
+        "cluster.young_urban_graduate",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "intérêt pour les mouvements sociaux",
-        "implication éventuelle dans les manifestations"
+        "Participation aux manifestations",
+        "Attitudes vis-à-vis des revendications sociales"
       ],
-      "count": 15215,
+      "count": 11394,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -71,23 +72,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Employés et ouvriers de 25 à 49 ans en commune dense",
-      "mechanism": "Ces personnes actives dans les catégories populaires, âgées de 25 à 49 ans et vivant en commune dense sont potentiellement concernées par la mobilisation des manifestations du 7 novembre car elles forment une part importante des contestataires manifestant dans les centres urbains denses.",
-      "reason": "segment resserré aux deux âges et emploi, limité à un type de densité urbaine",
+      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "mechanism": "Les ouvriers proches de la retraite constituent un groupe fortement concerné par les enjeux sociaux notamment liés aux réformes de la retraite et aux conditions de travail opposées lors des mobilisations de ce type.",
+      "reason": "Ce segment cible un groupe d'âge et de profession particulièrement affecté par les discours et débats liés aux manifestations récentes.",
       "all": [
-        "occupation.employee"
+        "cluster.older_worker",
+        "geo.intermediate"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [
-        "geo.rural"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 12103,
-      "distinctCommunes": 96,
+      "measurementNeeds": [
+        "Perception des réformes",
+        "Niveau de mobilisation sociale"
+      ],
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -98,21 +98,29 @@
     },
     {
       "id": "segment_4",
-      "name": "Ouvriers de 50 à 64 ans en communes urbaines denses",
-      "mechanism": "Les ouvriers âgés de 50 à 64 ans vivant en communes urbaines denses sont un public-clé dans les manifestations, souvent touchés par les réformes sociales contestées, et qui manifestent fréquemment dans les zones urbaines densément peuplées.",
-      "reason": "segment intersectant un cluster spécifique des ouvriers âgés et un contexte géographique urbain dense",
+      "name": "Couples avec enfants de 25 à 49 ans en communes denses",
+      "mechanism": "Les jeunes familles, souvent directement impactées par les politiques sociales et économiques discutées lors des manifestations, constituent un public concerné notamment dans les zones urbaines où les manifestations sont plus visibles et fréquentes.",
+      "reason": "Segment resserré combinant âge parental, situation familiale et milieu urbain dense, pertinent pour cerner la mobilisation familiale.",
       "all": [
-        "cluster.older_worker",
+        "household.couple_with_children",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 3436,
+      "measurementNeeds": [
+        "Ressenti familial face aux manifestations",
+        "Impact des revendications sur le quotidien familial"
+      ],
+      "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Manifestations du 7 novembre : entre 146.000 et 250.000 personnes ont défilé en France, une mobilisation en net recul",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -129,350 +137,10 @@
     }
   ],
   "contrasts": {
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 92
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne me sens pas vraiment concernée par ces manifestations, surtout avec si peu de monde à Paris, ça semble tranquille. Ça ne change rien à ce que je pense pour la présidentielle.",
-        "Je vois que c'est une mobilisation bien moindre que d'habitude. Ce recul me déçoit un peu, mais ça ne va pas forcément faire bouger mon vote, je reste prudent.",
-        "Je ne suis pas très intéressée par ces manifestations, surtout quand il y en a aussi peu à Paris. C'est trop bruyant pour rien, ça ne change rien à mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.006381197452221356,
-          "lo": -0.007985814933822952,
-          "hi": -0.0049611441096815605,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.005006877753245491,
-          "lo": -0.005917720086519377,
-          "hi": -0.004103960202016568,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.002555274457477792,
-          "lo": 0.0015885169944713131,
-          "hi": 0.003449637116167916,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.001864727287757768,
-          "lo": 0.0011514061414215836,
-          "hi": 0.002558158511988811,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.002870050979627555,
-          "lo": 0.0010402627652310928,
-          "hi": 0.004807376023299972,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.004098022480603724,
-          "lo": 0.0008679736842255153,
-          "hi": 0.00788262163699249,
-          "stable": false
-        }
-      }
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes sans activité de 18 à 24 ans en communes très peuplées (Paris, Lyon, Marseille)",
-      "matchedCount": 7933,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "J'avoue que la mobilisation qui baisse, ça me laisse un peu indifférente, je suis plus concentrée sur mes projets créatifs que sur les manifestations.",
-        "Cette mobilisation en baisse, ça me déçoit un peu, j'espérais que plus de gens se lèveraient, surtout avec les gilets jaunes qui reviennent en force.",
-        "Une centaine de gilets jaunes à Paris, c'est trop peu quand on voit les défis sociaux, ça ne me motive pas vraiment à changer mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.012201338103840978,
-          "lo": -0.013980948132559382,
-          "hi": -0.010421903131578729,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.0075968983229930025,
-          "lo": -0.008983122429658581,
-          "hi": -0.0063897623748932,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.005029442911847262,
-          "lo": 0.0033314229100406827,
-          "hi": 0.0066209518200691835,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.002289392823977861,
-          "lo": 0.0013923843688039073,
-          "hi": 0.003367844221325848,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.00812995526451214,
-          "lo": 0.006660025640582189,
-          "hi": 0.009637462849714838,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.004349445426496702,
-          "lo": 0.00048485302725024236,
-          "hi": 0.007715921098200219,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Couples de retraités vivant en commune urbaine dense",
-      "matchedCount": 15215,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je vois que la mobilisation des gilets jaunes est bien moindre cette fois, ça me laisse assez indifférent, ça ne change rien à ma vision des choses.",
-        "Une mobilisation faible comme ça, ça ne me surprend pas et ça ne me touche pas vraiment dans mon quotidien.",
-        "Il y a moins de monde que d’habitude, ça montre que les gens sont un peu fatigués ou désintéressés, ça ne me fait ni chaud ni froid."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0063520546401708506,
-          "lo": -0.0077869434676363656,
-          "hi": -0.004976521668440465,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.005481963754062798,
-          "lo": -0.0070173268683732795,
-          "hi": -0.0037605160670659485,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.003620257151972398,
-          "lo": 0.0018185333292492414,
-          "hi": 0.005314943409241654,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0036827000701348915,
-          "lo": 0.002272565108510804,
-          "hi": 0.005222270495716194,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0029880292182778607,
-          "lo": 0.00041584177368529825,
-          "hi": 0.0051667273560986144,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.001543031953848505,
-          "lo": -0.001045009558548221,
-          "hi": 0.004135874796691347,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Ouvriers de 50 à 64 ans en communes urbaines denses",
-      "matchedCount": 3436,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Honnêtement, je vois qu'il y avait beaucoup moins de monde que les autres fois, ça me fait un peu douter de leur force réelle, ça ne change pas grand chose à ce que je pense.",
-        "Beaucoup moins de manifestants cette fois, ça ne me surprend pas, la colère se calme un peu. Je suis un peu à l'écart de ces mouvements, ça ne change pas mon vote.",
-        "Je vois qu'il y avait moins de monde, je me demande si ça reflète une lassitude. Ça ne me touche pas directement, ça ne modifie pas mon choix."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.010315545891594223,
-          "lo": -0.012384400405233744,
-          "hi": -0.008501466080490601,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.0065290483460792624,
-          "lo": -0.008371331625995808,
-          "hi": -0.0046769017216778406,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.004346641302353813,
-          "lo": 0.002922341806981109,
-          "hi": 0.005722723553436064,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.004086655996970498,
-          "lo": 0.0028675261081977516,
-          "hi": 0.005414717414317631,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.006464864566676929,
-          "lo": 0.004516621868434235,
-          "hi": 0.008413960346129856,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0019464323716722447,
-          "lo": -0.0009018374442148434,
-          "hi": 0.005311668504765519,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Employés et ouvriers de 25 à 49 ans en commune dense",
-      "matchedCount": 12103,
+      "segmentName": "Jeunes actifs employés et ouvriers en communes denses",
+      "matchedCount": 2591,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -511,55 +179,203 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que la mobilisation faible des gilets jaunes reflète un certain calme, c'est peut-être mieux comme ça, je préfère la stabilité dans mon quotidien.",
-        "Une mobilisation trop faible des gilets jaunes, ça ne me dérange pas trop, ça évite des tensions inutiles dans la ville, je préfère que ça reste calme.",
-        "Je vois que les manifestations sont plus calmes, c'est une bonne chose, la ville de Paris est souvent agitée, alors je préfère que la situation soit maîtrisée."
-      ],
-      "altEffect": {
+        "Je trouve que cette baisse de mobilisation, ça montre que les gens commencent un peu à s'essouffler ou à perdre confiance dans l'efficacité des manifs, moi ça ne me touche pas trop dans ma vie.",
+        "Je remarque que la mobilisation a baissé, je ne suis pas certaine que ça changera grand-chose dans ma façon de voir les choses, je suis plutôt centrée sur autre chose.",
+        "Une mobilisation en baisse, ça me montre surtout un certain découragement, j'espère qu'une grosse manif ça peut redonner du souffle à ceux qui veulent un vrai changement."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés des communes urbaines denses",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.008584068677684596,
-          "lo": -0.010118493461028605,
-          "hi": -0.007093124820560955,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.0067436838249289935,
-          "lo": -0.007992130448618831,
-          "hi": -0.005493991509046769,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0.0031262158586007546,
-          "lo": 0.0017444057583500608,
-          "hi": 0.004606020642981053,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.0007229119467236098,
-          "lo": -0.00014583849192058418,
-          "hi": 0.0015667185668066439,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.004576954330181816,
-          "lo": 0.0018096458106771583,
-          "hi": 0.007289314746150871,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": 0.006901670367107391,
-          "lo": 0.001955104146368689,
-          "hi": 0.011958579641284285,
-          "stable": true
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu décevant de voir que la mobilisation baisse, surtout pour une cause qui me semble importante. Je me demande si ça reflète une lassitude ou un manque d'espoir.",
+        "Je ne suis pas très touché par ces chiffres de manifestations. Ça ne change rien à ma façon de penser ni à mon vote, franchement.",
+        "C'est triste de voir que la mobilisation est en baisse, alors que ces manifestations peuvent faire bouger les choses. J'espère qu'une mobilisation plus forte ferait avancer les idées de gauche."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "matchedCount": 144,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ces chiffres de manifestation me paraissent faibles et montrent que loin de rallier les gens, ça s'essouffle un peu. Je suis assez indifférent, je ne vais pas me mettre à changer d'avis pour autant.",
+        "Je vois que la mobilisation a vraiment baissé, ça me fait penser que la colère s'étiole un peu, mais cela ne me fait pas changer ma position, je suis plutôt dans le centre et je ne vois pas de lien direct.",
+        "Une baisse de la mobilisation à 150.000-250.000 personnes, ça ne me touche pas vraiment, peut-être que la société s'apaise un peu. Je ne me sens pas concerné au point de changer mon choix pour la présidentielle."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Couples avec enfants de 25 à 49 ans en communes denses",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, une telle baisse de mobilisation ne me surprend pas, ça reflète bien le désintérêt et la lassitude ici à Béziers.",
+        "Je vois cette manifestation en baisse comme un signe que beaucoup de mes collègues et voisins sont un peu déçus ou fatigués de ces mouvements sociaux.",
+        "Une si faible mobilisation me semble être un mauvais signal sur la capacité à faire bouger les choses, ça m'inquiète un peu pour l'avenir politique."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 93
+        },
+        "abstention": {
+          "toward": 9,
+          "away": 0,
+          "noClearChange": 87
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, une baisse de la mobilisation ne me surprend pas, ça ne change pas grand-chose à mon quotidien, donc ça ne modifie pas mon vote.",
+        "Une mobilisation en baisse ou hausse ne me touche pas vraiment, je suis plus concentré sur mon travail et ma famille, donc mes intentions restent pareilles.",
+        "Je vois que les gens se mobilisent moins, ça me laisse un peu perplexe, mais ça ne me pousse pas spécialement à changer mes choix politiques."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:41.352Z",
-    "contentHash": "e90731c1b5f49492f4532026c4a9ae1f97ddfec3183d85e447f752dff60fe870"
+    "status": "automatic",
+    "contentHash": "ce3ce154a727de3d8f113dbfe108c47655496a7e27e216c29cf73dd8c815081b"
   }
 }

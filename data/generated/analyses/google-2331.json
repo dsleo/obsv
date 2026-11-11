@@ -4,36 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "b0dc75f08b0cb5ab",
-  "computedAt": "2026-11-09T20:40:45.787Z",
+  "inputHash": "e2e3c83e62131be9",
+  "eventInputHash": "c782c6c33f618137e2403d2913eaa69ff06222761aba5941e32d5632c5573e28",
+  "computedAt": "2026-11-11T13:14:35.157Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "À la Fête de « L’Humanité », Fabien Roussel annonce un retrait de sa candidature communiste pour soutenir une candidature de gauche unie, soulignant l'importance de la coalition pour contrer la droite et l’extrême droite.",
-    "whatChanges": "Fabien Roussel choisit de soutenir une candidature unique de gauche au lieu de défendre sa propre candidature, ce qui modifie la dynamique électorale en faveur de l’unité à gauche, impactant les électeurs communistes et socialistes."
+    "description": "Lors de la Fête de l'Huma, Fabien Roussel annonce le retrait officiel de sa candidature communiste à la présidentielle, en faveur d'un soutien renforcé à un candidat de gauche déjà en lice, afin d'éviter la dispersion des voix.",
+    "whatChanges": "Fabien Roussel abandonne sa candidature ce qui pourrait renforcer la gauche unie et modifier les intentions de vote des électeurs communistes et proches, au lieu d'affirmer l'utilité d'une candidature distincte."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains sceptiques",
-      "mechanism": "Fabien Roussel doit prouver l'utilité de sa candidature communiste aux jeunes urbains diplômés, un public souvent plus critique ou éloigné de la gauche radicale, présent lors de la Fête de l'Humanité.",
-      "reason": "Segment composé des jeunes diplômés universitaires en communes denses, susceptibles d'être présents sur le lieu événementiel mais plus éloignés des idées communistes traditionnelles.",
+      "name": "Salariés modestes urbains et semi-urbains",
+      "mechanism": "La candidature communiste de Fabien Roussel vise particulièrement les salariés employés et ouvriers des communes denses ou intermédiaires qui constituent une base traditionnelle d'électeurs sensibles à l'orientation socialiste et communiste.",
+      "reason": "Ce segment regroupe des employés et ouvriers vivant en commune dense ou intermédiaire, qui constituent une catégorie socio-professionnelle proche du électorat communiste.",
       "all": [
-        "cluster.young_urban_graduate",
-        "geo.dense"
+        "occupation.employee",
+        "cluster.modest_wage_earner"
       ],
-      "any": [],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote intention",
-        "perception de la candidature communiste"
+        "Notoriété de Fabien Roussel",
+        "Soutien à la candidature communiste",
+        "Intérêt pour le programme communiste"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 19549,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,24 +49,30 @@
     },
     {
       "id": "segment_2",
-      "name": "Retraités peu diplômés ruraux",
-      "mechanism": "La candidature communiste est aussi jugée par les retraités peu diplômés vivant en milieu rural, sensibles aux questions sociales portées par Fabien Roussel à la Fête de l'Humanité.",
-      "reason": "Retraités sans diplôme dans des communes rurales, un segment potentiellement très concerné par les politiques sociales du PCF à défendre.",
+      "name": "Jeunes familles en communes denses",
+      "mechanism": "Les jeunes familles, couples avec enfants de 25 à 49 ans vivant en commune dense, sont un public important à convaincre pour Fabien Roussel afin de démontrer l'utilité d'une candidature communiste au sein des électeurs urbains populaires engagés.",
+      "reason": "Ce segment rassemble des adultes d’âge 25-49 ans en couple avec enfants, dans des communes denses, correspondant à un socle électoral familial potentiel pour la candidature communiste.",
       "all": [
-        "cluster.retiree_no_diploma",
-        "geo.rural"
+        "household.couple_with_children",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote intention",
-        "intérêt pour les politiques sociales communistes"
+        "Réception de la candidature communiste",
+        "Attitude envers les mesures sociales",
+        "Mobilisation électorale des jeunes familles"
       ],
-      "count": 351,
-      "distinctCommunes": 67,
+      "count": 25109,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Présidentielle: à la Fête de l'Huma, Fabien Roussel au défi de prouver l'utilité d'une candidature communiste",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -70,26 +81,30 @@
     },
     {
       "id": "segment_3",
-      "name": "Employés et ouvriers vivant en couple avec enfants en communes intermédiaires",
-      "mechanism": "Le candidat communiste vise les familles populaires actives avec enfants, en particulier les employés et ouvriers des communes intermédiaires, sensibles aux propositions de gauche lors de la Fête de l'Humanité.",
-      "reason": "Remplace un segment trop large sur salariés modestes urbains par un groupe plus restreint combinant catégorie socio-professionnelle, type de foyer et densité intermédiaire.",
+      "name": "Femmes célibataires vivant seules en milieu urbain",
+      "mechanism": "Les femmes célibataires vivant seules en commune dense constituent un segment sensible vis-à-vis des politiques sociales et d'égalité, domaine souvent mis en avant par la candidature communiste de Fabien Roussel lors de la Fête de l'Huma.",
+      "reason": "Segment précis de femmes célibataires urbaines, potentiellement sensible à l'offre politique et sociale proposée par Fabien Roussel.",
       "all": [
-        "household.couple_with_children",
-        "geo.intermediate"
+        "sex.female",
+        "household.single",
+        "geo.dense",
+        "marital.single"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 474,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [
-        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      "measurementNeeds": [
+        "Réceptivité aux discours sociaux communistes",
+        "Soutien à la candidature Roussel",
+        "Priorités sociales et économiques des femmes seules"
       ],
+      "count": 3384,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
       "counterfactual": {
         "intervention": "Présidentielle: à la Fête de l'Huma, Fabien Roussel au défi de prouver l'utilité d'une candidature communiste",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -106,10 +121,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Retraités peu diplômés ruraux",
-      "matchedCount": 351,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes urbains et semi-urbains",
+      "matchedCount": 19549,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -148,15 +163,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne comprends pas très bien pourquoi Fabien Roussel doit prouver son utilité à la Fête de l'Humanité, tout cela semble assez lointain de ma vie quotidienne. Une candidature communiste, ça ne me parle pas vraiment.",
-        "Fabien Roussel qui renonce pour soutenir Mélenchon ? Ça pourrait peut-être clarifier un peu la gauche radicale, ça devient compliqué de suivre tous ces petits partis.",
-        "Fabien Roussel à la Fête de l'Huma ? Je ne le connais pas vraiment. Cette histoire de candidature communiste me paraît peu importante pour moi."
+        "Je ne suis pas très sûre de l'utilité d'une candidature communiste indépendante, cela risque juste de diviser la gauche et compliquer les choses.",
+        "Je n'ai pas vraiment d'attachement à la candidature communiste, mais s'ils se retirent pour soutenir quelqu'un d'autre à gauche, ça pourrait être mieux pour éviter l'éparpillement.",
+        "Franchement, la politique me paraît souvent compliquée, et une candidature de plus ou moins ne change pas grand-chose à mon quotidien."
       ]
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Employés et ouvriers vivant en couple avec enfants en communes intermédiaires",
-      "matchedCount": 474,
+      "segmentName": "Femmes célibataires vivant seules en milieu urbain",
+      "matchedCount": 3384,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -195,9 +210,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve intéressant que Fabien Roussel essaie de montrer que sa candidature communiste a vraiment un sens, même si je ne suis pas très proche de leur discours. Je suis plutôt attachée aux valeurs concrètes.",
-        "Honnêtement, je m’en fiche un peu, je suis plus préoccupé par la stabilité pour ma famille et la sécurité. Que Fabien Roussel fasse campagne ou qu’il soutienne Mélenchon, ça ne me touche pas vraiment.",
-        "Vu que je préfère la stabilité, savoir que Roussel essaie de prouver son utilité me fait penser que ces divisions à gauche ne sont pas très bonnes pour nous. L’idée d’une union me plaît plus."
+        "Je ne suis pas convaincue par la candidature communiste, ça me paraît un peu dépassé, mais c'est toujours un secteur politique qui porte des revendications sociales importantes. Le retrait de Roussel pour rassembler la gauche pourrait enfin limiter la dispersion des voix.",
+        "La candidature communiste, franchement ça me parle pas trop. Si Roussel se retire pour soutenir un autre candidat de gauche, ça pourrait être mieux pour ne pas diluer les voix. Pas sûr que ça change grand-chose à mon vote cependant.",
+        "J’entends parler de Roussel, mais ça me semble un peu secondaire. S’il se retire pour renforcer un candidat de gauche, ça me semble pertinent, la division a trop pris ces dernières fois."
       ]
     },
     "global_1": {
@@ -229,9 +244,9 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "abstention": {
           "toward": 0,
@@ -242,15 +257,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas vraiment concernée par les débats politiques à la fête de l'Huma, ça me semble trop éloigné de ma vie quotidienne et je reste fidèle à mes habitudes.",
-        "Je suis un peu déçue que Fabien Roussel veuille prouver son utilité, je préfère qu’il s’allie à Mélenchon, ça aurait plus de poids pour changer les choses.",
-        "Je trouve que cette histoire de candidature communiste, c’est un peu compliqué, ça ne change pas grand-chose pour moi. Je reste plutôt centré sur mes priorités personnelles."
+        "Je ne suis pas très intéressée par ces histoires de communistes à la Fête de l'Huma, ça ne change pas grand-chose à ma vie ni à ma manière de voir la présidentielle.",
+        "Je suis un peu contente que la gauche s’unisse enfin, ça me donne un peu plus d’espoir pour la présidentielle plutôt que de voir la gauche se diviser encore.",
+        "Je regarde ça un peu de loin, mais si Roussel se retire pour éviter la dispersion à gauche, ça pourrait aider à ce que la gauche gagne des voix, ce serait mieux que de diviser comme d’habitude."
       ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains sceptiques",
-      "matchedCount": 11394,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes familles en communes denses",
+      "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -289,17 +304,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, je trouve que c'est compliqué de suivre tous ces débats entre candidats à la Fête de l'Humanité, ça ne change pas vraiment mon vote perso.",
-        "Si Roussel se retire pour soutenir Mélenchon, ça pourrait renforcer la gauche radicale, ce qui pourrait m'intéresser un peu plus pour voter à gauche.",
-        "Je suis un peu sceptique, mais je ne crois pas que cette histoire à la Fête de l’Humanité va me faire changer d'avis pour 2027."
+        "Je suis un peu sceptique sur l'impact de la candidature communiste, cela ne change pas grand-chose pour nous dans le quartier.",
+        "Je ne suis pas concernée par ce débat, cela ne m'influence pas, je poursuis ma vie comme avant.",
+        "Si Roussel se retire pour soutenir la gauche, ça a du sens pour ne pas disperser les voix et peser plus fort."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:36.423Z",
-    "contentHash": "894915c12d6d5fa9f228851e28d1c825cafb5cbb3fd9ff59e91ae1c3ce676580"
+    "status": "automatic",
+    "contentHash": "5e1e4afcd62c5f5dd26d0f143b550632405597476b75f112650f972862aa2f17"
   }
 }

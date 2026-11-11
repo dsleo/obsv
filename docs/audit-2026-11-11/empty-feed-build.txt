@@ -1,0 +1,18 @@
+   ▲ Next.js 15.5.28
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1694ms
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/data/radarData.ts:102:25
+Type error: Property 'occurredAt' does not exist on type 'never'.
+
+[0m [90m 100 |[39m [36mconst[39m frenchLong [33m=[39m [36mnew[39m [33mIntl[39m[33m.[39m[33mDateTimeFormat[39m([32m"fr-FR"[39m[33m,[39m { year[33m:[39m [32m"numeric"[39m[33m,[39m timeZone[33m:[39m [32m"UTC"[39m })[33m;[39m
+ [90m 101 |[39m [36mexport[39m [36mconst[39m radarEvents[33m:[39m [33mRadarEvent[39m[] [33m=[39m snapshot[33m.[39mevents[33m.[39mmap((event) [33m=>[39m {
+[31m[1m>[22m[39m[90m 102 |[39m   [36mconst[39m isoDate [33m=[39m event[33m.[39moccurredAt[33m.[39mslice([35m0[39m[33m,[39m [35m10[39m)[33m;[39m
+ [90m     |[39m                         [31m[1m^[22m[39m
+ [90m 103 |[39m   [36mconst[39m thumbnail [33m=[39m (event [36mas[39m { image[33m?[39m[33m:[39m string })[33m.[39mimage [33m?[39m[33m?[39m [33mFALLBACK_EVENT_IMAGES[39m[event[33m.[39mid][33m;[39m [90m// optional: absent from the inferred type when no event has one[39m
+ [90m 104 |[39m   [90m// context:* (international, security...) only appears if pinned in data/events-curation.json; unknown types fall back to statement.[39m
+ [90m 105 |[39m   [36mconst[39m type [33m=[39m [33mEVENT_TYPES[39m[event[33m.[39mcategory [33m?[39m[33m?[39m [32m""[39m] [33m?[39m[33m?[39m (event[33m.[39mcategory[33m?[39m[33m.[39mstartsWith([32m"context"[39m) [33m?[39m [33mCONTEXT[39m [33m:[39m [33mEVENT_TYPES[39m[33m.[39mstatement)[33m;[39m[0m
+Next.js build worker exited with code: 1 and signal: null

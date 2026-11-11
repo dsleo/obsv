@@ -4,32 +4,37 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "ef2c893a4fa505c2",
-  "computedAt": "2026-11-09T20:33:48.688Z",
+  "inputHash": "64b98bde9d1db08e",
+  "eventInputHash": "65d952e78c4df7de0addd50b4409ab6f700a6b9dce2c9ab1cff1eed70b25d161",
+  "computedAt": "2026-11-11T12:52:02.753Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Dans le Sud, Édouard Philippe organise un grand rassemblement régional ponctuel, plutôt qu'un tour de France, pour tenter de relancer sa campagne présidentielle.",
-    "whatChanges": "L'action d'Édouard Philippe est concentrée en un seul lieu et moment, ce qui limite la visibilité nationale mais concentre l'impact local auprès de ses partisans dans le Sud."
+    "description": "Édouard Philippe annonce qu'il suspend temporairement son tour de France afin de se concentrer sur plusieurs débats télévisés majeurs prévus dans les prochaines semaines.",
+    "whatChanges": "l'accent est mis sur une présence médiatique renforcée plutôt que sur la rencontre directe avec les électeurs, ciblant plutôt les téléspectateurs et les indécis plutôt que les militants de terrain"
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains en commune dense du Sud",
-      "mechanism": "Ce segment regroupe les jeunes diplômés des villes en communes denses de la région Sud, population susceptible d'être touchée par les propositions d'Édouard Philippe lors de son relancement de campagne présidentielle dans cette zone.",
-      "reason": "Jeunes adultes de moins de 35 ans diplômés à bac+3 ou plus, vivant en milieu urbain dense, qui constituent un public clé pour capter un électorat éclairé et urbain lors du tour de France de campagne dans le Sud.",
+      "name": "Cadres et professions intellectuelles en communes denses",
+      "mechanism": "La campagne présidentielle d'Édouard Philippe met l'accent sur une relance politique auprès des cadres et professions intellectuelles supérieures qui vivent en commune dense, car ce sont souvent des électeurs influents et sensibles aux propositions de réforme et de modernisation liées à son projet.",
+      "reason": "Ce segment rassemble les urbains qualifiés dans des zones à forte densité urbaine, cohérent avec un public à convaincre pour une campagne de réforme et d'image moderne.",
       "all": [
-        "cluster.young_urban_graduate",
+        "occupation.executive_professional",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11394,
+      "measurementNeeds": [
+        "Connaissance de la campagne Philippe",
+        "Intention de vote présidentielle",
+        "Opinion sur le renouveau politique"
+      ],
+      "count": 10635,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -41,22 +46,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes de 35 à 64 ans en communes intermédiaires du Sud",
-      "mechanism": "Ce groupe de salariés modestes âgés de 35 à 64 ans résidant dans des communes intermédiaires du Sud est un électorat populaire susceptible de réagir aux thématiques socio-économiques développées par Édouard Philippe durant son \"deuxième quart-temps\" de campagne.",
-      "reason": "Segment d'actifs employés et ouvriers âgés en âge de travailler, situés dans des zones ni trop denses ni rurales, correspondant à une base sociale importante dans le Sud pour une campagne présidentielle.",
+      "name": "Employés et ouvriers de 35 à 64 ans vivant en communes moyennement peuplées",
+      "mechanism": "Le tour de France d'Édouard Philippe inclut une démarche auprès des salariés employés et ouvriers de 35 à 64 ans vivant en communes intermédiaires, car cette catégorie est souvent impactée par les politiques économiques et sociales et leur soutien est crucial pour le succès de la campagne présidentielle.",
+      "reason": "Cet électorat populaire est un groupe clé à cause de ses enjeux socio-économiques et sa répartition géographique, important pour la dynamique locale de campagne.",
       "all": [
         "occupation.employee",
-        "geo.intermediate"
+        "age.35_49"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "geo.intermediate",
+        "geo.dense"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 381,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Réceptivité aux discours économiques",
+        "Soutien aux propositions sociales",
+        "Intention de vote"
+      ],
+      "count": 6856,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -67,19 +76,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Cadres urbains de 50 à 64 ans en communes de plus de 1000 habitants",
-      "mechanism": "Ce segment comprend des cadres urbains mûrs, souvent influents dans leur environnement, qui peuvent être sensible aux propositions modérées et réformatrices portées par Édouard Philippe lors de son tour de campagne dans les grandes communes du Sud.",
-      "reason": "Cadres et professions intellectuelles supérieures âgés de 50 à 64 ans, en communes de taille moyenne à grande, offrant un profil sociodémographique intermédiaire et un pouvoir d'influence potentiel dans la campagne présidentielle.",
+      "name": "Jeunes familles de 25 à 49 ans en communes denses",
+      "mechanism": "Les jeunes familles âgées de 25 à 49 ans vivant en communes denses sont directement concernées par le tour de France d’Édouard Philippe, qui vise à renouer contact avec la population familiale urbaine.",
+      "reason": "Remplace un segment trop large en réduisant l’âge à 25-49 ans et en excluant les communes intermédiaires pour restreindre la taille.",
       "all": [
-        "cluster.urban_executive",
-        "age.50_64",
-        "commune_size.1000_plus"
+        "household.couple_with_children",
+        "age.25_34",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 2746,
+      "measurementNeeds": [
+        "Intérêt pour la campagne d’Édouard Philippe",
+        "Intention de vote",
+        "Perception du renouveau politique"
+      ],
+      "count": 8145,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -99,10 +112,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains en commune dense du Sud",
-      "matchedCount": 11394,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes familles de 25 à 49 ans en communes denses",
+      "matchedCount": 8145,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -133,23 +146,23 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Honnêtement, ce n'est pas vraiment un sujet qui va beaucoup changer ma manière de voir la présidentielle. Edouard Philippe, c’est un peu loin de Béziers et je ne vois pas trop ce que son tour de France dans le Sud apporterait ici.",
-        "Le fait qu’Édouard Philippe fasse un tour de France, c'est peut-être sympa, mais je suis surtout attentive à ce qu'il propose concrètement, surtout sur l’économie. Celui axé sur les régions industrielles pourrait m'intéresser un peu plus.",
-        "Je n’ai pas encore d’idée tranchée sur Edouard Philippe qui fait un tour de France, ça ne change pas grand-chose à mes préférences, c’est un peu anecdotique dans la trépidation parisienne."
+        "Ça m'est un peu égal ce tour de France d'Édouard Philippe, ça ne changera pas ma façon de voter, je vote pour qui me semble le plus proche de mes intérêts, pas pour des déplacements médiatiques.",
+        "Je ne vois pas trop l'intérêt de son tour de France, mais peut-être que se concentrer sur les débats peut être plus clair pour savoir ce qu'il propose, ça m'intéresserait plus.",
+        "Ce n'est pas mal qu'Édouard Philippe fasse un tour de France, au moins il essaie de rester proche des territoires. Mais se concentrer sur les débats aussi, ça peut être intéressant pour mieux comparer les idées."
       ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes de 35 à 64 ans en communes intermédiaires du Sud",
-      "matchedCount": 381,
+      "segmentName": "Employés et ouvriers de 35 à 64 ans vivant en communes moyennement peuplées",
+      "matchedCount": 6856,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -180,17 +193,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très au courant des campagnes nationales, ça ne change pas grand-chose à mon quotidien à Tergnier.",
-        "Edouard Philippe qui parle des régions industrielles, ça me parle un peu plus, peut-être que ça pourrait aider les gars qui bossent dans nos usines.",
-        "Une campagne dans le Sud, ça ne me touche pas trop, je veux surtout que ça ne tourne pas trop à la polémique politique."
+        "Je ne connais pas vraiment Édouard Philippe ni ses ambitions, son tour de France ne change rien à mon quotidien, ça m'indiffère un peu.",
+        "Édouard Philippe, c'est un homme de droite, mais ce tour de France ne me parle pas beaucoup, je préfère suivre les débats télévisés, c'est là que je me fais une opinion.",
+        "C'est intéressant qu'Édouard Philippe fasse un tour de France, ça montre un effort pour rencontrer les gens, ça peut peut-être faire bouger les choses au centre droit."
       ]
     },
     "global_1": {
@@ -223,8 +236,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
           "toward": 0,
@@ -235,15 +248,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas particulièrement intéressée par les campagnes politiques, surtout quand ça se passe loin de chez moi. Edouard Philippe, dans le Sud ou ailleurs, ça ne change pas beaucoup ma perspective.",
-        "Edouard Philippe qui fait le tour de la Vendée ou des régions industrielles ? Je comprends son idée de changer de stratégie, mais ça ne va pas bouleverser mon vote, je suis plutôt centriste et ça ne me fait ni chaud ni froid.",
-        "Ce n'est pas le genre d'actualité qui me fait changer d'avis. Que Philippe aille dans le Sud ou dans les régions industrielles, je regarde surtout ce que ça va faire dans ma vie à Paris."
+        "Édouard Philippe fait son tour de France ; ça ne change pas grand-chose à ma vie quotidienne, je reste prudente sur ces initiatives politiques médiatiques.",
+        "Je ne suis pas très branchée politique, le tour d'Édouard Philippe ne me parle pas, mais s’il fait des débats importants, ça peut être plus intéressant à suivre.",
+        "Je me méfie un peu de ces coups de com, ça ne changera rien à mon vote, je reste plutôt sur mes idées actuelles."
       ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Cadres urbains de 50 à 64 ans en communes de plus de 1000 habitants",
-      "matchedCount": 2746,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Cadres et professions intellectuelles en communes denses",
+      "matchedCount": 10635,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -270,8 +283,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
           "toward": 0,
@@ -282,17 +295,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Honnêtement, ce nouveau tour de France d'Édouard Philippe dans le Sud ne me touche pas vraiment, je suis assez éloignée de sa politique centriste et je me concentre plus sur les enjeux culturels et sociaux qui m'entourent à Paris.",
-        "Un tour de France d'Édouard Philippe axé sur le Sud, ça ne me parle pas beaucoup, je suis plutôt attentive aux politiques qui s'intéressent à nos réalités locales, comme à Béziers et ses enjeux sociaux.",
-        "Je vois Édouard Philippe qui relance sa campagne dans le Sud, ça me semble un peu tardif et pas très convaincant. Je préfère que l'on parle des vrais enjeux écologiques et sociaux qui touchent Marseille."
+        "Je trouve que ce tour de France d'Édouard Philippe est une bonne idée pour renouer le contact avec les territoires, mais honnêtement, ce n'est pas si décisif pour moi dans mon vote.",
+        "Je n'ai pas vraiment suivi son tour de France, mais j'imagine que ça ne changera pas grand-chose à mes choix de vote, je suis plus attentive aux faits concrets.",
+        "Le fait qu'Édouard Philippe se lance dans un tour de France, ça montre un peu d'ambition et de volonté de terrain, ce qui peut me faire pencher un peu vers le centre."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:32.943Z",
-    "contentHash": "65f9bf8788c7e90208eaf8928e63bb5147230034c1112c900090512422224130"
+    "status": "automatic",
+    "contentHash": "ba8a1bcd7949d8e06aa889e63a81402d76e51f9bc61a8c5d4391daccf465deb5"
   }
 }

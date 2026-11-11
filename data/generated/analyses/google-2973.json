@@ -4,33 +4,71 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "e16ea6ac816ee024",
-  "computedAt": "2026-11-09T20:40:18.113Z",
+  "inputHash": "71bd4a95804b71dc",
+  "eventInputHash": "f0f9c7b4fae5a9baf502beda2d034b1909df89dca058ab830a4d8c99a4f2144a",
+  "computedAt": "2026-11-11T13:11:29.178Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Lors de sa présentation sur les bords de la Loire, Édouard Philippe propose une politique de sécurité climatique axée sur des mesures économiques incitatives pour les entreprises afin d'encourager l'innovation verte plutôt que sur des régulations strictes.",
-    "whatChanges": "Le contenu du programme est plus favorable aux entreprises et moins contraignant administratif, ce qui peut séduire l'électorat de droite libérale tout en générant moins d'adhésion chez les écologistes traditionalistes."
+    "description": "Édouard Philippe présente un programme d’adaptation climatique axé uniquement sur les zones rurales et littorales, excluant temporairement les grandes agglomérations, avec un calendrier de mise en œuvre étalé sur dix ans.",
+    "whatChanges": "Le programme cible uniquement les zones rurales et littorales, ce qui peut modifier le soutien électoral en mobilisant plus fortement ces populations au détriment des habitants des grandes villes."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains sensibles à l’écologie de droite",
-      "mechanism": "Le programme d’Édouard Philippe sur l’adaptation climatique cherche à capter l’attention des jeunes diplômés urbains, notamment dans les communes denses où les questions de transition écologique et d’adaptation climatique sont porteuses électoralement.",
-      "reason": "Ce public urbain jeune et diplômé est potentiellement influencé par une écologie de droite innovante proposée par Édouard Philippe dans des contextes urbains denses en métropoles.",
+      "name": "Jeunes diplômés urbains sensibles aux enjeux climatiques",
+      "mechanism": "Les jeunes diplômés des grandes villes forment une catégorie socialement mobilisée et informée, souvent réceptive aux propositions politiques sur le climat comme celle présentée par Édouard Philippe, surtout en milieu dense où les effets du changement climatique et la demande de durabilité sont plus visibles.",
+      "reason": "Ce segment est caractérisé par un âge jeune, un niveau d’étude élevé et une résidence en milieu urbain dense, constituant la base d’un électorat potentiellement sensible au programme d’adaptation climatique.",
       "all": [
-        "cluster.young_urban_graduate",
+        "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Attitude envers la politique climatique",
+        "Intérêt pour le programme d’Édouard Philippe"
+      ],
+      "count": 4295,
+      "distinctCommunes": 71,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Édouard Philippe présente son programme pour l’adaptation climatique",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Ouvriers de 35 à 64 ans en zone intermédiaire concernés par la transition économique liée au climat",
+      "mechanism": "Les ouvriers en âge actif vivant en communes de densité intermédiaire sont particulièrement concernés par les enjeux économiques et sociaux de l’adaptation climatique, car ils peuvent subir les changements dans leur emploi ou secteur industriel dus à la transition écologique projetée par Édouard Philippe.",
+      "reason": "Ce segment combine la catégorie socio-professionnelle ouvrière avec une tranche d’âge active et une géographie de densité intermédiaire, ce qui est pertinent pour étudier la réception des mesures d’adaptation climatique dans des zones à la fois périurbaines et semi-rurales.",
+      "all": [
+        "occupation.worker",
+        "geo.intermediate"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la transition écologique sur l’emploi",
+        "Soutien au programme d’adaptation climatique"
+      ],
+      "count": 304,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -40,22 +78,24 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Salariés modestes des communes intermédiaires",
-      "mechanism": "Les salariés modestes (employés et ouvriers) vivant en communes de taille intermédiaire sont concernés par les propositions d’adaptation climatique qui peuvent impacter leur cadre de vie et conditions de travail, notamment en région proche de la Loire.",
-      "reason": "Ce segment combine la modestie salariale et la localisation hors grands centres urbains, ce qui reflète un groupe ciblé par l’adaptation climatique économique et sociale de droite présentée par Édouard Philippe.",
+      "id": "segment_3",
+      "name": "Couples de retraités en commune rurale impactés par les changements environnementaux locaux",
+      "mechanism": "Les couples de retraités vivant dans des communes rurales sont une population sensible aux effets directs du changement climatique sur leur cadre de vie, notamment en matière de gestion des ressources naturelles et adaptation locale, ce que le programme d’Édouard Philippe aborde dans ses propositions.",
+      "reason": "Ce segment combine la situation maritale de couple retraité avec la géographie rurale, ce qui permet d’isoler une population potentiellement vulnérable aux impacts climatiques dans les zones rurales.",
       "all": [
-        "cluster.modest_wage_earner",
-        "commune_size.1000_plus"
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.rural"
       ],
-      "any": [
-        "geo.intermediate"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 1040,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Vulnérabilité aux impacts climatiques locaux",
+        "Réceptivité aux propositions d’adaptation locale"
+      ],
+      "count": 434,
+      "distinctCommunes": 74,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -76,8 +116,8 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes des communes intermédiaires",
-      "matchedCount": 1040,
+      "segmentName": "Ouvriers de 35 à 64 ans en zone intermédiaire concernés par la transition économique liée au climat",
+      "matchedCount": 304,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -104,68 +144,21 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 4,
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis un ouvrier dans une région où le climat et l'environnement commencent à avoir des conséquences visibles, mais je ne suis pas sûr que ce programme de droite changera beaucoup ma vie au quotidien.",
-        "L'idée d'une écologie adaptée par la droite me laisse un peu sceptique, je préfère les solutions concrètes qui protègent les emplois et le pouvoir d'achat.",
-        "Édouard Philippe qui parle d'écologie, ça me parle un peu, surtout si ça peut aider à protéger notre environnement sans trop bouleverser nos vies."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains sensibles à l’écologie de droite",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je suis un peu sceptique, je doute que Philippe puisse apporter une vraie écologie qui protège les gens comme moi dans notre quartier populaire à Marseille.",
-        "Un programme d'écologie qui reste dans l’esprit de droite, je n’y crois pas totalement, mais cette proposition d’« écologie de croissance » avec des incitations aux entreprises me semble plus concrète et pourrait coller à mes valeurs pragmatiques.",
-        "Édouard Philippe est trop à droite pour moi ; je vois plutôt un enfumage. Ce discours écologique ne me fera pas changer d’avis, je penche toujours vers l’extrême droite par ici."
+        "Je trouve ça bien que Philippe parle de climat, c'est important pour l'avenir, mais j'espère que ça ne va pas coûter trop cher et que ça concernera aussi les zones où on vit, pas juste les grandes villes.",
+        "Le programme pour le climat, c'est important. Si c'est juste pour les campagnes et le littoral, ça m'intéresse moins, je suis en banlieue, je voudrais que ça touche tout le monde et vite.",
+        "Un plan climat, ça me parait bien. Mais s'ils ne pensent qu'aux zones rurales et côtières, ça m'intéresse moyen, la logistique c'est surtout à Orléans, pas en campagne."
       ]
     },
     "global_1": {
@@ -182,14 +175,14 @@
           "noClearChange": 96
         },
         "left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
-        },
-        "center": {
           "toward": 0,
           "away": 0,
           "noClearChange": 96
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -198,29 +191,121 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 4,
-          "noClearChange": 92
+          "away": 6,
+          "noClearChange": 90
         },
         "abstention": {
-          "toward": 3,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 93
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve intéressant qu'Édouard Philippe essaie de concilier écologie et droite, mais cela ne change rien à mon choix, je reste plutôt sceptique.",
-        "Ce programme d’Édouard Philippe sur le climat à droite me semble bien, mais je vois plus ça comme de la communication, ça ne me fera pas changer d'avis.",
-        "Je suis un peu méfiant sur ces trucs d’écologie à droite, c’est souvent du blabla ; ça ne me fait pas changer mon vote."
+        "C’est rassurant qu’Édouard Philippe pense à l’adaptation climatique, en particulier chez nous rural. Cela montre qu’on n’est pas oubliés dans ces projets, même si ce n'est pas parfait.",
+        "Un programme climatique centré sur les zones rurales et littorales, ça ne me touche pas trop ici à Parmain plutôt intermédiaire. Je ne me sens pas plus concernée ni moins.",
+        "Je trouve positif qu’un programme d’adaptation climatique soit proposé, même si je reste un peu méfiant. L’exclusion des grosses villes ne m’inquiète pas vraiment."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Couples de retraités en commune rurale impactés par les changements environnementaux locaux",
+      "matchedCount": 434,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est bien de penser à l'adaptation climatique, surtout pour les campagnes et nos paysages ruraux, même si je ne comprends pas tout ça. Ça ne change pas vraiment ce que je pense de la politique.",
+        "Un programme qui ne prend soin que des campagnes et du littoral ne me semble pas faire grand cas des petites villes comme la mienne. Je suis un peu déçue, ce n’est pas ce qui va me pousser à changer d'avis.",
+        "Je ne suis pas contre les efforts pour protéger la campagne et le littoral. Un programme étalé sur dix ans semble raisonnable ; ce genre de choses prend du temps. Ça ne me fera pas changer d'avis pour autant."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains sensibles aux enjeux climatiques",
+      "matchedCount": 4295,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Édouard Philippe présente un programme pour l’adaptation climatique ? Ça m'intéresse surtout s'il prend en compte notre ville, Béziers, qui est dense et où l'enjeu écologique est visible. Mais j'espère que ce n'est pas juste du discours sans effet concret.",
+        "Un programme climatique d’Édouard Philippe, c'est bien, surtout avec le changement climatique qui touche toute la France. Mais s'il ne pense qu'aux zones rurales et littorales, ça me semble un peu déconnecté de la vie parisienne où je vis, et où les enjeux sont aussi importants.",
+        "Je note qu’Édouard Philippe propose un programme d'adaptation climatique, ça me semble important. Mais si ce programme exclut Paris et les grandes villes, cela semble injuste et peu pratique pour ma vie ici."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:42.855Z",
-    "contentHash": "684b1a8861f8277822d62bc6c7d577ad6e01fb8c082c46544a0f754863f13b1b"
+    "status": "automatic",
+    "contentHash": "3c3b2f3939e6d879b5723e8bf3d19661fd3d796c5a6e9420e1bc3c77d87b9ff1"
   }
 }

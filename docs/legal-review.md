@@ -22,3 +22,7 @@
 | Date | Relecteur | Périmètre | Décision |
 | --- | --- | --- | --- |
 | — | — | — | En attente |
+
+## Mise à jour technique — 11 novembre 2026
+
+Le code utilise désormais des sondages observés (Sondax), et non les anciennes séries de démonstration décrites plus haut. Les hypothèses sont générées et publiées automatiquement, sans exigence de relecture humaine ; elles portent un libellé de simulation et un accès à la méthode. Les pourcentages décrivent les réponses simulées. Les contenus sont liés à l’empreinte des entrées et à un contrôle d’intégrité. Les photographies d’actualité sans droit renseigné ne sont plus affichées. La page `/about` fournit les informations d’éditeur/contact à partir de faits configurés ; leur absence bloque une configuration de release publique. Ces changements ne constituent pas une validation juridique du projet.

@@ -4,27 +4,84 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "160351979479ce3e",
-  "computedAt": "2026-11-09T20:40:57.635Z",
+  "inputHash": "5e05d2753f69305b",
+  "eventInputHash": "0d5df96d93eac2a2a8be1dec9a372d2ef016bdc7810d9a603111b12d304e4813",
+  "computedAt": "2026-11-11T13:14:53.194Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Élisabeth Borne, lors de la même intervention, déclare soutenir explicitement la candidature de Gabriel Attal, affirmant que « le centre doit être uni et représenté clairement à l’élection ».",
-    "whatChanges": "La prise de position favorable d’Élisabeth Borne envers Gabriel Attal offre une visibilité accrue à ce dernier et consolide la représentation centriste, influençant potentiellement les électeurs modérés à se rallier à sa candidature."
+    "description": "Lors d'une conférence de presse, Élisabeth Borne exprime son soutien explicite à Gabriel Attal, soulignant son importance pour le centre, et affirme qu'elle souhaite que ce dernier soit le porte-étendard de la majorité lors de l'élection présidentielle.",
+    "whatChanges": "Le ton devient un soutien clair plutôt qu'un tacle, renforçant la cohésion du centre et rassurant les électeurs centristes sur l'unité du camp gouvernemental."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres urbains de 25 à 49 ans",
-      "mechanism": "Élisabeth Borne souhaite une représentation du centre à la présidentielle, cette catégorie de cadres urbains d'âge adulte moyen est a priori sensible à la question de l'existence d'un candidat centriste, car ils sont souvent électeurs modérés et ciblés par la candidature centriste.",
-      "reason": "Public urbain et diplômé, actif dans une catégorie socio-professionnelle où la représentation politique centriste est un enjeu important.",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Ce groupe représente les jeunes diplômés vivant en milieu urbain dense qui sont susceptibles d'être concernés par l'appel d'Élisabeth Borne à ce que « le centre soit représenté » à la présidentielle, groupe souvent sensible aux débats sur la recomposition politique au centre.",
+      "reason": "Public ciblé par les enjeux de renouvellement politique et de recomposition du centre, motivé par des enjeux urbains et diplômés.",
       "all": [
-        "sex.male",
+        "age.18_24",
+        "education.bac_plus_3_4",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [
+        "occupation.other_inactive",
+        "household.single_parent"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers la représentation politique",
+        "Intérêt pour la présidentielle 2027",
+        "Opinion sur le centre politique"
+      ],
+      "count": 657,
+      "distinctCommunes": 62,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Élisabeth Borne tacle Gabriel Attal et dit souhaiter que « le centre soit représenté » à l’élection",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Cadres et professions intellectuelles supérieures en communes urbaines denses",
+      "mechanism": "Ces cadres urbains sont généralement très impliqués dans le débat politique et sont directement visés par les prises de position d'Élisabeth Borne sur la représentation du centre à l'élection présidentielle.",
+      "reason": "Cibles des discours centrés et acteurs socio-professionnels clés dans les débats politiques urbains.",
+      "all": [
         "occupation.executive_professional",
         "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Opinion sur Élisabeth Borne",
+        "Attitude envers la recomposition politique au centre",
+        "Participation électorale prévue 2027"
+      ],
+      "count": 10635,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Élisabeth Borne tacle Gabriel Attal et dit souhaiter que « le centre soit représenté » à l’élection",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes familles en couple avec enfants de 25 à 49 ans",
+      "mechanism": "Ce segment de jeunes familles est concerné par les discours politiques sur le centre car ils constituent une base électorale clé pour les candidats modérés souhaitant représenter les intérêts familiaux et sociaux à l'élection présidentielle 2027.",
+      "reason": "Public familiaux sensibles à l'équilibre politique et modération souhaitée dans les politiques publiques.",
+      "all": [
+        "household.couple_with_children"
       ],
       "any": [
         "age.25_34",
@@ -33,11 +90,12 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "political_orientation"
+        "Priorités politiques des familles",
+        "Opinion sur les candidats du centre",
+        "Mobilisation électorale au sein des familles"
       ],
-      "count": 4121,
-      "distinctCommunes": 72,
+      "count": 26388,
+      "distinctCommunes": 176,
       "status": "filterable_discovery_sample",
       "repairs": [
         "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
@@ -49,78 +107,26 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Employés et ouvriers des communes intermédiaires de 35 à 64 ans",
-      "mechanism": "Ce groupe populaire actif est un électorat-clé qui peut être touché par la question d'un centre politique non représenté, notamment via la communication d'Élisabeth Borne ciblant le centre comme relevant de la majorité.",
-      "reason": "Souligne la place des classes populaires urbaines ou en zones intermédiaires dans la campagne présidentielle et leur possible attention à la représentation du centre.",
-      "all": [
-        "geo.intermediate",
-        "occupation.employee"
-      ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "vote_intention"
-      ],
-      "count": 381,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : Élisabeth Borne tacle Gabriel Attal et dit souhaiter que « le centre soit représenté » à l’élection",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "Jeunes urbains diplômés susceptibles d'être électeurs intéressés par les débats politiques sur la représentation du centre, concernés par les prises de position d'Élisabeth Borne sur la présidentielle.",
-      "reason": "Public urbain, jeune et diplômé, symbolique de l'électorat centriste potentiel, particulièrement sensible aux débats sur la candidature centriste.",
-      "all": [
-        "cluster.young_urban_graduate"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "political_interest",
-        "vote_intention"
-      ],
-      "count": 11394,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : Élisabeth Borne tacle Gabriel Attal et dit souhaiter que « le centre soit représenté » à l’élection",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
       "id": "segment_4",
-      "name": "Artisans et commerçants urbains entre 35 et 64 ans",
-      "mechanism": "Élisabeth Borne ciblant le centre politique, ce segment d'indépendants en zone urbaine constitue une base possible pour la représentation centriste de la présidentielle, en lien avec leur profil socio-économique et intérêt politique moyen.",
-      "reason": "Segment resserré combinant socioprofessionnel et localisation, pertinent pour une offre politique centriste dans les villes.",
+      "name": "Indépendants et artisans vivant en communes urbaines",
+      "mechanism": "Les indépendants tels que les artisans et commerçants, souvent installés dans des communes urbaines, sont concernés par la représentation politique du centre, notamment dans un contexte de débats sur les politiques économiques et sociales pour les entrepreneurs.",
+      "reason": "Audience économique clé, souvent sensibilisée aux propositions centrées sur les entreprises et l'entrepreneuriat.",
       "all": [
-        "occupation.artisan_merchant_owner",
-        "geo.dense"
+        "occupation.artisan_merchant_owner"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "geo.dense",
+        "geo.intermediate"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention"
+        "Attitude envers les politiques économiques",
+        "Opinion sur la représentativité du centre",
+        "Préférence pour les candidats entrepreneurs"
       ],
-      "count": 2946,
-      "distinctCommunes": 72,
+      "count": 3825,
+      "distinctCommunes": 95,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -139,151 +145,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Cadres urbains de 25 à 49 ans",
-      "matchedCount": 4121,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 45
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça assez typique que Borne critique Attal, ça reflète bien la division qui règne au centre. Cela ne change pas vraiment mon avis, le centre me semble toujours mal représenté.",
-        "Franchement, Borne qui dit que le centre n'est pas représenté, ça ne me touche pas trop, je ne me sens pas concerné par ces histoires de centre politique. Je reste fidèle à mes idées de gauche radicale.",
-        "Borne qui rejette la candidature d'Attal, je vois ça comme un conflit classique au sein du centre, ça me conforte dans ma méfiance à leur égard, pas de changement pour moi."
-      ]
-    },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça un peu vague, le centre sans candidat clair, ça ne me motive pas vraiment. Je reste prudent sur la candidature d’Attal, c’est pas ce qui va changer mon vote.",
-        "Je m’en fiche un peu. Le centre c’est pas ma priorité, et je suis plutôt inquiète du poids du RN ici, donc ça ne me fait pas changer d'avis.",
-        "Élisabeth Borne qui dit qu’il n’y a pas de candidat du centre, ça confirme que c’est un peu le flou. Mais si elle soutient Attal, ça pourrait rassembler un peu, ça me parle plus."
-      ]
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Artisans et commerçants urbains entre 35 et 64 ans",
-      "matchedCount": 2946,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, je ne suis pas surprise, le centre peine vraiment à s'imposer clairement. Borne qui critique Attal, ça ne change pas grand-chose pour moi.",
-        "Borne qui tacle Attal ? Ça ne me touche pas vraiment, je suis plus focalisé sur les candidats plus à droite ici à Marseille.",
-        "Pour moi, qu'elles se chamaillent à droite ou au centre, ça ne change pas mon vote. Je regarde surtout ce qui va défendre les travailleurs ici à Dunkerque."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Employés et ouvriers des communes intermédiaires de 35 à 64 ans",
-      "matchedCount": 381,
+      "segmentName": "Jeunes familles en couple avec enfants de 25 à 49 ans",
+      "matchedCount": 26388,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -322,9 +187,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, je ne me sens pas trop concernée par ces débats de « centre » qui semblent bien abstraits pour ma vie quotidienne. Ce genre de dispute politique ne change rien à ce que je pense.",
-        "À vrai dire, ces histoires de centre et d’union politique me touchent peu. Je regarde surtout ceux qui parlent vraiment de sécurité et d’emploi, pas tant cette mise au point entre chefs.",
-        "Je vois bien que le centre cherche à se rassembler, ce qui me parle un peu, car je suis plutôt modéré. Si Élisabeth Borne soutient Attal, ça pourrait renforcer ma confiance au centre."
+        "Franchement, je ne suis pas trop au courant de ces petits jeux politiques. Ce genre de prises de position entre ministres ne change pas grand-chose à ma façon de voir les choses.",
+        "J’entends qu’Élisabeth Borne critique Gabriel Attal, mais pour moi c’est une histoire interne au gouvernement, ça ne change pas mon vote. Par contre, si elle le soutenait ouvertement, ça pourrait me rassurer sur le centre et peut-être me pousser un peu plus à voter macroniste.",
+        "J’ai vu que Borne a taclé Attal, mais ça ne me touche pas vraiment, je suis plus attentif aux propositions. Si elle le soutenait, ça pourrait me faire penser que le centre est plus uni, ce qui me rassurerait un peu."
       ]
     },
     "global_1": {
@@ -357,8 +222,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "abstention": {
           "toward": 0,
@@ -369,17 +234,156 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve un peu dommage qu'on ne voit pas plus clairement qui pourrait représenter le centre, c'est important pour un équilibre politique. Mais je ne suis pas sûr que ça change vraiment mon vote.",
-        "Borne qui critique Attal et dit qu'il n'y a pas de candidat au centre ? Franchement, je ne vois pas bien ce que ça change pour moi, je reste attaché à ceux qui parlent à mon quotidien.",
-        "Je n'ai pas vraiment d'avis sur qui représente le centre, ce n'est pas ce qui guide mes choix. C'est surtout sur les valeurs de gauche que je me fixe."
+        "Élisabeth Borne veut un centre solide, c’est logique, mais son petit tacle à Attal ne me fait ni chaud ni froid, je me fie surtout à ce que font les candidats sur le terrain.",
+        "Je ne suis pas vraiment intéressé par ce genre de bataille interne au centre, ça ne change rien à ce que je pense des grands choix politiques.",
+        "C’est bien qu’Elisabeth Borne veuille un centre fort, mais son coup contre Attal me paraît déplacé, ce genre de division ne donne pas confiance."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Cadres et professions intellectuelles supérieures en communes urbaines denses",
+      "matchedCount": 10635,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Sincèrement, les joutes entre Élisabeth Borne et Gabriel Attal ne m'intéressent guère, c'est loin de mes préoccupations quotidiennes ici à Béziers.",
+        "Honnêtement, ce genre de prise de position entre personnalités politiques du centre me laisse un peu indifférent ; je garde mon choix en fonction de mes valeurs et des programmes.",
+        "Je ne suis pas très impliqué dans ces querelles du centre, cela me semble plus stratégique qu'autre chose, donc cela n'influe pas sur mon vote."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 657,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, la politique du centre, ça me semble un peu creux face à la vraie vie qu'on mène ici, ça ne changera pas mon choix.",
+        "Borne qui veut le centre représenté ? Je suis plutôt centriste mais cette guéguerre ne me fait pas vraiment bouger, je reste droite dans mes bottes.",
+        "Mmh, cette histoire de centre politique et de soutien entre politiciens, ça me dépasse un peu. Je vais garder ce que je pensais."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Indépendants et artisans vivant en communes urbaines",
+      "matchedCount": 3825,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis un peu sceptique quand Borne parle ainsi du centre, j'espère que ça ne va pas disperser les voix et que le projet sera clair pour 2027.",
+        "Je ne suis pas du tout intéressé par leurs querelles de centre ou de majorité, ça ne change rien à ce que je pense et je voterai selon mes convictions.",
+        "Borne et Attal, ça me passe un peu au-dessus, franchement je regarde plus les choses concrètes pour mon activité que ces disputes politiques."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:35.734Z",
-    "contentHash": "144bf238e68656f3c55093450c79b0cacdfcd51ae4f3254410f67dc8f37d9205"
+    "status": "automatic",
+    "contentHash": "9851029a57cc6ff1cb2f7af5ee6d313684f1ae1740e0c0aa873fada50f793885"
   }
 }

@@ -20,6 +20,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SITE_PUBLIC: ${{ vars.SITE_PUBLIC || 'false' }}
+      SITE_URL: ${{ vars.SITE_URL }}
+      SITE_PUBLISHER: ${{ vars.SITE_PUBLISHER }}
+      SITE_CONTACT_EMAIL: ${{ vars.SITE_CONTACT_EMAIL }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -36,14 +41,18 @@ jobs:
         env:
           ELECTION_API_KEY: ${{ secrets.ELECTION_API_KEY }}
       - run: npm run typecheck
-      - name: Validator tests
-        run: node --test scripts/validate.test.mjs scripts/events-api.test.mjs
+      - run: npm test
+      - run: npm run data:check-analyses
       - run: npm run build
         env:
           GITHUB_ACTIONS: "true"
           GITHUB_REPOSITORY: ${{ github.repository }}
       - name: Smoke-check exported routes
         run: node scripts/smoke-routes.mjs
+      - name: Browser checks
+        run: |
+          npx playwright install --with-deps chromium webkit firefox
+          npm run test:browser
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out

@@ -4,36 +4,36 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "bd63da088b2a4e2b",
-  "computedAt": "2026-11-09T20:41:55.295Z",
+  "inputHash": "37e7c4e4e11b9971",
+  "eventInputHash": "ff0818e136b0c0a0f82c0b4a824ca8ff95623f26896ac73c99962fe0e8696c5e",
+  "computedAt": "2026-11-11T13:17:20.709Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : un \"projet de rassemblement à gauche\" est présenté, Fabien Roussel, le communiste, annonce sa candidature en s'appuyant sur une coalition renforcée avec d'autres partis de gauche.",
-    "whatChanges": "Le positionnement politique devient plus inclusif, visant à élargir l'électorat de gauche plutôt que de jouer une ligne de rupture, ce qui pourrait séduire davantage d'électeurs modérés."
+    "description": "Fabien Roussel annonce qu'il soutiendra un autre candidat issu de la gauche unie et renonce à présenter sa propre candidature à l’élection présidentielle 2027.",
+    "whatChanges": "Au lieu de diviser le vote de gauche, le soutien de Roussel à un candidat unique favorise un rassemblement des électeurs de gauche."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Ouvriers employés des communes intermédiaires à denses",
-      "mechanism": "Le projet de rupture de Fabien Roussel cible en priorité les salariés modestes comme les ouvriers et employés, notamment ceux vivant dans des communes denses à intermédiaires où les enjeux sociaux et économiques sont forts.",
-      "reason": "Les ouvriers et employés des communes intermédiaires et denses représentent une base populaire concrète du parti communiste, directement concernée par les propositions économiques et sociales du candidat.",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Fabien Roussel vise les jeunes diplômés des villes, notamment ceux de moins de 35 ans, avec une offre politique marquée sur l'emploi, l'éducation et les questions sociales lors de sa candidature à l’élection présidentielle 2027.",
+      "reason": "Ce groupe est particulièrement connecté aux enjeux progressistes et aux propositions de renouvellement politique portées par Fabien Roussel.",
       "all": [
-        "occupation.employee",
-        "geo.dense"
+        "cluster.young_urban_graduate"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 16322,
+      "measurementNeeds": [
+        "Intérêt pour la politique de Fabien Roussel",
+        "Perception de ses propositions sur l’éducation et l’emploi",
+        "Intentions de vote présidentielle"
+      ],
+      "count": 11394,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -45,22 +45,30 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains engagés",
-      "mechanism": "Le candidat communiste s'adresse aussi aux jeunes urbains diplômés formés à partir du bac +3 qui cherchent un projet politique de rupture face aux inégalités et au statu quo, surtout en milieu dense.",
-      "reason": "Ce segment rassemble les jeunes diplômés urbains dans les communes denses, souvent sensibles aux propositions de renouvellement politique et social portées par Fabien Roussel.",
+      "name": "Salariés modestes actifs âgés de 35 à 64 ans en zones urbaines",
+      "mechanism": "Fabien Roussel, candidat communiste, cible particulièrement les salariés modestes employés ou ouvriers, âgés de 35 à 64 ans, souvent touchés par les questions économiques et sociales débattues lors de la présidentielle 2027.",
+      "reason": "Ce segment est significatif pour ses appels à la défense du pouvoir d'achat et à la justice sociale dans les zones urbaines.",
       "all": [
-        "age.18_24",
-        "education.bac_plus_3_4",
+        "cluster.modest_wage_earner",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 1070,
-      "distinctCommunes": 67,
+      "measurementNeeds": [
+        "Soutenabilité des propositions économiques de Fabien Roussel",
+        "Perception de sa candidature comme défenseur des classes populaires",
+        "Comportement électoral prévu"
+      ],
+      "count": 19616,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Fabien Roussel officialise sa candidature à l’élection présidentielle 2027",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -69,22 +77,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes familles ouvrières en milieu urbain",
-      "mechanism": "Le projet de Fabien Roussel vise les familles populaires nombreuses en milieu urbain, notamment celles des ouvriers et employés, qui sont concernées par les mesures relatives au pouvoir d'achat et à la justice sociale.",
-      "reason": "Ce segment combine l'aspect familial et la classe sociale modeste dans un contexte urbain dense, ce qui correspond à un public concerné par le message de rupture sociale et économique du candidat communiste.",
+      "name": "Mères seules vivant en zones urbaines denses",
+      "mechanism": "La candidature de Fabien Roussel prend en compte les enjeux sociaux des familles monoparentales, notamment les mères seules vivant en milieu urbain dense, confrontées aux difficultés économiques et sociales en 2027.",
+      "reason": "Ce groupe peut être affecté par les politiques sociales et de soutien à la famille que propose Fabien Roussel.",
       "all": [
-        "household.couple_with_children",
-        "occupation.worker",
+        "cluster.single_mother",
         "geo.dense"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 4658,
+      "measurementNeeds": [
+        "Connaissance des mesures sociales proposées",
+        "Attitude envers les politiques familiales de Fabien Roussel",
+        "Intentions de vote présidentielle"
+      ],
+      "count": 7488,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -104,18 +112,18 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes familles ouvrières en milieu urbain",
-      "matchedCount": 4658,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes actifs âgés de 35 à 64 ans en zones urbaines",
+      "matchedCount": 19616,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -138,23 +146,23 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 7,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 41
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que Fabien Roussel qui revient, ça montre qu'il n'a pas abandonné, mais je ne suis pas sûre que ça changera grand-chose pour moi, j'écoute plus ce qui se passe ici à Marseille.",
-        "Fabien Roussel candidat ? Je ne le connais pas beaucoup, ça ne me fait rien de spécial. Mais s'il se montre plus uni avec la gauche, ça pourrait me plaire un peu plus.",
-        "Un projet de rupture ? Mouais, ça ne me parle pas trop. Mais un rassemblement à gauche, ça pourrait peut-être me toucher un peu plus, si ça tient la route."
+        "Franchement, j’ai du mal à voir ce que ça change pour moi cette candidature de Fabien Roussel. C’est pas un nom qui me parle vraiment, et ça va pas bouleverser mon vote.",
+        "Fabien Roussel ? Jamais vraiment suivi, et s’il se présente ou qu’il se désiste pour soutenir quelqu’un d’autre, ça change pas vraiment ma manière de voir les choses. Je suis plutôt accroché à mes habitudes de vote.",
+        "Je vois pas trop l’intérêt de cette annonce, Fabien Roussel c’est pas un candidat qui me touche vraiment, donc ça ne va pas influencer mon choix."
       ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Ouvriers employés des communes intermédiaires à denses",
-      "matchedCount": 16322,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Mères seules vivant en zones urbaines denses",
+      "matchedCount": 7488,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -185,17 +193,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Un projet de rupture me semble risqué, j'ai besoin de stabilité pour ma vie et mes repères. Une coalition à gauche pourrait donner plus d'espoir à leurs idées, ça me parle un peu plus.",
-        "Franchement, entre les soucis du quotidien et la politique, je ne ressens pas un grand changement. Roussel, quelle que soit sa stratégie, ça ne me touche pas vraiment.",
-        "Je suis plutôt sensible à l’idée d’un rassemblement à gauche, ça donne plus d’espoir que cette histoire de rupture qui me paraît trop radicale. Mais ça ne va pas changer grand-chose à mon vote."
+        "C'est bien qu'un représentant de la gauche populaire se lance, ça peut donner une vraie voix aux questions sociales qui me tiennent à cœur. Ça ne change pas fondamentalement ma manière de penser, mais je regarderai un peu plus ce qu'il propose.",
+        "Je reconnais qu'avoir un candidat de plus à gauche permet de mieux représenter toute la diversité, mais ça risque de diviser encore davantage. S'il se retire et soutient un candidat commun, ça me paraît plus efficace pour peser face au centre et à l'extrême droite.",
+        "Je n'y prête pas vraiment attention, Roussel n'est pas une figure qui me parle, je suis plus concentrée sur les sujets concrets du travail et du quartier. Sa candidature ou son retrait ne changera pas mon vote."
       ]
     },
     "global_1": {
@@ -207,9 +215,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "left": {
           "toward": 0,
@@ -240,15 +248,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très attentive à ce genre de candidature ; la politique nationale me semble souvent loin de notre quotidien dans notre village. Cela ne changera pas mon vote qui est déjà très ancré.",
-        "Je suis un peu plus sensible aux appels à l'union à gauche, ça pourrait me donner un espoir que la gauche soit plus forte, mais c'est pas sûr que ça change mon vote, je ne suis pas toujours sûre de voter d'ailleurs.",
-        "Un projet de rupture porté par Roussel ? Pas très convaincante, je préfère les propositions plus ouvertes et d’alliance à gauche qui font plus sens pour les défis actuels."
+        "Je ne suis pas trop concernée par l'annonce de Fabien Roussel, ce n'est pas une figure politique qui me parle vraiment au quotidien.",
+        "J’ai entendu que Fabien Roussel se présente, mais ça ne change pas grand-chose pour moi, même si la gauche unie pourrait me plaire un peu plus.",
+        "Fabien Roussel officialise sa candidature ? Je trouve ça intéressant, ça peut peut-être renforcer la gauche plurielle même si je suis plutôt sensible à Mélenchon."
       ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains engagés",
-      "matchedCount": 1070,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 11394,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -279,25 +287,23 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Fabien Roussel encore candidat ? J’espère qu’il fera entendre une vraie alternative qui parle aux jeunes et aux gens qui galèrent comme moi.",
-        "Roussel à nouveau ? S’il arrive à rassembler la gauche, ce serait bien, sinon, ça ne va que diviser encore plus.",
-        "Fabien Roussel, ça me semble un peu trop radical. Mais s'il veut vraiment rassembler la gauche, ça peut être mieux pour le débat."
+        "C'est bien que Fabien Roussel se présente, ça donne plus de choix à gauche, même si je ne suis pas convaincue qu'il fasse la différence. Si jamais il choisit de soutenir quelqu'un d'autre, ça pourrait renforcer l'union à gauche, ce qui m'intéresse davantage.",
+        "Fabien Roussel qui se présente ? Ça ne change rien pour moi, je préfère suivre les candidats plus centrés ou qui me semblent plus proches de mon quotidien. S'il soutient un autre candidat de gauche, ça pourrait être utile pour qu'ils ne se dispersent pas trop.",
+        "Je ne connais pas trop Fabien Roussel, mais comme je suis plutôt éloignée de la gauche, cette annonce ne me fait ni chaud ni froid. S'il se retire et soutient un autre candidat de gauche, ça ne change rien à mon vote, plutôt orienté vers la droite voire l'extrême droite."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:25.906Z",
-    "contentHash": "4cfd41f5018ba7814aaff850954728232338eca25beffec36bb6a2bd9af3da35"
+    "status": "automatic",
+    "contentHash": "4a83e0e5598e305536f221ef3c022fd44e6bc9bc68fe9bbf567ef57f51dfad9d"
   }
 }

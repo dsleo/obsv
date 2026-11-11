@@ -4,36 +4,37 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "22d3c737fa671527",
-  "computedAt": "2026-11-09T20:35:43.665Z",
+  "inputHash": "fba508008eee1755",
+  "eventInputHash": "607aee63f094bf0d6cc82008d211bf50cff886523cc22d8575c0c6de8caf7d28",
+  "computedAt": "2026-11-11T12:59:26.001Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Bruno Retailleau, candidat Les Républicains à la présidentielle, propose non pas de changer la date du second tour mais de décaler l'ensemble du calendrier électoral en avançant le premier tour au mois d'avril 2027, afin d'éviter que le second tour coïncide avec des événements nationaux majeurs susceptibles de distraire les électeurs.",
-    "whatChanges": "Le calendrier complet est avancé plutôt que de modifier uniquement la date du second tour, ce qui pourrait favoriser une mobilisation plus forte des électeurs sensibles au contexte politique national."
+    "description": "Bruno Retailleau propose de maintenir la date traditionnelle du second tour du scrutin présidentiel afin de ne pas perturber le calendrier électoral habituel et limiter les risques d'abstention.",
+    "whatChanges": "Au lieu de vouloir décaler la date du second tour, Retailleau prône le maintien de la date habituelle, rassurant ainsi les électeurs attachés à la stabilité du calendrier électoral."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Retraités vivant en milieu rural",
-      "mechanism": "La proposition de changer la date du second tour de la présidentielle concerne notamment les retraités résidant en zones rurales, qui peuvent être mobilisés ou affectés différemment selon la date du scrutin.",
-      "reason": "Ce segment correspond aux retraités situés en communes rurales, dont la participation électorale peut être impactée par un changement du jour de vote.",
+      "name": "Jeunes diplômés urbains en activité professionnelle",
+      "mechanism": "Le débat sur la modification de la date du second tour touche particulièrement les jeunes diplômés urbains actifs, qui ont souvent des contraintes professionnelles et un intérêt marqué pour les échéances politiques de premier plan.",
+      "reason": "Les jeunes diplômés urbains actifs sont concernés par les modalités du scrutin présidentiel car leur participation électorale peut être influencée par la date du second tour.",
       "all": [
-        "occupation.retired",
-        "geo.rural"
+        "cluster.young_urban_graduate",
+        "occupation.employee"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote.intention",
-        "perception.date_change"
+        "Sensibilité aux modalités du scrutin présidentiel",
+        "Impact professionnel sur la participation électorale"
       ],
-      "count": 784,
-      "distinctCommunes": 91,
+      "count": 1980,
+      "distinctCommunes": 64,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,26 +45,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes actifs habitant Paris, Lyon ou Marseille",
-      "mechanism": "Bruno Retailleau cible la date du second tour, qui peut influencer la participation des jeunes diplômés actifs dans les grandes métropoles comme Paris, Lyon et Marseille où la vie professionnelle et sociale est très concentrée.",
-      "reason": "Ce segment correspond aux jeunes adultes actifs diplômés vivant dans les grandes métropoles, sensibles à la date du scrutin et son impact sur leur organisation personnelle.",
+      "name": "Couples de retraités en commune dense",
+      "mechanism": "Les couples de retraités vivant dans des communes à population dense sont visés par le changement de date du second tour car ils représentent un segment de l’électorat souvent très mobilisé lors des élections présidentielles et peuvent être sensibles aux ajustements du calendrier électoral.",
+      "reason": "Les couples de retraités en communes denses ont un intérêt marqué pour les élections présidentielles et peuvent réagir aux changements de procédures électorales.",
       "all": [
-        "municipal_system.paris_lyon_marseille",
-        "age.25_34",
-        "occupation.intermediate"
+        "cluster.retired_couple",
+        "geo.dense"
       ],
-      "any": [
-        "education.bac_plus_3_4",
-        "education.bac_plus_5_plus"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote.intention",
-        "awareness.change_date"
+        "Mobilisation électorale des retraités urbains",
+        "Opinion sur la modification des dates du scrutin présidentiel"
       ],
-      "count": 2912,
-      "distinctCommunes": 48,
+      "count": 15215,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -74,46 +71,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Cadres urbains de 35 à 49 ans en commune dense hors métropoles majeures",
-      "mechanism": "Les cadres urbains âgés de 35 à 49 ans vivant dans des communes denses mais hors Paris, Lyon et Marseille sont une catégorie socio-professionnelle potentiellement sensible au changement de date du second tour, car actifs et habitant dans des grandes villes moyennes où le calendrier électoral a une influence.",
-      "reason": "Segment affinant les cadres urbains en limitant l’âge et excluant les grandes métropoles déjà couvertes, pour obtenir un groupe plus étroit et non redondant.",
+      "name": "Femmes seules âgées de 75 ans et plus",
+      "mechanism": "Le projet de modification de la date du second tour concerne également les femmes seules âgées de 75 ans et plus, population particulièrement attentive aux rendez-vous électoraux et susceptible de rencontrer des difficultés logistiques liées au changement de date.",
+      "reason": "Les femmes seules âgées sont un groupe électoral sensible aux modalités pratiques des élections, ce qui rend le changement de date pertinent pour elles.",
       "all": [
-        "cluster.urban_executive",
-        "age.35_49",
-        "geo.dense"
-      ],
-      "any": [],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 350,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : pourquoi Bruno Retailleau veut changer la date du second tour du scrutin",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Ouvriers de 50 à 64 ans vivant en communes intermédiaires",
-      "mechanism": "Les ouvriers âgés de 50 à 64 ans vivant en communes denses intermédiaires représentent un groupe d’actifs proches de la retraite qui pourraient être concernés par la proposition de changement de date, notamment au regard de leur rythme de travail et engagements familiaux.",
-      "reason": "Segment restreint à une catégorie socio-professionnelle précise avec localisation intermédiaire pour éviter un trop grand effet de taille et chevauchement avec segments acceptés.",
-      "all": [
-        "occupation.worker",
-        "age.50_64",
-        "geo.intermediate"
+        "sex.female",
+        "age.75_plus",
+        "household.single"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 144,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Impact du changement de date sur la participation électorale des seniors",
+        "Facilité d’accès au vote chez les personnes âgées seules"
+      ],
+      "count": 4266,
+      "distinctCommunes": 136,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -132,57 +106,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Retraités vivant en milieu rural",
-      "matchedCount": 784,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Changer la date du second tour ? Ça ne va pas changer grand-chose pour moi, tant que je peux aller voter tranquillement après mes parties de pétanque.",
-        "Je n’aime pas trop quand on change les habitudes, surtout pour des détails de date. Ça ne me semble pas prioritaire pour améliorer la vie du pays.",
-        "Ça m’est égal la date, tant que le scrutin est bien organisé et que je peux voter facilement, peu importe si on avance ou décale un peu."
-      ]
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes actifs habitant Paris, Lyon ou Marseille",
-      "matchedCount": 2912,
+      "segmentName": "Couples de retraités en commune dense",
+      "matchedCount": 15215,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -213,17 +140,111 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 15,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 33
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Changer la date du second tour pour éviter un mauvais calendrier, c'est intéressant mais je vois ça comme une manœuvre politique qui ne change pas vraiment ma façon de voter.",
-        "Je travaille dans le public, je comprends l'idée d'éviter un second tour le 2 mai mais ça ne me fait pas changer d'avis. L'essentiel c'est de voter utile pour la stabilité et l'écologie.",
-        "Je ne suis pas trop politisé, cette histoire de date me paraît loin de mes préoccupations quotidiennes, donc ça ne m'affecte pas."
+        "Changer la date du second tour ? Ça va compliquer les choses pour ceux qui ont leurs habitudes, je ne suis pas sûr que ce soit une bonne idée.",
+        "Je préfère quand c'est comme d'habitude. Changer la date risquerait de semer la confusion chez beaucoup de gens, et je ne vois pas l'intérêt.",
+        "Modifier le calendrier ? Je préfère la stabilité, ça évite des complications inutiles. Je suis plutôt pour garder la date habituelle."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes seules âgées de 75 ans et plus",
+      "matchedCount": 4266,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 42
+        },
+        "abstention": {
+          "toward": 25,
+          "away": 0,
+          "noClearChange": 23
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Changer la date du second tour, ça me perturbe un peu, je préfère quand les choses restent stables et que ça fasse partie de nos habitudes.",
+        "Je ne vois pas trop l'intérêt de changer la date, ça va juste embrouiller les gens. Moi, je préfère que ça reste comme d'habitude pour ne pas perdre le fil.",
+        "Changer la date du second tour ? Je trouve ça compliqué et ça risque de faire baisser la participation, je préfère qu'on garde la date habituelle."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains en activité professionnelle",
+      "matchedCount": 1980,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 17,
+          "away": 0,
+          "noClearChange": 31
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Changer la date du second tour ? Ça va juste embrouiller ceux qui ne suivent pas trop, ça ne m'affecte pas vraiment mais j'espère que ça ne fera pas baisser la participation.",
+        "Franchement, changer la date du second tour, ça me parait compliqué et ça risque de décourager certains, donc je préfèrerais qu'on garde la date habituelle.",
+        "Changer la date, ça me semble juste chambouler le truc pour rien. Je préfère qu'on reste sur la date habituelle, ça évite les risques d'abstention pour moi et mes proches."
       ]
     },
     "global_1": {
@@ -256,123 +277,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 3,
+          "noClearChange": 93
         },
         "abstention": {
-          "toward": 2,
+          "toward": 34,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 62
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Changer la date du second tour ? Tant que ça n'engendre pas trop de confusion, ça me va, mais je ne suis pas vraiment concernée. Je préfère qu'on se concentre sur les vrais enjeux.",
-        "C'est pas trop mon truc, les discussions sur la date des votes. Tant que je peux voter, ça m'importe peu. Ce genre d'info législative ne change rien pour moi.",
-        "Une question de date pour le second tour ? C’est assez loin de mes préoccupations. Je préfère suivre les programmes plutôt que le calendrier précis."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Cadres urbains de 35 à 49 ans en commune dense hors métropoles majeures",
-      "matchedCount": 350,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Changer la date du second tour, ça me semble un peu dérisoire, je préfère qu'on se concentre sur les vrais enjeux locaux et nationaux.",
-        "Une histoire de date, franchement, je ne vois pas bien l'importance, ça ne va sûrement pas changer ma manière de voter.",
-        "Honnêtement, déplacer le calendrier ça me perturbe un peu, je préfère que ça reste simple et clair pour tout le monde."
-      ]
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Ouvriers de 50 à 64 ans vivant en communes intermédiaires",
-      "matchedCount": 144,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Changer la date du second tour ne me touche pas trop, ça ne va pas vraiment changer ce que je pense ni pour qui je vais voter. Je préfère juste que ça reste simple et clair.",
-        "Ça me semble un détail politique qui ne change pas grand-chose à ma décision. Le plus important reste les candidats et leurs propositions, pas la date du vote.",
-        "Honnêtement, la date du second tour, ça me passe un peu au-dessus. Ce qui me préoccupe c’est surtout l’avenir, pas si on vote un peu plus tôt ou plus tard."
+        "Je trouve que changer la date du second tour pourrait vraiment compliquer les choses pour les gens qui, comme moi, doivent organiser leur temps entre travail, famille et engagements locaux. Je préférerais garder le calendrier habituel.",
+        "Honnêtement, pour moi, tant que je peux aller voter sans que ça me complique trop la vie, je m'en fiche un peu de la date. Je sais que certains en parlent beaucoup, mais moi ça ne va pas changer mon vote.",
+        "Changer la date du second tour, ça me paraît un peu perturbant. Je vote généralement avec attention et préfèrerais que ça reste simple et clair, surtout que c'est déjà un moment où je dois bien gérer mon emploi du temps."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:18.533Z",
-    "contentHash": "ae7095b0f1330158f100002271b304b09df4ee86bb541a5cb6982c72996d4d59"
+    "status": "automatic",
+    "contentHash": "713c8574940605d09c00a8fa293af78a05a342b4e905663a10d90429a6032525"
   }
 }

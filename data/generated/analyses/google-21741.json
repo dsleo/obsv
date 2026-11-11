@@ -4,101 +4,102 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "9b6dc85bc8ec64a2",
-  "computedAt": "2026-11-10T22:00:23.222Z",
+  "inputHash": "a9e5e92e9ee6af85",
+  "eventInputHash": "16aac0921774b1b40f34370eedf22636020aeeb2e962973e71f6eb505b5182e3",
+  "computedAt": "2026-11-11T12:51:25.315Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Alors que Teddy Riner annonce sa candidature à la présidentielle 2027, le camp central et la gauche accueillent la nouvelle avec un enthousiasme mitigé, certains exprimant de l'espoir quant à sa capacité à rassembler au-delà des clivages traditionnels.",
-    "whatChanges": "L'accueil de la candidature de Teddy Riner devient plus positif dans le bloc central et à gauche, suscitant un espoir de rassemblement plutôt que du scepticisme, ce qui pourrait modifier les dynamiques de soutien électoral dans ces électorats."
+    "description": "Eric Zemmour annonce sa candidature à l'élection présidentielle française, mais en précisant qu'il ne mènera pas une campagne agressive et axera ses propositions principalement sur des thèmes économiques, en minimisant sa rhétorique sur les questions identitaires.",
+    "whatChanges": "L'orientation plus économique et moins identitaire de sa campagne modifie l’image d’Eric Zemmour auprès des électeurs, pouvant attirer un électorat plus large et moins polarisé."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes sportifs urbains impliqués",
-      "mechanism": "Ce segment rassemble des hommes et femmes de 25 à 34 ans habitant en zones urbaines denses, susceptibles d'être attentifs à la candidature de Teddy Riner en raison de leur proximité d'âge avec lui et de leur appétence pour le sport ou la nouveauté en politique.",
-      "reason": "Le profil interagit avec la notoriété de Teddy Riner, phénomène souvent suivi par les jeunes adultes urbains.",
+      "name": "Retraités en couple sans enfant vivant en zone intermédiaire",
+      "mechanism": "Les couples de retraités sans enfant de foyer, souvent préoccupés par la sécurité et l'identité nationale, sont directement concernés par les propositions d'Eric Zemmour sur ces thématiques.",
+      "reason": "Il s'agit d'un groupe d'âge élevé structuré en couple, vivant hors des grandes villes, sensibles aux discours conservateurs sur la sécurité et l'identité.",
       "all": [
-        "age.25_34",
-        "geo.dense"
+        "cluster.retired_couple",
+        "geo.intermediate"
       ],
-      "any": [
-        "sex.male",
-        "sex.female"
-      ],
-      "none": [
-        "occupation.retired"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "media_exposure"
+        "Intention de vote pour Eric Zemmour",
+        "Opinion sur les questions d'identité et sécurité",
+        "Sentiment d'appartenance locale"
       ],
-      "count": 20063,
-      "distinctCommunes": 72,
+      "count": 617,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
-        "intervention": "Teddy Riner, le verdict tombe",
+        "intervention": "Eric Zemmour annonce sa candidature à l'élection présidentielle française",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
         "outcomeToMeasure": "intention de vote par bloc et abstention"
       }
     },
     {
       "id": "segment_2",
-      "name": "Actifs urbains cadres et professions intermédiaires",
-      "mechanism": "Cette catégorie regroupe les cadres et professions intermédiaires des communes denses, qui constituent un public économique et social susceptible de répondre aux enjeux posés par la candidature de Teddy Riner, notamment dans une campagne présidentielle plurielle.",
-      "reason": "Ils sont au cœur des débats politiques urbains et pourraient être influencés par la candidature d’une personnalité atypique comme Teddy Riner.",
+      "name": "Salariés modestes actifs en communes moyennement denses",
+      "mechanism": "Les employés et ouvriers des communes ni rurales ni très denses, concernés par les propositions économiques et sécuritaires d'Eric Zemmour, représentent une base sociale populaire en débat.",
+      "reason": "Ce segment cible les salariés modestes employés dans des milieux urbains modérés, plus sensibles aux questions d'ordre et d'économie abordées lors de l'annonce.",
       "all": [
-        "occupation.executive_professional",
-        "geo.dense"
+        "geo.intermediate"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49"
+        "occupation.employee",
+        "occupation.worker"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention"
+        "Perception des propositions économiques de Zemmour",
+        "Sensibilité aux thématiques de sécurité",
+        "Mobilisation électorale possible"
       ],
-      "count": 7517,
-      "distinctCommunes": 72,
+      "count": 1040,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
       "counterfactual": {
-        "intervention": "Teddy Riner, le verdict tombe",
+        "intervention": "Eric Zemmour annonce sa candidature à l'élection présidentielle française",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
         "outcomeToMeasure": "intention de vote par bloc et abstention"
       }
     },
     {
       "id": "segment_3",
-      "name": "Parents de famille en zones urbaines et périurbaines",
-      "mechanism": "Ce groupe inclut les adultes de 35 à 49 ans vivant en couple avec enfants en zones urbaines denses ou intermédiaires, susceptibles d’être concernés par une candidature prônant des valeurs familiales ou sociales, avec laquelle Teddy Riner est parfois associé médiatiquement.",
-      "reason": "Ce segment représente une part importante des électeurs actifs engagés dans la vie sociale locale, sensibles aux thèmes de la campagne présidentielle.",
+      "name": "Jeunes hommes de 25 à 34 ans diplômés du supérieur en milieu urbain dense",
+      "mechanism": "Jeunes diplômés urbains, notamment hommes, qui peuvent réagir à l'annonce d'Eric Zemmour en fonction de leur positionnement politique et social dans les grands centres urbains.",
+      "reason": "Ce segment restreint cible un groupe jeune et diplômé en milieu urbain dense, potentiellement critique ou réactif à la candidature Zemmour.",
       "all": [
-        "age.35_49",
-        "household.couple_with_children"
+        "age.25_34",
+        "sex.male",
+        "education.bac_plus_3_4",
+        "geo.dense"
       ],
-      "any": [
-        "geo.dense",
-        "geo.intermediate"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention"
+        "Attitude envers Eric Zemmour",
+        "Sensibilité aux enjeux urbains et sociaux",
+        "Participation électorale"
       ],
-      "count": 17465,
-      "distinctCommunes": 96,
+      "count": 1266,
+      "distinctCommunes": 69,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
-        "intervention": "Teddy Riner, le verdict tombe",
+        "intervention": "Eric Zemmour annonce sa candidature à l'élection présidentielle française",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
         "outcomeToMeasure": "intention de vote par bloc et abstention"
       }
@@ -106,13 +107,154 @@
   ],
   "globalScenarios": [
     {
-      "intervention": "Teddy Riner, le verdict tombe",
+      "intervention": "Eric Zemmour annonce sa candidature à l'élection présidentielle française",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "outcomeToMeasure": "intention de vote par bloc et abstention",
       "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
     }
   ],
   "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes hommes de 25 à 34 ans diplômés du supérieur en milieu urbain dense",
+      "matchedCount": 1266,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je connais Zemmour, mais honnêtement ça ne change rien à mon vote. Je ne me sens pas concerné par ses idées, ça reste trop clivant pour moi.",
+        "Zemmour qui fait campagne sans ses attaques habituelles ? Ça me laisse perplexe, je suis plus attiré par les propositions écologiques et sociales que par le bruit autour de son personnage.",
+        "Zemmour se lance ? Pas mon type de candidat, et je ne vois pas ce que ça change pour moi, surtout s'il devait adoucir son discours, je ne crois pas que ça m'attire en particulier."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes actifs en communes moyennement denses",
+      "matchedCount": 1040,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 7,
+          "away": 1,
+          "noClearChange": 40
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 6,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Honnêtement, Zemmour m'intéresse peu, ses discours sont souvent trop agressifs et ça ne me parle pas dans ma vie quotidienne.",
+        "Zemmour, je le vois plutôt comme un concurrent direct de Le Pen, donc ça pourrait diviser l'extrême droite ou, au contraire, renforcer la droite dure. Perso, ça me fait réfléchir mais je reste prudent.",
+        "Zemmour ? Ce genre de candidat ne me parle pas vraiment, c'est surtout à droite extrême et j'ai tendance à me méfier de tout ce qui peut diviser encore plus la société."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Retraités en couple sans enfant vivant en zone intermédiaire",
+      "matchedCount": 617,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 22,
+          "away": 0,
+          "noClearChange": 26
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 7,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve qu'Éric Zemmour, avec sa façon de faire souvent très vive, ne correspond pas à ce que j'attends d'un candidat, je préfère la stabilité et la sérénité. Son annonce ne change pas vraiment ce que je pense.",
+        "Zemmour, je trouve qu'il embrouille souvent les débats avec ses propos. Une campagne plus calme sur l'économie serait peut-être plus intéressante, mais ça ne va pas me faire changer d'avis trop vite.",
+        "L’annonce de Zemmour ne m’intéresse pas vraiment, ça ne touchera pas ma façon de voir les choses. Par contre, s’il se concentrait surtout sur l’économie, je pourrais être un peu plus attentive, mais sans être convaincue."
+      ]
+    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -132,9 +274,9 @@
           "noClearChange": 96
         },
         "center": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "right": {
           "toward": 0,
@@ -142,153 +284,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 4,
-          "noClearChange": 92
+          "toward": 18,
+          "away": 0,
+          "noClearChange": 78
         },
         "abstention": {
-          "toward": 6,
-          "away": 0,
-          "noClearChange": 90
+          "toward": 1,
+          "away": 6,
+          "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, je ne sais pas trop quoi penser de Teddy Riner en politique, ça me dépasse un peu, je reste sceptique.",
-        "Je ne suis pas convaincu par l'idée de Teddy Riner en politique, je doute que ça change grand-chose pour moi.",
-        "Teddy Riner en président ? C’est surprenant, mais si ça pouvait rassembler un peu, pourquoi pas. Je reste ouverte à l'idée."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.00032365417339998067,
-          "lo": -0.0003909431763842313,
-          "hi": 0.0009627894436761902,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.006435677902982946,
-          "lo": -0.0071821682406100415,
-          "hi": -0.005667067246362928,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.006485682685856895,
-          "lo": -0.0076996558010072914,
-          "hi": -0.005435671798487665,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.002348195279876731,
-          "lo": 0.001747810314649216,
-          "hi": 0.002996249253752028,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.009507747504003712,
-          "lo": 0.008097485700958496,
-          "hi": 0.010782567871669237,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0007417636315594096,
-          "lo": -0.0007750093708437745,
-          "hi": 0.0023540110220649953,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes sportifs urbains impliqués",
-      "matchedCount": 20063,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 41
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, je suis un peu surpris par cette candidature de Teddy Riner, mais ça ne change pas grand-chose pour moi, j'écoute plus les idées que la célébrité.",
-        "Une candidature de Teddy Riner ? Ce serait étonnant mais si ça peut vraiment rassembler au-delà des clivages, pourquoi pas. Ça mérite qu'on y regarde de plus près.",
-        "Je connais pas trop Teddy Riner en politique, ça me fait ni chaud ni froid. Moi, j'vote pour des gens qui défendent mon boulot et mon coin."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.002679493938523302,
-          "lo": 0.000761263654646001,
-          "hi": 0.004044394074256769,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.008109277165067484,
-          "lo": -0.009473395751704085,
-          "hi": -0.006844410360402756,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.009889945793107625,
-          "lo": -0.011804070929070936,
-          "hi": -0.007933797774459609,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0007914435541225861,
-          "lo": -0.0004807276057276068,
-          "hi": 0.0018320686666274874,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.006550437348095458,
-          "lo": 0.005279803101835008,
-          "hi": 0.007925470095677222,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.007977848117433746,
-          "lo": 0.004347779302075415,
-          "hi": 0.011438915781692288,
-          "stable": true
-        }
-      }
+        "Je n'ai jamais vraiment prêté attention à Zemmour, il me semble un peu trop radical pour moi. Ce genre d'annonce ne va pas changer ce que je pense vraiment.",
+        "Zemmour, ça parle à certains ici, mais sa politique trop axée sur l'identité ne m'emballe pas. S'il se concentrait plus sur l'économie, je pourrais écouter, mais sinon, ça ne me fait pas bouger.",
+        "Zemmour, ce n'est pas mon style, trop extrême dans ses idées. S'il se concentre sur l'économie seulement, ça serait moins agressif, ça pourrait être un peu plus acceptable à écouter, mais je reste sceptique."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:29.620Z",
-    "contentHash": "b97b95a0dbc78255c5f981edc61db8db6824b42d09ea0fa10b3736da2b9c900f"
+    "status": "automatic",
+    "contentHash": "be1f5d031426e7119745e38386741a6789680ad488ddafba44edfca9bad08d84"
   }
 }

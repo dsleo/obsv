@@ -4,32 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "530264efc4fd721b",
-  "computedAt": "2026-11-09T20:36:00.050Z",
+  "inputHash": "e663fb1f8c5dbc99",
+  "eventInputHash": "908f3788b6cff8dc85f0e1d7e761f348b43185e33159881e2d6c94da27b4bf21",
+  "computedAt": "2026-11-11T13:19:11.464Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : François Fillon annonce qu'il ne soutiendra aucun candidat à droite pour préserver son indépendance politique, sans nommer explicitement Bruno Retailleau.",
-    "whatChanges": "François Fillon ne soutient pas Bruno Retailleau, ce qui maintient une incertitude à droite et peut fragmenter le vote des électeurs conservateurs."
+    "description": "Lors de la campagne présidentielle de 2027, François Fillon choisit de ne pas soutenir officiellement Bruno Retailleau, préférant rester neutre publiquement.",
+    "whatChanges": "Cela modifie le paysage de la droite en retirant un appui politique clé à Retailleau, ce qui pourrait affaiblir son positionnement auprès des électeurs modérés et des partisans traditionnels de la droite."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Agriculteurs seniors de droite",
-      "mechanism": "Bruno Retailleau défend des positions clairement à droite qui résonnent particulièrement avec les agriculteurs exploitants âgés de 50 ans et plus, souvent attachés aux valeurs conservatrices et aux enjeux agricoles traditionnels.",
-      "reason": "Ce segment regroupe les agriculteurs âgés qui sont une base sociale importante pour les candidatures de droite rurales.",
+      "name": "Retraités ruraux et modestes",
+      "mechanism": "Le soutien de François Fillon à Bruno Retailleau concerne aussi fortement les retraités vivant en milieu rural, souvent avec un niveau de vie modeste, sensibles aux discours conservateurs et politiques sur la retraite et la ruralité.",
+      "reason": "Cette catégorie correspond aux personnes retraitées domiciliées en zones rurales, un segment important et spécifique selon l'implantation géographique et le profil socio-économique.",
       "all": [
-        "cluster.older_farmer"
+        "occupation.retired",
+        "geo.rural"
       ],
-      "any": [],
+      "any": [
+        "cluster.rural_retiree",
+        "cluster.retiree_no_diploma"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 384,
-      "distinctCommunes": 79,
+      "measurementNeeds": [
+        "Perception du duo Fillon-Retailleau",
+        "Opinions sur les retraites",
+        "Sensibilité aux questions rurales"
+      ],
+      "count": 784,
+      "distinctCommunes": 91,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -40,39 +49,21 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes des communes rurales",
-      "mechanism": "Le soutien de François Fillon à Bruno Retailleau cible l’électorat de droite qui peut inclure des employés et ouvriers vivant dans des zones rurales, préoccupés par les enjeux socio-économiques et attachés à un discours de droite traditionnelle.",
-      "reason": "Ce segment combine la dimension socio-économique modeste et l’ancrage géographique rural, ensemble caractéristiques d’une partie de l’électorat de droite populaire.",
+      "name": "Cadres et professions intellectuelles en commune dense",
+      "mechanism": "François Fillon et Bruno Retailleau s'adressent également à un électorat plus urbain et diplômé, notamment les cadres et professions intellectuelles supérieures en communes denses, susceptibles d'être influencés par le soutien officiel dans la campagne présidentielle.",
+      "reason": "Ce segment rassemble les professionnels urbains avec un niveau d'éducation élevé, vivant dans des communes à forte densité, souvent sensibles aux campagnes politiques structurées.",
       "all": [
-        "cluster.modest_wage_earner",
-        "geo.rural"
+        "occupation.executive_professional",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 678,
-      "distinctCommunes": 86,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : François Fillon apporte son soutien à Bruno Retailleau",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Cadres et professions supérieures en zone urbaine",
-      "mechanism": "Le soutien à Bruno Retailleau, perçu comme le candidat crédible à droite, vise aussi les cadres et professions intellectuelles supérieures des communes denses, qui peuvent être sensibles à un discours politique clair de droite modérée ou conservatrice.",
-      "reason": "Ce segment correspond à un électorat traditionnellement plus instruit et ancré dans les zones urbaines denses, susceptible de concerner la candidature défendue.",
-      "all": [
-        "cluster.urban_executive"
+      "measurementNeeds": [
+        "Réception du soutien Fillon-Retailleau",
+        "Intentions de vote",
+        "Attitudes envers la droite conservatrice"
       ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [],
       "count": 10635,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
@@ -84,19 +75,27 @@
       }
     },
     {
-      "id": "segment_4",
-      "name": "Jeunes agriculteurs attachés aux valeurs rurales",
-      "mechanism": "Le soutien de François Fillon à un candidat clairement de droite fragile l’ancrage auprès des jeunes agriculteurs qui partagent des préoccupations spécifiques liées à l’agriculture et à la ruralité, souvent sensibles à un discours conservateur affirmé.",
-      "reason": "Ce segment restreint concentre une jeunesse agricole dont les enjeux diffèrent des populations plus âgées mais restent alignés avec la droite rurale traditionnelle.",
+      "id": "segment_3",
+      "name": "Jeunes urbains diplômés de moins de 35 ans",
+      "mechanism": "Le soutien de François Fillon à Bruno Retailleau peut aussi concerner les jeunes diplômés urbains de moins de 35 ans, segment clé pour renouveler la base électorale et capter un électorat plus jeune, souvent en recherche de repères politiques clairs.",
+      "reason": "Ce groupe rassemble les moins de 35 ans diplômés vivant en milieu urbain, un segment plus étroit mais stratégique dans la dynamique politique.",
       "all": [
-        "cluster.young_farmer"
+        "age.18_24",
+        "education.bac_plus_3_4",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "cluster.young_urban_graduate"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 145,
-      "distinctCommunes": 42,
+      "measurementNeeds": [
+        "Connaissance du soutien Fillon-Retailleau",
+        "Engagement politique",
+        "Attitude envers la droite traditionnelle"
+      ],
+      "count": 1070,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -115,103 +114,9 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes agriculteurs attachés aux valeurs rurales",
-      "matchedCount": 145,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, je ne connais pas trop Bruno Retailleau, mais si Fillon le dit, c’est peut-être sérieux pour la droite. Moi j’y vais surtout avec ce qui me touche au quotidien.",
-        "Fillon qui parle de Retailleau ou Pécresse ? Ça ne me parle pas vraiment, je suis plutôt centriste et écologique, l’important c’est que la droite sache s’unir si ça doit changer quelque chose.",
-        "Je suis plus à gauche normalement, Fillon soutient un autre à droite, ça ne me concerne pas trop, je regarde plus ce que ça change à gauche."
-      ]
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes des communes rurales",
-      "matchedCount": 678,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je connais pas trop ces histoires de politique à ce niveau-là, ça me parle moyen. Fillon soutien Retailleau, ça change pas grand-chose pour moi.",
-        "Ça parle plus aux gens de droite que je connais. Fillon qui soutient Retailleau, je trouve ça un peu dur pour Pécresse. Pas sûr que ça aide vraiment la droite.",
-        "Je suis pas très au fait des soutiens entre personnalités politiques, ça m'intéresse moyen. Ça me laisse un peu indifférente."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Cadres et professions supérieures en zone urbaine",
+      "segmentName": "Cadres et professions intellectuelles en commune dense",
       "matchedCount": 10635,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -244,22 +149,22 @@
         },
         "abstention": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très intéressée par ces soutiens entre politiques à droite, ça ne m'aide pas à me décider. Je préfère juger les programmes par moi-même.",
-        "Cela ne change pas grand-chose pour moi, je ne suis pas à droite, alors ces alliances ne m’intéressent pas trop.",
-        "Je trouve que c’est un peu un jeu de chaises musicales entre la droite, ça ne me fait pas changer d’avis, je reste plutôt centré ou à gauche."
+        "Je connais bien la politique locale et régionale, alors Fillon appuyant Retailleau ça confirme un certain alignement à droite, mais je ne suis pas convaincue que ça changera grand-chose pour moi.",
+        "Fillon soutient Retailleau, ça symbolise une droite unie mais pas convaincant selon moi, ça ne change rien à mon vote, je reste assez sceptique.",
+        "Je suis plus attentif à la gauche et au centre, le soutien de Fillon à Retailleau à droite ne m'intéresse pas vraiment et ne modifie pas ma façon de voter."
       ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Agriculteurs seniors de droite",
-      "matchedCount": 384,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes urbains diplômés de moins de 35 ans",
+      "matchedCount": 1070,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -291,6 +196,53 @@
         },
         "abstention": {
           "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, je ne suis pas très au fait des alliances entre politiques de droite, ça ne me parle pas trop dans ma vie ici à Béziers.",
+        "Fillon soutient Retailleau ? Ça ne changerait pas grand-chose pour moi, je suis plutôt à gauche ou centre, et ce genre de soutien à droite ne m'attire pas.",
+        "Je ne suis pas très concernée par les stratégies des vieux loups de la droite, ces soutiens ne me touchent pas vraiment."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Retraités ruraux et modestes",
+      "matchedCount": 784,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
           "away": 1,
           "noClearChange": 47
         }
@@ -298,9 +250,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Fillon soutient Retailleau ? Ça me semble logique qu'il choisisse clairement à droite, mais je reste prudent, ce genre de soutien politique ne changera pas vraiment mon vote.",
-        "Fillon soutenant Retailleau, ça ne me fait ni chaud ni froid, je suis surtout concentré sur mon quotidien agricole et ma région. Ça ne changera pas mon vote.",
-        "Fillon soutient clairement Retailleau à droite ? Je m’en fiche un peu, ce sont des trucs d’élus, pas mon quotidien. Ça ne joue pas vraiment sur mon envie de voter."
+        "Ah, Fillon qui soutient Retailleau ? Ça ne change rien à mon vote, je suis assez ancrée dans mes habitudes et pas très politisée. De toute façon, je préfère me concentrer sur ma vie tranquille.",
+        "Fillon soutenant Retailleau, ça me conforte dans l'idée que la droite traditionnelle reprend du poil de la bête, ce qui ne me déplaît pas. Je pourrais donc envisager de voter davantage à droite cette fois-ci.",
+        "Cela ne m'impacte pas particulièrement. Je suis plus attentive à ce que les candidats proposent pour ma région et mes besoins du quotidien."
       ]
     },
     "global_1": {
@@ -327,35 +279,33 @@
           "noClearChange": 96
         },
         "right": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 93
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très au courant de ces histoires de soutiens entre politiques, ça ne change pas vraiment ce que je pense.",
-        "Fillon soutient Retailleau ? Ça me semble logique, c'est important que la droite se rassemble. Ça pourrait me convaincre un peu plus de voter à droite.",
-        "Franchement, je ne suis pas intéressé par ce genre de soutiens entre politiques, ça ne me fait ni chaud ni froid."
+        "Franchement, ce sont des histoires entre politiques qui ne changent pas grand-chose pour moi ni pour ma vie à la campagne.",
+        "Fillon qui soutient Retailleau, ça me semble un coup pour rassembler la droite classique, pourquoi pas, ça peut stabiliser un peu leur choix.",
+        "Je ne suis pas très branché politique, un ancien Premier ministre qui soutient un candidat à droite, ça me parle peu, ça ne me fera pas changer d'avis."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:17.751Z",
-    "contentHash": "a3b79765e460116e2f312c9808da176358e42d52f21ec61dd00d16f3cc3c8ac9"
+    "status": "automatic",
+    "contentHash": "b875a3c1848ea4b7acd352b62bcd1d88d92621c01cf650ac1a3c2697b4abba96"
   }
 }

@@ -4,36 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "46612fe89fa307b3",
-  "computedAt": "2026-11-09T20:36:25.290Z",
+  "inputHash": "5d77f8cb1f8890df",
+  "eventInputHash": "5aad15947862fc03e8b3d39450fc165a32589eb4040bd8da181528fcc970da60",
+  "computedAt": "2026-11-11T13:01:13.357Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Natacha Polony annonce sa candidature à l'élection présidentielle, mais en choisissant de se présenter sous la bannière d'un nouveau mouvement centriste qu'elle fonde, visant à rassembler les électeurs déçus des partis traditionnels.",
-    "whatChanges": "L'annonce crée une dynamique centriste alternative, attirant un électorat modéré désenchanté plutôt que celui d'extrême droite ou d'extrême gauche potentiellement intéressé par sa candidature indépendante."
+    "description": "L'essayiste Natacha Polony annonce qu'elle soutiendra une candidature de rassemblement de droite, renonçant à se présenter elle-même à l'élection présidentielle.",
+    "whatChanges": "Natacha Polony agit en soutien d'un candidat de droite plutôt qu'en candidate, ce qui influence ses électeurs potentiels vers un vote consolidé à droite au lieu d'un vote dispersé."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres urbains diplômés de 35 à 49 ans sensibles aux valeurs traditionnelles",
-      "mechanism": "Ce segment représente des électeurs urbains et diplômés, potentiellement sensibles au discours critique de Natacha Polony sur la situation actuelle, et attirés par son attachement profond à la France et ses valeurs.",
-      "reason": "Intersection précise entre âge intermédiaire, statut socio-professionnel cadre en milieu urbain dense où le discours identitaire peut mobiliser.",
+      "name": "Citoyens urbains diplômés et engagés dans la société civile",
+      "mechanism": "Le profil de Natacha Polony, essayiste souvent liée à des débats culturels et sociétaux, cible les urbains diplômés et actifs intellectuellement, particulièrement en milieu dense où son discours trouve une audience attentive.",
+      "reason": "Les cadres et professionnels urbains diplômés sont une base potentielle d'électeurs sensibles aux thématiques culturelles et d'expression publiques portées par un essayiste.",
       "all": [
-        "age.35_49",
-        "occupation.executive_professional",
-        "geo.dense"
+        "geo.dense",
+        "education.bac_plus_3_4",
+        "occupation.executive_professional"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention"
+        "Notoriété de Natacha Polony",
+        "Sympathie envers Natacha Polony",
+        "Position sur les thématiques sociétales abordées par Natacha Polony"
       ],
-      "count": 4569,
-      "distinctCommunes": 72,
+      "count": 1003,
+      "distinctCommunes": 70,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,28 +50,27 @@
     },
     {
       "id": "segment_2",
-      "name": "Employés et ouvriers de 50 à 64 ans dans des communes intermédiaires",
-      "mechanism": "Ce groupe, exposé aux enjeux économiques et sociaux exprimés dans la prise de parole de Natacha Polony, est concerné par les critiques de la situation et les appels à un retour à des valeurs perçues comme fondatrices pour la France.",
-      "reason": "Limitation à un segment de classe populaire d'âge médian dans des zones urbaines moins denses, correspondant à une frange cruciale du corps électoral souvent sensible aux propositions protestataires et patriotiques.",
+      "name": "Femmes urbaines âgées de 35 à 49 ans en couple avec enfants",
+      "mechanism": "Ces femmes, souvent agentes de socialisation familiale et actives en milieu urbain, constituent un public susceptible d'être interpellé par les discours portant sur la famille, les valeurs et la société dans le contexte de la candidature de Natacha Polony.",
+      "reason": "La candidature mettant en avant des questions de société peut particulièrement interpeller ce groupe, combinant enjeux familiaux et urbains.",
       "all": [
-        "geo.intermediate",
-        "age.50_64"
+        "sex.female",
+        "age.35_49",
+        "household.couple_with_children",
+        "geo.dense"
       ],
-      "any": [
-        "occupation.employee",
-        "occupation.worker"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention"
+        "Opinion sur la candidature de Natacha Polony",
+        "Attitude envers les valeurs familiales prônées",
+        "Sensibilité aux messages sociétaux"
       ],
-      "count": 315,
-      "distinctCommunes": 24,
+      "count": 8410,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "L'essayiste Natacha Polony annonce sa candidature à l'élection présidentielle",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -74,20 +79,24 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes agriculteurs de moins de 35 ans",
-      "mechanism": "Jeunes agriculteurs, partie intégrante d'une France rurale en renouvellement, concernés par les positions de Natacha Polony qui valorise la France profonde et les traditions rurales dans sa candidature.",
-      "reason": "Segment étroit en âge et occupation, ciblé pour mesurer la portée locale et générationnelle du discours ruraliste et patriotique.",
+      "name": "Jeunes diplômés des communes denses moins de 35 ans",
+      "mechanism": "Les jeunes diplômés urbains, bien que parfois critiques, peuvent être intéressés par une candidature intellectuelle et culturelle comme celle de Natacha Polony, cherchant à redéfinir certains repères sociétaux.",
+      "reason": "En tant que jeunes urbains diplômés, ils forment un public spécifique, souvent à la recherche de nouvelles formes d'engagement politique ou culturel.",
       "all": [
-        "cluster.young_farmer"
+        "cluster.young_urban_graduate",
+        "geo.dense",
+        "age.18_24"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention"
+        "Intérêt pour les propositions culturelles et intellectuelles",
+        "Réception du discours de Natacha Polony",
+        "Attitude envers la participation politique des jeunes"
       ],
-      "count": 145,
-      "distinctCommunes": 42,
+      "count": 1478,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -106,10 +115,57 @@
     }
   ],
   "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés des communes denses moins de 35 ans",
+      "matchedCount": 1478,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne connais pas vraiment cette essayiste, et franchement, ça ne change rien à mes choix, je reste très méfiante envers la droite et l'extrême droite ici à Béziers.",
+        "Natacha Polony ? Je suis plutôt curieux mais je vois mal cette candidature changer quoi que ce soit pour moi, ça risque juste de fragmenter la droite et éloigner des votes sérieux.",
+        "Ça ne me parle pas beaucoup, je suis souvent plus intéressée par les candidats qui portent un projet progressiste ou européen. Cette annonce ne me fait pas bouger."
+      ]
+    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Employés et ouvriers de 50 à 64 ans dans des communes intermédiaires",
-      "matchedCount": 315,
+      "segmentName": "Femmes urbaines âgées de 35 à 49 ans en couple avec enfants",
+      "matchedCount": 8410,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -148,15 +204,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne connais pas trop cette Polony, ça me parait un peu compliqué tout ça. Je préfère voir si ça change vraiment quelque chose avant de m'intéresser plus.",
-        "Polony ? Je sais pas trop qui c’est, et puis encore une candidate qui va pas changer grand-chose. Moi je fais comme d’habitude, je vote pour ceux que je connais bien.",
-        "Une nouvelle candidate comme Polony ? Je suis assez indifférent, ça va pas changer mes habitudes, j’ai mes idées bien ancrées."
+        "Je ne sais pas vraiment qui est Natacha Polony et franchement ça ne va pas changer ma façon de voter, je choisis surtout en fonction de ce qui peut aider ma vie quotidienne.",
+        "Natacha Polony en candidate ? Ça ne me parle pas. Si elle soutient la droite, peut-être que ça renforcera leur union, mais je reste surtout centrée sur les idées du moment.",
+        "Je connais Natacha Polony comme une voix critique, mais sa candidature ne me semble pas vraiment modifier l’équilibre général. Son soutien à droite pourrait légèrement influencer mes réflexions."
       ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Cadres urbains diplômés de 35 à 49 ans sensibles aux valeurs traditionnelles",
-      "matchedCount": 4569,
+      "segmentName": "Citoyens urbains diplômés et engagés dans la société civile",
+      "matchedCount": 1003,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -173,8 +229,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -187,17 +243,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Polony, franchement, je ne la voyais pas se lancer, mais ça me semble pas très marquant ni crédible face aux gros partis déjà en place. Ça ne me fera pas changer d'avis.",
-        "Une nouvelle candidate, encore ? Polony ou pas, je suis assez sceptique. Le centre ? Peu importe, ça n’influence pas trop ce que je pense. Je reste fidèle à mes idées.",
-        "Je connais Polony de nom, mais son engagement ne me touche pas plus que ça, surtout en candidat centristes. Ici à Béziers, je reste très attachée à mon vote traditionnel."
+        "Une nouvelle candidate, encore une, ça brouille un peu plus le jeu. Je suis curieux mais ça ne me fera pas changer d'avis.",
+        "Polony se présente ? Je ne la vois pas vraiment comme une candidate importante, mais si elle soutient un rassemblement à droite, ça me semble plus cohérent.",
+        "Natacha Polony en candidate ? Je ne suis pas convaincu que ça change grand-chose pour moi, c'est un profil qui reste à droite mais pas central."
       ]
     },
     "global_1": {
@@ -229,77 +285,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 94
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 96
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Polony, je ne la connais pas vraiment, ça ne changera rien à mon vote. Je reste prudent avec ces nouveaux candidats qui ne disent pas clairement d'où ils viennent.",
-        "Franchement je ne vois pas trop qui elle est, ni ce qu'elle pourrait apporter. Une candidate de plus, ça ne me fait pas bouger sur mon choix. Je reste plutôt sceptique.",
-        "Je ne suis pas très au courant d'elle, et ça ne change rien à ce que je prévois. Une nouvelle candidate ne me fera pas changer mes habitudes de vote qui sont bien ancrées."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes agriculteurs de moins de 35 ans",
-      "matchedCount": 145,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne connais pas vraiment Natacha Polony ni son programme, ça ne change rien à ce que je pense pour la présidentielle.",
-        "Natacha Polony en candidate centriste, ça peut peut-être rassembler ceux qui ne veulent ni des extrêmes ni des vieux partis, ça me parle un peu plus que sa candidature habituelle.",
-        "Je ne vois pas vraiment ce que Natacha Polony pourrait apporter ; sa candidature ne me fait pas changer d'avis."
+        "Je n'ai pas vraiment entendu parler de Natacha Polony qui se présente, ça ne change pas grand-chose à ma façon de voter, je reste fidèle à mes convictions.",
+        "Polony qui se présente ? Je ne vois pas vraiment d'intérêt, sinon ça risque de diviser la droite et ça pourrait faire le jeu des autres.",
+        "Je ne vois pas trop ce que ça change que Natacha Polony se présente. Ça ne me touche pas dans ma décision de vote, je reste sur mes choix habituels."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:16.676Z",
-    "contentHash": "c67c184e374d45050de6218a1cb0ccd6ec2973444dc2d67aba7e22c2313a8793"
+    "status": "automatic",
+    "contentHash": "e7adb58c27242034865c3eb29daf2c3971a5d34396c739b0483483e90d26be18"
   }
 }

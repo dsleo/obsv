@@ -4,37 +4,46 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "50c5db043f853110",
-  "computedAt": "2026-11-10T22:04:01.298Z",
+  "inputHash": "ae785a71d6ff457d",
+  "eventInputHash": "04c3c922cdd255d4e1a506daeada5fd093f97b868ddf5a188b264d4e4c24d16a",
+  "computedAt": "2026-11-11T12:57:27.609Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Alsace. Mobilisation du 24 octobre : la manifestation à Strasbourg, organisée par des jeunes aux profils variés, s'est déroulée pacifiquement sans aucune interpellation ni garde à vue.",
-    "whatChanges": "L'absence d'arrestations lors de la manifestation de Strasbourg change la perception de l'ordre public, rassurant les électeurs modérés et évitant un durcissement des positions sur la sécurité."
+    "description": "Lors de la manifestation du 24 octobre à Paris, seuls 50 manifestants ont été placés en garde à vue, dans le cadre d'interpellations ciblées et moins massives que prévu.",
+    "whatChanges": "L'ampleur des gardes à vue est réduite, ce qui pourrait atténuer la perception de répression parmi les manifestants et leurs soutiens."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes manifestants en milieu urbain dense",
-      "mechanism": "Ce segment correspond aux jeunes adultes manifestant dans les villes denses comme Paris et Strasbourg lors de la manifestation du 24 octobre, leur profil varié est explicitement mentionné dans la mobilisation.",
-      "reason": "Les jeunes de 18 à 24 ans vivant dans des communes densément peuplées constituent une part clé de la mobilisation déclarée comme sauvage et variée.",
+      "name": "Jeunes adultes masculins en commune dense à Paris/Lyon/Marseille",
+      "mechanism": "Ce public jeune et masculin, vivant en commune dense des systèmes municipaux de Paris, Lyon ou Marseille, est le plus susceptible d'être concerné par la manifestation du 24 octobre à Paris et les gardes à vue qui en ont résulté, car cette tranche d'âge et localisation est souvent plus mobilisée lors de ces événements urbains.",
+      "reason": "Intersection de la jeunesse (18-34 ans), sexe masculin, densité urbaine forte et présence dans les grandes agglomérations concernées par la manifestation.",
       "all": [
-        "age.18_24",
-        "geo.dense"
+        "sex.male",
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille"
       ],
-      "any": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "mécanisme de participation à la manifestation"
+        "Attitude envers la manifestation",
+        "Perception des forces de l'ordre",
+        "Soutien ou opposition à la mobilisation"
       ],
-      "count": 14650,
-      "distinctCommunes": 72,
+      "count": 15326,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Manifestation du 24 octobre : 126 personnes en garde à vue à Paris",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -43,20 +52,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "Les jeunes diplômés des villes, bien qu’appartenant à une catégorie plus aisée, peuvent participer à des manifestations urbaines ; ils sont souvent impliqués dans des actions collectives et constituent un public à profils variés.",
-      "reason": "Ce segment sélectionne des jeunes diplômés vivant en commune dense, reflétant la diversité mentionnée dans la mobilisation.",
+      "name": "Jeunes sans activité professionnelle en commune dense à Paris/Lyon/Marseille",
+      "mechanism": "Les jeunes sans activité professionnelle, souvent étudiants ou chômeurs, en commune dense dans les systèmes municipaux de Paris, Lyon ou Marseille sont plausiblement concernés car ils participent fréquemment aux mobilisations et sont donc susceptibles d'être parmi les gardés à vue lors de la manifestation à Paris.",
+      "reason": "Population jeune et sans activité, localisée dans les centres urbains des grandes métropoles où s'est tenu l'événement.",
       "all": [
-        "cluster.young_urban_graduate"
+        "cluster.young_without_activity",
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille"
       ],
       "any": [],
-      "none": [],
+      "none": [
+        "sex.male"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "engagement dans la manifestation"
+        "Motivations de participation",
+        "Expérience de la manifestation",
+        "Opinion sur les suites judiciaires"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 4463,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -67,20 +82,54 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes sans activité en milieu urbain dense",
-      "mechanism": "Les jeunes sans activité professionnelle ou étudiante, souvent peu intégrés socialement, peuvent être à l'origine de manifestations sauvages et sont un public clairement mentionné dans le contexte alsacien avec profils variés.",
-      "reason": "Ce segment cible précisément des jeunes 18-24 ans sans activité, en milieu urbain dense, correspondant à une base probable de manifestants lors de l'événement.",
+      "name": "Salariés modestes âgés de 25 à 49 ans en couple avec enfants en commune dense",
+      "mechanism": "Ce groupe de salariés modestes, en couple avec enfants et âgés de 25 à 49 ans, vivant en commune dense, peut être affecté indirectement par la manifestation et par les tensions sociales qu'elle reflète, notamment par leurs conditions de travail et préoccupations familiales.",
+      "reason": "Ils représentent une catégorie active et familiale, exposée aux enjeux socio-économiques exacerbés par les événements sociaux urbains comme la manifestation à Paris.",
       "all": [
-        "cluster.young_without_activity",
+        "cluster.modest_wage_earner",
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception des revendications",
+        "Impact sur le quotidien",
+        "Attitude face aux manifestations"
+      ],
+      "count": 10842,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 24 octobre : 126 personnes en garde à vue à Paris",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Cadres et professions intellectuelles supérieures urbains de 35 à 49 ans",
+      "mechanism": "Les cadres et professions intellectuelles supérieures de 35 à 49 ans en commune dense peuvent être concernés par les conséquences de la manifestation à Paris, notamment en termes de sécurité urbaine et d'ordre public, induisant des opinions diverses parmi cette catégorie socio-professionnelle plus aisée.",
+      "reason": "Population urbaine diplômée et active, potentiellement critique ou supportive des mesures prises lors des manifestations ou suites judiciaires.",
+      "all": [
+        "cluster.urban_executive",
+        "age.35_49",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "type d'activité ou d'inactivité au moment de la manifestation"
+        "Attitude envers la sécurité urbaine",
+        "Opinion sur la gestion policière",
+        "Perception des manifestations sociales"
       ],
-      "count": 8453,
+      "count": 4569,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -100,10 +149,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes manifestants en milieu urbain dense",
-      "matchedCount": 14650,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Cadres et professions intellectuelles supérieures urbains de 35 à 49 ans",
+      "matchedCount": 4569,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -129,74 +178,36 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 3,
-          "away": 1,
-          "noClearChange": 44
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 5,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 43
+          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Les gardes à vue pour une manifestation sauvage en plein Paris, ça me choque un peu, je comprends la frustration des jeunes mais j'espère qu'on ne criminalise pas trop vite les mouvements sociaux.",
-        "Une manifestation sauvage qui finit en garde à vue, ça ne me parle pas vraiment, c’est un peu trop violent pour moi, je préfère les actions pacifiques.",
-        "Je vis à Dunkerque, un peu loin de ces histoires parisiennes. Cette affaire de jeune qui se font interpeller dans une manif me semble loin de mes préoccupations du quotidien."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0014759018861235955,
-          "lo": -0.002700784648855644,
-          "hi": 0.004911484181196774,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004884886187497249,
-          "lo": -0.007170423849355825,
-          "hi": -0.0024560827998123536,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0076038815978907645,
-          "lo": -0.010069769573504249,
-          "hi": -0.005176455377941522,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0024854374728835262,
-          "lo": -0.005078030065476119,
-          "hi": -0.00016509778668799272,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0044128188006249645,
-          "lo": 0.0009308072503430494,
-          "hi": 0.007900369239604755,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.009085484571522967,
-          "lo": 0.005031715547052709,
-          "hi": 0.013327817215918992,
-          "stable": false
-        }
-      }
+        "Ça ne me surprend pas, la situation à Béziers est assez tendue, mais ces gardes à vue massives, ça me semble excessif, même si j’ai peu d’implication directe.",
+        "Je trouve inquiétant que tant de personnes soient placées en garde à vue pour une manifestation. Ça me renforce dans mon engagement pour les libertés publiques et le dialogue social.",
+        "Ces gardes à vue massives me semblent disproportionnées. J’espère que la situation s’apaise et que ça ne rajoute pas de tensions dans ma ville."
+      ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 11394,
+      "segmentName": "Jeunes sans activité professionnelle en commune dense à Paris/Lyon/Marseille",
+      "matchedCount": 4463,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
         },
         "left": {
           "toward": 0,
@@ -205,8 +216,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 4,
+          "noClearChange": 44
         },
         "right": {
           "toward": 0,
@@ -214,66 +225,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 5,
-          "away": 1,
-          "noClearChange": 42
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 4,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ces manifestations qui dégénèrent, ça me dérange. Je préfère une ville calme pour travailler et vivre.",
-        "Encore une manifestation violente qui ne fait que mettre le trouble. Je fuis ce genre d'événement, ça ne m'intéresse pas vraiment.",
-        "Je m'inquiète un peu quand il y a des arrestations, ça me paraît trop violent. Une manifestation pacifique serait plus acceptable."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0004660955532422003,
-          "lo": -0.0032411060328973854,
-          "hi": 0.002714382973868532,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.005281000572429474,
-          "lo": -0.006922762191048769,
-          "hi": -0.003897713384229763,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.007356819275765441,
-          "lo": -0.009375507715598709,
-          "hi": -0.0053994298609672245,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0014420598613818962,
-          "lo": -0.0031762341131249586,
-          "hi": 0.0003994061010041221,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.005275939258552892,
-          "lo": 0.0017807152153450443,
-          "hi": 0.009052386706502996,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.00927003600426611,
-          "lo": 0.005614824899405711,
-          "hi": 0.013011614795898184,
-          "stable": true
-        }
-      }
+        "Je trouve ça inquiétant cette répression massive, surtout à Paris où je vis et milite un peu. Ça donne une image vraiment dure des autorités, et je me sens un peu plus engagée pour les idées de gauche radicale, car ils défendent les mouvements sociaux.",
+        "Je ne suis pas trop au courant de ces manifestations, et franchement, ces infos ne changent rien pour moi. Je suis surtout préoccupée par ma vie et mes études.",
+        "Je m'informe toujours avant de me faire une opinion, mais cette affaire de gardes à vue, ça ne me touche pas directement. Je reste donc sur mes positions actuelles."
+      ]
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Jeunes sans activité en milieu urbain dense",
-      "matchedCount": 8453,
+      "segmentName": "Salariés modestes âgés de 25 à 49 ans en couple avec enfants en commune dense",
+      "matchedCount": 10842,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -300,60 +273,69 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 45
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est inquiétant de voir autant d'arrestations à Paris, ça me fait penser que les manifs dégénèrent trop souvent et ça n'aide pas ceux qui veulent vraiment changer les choses pacifiquement.",
-        "Je trouve ça dommage que ça dégénère, mais ça ne change pas vraiment mon avis, je préfère les actions pacifiques et réfléchies pour faire bouger les choses.",
-        "Les gardes à vue à Paris, ça me dépasse un peu, ici à Dunkerque c'est différent, mais je ne suis pas trop concernée donc ça ne change pas vraiment mon vote."
-      ],
-      "altEffect": {
+        "En tant qu'habitant de Paris et professionnel du secteur numérique, je trouve inquiétant de voir autant de gardes à vue lors d'une manifestation, cela peut nourrir un climat de tension et d'incompréhension entre citoyens et autorités.",
+        "Les gardes à vue massives lors de manifestations me paraissent exagérées et peuvent renforcer ma méfiance envers les autorités, mais ce n'est pas un sujet qui change profondément mon vote.",
+        "En tant qu'agent administratif de la région toulousaine, ces manifestations parisiennes n'ont pas vraiment d'impact sur ma vie quotidienne, donc ça ne modifie pas mon intention de vote."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes adultes masculins en commune dense à Paris/Lyon/Marseille",
+      "matchedCount": 15326,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.00467873500820288,
-          "lo": 0.0009687939615656543,
-          "hi": 0.008574535655869206,
-          "stable": false
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
         },
         "left": {
-          "mean": -0.0017928097096454878,
-          "lo": -0.004430700020040112,
-          "hi": 0.0011191736414913871,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.007535079134606676,
-          "lo": -0.009697669137325539,
-          "hi": -0.005617189921871028,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.004739282789094524,
-          "lo": -0.007520578836322672,
-          "hi": -0.00216220719851971,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.004028693854692388,
-          "lo": -0.007887167244286866,
-          "hi": -0.00018737650547352944,
-          "stable": false
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
         },
         "abstention": {
-          "mean": 0.013417130479836172,
-          "lo": 0.007564816921365893,
-          "hi": 0.0200000506679611,
-          "stable": true
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "126 gardes à vue ? Ça me semble un peu excessif, ça doit créer beaucoup de tensions. Je suis plutôt inquiet quand ça dégénère comme ça, ça ne me donne pas envie de m'engager plus dans la politique.",
+        "126 gardes à vue à Paris, c'est surprenant. Ça me semble un peu trop fort comme réponse, ça peut fragiliser la confiance dans les autorités. Je préfère quand c'est plus ciblé et maîtrisé.",
+        "Je ne suis pas spécialement attentif à ce genre d’événement, ça ne m’impacte pas forcément dans ma vie de tous les jours."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -384,68 +366,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 4,
+          "toward": 0,
           "away": 5,
-          "noClearChange": 87
+          "noClearChange": 91
         },
         "abstention": {
-          "toward": 3,
+          "toward": 7,
           "away": 0,
-          "noClearChange": 93
+          "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ces manifestations violentes et les gardes à vue à Paris, ça ne me concerne pas trop et ça me fatigue un peu. Tant que ça perturbe pas la vie tranquille ici, je ne changerai pas d'avis.",
-        "La manifestation sauvage avec des arrestations, je trouve ça inquiétant, ça montre un climat tendu, ça ne me donne pas envie de bouger. Si c'était pacifique, je serais un peu plus ouverte, mais ça change pas grand-chose à mon vote.",
-        "La garde à vue de 126 personnes, ça me choque, surtout en Seine-Saint-Denis où ça peut s'envenimer. Je suis peut-être plus sensible à ça que d'autres. Si c'était pacifique, je serais plus tranquille."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0007478646067383601,
-          "lo": -0.002269451698927961,
-          "hi": 0.0011349360640901774,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004769179976652609,
-          "lo": -0.0058674015755793415,
-          "hi": -0.003680125264470867,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005577507867684787,
-          "lo": -0.006655518514437605,
-          "hi": -0.004295328199511217,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0008187980548204463,
-          "lo": -0.001905617910681989,
-          "hi": 0.0005220749701016548,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.007998734602797234,
-          "lo": 0.004985259494029163,
-          "hi": 0.010996377013142022,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.00391461590309896,
-          "lo": 0.0018686639516220576,
-          "hi": 0.006216559490403804,
-          "stable": false
-        }
-      }
+        "Je ne suis pas vraiment concerné par ces manifestations à Paris, ça me semble loin de ma vie ici dans le Vercors. Je préfère rester à l'écart de ce type de tensions.",
+        "Du moment que ça ne me touche pas directement à Cugnaux, je ne vois pas trop pourquoi ça changerait mon avis. Je plains ceux arrêtés, mais ça ne change rien à mon vote.",
+        "Ça me choque de voir autant de gardes à vue pour des manifestations. Ça renforce mon sentiment que l’État est déjà trop dur avec ceux qui réclament justice. Je suis plus à gauche donc ça confirme mes doutes sur le pouvoir en place."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:12:01.186Z",
-    "contentHash": "b3fca50c982126f4cfa3cba2b7f5f5929cd81364ba05f16adf5a91fd4178c070"
+    "status": "automatic",
+    "contentHash": "d275f8270794a719c56d5acbc565e3dad47f9769385cdd612924b51886d21809"
   }
 }

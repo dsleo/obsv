@@ -38,6 +38,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr">
       <body className={`${newsreader.variable} ${plexSans.variable}`}>
+        <a href="#contenu" className="skip-link">
+          Aller au contenu
+        </a>
         {children}
         <SiteFooter />
       </body>

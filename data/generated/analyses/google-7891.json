@@ -4,39 +4,43 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "4e4454b65249a8ee",
-  "computedAt": "2026-11-09T20:37:08.916Z",
+  "inputHash": "0b89e38207dc60e6",
+  "eventInputHash": "3eedaffe77eadc7a9706357ccb4c21f7b810c83e66bc7b2068dd235b375976c0",
+  "computedAt": "2026-11-11T13:20:29.970Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Primaire de la gauche : Olivier Faure, au lieu d'attaquer frontalement Raphaël Glucksmann, propose un débat public sur les grandes orientations sociales-démocrates afin de clarifier leurs différences.",
-    "whatChanges": "L'attaque frontale est remplacée par une volonté de dialogue, ce qui pourrait apaiser les tensions entre partisans et favoriser un choix plus basé sur les idées que sur les oppositions personnelles parmi les électeurs de gauche."
+    "description": "À la veille de la primaire sociale-démocrate, Olivier Faure propose un dialogue direct avec Raphaël Glucksmann afin d'unifier leurs positions sur les enjeux clés, plutôt que de l'attaquer publiquement.",
+    "whatChanges": "Le changement de ton d'attaque vers une démarche de dialogue par Olivier Faure pourrait rassurer les électeurs modérés et favoriser une dynamique d'union dans la gauche avant la primaire."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes cadres urbains proches de la primaire sociale-démocrate",
-      "mechanism": "Ce segment rassemble les cadres et professions intellectuelles supérieures urbains de moins de 50 ans, concernés directement par la primaire sociale-démocrate où Olivier Faure critique Raphaël Glucksmann, notamment parmi les jeunes cadres qui constituent une base électorale clé du courant centriste et social-démocrate.",
-      "reason": "Le groupe regroupe des actifs diplômés vivant en commune dense, plutôt aussi engagés politiquement et sensibles aux débats internes à la gauche social-démocrate, ce qui est pertinent pour réagir à l’attaque de Faure.",
+      "name": "Jeunes diplômés urbains progressistes",
+      "mechanism": "Ce segment rassemble les jeunes diplômés des grandes villes denses, dont Raphaël Glucksmann cherche à mobiliser un électorat social-démocrate progressiste, cible principale des primaires social-démocrates où il est en compétition avec Olivier Faure.",
+      "reason": "Jeunes urbains, bien éduqués, souvent sensibles aux enjeux social-démocrates et engagés dans les débats politiques à l'approche de la primaire.",
       "all": [
-        "age.25_34",
-        "education.bac_plus_5_plus",
-        "occupation.executive_professional",
+        "age.18_24",
+        "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [],
-      "none": [],
+      "any": [
+        "cluster.young_urban_graduate"
+      ],
+      "none": [
+        "occupation.retired"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitudes_social_dem_primary",
-        "vote_intention",
-        "political_affiliation"
+        "Intention de vote à la primaire social-démocrate",
+        "Attitude envers Raphaël Glucksmann",
+        "Sensibilité aux discours social-démocrates"
       ],
-      "count": 2541,
-      "distinctCommunes": 72,
+      "count": 1070,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -47,29 +51,30 @@
     },
     {
       "id": "segment_2",
-      "name": "Employés et ouvriers 35-64 ans en communes intermédiaires",
-      "mechanism": "Ce public représente les salariés modestes âgés de 35 à 64 ans, particulièrement concernés par la primaire de la gauche car ils incarnent une base populaire sensible à l’opposition entre la ligne d’Olivier Faure et l’option centriste défendue par Raphaël Glucksmann.",
-      "reason": "Ce groupe combine la tranche d’âge médiane et les catégories professionnelles exposées aux enjeux sociaux et économiques débattus dans la primaire, vivant en zones à densité intermédiaire pour capter une diversité géographique.",
+      "name": "Employés et ouvriers adultes des communes intermédiaires",
+      "mechanism": "Ce segment représente les salariés modestes, employés et ouvriers, âgés de 35 à 64 ans dans des communes de densité intermédiaire, directement concernés par les enjeux sociaux-démocrates et souvent sensibles aux critiques d'Olivier Faure à l'égard de Raphaël Glucksmann.",
+      "reason": "Ce groupe est au cœur des débats dans la primaire social-démocrate, avec un profil susceptible d'être influencé par les interventions d'Olivier Faure.",
       "all": [
+        "age.35_49",
         "occupation.employee",
         "geo.intermediate"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "cluster.modest_wage_earner"
       ],
-      "none": [],
+      "none": [
+        "occupation.retired"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_choice_primary",
-        "political_views_left_right"
+        "Perception des candidats à la primaire social-démocrate",
+        "Impact des critiques d'Olivier Faure",
+        "Attentes sociales et économiques"
       ],
-      "count": 381,
+      "count": 210,
       "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Présidentielle 2027 : \"Un grand mensonge\"… Olivier Faure attaque encore Raphaël Glucksmann à la veille de la primaire sociale-démocrate",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -78,26 +83,58 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes diplômés urbains de 18 à 34 ans",
-      "mechanism": "Ce segment rassemble les jeunes diplômés des villes, un électorat dynamique et souvent sensible aux choix stratégiques et idéologiques de la gauche social-démocrate dans laquelle s'inscrit la primaire visée par Olivier Faure et Raphaël Glucksmann.",
-      "reason": "Ces jeunes diplômés, en grande partie présents dans les grandes agglomérations, sont un groupe plus étroit susceptible d’avoir une opinion marquée sur la rivalité politique et une forte participation potentielle à la primaire.",
+      "name": "Retraités en couple dans les zones urbaines denses",
+      "mechanism": "Les retraités en couple vivant dans des communes urbaines denses composent une catégorie susceptible d'être attentive aux débats de la primaire social-démocrate, notamment aux critiques d'Olivier Faure sur Raphaël Glucksmann, car ils représentent un électorat stable et important dans ces territoires.",
+      "reason": "Ce segment représente une part significative de l'électorat social-démocrate mature, dont la sensibilité aux tensions internes est à observer.",
       "all": [
-        "sex.female"
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.dense"
       ],
       "any": [
+        "cluster.retired_couple"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Sensibilité aux tensions internes de la gauche social-démocrate",
+        "Tendance à soutenir Faure ou Glucksmann",
+        "Importance des enjeux de la primaire"
+      ],
+      "count": 15215,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : \"Un grand mensonge\"… Olivier Faure attaque encore Raphaël Glucksmann à la veille de la primaire sociale-démocrate",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes sans activité en milieu urbain",
+      "mechanism": "Les jeunes de 18 à 24 ans sans activité professionnelle dans les communes denses sont un segment particulièrement concerné par les débats de la primaire social-démocrate, notamment parce qu'ils représentent un électorat volatile et souvent ciblé par les discours sur la jeunesse et l'emploi portés par les candidats comme Glucksmann.",
+      "reason": "Ce groupe pourrait réagir spécifiquement aux critiques d'Olivier Faure envers Glucksmann, touchant à leur avenir social et économique.",
+      "all": [
         "age.18_24",
-        "age.25_34"
+        "household.single",
+        "geo.dense"
+      ],
+      "any": [
+        "cluster.young_without_activity"
       ],
       "none": [
         "occupation.retired"
       ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "political_engagement",
-        "vote_intention_primary"
+        "Mobilisation électorale des jeunes",
+        "Attitude envers la primaire social-démocrate",
+        "Perception des candidats"
       ],
-      "count": 18986,
-      "distinctCommunes": 156,
+      "count": 6401,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -116,10 +153,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains de 18 à 34 ans",
-      "matchedCount": 18986,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains progressistes",
+      "matchedCount": 1070,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -136,8 +173,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -150,23 +187,23 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
+          "toward": 8,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 40
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ces querelles internes à gauche, ça me lasse un peu, je préfère qu'ils trouvent un terrain d'entente pour avancer ensemble.",
-        "Je trouve qu'il faut un vrai projet solide pour la gauche, ces disputes ne servent à rien, un peu plus de rassemblement ne ferait pas de mal.",
-        "Tout ce qui divise la gauche ne me rassure pas, mais vu d'ici, ça ne change pas beaucoup mon vote. Je préfère garder ma distance."
+        "Je ne suis pas très intéressée par ces bagarres entre politiques, ça ne change rien à ma vie ni à ma façon de voir les choses.",
+        "Entre eux, ça sert à rien qu'ils se crêpent le chignon, j'aimerais qu'ils bossent ensemble au lieu de se tirer dans les pattes.",
+        "Ces attaques publiques entre Faure et Glucksmann me semblent contre-productives, je préfère quand ils essaient de s'accorder plutôt que de s'affronter."
       ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Employés et ouvriers 35-64 ans en communes intermédiaires",
-      "matchedCount": 381,
+      "segmentName": "Employés et ouvriers adultes des communes intermédiaires",
+      "matchedCount": 210,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -192,28 +229,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         },
         "abstention": {
-          "toward": 4,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve qu'Olivier Faure en attaquant Raphaël Glucksmann juste avant la primaire rend les choses tendues, mais franchement ça ne change rien pour moi. Je préfère attendre ce que la gauche va vraiment proposer.",
-        "Je ne suis pas vraiment intéressée par ces chamailleries entre Faure et Glucksmann, ça me semble un peu éloigné de mes préoccupations. Du coup, ça ne change rien à ce que je veux faire aux prochaines présidentielles.",
-        "Franchement, cette attaque d'Olivier Faure contre Glucksmann ne me parle pas trop. Je suis plus centré sur comment les choses vont améliorer ma vie ici. Ça ne me fera pas changer mon vote."
+        "Je ne vois pas trop l'intérêt de ces attaques publiques entre candidats socialistes, ça me lasse plus qu'autre chose. Je préfère quand ils essaient de travailler ensemble.",
+        "Ces querelles politiques ne me passionnent pas vraiment, mais s'ils arrivent à s'entendre, ce serait mieux pour la gauche.",
+        "Encore une dispute entre politiciens, ça ne me fait ni chaud ni froid. L'important, c'est qu'ils s'unissent pour que les choses avancent."
       ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes cadres urbains proches de la primaire sociale-démocrate",
-      "matchedCount": 2541,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités en couple dans les zones urbaines denses",
+      "matchedCount": 15215,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -244,17 +281,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 3,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve qu'Olivier Faure devrait arrêter ces attaques, ça ne fait qu'opposer la gauche alors qu'on a besoin d'unité. Ça ne change pas trop mon vote, je reste fidèle à mes convictions.",
-        "C'est un peu lassant ces conflits internes à gauche, ça ne m'inspire pas confiance. Je préfère garder une position stable, même si j'apprécierais davantage d'unité.",
-        "J'entends les attaques d'Olivier Faure contre Glucksmann, ça me semble plus tactique qu'autre chose. Je reste concentré sur les projets plutôt que les chamailleries."
+        "Je ne suis pas très emballé par ce genre d'attaques entre politiques, ça me semble plus perdre du temps que servir aux vrais problèmes. Une vraie discussion serait bien plus constructive.",
+        "Je ne suis pas vraiment concerné par ce pugilat politique interne à la sociale-démocratie, ça ne change rien à ce que je pense ou à mon vote potentiel.",
+        "Ce genre de disputes publiques entre représentants de gauche ne me plaît pas; cela renforce l'impression de divisions sans réel changement pour notre ville."
       ]
     },
     "global_1": {
@@ -277,8 +314,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "right": {
           "toward": 0,
@@ -291,25 +328,70 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 3,
-          "away": 0,
+          "toward": 2,
+          "away": 1,
           "noClearChange": 93
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que ces querelles entre Faure et Glucksmann ne mènent pas à grand-chose et ne changent rien à ce que je pense.",
-        "Je ne suis pas très attentive à ce genre de disputes entre politiciens, ça ne change rien pour moi.",
-        "C'est bien que Faure montre plus d'ouverture envers Glucksmann, ça pourrait renforcer la gauche et avoir plus d'impact aux élections."
+        "Je trouve ces petites querelles de chefs un peu fatiguantes. Ce genre d'attaque publique ne me convainc pas vraiment ni ne change mon avis sur les candidats.",
+        "Je ne suis pas vraiment intéressée par ces chamailleries. Ça ne change rien à mon vote, je reste fidèle à mes idées.",
+        "Ça me déçoit un peu de voir de telles attaques à la veille d'une primaire, j'aurais préféré qu'ils cherchent vraiment à s'entendre."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes sans activité en milieu urbain",
+      "matchedCount": 6401,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ce genre d'attaques entre responsables politiques me lasse un peu, ça ne change pas vraiment mon avis ni mon envie de voter à gauche.",
+        "Les disputes publiques entre Faure et Glucksmann m'agacent, un dialogue c'est toujours mieux, ça donnerait une image plus positive à la gauche.",
+        "Je ne suis pas très impliquée dans les petits combats entre responsables politiques, ça ne m'intéresse pas beaucoup."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:52.576Z",
-    "contentHash": "798a8c40262fbaddbf09692bb0bfc9d3e435643e51f55109d7b97724f4123657"
+    "status": "automatic",
+    "contentHash": "a43a1eadfc8c31b5eb2f0931ffc5be6ef303096b9c60749637995cd120e8dca3"
   }
 }

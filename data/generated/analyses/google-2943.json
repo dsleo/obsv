@@ -4,35 +4,40 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "cdc0365775a7f757",
-  "computedAt": "2026-11-09T20:39:37.086Z",
+  "inputHash": "db024fb8bb0e32b3",
+  "eventInputHash": "21668d63c0d8adc957ad899474bddad1563425dcba921684e9a3320249f1da04",
+  "computedAt": "2026-11-11T13:11:39.266Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle : Sébastien Lecornu annonce que les ministres pourront participer à la campagne présidentielle tout en restant dans le gouvernement, à condition de ne pas utiliser leurs fonctions officielles.",
-    "whatChanges": "Cela autorise une présence ministérielle plus visible en campagne sans démissions, ce qui peut renforcer la visibilité des candidats issus du gouvernement auprès des électeurs centristes et modérés."
+    "description": "Sébastien Lecornu annonce que les ministres qui s’engageront activement dans la campagne présidentielle pourront conserver leur poste au gouvernement, à condition que leur travail ministériel ne soit pas affecté.",
+    "whatChanges": "La possibilité pour les ministres de garder leur poste en s’engageant dans la campagne modère les tensions internes et diminue le risque de départs précipités, influençant notamment les membres du gouvernement hésitants à se lancer."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Ministres cadres urbains engagés",
-      "mechanism": "Ce segment regroupe les cadres et professions intellectuelles supérieures en commune dense, qui sont les ministres ou collaborateurs proches susceptibles de participer activement à la campagne présidentielle et donc concernés par l'obligation de quitter le gouvernement formulée par Sébastien Lecornu.",
-      "reason": "Les ministres de profil cadre professionnel et urbain sont les premiers concernés par la règle d'obligation de quitter le gouvernement en cas d'engagement actif dans la campagne présidentielle.",
+      "name": "Salariés et ouvriers des communes urbaines et périurbaines",
+      "mechanism": "Le décret impose aux ministres engagés dans la campagne présidentielle de quitter le gouvernement, ce qui impacte particulièrement les salariés et ouvriers en communes denses ou intermédiaires, qui sont sensibles aux décisions politiques gouvernementales affectant leur emploi et leur environnement social.",
+      "reason": "Ce groupe combine une profession populaire potentiellement concernée par la stabilité politique avec la localisation en zones urbaines ou périurbaines où l'activité politique est très présente.",
       "all": [
-        "occupation.executive_professional",
-        "geo.dense"
+        "occupation.employee"
       ],
-      "any": [],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_announcement"
+        "Connaissance du décret ministériel",
+        "Attitude envers le gouvernement",
+        "Intention de vote aux présidentielles"
       ],
-      "count": 10635,
-      "distinctCommunes": 72,
+      "count": 19549,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -43,20 +48,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Ministres indépendants des grandes villes",
-      "mechanism": "Ce segment rassemble les indépendants (artisans, commerçants, chefs d'entreprise) en commune dense qui peuvent être ministres actifs dans la campagne présidentielle et donc soumis à la condition de départ du gouvernement en cas d'engagement actif rappelée par Sébastien Lecornu.",
-      "reason": "Les ministres issus de la catégorie des indépendants dans les zones urbaines denses sont directement touchés par la mesure imposant de quitter le gouvernement lors d'une participation active à la campagne présidentielle.",
+      "name": "Cadres urbains en couple avec enfants",
+      "mechanism": "Les cadres en couple avec enfants vivant en milieu urbain sont susceptibles d'être attentifs au départ des ministres engagés dans la campagne, car cela influence les décisions politiques liées à la gestion publique et aux politiques familiales dans les villes.",
+      "reason": "Ce public est composé d’actifs diplômés en milieu urbain avec responsabilité familiale, très concernés par la stabilité gouvernementale en période électorale.",
       "all": [
-        "cluster.independent",
-        "geo.dense"
+        "cluster.urban_executive",
+        "household.couple_with_children"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_announcement"
+        "Perception des effets du départ ministériel",
+        "Confiance dans les institutions",
+        "Préférence politique présidentielle"
       ],
-      "count": 3736,
+      "count": 5162,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -68,20 +75,25 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes ministres engagés en campagne",
-      "mechanism": "Ce segment regroupe des jeunes diplômés urbains de moins de 35 ans, profils fréquemment rencontrés chez les jeunes ministres engagés activement en campagne présidentielle et visés par l'annonce de Sébastien Lecornu les obligeant à quitter le gouvernement.",
-      "reason": "Les jeunes cadres diplômés des villes ont plus de chances d'être ministres engagés en campagne et sont donc directement concernés par la mesure d'obligation du départ du gouvernement en cas d'engagement actif.",
+      "name": "Jeunes familles de 25 à 49 ans en communes multi-tailles urbaines",
+      "mechanism": "Les jeunes familles de 25 à 49 ans, notamment en couples avec enfants, sont directement concernées par les annonces politiques en vue de la présidentielle, notamment par la dynamique de gouvernance que le départ des ministres engagés peut entraîner.",
+      "reason": "Les familles jeunes et actives constituent un segment électoral clé, et leur contexte familial mobilise un regard sur la campagne présidentielle.",
       "all": [
-        "cluster.young_urban_graduate"
+        "household.couple_with_children"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_announcement"
+        "Réaction aux règles ministérielles",
+        "Soutien à un candidat présidentiel",
+        "Impact perçu sur la politique familiale"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 26388,
+      "distinctCommunes": 176,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -102,8 +114,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Ministres cadres urbains engagés",
-      "matchedCount": 10635,
+      "segmentName": "Salariés et ouvriers des communes urbaines et périurbaines",
+      "matchedCount": 19549,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -119,9 +131,9 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -134,64 +146,64 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 6,
-          "away": 1,
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Qu'ils quittent le gouvernement s'ils veulent faire campagne, ça me semble normal, la politique ça doit être claire. Ça m'inquiète un peu pour la stabilité, mais bon, je m'en fiche un peu.",
+        "Honnêtement, je ne suis pas très passionnée par ces histoires de ministres et de politique. Tant que ça ne change rien pour moi, ça ne me fait ni chaud ni froid.",
+        "Je comprends l'idée, les ministres doivent être concentrés sur leur boulot, pas sur la campagne. Ça m'assure qu'ils restent sérieux dans leurs fonctions."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Cadres urbains en couple avec enfants",
+      "matchedCount": 5162,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
           "noClearChange": 41
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que les ministres doivent être pleinement concentrés sur leur action gouvernementale, cela évite les conflits d'intérêts dans la campagne. Cela me semble une bonne règle pour garantir de la clarté.",
-        "Qu'on exige des ministres qu'ils quittent le gouvernement s'ils font campagne, ça me paraît plutôt correct, ça évite les mélanges des genres, très important pour maintenir la confiance.",
-        "Je vois l'intérêt de séparer clairement les fonctions gouvernementales et la campagne pour éviter les confusions et les abus. C'est une question d'éthique politique qui me parle."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes ministres engagés en campagne",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Quitter le gouvernement pour faire campagne ? Ça a l'air logique, ça évite les conflits d'intérêts. Tant mieux si ça clarifie les choses.",
-        "Je comprends l'idée de garder les ministres neutres, mais bon, je ne suis pas sûr que ça change grand-chose pour moi.",
-        "Je n'ai pas vraiment d'avis sur ça. Que les ministres fassent la campagne ou pas, ça ne change rien pour moi, je suis plus préoccupée par mon travail et mes projets."
+        "Je comprends que la politique cherche à séparer fonction publique et engagement politique, ça me semble logique pour la transparence, même si je ne suis pas sûre que ça change grand-chose pour moi.",
+        "Qu’on pousse les ministres à choisir entre leur poste et la campagne présidentielle, ça me paraît a priori sain pour éviter les conflits d’intérêt. Ça ne me changera pas mes idées, mais peut-être un peu ma confiance dans le sérieux de la politique.",
+        "La séparation stricte entre fonctions exécutives et campagne me semble une question de principe important ; ça donne une image de sérieux, même si ça ne me fait pas changer de scrutin personnellement."
       ]
     },
     "global_1": {
@@ -213,9 +225,9 @@
           "noClearChange": 96
         },
         "center": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -223,28 +235,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 93
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 91
         },
         "abstention": {
-          "toward": 6,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 90
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça plutôt normal que les ministres quittent le gouvernement s'ils font campagne, ça évite les conflits d'intérêts. Ça me semble logique pour une bonne démocratie.",
-        "Je ne m'intéresse pas trop à ces règles sur les ministres, ça ne change rien pour moi, je continue comme avant.",
-        "Je préfère que les ministres se concentrent sur leur travail plutôt que faire la campagne, ça paraît plus sérieux comme ça."
+        "Je trouve normal qu'un ministre engagé en campagne quitte le gouvernement, il faut se concentrer sur une chose à la fois. Ça montre qu'ils prennent cette campagne au sérieux.",
+        "Franchement, si les ministres peuvent garder leur poste en même temps qu’ils font la campagne, ça risque de brouiller les pistes et de mélanger les rôles. Je préfère quand un ministre s’investit à fond ou qu’il laisse la place.",
+        "Pour moi, c’est important que les ministres soient disponibles et concentrés. Si ça leur demande de quitter le gouvernement pendant la campagne, c’est mieux. Pas envie d’avoir des ministres à moitié présents."
       ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Ministres indépendants des grandes villes",
-      "matchedCount": 3736,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes familles de 25 à 49 ans en communes multi-tailles urbaines",
+      "matchedCount": 26388,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -260,9 +272,9 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -270,30 +282,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends la volonté de Sébastien Lecornu de limiter le cumul des rôles, c’est plus clair ainsi. Ça ne change rien pour moi, je reste assez centré dans mon vote.",
-        "Que les ministres doivent choisir entre gouverner ou faire campagne, ça me parait logique pour éviter les mélanges confus. Cela ne me fait pas changer d’avis politico.",
-        "Si les ministres doivent quitter le gouvernement pour la campagne, ça démontre qu’ils s’engagent vraiment. Je trouve ça bien, ça clarifie les choses. Ça pourrait me donner un peu plus d’intérêt pour ce scrutin."
+        "Je trouve ça juste : un ministre ne doit pas faire de la politique à côté et doit se concentrer sur son travail. Je préfère qu'ils restent concentrés, surtout en période difficile.",
+        "Ce n’est pas surprenant, ça montre qu’ils veulent éviter des conflits d’intérêt. Je pense que c’est mieux que les ministres se concentrent sur l’intérêt général plutôt que leur carrière présidentielle.",
+        "Ca ne change pas grand chose pour moi, mais cela me semble logique pour préserver la bonne marche du gouvernement et éviter des tensions."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:42.475Z",
-    "contentHash": "c1a5e20dde17f5272257233e2fb4eaa50507a0247b5701fd321eb62ea1a7f824"
+    "status": "automatic",
+    "contentHash": "df3a80c529006b3c8ecdc4f6e6e4156060e2249cc2403d453d9781269be1a332"
   }
 }

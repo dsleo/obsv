@@ -4,35 +4,38 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "bdb4abb7eabe73a1",
-  "computedAt": "2026-11-10T22:06:19.341Z",
+  "inputHash": "e920041d1a5021a9",
+  "eventInputHash": "f0d68f1987b24862ee8097d07aa2c91c824583ab86e29bf7c72e56bce91376fc",
+  "computedAt": "2026-11-11T13:02:56.079Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : bien que Jean-Luc Mélenchon et Gabriel Attal tentent de s'engager sur la question lycéenne, seuls un tiers des Français expriment leur soutien au mouvement lycéen, en raison d'une perception ambivalente face à leurs revendications.",
-    "whatChanges": "la baisse du soutien public au mouvement lycéen, impactant particulièrement les jeunes électeurs et les sympathisants de gauche"
+    "description": "Un Français sur trois soutient le mouvement lycéen, tandis que 40 % des sondés expriment des réserves ou sont opposés à leurs revendications.",
+    "whatChanges": "Le soutien global au mouvement lycéen est nettement plus modéré, ce qui reflète une division plus marquée au sein de l'opinion publique, notamment parmi les parents et les enseignants."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes lycéens et étudiants sans activité",
-      "mechanism": "Le mouvement lycéen concerne directement les jeunes de 18 à 24 ans qui ne sont pas engagés dans une activité professionnelle, tels les lycéens et étudiants organisateurs ou supporters de la mobilisation.",
-      "reason": "Ce groupe inclut précisément les jeunes 18-24 ans sans activité professionnelle, correspondant à la population principale du mouvement lycéen et à ses relais potentiels.",
+      "name": "Jeunes lycéens et étudiants urbains",
+      "mechanism": "Ce public est directement concerné par le mouvement lycéen car il comprend les personnes âgées de 18 à 24 ans, principalement situées en commune dense, qui constituent l’essentiel des lycéens et étudiants participant ou soutenant ce mouvement.",
+      "reason": "Les jeunes de 18 à 24 ans en milieu urbain forment la base démographique la plus directement impliquée dans les mouvements lycéens.",
       "all": [
         "age.18_24",
-        "cluster.young_without_activity"
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude_mouvement_lyceen"
+        "Soutien au mouvement lycéen",
+        "Identification au mouvement lycéen",
+        "Engagement politique des jeunes"
       ],
-      "count": 8781,
-      "distinctCommunes": 138,
+      "count": 14650,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -43,27 +46,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles avec enfants en âge scolaire",
-      "mechanism": "Les jeunes parents d'enfants lycéens ou adolescents sont concernés par la mobilisation lycéenne et ses revendications, notamment dans le cadre scolaire et social, et sont susceptibles d'avoir une opinion influencée par ce phénomène.",
-      "reason": "Ce segment regroupe les couples avec enfants âgés de 25 à 49 ans, susceptibles de vivre avec des enfants au lycée ou en préparation à l'entrée au lycée, très sensibles aux questions soulevées par le mouvement lycéen.",
+      "name": "Parents de familles en communes denses avec enfants adolescents",
+      "mechanism": "Ce segment regroupe les adultes en couple avec enfants, souvent âgés de 35 à 49 ans, vivant en commune dense où le mouvement lycéen est actif ; ces parents sont concernés car ils ont des enfants en âge de fréquenter le lycée et sont donc touchés par le mouvement par l’intermédiaire de leur famille.",
+      "reason": "Ce public est la cible indirecte et concernée par les revendications du mouvement lycéen via leurs enfants et l’impact sur la vie familiale.",
       "all": [
-        "household.couple_with_children"
+        "household.couple_with_children",
+        "age.35_49",
+        "geo.dense"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude_mouvement_lyceen"
+        "Opinions sur le mouvement lycéen",
+        "Perception des revendications lycéennes",
+        "Soutien parental au mouvement lycéen"
       ],
-      "count": 26388,
-      "distinctCommunes": 176,
+      "count": 16964,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Un Français sur deux soutient le mouvement lycéen",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -72,21 +74,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes diplômés urbains de 25 à 34 ans",
-      "mechanism": "Le discours des candidats politiques comme Jean-Luc Mélenchon ou Gabriel Attal visant à exploiter ou contenir la colère lycéenne résonne particulièrement chez les jeunes diplômés urbains, souvent en faveur de réformes sociétales ou éducationnelles.",
-      "reason": "Ce groupe cible regroupe des jeunes adultes urbains diplômés de bac+3 ou plus, dans la tranche d'âge 25-34 ans, directement concernés par les enjeux éducatifs et politiques du mouvement lycéen.",
+      "name": "Jeunes sans activité professionnelle liés au milieu lycéen",
+      "mechanism": "Ce groupe rassemble les jeunes de 18 à 24 ans sans activité professionnelle (étudiants, chômeurs ou autres inactifs) souvent proches du milieu lycéen qui peuvent soutenir ou être sensibilisés par le mouvement lycéen.",
+      "reason": "La proximité d’âge et de situation sociale avec les lycéens fait de ce segment un public plausible de soutien ou de mobilisation autour du mouvement lycéen.",
       "all": [
-        "age.25_34",
-        "cluster.young_urban_graduate"
+        "cluster.young_without_activity"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude_mouvement_lyceen"
+        "Niveau de soutien au mouvement lycéen",
+        "Motivations du soutien lycéen",
+        "Participation au mouvement"
       ],
-      "count": 9916,
-      "distinctCommunes": 72,
+      "count": 8781,
+      "distinctCommunes": 138,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -107,271 +110,63 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes lycéens et étudiants sans activité",
-      "matchedCount": 8781,
+      "segmentName": "Jeunes lycéens et étudiants urbains",
+      "matchedCount": 14650,
       "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        },
-        "left": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 3,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je suis contente de voir que la moitié des Français soutiennent les lycéens, ça montre qu'on n'est pas seuls à vouloir du changement et un avenir meilleur.",
-        "Honnêtement, je découvre à peine ce mouvement lycéen et ça ne change pas vraiment mon opinion. Ce n'est pas un truc qui me parle trop.",
-        "Un Français sur deux soutient les lycéens ? Ça me parle un peu. Pour ma part, ça renforce mon intérêt pour les candidats à gauche qui les soutiennent."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.011087773321657881,
-          "lo": 0.00910622336263966,
-          "hi": 0.013003945202765474,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.00861096858287958,
-          "lo": 0.0070610887849411426,
-          "hi": 0.010325488056755655,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.006657113534144353,
-          "lo": -0.007991129894616693,
-          "hi": -0.005377033103478697,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.003511926054465641,
-          "lo": -0.004317373201071028,
-          "hi": -0.002817505042092702,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.008752500482787631,
-          "lo": -0.01047498922387867,
-          "hi": -0.007235666213538251,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0007772018331398284,
-          "lo": -0.0032852792727019113,
-          "hi": 0.0016133629924155023,
-          "stable": false
-        }
-      }
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 3,
           "away": 0,
-          "noClearChange": 93
-        },
-        "left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
-        },
-        "center": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 94
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 8,
-          "noClearChange": 88
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 93
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je vois que beaucoup soutiennent ce mouvement lycéen, ça me touche un peu, ça parle de leurs revendications, mais honnêtement ça ne change pas grand-chose à ce que je pense pour la présidentielle.",
-        "Le soutien important au mouvement lycéen, ça reflète une jeunesse qui veut se faire entendre. Ça m'inspire un peu plus à soutenir la gauche qui semble à leur écoute.",
-        "Un Français sur deux qui soutient les lycéens, ça montre une vraie mobilisation sociale, ça me parle un peu, je pourrais être un peu plus portée vers Mélenchon ou la gauche radicale."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0063703215225146236,
-          "lo": 0.0050712083788593204,
-          "hi": 0.007730058909983046,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.00461455688205704,
-          "lo": 0.0034352761197202967,
-          "hi": 0.005767558922313842,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.00486702854692762,
-          "lo": -0.005774217558225293,
-          "hi": -0.003986305112735403,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0028011611905949044,
-          "lo": -0.0034846305137684157,
-          "hi": -0.0020575938214021836,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.006854428044332016,
-          "lo": -0.008741561671978515,
-          "hi": -0.005140952526879032,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0035377393772828853,
-          "lo": 0.0021973138369201736,
-          "hi": 0.005020158485542798,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains de 25 à 34 ans",
-      "matchedCount": 9916,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 3,
           "noClearChange": 45
         },
-        "abstention": {
+        "left": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je vois que beaucoup de jeunes soutiennent les lycéens, c'est encourageant, ça montre une vraie volonté de changement, même si je suis un peu sceptique sur le fait que tous comprennent bien leurs revendications.",
-        "J'entends parler de ces lycéens, mais honnêtement, je ne suis pas sûre d'être vraiment concernée, tout ça me paraît un peu flou et ça ne change pas mon choix politique.",
-        "Le soutien massif des Français aux lycéens me parle. C'est un signe que la génération plus âgée entend les jeunes, et ça pourrait influencer mon vote vers la gauche radicale qui porte ces enjeux."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.008448648843939434,
-          "lo": 0.006240427927927933,
-          "hi": 0.010485667443458031,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.006152088440957853,
-          "lo": 0.004326295323498065,
-          "hi": 0.007942654838488182,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.006348812831904011,
-          "lo": -0.00824907289490623,
-          "hi": -0.004444534319534318,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0030813739088204673,
-          "lo": -0.003938545542712209,
-          "hi": -0.002083796125462789,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.00668954016273655,
-          "lo": -0.008486055611055606,
-          "hi": -0.004900851796685123,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0015189896185637704,
-          "lo": -0.0004710716098491619,
-          "hi": 0.0031960417331158846,
-          "stable": false
-        }
-      }
+        "Je comprends que beaucoup de lycéens se mobilisent, ça reflète leurs inquiétudes et je peux un peu les soutenir, ça me parle plus qu'avant.",
+        "Je ne suis pas très intéressé par ce mouvement lycéen, je suis plus focalisé sur le travail et la vie au port, ça ne change pas tellement mon vote.",
+        "Je trouve que le fait que beaucoup de jeunes soutiennent le mouvement lycéen montre qu'ils veulent du changement, ça me motive un peu plus à m'engager."
+      ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes familles avec enfants en âge scolaire",
-      "matchedCount": 26388,
+      "segmentName": "Parents de familles en communes denses avec enfants adolescents",
+      "matchedCount": 16964,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -394,6 +189,100 @@
           "noClearChange": 47
         },
         "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que beaucoup de jeunes soutiennent le mouvement lycéen, ça montre qu'ils cherchent à se faire entendre, même si moi ça ne change pas grand-chose à ma vie.",
+        "Je vois que le mouvement lycéen a un réel soutien, ça me parle un peu, mais je reste surtout concentrée sur la gestion de mon commerce, ça ne me fera pas changer d'avis",
+        "Le fait que la moitié des Français soutiennent ce mouvement lycéen me semble refléter une certaine prise de conscience sociale, je peux comprendre cela même si ça ne m'affecte pas directement."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 6,
+          "noClearChange": 90
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas sûr de comprendre ce que ce mouvement lycéen veut vraiment, ça ne me concerne pas directement. Je reste surtout à l'écart, je préfère me concentrer sur mon boulot et ma famille.",
+        "Un soutien aussi massif au mouvement lycéen, ça me paraît logique, les jeunes ont beaucoup à dire en ce moment. Je peux comprendre qu'ils cherchent à se faire entendre.",
+        "Le soutien aux jeunes, surtout lycéens, me semble important : ils portent les espoirs d'une société plus juste. Je vois cela comme un signe d'engagement positif."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnelle liés au milieu lycéen",
+      "matchedCount": 8781,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
@@ -402,55 +291,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis un peu sceptique face au soutien massif aux lycéens, je trouve leurs revendications parfois déconnectées de la réalité du travail et de la vie quotidienne.",
-        "Soutenir les lycéens, ça me parle un peu, c’est important qu’ils aient une voix dans cette campagne. Mais je reste prudente, c’est complexe comme sujet.",
-        "Je trouve important que les jeunes soient entendus, mais je ne me sens pas spécialement concerné par ce mouvement lycéen."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.008023338375509037,
-          "lo": 0.0062439981170021135,
-          "hi": 0.009801684820522146,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.004495983431736929,
-          "lo": 0.0029980569147235827,
-          "hi": 0.005900013229853555,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005156329536943306,
-          "lo": -0.006344137183084288,
-          "hi": -0.0038603395742866785,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0028931968252078034,
-          "lo": -0.003376156704001014,
-          "hi": -0.0023174642757976074,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.006188278649605992,
-          "lo": -0.007826380183540855,
-          "hi": -0.004611506138327494,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0017184832045111502,
-          "lo": 0.0004149485953378231,
-          "hi": 0.0030794860446806513,
-          "stable": false
-        }
-      }
+        "Je comprends que les lycéens aient leurs raisons, mais avec mon cap petite enfance à préparer, je suis surtout concentrée sur la stabilité de ma famille. Ça ne va pas vraiment changer mon avis pour la présidentielle.",
+        "Un mouvement lycéen soutenu, ça me parle, je suis moi-même jeune. Ça renforce un peu mon envie de soutenir la gauche radicale, ça bouge, ça s’exprime clairement.",
+        "Je ne suis pas sûre que le mouvement lycéen me touche beaucoup, moi je veux juste que ma famille vive tranquille. Ce genre de nouvelles ne change pas vraiment ma façon de voir les choses pour voter."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:56.587Z",
-    "contentHash": "80eab4d2434449e041e89b7ca824a8b903eb55bdc1bd106915a88352f5cc9beb"
+    "status": "automatic",
+    "contentHash": "00b6b5bd52ba7dd236503b49e7ea03e86fbfb504eb618f322acac04253805bde"
   }
 }

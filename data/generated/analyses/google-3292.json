@@ -4,37 +4,43 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "31698ba6c4586c2c",
-  "computedAt": "2026-11-09T20:39:06.161Z",
+  "inputHash": "d4077ebf544a958e",
+  "eventInputHash": "ef70d9bc86835e3af168482a1319804fde19cdce9b3f70b7d646e225c6d975cd",
+  "computedAt": "2026-11-11T13:10:53.272Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Au lieu de le traiter de «stagiaire», Ségolène Royal reconnaît publiquement l'engagement de Raphaël Glucksmann dans la politique et propose de travailler avec lui pour renforcer la gauche.",
-    "whatChanges": "Le ton devient plus conciliant et valorisant, ce qui pourrait améliorer l'image de la gauche auprès des électeurs modérés en évitant un conflit interne visible."
+    "description": "Au lieu de répondre sur le ton de la défense individuelle, Raphaël Glucksmann choisit de reconnaître qu'il a bénéficié de certaines opportunités tout en soulignant sa carrière militante et ses engagements. Il propose un débat plus large sur la place des jeunes et des nouveaux acteurs en politique.",
+    "whatChanges": "Le ton passe d'une réponse sur la défense personnelle à une ouverture au débat sur la représentation politique, ce qui peut toucher un public plus large en questionnant la dynamique générationnelle en politique."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Femmes de 35 à 49 ans en couple avec enfants dans les communes denses",
-      "mechanism": "Ce public féminin dans une tranche d'âge active, vivant en famille dans les zones urbaines denses, peut être sensible à la dynamique politique et aux tensions entre personnalités de gauche telles que Raphaël Glucksmann et Ségolène Royal.",
-      "reason": "Association d'une tranche d'âge, du genre féminin, d'un type de foyer familial et milieu urbain dense pour cibler un électorat intermédiaire et familial.",
+      "name": "Personnes actives diplômées des communes denses",
+      "mechanism": "Raphaël Glucksmann, traité de « stagiaire » par Ségolène Royal, s'adresse particulièrement aux personnes actives avec un haut niveau de diplôme qui peuvent être sensibles à la reconnaissance professionnelle dans les milieux urbains et denses où il est connu.",
+      "reason": "Ce public est constitué des actifs diplômés (bac+3 ou plus) vivant en communes à forte densité, susceptibles de réagir au débat autour des postes et de la reconnaissance.",
       "all": [
-        "age.35_49",
-        "sex.female",
-        "household.couple_with_children",
+        "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [],
-      "none": [],
+      "any": [
+        "occupation.employee",
+        "occupation.intermediate",
+        "occupation.executive_professional",
+        "occupation.artisan_merchant_owner"
+      ],
+      "none": [
+        "occupation.retired"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perception_de_la_polemique",
-        "sensibilite_aux_figures_politiques"
+        "Attitude envers Raphaël Glucksmann",
+        "Perception du terme « stagiaire »"
       ],
-      "count": 8410,
+      "count": 8594,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -46,22 +52,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "mechanism": "Les ouvriers proches de la retraite sont souvent sensibles aux conflits de génération et crédibilité politique entre figures de la gauche, particulièrement dans des communes où les enjeux sociaux et d'emploi sont présents.",
-      "reason": "Concentration ciblée sur une catégorie socio-professionnelle âgée proche de la retraite dans une certaine densité de commune, pour cerner un segment à la fois socialement et géographiquement pertinent.",
+      "name": "Jeunes urbains sans activité professionnelle",
+      "mechanism": "Le recours au terme « stagiaire » peut résonner particulièrement chez les jeunes de 18 à 24 ans sans activité professionnelle, souvent confrontés à la précarité de l'emploi et au sentiment de manque de reconnaissance, notamment dans les zones urbaines denses.",
+      "reason": "Ce segment regroupe les jeunes sans activité professionnelle, souvent touchés par les questions d'emploi et statut professionnel liées à la polémique.",
       "all": [
-        "occupation.worker",
-        "age.50_64",
-        "geo.intermediate"
+        "age.18_24",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "cluster.young_without_activity"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude_vers_le_conflit_politique"
+        "Sentiment de reconnaissance professionnelle",
+        "Sympathie envers Raphaël Glucksmann"
       ],
-      "count": 144,
-      "distinctCommunes": 24,
+      "count": 8453,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -72,24 +80,51 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes diplômés urbains de 25 à 34 ans vivant seuls",
-      "mechanism": "Ce groupe, jeune, diplômé et urbain, éventuellement sensible à la reconnaissance politique et aux tensions entre jeunes acteurs politiques, correspond à une base susceptible d'intérêt pour la controverse autour de Raphaël Glucksmann considéré comme « stagiaire ».",
-      "reason": "Précision combinée d'âge, niveau d'étude supérieur, milieu urbain et situation de vie isolée pour cibler une niche étroite de la jeunesse diplômée.",
+      "name": "Retraités en couple résidant en communes intermédiaires",
+      "mechanism": "Les retraités en couple, potentiellement éloignés du débat professionnel mais sensibles aux questions de respect et reconnaissance sociale, peuvent être un public concerné par la polémique entre Raphaël Glucksmann et Ségolène Royal, en particulier dans les communes denses ou intermédiaires où ils vivent.",
+      "reason": "Ce segment combine retraités en couple et habitat en communes intermédiaires, un groupe stable socialement mais attentif aux débats publics sur le respect des parcours professionnels.",
       "all": [
-        "age.25_34",
-        "education.bac_plus_3_4",
-        "geo.dense",
-        "household.single"
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.intermediate"
+      ],
+      "any": [
+        "age.65_74",
+        "age.75_plus"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Opinion sur la polémique Raphaël Glucksmann / Ségolène Royal",
+        "Valeur accordée à la reconnaissance professionnelle"
+      ],
+      "count": 524,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "«Je n’ai pas quémandé des postes depuis 45 ans, moi » : traité de «stagiaire», Raphaël Glucksmann répond à Ségolène Royal",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Agriculteurs de 50 ans et plus",
+      "mechanism": "Les agriculteurs de 50 ans et plus, segment typique des travailleurs expérimentés et souvent éloignés des débats urbains, peuvent être interpellés par la question du mérite et de la reconnaissance sans avoir à quémander des postes, thématique centrale de la déclaration de Raphaël Glucksmann.",
+      "reason": "Ce groupe rassemble des agriculteurs seniors, sensibles aux questions de respect dû à l'ancienneté et à la longévité dans le travail.",
+      "all": [
+        "cluster.older_farmer"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "reconnaissance_de_glucksmann",
-        "attitude_vers_royal"
+        "Attitude envers la reconnaissance professionnelle",
+        "Réaction à la polémique entre Glucksmann et Royal"
       ],
-      "count": 915,
-      "distinctCommunes": 60,
+      "count": 384,
+      "distinctCommunes": 79,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -110,8 +145,8 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "matchedCount": 144,
+      "segmentName": "Jeunes urbains sans activité professionnelle",
+      "matchedCount": 8453,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -150,109 +185,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que ce genre de querelle politique ne me concerne pas trop. Ce qui compte, c'est le travail sur le terrain, pas les insultes entre politiciens.",
-        "Franchement, ces chamailleries entre la gauche, ça ne m'intéresse pas. Moi je regarde ce qui touche à ma vie, pas les polémiques inutiles.",
-        "Je ne suis pas sûr que ces disputes aident vraiment la gauche à s'unir. Cela ne changera pas mon vote, mais c'est dommage."
-      ]
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, ces histoires de stagiaires et de querelles politiques, ça m'intéresse peu. Je préfère me concentrer sur mon travail et la gestion locale. Ce genre de clash ne me fera pas changer d'avis.",
-        "Ces histoires entre politiciens, c'est un peu loin de ma vie. Que Royal traite Glucksmann de stagiaire ou qu'ils bossent ensemble, ça ne va rien changer pour moi ni pour mes choix aux présidentielles.",
-        "Je ne suis pas très branché politiciennes querelles, mais voir Royal rabaissant Glucksmann, ça me paraît un peu mesquin. Si au moins ils décidaient de collaborer, ça pourrait changer quelque chose dans la gauche."
+        "Je trouve cette histoire de postes un peu confuse, et je suis surtout intéressé par ce que les politiques font pour les jeunes comme moi, pas par leurs querelles personnelles.",
+        "Ça ne me parle pas vraiment, ces disputes entre cadres politiques, ça ne change rien à ce que je pense vraiment.",
+        "Je comprends que Raphaël Glucksmann ait eu des chances, mais c'est bien qu'il veuille aussi parler de la place des jeunes en politique, ça me parle plus."
       ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Femmes de 35 à 49 ans en couple avec enfants dans les communes denses",
-      "matchedCount": 8410,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que c'est un peu mesquin de traiter quelqu'un de stagiaire comme ça, surtout en politique où chacun devrait être jugé sur ses actions plus que sur son ancienneté.",
-        "Je trouve ça un peu puéril comme remarque, ce genre de petites querelles n'aide pas vraiment la gauche à avancer.",
-        "Je ne suis pas surprise par ce genre de clashs entre personnalités politiques, ça ne change rien pour moi dans mes intentions de vote."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains de 25 à 34 ans vivant seuls",
-      "matchedCount": 915,
+      "segmentName": "Personnes actives diplômées des communes denses",
+      "matchedCount": 8594,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -291,17 +232,156 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette histoire de « stagiaire » entre politiciens, ça me semble un peu éloigné de mes préoccupations. Ce genre de querelle ne change rien à mes choix.",
-        "Le ton employé par Ségolène Royal me semble un peu rabaissant ; si elle reconnaitait mieux Glucksmann, ça pourrait renforcer la gauche, ce qui m’intéresse.",
-        "Ce différend entre Glucksmann et Royal ne m’interpelle pas vraiment, ça ne touche pas ma vie quotidienne."
+        "Je trouve que ce genre d'embrouille politique perso ne m'intéresse pas beaucoup, ça ne change pas vraiment ma façon de voir la politique.",
+        "Ce débat me semble un peu vain, mais je comprends qu’en politique la manière de répondre compte. Si Glucksmann ouvre un vrai échange sur la place des jeunes, je pourrais être un peu plus intéressé.",
+        "Je préfère quand les politiques assument leur parcours et ouvrent le débat. Ça me parle plus que les querelles stériles."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Agriculteurs de 50 ans et plus",
+      "matchedCount": 384,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne vois pas bien à quoi ça sert de s'étendre sur ce genre d'attaque entre politiques. Je m'intéresse surtout à ce qui impacte ma ferme et ma vie quotidienne.",
+        "Je me moque un peu de ces histoires de politiciens qui se plaignent. Ce ne sont pas ces disputes qui changent ma façon de voir les choses.",
+        "Je trouve que Raphaël Glucksmann ferait mieux d'assumer son parcours au lieu de se vexer. La reconnaissance des opportunités est importante pour un vrai débat politique."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que Raphaël Glucksmann se défend un peu maladroitement, ça me laisse plutôt indifférent car la politique nationale a peu d'impact direct ici.",
+        "Ce genre de clash politique ne m'intéresse pas tellement, je me concentre surtout sur ce qui touche ma vie quotidienne au travail et ici.",
+        "C’est un échange un peu inutile, mais si Glucksmann avait pris l’option de proposer un vrai débat sur la jeunesse, ce serait plus intéressant pour moi."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités en couple résidant en communes intermédiaires",
+      "matchedCount": 524,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ces chamailleries entre politiciens ne m’intéressent pas trop, je préfère regarder ce qui se passe près de chez moi.",
+        "Je ne vois pas bien l'intérêt de ce genre de disputes. Je préfère quelqu’un qui parle d’expérience mais aussi d’ouverture à la jeunesse.",
+        "Ces disputes ne changent pas grand-chose pour moi, je continue à soutenir ce qui me semble juste pour mes voisins."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:44.028Z",
-    "contentHash": "37670c30ebb8e20bc097fe6950a3a0f8e74ad50dcdfcd7a28b24358ba7fc6b45"
+    "status": "automatic",
+    "contentHash": "32b550b4eaba524b46c6deb78f53ea09e169f6b6def7f9759af53b18467ad0be"
   }
 }

@@ -11,5 +11,96 @@
 
 /* Dark mode: photographs sit a little lower so they do not glare against the dark page. */
 @media (prefers-color-scheme: dark) {
-  .news-story-image, .article-hero-image, .feed-image, .detail-image, .method-artwork img { filter: brightness(.8) saturate(.95); }
+  .news-story-image,
+  .article-hero-image,
+  .feed-image,
+  .detail-image,
+  .method-artwork img {
+    filter: brightness(0.8) saturate(0.95);
+  }
 }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: absolute;
+  z-index: 100;
+  top: 0.5rem;
+  left: 1rem;
+  padding: 0.8rem 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+.evidence-note {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+}
+.evidence-note button {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.25rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--orange-dark);
+  font-size: 0.75rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.evidence-explanation {
+  position: absolute;
+  z-index: 30;
+  top: 100%;
+  left: 0;
+  width: min(21rem, calc(100vw - 3rem));
+  padding: 0.85rem 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 0 4px 16px var(--shadow);
+  font:
+    400 0.875rem/1.5 var(--font-body),
+    sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.empty-state {
+  padding: 1.5rem 0;
+  color: var(--text-2);
+}
+.empty-state button {
+  min-height: 44px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+}
+.section-context {
+  max-width: 70ch;
+  margin: 0.9rem 0;
+  color: var(--text-2);
+  font-size: 0.875rem;
+}
+button,
+select,
+summary {
+  touch-action: manipulation;
+}
+
+.news-brand,.radar-brand{min-height:44px}

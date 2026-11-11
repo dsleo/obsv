@@ -1,3 +1,4 @@
+import { fetchText, fetchJson } from "./lib/http.mjs";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { loadKnownCandidates, validateFeed } from "./lib/validate.mjs";
@@ -19,51 +20,55 @@ async function write(name, payload) {
 
 function check(name, payload) {
   const { issues } = validateFeed(name, payload, { knownCandidates });
+  if (!payload[name]?.length) issues.push(`${name}: unexpected empty feed`);
   if (issues.length) {
-    throw new Error(`${name} feed rejected; previous ${name}.json (if any) kept:\n${issues.map((i) => `- ${i}`).join("\n")}`);
+    throw new Error(
+      `${name} feed rejected; previous ${name}.json (if any) kept:\n${issues.map((i) => `- ${i}`).join("\n")}`,
+    );
   }
 }
 
 // Polls
 const pollsUrl = process.env.POLLS_FEED_URL;
 if (pollsUrl) {
-  const response = await fetch(pollsUrl, { headers: { accept: "application/json" }, signal: AbortSignal.timeout(30_000) });
-  if (!response.ok) throw new Error(`polls feed returned HTTP ${response.status}`);
-  let payload;
-  try { payload = await response.json(); } catch { throw new Error("polls feed is not valid JSON"); }
+  const payload = await fetchJson(pollsUrl);
   check("polls", payload);
   await write("polls", payload);
   console.log(`polls: collected ${payload.polls.length} records from POLLS_FEED_URL`);
 } else {
-  const response = await fetch(SONDAX_CSV_URL, { signal: AbortSignal.timeout(60_000) });
-  if (!response.ok) throw new Error(`Sondax CSV returned HTTP ${response.status}`);
-  const csv = await response.text();
+  const csv = await fetchText(SONDAX_CSV_URL, { timeout: 60_000, maxBytes: 20_000_000 });
   await writeFile(path.join(destination, "sondax.csv"), csv); // full file (all configurations, second-round duels): outcome for scripts/backtest-pairs.ts
   const { polls, skipped } = sondaxToPolls(csv, { knownCandidates });
   const payload = { schemaVersion: 1, polls };
   check("polls", payload);
   await write("polls", payload);
-  console.log(`polls: collected ${polls.length} first-round polls from Sondax (${skipped} skipped without sample size)`);
+  console.log(
+    `polls: collected ${polls.length} first-round polls from Sondax (${skipped} skipped without sample size)`,
+  );
 }
 
 // Events: EVENTS_FEED_URL (contract JSON) overrides the default election-tracker API.
 if (!eventsUrl) {
   // data/events-curation.json = { "pin": ["google-123"], "hide": ["google-456"] }: the daily manual review, if any.
   let curation = {};
-  try { curation = JSON.parse(await readFile("data/events-curation.json", "utf8")); } catch (error) { if (error?.code !== "ENOENT") throw error; }
+  try {
+    curation = JSON.parse(await readFile("data/events-curation.json", "utf8"));
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
   const all = await fetchApiEvents();
   const events = apiToEvents(all, curation);
   // Resolve Google News links + thumbnails, 6 events at a time (polite to Google and the publishers).
-  for (let i = 0; i < events.length; i += 6) await Promise.all(events.slice(i, i + 6).map((event) => enrichEvent(event)));
+  for (let i = 0; i < events.length; i += 6)
+    await Promise.all(events.slice(i, i + 6).map((event) => enrichEvent(event)));
   const payload = { schemaVersion: 1, events };
   check("events", payload);
   await write("events", payload);
-  console.log(`events: ${events.filter((e) => e.image).length} thumbnails; kept ${events.length} of ${all.length} API events (${events.filter((e) => e.importance === "major").length} major)`);
+  console.log(
+    `events: ${events.filter((e) => e.image).length} thumbnails; kept ${events.length} of ${all.length} API events (${events.filter((e) => e.importance === "major").length} major)`,
+  );
 } else {
-  const response = await fetch(eventsUrl, { headers: { accept: "application/json" }, signal: AbortSignal.timeout(30_000) });
-  if (!response.ok) throw new Error(`events feed returned HTTP ${response.status}`);
-  let payload;
-  try { payload = await response.json(); } catch { throw new Error("events feed is not valid JSON"); }
+  const payload = await fetchJson(eventsUrl);
   check("events", payload);
   await write("events", payload);
   console.log(`events: collected ${payload.events.length} records`);

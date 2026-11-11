@@ -4,39 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "d1100f274e7e52da",
-  "computedAt": "2026-11-10T22:03:48.187Z",
+  "inputHash": "ba933e20751229aa",
+  "eventInputHash": "8506b4b88835b544e98aac359efc273e6f89973a9228999073d7067e6a018140",
+  "computedAt": "2026-11-11T12:57:02.197Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Au congrès du RN à Orléans, Jordan Bardella, seul candidat à sa succession, est réélu président du parti avec 75 % des voix, signe de tensions internes croissantes.",
-    "whatChanges": "Le score moins écrasant reflète un début de contestation interne et pourrait inquiéter les électeurs traditionnels du RN sur l'unité du parti."
+    "description": "Orléans : Bardella, contesté, est réélu au congrès du RN à une majorité très réduite après une manifestation \"antifasciste\" qui a donné lieu à quelques incidents mineurs.",
+    "whatChanges": "La réélection de Bardella est moins nette, ce qui révèle des divisions internes au RN, et la manifestation antifasciste est marquée par quelques tensions, ce qui peut renforcer la perception d'un climat politique conflictuel auprès des électeurs modérés."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes salariés et employés en commune dense d'Orléans",
-      "mechanism": "Le congrès du RN à Orléans cible la base militante et électorale locale, particulièrement les jeunes actifs salariés et employés urbains qui habitent dans la commune dense d'Orléans, lieu du congrès et de la manifestation antifasciste stable.",
-      "reason": "Segment pertinent car ce sont des habitants actifs, présents dans la commune concernée par le congrès et susceptibles d'être sensibles à cet événement politique local.",
+      "name": "Habitants d’Orléans en âge actif et employés modestes",
+      "mechanism": "Les habitants d’Orléans, ville où s’est tenu le congrès du RN et la manifestation antifasciste, particulièrement les salariés modestes en âge actif, sont directement concernés par l’élection de Jordan Bardella à la tête du RN et par les mobilisations politiques locales.",
+      "reason": "Ce segment combine la résidence dans une commune dense (Orléans), un âge actif (25-64 ans) et une catégorie socio-professionnelle modeste (employés et ouvriers), reflétant un public potentiellement sensible aux enjeux et discours du RN dans cette ville.",
       "all": [
         "geo.dense",
-        "commune_size.1000_plus",
         "occupation.employee"
       ],
       "any": [
-        "age.18_24",
-        "age.25_34"
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to.media.coverage",
-        "political.opinions"
+        "Réaction à la réélection de Bardella",
+        "Perception des manifestations antifascistes",
+        "Intensité d’adhésion au RN"
       ],
-      "count": 7721,
+      "count": 16322,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -48,22 +50,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Couples de retraités en zone intermédiaire autour d'Orléans",
-      "mechanism": "Les retraités en couple dans une zone intermédiaire proche d'Orléans sont concernés par le congrès du RN car ils forment une part importante de l'électorat intéressé par les questions identitaires et politiques du parti, ainsi que par les éventuels débats antifascistes locaux.",
-      "reason": "Segment pertinent pour saisir un public plus âgé et stable, sensible aux jeux politiques locaux autour du congrès à Orléans.",
+      "name": "Jeunes diplômés urbains non concernés par la manifestation",
+      "mechanism": "Les jeunes diplômés urbains de moins de 35 ans vivant dans des communes denses ne sont pas la cible directe du congrès du RN à Orléans ni des manifestations antifascistes, leur intérêt politique est probablement différencié car ils sont moins touchés par les enjeux locaux du RN.",
+      "reason": "Ce segment combine la jeunesse, un haut niveau de diplôme et la densité urbaine, excluant explicitement les professions d’employés modestes, ciblant un groupuscule urbain plus éloigné du RN.",
       "all": [
-        "occupation.retired",
-        "household.couple_no_children",
-        "geo.intermediate"
+        "age.18_24",
+        "education.bac_plus_3_4",
+        "geo.dense"
       ],
       "any": [],
-      "none": [],
+      "none": [
+        "cluster.modest_wage_earner"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to.congress.communication"
+        "Attitude envers Bardella",
+        "Réaction aux mobilisations antifascistes",
+        "Engagement politique"
       ],
-      "count": 617,
-      "distinctCommunes": 24,
+      "count": 777,
+      "distinctCommunes": 61,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -74,24 +80,50 @@
     },
     {
       "id": "segment_3",
-      "name": "Femmes seules de 35 à 49 ans en commune dense",
-      "mechanism": "Les femmes vivant seules âgées de 35 à 49 ans en commune dense, notamment à Orléans, sont concernées par les manifestations antifascistes locales et les dynamiques politiques autour du congrès du RN, car elles constituent un segment urbain sensible à la sécurité et aux questions sociales.",
-      "reason": "Segment affiné et spécifique, attentif aux manifestations et impacts du congrès local du RN.",
+      "name": "Retraités ruraux éloignés des manifestations",
+      "mechanism": "Les retraités vivant dans les zones rurales sont généralement éloignés des événements politiques urbains comme le congrès RN ou les manifestations antifascistes à Orléans, avec un intérêt plus limité pour ces événements.",
+      "reason": "Ce segment correspond aux retraités résidant dans des communes rurales, caractéristique géographique et d’âge distincte de la scène politique orléanaise.",
       "all": [
-        "sex.female",
-        "household.single",
-        "geo.dense",
-        "age.35_49"
+        "occupation.retired",
+        "geo.rural"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "sentiment.of.security",
-        "reaction.to.local.demonstrations"
+        "Connaissance des événements à Orléans",
+        "Opinion sur le RN",
+        "Préoccupation vis-à-vis des manifestations"
       ],
-      "count": 1383,
-      "distinctCommunes": 69,
+      "count": 784,
+      "distinctCommunes": 91,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Orléans: Bardella réélu au congrès du RN après une manifestation \"antifasciste\" sans heurts",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes agriculteurs autour d’Orléans",
+      "mechanism": "Les jeunes agriculteurs de moins de 35 ans dans la région proche d’Orléans représentent un segment spécifique concerné par les discours du RN au congrès, susceptibles d’être attentifs à la dynamique politique locale et nationale.",
+      "reason": "Ce segment intercroise le statut d’agriculteur jeune et le contexte régional proche de la commune dense d’Orléans, un milieu professionnel et démographique distinct mais pertinent dans l’environnement politique local.",
+      "all": [
+        "cluster.young_farmer",
+        "commune_size.1000_plus"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Soutien au RN",
+        "Perception des enjeux locaux",
+        "Impact des manifestations"
+      ],
+      "count": 144,
+      "distinctCommunes": 41,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -112,8 +144,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes salariés et employés en commune dense d'Orléans",
-      "matchedCount": 7721,
+      "segmentName": "Habitants d’Orléans en âge actif et employés modestes",
+      "matchedCount": 16322,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -139,9 +171,103 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu agaçant ces disputes politiques, surtout quand ça se passe ailleurs, ça ne change pas grand-chose pour moi.",
+        "Je suis un peu inquiète quand il y a des manifestations qui dégénèrent, ça ne me plaît pas du tout. Bardella divise, ça me fait hésiter.",
+        "Des heurts ? Ça fait peur. Je déteste quand ça tourne mal autour de la politique, ça ne me donne pas envie d'aller voter."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains non concernés par la manifestation",
+      "matchedCount": 777,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
           "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis plutôt habituée à suivre les débats locaux, mais cette élection à Orléans autour de Bardella et cette manifestation ne changent pas vraiment ma façon de voir les choses.",
+        "Une manifestation \"antifasciste\" à Orléans, même sans violence importante, ne me fait pas vraiment bouger sur Bardella ou le RN. C'est un peu loin de mes préoccupations quotidiennes.",
+        "Je comprends les tensions autour du RN et ses leaders, mais une manifestation locale à Orléans ne va pas changer mon vote personnel."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités ruraux éloignés des manifestations",
+      "matchedCount": 784,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         },
         "abstention": {
           "toward": 0,
@@ -152,53 +278,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ces histoires de congrès et de réélection du RN, ça ne m'intéresse pas plus que ça, ça ne change rien à ma vision des choses.",
-        "La réélection quasiment à l'unanimité de Bardella ne me surprend pas, mais s'il y avait des tensions, ça montrerait que même chez eux, c'est pas si simple que ça.",
-        "Je vois pas trop pourquoi ça me toucherait personnellement, ces votes au RN, ça reste un truc un peu loin de ma vie."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0020304865194569637,
-          "lo": -0.003550377019013539,
-          "hi": -0.0005407354154323198,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0010119452289014798,
-          "lo": -0.0018938300580978043,
-          "hi": -0.00017057845072134299,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0018067369717964107,
-          "lo": 0.001004185279642876,
-          "hi": 0.002679952803513489,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0006147269303680283,
-          "lo": -0.00031632702089013005,
-          "hi": 0.0013626391139465897,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.015577733895942867,
-          "lo": 0.011515462582005165,
-          "hi": 0.019679415038591608,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.01495676604974886,
-          "lo": -0.018985281275655175,
-          "hi": -0.011027417484557663,
-          "stable": true
-        }
-      }
+        "Je ne m'intéresse pas trop à ce genre d'actualités politiques très loin de moi, ça ne change rien à mon vote.",
+        "Je trouve que ces manifestations même pacifiques sont un peu agaçantes, mais Bardella reste le meilleur pour défendre nos valeurs au RN.",
+        "Ces histoires de manifestations et conflits pour la réélection de Bardella ne me touchent pas vraiment, je reste prudent mais surtout attaché à la stabilité."
+      ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Femmes seules de 35 à 49 ans en commune dense",
-      "matchedCount": 1383,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes agriculteurs autour d’Orléans",
+      "matchedCount": 144,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -237,133 +325,10 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, cette réélection de Bardella ne change rien à mon quotidien ni à ma vision politique, je reste plutôt indifférente.",
-        "Je vois que Bardella est réélu largement, ça montre la force du RN mais aussi une certaine stabilité. Comme ça ne me touche pas directement, je reste assez neutre.",
-        "La réélection de Bardella avec un score aussi élevé me semble plutôt inquiétante, mais ça ne modifie pas fondamentalement mes intentions de vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0035101848717819222,
-          "lo": -0.004496157748189625,
-          "hi": -0.0025313003495500376,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.002770210151569438,
-          "lo": -0.003435301775399536,
-          "hi": -0.0021438824570843887,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0014764667866560928,
-          "lo": 0.0003800876074027835,
-          "hi": 0.002390255812243695,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0008921511211390423,
-          "lo": 0.00007959863529711441,
-          "hi": 0.0017605248184869697,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.014064625417085612,
-          "lo": 0.011191991108269227,
-          "hi": 0.017048751008144666,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.010152848301529403,
-          "lo": -0.01345574417567448,
-          "hi": -0.0073529025354134225,
-          "stable": true
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Couples de retraités en zone intermédiaire autour d'Orléans",
-      "matchedCount": 617,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas très surprise par la réélection de Bardella au RN, c'est un parti très implanté chez moi, mais cette manifestation sans heurts, je ne m'y intéresse pas trop.",
-        "Je vois que Bardella est réélu presque à l'unanimité, ça montre l'unité du RN, même si ce n'est pas vraiment mon camp et cette manifestation ne change rien à ce que je pense.",
-        "Bardella réélu aussi largement ? Je suis un peu inquiet, ça montre que le parti reste très solide, même si une baisse des voix pourrait indiquer des tensions internes, ça me rassurerait un peu pour la stabilité politique."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0007050266106330029,
-          "lo": -0.0013347782122409997,
-          "hi": -0.00018292812167704895,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00025518407877901634,
-          "lo": -0.0008868758506465735,
-          "hi": 0.00045297741135921776,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0004459160277926471,
-          "lo": -0.000034026430174912695,
-          "hi": 0.0009259697437865263,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0007334477034664667,
-          "lo": -0.0014839788681320716,
-          "hi": -0.0001303353255247152,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.024894372833080703,
-          "lo": 0.01957113996626404,
-          "hi": 0.029880227388752924,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.023646630467994853,
-          "lo": -0.028585920092390405,
-          "hi": -0.019489073033642137,
-          "stable": true
-        }
-      }
+        "Franchement, une réélection sans heurts, ça me rassure un peu, ça évite les histoires en ville. Je m'intéresse moyen à ce qui se passe en politique, ça ne change pas mon vote.",
+        "Une manif \"antifasciste\" sans encombre, c'est bien, ça évite les débordements, mais Bardella réélu, ça ne me touche pas trop. Quelques incidents mineurs par contre, ça me ferait un peu peur pour la sécurité.",
+        "Je suis très urbain et assez à gauche, ces histoires de RN à Orléans restent un peu loin de mes préoccupations. Une contestation avec quelques incidents, ça ne me fait pas changer d'avis pour l'instant."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -395,67 +360,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas particulièrement concerné par la politique du RN, mais cette réélection quasi unanime de Bardella me semble indiquer une certaine stabilité dans ce parti, ce qui ne change rien à mon vote.",
-        "Cette élection au sein du RN ne m'intéresse pas vraiment, je suis bien plus préoccupée par les actions culturelles locales. La réélection de Bardella ne change pas mon opinion ni mon vote.",
-        "Je vois ça un peu comme du folklore politique. Bardella réélu haut la main ou avec des tensions internes, ça ne change rien pour moi, je vote plutôt selon mes idées et les candidats locaux."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.001750653338144087,
-          "lo": -0.0025858682004053176,
-          "hi": -0.0011352830575055235,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0011306816396187676,
-          "lo": -0.0017403271756916336,
-          "hi": -0.0006317989499699377,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0007113330972253522,
-          "lo": 0.000011273684568205664,
-          "hi": 0.0014293006901643394,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0004763290712929323,
-          "lo": -0.0013535162737072027,
-          "hi": 0.00020760167890793103,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.023936505320978862,
-          "lo": 0.020745965412284406,
-          "hi": 0.027515413984545684,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.021290174369148426,
-          "lo": -0.024953530797346583,
-          "hi": -0.01744158406294197,
-          "stable": true
-        }
-      }
+        "Franchement, ça ne me surprend pas trop, Bardella dans le RN, c'est classique. La manif pacifique me laisse indifférent, ça ne change rien pour moi.",
+        "Je lis ça mais ça ne m'intéresse pas vraiment, ce genre d'action ne concerne pas vraiment ma vie quotidienne.",
+        "Une manif 'antifasciste' sans heurts, ça me rassure un peu, mais ça ne change pas ma façon de voir Bardella ou le RN."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:12:00.785Z",
-    "contentHash": "0d28013272be02bf486a5e7a74e3636d05d31dd69f6de2903df9cecc29fd03ab"
+    "status": "automatic",
+    "contentHash": "3375354b19152cbdd3148f6068d7c85ee9efc1320b14ac4780a3e3d280501d99"
   }
 }

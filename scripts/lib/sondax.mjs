@@ -1,14 +1,15 @@
+import { parse } from "csv-parse/sync";
 // Adapter: Sondax CSV (daily, derived from Wikipedia, CC BY-SA 4.0) -> polls.json contract v1.
 // Keeps only the first-round configuration Sondax retains (configuration_principale = 1), so each
 // survey yields one poll. Second-round duels are not mapped yet (the site has no runoff view).
 export const SONDAX_CSV_URL = "https://sondax.fr/donnees/sondages-presidentielle-2027.csv";
 
 export function parseCsv(text) {
-  const [headerLine, ...lines] = text.replace(/^﻿/, "").trim().split(/\r?\n/);
-  const headers = headerLine.split(",");
-  return lines.map((line) => {
-    const cells = line.split(",");
-    return Object.fromEntries(headers.map((header, index) => [header, cells[index] ?? ""]));
+  return parse(text, {
+    columns: true,
+    bom: true,
+    skip_empty_lines: true,
+    relax_column_count: false,
   });
 }
 
@@ -26,7 +27,10 @@ export function sondaxToPolls(csvText, { knownCandidates = null } = {}) {
   const polls = [];
   for (const { row, shares } of surveys.values()) {
     const sampleSize = Number(row.echantillon);
-    if (!Number.isInteger(sampleSize) || sampleSize <= 0) { skipped += 1; continue; }
+    if (!Number.isInteger(sampleSize) || sampleSize <= 0) {
+      skipped += 1;
+      continue;
+    }
     polls.push({
       id: row.sondage_id,
       // Sondax exposes no publication date: fieldwork end is the date we can stand behind.

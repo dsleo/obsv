@@ -4,40 +4,43 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "adda0974580743da",
-  "computedAt": "2026-11-10T22:06:11.268Z",
+  "inputHash": "9ad5c24d6fa5fa98",
+  "eventInputHash": "ea2bb14224396c7776b16f44e7dfc3d57e43fad1155a8cbcffc980148a409d7c",
+  "computedAt": "2026-11-11T13:03:36.491Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Lors du procès de l’explosion meurtrière de Saint-Laurent-de-la-Salanque, les réquisitions sont réduites à 10 et 15 ans de prison contre les trois accusés, tenant compte de leur jeune âge et de leur coopération avec la justice.",
-    "whatChanges": "Les peines requises sont significativement allégées, ce qui pourrait susciter davantage de débats sur la sévérité de la justice et influencer l’opinion des victimes et du grand public."
+    "description": "Lors du procès de l'incendie de Saint-Laurent-de-la-Salanque, le procureur requiert des peines de 15 et 20 ans de prison contre les trois accusés, au lieu de 25 et 30 ans.",
+    "whatChanges": "Les réquisitions sont allégées, ce qui pourrait influencer l'opinion publique sur la sévérité de la justice face au drame, notamment auprès des familles des victimes et des partisans d'une peine plus clémente."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Habitants masculins de communes intermédiaires à 25-49 ans travaillant comme employés ou ouvriers",
-      "mechanism": "Ce segment regroupe les hommes âgés de 25 à 49 ans travaillant comme employés ou ouvriers et vivant dans des communes de densité intermédiaire, population susceptible d'être liée au contexte local de Saint-Laurent-de-la-Salanque où a eu lieu l'incendie, notamment en raison de leur exposition sociale et économique à cet événement et leurs possibles liens communautaires.",
-      "reason": "Intersection ciblée pour capter un groupe d'actifs masculins, en âge de travailler et résidant dans des zones correspondant à la localisation du procès, potentiellement concernés par l'impact local et les débats autour de l'incendie.",
+      "name": "Adultes employés et ouvriers des communes rurales et de petites tailles proches",
+      "mechanism": "Ce groupe est concerné par le procès de l'incendie à Saint-Laurent-de-la-Salanque car ce lieu est une commune à taille modeste dans une zone rurale où vivent beaucoup d'ouvriers et employés susceptibles d'être directement affectés par les suites judiciaires localisées.",
+      "reason": "Population active de professions ouvrières et employées dans des communes avec moins de 1000 habitants ou communes rurales proches, correspondant au contexte local de l'événement.",
       "all": [
-        "sex.male",
-        "geo.intermediate",
-        "age.25_34"
+        "occupation.employee",
+        "geo.rural"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
+        "commune_size.under_1000",
+        "commune_size.1000_plus"
       ],
-      "none": [],
+      "none": [
+        "occupation.retired"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote intention",
-        "exposure to local news about the trial"
+        "Connaissance et opinion sur le procès de l'incendie",
+        "Sentiment de sécurité",
+        "Perception de la justice locale"
       ],
-      "count": 118,
-      "distinctCommunes": 24,
+      "count": 387,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -48,26 +51,29 @@
     },
     {
       "id": "segment_2",
-      "name": "Femmes de 35 à 64 ans vivant seules en milieu dense",
-      "mechanism": "Ce segment concerne les femmes âgées de 35 à 64 ans vivant seules dans des communes à forte densité, qui pourraient être sensibles au retentissement de l'incendie à Saint-Laurent-de-la-Salanque et à son procès, surtout en raison de leur statut de foyer monoparental ou indépendant qui peut accroître leur attention aux questions de sécurité et justice.",
-      "reason": "Interstice raffiné conjuguant âge, sexe, type de foyer et densité, permettant de cerner un groupe urbain et féminin affecté par cette actualité judiciaire.",
+      "name": "Jeunes adultes masculins employés en communes intermédiaires ou denses",
+      "mechanism": "Jeunes hommes actifs, employés ou ouvriers, dans des communes à densité moyenne ou forte, pouvant être sensibilisés par l'actualité judiciaire d'un incendie criminel ayant causé de lourdes peines en région proche.",
+      "reason": "Intersection entre âge jeune, sexe masculin, statut professionnel salarié et densité urbaine à intermédiaire, plausible pour un public mobilisé ou préoccupé par cet événement judiciaire.",
       "all": [
-        "sex.female",
-        "household.single",
-        "geo.dense"
+        "age.25_34",
+        "sex.male",
+        "occupation.employee"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "geo.dense",
+        "geo.intermediate"
       ],
-      "none": [],
+      "none": [
+        "occupation.retired"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "sensibilité au fait divers",
-        "niveau d'information judiciaire"
+        "Intérêt pour la justice pénale",
+        "Perception des peine de prison longues",
+        "Médiatisation locale de l'événement"
       ],
-      "count": 3718,
-      "distinctCommunes": 72,
+      "count": 1456,
+      "distinctCommunes": 84,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -78,22 +84,29 @@
     },
     {
       "id": "segment_3",
-      "name": "Retraités en couple résidant en communes denses",
-      "mechanism": "Ce segment concerne les retraités vivant en couple sans enfant dans des communes à forte densité, population possiblement attentive au procès de Saint-Laurent-de-la-Salanque et à ses conséquences judiciaires, du fait de leur ancrage urbain et préoccupations liées à la sécurité et à la justice.",
-      "reason": "Croisement pertinent entre catégorie socioprofessionnelle, type de foyer et géographie, permettant de cerner un public urbain senior sensibilisé au fait divers.",
+      "name": "Couples retraités vivant seuls en commune moyenne dense",
+      "mechanism": "Les couples de retraités vivant en communes denses ou intermédiaires dans la région de l'événement peuvent être particulièrement sensibles à la gravité de ce procès et à ses répercussions sur la sécurité locale et l'ordre public.",
+      "reason": "Cible spécifique de retraités mariés ou en union civile, résidant en communes peu rurales mais pas nécessairement urbaines denses, où la question de la criminalité et des peines peut affecter la vie locale.",
       "all": [
-        "cluster.retired_couple",
-        "geo.dense"
+        "household.couple_no_children",
+        "occupation.retired"
       ],
-      "any": [],
-      "none": [],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
+      "none": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "sensibilité au sentiment d’insécurité",
-        "intérêt pour le judiciaire"
+        "Attitude envers la sécurité locale",
+        "Réaction aux peines judiciaires lourdes",
+        "Perception du procès dans les médias locaux"
       ],
-      "count": 15215,
-      "distinctCommunes": 72,
+      "count": 15832,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -112,95 +125,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Retraités en couple résidant en communes denses",
-      "matchedCount": 15215,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 41
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "C'est tragique et ces peines sévères semblent justifiées vu la gravité des faits. La justice doit être ferme pour protéger la société.",
-        "C'est bouleversant, et même si la jeunesse et la coopération comptent, ces peines restent nécessaires pour rendre justice aux victimes.",
-        "Ce genre d'affaire meurtrière me choque; je comprends que la justice soit dure, même si cela divise parfois sur la sévérité des peines."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0038876696802010876,
-          "lo": -0.005398071873488448,
-          "hi": -0.0023326917172880627,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.006390169043690786,
-          "lo": -0.008315288973849056,
-          "hi": -0.004719617562581335,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.008544460822985439,
-          "lo": -0.011130571115843556,
-          "hi": -0.005801785658128761,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.004966061154603252,
-          "lo": 0.003107054455445547,
-          "hi": 0.006785986877296923,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.016183806510959287,
-          "lo": 0.012405679644739253,
-          "hi": 0.020149171965750026,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.00232756811868522,
-          "lo": -0.0052633663634945455,
-          "hi": 0.00033312336399152616,
-          "stable": false
-        }
-      }
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Habitants masculins de communes intermédiaires à 25-49 ans travaillant comme employés ou ouvriers",
-      "matchedCount": 118,
+      "segmentName": "Adultes employés et ouvriers des communes rurales et de petites tailles proches",
+      "matchedCount": 387,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -226,66 +154,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 18,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 30
+          "noClearChange": 46
         },
         "abstention": {
           "toward": 0,
-          "away": 6,
-          "noClearChange": 42
+          "away": 0,
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est tragique et impressionnant, mais ce procès ne change pas vraiment ma manière de penser sur le sujet, ça semble une affaire judiciaire classique.",
-        "Je comprends que c’est grave, mais ça ne change pas ce que je pense pour le moment, ce procès est important mais je reste concentré sur les vrais sujets de ma vie.",
-        "C’est une histoire grave, mais ça ne me touche pas directement ni ne me fait bouger dans mes idées politiques pour l’instant."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.003666029207124623,
-          "lo": -0.00544503945460893,
-          "hi": -0.0018417388988777308,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004369529959253402,
-          "lo": -0.0057065598730152755,
-          "hi": -0.0030668102045108025,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0045085484063376235,
-          "lo": -0.006403851234669035,
-          "hi": -0.003041868288780152,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0008339014424203145,
-          "lo": -0.0021983066803560164,
-          "hi": 0.0005112050835021806,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.030127203356109054,
-          "lo": 0.02505632579896418,
-          "hi": 0.03560152962295445,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.016749194340973116,
-          "lo": -0.022591907926125938,
-          "hi": -0.011673501266058336,
-          "stable": true
-        }
-      }
+        "Cet incendie a été dramatique et je comprends que la justice prenne l'affaire au sérieux. Les peines requises me paraissent très lourdes, mais peut-être justifiées par la gravité des faits.",
+        "Je trouve ces peines très sévères. Je préfère une justice qui soit ferme mais juste, alors des années de prison aussi longues me paraissent excessives.",
+        "Un incendie aussi grave mérite une réponse pénale forte. Ces peines longues renforcent le sentiment que la justice protège bien la population, c'est rassurant."
+      ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Femmes de 35 à 64 ans vivant seules en milieu dense",
-      "matchedCount": 3718,
+      "segmentName": "Jeunes adultes masculins employés en communes intermédiaires ou denses",
+      "matchedCount": 1456,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -311,61 +201,23 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
         },
         "abstention": {
           "toward": 3,
-          "away": 2,
-          "noClearChange": 43
+          "away": 0,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C’est vraiment tragique, mais je ne sais pas si ça change grand-chose pour moi. Je ne connais pas les détails ni les personnes impliquées.",
-        "C’est horrible ce qui s’est passé, il faut que justice soit faite mais ils sont jeunes, ça me fait un peu réfléchir sur la sévérité des peines.",
-        "C’est vraiment triste comme histoire, mais franchement ça ne change rien à mon vote, ça ne touche pas mon quotidien."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00044881739917760195,
-          "lo": -0.0025531919895839454,
-          "hi": 0.0014134382386472074,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00029629572431160155,
-          "lo": -0.0024696027051643497,
-          "hi": 0.001664364612142804,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.004520902028285087,
-          "lo": -0.007065319414722567,
-          "hi": -0.0021793318985161765,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0021845134825208105,
-          "lo": -0.0042162542486833795,
-          "hi": -0.0001075038512364375,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.009495705516790895,
-          "lo": 0.006079596642546078,
-          "hi": 0.013711243046135115,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.002045176882495789,
-          "lo": -0.006719502802554689,
-          "hi": 0.002551694768649644,
-          "stable": false
-        }
-      }
+        "C'est un procès grave, mais ça ne change rien à ma manière de voir les choses au quotidien, ce n'est pas proche de mes préoccupations.",
+        "Encore un procès difficile, mais ça m'affecte peu, c'est loin de ma vie, ça ne change rien à mon choix politique.",
+        "Je comprends la gravité, mais cela ne modifie pas mon avis politique, ces longues peines ça ne touche pas directement ma vie."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -396,68 +248,75 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 25,
-          "away": 0,
-          "noClearChange": 71
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 92
         },
         "abstention": {
-          "toward": 1,
-          "away": 11,
-          "noClearChange": 84
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis désolé pour les victimes, mais 25 à 30 ans me semblent peut-être justes pour un tel drame. Je me méfie des jeunes qui causent de gros dégâts, mais la justice doit être ferme.",
-        "C'est tragique, mais je pense que la justice doit prendre en compte la jeunesse et la coopération. Des peines trop lourdes ne changent rien, il faut éviter les excès.",
-        "Je trouve ça terrible, mais je comprends qu'on tienne compte de leur âge et de leur comportement au procès. Je suis dur quand il s'agit de sécurité, mais prudent sur les jugements trop sévères."
-      ],
-      "altEffect": {
+        "C'est bien que la justice soit ferme. Ces peines sévères montrent que le pays ne tolère pas ces actes qui détruisent des vies et des biens.",
+        "Des peines très lourdes... ça me paraît normal que la justice soit dure, surtout si les faits sont graves, ça pourrait me rassurer sur la sécurité.",
+        "Ouah, 25 à 30 ans, c'est du lourd. Moi je suis pas trop à fond dans ce genre d'affaires, ça change pas grand-chose pour ma vie, donc je reste comme avant."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Couples retraités vivant seuls en commune moyenne dense",
+      "matchedCount": 15832,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.0021120328928295336,
-          "lo": -0.0030988785829942057,
-          "hi": -0.001117455972587975,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.00253027526035934,
-          "lo": -0.003817878064337622,
-          "hi": -0.0010808740857741696,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.005864751331898202,
-          "lo": -0.00766540929264133,
-          "hi": -0.003870620591815508,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.000028814205890669476,
-          "lo": -0.0014695498142095126,
-          "hi": 0.001590700615194462,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.022147926256469774,
-          "lo": 0.01746537719179517,
-          "hi": 0.026945450846097497,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": -0.011669680977273368,
-          "lo": -0.015593469948506319,
-          "hi": -0.007404125158222363,
-          "stable": true
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, des peines aussi lourdes, c'est un coup dur, mais avec toute la gravité du fait, je peux comprendre. Ça ne change pas mon vote, je reste pragmatique pour Marseille.",
+        "Je trouve que ces peines demandées sont justes vu la gravité, mais ça ne bouscule pas vraiment mes idées politiques, je suis plus tournée vers l'humain et le social.",
+        "Je suis plus préoccupé par la sécurité et la justice ferme, ces peines me paraissent adaptées. Cela ne modifiera pas mon choix électoral, je reste centré sur l'efficacité gouvernementale."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:46.035Z",
-    "contentHash": "6bb8f5a9f742cf69395e9857bfbf0e5d7ccb8bc39f79d3ab121a92039943c3bf"
+    "status": "automatic",
+    "contentHash": "4101f96cc946e8d4d76f144afb6c0e4a3fecb69b8c47633be8b11f3dc27239a9"
   }
 }

@@ -4,54 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "27be5ae1a57c6ef1",
-  "computedAt": "2026-11-09T20:41:07.505Z",
+  "inputHash": "cc4dbade483642fd",
+  "eventInputHash": "55ed1c6f8f0156fbdf2ee6507ff6de9bbc5e2a8f90a1b1509e94bc6e6945db8d",
+  "computedAt": "2026-11-11T13:15:17.463Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Bruno Retailleau propose une réforme visant à limiter l’application automatique du droit du sol uniquement aux enfants nés de parents en situation régulière, sans recourir à un référendum, ce qui divise la droite modérée.",
-    "whatChanges": "La mesure devient plus restrictive mais évite la polarisation d’un référendum, ce qui modère l’opposition et attire les électeurs plus centristes."
+    "description": "Retailleau propose un projet de loi parlementaire visant à supprimer le droit du sol, sans recourir à un référendum.",
+    "whatChanges": "La suppression du droit du sol est envisagée par une démarche parlementaire plutôt que par référendum, ce qui peut réduire la mobilisation populaire et les débats publics autour du sujet."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains engagés",
-      "mechanism": "Edouard Philippe se démarque de Bruno Retailleau sur le référendum incluant des sujets comme l'immigration, ce qui touche particulièrement les jeunes urbains diplômés sensibles aux questions d'immigration et d'ouverture.",
-      "reason": "Les jeunes diplômés des communes denses forment un groupe urbain éduqué et probablement engagé dans les débats sur l'immigration et les droits civiques.",
+      "name": "Agriculteurs et retraités ruraux",
+      "mechanism": "Ces groupes vivent dans des communes rurales où le droit du sol est un enjeu lié à l'immigration et à l'intégration locale ; ils sont directement concernés par la proposition de Vincent Retailleau de supprimer le droit du sol par référendum car cette mesure vise à modifier les conditions d'acquisition de la nationalité pour la population locale.",
+      "reason": "Cette intersection cible les personnes vivant en milieu rural et âgées, notamment les retraités, qui forment une base sociologique sensible aux questions d'identité et de droit du sol, en évitant de trop généraliser aux ruraux actifs ou jeunes.",
       "all": [
-        "cluster.young_urban_graduate",
-        "geo.dense"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11394,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Retailleau veut supprimer le droit du sol par référendum",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_2",
-      "name": "Retraités ruraux, sensibles aux enjeux migratoires locaux",
-      "mechanism": "Bruno Retailleau propose de supprimer le droit du sol via référendum, mesure pouvant mobiliser les retraités ruraux qui vivent dans des zones où les enjeux liés à la démographie et à l'immigration sont souvent sujets à débat.",
-      "reason": "Les retraités vivant en milieu rural représentent un groupe démographique qui peut être sensible aux mesures affectant l'immigration et les droits civiques au niveau local.",
-      "all": [
-        "cluster.rural_retiree",
+        "occupation.retired",
         "geo.rural"
       ],
-      "any": [],
+      "any": [
+        "cluster.rural_retiree",
+        "cluster.retiree_no_diploma"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
+      "measurementNeeds": [
+        "Opinion sur la suppression du droit du sol",
+        "Connaissance de la proposition Retailleau",
+        "Sentiment d'identité nationale"
+      ],
       "count": 784,
       "distinctCommunes": 91,
       "status": "filterable_discovery_sample",
@@ -63,20 +48,81 @@
       }
     },
     {
-      "id": "segment_3",
-      "name": "Employés et ouvriers des communes intermédiaires",
-      "mechanism": "Surveillance des propositions référendaires en lien avec l'immigration visant particulièrement les salariés modestes dans des contextes urbains moins denses que les grandes métropoles, notamment dans des communes intermédiaires.",
-      "reason": "Remplacement d'un segment trop large en réduisant à la seule géographie intermédiaire pour mieux cibler tout en assurant taille et pertinence.",
+      "id": "segment_2",
+      "name": "Jeunes familles en communes urbaines denses",
+      "mechanism": "Les jeunes couples avec enfants vivant en communes urbaines denses sont concernés par la proposition de suppression du droit du sol car elle impacte potentiellement les droits de leurs enfants nés en France et la question sociale liée à l'intégration dans ces espaces à forte immigration.",
+      "reason": "Cette combinaison vise un public familial jeune et urbain qui peut être affecté concrètement par la réforme du droit du sol, en ciblant l'intersection entre âge, situation familiale et densité de peuplement.",
       "all": [
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers la suppression du droit du sol",
+        "Préoccupations liées à la nationalité et l'intégration"
+      ],
+      "count": 25109,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Retailleau veut supprimer le droit du sol par référendum",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Salariés modestes masculins des communes intermédiaires",
+      "mechanism": "Les hommes employés ou ouvriers dans des communes avec densité intermédiaire pourraient être concernés par la proposition de supprimer le droit du sol, car ils sont souvent perçus comme une catégorie sociale sensible aux questions d'immigration et de droit à la nationalité à travers des référendums.",
+      "reason": "Ce segment associe sexe, catégorie socioprofessionnelle modeste et géographie intermédiaire, ciblant un électorat potentiellement sensible à la question sécuritaire et identitaire soulevée par le débat sur le droit du sol.",
+      "all": [
+        "sex.male",
         "cluster.modest_wage_earner",
         "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 1040,
+      "measurementNeeds": [
+        "Soutien à la proposition de Retailleau",
+        "Attitude envers l'immigration",
+        "Impact perçu de la suppression du droit du sol"
+      ],
+      "count": 502,
       "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Retailleau veut supprimer le droit du sol par référendum",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes diplômés des grandes villes",
+      "mechanism": "Les jeunes diplômés vivant dans les grandes villes comme Paris, Lyon ou Marseille sont un public clé car ils peuvent être à la fois pour ou contre la suppression du droit du sol selon leurs positions sur l'immigration et l'intégration, impactant le débat national sur cette proposition.",
+      "reason": "Ce segment est composé des jeunes urbains diplômés, souvent engagés politiquement, vivant dans les plus grandes métropoles, lieux majeurs des discussions sur l'identité et la citoyenneté via le droit du sol.",
+      "all": [
+        "cluster.young_urban_graduate",
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Opinion sur la réforme du droit du sol",
+        "Positionnement politique",
+        "Sensibilité aux questions d'immigration"
+      ],
+      "count": 10886,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -95,100 +141,6 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Retraités ruraux, sensibles aux enjeux migratoires locaux",
-      "matchedCount": 784,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 6,
-          "away": 0,
-          "noClearChange": 42
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 3,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ce débat sur le droit du sol me semble compliqué, je préfère que ça ne touche pas à trop de règles. Ce n'est pas vraiment mon quotidien, donc ça ne change pas mon vote.",
-        "Ce genre de débat sur le droit du sol, c'est souvent un prétexte pour durcir les lois. Je suis déjà inquiète de la montée des extrêmes, ça ne me rassure pas.",
-        "Je ne comprends pas bien ces débats juridiques, je veux juste vivre en paix et que les choses restent simples. Ça ne change rien pour moi."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains engagés",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que supprimer le droit du sol par référendum, c'est une idée compliquée et un peu dure, surtout pour des familles comme la mienne. Je préfère qu'on garde des principes justes d'égalité.",
-        "Ce débat sur le droit du sol me paraît important, mais la procédure par référendum me semble trop radicale. Une réforme sans référendum pourrait être plus raisonnée, même si ça divise la droite.",
-        "Limiter le droit du sol ça me parle, surtout ici à Béziers. Pas besoin de référendum, ça pourrait être plus simple. Ça divise un peu, mais je préfère des actions concrètes."
-      ]
-    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -218,28 +170,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 3,
+          "toward": 14,
           "away": 0,
-          "noClearChange": 93
+          "noClearChange": 82
         },
         "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "toward": 3,
+          "away": 7,
+          "noClearChange": 86
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ces histoires de droit du sol, ça me parle un peu, je trouve que c'est un sujet sensible, mais je ne suis pas sûr qu'un référendum soit la meilleure solution, ça va diviser encore plus.",
-        "Je ne suis pas très à l'aise avec ces débats sur le droit du sol, ça me semble compliqué et ça crée des tensions inutiles. Je préfère que ça reste clair et simple, sans référendum compliqué.",
-        "Je comprends que Philippe et Retailleau ne soient pas d'accord, mais honnêtement, ce n'est pas mon sujet principal. Ça ne change pas vraiment mon vote."
+        "Franchement, l'idée de supprimer le droit du sol par référendum, ça me paraît compliqué et un peu éloigné de mes préoccupations quotidiennes. Ça ne changera rien à ma manière de voter.",
+        "À mon âge, les changements politiques brusques, surtout sur des sujets compliqués comme le droit du sol, ça m'inquiète un peu. Je préfère rester prudente et voter selon l'ambiance locale, ça ne me bouleverse pas vraiment.",
+        "Je trouve que faire un référendum sur la suppression du droit du sol, c’est un sujet sensible qui divise et peut créer des tensions, mais ça ne me fera pas changer mes habitudes de vote pour autant."
       ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Employés et ouvriers des communes intermédiaires",
-      "matchedCount": 1040,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes familles en communes urbaines denses",
+      "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -265,30 +217,169 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, tout ça me paraît compliqué et ça ne changera pas grand-chose à ma vie de salarié en supermarché. Ce débat sur le droit du sol, c'est pas ma priorité.",
-        "Cette histoire de droit du sol par référendum me laisse un peu sceptique, c’est compliqué. Je préfère quelqu’un qui propose des solutions concrètes sans passer par des manœuvres compliquées.",
-        "Moi, tout ça c’est un peu loin de mes préoccupations au quotidien. Je me concentre plus sur mon travail et ma vie de famille. Ces débats politiques ne me touchent pas assez pour changer mon vote."
+        "Ça me semble encore une histoire de trucs compliqués entre politiques. Franchement, moi j'ai pas trop le temps ni envie de m'occuper de ça pour voter autrement.",
+        "Supprimer le droit du sol par référendum me semble une mesure trop radicale et inutile. Je préfère qu’on garde des processus parlementaires plutôt que d’engager le peuple sur ce sujet délicat.",
+        "Moi ça m’embête ce genre de proposition sur le droit du sol. J’aime pas trop que ça s’impose par référendum, ça divise plus qu’autre chose. Un projet de loi me semblerait mieux."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes diplômés des grandes villes",
+      "matchedCount": 10886,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu extrême de vouloir supprimer le droit du sol, ça ne me parle pas vraiment, ce n'est pas comme si ça changeait quoi que ce soit à ma vie ici à Lyon.",
+        "Honnêtement, ce débat sur le droit du sol, ça me semble être une diversion. Je suis plutôt préoccupé par les questions plus larges d'intégration et de droits humains, mais ça ne me fera pas changer mon vote.",
+        "Le droit du sol, c'est un principe qui me paraît juste. L'idée d'un référendum ne changera rien pour moi, ni un projet parlementaire, ça reste un sujet assez lointain de mon quotidien."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Agriculteurs et retraités ruraux",
+      "matchedCount": 784,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 9,
+          "away": 0,
+          "noClearChange": 39
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette histoire de supprimer le droit du sol, ça me semble compliqué et un peu inutile. Je me demande si ça changera vraiment quelque chose à notre quotidien ici.",
+        "Supprimer le droit du sol ? C’est plutôt dans l’ordre des choses, enfin une initiative qui va dans le sens de plus de contrôle. Je pense que ça vaut le coup d’en parler plus sérieusement.",
+        "Je ne suis pas sûre de bien comprendre toutes ces histoires d'immigration et de droit du sol. Pour moi, l’important c’est la paix dans mon village et la tranquillité."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes masculins des communes intermédiaires",
+      "matchedCount": 502,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 8,
+          "away": 1,
+          "noClearChange": 39
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 3,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ça me laisse un peu froid, je ne suis pas trop concerné par ces débats sur le droit du sol, ça ne change rien à ma vie.",
+        "C'est plutôt une bonne idée de faire ça par référendum, ça donne la parole au peuple et ça légitime la décision, même si je ne suis pas forcément pour cette suppression.",
+        "Moi ça me gêne un peu cette idée de supprimer le droit du sol, mais qu'on demande l'avis par référendum, je trouve ça plus juste que de passer par un vote parlementaire discret."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:34.138Z",
-    "contentHash": "8a337bd2d4150edd480d903ac237b5dce45c8915a1a97eae3ad52a8342f20baf"
+    "status": "automatic",
+    "contentHash": "05e56e14260ad4a873610a80f2ca5a04469be5ef3d9941555a9d5c233918829f"
   }
 }

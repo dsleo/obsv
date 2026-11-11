@@ -4,40 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "2f7a520936f0d5db",
-  "computedAt": "2026-11-10T22:10:40.645Z",
+  "inputHash": "0640743f8940d3d4",
+  "eventInputHash": "f86e339cc6de92d6dac3a3ec2343f6121b31c06852c3a95ea4eb32b6a0cb65d8",
+  "computedAt": "2026-11-11T13:14:35.230Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Un appel à une journée nationale de mobilisation des gilets jaunes est lancé pour le 17 octobre, incluant non seulement Lyon mais aussi plusieurs grandes villes françaises, avec un programme plus structuré et des revendications élargies au pouvoir d'achat en général, au-delà de la seule hausse des prix du carburant.",
-    "whatChanges": "L'appel se généralise à l'échelle nationale et s'étend sur des revendications plus larges, ce qui pourrait provoquer une mobilisation plus importante et toucher un public plus large que la seule contestation du carburant à Lyon."
+    "description": "Les gilets jaunes annoncent une mobilisation le 17 octobre à Lyon, mais cette fois-ci sous la forme d'une grande marche pacifique et d'une série de rencontres avec des représentants politiques locaux, visant à proposer des solutions concrètes à la hausse des prix du carburant.",
+    "whatChanges": "L'ampleur et le ton de la mobilisation changent : d'une manifestation potentiellement conflictuelle à une démarche constructive et dialoguante, ce qui pourrait attirer un public plus large et moins polarisé."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes employés et ouvriers vivant en commune dense à Lyon",
-      "mechanism": "Ce segment regroupe les jeunes adultes salariés (employés et ouvriers) vivant dans la commune dense de Lyon, directement concernés par l'appel à la mobilisation contre la hausse des prix du carburant, puisqu'ils subissent à la fois le coût du carburant pour leurs déplacements professionnels ou quotidiens et sont sensibles aux actions de contestation sociale comme les gilets jaunes.",
-      "reason": "Concentration urbaine à Lyon et présence d'une classe d'âge jeune susceptible d'être mobilisée par des contestations sociales sur les prix du carburant, notamment parmi les salariés modestes.",
+      "name": "Ouvriers de 50 à 64 ans vivant en commune urbaine moyenne",
+      "mechanism": "Les ouvriers âgés de 50 à 64 ans vivant dans des communes intermédiaires urbaines peuvent être particulièrement sensibles à la hausse des prix du carburant et motivés à participer à la mobilisation à Lyon.",
+      "reason": "Ce groupe combine âge, statut professionnel d'ouvrier et géographie urbaine intermédiaire, donc un profil susceptible d'être impacté et mobilisé par ce thème.",
       "all": [
-        "occupation.employee",
-        "geo.dense",
-        "municipal_system.paris_lyon_marseille"
+        "occupation.worker",
+        "age.50_64",
+        "geo.intermediate"
       ],
-      "any": [
-        "age.18_24",
-        "age.25_34"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_mobilisation_news",
-        "perception.prix_carburant"
+        "Intention de participation",
+        "Perception de la hausse du carburant",
+        "Impacts économiques personnels"
       ],
-      "count": 7205,
-      "distinctCommunes": 48,
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -48,25 +47,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Conducteurs indépendants et artisans sensibles à la hausse des prix",
-      "mechanism": "Ce segment rassemble des artisans, commerçants et chefs d'entreprise indépendants, qui ont souvent une forte dépendance à leur véhicule pour exercer leur activité, et qui sont donc particulièrement affectés par la hausse des prix du carburant à Lyon, principal lieu de mobilisation annoncé.",
-      "reason": "L'impact économique direct des coûts carburant sur les indépendants rend ce segment particulièrement concerné par l'appel à mobiliser les gilets jaunes contre la hausse des prix du carburant.",
+      "name": "Jeunes sans activité professionnelle en foyer individuel en zone dense",
+      "mechanism": "Les jeunes sans activité professionnelle, souvent ayant des revenus modestes, vivant seuls en zone dense, peuvent être concernés par la mobilisation contre la hausse des prix du carburant à Lyon, notamment par solidarité ou sensibilité aux coûts de la vie.",
+      "reason": "Ce segment combine jeunesses sans activité, statut de ménage individuel et zone urbaine dense, reflétant un profil socio-économique et géographique touché par le contexte.",
       "all": [
-        "cluster.independent",
-        "municipal_system.paris_lyon_marseille"
+        "cluster.young_without_activity",
+        "household.single",
+        "geo.dense"
       ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_mobilisation_news",
-        "usage.vehicule_professionnel"
+        "Engagement dans le mouvement des gilets jaunes",
+        "Attitude face à la hausse des prix",
+        "Sensibilité aux questions économiques et sociales"
       ],
-      "count": 2698,
-      "distinctCommunes": 48,
+      "count": 6401,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -77,55 +75,24 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes sans activité professionnelle et chômeurs en zone urbaine dense à Lyon",
-      "mechanism": "Il s'agit de jeunes adultes sans activité professionnelle ni emploi, vivant en zone urbaine dense à Lyon, population susceptible d'être mobilisée par le mouvement des gilets jaunes en réaction à la hausse du prix du carburant, qui affecte leur pouvoir d'achat indirectement et symboliquement selon les revendications du mouvement.",
-      "reason": "La précarité et le sentiment de déclassement des jeunes sans activité à Lyon peuvent les rendre sensibles à l'appel à mobilisation contre la hausse des prix, surtout dans le contexte des gilets jaunes.",
+      "name": "Artisans et commerçants en couple avec enfants dans grandes communes",
+      "mechanism": "Les indépendants comme les artisans et commerçants en couple avec enfants dans des communes de taille moyenne à grande sont un public touché par la hausse du carburant qui impacte leur activité et coût de la vie familiale, directement concerné par l'appel à mobilisation à Lyon.",
+      "reason": "Ce groupe combine statut professionnel indépendant, type de foyer familial avec enfants, et taille communale importante, correspondant à des ménages concernés par la hausse des prix de l'énergie.",
       "all": [
-        "cluster.young_without_activity",
-        "geo.dense",
-        "municipal_system.paris_lyon_marseille"
+        "occupation.artisan_merchant_owner",
+        "household.couple_with_children",
+        "commune_size.1000_plus"
       ],
-      "any": [
-        "age.18_24",
-        "age.25_34"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_mobilisation_news",
-        "perception.pouvoir_achat"
+        "Impact économique de la hausse des carburants",
+        "Attitude envers la mobilisation",
+        "Participation envisagée"
       ],
-      "count": 7933,
-      "distinctCommunes": 48,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Les gilets jaunes de retour le 17 octobre ? Un appel à la mobilisation à Lyon contre la hausse des prix du carburant",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Salariés modestes de 35 à 49 ans avec famille en communes périurbaines et denses",
-      "mechanism": "Ce segment regroupe des salariés modestes âgés de 35 à 49 ans, souvent avec enfants, vivant dans des communes denses ou périurbaines proches de Lyon, très concernés par la hausse du prix du carburant liée aux déplacements quotidiens vers la ville et familiers des mobilisations sociales comme celles des gilets jaunes.",
-      "reason": "Le coût du carburant impacte fortement leur budget familial et leurs déplacements quotidiens, les rendant cibles prioritaires pour les appels à mobilisation contre la hausse des prix du carburant.",
-      "all": [
-        "cluster.modest_wage_earner"
-      ],
-      "any": [
-        "age.35_49"
-      ],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "exposure.to_mobilisation_news",
-        "mobilite.covoiturage_vehicule"
-      ],
-      "count": 1442,
-      "distinctCommunes": 106,
+      "count": 1937,
+      "distinctCommunes": 108,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -144,10 +111,104 @@
     }
   ],
   "contrasts": {
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes sans activité professionnelle en foyer individuel en zone dense",
+      "matchedCount": 6401,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas très attentive à ce genre de manifestations, ça ne change pas vraiment ma vie ni mon vote.",
+        "Je m'intéresse un peu moins à ces histoires de gilets jaunes, ça ne me touche pas spécialement, alors mon vote ne bouge pas.",
+        "La reprise des gilets jaunes à Lyon, c’est un signe que beaucoup souffrent toujours à cause du coût de la vie, ça me sensibilise un peu plus à la gauche radicale."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Artisans et commerçants en couple avec enfants dans grandes communes",
+      "matchedCount": 1937,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 3,
+          "noClearChange": 38
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends qu'ils s'inquiètent face à la hausse des prix, mais je ne vois pas trop comment ce mouvement pourrait vraiment changer les choses et cela ne change rien à ma manière de voter.",
+        "Une manif de plus à Lyon, ça ne va rien régler. Je préfère éviter les troubles et ça ne change rien à mon vote, je reste prudent.",
+        "C’est bien que les gilets jaunes se mobilisent contre les prix qui grimpent, ça me parle. Moi, je soutiens leur cause, même si c’est dur de s’impliquer beaucoup, ça me donne un peu d’espoir."
+      ]
+    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes employés et ouvriers vivant en commune dense à Lyon",
-      "matchedCount": 7205,
+      "segmentName": "Ouvriers de 50 à 64 ans vivant en commune urbaine moyenne",
+      "matchedCount": 144,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -173,61 +234,23 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ça me parle, cette histoire de gilets jaunes qui veulent revenir pour protester contre les prix à la pompe. Avec un gosse à charge et un salaire modeste, ça commence à être dur de joindre les deux bouts.",
-        "Je vois passer ces appels à manifester, mais honnêtement ça ne change pas grand-chose pour moi, je suis un peu à côté de tout ça, ça ne va pas influencer mon vote.",
-        "L'idée d'un retour des gilets jaunes, ça me semble lié à un vrai mal-être économique, mais ça ne me fera pas changer d'avis pour les présidentielles, je vote plutôt au centre."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.008672731724893504,
-          "lo": -0.01034928163802961,
-          "hi": -0.0072071466243488575,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.006976103298874219,
-          "lo": -0.00834906608858335,
-          "hi": -0.005760353527813507,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.008385810847532009,
-          "lo": 0.006884397625482823,
-          "hi": 0.010238992767878104,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.002003307707819855,
-          "lo": 0.001324312715749713,
-          "hi": 0.0027996034309912075,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.005403680129967931,
-          "lo": 0.0035329211186616812,
-          "hi": 0.007371426488754138,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.00014396366155208264,
-          "lo": -0.0025064971545286567,
-          "hi": 0.0018653831097854574,
-          "stable": false
-        }
-      }
+        "Ça recommence avec les gilets jaunes, ça ne changera rien à la hausse, ça va juste embêter tout le monde.",
+        "Je comprends leur frustration pour le prix du carburant, mais manifester n'est pas trop mon truc, surtout si c’est encore du bazar en ville.",
+        "Une marche pacifique et des rencontres, ça me parle plus que des blocages. Peut-être qu'ils veulent vraiment trouver des solutions utiles."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -258,323 +281,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 93
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 94
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je suis un peu fatiguée par ces histoires de gilets jaunes, ça me rappelle des journées de colère qui ne changent pas grand-chose à la fin. Mais la hausse du carburant me touche, c'est dur à la campagne.",
-        "J'entends parler des gilets jaunes au travail, c'est un peu leur combat aussi, surtout avec le prix du carburant qui monte, ça rend la vie plus chère pour tout le monde.",
-        "Franchement, ces manifs ça commence à me fatiguer, mais je sais que le prix de l'essence embête beaucoup de monde. Je reste plutôt calme, ça ne changera pas mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00554370598529035,
-          "lo": -0.00685231221299309,
-          "hi": -0.0042133312531426525,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0057505237984766784,
-          "lo": -0.006881068361914913,
-          "hi": -0.004567999736385979,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.006779488976217347,
-          "lo": 0.005852005324901085,
-          "hi": 0.007655673393926385,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.002694301945394601,
-          "lo": 0.0021560480652686267,
-          "hi": 0.0032359201385315007,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.003778802963629584,
-          "lo": 0.0017042633281919896,
-          "hi": 0.005998167567905673,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0019583641014745082,
-          "lo": -0.0035246040017574017,
-          "hi": -0.000033408203172772114,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes sans activité professionnelle et chômeurs en zone urbaine dense à Lyon",
-      "matchedCount": 7933,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, ça me gonfle un peu ces histoires de gilets jaunes qui repartent en manif, ça fait longtemps que j'en ai marre de voir les prix augmenter sans que ça change vraiment pour nous.",
-        "Je vois que ça parle encore des gilets jaunes, mais honnêtement je ne pense pas que ça me fasse bouger, cette histoire de carburant me concerne un peu mais ce n'est pas ce qui va changer mon vote.",
-        "Je trouve un peu fatiguant ce retour des gilets jaunes, ça parle encore de pouvoir d'achat, mais pour moi ça change pas grand-chose, donc ça n'a pas d'impact sur mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.009057532747722348,
-          "lo": -0.010819126944573355,
-          "hi": -0.0076913051109369175,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.008760978913204773,
-          "lo": -0.010370776698205538,
-          "hi": -0.007077702413098454,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.00818287145331275,
-          "lo": 0.00676498588548366,
-          "hi": 0.00977793202568883,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0029051112983997985,
-          "lo": 0.0022724627545172103,
-          "hi": 0.0036400041558174085,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.008287421215517888,
-          "lo": 0.006762410458099469,
-          "hi": 0.00993703375575543,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.001556892306303315,
-          "lo": -0.003599331567772155,
-          "hi": 0.001496471890006426,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Conducteurs indépendants et artisans sensibles à la hausse des prix",
-      "matchedCount": 2698,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je m'inquiète un peu de cette histoire de retour des gilets jaunes, ça pourrait compliquer encore plus la vie avec la hausse des prix, surtout pour nous artisans.",
-        "Je ne suis pas très concernée par ce retour des gilets jaunes, ça fait longtemps que je me focalise plus sur les projets locaux et européens.",
-        "Une nouvelle mobilisation des gilets jaunes, c'est embêtant pour mon commerce, j'espère que ça ne va pas durer trop longtemps."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.008471939371836544,
-          "lo": -0.00992786613215718,
-          "hi": -0.006955710951668662,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.006318630354930907,
-          "lo": -0.007893687607617954,
-          "hi": -0.004685471476516253,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.008974274867343564,
-          "lo": 0.0073812072664684635,
-          "hi": 0.01058272034457014,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.00238768077909315,
-          "lo": 0.0013086681674312848,
-          "hi": 0.0033581177495301193,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.006835223333545468,
-          "lo": 0.004720330180904793,
-          "hi": 0.00920299299186115,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.003406609253214709,
-          "lo": -0.005900906444127829,
-          "hi": -0.0006407693282693225,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Salariés modestes de 35 à 49 ans avec famille en communes périurbaines et denses",
-      "matchedCount": 1442,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
+          "toward": 8,
           "away": 3,
-          "noClearChange": 44
+          "noClearChange": 85
+        },
+        "abstention": {
+          "toward": 9,
+          "away": 2,
+          "noClearChange": 85
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis un peu inquiète par cette montée des prix du carburant, on sent bien que ça peut revenir très vite à des tensions dans la rue, mais ce n'est pas sûr que ça m'influence directement pour la présidentielle.",
-        "Les gilets jaunes qui reviennent, ça me parle, surtout avec la hausse des prix du carburant. Ça pourrait me conforter dans un vote plus à gauche, mais pas sûr que ça me fasse changer radicalement d'avis.",
-        "À Toulon, je vois vraiment beaucoup de gens parler des gilets jaunes, ça commence à m'agacer un peu, j'ai envie de stabilité et pas de remous en plus alors ça ne me donne pas envie de changer mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.006443856015920642,
-          "lo": -0.00829279572204539,
-          "hi": -0.004595493796617106,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.005355955161827862,
-          "lo": -0.006466700803664876,
-          "hi": -0.004195000122841596,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.005541794998392847,
-          "lo": 0.004579326742712538,
-          "hi": 0.0064703368130871195,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0012857577883023889,
-          "lo": 0.0007162330000902887,
-          "hi": 0.0018569528756430167,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0024986077427556854,
-          "lo": 0.00014810602048887073,
-          "hi": 0.004687927618700984,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0024736506482975883,
-          "lo": 0.0004510587352646647,
-          "hi": 0.004563329021483769,
-          "stable": false
-        }
-      }
+        "La mobilisation des gilets jaunes ne me surprend pas, la vie est dure avec la hausse des prix, mais je crains que ça ne change pas grand-chose pour nous dans la campagne.",
+        "Encore ces gilets jaunes, ça montre que la colère monte chez nous. Mais une marche pacifique avec des échanges, ça m'intéresserait plus que les blocages habituels.",
+        "La hausse du carburant c'est un souci, mais je suis plutôt tranquille et ça ne me fera pas bouger. Cette histoire de gilets jaunes, ça fait du bruit mais ne me touche pas vraiment."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:31.112Z",
-    "contentHash": "22c275d989ae27c3e949a1802c2585488e38cda6b061fc2b22f5e340ee4a3c40"
+    "status": "automatic",
+    "contentHash": "e6e535ffa3ff1252245e35589e0a738d4a621736d89584ed4729e7298b59cb4c"
   }
 }

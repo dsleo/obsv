@@ -4,23 +4,24 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "bff388ec9fc8fd03",
-  "computedAt": "2026-11-09T20:37:04.688Z",
+  "inputHash": "2919935838627496",
+  "eventInputHash": "14a2b95e600ee5583e82ce3cfa14d72a4a7f622194988db504aca4fb296a5e91",
+  "computedAt": "2026-11-11T13:03:17.265Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Jean-Luc Mélenchon annonce avoir obtenu 600 000 parrainages citoyens, dépassant largement le seuil habituel, ce qui conforte sa position de challenger majeurs à gauche.",
-    "whatChanges": "Mélenchon renforce nettement sa base de soutien populaire dès le départ, augmentant son attractivité auprès des électeurs de gauche et les médias, par rapport à un nombre plus modeste de parrainages."
+    "description": "Jean-Luc Mélenchon annonce avoir obtenu 600 000 parrainages citoyens, dépassant largement le seuil requis, mais il doit toujours sécuriser 500 signatures d'élus pour valider sa candidature.",
+    "whatChanges": "L'augmentation du nombre de parrainages citoyens renforce la légitimité populaire de Mélenchon, ce qui peut influencer positivement l'opinion des élus et des électeurs à son égard."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Supporteurs potentiels liés aux engagements citoyens urbains",
-      "mechanism": "Jean-Luc Mélenchon a obtenu plus de 400 000 parrainages citoyens dont une part importante provient des jeunes diplômés urbains engagés manifestant un soutien citoyen massif à sa candidature.",
-      "reason": "Ce segment rassemble des jeunes diplômés vivant dans des communes denses, correspondant à une population urbaine instruite et souvent mobilisée politiquement qui a pu participer à la collecte des parrainages citoyens pour Mélenchon.",
+      "name": "Jeunes diplômés urbains mobilisables via parrainages citoyens",
+      "mechanism": "Jean-Luc Mélenchon annonce avoir obtenu 400 000 parrainages citoyens, parmi lesquels les jeunes diplômés des communes denses représentent une base potentielle importante pour le soutien populaire des parrainages.",
+      "reason": "Ce segment rassemble des jeunes adultes diplômés des zones urbaines denses, susceptibles d'être engagés politiquement et de signer des parrainages citoyens.",
       "all": [
         "cluster.young_urban_graduate"
       ],
@@ -28,7 +29,8 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "parrainage_citoyen_exprimé"
+        "Motivation à parrainer",
+        "Soutien à Jean-Luc Mélenchon"
       ],
       "count": 11394,
       "distinctCommunes": 72,
@@ -42,23 +44,25 @@
     },
     {
       "id": "segment_2",
-      "name": "Citoyens actifs et modestes des zones urbaines intermédiaires",
-      "mechanism": "La progression du nombre de parrainages citoyens pour Jean-Luc Mélenchon s’appuie aussi sur les salariés employés et ouvriers modestes vivant en zones urbaines intermédiaires, publics susceptibles de soutenir ses propositions sociales et économiques.",
-      "reason": "Ce segment combine statut d’employé ou ouvrier avec résidence en zone urbaine intermédiaire, une population sociale modeste qui peut adhérer électoralement au candidat Mélenchon et contribuer aux parrainages.",
+      "name": "Jeunes salariés employés en zones urbaines denses hors cadres",
+      "mechanism": "Ce segment regroupe des jeunes âgés de 25 à 34 ans travaillant comme employés en communes urbaines denses, des profils potentiellement mobilisables via des parrainages citoyens, constituant une base active soutenant Jean-Luc Mélenchon dans l’obtention des parrainages.",
+      "reason": "Remplacement pour trop large ou absent statut élu, segment resserré sur un groupe jeune employé en ville dense, sans cadres",
       "all": [
-        "geo.intermediate"
-      ],
-      "any": [
+        "age.25_34",
         "occupation.employee",
-        "occupation.worker"
+        "geo.dense"
       ],
-      "none": [],
+      "any": [],
+      "none": [
+        "occupation.executive_professional"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "parrainage_citoyen_exprimé"
+        "Attitude envers Jean-Luc Mélenchon",
+        "Mobilisation pour parrainage"
       ],
-      "count": 1040,
-      "distinctCommunes": 24,
+      "count": 5130,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -69,24 +73,50 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes familles urbaines ou périurbaines engagées",
-      "mechanism": "Les jeunes familles dans des communes de taille moyenne à élevée peuvent être concernées par les propositions sociales de Mélenchon et participer à son rassemblement de parrainages citoyens.",
-      "reason": "Ce segment cible les couples avec enfants d’âge 25 à 49 ans vivant dans des communes de plus de 1000 habitants, correspondant à une base familiale potentiellement mobilisée pour la campagne présidentielle.",
+      "name": "Ouvriers âgés de 35 à 49 ans en communes intermédiaires",
+      "mechanism": "Ce segment correspond à des ouvriers d’âge moyen vivant dans des communes à densité intermédiaire, un groupe spécifique susceptible de mobiliser des signatures d’élus locaux favorables à la candidature de Jean-Luc Mélenchon.",
+      "reason": "Segment affinant le groupe ouvrier avec tranche d’âge et densité intermédiaire pour mieux cibler l’environnement sociopolitique lié aux parrainages.",
       "all": [
-        "household.couple_with_children",
-        "age.25_34"
+        "occupation.worker",
+        "age.35_49",
+        "geo.intermediate"
       ],
-      "any": [
-        "geo.dense",
-        "commune_size.1000_plus"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "parrainage_citoyen_exprimé"
+        "Intention de participer à la démarche de parrainage",
+        "Connaissance de la procédure du parrainage"
       ],
-      "count": 8479,
-      "distinctCommunes": 119,
+      "count": 160,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Jean-Luc Mélenchon annonce avoir obtenu 400 000 parrainages citoyens... Il doit tout de même récupérer 500 signatures d'élus pour confirmer sa candidature",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Cadres urbains de 50 à 64 ans en couple sans enfants",
+      "mechanism": "Il s’agit de cadres et professions intellectuelles supérieures d’âge mûr, vivant en couple sans enfants en commune dense, susceptible d’exercer une pression locale favorable ou défavorable aux candidatures, et donc concernés par la nécessité des signatures d’élus.",
+      "reason": "Segment resserré sur cadres urbains d’âge mûr et ménage couple sans enfants pour limiter taille et ciblage spécifique aux signataires potentiels ou influents.",
+      "all": [
+        "cluster.urban_executive",
+        "age.50_64",
+        "household.couple_no_children"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la candidature Mélenchon",
+        "Dispositif de mobilisation locale"
+      ],
+      "count": 970,
+      "distinctCommunes": 68,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -105,65 +135,65 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Citoyens actifs et modestes des zones urbaines intermédiaires",
-      "matchedCount": 1040,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "J'entends que Mélenchon progresse un peu, mais je doute que ça change grand-chose pour moi, c'est surtout Macron qui me parle.",
-        "Mélenchon qui dépasse les 400 000 parrainages ? Ça montre qu'il est encore là, mais pour moi c’est pas décisif. Je reste réservé.",
-        "Mélenchon qui commence à avoir beaucoup de soutiens, ça ne m'impressionne pas vraiment. Je suis plutôt à droite ici, donc ça ne change rien chez moi."
-      ]
-    },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Jeunes familles urbaines ou périurbaines engagées",
-      "matchedCount": 8479,
+      "segmentName": "Ouvriers âgés de 35 à 49 ans en communes intermédiaires",
+      "matchedCount": 160,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 4,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je connais un peu Mélenchon, ce genre d'annonce ne change pas vraiment mon choix, il faut qu'il confirme avec les élus, ça ne me fait ni chaud ni froid.",
+        "Mélenchon, encore des histoires avec ses parrainages, je préfère suivre les candidats plus stables, cela ne va pas me faire bouger niveau vote.",
+        "Un bon score pour Mélenchon, ça montre qu’il cartonne chez certains, mais vu mon boulot et mon quotidien, ça ne change pas mon opinion."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes salariés employés en zones urbaines denses hors cadres",
+      "matchedCount": 5130,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -194,23 +224,23 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne sais pas trop quoi penser de ce chiffre de parrainages, ça ne change pas grand-chose à ma vie quotidienne à l'usine à Laon.",
-        "C’est intéressant que Mélenchon progresse un peu, ça me donne un peu plus confiance en sa candidature, même si l’élection est encore loin.",
-        "Je note que Mélenchon a un peu plus de soutien, mais cela ne me fait pas changer d'avis pour l'instant."
+        "Je trouve ça encourageant que Mélenchon arrive à rassembler autant de parrainages citoyens, ça montre un vrai engagement populaire ici à Marseille.",
+        "Je ne suis pas vraiment concernée par cette annonce, ce n'est pas ce qui va changer mes habitudes de vote ni mon intérêt pour la politique.",
+        "Je vois Mélenchon obtenir autant de parrainages, mais ça change rien pour moi, je reste prudente et décidée par mes préoccupations du quotidien."
       ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Supporteurs potentiels liés aux engagements citoyens urbains",
+      "segmentName": "Jeunes diplômés urbains mobilisables via parrainages citoyens",
       "matchedCount": 11394,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -233,17 +263,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est rassurant de voir que Mélenchon progresse côté parrainages citoyens, ça montre que son message trouve un écho. Mais il doit toujours s'assurer le soutien politique pour valider sa candidature, ça reste crucial.",
-        "Mélenchon qui a réussi à récolter autant de parrainages citoyens ? Ça ne me fait ni chaud ni froid, franchement. Je reste surtout préoccupée par l'essor du RN autour de moi.",
-        "Mélenchon qui obtient 400 000 parrainages citoyens, c’est intéressant, ça donne une image d’une gauche radicale bien ancrée. Ça peut réveiller un peu le débat à gauche, même si je reste prudente sur ses chances."
+        "C'est encourageant que Mélenchon rassemble autant de parrainages, ça montre un vrai élan populaire. J'espère que ça se confirmera car j'aime bien son discours, même si je reste prudent.",
+        "Franchement, c'est pas mon truc, Mélenchon. Plus il a de parrainages, plus j'ai peur qu'il prenne trop de place. Ça me rend plutôt méfiante.",
+        "Je note que Mélenchon commence à bien s'organiser, mais il a encore du chemin pour convaincre les élus. C'est un acteur important du débat, pas de doute."
       ]
     },
     "global_1": {
@@ -280,25 +310,70 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 1,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 93
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très au fait des détails de ces parrainages, ça ne change pas vraiment ce que je pense en politique. Mélenchon ne m'intéresse pas beaucoup.",
-        "Ah, je savais que Mélenchon avait du soutien ici, mais c’est rassurant de voir qu’il progresse, ça me donne un peu plus envie de soutenir la gauche qui bouge.",
-        "Ce sont des chiffres intéressants, mais honnêtement, ça ne va pas changer mon vote. Je reste prudent sur Mélenchon, trop radical à mon goût."
+        "Ah, Mélenchon qui dit qu'il a presque les signatures... ça change pas grand-chose pour moi, j'suis pas trop politisée, mais ça fait un peu parler au village.",
+        "Mélenchon qui annonce 400 000 parrainages, ça me parle un peu, il a nos voix ici. Plus y en a, mieux c’est pour lui, ça lui donne un coup de pouce moral.",
+        "Ce genre d’annonce sur Mélenchon, j’entends mais franchement ça m’emballe pas plus que ça. Moi j’vois ça comme de la politique de tous les jours, ça change pas mes idées."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Cadres urbains de 50 à 64 ans en couple sans enfants",
+      "matchedCount": 970,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est intéressant de voir Mélenchon mobiliser autant de soutien populaire, mais je reste prudent sur sa capacité à obtenir les signatures d'élus. Ce métier me rend assez pragmatique, je reste donc sceptique.",
+        "Mélenchon qui obtient 400 000 parrainages, c'est pas mal, mais ça ne change pas fondamentalement ce que j'en pense, ici à Béziers on ne le soutient pas plus. La politique locale a ses priorités.",
+        "Je prends note que Mélenchon réussit à rassembler un nombre significatif de citoyens. Cela montre une agitation à gauche qui mérite d’être suivie de près."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:14.614Z",
-    "contentHash": "8ab06873fc82e3c9dbec851ffaa030c995b2e904847d4f05f0414f6b59212d79"
+    "status": "automatic",
+    "contentHash": "5c503126e1b1c752ed63ed608bf8ea5b4df01b524687f11c41da8c19ac1f7a66"
   }
 }

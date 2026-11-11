@@ -4,38 +4,44 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "59ee5f357ed249a1",
-  "computedAt": "2026-11-10T22:09:46.376Z",
+  "inputHash": "905ad50b43781ab2",
+  "eventInputHash": "021fd248990f321db792ed5a38c4edcc26a20104a51d25a7ffdf51e6869a480d",
+  "computedAt": "2026-11-11T13:13:17.625Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "À Strasbourg, au procès de l’agression de trois étudiants juifs, les violences sont reconnues avec un caractère antisémite établi par les juges.",
-    "whatChanges": "Le dossier est reconnu comme un crime motivé par l’antisémitisme, ce qui renforce la sensibilité à la question de la haine raciale et peut influencer les électeurs sensibles à la lutte contre les discriminations."
+    "description": "Le procès de Thierry Meunier dans l'affaire Ferreira, concernant des accusations de viols, est reporté de plusieurs mois en raison de la complexité des dossiers, réduisant ainsi à cinq le nombre de procès criminels programmés en Côtes-d’Armor sur cette période de trois mois.",
+    "whatChanges": "Le nombre de procès criminels est réduit de moitié sur trois mois, ce qui diminue la pression médiatique et judiciaire dans les Côtes-d’Armor, affectant la perception de la gravité de la situation par les électeurs locaux."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Population mixte de Côtes-d’Armor exposée aux procès criminels",
-      "mechanism": "Ce segment rassemble des habitants des communes à densité intermédiaire ou rurale des Côtes-d’Armor, lieu des dix procès criminels en trois mois dus à l’affaire Ferreira, susceptibles d’être concernés directement ou indirectement par ces événements judiciaires.",
-      "reason": "Inclure réels résidents des zones affectées géographiquement par ces multiples procès, indépendamment de leur âge ou profession, pour refléter la population locale potentiellement sensibilisée.",
-      "all": [],
+      "name": "Habitants des Côtes-d’Armor employant des ouvriers de 35 à 64 ans",
+      "mechanism": "Les ouvriers d’âge intermédiaire dans les Côtes-d'Armor sont susceptibles d'être touchés par les répercussions sociales et économiques des procès criminels médiatisés, notamment celui de Thierry Meunier dans l’affaire Ferreira, suscitant une sensibilité particulière à l’ordre public et à la justice.",
+      "reason": "Ce segment rassemble des ouvriers âgés de 35 à 64 ans, groupe d’âge et profession exposés aux enjeux locaux liés à la sécurité et à la justice, pertinent dans un département rural-urbain comme les Côtes-d’Armor.",
+      "all": [
+        "occupation.worker",
+        "geo.intermediate"
+      ],
       "any": [
-        "geo.intermediate",
-        "geo.rural"
+        "age.35_49",
+        "age.50_64"
       ],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 6059,
-      "distinctCommunes": 135,
+      "measurementNeeds": [
+        "Attitude envers la justice pénale",
+        "Perception de la sécurité locale",
+        "Opinion sur l’efficacité des institutions judiciaires"
+      ],
+      "count": 304,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [
-        "geo : geo.intermediate ou geo.rural regroupés en union (« any ») ; une personne n’a qu’une seule valeur de geo"
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
       ],
       "counterfactual": {
         "intervention": "Procès de Thierry Meunier, affaire Ferreira, viols : dix procès criminels en trois mois en Côtes-d’Armor",
@@ -45,25 +51,31 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes adultes de 18 à 24 ans dans les zones rurales ou intermédiaires des Côtes-d’Armor",
-      "mechanism": "La tranche des 18-24 ans vivant dans les communes rurales ou intermédiaires des Côtes-d’Armor est directement concernée par l’affaire, compte tenu de la jeunesse des victimes étudiantes à Strasbourg et de la sensibilisation des jeunes sur les questions de violences, discriminations et sécurité.",
-      "reason": "Cette population jeune sur place est un segment étroit mais significatif susceptible d’être mobilisé ou affecté par ces affaires récentes.",
+      "name": "Femmes de 25 à 49 ans en couple avec enfants en communes denses",
+      "mechanism": "Les mères ou femmes en couple avec enfants vivant dans des communes denses des Côtes-d’Armor peuvent être particulièrement concernées par un climat sécuritaire affecté par des procès criminels importants, tels que celui de Thierry Meunier, suscitant un souci vis-à-vis de la protection des familles et de la prévention des violences.",
+      "reason": "Ce segment représente les femmes adultes jeunes et modérément âgées avec responsabilités familiales dans des environnements urbains ou semi-urbains, sensibles aux questions de sécurité familiale et judiciaire locale.",
       "all": [
-        "age.18_24"
+        "sex.female",
+        "household.couple_with_children",
+        "geo.dense"
       ],
       "any": [
-        "geo.rural",
-        "geo.intermediate"
+        "age.25_34",
+        "age.35_49"
       ],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 575,
-      "distinctCommunes": 79,
+      "measurementNeeds": [
+        "Sentiment de sécurité dans le quartier",
+        "Préoccupation vis-à-vis des violences sexuelles",
+        "Confiance dans la réponse judiciaire"
+      ],
+      "count": 12605,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Procès de Thierry Meunier, affaire Ferreira, viols : dix procès criminels en trois mois en Côtes-d’Armor",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -72,25 +84,30 @@
     },
     {
       "id": "segment_3",
-      "name": "Salariés modestes des communes rurales et intermédiaires des Côtes-d’Armor",
-      "mechanism": "Les employés et ouvriers résidant dans les territoires ruraux ou intermédiaires du département des Côtes-d’Armor peuvent être particulièrement sensibles aux questions d’ordre public et judiciaire évoquées par ces multiples procès criminels.",
-      "reason": "Ce groupe professionnel localisé représente une force de travail et population active pouvant réagir à la médiatisation et conséquences sociales des affaires judiciaires.",
+      "name": "Personnes en couple sans enfant de 35 à 64 ans dans les communes intermédiaires",
+      "mechanism": "Les personnes vivant en couple sans enfant dans des communes ni très denses ni rurales des Côtes-d’Armor peuvent être concernées par les conséquences médiatiques et sociales liées aux procès criminels multiples dans leur département, y compris le procès de Thierry Meunier, influençant leurs attitudes envers la justice et la sécurité locale.",
+      "reason": "Ce segment croise une situation familiale stable avec une localisation géographique moyenne, reflétant une population adulte engagée dans la vie locale et sensible aux enjeux judiciaires et sécuritaires.",
       "all": [
-        "cluster.modest_wage_earner"
-      ],
-      "any": [
-        "geo.rural",
+        "household.couple_no_children",
         "geo.intermediate"
       ],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
+      "any": [
+        "age.35_49",
+        "age.50_64"
       ],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 1718,
-      "distinctCommunes": 110,
+      "measurementNeeds": [
+        "Opinion sur l’efficacité de la justice",
+        "Préoccupation pour la sécurité dans la commune",
+        "Perception des conséquences des procès criminels"
+      ],
+      "count": 425,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Procès de Thierry Meunier, affaire Ferreira, viols : dix procès criminels en trois mois en Côtes-d’Armor",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -109,8 +126,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Population mixte de Côtes-d’Armor exposée aux procès criminels",
-      "matchedCount": 6059,
+      "segmentName": "Habitants des Côtes-d’Armor employant des ouvriers de 35 à 64 ans",
+      "matchedCount": 304,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -149,53 +166,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C’est triste de voir autant de procès pour des affaires aussi graves, mais ces histoires restent un peu loin de ma vie quotidienne. Je suis plus préoccupée par mon boulot et ma situation à Bergerac.",
-        "Les violences, oui, ça me choque, mais si le caractère antisémite est reconnu, ça montre que la justice prend ça au sérieux, ce qui est important pour notre société.",
-        "Les violences, c’est regrettable, mais à vrai dire, ça ne bouleverse pas vraiment ma vote. Ici c’est surtout l’économie et l’emploi qui comptent pour moi."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.003412014582760225,
-          "lo": -0.00475795602002623,
-          "hi": -0.0019432626440897376,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004821234020899741,
-          "lo": -0.005999151830345329,
-          "hi": -0.0034306767407759503,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0046688135704852736,
-          "lo": 0.0034235292791897887,
-          "hi": 0.005823321169102959,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0020915691618568215,
-          "lo": 0.0015279627274563262,
-          "hi": 0.00286295318292756,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.008959713702475393,
-          "lo": 0.005955102180512285,
-          "hi": 0.011454377061588361,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.00748684783115752,
-          "lo": -0.010031746000194321,
-          "hi": -0.00502348240704273,
-          "stable": true
-        }
-      }
+        "Je ne suis pas très branché procès et affaires judiciaires, ça ne change rien à ma manière de voir la politique.",
+        "C’est bien triste d’entendre ça, mais je me sens pas concerné, ça ne va pas me faire changer d’avis pour l’élection.",
+        "Je ne me sens pas concerné par ces affaires judiciaires lointaines, ça me perturbe pas spécialement pour la politique."
+      ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes adultes de 18 à 24 ans dans les zones rurales ou intermédiaires des Côtes-d’Armor",
-      "matchedCount": 575,
+      "segmentName": "Femmes de 25 à 49 ans en couple avec enfants en communes denses",
+      "matchedCount": 12605,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -234,48 +213,57 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ce procès et les violences dans les Côtes-d’Armor, ça me choque, mais ça ne me concerne pas directement ici. La question antisémite à Strasbourg, je m'en fous un peu.",
-        "Je suis sensible aux questions de discrimination, mais ce procès à Strasbourg ça ne change pas trop mon avis quand même.",
-        "Les procès criminels ici ou à Strasbourg, ça me touche peu. La reconnaissance de l'antisémitisme, j'en entends parler, mais ça ne changera pas mon vote."
-      ],
-      "altEffect": {
+        "C'est triste d'entendre que tant de procès pour des faits aussi graves se déroulent en si peu de temps. Ça me rappelle combien la justice est importante, mais ça ne change rien à mon vote.",
+        "Encore des procès pour des viols ? C’est terrible, mais ça ne me concerne pas vraiment. Je vois pas pourquoi ça changerait mon vote, honnêtement.",
+        "Ce genre d'affaires, ça me révolte, mais c’est un peu loin de mon quotidien. Ça ne va pas changer ma décision de vote."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Personnes en couple sans enfant de 35 à 64 ans dans les communes intermédiaires",
+      "matchedCount": 425,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.005093759338551007,
-          "lo": -0.007215206579789919,
-          "hi": -0.0033850834007084023,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.005643800859946695,
-          "lo": -0.007075634070425739,
-          "hi": -0.004386056615223282,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0.004503911410161411,
-          "lo": 0.0030456177331177315,
-          "hi": 0.0059272482397482425,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.001504611087944421,
-          "lo": 0.0008750657292323953,
-          "hi": 0.0022283538325204993,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.009415058300474963,
-          "lo": 0.006267846622013278,
-          "hi": 0.012212597629264299,
-          "stable": true
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
         },
         "abstention": {
-          "mean": -0.004686020600083101,
-          "lo": -0.0071096940680273986,
-          "hi": -0.0022326369513869532,
-          "stable": false
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cela ne me touche pas directement, c'est une affaire grave mais qui est loin de chez moi, donc ça ne modifie pas vraiment mon opinion politique.",
+        "Ces affaires criminelles me préoccupent, ça montre un vrai problème de sécurité et de justice dans notre région. Ça me renforce dans mon vote pour l'extrême droite, je veux plus d'ordre.",
+        "C'est un fait triste, mais je ne me sens pas concerné directement. Les procès font partie du système judiciaire, même si c'est une période chargée pour les tribunaux."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -306,153 +294,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "toward": 6,
+          "away": 3,
+          "noClearChange": 87
         },
         "abstention": {
-          "toward": 0,
-          "away": 1,
+          "toward": 1,
+          "away": 0,
           "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis vraiment écœuré de voir autant de procès criminels dans le pays, ça ne nous protège pas assez des violences, peu importe leur contexte.",
-        "C'est inquiétant qu'il y ait des violences sans qu'on reconnaisse toujours les motivations derrière, ça me fait réfléchir sur la vigilance nécessaire contre l'antisémitisme.",
-        "Savoir que des violences antisémites sont reconnues me choque et me conforte dans l'idée qu'il faut combattre cette haine encore plus fort."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.004927263514487302,
-          "lo": -0.005849074782181218,
-          "hi": -0.0039931144167624074,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0048521632841902985,
-          "lo": -0.005862953466864366,
-          "hi": -0.0038749592085551474,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.006153586125196608,
-          "lo": 0.005241751958918688,
-          "hi": 0.007073357323655657,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0037206267827084604,
-          "lo": 0.003101849379950743,
-          "hi": 0.004347116725507483,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.008851435318360483,
-          "lo": 0.006265767679236169,
-          "hi": 0.011173966643039053,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.00894622142758794,
-          "lo": -0.011208883041468757,
-          "hi": -0.006493902337422054,
-          "stable": true
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Salariés modestes des communes rurales et intermédiaires des Côtes-d’Armor",
-      "matchedCount": 1718,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas vraiment concerné par ces affaires de procès lointaines, ça ne change rien à ma façon de voir les choses.",
-        "Cette histoire d'agression antisémite me touche un peu, ça rappelle que le racisme et la haine sont toujours là, mais ça change peu mon vote.",
-        "Le fait que ce soit reconnu comme une agression violente me parle, mais je suis plus concentré sur mes journées et ça ne change pas trop mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0036937084847087943,
-          "lo": -0.00543296196826636,
-          "hi": -0.001959486598701193,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.005800758895076811,
-          "lo": -0.007238931562416145,
-          "hi": -0.004417829383400031,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.004568871466600164,
-          "lo": 0.0031998204100491066,
-          "hi": 0.005950055143680488,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.002960605048987188,
-          "lo": 0.002448124431746474,
-          "hi": 0.0035649316300976775,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.009424960014623198,
-          "lo": 0.005241739516303978,
-          "hi": 0.013608754668228243,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.007459969150424947,
-          "lo": -0.009792240605364358,
-          "hi": -0.005319248081756202,
-          "stable": true
-        }
-      }
+        "Je ne suis pas vraiment concerné par ces procès en Côtes-d'Armor, ce n'est pas ma région et ce genre d'affaires ne change rien à ma vie quotidienne.",
+        "Ces affaires criminelles en Côtes-d'Armor sont inquiétantes, mais je suis plutôt focalisée sur les grands sujets nationaux, ça ne va pas modifier mon vote.",
+        "C'est triste d'entendre ça, ces procès sont importants pour la justice et pour les victimes. Je trouve que ça montre que la société doit mieux protéger les plus vulnérables."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:43.507Z",
-    "contentHash": "0495edb0daf471fe0baeb6fde95566db33ea720afb31b275732261179403cd5f"
+    "status": "automatic",
+    "contentHash": "0862491fccc2f5ea0300b34ac8456e55c11315caa06c5da4ea361faf57d70599"
   }
 }

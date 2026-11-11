@@ -4,39 +4,40 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "bdd9d6630228466d",
-  "computedAt": "2026-11-09T20:37:09.601Z",
+  "inputHash": "a6ffb18706258147",
+  "eventInputHash": "8d53dc29ca5dcbcc3dad243e07a71bffb5c9cea5cc9b903edd8d1a6fadba8e1d",
+  "computedAt": "2026-11-11T13:03:04.446Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Marine Le Pen annonce qu'elle ne sollicitera pas de prêts auprès de particuliers, préférant financer sa campagne exclusivement par des dons limités et des fonds personnels.",
-    "whatChanges": "Cette décision rassure une partie des électeurs préoccupés par l'endettement et donne une image plus prudente, mais elle réduit aussi la capacité financière potentielle de sa campagne."
+    "description": "Marine Le Pen annonce qu'elle renonce à autoriser les prêts de particuliers pour financer sa campagne et préfère renforcer le financement public et les dons de petits contributeurs.",
+    "whatChanges": "Le financement de la campagne se concentre davantage sur les contributions publiques et les dons individuels, ce qui pourrait rassurer les électeurs préoccupés par la transparence et le risque d'influence privée."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Particuliers modestes employés et ouvriers en communes intermédiaires",
-      "mechanism": "La proposition de Marine Le Pen d'autoriser les prêts de particuliers pour financer sa campagne peut concerner les salariés modestes employés ou ouvriers en communes intermédiaires, qui pourraient être sollicités pour des prêts entre particuliers en lien avec leur proximité locale et leur engagement politique potentiel.",
-      "reason": "L'intersection des employés et ouvriers avec la zone géographique intermédiaire constitue un groupe restreint susceptible d'être visé par cette mesure, en lien avec leur profil social et géographique spécifique.",
+      "name": "Employés et ouvriers de 35 à 64 ans dans des communes peu denses",
+      "mechanism": "Marine Le Pen souhaite autoriser les prêts de particuliers pour financer sa campagne, ce qui mobilise particulièrement les salariés modestes responsables de leur financement ou proches de leur réseau dans des zones non-urbaines.",
+      "reason": "Ce segment croise un statut socio-professionnel modeste (employé ou ouvrier) avec l'âge adulte moyen et une densité de commune intermédiaire ou rurale, reflétant un public potentiellement concerné ou partie prenante dans des campagnes de financement entre particuliers.",
       "all": [
-        "occupation.employee",
-        "geo.intermediate"
+        "age.35_49",
+        "occupation.employee"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "geo.intermediate",
+        "geo.rural"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote.intent",
-        "credit_behavior"
+        "Attitude envers le financement politique par les particuliers",
+        "Perception de Marine Le Pen"
       ],
-      "count": 381,
-      "distinctCommunes": 24,
+      "count": 353,
+      "distinctCommunes": 69,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -47,23 +48,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains susceptibles de financer par prêts participatifs",
-      "mechanism": "Marine Le Pen envisage d'autoriser les prêts de particuliers, un mécanisme qui peut s'adresser aux jeunes diplômés urbains, notamment ceux ayant un haut niveau d'études et vivant en zones denses, susceptibles d'avoir des ressources et une volonté de participer financièrement à la campagne.",
-      "reason": "Ce segment regroupe des jeunes adultes diplômés vivant en milieu urbain dense, un profil plus aisé et potentiellement en capacité d'effectuer des prêts à des fins électorales.",
+      "name": "Indépendants des communes denses mariés de 50 à 64 ans",
+      "mechanism": "L'annonce de Marine Le Pen visant à autoriser les prêts particuliers impacte fortement les indépendants urbains d'âge mûr, engagés dans leur communauté et susceptibles de financer ou influencer la campagne localement.",
+      "reason": "Ce segment combine indépendants, âge mature et cadre urbain, avec un statut marital stable, représentant un groupe social engagé et financièrement responsable dans les campagnes locales.",
       "all": [
-        "age.25_34",
-        "education.bac_plus_5_plus",
-        "geo.dense"
+        "occupation.artisan_merchant_owner",
+        "age.50_64",
+        "geo.dense",
+        "marital.married"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote.intent",
-        "credit_behavior"
+        "Attitude envers le financement politique par les particuliers",
+        "Connaissance de la campagne de Marine Le Pen"
       ],
-      "count": 6691,
-      "distinctCommunes": 72,
+      "count": 759,
+      "distinctCommunes": 69,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -74,22 +76,54 @@
     },
     {
       "id": "segment_3",
-      "name": "Retraités ruraux engagés politiquement",
-      "mechanism": "La mesure de prêts entre particuliers pour financer une campagne peut concerner les retraités ruraux, désireux de soutenir financièrement Marine Le Pen en raison de leur attachement local et politique, malgré leur situation souvent plus modeste.",
-      "reason": "Ce segment est composé de retraités vivant en zone rurale, groupe qui peut être préoccupé par l'avenir politique et se mobiliser par des contributions financières via des prêts participatifs.",
+      "name": "Jeunes diplômés urbains de 25 à 34 ans non mariés",
+      "mechanism": "Marine Le Pen veut une forme de financement politique alternative qui pourrait attirer ou inquiéter les jeunes diplômés urbains, non mariés, potentiellement influencés par les débats sur la transparence et l'éthique du financement.",
+      "reason": "Ce segment rassemble les jeunes adultes diplômés vivant en zones urbaines denses, sans engagement marital, susceptibles de réagir aux aspects innovants ou controversés du financement par prêts particuliers.",
       "all": [
-        "occupation.retired",
-        "geo.rural"
+        "age.25_34",
+        "education.bac_plus_3_4",
+        "geo.dense",
+        "marital.single"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote.intent",
-        "credit_behavior"
+        "Attitude envers le financement politique par les particuliers",
+        "Jugement sur l'éthique des campagnes électorales"
       ],
-      "count": 784,
-      "distinctCommunes": 91,
+      "count": 1197,
+      "distinctCommunes": 65,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Marine Le Pen veut autoriser les prêts de particuliers pour financer sa campagne",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Retraités ruraux non isolés de 65 à 74 ans",
+      "mechanism": "Les retraités ruraux, souvent moins directement impliqués dans le financement politique, peuvent néanmoins être ciblés par les discours sur le financement de campagne et représenter un groupe à sensibiliser ou à mobiliser par Marine Le Pen.",
+      "reason": "Ce segment est défini par des retraités âgés, vivant en milieu rural, généralement en couple, ce qui les distingue des isolés et reflète un public plus stable et ciblé par la communication politique régionale.",
+      "all": [
+        "occupation.retired",
+        "age.65_74",
+        "geo.rural",
+        "household.couple_no_children"
+      ],
+      "any": [],
+      "none": [
+        "cluster.isolated_senior"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers le financement politique par les particuliers",
+        "Sensibilité aux campagnes électorales rurales"
+      ],
+      "count": 225,
+      "distinctCommunes": 55,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -110,8 +144,8 @@
   "contrasts": {
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Retraités ruraux engagés politiquement",
-      "matchedCount": 784,
+      "segmentName": "Jeunes diplômés urbains de 25 à 34 ans non mariés",
+      "matchedCount": 1197,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -137,28 +171,122 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 8,
-          "noClearChange": 40
+          "toward": 3,
+          "away": 7,
+          "noClearChange": 38
         },
         "abstention": {
-          "toward": 16,
-          "away": 0,
-          "noClearChange": 32
+          "toward": 6,
+          "away": 4,
+          "noClearChange": 38
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas sûr que demander de l'argent aux particuliers soit une bonne idée ; ça risque de diviser ceux qui soutiennent Marine Le Pen.",
-        "Je trouve ça un peu trop agressif et ça pourrait me faire réfléchir à ne pas soutenir Marine Le Pen si elle demande trop d'argent aux gens.",
-        "Je préfère les financements faits avec des dons limités, ça paraît plus honnête qu'un prêt entre particuliers."
+        "Je trouve que laisser les particuliers prêter à Marine Le Pen pour sa campagne, ça sent un peu l'affaire de gros sous pas claire. Je préfère qu'il y ait plus de transparence et plus de contrôle public.",
+        "Ce n'est pas vraiment mon truc cette histoire de prêts particuliers pour une campagne, ça paraît pas très sérieux. Je préférerais un financement plus transparent et démocratique, avec des petits dons et du public.",
+        "Je ne suis pas surprise par la proposition de Marine Le Pen, mais je trouve que ce genre de financement via des prêts privés peut poser problème pour la transparence de la campagne."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Retraités ruraux non isolés de 65 à 74 ans",
+      "matchedCount": 225,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 5,
+          "away": 14,
+          "noClearChange": 29
+        },
+        "abstention": {
+          "toward": 18,
+          "away": 1,
+          "noClearChange": 29
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ça ne me surprend pas que Marine Le Pen cherche de nouvelles façons de financer sa campagne. Personnellement, ça ne change rien à mon vote, je suis plutôt centriste et je choisis selon les idées plus que les finances.",
+        "Je comprends que Marine Le Pen veuille plus d'argent pour sa campagne, mais c'est pas très rassurant tout ça. Je reste fidèle à elle, elle est la seule qui prenne vraiment soin des gens comme moi ici.",
+        "Le financement des campagnes, ça me semble un peu loin de mes préoccupations. Tant que ça ne dérape pas trop, ça ne me fera pas changer d'avis. Je reste centré sur les idées qui concernent ma vie au village."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Employés et ouvriers de 35 à 64 ans dans des communes peu denses",
+      "matchedCount": 353,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 10,
+          "noClearChange": 35
+        },
+        "abstention": {
+          "toward": 15,
+          "away": 3,
+          "noClearChange": 30
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu inquiétant qu'une candidate veuille se financer par des prêts de particuliers, ça peut créer des influences pas très claires.",
+        "Ça ne me plaît pas vraiment ce système de prêts de particuliers, ça fait trop système d'affaires privées, je préférerais qu'elle mise sur le financement public et les petits dons.",
+        "Je ne vois pas trop l'intérêt des prêts de particuliers pour financer une campagne, je préfère qu'elle mise sur le financement public et les petits dons, ça me semble plus sain."
       ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains susceptibles de financer par prêts participatifs",
-      "matchedCount": 6691,
+      "segmentName": "Indépendants des communes denses mariés de 50 à 64 ans",
+      "matchedCount": 759,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -184,22 +312,22 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
+          "toward": 1,
           "away": 8,
-          "noClearChange": 38
+          "noClearChange": 39
         },
         "abstention": {
-          "toward": 7,
-          "away": 1,
-          "noClearChange": 40
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve un peu bizarre que Marine Le Pen demande directement de l'argent aux particuliers, ça me semble risqué et un peu désespéré, je ne sais pas si ça va marcher avec ses électeurs.",
-        "Honnêtement, cette histoire de prêts privés pour financer une campagne ne change rien pour moi, ça me parle pas, je me concentre sur les programmes pas sur les petits détails de financement.",
-        "Personnellement, la question du financement de la campagne ça me laisse froid, j'attends plutôt de voir ce que les candidats proposent comme idées."
+        "Franchement, l'idée qu'on puisse prêter de l'argent à un parti comme celui-là pour financer sa campagne me dérange. Ce genre de coup tordu ne me donne pas envie de changer mon vote, c'est plutôt inquiétant.",
+        "Ce genre d'annonce ne me fait ni chaud ni froid. Ce qui compte pour moi, c'est qu'ils restent transparents et évitent les dettes qui pourraient nuire à la campagne. Je ne pense pas que ça change mon vote.",
+        "Marine Le Pen qui veut autoriser ces prêts ? Ça ne me plaît pas, c’est un procédé qui sonne un peu comme du bricolage financier. Je préfère qu’elle renforce le financement public, ça me rassurerait plus."
       ]
     },
     "global_1": {
@@ -231,77 +359,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 16,
-          "noClearChange": 80
-        },
-        "abstention": {
-          "toward": 19,
-          "away": 0,
-          "noClearChange": 77
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça un peu inquiétant, faire appel aux particuliers pourrait compliquer les choses, ça ne me semble pas rassurant.",
-        "Je ne suis pas vraiment concerné par son financement, ça ne change rien pour moi dans le choix de mon vote.",
-        "Cela ne change pas mon avis, je regarde plutôt ses idées que la manière dont elle finance sa campagne."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Particuliers modestes employés et ouvriers en communes intermédiaires",
-      "matchedCount": 381,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 10,
-          "noClearChange": 38
-        },
-        "abstention": {
           "toward": 7,
-          "away": 0,
-          "noClearChange": 41
+          "away": 14,
+          "noClearChange": 75
+        },
+        "abstention": {
+          "toward": 13,
+          "away": 4,
+          "noClearChange": 79
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne vois pas vraiment pourquoi je devrais prêter de l'argent à une candidate ; ça ne changera pas mon vote.",
-        "Je ne prête pas mon argent pour une campagne, ça ne change rien à mon choix de voter Marine ou pas.",
-        "Que Marine Le Pen veuille emprunter aux particuliers, ça ne me concerne pas vraiment, je ne compte pas financer sa campagne."
+        "Je ne vois pas trop pourquoi ça changerait vraiment mon vote, ça me paraît un peu compliqué tout ça, ça ne me parle pas.",
+        "Je trouve que c'est risqué d'ouvrir aux prêts entre particuliers, ça peut mener à des dérives, mais franchement ça ne changera pas mon choix.",
+        "Ce genre de financement ne me parle pas vraiment, c'est surtout de la politique entre gens d'argent, ça ne changera rien à mon vote."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:14.964Z",
-    "contentHash": "68b4ccee48b47b8e9d5dbf9c35d5483c0155b8dff04274199114f7efd5071b6e"
+    "status": "automatic",
+    "contentHash": "1e438ea859914531f6c5e37c1410b94a629805008755bed2d5a4b62d2be50c08"
   }
 }

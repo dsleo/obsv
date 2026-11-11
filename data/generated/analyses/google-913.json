@@ -4,40 +4,37 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "61bfbaeffeb96e1c",
-  "computedAt": "2026-11-10T22:07:20.454Z",
+  "inputHash": "72f4e805b7dfc39d",
+  "eventInputHash": "674a561d66820dbec003a542c27c82bd26e0e5fabc5f9c3ebc6affb9b403801e",
+  "computedAt": "2026-11-11T13:06:06.401Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Violences en marge des mobilisations lycéennes : Fabien Roussel, candidat PCF à la présidentielle, appelle à un dialogue immédiat entre le gouvernement et les syndicats lycéens pour éviter toute escalade et protéger la jeunesse.",
-    "whatChanges": "Le candidat PCF privilégie une approche de dialogue et de prévention plutôt qu'une simple politique de maintien de l'ordre, ce qui pourrait apaiser une partie des électeurs concernés par la justice sociale et la sécurité des jeunes."
+    "description": "Les syndicats lycéens annoncent un déblocage progressif des lycées tout en maintenant des actions symboliques de protestation, invitant les élèves à reprendre les cours tout en préparant une grande manifestation nationale la semaine suivante.",
+    "whatChanges": "Le maintien partiel de la mobilisation avec la reprise des cours modifie le rapport de force avec les autorités et peut réduire la lassitude des parents et enseignants, tout en maintenant la visibilité de la contestation pour les jeunes et sympathisants."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Lycéens et jeunes sans activité en milieu urbain dense",
-      "mechanism": "Les syndicats lycéens appellent à poursuivre la mobilisation dans les lycées, ciblant principalement les jeunes de 18-24 ans sans activité professionnelle dans les communes denses, qui vivent directement l'impact des blocus et des violences en marge des mobilisations.",
-      "reason": "Segment restreint centré sur les jeunes lycéens et étudiants des villes, concerné par la mobilisation lycéenne et les violences constatées.",
+      "name": "Lycéens et étudiants des communes urbaines denses",
+      "mechanism": "Ces jeunes lycéens et étudiants sont directement concernés par le blocus des lycées et l'appel des syndicats lycéens à poursuivre la mobilisation, car ils vivent dans des communes denses où les établissements sont souvent situés.",
+      "reason": "Ce segment regroupe les jeunes âgés de 18 à 24 ans vivant en milieu urbain dense, incluant notamment les lycéens et étudiants susceptibles de participer aux mobilisations.",
       "all": [
         "age.18_24",
-        "household.single",
         "geo.dense"
       ],
-      "any": [
-        "cluster.young_without_activity"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure to student mobilizations",
-        "perception of violence in protests",
-        "support for lycéen syndicats"
+        "Engagement dans la mobilisation lycéenne",
+        "Attitude envers le mouvement de blocus"
       ],
-      "count": 6401,
-      "distinctCommunes": 71,
+      "count": 14650,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -48,25 +45,25 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles en communes intermédiaires et denses",
-      "mechanism": "Les jeunes parents de 25 à 34 ans en couple avec enfants dans les communes intermédiaires ou denses sont concernés par la mobilisation lycéenne via leurs enfants scolarisés et l'impact des blocus dans leur vie quotidienne.",
-      "reason": "Segment fondé sur l'intersection des jeunes familles avec enfants et la résidence en zone urbaine ou semi-urbaine, impactée par les blocus lycéens.",
+      "name": "Jeunes familles avec enfants en âge de lycée dans les communes urbaines ou intermédiaires",
+      "mechanism": "Les jeunes familles avec enfants en âge d'être lycéens sont concernées par le blocus des lycées car cela impacte la scolarité de leurs enfants, particulièrement dans les zones urbaines et intermédiaires où ces établissements sont concentrés.",
+      "reason": "Ce segment correspond aux adultes de 35 à 49 ans en couple avec enfants, vivant en zone dense ou intermédiaire, qui ont des enfants potentiellement lycéens touchés par les blocages.",
       "all": [
+        "age.35_49",
         "household.couple_with_children"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49"
+        "geo.dense",
+        "geo.intermediate"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "impact des blocus sur vie familiale",
-        "perception mesures maintien de l'ordre",
-        "sympathie envers mouvements lycéens"
+        "Impact sur le suivi scolaire des enfants",
+        "Attitude envers les actions des syndicats lycéens"
       ],
-      "count": 26388,
-      "distinctCommunes": 176,
+      "count": 17465,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -77,26 +74,24 @@
     },
     {
       "id": "segment_3",
-      "name": "Personnes de 35 à 49 ans, employés ou ouvriers en communes denses",
-      "mechanism": "Les adultes actifs de 35-49 ans employés ou ouvriers en milieu urbain dense subissent les conséquences des blocus lycéens, notamment en termes de perturbations et d'exposition aux violences en marge des mobilisations.",
-      "reason": "Segment représentatif des travailleurs urbains susceptibles d'être impactés par la mobilisation lycéenne mais en dehors du groupe lycéen lui-même.",
+      "name": "Travailleurs salariés modestes jeunes et actifs, sensibles aux revendications sociales",
+      "mechanism": "Les salariés modestes plus jeunes et actifs peuvent être solidaires des revendications lycéennes ou touchés indirectement par les blocages et mobilisations, notamment en milieu urbain dense ou intermédiaire où ils résident souvent.",
+      "reason": "Ce segment comprend des salariés employés ou ouvriers de 25 à 34 ans vivant en communes denses ou intermédiaires, groupe sociallement engagé et potentiellement concerné par le mouvement.",
       "all": [
-        "age.35_49",
-        "geo.dense"
+        "occupation.employee"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "impact des blocus sur activité professionnelle",
-        "perception des violences et maintien de l'ordre",
-        "attitude vis-à-vis des syndicats lycéens"
+        "Soutien aux mouvements lycéens",
+        "Perception des blocages scolaires"
       ],
-      "count": 11634,
-      "distinctCommunes": 72,
+      "count": 12334,
+      "distinctCommunes": 149,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -107,23 +102,21 @@
     },
     {
       "id": "segment_4",
-      "name": "Jeunes cadres urbains âgés de 25 à 34 ans",
-      "mechanism": "Les jeunes cadres urbains de 25 à 34 ans résidant en commune dense sont susceptibles de réagir à la mobilisation des lycéens et aux propos de Fabien Roussel sur la politique de maintien de l'ordre, en raison de leur position sociale et géographique.",
-      "reason": "Segment ciblé de jeunes cadres en milieu urbain, pouvant être concernés par l'événement en lien avec la sécurité et la jeunesse.",
+      "name": "Jeunes agriculteurs concernés par la situation sociale locale et son impact sur la jeunesse",
+      "mechanism": "Les jeunes agriculteurs de moins de 35 ans sont concernés par le climat social général et les mouvements de jeunesse comme celui des lycéens, notamment dans les communes rurales où ils résident souvent.",
+      "reason": "Ce segment spécifique est constitué de jeunes agriculteurs, groupe étroit et localisé, susceptibles d’être touchés ou d’avoir un avis sur les blocages lycéens dans leur environnement rural.",
       "all": [
-        "age.25_34",
-        "cluster.urban_executive"
+        "cluster.young_farmer"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "sensibilité à l'ordre public",
-        "perception de la jeunesse mobilisée",
-        "réaction aux déclarations politiques"
+        "Perception locale des mobilisations lycéennes",
+        "Impact des mouvements sociaux sur la jeunesse agricole"
       ],
-      "count": 2948,
-      "distinctCommunes": 72,
+      "count": 145,
+      "distinctCommunes": 42,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -142,209 +135,39 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes cadres urbains âgés de 25 à 34 ans",
-      "matchedCount": 2948,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Lycéens et étudiants des communes urbaines denses",
+      "matchedCount": 14650,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 2,
           "away": 1,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 1,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ces blocages dans les lycées, avec des violences, me paraissent problématiques et nuisibles, il faudrait vraiment un maintien de l’ordre adapté pour protéger notre jeunesse sans aggraver la situation.",
-        "Je trouve que la violence dans ces manifestations lycéennes est regrettable. La proposition de dialogue me paraît plus constructive que la simple insistance sur le maintien de l’ordre.",
-        "Je suis plutôt sensible à la situation des jeunes et la violence n’aide pas. Cette proposition de dialogue me semble plus humaine que d’appeler juste au maintien de l’ordre."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.005023634300171875,
-          "lo": -0.007714436026936025,
-          "hi": -0.0017908505386617926,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.007679471974438641,
-          "lo": -0.009048773791210546,
-          "hi": -0.006430627388667336,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.0017495332290166537,
-          "lo": -0.004742817265795205,
-          "hi": 0.0010613327840552397,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.001547174947170274,
-          "lo": 0.00031269782298726755,
-          "hi": 0.0028638174019607865,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.007215378407076752,
-          "lo": 0.005350097277611613,
-          "hi": 0.009270585812008418,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.005690086149380144,
-          "lo": 0.00250707442067737,
-          "hi": 0.009080943249796065,
-          "stable": true
-        }
-      }
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 94
-        },
-        "abstention": {
-          "toward": 6,
-          "away": 0,
-          "noClearChange": 90
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que citer la jeunesse comme devant être protégée par le maintien de l'ordre est normal, mais la violence, ce n'est jamais bon pour personne.",
-        "Les blocus et les violences, ça ne mène nulle part. Je préfère quand on cherche le dialogue, c'est ça qui protège vraiment les jeunes.",
-        "C'est inquiétant ces violences. Fabien Roussel a raison, on devrait protéger les jeunes, mais le dialogue serait peut-être meilleur pour apaiser les tensions."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.005021979469490603,
-          "lo": -0.006201962071592727,
-          "hi": -0.0037973556284123995,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00615653316088206,
-          "lo": -0.007116413127919738,
-          "hi": -0.00536794940632894,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.004897399481408773,
-          "lo": -0.006698003010371221,
-          "hi": -0.003278997270169157,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0006821471256768574,
-          "lo": -0.0003686131816022684,
-          "hi": 0.0018949914509750968,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.00871691418635573,
-          "lo": 0.006680071249165201,
-          "hi": 0.010478953845397302,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.006676850799748852,
-          "lo": 0.003528002021639549,
-          "hi": 0.010003332099295397,
-          "stable": true
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Personnes de 35 à 49 ans, employés ou ouvriers en communes denses",
-      "matchedCount": 11634,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
           "noClearChange": 47
         },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
         "abstention": {
           "toward": 0,
           "away": 0,
@@ -354,138 +177,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ces violences autour des lycéens, ça me fatigue, j'ai peur que ça dégénère sans que ça règle vraiment les problèmes des jeunes.",
-        "Ces blocages, ça ne m’intéresse pas trop, je suis surtout fatiguée par cette ambiance de colère. Roussel qui parle de maintien de l'ordre, ça ne changera pas grand-chose pour moi.",
-        "C'est bien que Roussel parle de protéger la jeunesse, ces violences aux abords des lycées, c'est inquiétant. Un vrai dialogue serait mieux que des tensions inutiles."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0033725510143022158,
-          "lo": -0.0062234500842445984,
-          "hi": -0.0006334716722509868,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0072962007455185,
-          "lo": -0.00842184801935341,
-          "hi": -0.006100187836328565,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.006351724746420084,
-          "lo": -0.008498335279385387,
-          "hi": -0.004165352187446243,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.001051753775829458,
-          "lo": -0.0004896061761115171,
-          "hi": 0.0027935697808384266,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.00657125317814463,
-          "lo": 0.0033640303636456956,
-          "hi": 0.009477030414412268,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.009397469552266722,
-          "lo": 0.0067012577419027315,
-          "hi": 0.012367745831471023,
-          "stable": true
-        }
-      }
+        "Franchement, ces blocages, ça me saoule. J'ai besoin de m'installer, de bosser et de passer à autre chose, pas de rester coincé à cause des manifs.",
+        "Je comprends que les jeunes veuillent se faire entendre, mais ces blocages ça complique la vie, surtout quand on bosse déjà dur. J'espère qu'ils trouveront un compromis.",
+        "Je trouve ça compliqué cet allongement des blocages, ça perturbe nos vies et nos projets. Un déblocage progressif, ça me semble plus raisonnable."
+      ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes familles en communes intermédiaires et denses",
-      "matchedCount": 26388,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Les violences sur fond de mobilisation lycéenne, c'est inquiétant, mais je trouve que Fabien Roussel exagère un peu en demandant plus de maintien de l'ordre. Ça ne changera pas mon vote.",
-        "Je comprends les lycéens et leur envie d’être entendus, mais les violences ne sont jamais une solution. Si Roussel appelle au dialogue, c’est plus responsable, cela me parle davantage.",
-        "Franchement, les blocages et violences des lycéens ça me saoule. Roussel qui parle de maintien de l'ordre, ça me parle plus que des appels au dialogue, moi je voudrais juste de la tranquillité."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.008518194768383282,
-          "lo": -0.010875908332591507,
-          "hi": -0.0058979785169451,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00998422528170474,
-          "lo": -0.011400409392877587,
-          "hi": -0.008585593179483526,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.003843646283613193,
-          "lo": -0.006453125000000001,
-          "hi": -0.0012567848817848805,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0031120712460611572,
-          "lo": 0.0010408305998067067,
-          "hi": 0.005260654433706845,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.010342735971557696,
-          "lo": 0.007601283390331538,
-          "hi": 0.012993699009324018,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.008891259116082365,
-          "lo": 0.004885277168772679,
-          "hi": 0.013231748861699354,
-          "stable": true
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Lycéens et jeunes sans activité en milieu urbain dense",
-      "matchedCount": 6401,
+      "segmentName": "Jeunes familles avec enfants en âge de lycée dans les communes urbaines ou intermédiaires",
+      "matchedCount": 17465,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -502,8 +202,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 46
         },
         "right": {
           "toward": 0,
@@ -516,6 +216,53 @@
           "noClearChange": 46
         },
         "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que les lycéens veulent se faire entendre, mais ça complique la vie de tout le monde, notamment pour les parents comme moi qui doivent gérer les enfants à la maison.",
+        "Ces blocages, ça perturbe surtout ceux qui doivent bosser, pas sûr que ça avance à grand-chose, mais bon, c'est leur droit de protester.",
+        "Ces blocages dérangent, surtout avec des enfants en âge d'aller au lycée, ce n’est pas évident à gérer pour les familles ici."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Travailleurs salariés modestes jeunes et actifs, sensibles aux revendications sociales",
+      "matchedCount": 12334,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
           "toward": 3,
           "away": 0,
           "noClearChange": 45
@@ -524,55 +271,109 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que les violences c'est dommage, il faudrait vraiment protéger les jeunes, c'est important. Mais ça ne va pas changer mon vote, je préfère ceux qui promettent le plus de sécurité.",
-        "Moi ça m'inquiète ces violences ; je trouve que Fabien Roussel qui parle de dialogue ça me parle plus, ça montre une volonté de protéger la jeunesse sans violences. Ça me fait un peu réfléchir sur la gauche radicale mais sans me faire changer mes idées principales.",
-        "Je ne suis pas vraiment concernée par ces mobilisations et ces violences, ça ne change pas grand-chose pour moi, donc ça ne modifie pas mon vote."
-      ],
-      "altEffect": {
+        "Cette histoire de blocage des lycées, ça me semble embêtant mais ça ne change rien à mon vote, je pense plus à ce que ça peut déranger le travail et la vie quotidienne.",
+        "Je trouve que ce blocage des lycées n'aide pas vraiment, ça complique la vie de tout le monde et je préfère quand on essaie de continuer à bosser normalement.",
+        "Le blocage des lycées, ça me parle peu, c’est surtout pour les jeunes, puis ça m’embête quand ça perturbe la routine, mais ça ne me fait pas changer d’avis pour la présidentielle."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes agriculteurs concernés par la situation sociale locale et son impact sur la jeunesse",
+      "matchedCount": 145,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.006369716399119864,
-          "lo": -0.008413572918237106,
-          "hi": -0.00413226167144078,
-          "stable": false
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "left": {
-          "mean": -0.008958675726568499,
-          "lo": -0.010590888707359929,
-          "hi": -0.007277246972209662,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0.00016618013334483822,
-          "lo": -0.0024703356542375766,
-          "hi": 0.0029819989137963403,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.0021824263868665266,
-          "lo": 0.0008732891920525168,
-          "hi": 0.003339552238805972,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.008995451303557606,
-          "lo": 0.0065060084677621985,
-          "hi": 0.01132634974013697,
-          "stable": true
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "abstention": {
-          "mean": 0.00398433430191937,
-          "lo": 0.0013487850669775998,
-          "hi": 0.0073235425843579255,
-          "stable": false
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ce blocus des lycées, ça ne me touche pas vraiment, je suis un peu éloigné de ces histoires lycéennes et j'ai mes propres préoccupations agricoles.",
+        "Avec tout ce que j'ai à gérer à la ferme, ces blocus ne changent pas grand-chose dans ma vie. Que les lycéens continuent ou qu'ils débloquent, ça ne me fait ni chaud ni froid.",
+        "Je suis plutôt sensible aux mouvements lycéens, mais en même temps, vu que je travaille directement avec des jeunes et que je fais du maraîchage urbain, je préférerais qu'ils reprennent les cours pour continuer nos projets."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 2,
+          "noClearChange": 92
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 90
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Les lycéens qui bloquent les lycées, ça me semble juste embêtant pour eux et pour les autres, mais sans plus. Je trouve que ça ne change rien à ce que je pense des élections.",
+        "Je comprends les raisons des jeunes, mais un blocage complet me semble trop pénalisant. Un déblocage progressif avec des actions symboliques serait plus raisonnable et m’inciterait à soutenir un vote plus tourné vers le changement, mais pas forcément vers l’extrême.",
+        "Les blocages me gênent dans la vie de tous les jours, c'est une source d'inquiétude. Mais je reste plutôt indécise, ça ne me fera pas changer radicalement de vote."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:59.292Z",
-    "contentHash": "f8aad17468d15884ecc581f1917e2e8380cc607340aef8762e6ba246eeda9e7f"
+    "status": "automatic",
+    "contentHash": "ccb3bd8817638ed0f9b17b11c371046e0ada098f9891b04182aa2a75141de331"
   }
 }

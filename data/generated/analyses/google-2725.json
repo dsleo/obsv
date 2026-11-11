@@ -4,39 +4,40 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "35c42aa5a4d72123",
-  "computedAt": "2026-11-10T22:09:22.959Z",
+  "inputHash": "05948cac1df22f0e",
+  "eventInputHash": "98c5689e1dcac99b4aa30dc4b8728eb554980eaea45038ceb61886c7d22dc298",
+  "computedAt": "2026-11-11T13:13:07.868Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Retailleau propose une hausse ciblée des salaires dans les secteurs à bas revenus plutôt qu'une baisse généralisée des taxes sur les carburants, associée à un plan de rénovation massive des logements sociaux pour améliorer le pouvoir d'achat des Français.",
-    "whatChanges": "Retailleau privilégie une mesure plus ciblée sur les salaires et le logement au lieu d'agir surtout sur les carburants, ce qui pourrait mobiliser davantage les salariés modestes et les locataires urbains."
+    "description": "Un candidat propose une annulation partielle de la hausse des taxes sur les carburants uniquement pour les ménages modestes, accompagnée d'une hausse ciblée des salaires minimums dans certains secteurs clés.",
+    "whatChanges": "La mesure est plus ciblée et modérée, visant spécifiquement les ménages modestes plutôt que l'ensemble des consommateurs, ce qui pourrait élargir le soutien parmi les classes populaires tout en rassurant les classes moyennes."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Salariés modestes des communes denses de 35 à 49 ans en couple avec enfants",
-      "mechanism": "Ce segment rassemble les salariés modestes âgés de 35 à 49 ans vivant en commune dense, en couple avec enfants, ciblés par les propositions de Retailleau visant à améliorer le pouvoir d’achat notamment via des mesures salariales et sur les carburants, affectant directement leur budget familial.",
-      "reason": "Ce groupe combine occupation salariée modeste, tranche d’âge active avec enfants, et habitat dans des communes denses, cumulant les enjeux liés au pouvoir d’achat, carburants, et coûts familiaux, faisant de ce segment un public clé de la campagne.",
+      "name": "Familles avec enfants de la classe moyenne salariée",
+      "mechanism": "Le mécanisme porte sur les familles avec enfants composées de salariés modestes, qui sont directement concernées par la question des salaires et du pouvoir d’achat dans la campagne présidentielle 2027.",
+      "reason": "Ce groupe combine la présence de charges familiales et la condition de salarié modeste, ce qui rend cette population sensible au thème du pouvoir d’achat lié aux salaires dans la campagne.",
       "all": [
-        "age.35_49",
-        "occupation.employee",
-        "cluster.modest_wage_earner",
-        "geo.dense",
-        "household.couple_with_children"
+        "household.couple_with_children",
+        "cluster.modest_wage_earner"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perceived_impact_power_purchase"
+        "Attitude envers l’évolution des salaires",
+        "Préoccupations liées au pouvoir d’achat"
       ],
-      "count": 4169,
-      "distinctCommunes": 72,
+      "count": 11410,
+      "distinctCommunes": 149,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -47,52 +48,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Retraités ruraux peu diplômés de 65 ans et plus",
-      "mechanism": "Ce segment couvre les retraités peu diplômés vivant en milieu rural âgés de 65 ans et plus, directement concernés par les débats sur le pouvoir d’achat liés aux pensions, aux prix des carburants et aux difficultés d’accès aux services en zone rurale, mises en avant dans la campagne de Retailleau.",
-      "reason": "Ce groupe combine le statut de retraité, un niveau d’éducation limité, l’âge avancé et la vie rurale, qui ensemble renforcent la sensibilité aux enjeux de pouvoir d’achat et services publics dans la campagne présidentielle 2027.",
-      "all": [
-        "occupation.retired",
-        "geo.rural",
-        "age.65_74"
-      ],
-      "any": [
-        "cluster.retiree_no_diploma",
-        "cluster.rural_retiree"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "vote_intention",
-        "perceived_impact_power_purchase"
-      ],
-      "count": 342,
-      "distinctCommunes": 65,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : salaires, carburants, mobilisations… Le pouvoir d’achat s’impose dans la campagne",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Jeunes familles de 25 à 34 ans en milieu urbain dense",
-      "mechanism": "Ce segment regroupe les jeunes couples avec enfants âgés de 25 à 34 ans vivant en communes denses, sensibles à la question du pouvoir d’achat portée par Retailleau dans la campagne, en particulier sur le logement, les salaires et les coûts du carburant impactant leur vie quotidienne et mobilité.",
-      "reason": "Ce groupe rassemble la jeune génération active avec enfants en milieu urbain dense, directement exposée aux enjeux économiques et sociaux mis en avant, constituant un public ciblé par les propositions visant à améliorer leur pouvoir d’achat et conditions de vie.",
+      "name": "Jeunes actifs urbains diplômés confrontés à la hausse des carburants",
+      "mechanism": "Les jeunes actifs urbains diplômés, âgés de 25 à 34 ans, sont concernés par la montée du coût des carburants qui impacte leurs déplacements quotidiens et leur budget, ce qui est un enjeu clé dans la campagne présidentielle 2027.",
+      "reason": "Ce segment restreint rassemble des jeunes actifs urbains fortement dépendants des transports et intégrés dans la population diplômée, souvent sensible aux fluctuations des prix des carburants.",
       "all": [
         "age.25_34",
-        "cluster.young_family",
+        "cluster.young_urban_graduate",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perceived_impact_power_purchase"
+        "Impact de la hausse des carburants sur le budget",
+        "Attitude envers les politiques énergétiques"
       ],
-      "count": 8145,
+      "count": 9916,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -103,26 +74,49 @@
       }
     },
     {
-      "id": "segment_4",
-      "name": "Ouvriers de 50 à 64 ans vivant en communes intermédiaires",
-      "mechanism": "Ce segment est composé d’ouvriers âgés de 50 à 64 ans résidant en communes de densité intermédiaire, directement concernés par les débats sur les salaires et le pouvoir d’achat, ainsi que par les réformes sociales évoquées dans la campagne présidentielle, notamment par Retailleau.",
-      "reason": "Ce groupe combine une catégorie socio-professionnelle exposée aux questions de pouvoir d’achat, une tranche d’âge proche de la retraite, et une zone géographique de densité intermédiaire, offrant un public spécifique affecté par les enjeux économiques de la campagne.",
+      "id": "segment_3",
+      "name": "Retraités ruraux confrontés à la baisse du pouvoir d’achat",
+      "mechanism": "Les retraités vivant en zone rurale sont parmi les plus exposés à la précarité liée à la hausse des prix, notamment sur le carburant, et donc très concernés par les débats sur le pouvoir d’achat lors de la campagne présidentielle 2027.",
+      "reason": "Ce segment inclut les retraités dans les zones rurales où les alternatives aux déplacements motorisés sont limitées, accentuant leur sensibilité à la hausse des coûts liés au carburant et à la vie quotidienne.",
       "all": [
-        "occupation.worker",
-        "age.50_64",
-        "geo.intermediate"
+        "occupation.retired",
+        "geo.rural"
       ],
-      "any": [
-        "cluster.older_worker"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perceived_impact_power_purchase"
+        "Ressenti sur la hausse des prix",
+        "Stratégies d’adaptation au pouvoir d’achat"
       ],
-      "count": 144,
-      "distinctCommunes": 24,
+      "count": 784,
+      "distinctCommunes": 91,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : salaires, carburants, mobilisations… Le pouvoir d’achat s’impose dans la campagne",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Mères seules salariées aux faibles revenus mobilisées sur le pouvoir d’achat",
+      "mechanism": "Les mères seules et salariées à faibles revenus sont particulièrement sollicitées par les enjeux économiques de la campagne présidentielle 2027 portant sur le pouvoir d’achat, en raison de leur situation financière souvent difficile et de leurs responsabilités familiales.",
+      "reason": "Cette intersection identifie un groupe à la fois fragilisé sur le plan économique et social, directement impacté par les évolutions du salaire et des coûts de la vie, et souvent très engagé dans les mobilisations sociales pour le pouvoir d’achat.",
+      "all": [
+        "cluster.single_mother",
+        "cluster.modest_wage_earner"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Mobilisations sociales sur le pouvoir d’achat",
+        "Perceptions des conditions économiques personnelles"
+      ],
+      "count": 2829,
+      "distinctCommunes": 121,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -141,10 +135,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes familles de 25 à 34 ans en milieu urbain dense",
-      "matchedCount": 8145,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Mères seules salariées aux faibles revenus mobilisées sur le pouvoir d’achat",
+      "matchedCount": 2829,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -155,14 +149,14 @@
           "noClearChange": 47
         },
         "left": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 45
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -171,73 +165,82 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 4,
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 42
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis contente qu'on parle enfin sérieusement du pouvoir d'achat, surtout ici à Paris où la vie est chère. Une hausse ciblée des salaires dans les secteurs modestes ça me parle plus que juste baisser les taxes sur le carburant qui profite plutôt aux plus aisés.",
-        "Pour moi, ce qui compte c'est que mon salaire augmente vraiment. Une baisse de taxes qui ne change pas mon salaire c'est pas suffisant. Une hausse ciblée des bas salaires serait mieux, mais j'attends de voir si ça va arriver.",
-        "Le pouvoir d'achat est important pour ma famille. J'ai un peu peur que les baisses des taxes carburant ne prennent pas assez en compte les vraies difficultés des plus modestes. Une hausse ciblée des salaires me semblerait plus juste."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0052921701720979415,
-          "lo": -0.007955182262298863,
-          "hi": -0.0022269495951365687,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.01575526521619881,
-          "lo": -0.01769670078758174,
-          "hi": -0.01372392416609717,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.009090226606811877,
-          "lo": 0.0058857452071737785,
-          "hi": 0.012369555573246942,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.002794608983537634,
-          "lo": 0.0008299798949619044,
-          "hi": 0.0048825637045674585,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.007932605971493074,
-          "lo": 0.006076096158160232,
-          "hi": 0.0099591456032511,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.001229993826454148,
-          "lo": -0.002662066025905308,
-          "hi": 0.004532458309722203,
-          "stable": false
-        }
-      }
+        "Avec les prix qui montent partout, je suis vraiment préoccupée pour gérer le budget de ma famille monoparentale. Si quelqu’un parle enfin du pouvoir d’achat, ça m’intéresse, ça me parle.",
+        "Cette histoire de pouvoir d’achat, ça me rejoint beaucoup, même si c’est compliqué. Une aide ciblée aux ménages modestes avec hausse des salaires, ça pourrait vraiment changer les choses pour moi.",
+        "Je suis souvent inquiète pour mes fins de mois, alors qu’on parle de salaires et de carburants, je prête attention, même s’il faudrait que ça ait un vrai impact."
+      ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Salariés modestes des communes denses de 35 à 49 ans en couple avec enfants",
-      "matchedCount": 4169,
+      "segmentName": "Familles avec enfants de la classe moyenne salariée",
+      "matchedCount": 11410,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "right": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 43
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 1,
+          "noClearChange": 40
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ça parle de mon quotidien ça, ces histoires de pouvoir d'achat, surtout avec l'essence qui coûte un bras... Si les salaires n'augmentent pas, ça va être dur de vivre tranquille.",
+        "La campagne qui parle enfin du pouvoir d'achat, ça me concerne ; la proposition d'aides ciblées aux modestes et aux salaires minimums me semble plus juste que des trucs flous pour tous.",
+        "Le pouvoir d'achat et surtout l'essence, c'est important pour nous, mais j'aimerais bien qu'ils ciblent mieux ceux qui galèrent. Une annulation partielle pour les modestes, ça me parle plus que rien du tout."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes actifs urbains diplômés confrontés à la hausse des carburants",
+      "matchedCount": 9916,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         },
         "left": {
           "toward": 0,
@@ -255,9 +258,9 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
         },
         "abstention": {
           "toward": 2,
@@ -268,133 +271,10 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "En tant que salariée de la classe moyenne à Marseille, la question du pouvoir d'achat me touche vraiment. Je suis plus sensible à une solution qui cible les salaires faibles dans mon quartier plutôt qu'à une baisse des taxes sur le carburant qui ne profiterait pas forcément à ceux qui ont vraiment besoin d'aide.",
-        "Pour moi, une hausse ciblée des salaires dans les bas revenus paraît plus juste que de baisser les taxes sur le carburant en général, je pense que cela pourrait améliorer vraiment le quotidien des familles comme la mienne à Saint-Cyr-sur-Loire.",
-        "Travaillant à la mairie, je vois bien que le pouvoir d'achat est une préoccupation pour beaucoup ici à Garges-lès-Gonesse. L'idée d'un plan de rénovation des logements sociaux me parle davantage qu'une baisse générale des taxes sur le carburant qui pourrait être inefficace."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.008368026694960286,
-          "lo": -0.009543656401237437,
-          "hi": -0.007057202748750761,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.012532411550025324,
-          "lo": -0.013575100608706647,
-          "hi": -0.011364558055574884,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.008257517692328189,
-          "lo": 0.0057872579076651024,
-          "hi": 0.010877176545429206,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0017768401323517518,
-          "lo": 0.000722812882035384,
-          "hi": 0.002646399376148693,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.008681001093762518,
-          "lo": 0.007021850601135241,
-          "hi": 0.010723446501131736,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0021850793265431444,
-          "lo": -0.0004281306282753819,
-          "hi": 0.005057153242340943,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Retraités ruraux peu diplômés de 65 ans et plus",
-      "matchedCount": 342,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 9,
-          "away": 0,
-          "noClearChange": 39
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que le sujet du pouvoir d'achat est important, surtout avec le coût du carburant qui pèse sur nous ici, en campagne. Une baisse des taxes pourrait être bien, ça aide directement.",
-        "Moi, le prix du carburant, ça me serre vraiment, avec ma petite retraite. Si ça baisse, tant mieux, mais je préférerais qu'on aide surtout ceux qui ont des petits revenus, ça serait plus juste.",
-        "Le pouvoir d'achat, c'est crucial, surtout pour nous retraités en milieu rural. Une hausse ciblée des salaires et mieux, un logement social rénové, ça correspondrait plus à mes attentes que de baisser juste les taxes sur le carburant."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0010378573190538624,
-          "lo": -0.0016144586586332478,
-          "hi": -0.0005186452430032206,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.009695378869900826,
-          "lo": -0.011546406231261177,
-          "hi": -0.007951741498536738,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.0005813659626696608,
-          "lo": -0.0029342400117403898,
-          "hi": 0.0037609638102143205,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0014535999197437758,
-          "lo": 0.000748192706944799,
-          "hi": 0.0022940268993306306,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.009373654968414658,
-          "lo": 0.005958936729249795,
-          "hi": 0.01238336653861314,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0006753846618734165,
-          "lo": -0.004412276972113449,
-          "hi": 0.002679150738715459,
-          "stable": false
-        }
-      }
+        "Le pouvoir d'achat reste un vrai souci pour moi, surtout avec une famille monoparentale, mais je doute que tout changement soit à la hauteur des enjeux.",
+        "Je reste attentive, mais ce genre d'annonce me semble plutôt symbolique, pas sûr que ça modifie mon vote.",
+        "Les questions de pouvoir d'achat et salaires sont essentielles, surtout dans une famille avec enfant comme la mienne. Une annulation partielle des taxes pour modestes, oui ça m'intéresse."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -415,76 +295,38 @@
           "noClearChange": 96
         },
         "center": {
-          "toward": 3,
-          "away": 3,
-          "noClearChange": 90
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         },
         "right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "far_right": {
-          "toward": 4,
-          "away": 6,
-          "noClearChange": 86
+          "toward": 0,
+          "away": 12,
+          "noClearChange": 84
         },
         "abstention": {
-          "toward": 14,
+          "toward": 6,
           "away": 0,
-          "noClearChange": 82
+          "noClearChange": 90
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis surtout préoccupé par la façon dont cela va vraiment impacter mon budget familial. Une priorité au pouvoir d'achat, ça me parle, mais il faut que ça profite à notre quotidien, pas seulement en paroles.",
-        "L'idée d'une hausse ciblée des salaires dans les bas revenus me semble plus juste que de baisser les taxes sur le carburant de tout le monde, c'est ce qui pourrait vraiment améliorer ma vie.",
-        "Je comprends l'importance du pouvoir d'achat, mais je m'inquiète surtout des conséquences pour les retraités. J'espère que les mesures aideront tout le monde sans pénaliser ceux qui ont peu de revenus."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.005069469152006464,
-          "lo": -0.006151838736634659,
-          "hi": -0.003953165577479025,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.011175761229914103,
-          "lo": -0.012132529700099712,
-          "hi": -0.010193194188832386,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.0058396408740079425,
-          "lo": 0.0029593609310844472,
-          "hi": 0.008743098888747776,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.00023435621494353735,
-          "lo": -0.0006255206916206765,
-          "hi": 0.001043447702644369,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.009656543529570813,
-          "lo": 0.00707848303916948,
-          "hi": 0.012409124022506565,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.000514689763398269,
-          "lo": -0.002574233195117,
-          "hi": 0.0032964208084719625,
-          "stable": false
-        }
-      }
+        "Le pouvoir d'achat, c'est vraiment une priorité pour ma famille, surtout avec un enfant à charge. Ça me parle beaucoup, j'espère que les politiques vont enfin trouver des solutions efficaces.",
+        "Cette nouvelle sur le pouvoir d’achat m’intéresse. Si un candidat propose des mesures concrètes pour aider les plus modestes, ça pourrait me convaincre à me tourner vers lui.",
+        "Je suis attachée à des valeurs sociales, mais à mon âge je ne suis plus trop concernée par les salaires, par contre le prix des carburants m'affecte pour mes déplacements quotidiens."
+      ]
     },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Ouvriers de 50 à 64 ans vivant en communes intermédiaires",
-      "matchedCount": 144,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités ruraux confrontés à la baisse du pouvoir d’achat",
+      "matchedCount": 784,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -501,8 +343,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -510,68 +352,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 8,
-          "away": 0,
-          "noClearChange": 40
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 3,
-          "away": 1,
-          "noClearChange": 44
+          "toward": 9,
+          "away": 0,
+          "noClearChange": 39
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis plutôt sensible aux questions de pouvoir d'achat, surtout vu mes revenus modestes d'ouvrière. Une baisse des taxes sur le carburant, ça m'intéresse, parce que ça aide à la vie quotidienne.",
-        "La hausse ciblée des salaires, oui, ça me parle plus qu'une baisse générale des taxes sur le carburant qui ne profite pas à tout le monde. Je serais plus prête à soutenir ça.",
-        "Je suis plutôt méfiant sur les baisses de taxes car souvent elles profitent surtout à ceux qui consomment beaucoup. Une hausse ciblée des salaires dans les bas revenus avec un plan logement, ça semble plus concret et utile pour moi."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00555758113095454,
-          "lo": -0.006842526344471185,
-          "hi": -0.004146018610516756,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.009239374241286976,
-          "lo": -0.010535079668566675,
-          "hi": -0.007963670990545553,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.0030804396852572706,
-          "lo": 0.00039101362210401626,
-          "hi": 0.0060573714591571765,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0010593679625192848,
-          "lo": 0.00027112916388603034,
-          "hi": 0.0018064543497645844,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.013427506514785812,
-          "lo": 0.009821685489366353,
-          "hi": 0.017811802791317336,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0027703587903208627,
-          "lo": -0.006375996214116876,
-          "hi": 0.0009992815894214098,
-          "stable": false
-        }
-      }
+        "Je ressens cette question du pouvoir d'achat comme essentielle, surtout avec les retraites qui ne suivent pas l'inflation. Mais pour moi, les promesses restent souvent du vent.",
+        "Le sujet du pouvoir d’achat est très concret pour moi, je compte chaque euro. Une aide ciblée aux ménages modestes me parlerait plus que de simples promesses générales.",
+        "Cet enjeu du pouvoir d'achat me touche, mais à mon âge, je suis surtout prudente et un peu méfiante devant les annonces. Je préfère la stabilité."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:46.397Z",
-    "contentHash": "1e30b692298e61ab70e833ce79d995c70619ac65165e53016a422518359ff6ea"
+    "status": "automatic",
+    "contentHash": "6f5f15f7c5cd872f29c1e9350e4d5d090b1da65fd524ceb796d5a4c4d6451a3d"
   }
 }

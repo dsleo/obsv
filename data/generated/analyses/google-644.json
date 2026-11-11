@@ -4,23 +4,52 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "0e589f8c04bd3104",
-  "computedAt": "2026-11-09T20:35:13.758Z",
+  "inputHash": "e8cc3bc17558277e",
+  "eventInputHash": "e3ddc11706058df50a8db9e9b1dca6b57401a3f12568d73dafdc31ffad0d7a8d",
+  "computedAt": "2026-11-11T12:58:17.908Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Le Pen, Mélenchon et Édouard Philippe participent ensemble au débat de LCI, marquant une confrontation directe entre ces trois candidats majeurs.",
-    "whatChanges": "Édouard Philippe participe au débat télévisé sur LCI, offrant une confrontation directe avec Le Pen et Mélenchon, ce qui modifie la dynamique et les réactions des électeurs modérés et de droite."
+    "description": "Lors du débat sur LCI, Édouard Philippe accepte finalement d'y participer, apportant des arguments structurés qui dynamisent la confrontation entre les candidats.",
+    "whatChanges": "La participation d’Édouard Philippe modifie la dynamique du débat, attirant l’attention des électeurs modérés et renforçant l’importance de cet échange télévisé."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains intéressés par la présidentielle",
-      "mechanism": "Ce segment regroupe les jeunes diplômés des communes denses, particulièrement susceptibles de suivre le débat sur LCI entre Le Pen et Mélenchon, et d’être attentifs à l’absence de la figure politique Édouard Philippe lors de cette rencontre majeure de la présidentielle 2027.",
-      "reason": "Le débat à la télévision touche essentiellement un public urbain, jeune et diplômé, engagé dans la discussion politique et sensible aux profils des candidats présents ou absents.",
+      "name": "Cadres urbains de 35 à 49 ans en commune dense",
+      "mechanism": "Édouard Philippe, ancien Premier ministre et figure urbaine de centre-droit, est absent du débat sur LCI. Ce segment de cadres urbains entre 35 et 49 ans en commune dense peut être directement concerné car ils suivent de près les débats politiques dans les grandes villes et s'intéressent aux figures politiques importantes comme Philippe.",
+      "reason": "Ce segment rassemble des professionnels urbains intermédiaires en âge actifs socialement et politiquement, vivant dans des communes à forte densité où le débat télévisé sera largement regardé, impliquant l'absence notable d'Édouard Philippe.",
+      "all": [
+        "age.35_49",
+        "occupation.executive_professional",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers Édouard Philippe",
+        "Intérêt pour les débats présidentiels",
+        "Connaissance de l'absence d'Édouard Philippe"
+      ],
+      "count": 4569,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : les candidats s’affronteront de nouveau lors d’un débat sur LCI, Édouard Philippe grand absent de cette rencontre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Jeunes diplômés des communes denses",
+      "mechanism": "Les jeunes diplômés des villes et des communes denses sont un public qui suit attentivement les débats présidentiels et peuvent réagir spécifiquement à l'absence d'Édouard Philippe, perçu comme un acteur politique majeur.",
+      "reason": "Ce segment inclut les jeunes moins de 35 ans diplômés supérieur, en milieu urbain dense, publics sensibles à la représentation politique et à l'importance des débats télévisés.",
       "all": [
         "age.18_24",
         "education.bac_plus_3_4",
@@ -30,9 +59,9 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.debate_LCI",
-        "mechanism.reaction_absence_Philippe",
-        "result.vote_intention_2027"
+        "Impression sur la qualité du débat",
+        "Perception d'Édouard Philippe",
+        "Intérêt pour la présidentielle"
       ],
       "count": 1070,
       "distinctCommunes": 67,
@@ -45,83 +74,27 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Salariés modestes en milieu urbain intervallé",
-      "mechanism": "Ce public constitue la base populaire visible lors du débat de LCI où les candidats Le Pen et Mélenchon s'affrontent ; ils sont susceptibles d’être impactés par les thématiques débattues et l'absence d’Édouard Philippe, figure politique notable absente de ce rendez-vous.",
-      "reason": "Les salariés modestes en ville représentent un électorat souvent attentif aux débats sur les thèmes sociaux et économiques, sensibles à la présence ou non des candidats clés au débat présidentiel.",
+      "id": "segment_3",
+      "name": "Employés et ouvriers de 50 à 64 ans en communes intermédiaires ou denses",
+      "mechanism": "Ce segment regroupe des salariés modestes de 50 à 64 ans, potentiellement sensibles au contenu et à la dynamique du débat présidentiel. L'absence d'une figure comme Édouard Philippe peut influencer leur perception des candidats présents.",
+      "reason": "Il combine un mois d'âge avancé pour une population active sensible politiquement et socialement, avec une ancrage géographique en zone intermédiaire ou dense, où l'accès au débat est facilité.",
       "all": [
-        "cluster.modest_wage_earner",
-        "geo.intermediate"
+        "age.50_64",
+        "occupation.employee"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "exposure.debate_LCI",
-        "mechanism.reaction_absence_Philippe",
-        "result.vote_intention_2027"
-      ],
-      "count": 916,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : les candidats s’affronteront de nouveau lors d’un débat sur LCI, Édouard Philippe grand absent de cette rencontre",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Retraités urbains en couple",
-      "mechanism": "Les couples de retraités des communes denses constituent un segment concerné par l'absence d’Édouard Philippe lors du débat sur LCI qui oppose Le Pen et Mélenchon ; ils suivent les débats présidentiels comme électeurs attachés à la stabilité politique et concernés par les propositions des candidats présents.",
-      "reason": "Ce public retraité urbain en couple suit les débats présidentiels et est attentif aux figures politiques majeures comme Édouard Philippe dont l’absence peut influencer leur perception du débat.",
-      "all": [
-        "cluster.retired_couple",
+        "geo.intermediate",
         "geo.dense"
       ],
-      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.debate_LCI",
-        "mechanism.reaction_absence_Philippe",
-        "result.vote_intention_2027"
+        "Engagement dans la présidentielle",
+        "Opinion sur le débat",
+        "Impact de l'absence d'Édouard Philippe"
       ],
-      "count": 15215,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : les candidats s’affronteront de nouveau lors d’un débat sur LCI, Édouard Philippe grand absent de cette rencontre",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Jeunes sans activité dans les communes moyennes",
-      "mechanism": "Ce segment rassemble les jeunes de 18 à 24ans sans activité professionnelle dans les communes intermédiaires, particulièrement exposés au débat de LCI qui met en avant les candidats Le Pen et Mélenchon, tout en remarquant l’absence d’Édouard Philippe, ce qui peut influencer leur intérêt ou leur positionnement politique.",
-      "reason": "Les jeunes sans activité en zones non très denses peuvent être plus attentifs aux débats télévisés politiques, cherchant à s’informer et à construire leur opinion, notamment face à l’absence d’un candidat clé du débat présidentiel 2027.",
-      "all": [
-        "age.18_24",
-        "cluster.young_without_activity",
-        "geo.intermediate"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "exposure.debate_LCI",
-        "mechanism.reaction_absence_Philippe",
-        "result.vote_intention_2027"
-      ],
-      "count": 187,
-      "distinctCommunes": 23,
+      "count": 4717,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -140,9 +113,103 @@
     }
   ],
   "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés et ouvriers de 50 à 64 ans en communes intermédiaires ou denses",
+      "matchedCount": 4717,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Sincèrement, l'absence d'Édouard Philippe au débat ne change rien pour moi, je ne suis pas très friande de ces grandes confrontations médiatiques.",
+        "Édouard Philippe qui ne vient pas au débat, tant pis. C'est pas comme si ça allait me faire changer d'avis, je reste fidèle à ce que je pense déjà.",
+        "Je ne regarde pas toujours ces débats, alors qu'Édouard Philippe manque, ça ne me touche pas vraiment, par contre s’il avait participé avec ses arguments, ça aurait sûrement rendu le débat plus intéressant."
+      ]
+    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains intéressés par la présidentielle",
+      "segmentName": "Cadres urbains de 35 à 49 ans en commune dense",
+      "matchedCount": 4569,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, l'absence d'Édouard Philippe au débat me déçoit un peu, j'aime bien quand les débats sont dynamiques et qu'on voit tous les candidats s'affronter pour que la discussion soit plus riche.",
+        "Je n'attache pas tellement d'importance à la présence d'Édouard Philippe. Ce qui compte pour moi, ce sont les propositions concrètes sur l'écologie et le social, pas qui est absent ou pas au débat.",
+        "Je trouve dommage qu'Édouard Philippe ne soit pas venu au débat, j'aurais aimé entendre ses arguments. Un débat plus animé pourrait clarifier les enjeux pour moi."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés des communes denses",
       "matchedCount": 1070,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -160,55 +227,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça dommage qu'Édouard Philippe ne soit pas là, ça aurait pu apporter un vrai équilibre entre Le Pen et Mélenchon.",
-        "Je ne suis pas surpris par l'absence d'Édouard Philippe, mais c'est un débat important. S'il avait été là, ça aurait peut-être calmé les choses un peu.",
-        "L'absence d'Édouard Philippe ne me gêne pas vraiment, mais son intervention aurait pu ramener un peu de modération dans ce débat tendu."
-      ]
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes sans activité dans les communes moyennes",
-      "matchedCount": 187,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 46
         },
         "right": {
           "toward": 0,
@@ -221,111 +241,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
+          "toward": 8,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 40
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ce débat sans Édouard Philippe ne m'intéresse pas trop, j'aurais préféré voir un gars plus calme et posé que ces extrêmes qui crient tout le temps.",
-        "Je regarde un peu ces débats car Mélenchon me plaît, mais sans Philippe ça me semble un peu manichéen, avec Le Pen en plus... Ça me donne envie que quelqu'un plus modéré les remette un peu à leur place.",
-        "Un débat sans Édouard Philippe, franchement ça me déçoit, un peu de sérieux et de modération ça aurait fait du bien face à Le Pen et Mélenchon qui s’emballent souvent trop vite."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Salariés modestes en milieu urbain intervallé",
-      "matchedCount": 916,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je suis un peu déçu qu'Édouard Philippe ne soit pas là, car il aurait pu apporter un point de vue plus modéré dans ce débat très clivant.",
-        "Ça ne me touche pas trop qu'Édouard Philippe soit absent, je suis plutôt centriste mais je suis surtout intéressée par ce qui impacte ma vie quotidienne.",
-        "Avec Édouard Philippe absent, le débat manque sûrement un peu de retenue, je préfère quand ça reste modéré, ça me parle plus."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Retraités urbains en couple",
-      "matchedCount": 15215,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça un peu dommage qu'Édouard Philippe ne soit pas présent, j'aurais bien aimé entendre ce qu'il a à dire face à ces deux là.",
-        "Je ne suis pas trop surpris qu'Édouard Philippe soit absent, ça ne m'intéresse pas trop mais j'écoute un peu quand même.",
-        "L'absence d'Édouard Philippe me laisse un peu indifférent, mais j'aurais préféré qu'il soit là pour calmer un peu les débats parfois trop durs."
+        "Je trouve ça un peu décevant qu'Édouard Philippe ne vienne pas au débat, ça aurait été intéressant de voir ses arguments face aux autres candidats.",
+        "Peu importe, je suis plutôt focalisée sur les sujets locaux et ce débat ne va pas vraiment changer mon vote.",
+        "Je n'ai pas entendu parler d'Édouard Philippe dans ce débat, donc ça ne change pas vraiment ce que je pense pour l'instant."
       ]
     },
     "global_1": {
@@ -348,8 +274,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "right": {
           "toward": 0,
@@ -357,30 +283,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 89
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 93
         },
         "abstention": {
-          "toward": 1,
-          "away": 2,
+          "toward": 3,
+          "away": 0,
           "noClearChange": 93
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas surpris qu'Édouard Philippe ne soit pas là, je préfère entendre ceux qui parlent vraiment de sécurité et de tradition comme Le Pen.",
-        "Philippe absent ? Ça ne me dérange pas plus que ça, je préfère les débats calmes mais celui-là aurait pu être intéressant s'il avait calmé le débat entre Mélenchon et Le Pen.",
-        "Philippe absent, ça ne change rien à ce que je pensais, je préfère écouter Mélenchon qui parle des travailleurs comme moi."
+        "Franchement, je comprends pas trop ce que ça change que Philippe soit là ou pas, ça ne va pas vraiment changer ma façon de voir les choses.",
+        "Je ne suis pas sûr que la présence d’Édouard Philippe change grand-chose, mais au moins ça montre un peu plus de sérieux chez les centristes.",
+        "Un débat sans Édouard Philippe, c’est dommage, ça aurait pu être intéressant. Je pense que ça ne change pas trop mes idées, mais bon..."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:50.515Z",
-    "contentHash": "0d8b605754eb4378c3854a02c69db3962fc5fc378fa96ad85baf6641d831f3e3"
+    "status": "automatic",
+    "contentHash": "b8279dde1cfaf507b76b1927a73ffbc03ebf3d4fd8d1ecbe4c807dd0fc7d6b3c"
   }
 }

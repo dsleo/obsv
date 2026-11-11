@@ -6,7 +6,8 @@ const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const repository = process.env.GITHUB_REPOSITORY ?? "";
 const [owner, repo] = repository.split("/");
 const isProjectSite = Boolean(owner && repo && repo !== `${owner}.github.io`);
-const basePath = process.env.GITHUB_ACTIONS === "true" && isProjectSite ? `/${repo}` : "";
+const customPath = process.env.SITE_URL ? new URL(process.env.SITE_URL).pathname.replace(/\/$/, "") : undefined;
+const basePath = process.env.SITE_BASE_PATH ?? customPath ?? (process.env.GITHUB_ACTIONS === "true" && isProjectSite ? `/${repo}` : "");
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

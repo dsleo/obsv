@@ -4,34 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "39678f56fa810a84",
-  "computedAt": "2026-11-10T22:04:22.835Z",
+  "inputHash": "bde8092218cea4e7",
+  "eventInputHash": "f466b1b06828e5fdb310737d1e8ce3dd8a1a0d71d0d9c0dd6773d02ca687e5c1",
+  "computedAt": "2026-11-11T12:57:59.128Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le 24 octobre, Emmanuel Macron annonce un renforcement des mesures contre les manifestations uniquement à Marseille, en excluant Lyon de cette interdiction, lors d'une réunion avec les organisations lycéennes, ce qui suscite la critique de Nicolas Dupont-Aignan, qui dénonce une opposition partielle et incohérente du président.",
-    "whatChanges": "L'interdiction ciblée à Marseille seulement donne l'impression d'une gestion inégale des manifestations, impactant différemment les jeunes et manifestants de Lyon et Marseille."
+    "description": "Le 24 octobre, Macron annonce un renforcement ciblé des mesures contre certaines manifestations jugées à risque uniquement à Marseille, tout en laissant Lyon sans interdiction spécifique.",
+    "whatChanges": "Le dispositif de restriction est limité à Marseille au lieu d’être appliqué également à Lyon, ce qui modère l’impact sécuritaire dans la région lyonnaise et suscite des réactions diverses parmi les habitants et les manifestants locaux."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Manifestants lycéens à Marseille et Lyon",
-      "mechanism": "Ce segment rassemble les lycéens concernés par l'interdiction des manifestations à Marseille et Lyon décrétée par Emmanuel Macron. Les lycéens sont parmi les premières organisations lycéennes affectées par cette interdiction spécifique dans ces deux grandes villes.",
-      "reason": "Les lycéens dans les communes du système municipal de Paris, Lyon ou Marseille sont particulièrement touchés par la décision présidentielle d'interdire les manifestations dans les villes de Marseille et Lyon.",
+      "name": "Jeunes urbains engagés de Marseille et Lyon",
+      "mechanism": "Les jeunes diplômés des communes denses où se trouvent Marseille et Lyon sont susceptibles d'être parmi les plus mobilisés dans les manifestations, d'où leur attention particulière aux restrictions imposées par Macron le 24 octobre.",
+      "reason": "Ce segment correspond à des jeunes de moins de 35 ans diplômés au moins bac+3 habitant dans les villes où l'interdiction est appliquée, un groupe généralement plus engagé socialement et touché par les mesures anti-manifestations.",
       "all": [
+        "municipal_system.paris_lyon_marseille",
+        "geo.dense",
         "age.18_24",
-        "municipal_system.paris_lyon_marseille"
+        "education.bac_plus_3_4"
       ],
-      "any": [
-        "cluster.young_without_activity"
+      "any": [],
+      "none": [
+        "occupation.retired"
       ],
-      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 7933,
+      "measurementNeeds": [
+        "Soutien aux manifestations",
+        "Perception de la restriction imposée",
+        "Participation aux rassemblements"
+      ],
+      "count": 1018,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -43,51 +50,29 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles en communes urbaines denses",
-      "mechanism": "Ce segment inclut les jeunes familles vivant dans des communes à forte densité urbaine, potentiellement concernées par la restriction des manifestations urbaines, qui peuvent impacter leur quotidien et leurs mobilisations sociales.",
-      "reason": "Les jeunes familles de 25 à 49 ans résidant en communes à densité élevée sont concernées par les interdictions de manifestations annoncées pour Marseille et Lyon, en particulier celles engagées dans des activités sociales locales.",
+      "name": "Salariés modestes vivant en couple avec enfants à Marseille et Lyon",
+      "mechanism": "Les mesures gouvernementales ciblant la manifestation impactent aussi les familles modestes, notamment les salariés employés et ouvriers en couple avec enfants dans les villes concernées, qui peuvent être sensibles à cette mesure en raison de leurs conditions de vie et d'emploi.",
+      "reason": "Cette composition combine la localisation dans Marseille ou Lyon, un profil socio-économique salarié modeste, et la vie familiale avec enfants, représentant un groupe potentiellement touché dans sa vie quotidienne par la politique gouvernementale sur les manifestations.",
       "all": [
-        "household.couple_with_children",
-        "geo.dense"
+        "municipal_system.paris_lyon_marseille",
+        "cluster.modest_wage_earner",
+        "household.couple_with_children"
       ],
       "any": [
         "age.25_34",
-        "age.35_49"
+        "age.35_49",
+        "age.50_64"
       ],
       "none": [
-        "municipal_system.paris_lyon_marseille"
+        "occupation.retired"
       ],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 1831,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      "measurementNeeds": [
+        "Opinion sur les manifestations et les interdictions",
+        "Impact personnel des interdictions",
+        "Disposition à manifester malgré les interdictions"
       ],
-      "counterfactual": {
-        "intervention": "24 octobre : Macron serre la vis sur les manifestations, interdites à Marseille et à Lyon",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Salariés modestes urbains de 25 à 49 ans à Marseille et Lyon",
-      "mechanism": "Ce segment regroupe les employés et ouvriers urbains dans la tranche d'âge 25-49 ans, particulièrement concernés par la répression des manifestations à Marseille et Lyon, où les manifestations relèvent souvent d'enjeux sociaux liés à leur condition.",
-      "reason": "Les salariés modestes actifs dans les communes du système municipal de Marseille et Lyon sont une base importante d'acteurs des manifestations urbaines qui font l'objet d'interdiction spécifique par le gouvernement.",
-      "all": [
-        "occupation.employee",
-        "municipal_system.paris_lyon_marseille"
-      ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 10940,
+      "count": 12811,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -98,23 +83,26 @@
       }
     },
     {
-      "id": "segment_4",
-      "name": "Jeunes diplômés urbains 25-34 ans hors Paris",
-      "mechanism": "Ce segment concerne les jeunes diplômés des territoires urbains denses autres que Paris, qui sont susceptibles d'être concernés par l'interdiction des manifestations à Lyon, une ville majeure hors Paris. Ils peuvent être victimes ou acteurs du resserrement des libertés de manifestation.",
-      "reason": "Cette tranche d'âge de diplômés dans des villes denses hors Paris est ciblée indirectement par la décision d'interdiction dans la métropole lyonnaise, sans couvrir Paris qui n'est pas concernée par cette interdiction spécifique.",
+      "id": "segment_3",
+      "name": "Ouvriers de 50 à 64 ans habitant Marseille et Lyon",
+      "mechanism": "Les ouvriers proches de la retraite dans les grandes villes concernées par les interdictions sont particulièrement concernés par la tension sociale générée par ces mesures, étant souvent impliqués dans les mobilisations sociales.",
+      "reason": "Ce segment combine localisation dans Marseille et Lyon, une catégorie socioprofessionnelle ouvrier, et un âge qui correspond à un groupe sensible aux questions sociales et aux mesures répressives sur les manifestations.",
       "all": [
-        "education.bac_plus_3_4",
-        "geo.dense",
-        "age.25_34"
+        "municipal_system.paris_lyon_marseille",
+        "cluster.older_worker"
       ],
-      "any": [],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
+      "any": [
+        "age.50_64"
       ],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 145,
-      "distinctCommunes": 22,
+      "measurementNeeds": [
+        "Perception de la sécurité et des manifestations",
+        "Attitude envers le gouvernement",
+        "Mobilisation aux manifestations"
+      ],
+      "count": 3107,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -133,113 +121,28 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes diplômés urbains 25-34 ans hors Paris",
-      "matchedCount": 145,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends la volonté de l'État d'assurer l'ordre, mais interdire les manifestations dans plusieurs grandes villes me paraît excessif et pourrait créer des tensions inutiles.",
-        "C’est injuste d’interdire les manifestations dans certaines villes et pas d’autres, ça montre une certaine incohérence dans la manière dont on gère les droits des citoyens.",
-        "L'interdiction des manifestations à Marseille et Lyon me semble trop dure, je préfère quand on peut exprimer ses opinions librement."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0013154340714791955,
-          "lo": 0.00011378076486596941,
-          "hi": 0.0024166270706475713,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0002274264414801145,
-          "lo": -0.0005852641752151161,
-          "hi": 0.0010423832763899624,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0018132067336468632,
-          "lo": -0.0027858055442122765,
-          "hi": -0.0008617346777586393,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0005903596822570721,
-          "lo": -0.0009698529246524837,
-          "hi": -0.000268673738608868,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0005673579551199853,
-          "lo": -0.00101862766440005,
-          "hi": 0.0021315560610115115,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.00029334794782464045,
-          "lo": -0.00132977513441585,
-          "hi": 0.0017402537230715037,
-          "stable": false
-        }
-      }
-    },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Salariés modestes urbains de 25 à 49 ans à Marseille et Lyon",
-      "matchedCount": 10940,
+      "segmentName": "Ouvriers de 50 à 64 ans habitant Marseille et Lyon",
+      "matchedCount": 3107,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -247,74 +150,83 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça un peu excessif comme mesure, surtout quand on voit que Marseille et Lyon sont toutes les deux de grandes villes où les manifestations font partie du débat public. Ça ne change pas trop mon intention de vote par contre.",
-        "Interdire les manifs à Marseille, ça m’embête, c’est ma ville. Ça va sûrement encore plus faire grincer les dents des gens qui galèrent déjà et qui veulent protester. Je suis inquiète pour la liberté de manifester.",
-        "Ça me semble injuste de bloquer les manifs ici, où les gens ont besoin de se faire entendre. Macron qui applique ça seulement à Marseille ou même à Marseille et Lyon, c’est trop. Je pense que ça va aggraver le mécontentement."
-      ],
-      "altEffect": {
+        "À Lyon, ça m'embête pas trop que les manifs soient interdites ailleurs, mais j'espérais que ça reste ouvert ici, c’est quand même notre droit de manifester.",
+        "À Marseille c’est injuste, ils nous interdisent de manifester alors que c’est là que le mécontentement est réel. Ça me rend plutôt en colère contre le gouvernement.",
+        "Je n’habite pas Marseille ni Lyon, donc cette interdiction ne change rien à mon quotidien. Je reste sur ce que je pense déjà."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes urbains engagés de Marseille et Lyon",
+      "matchedCount": 1018,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.0049398927409144726,
-          "lo": 0.004049641480771603,
-          "hi": 0.005838121274404198,
-          "stable": false
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
         },
         "left": {
-          "mean": 0.002666062130800598,
-          "lo": 0.0015936947754269283,
-          "hi": 0.0035761809903156762,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.004619820405298967,
-          "lo": -0.005505271855649138,
-          "hi": -0.003730497826077669,
-          "stable": false
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
         },
         "right": {
-          "mean": -0.002834759379143813,
-          "lo": -0.00326025321051817,
-          "hi": -0.0023842150695546557,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.003252027329378016,
-          "lo": -0.0045475971256888,
-          "hi": -0.0016538337869769423,
-          "stable": false
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 43
         },
         "abstention": {
-          "mean": 0.003100652242105725,
-          "lo": 0.0015956497157190146,
-          "hi": 0.0045504046347596425,
-          "stable": false
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la volonté de sécurité, mais interdire toutes les manifestations à Lyon me semble exagéré, surtout ici où les mobilisations sont souvent pacifiques.",
+        "Je trouve que restreindre les manifestations à Marseille mais pas à Lyon est injuste, mais ce genre de mesures ne change pas vraiment ma façon de voir les choses.",
+        "Je comprends que pour la sécurité certains contrôles sont nécessaires, mais l'interdiction totale des manifs à Lyon me paraît plutôt excessive."
+      ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes familles en communes urbaines denses",
-      "matchedCount": 1831,
+      "segmentName": "Salariés modestes vivant en couple avec enfants à Marseille et Lyon",
+      "matchedCount": 12811,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 44
         },
         "left": {
           "toward": 0,
@@ -323,8 +235,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -337,56 +249,18 @@
           "noClearChange": 46
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends la volonté de maintenir l'ordre mais interdire les manifestations dans des grandes villes comme Marseille et Lyon me paraît excessif et risqué pour la liberté d'expression.",
-        "Cette interdiction à Marseille et Lyon, ça me semble un coup dur pour les manifestants, surtout dans une ville comme Marseille où je vis, ça donne l'impression qu'on veut museler le peuple.",
-        "Je trouve que cette décision d'interdire les manifestations à Marseille et Lyon est trop stricte et pourrait créer davantage de tensions dans les quartiers populaires."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0007246170336202515,
-          "lo": -0.0001453774946287113,
-          "hi": 0.001524088695293962,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.00018511172600239358,
-          "lo": -0.0004722401018580238,
-          "hi": 0.0009231803421790538,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0021373033160665485,
-          "lo": -0.0034947341116986948,
-          "hi": -0.0007421589530653398,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0006483441538519178,
-          "lo": -0.0011270105716397292,
-          "hi": -0.0001720980173067556,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.002423536830730678,
-          "lo": 0.000581210556770072,
-          "hi": 0.004944730687635893,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0005476181204348696,
-          "lo": -0.0019640105151422474,
-          "hi": 0.0009554400326612563,
-          "stable": false
-        }
-      }
+        "Franchement, j'habite à Paris, ces interdictions de manif à Marseille et Lyon, ça me paraît un peu loin de mes préoccupations. Ça change rien à ma façon de voir Macron.",
+        "Je vois pas trop pourquoi on interdirait toutes les manif à Marseille et Lyon alors qu'on peut peut-être calmer le jeu en ciblant... à vrai dire, ça ne change pas grand-chose pour moi.",
+        "Ici à Marseille, interdire toutes les manifestations, ça me paraît dur. Moi je comprends Macron s'il veut la sécurité, mais ça touche directement ma ville, ça m'inquiète un peu."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -397,9 +271,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 3,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 93
+          "noClearChange": 96
         },
         "left": {
           "toward": 0,
@@ -408,8 +282,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 94
+          "away": 1,
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -417,153 +291,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 8,
-          "noClearChange": 88
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 93
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas à Marseille ni à Lyon, cette décision de Macron ne me touche pas directement, ça ne change rien pour moi.",
-        "Cette interdiction des manifestations à Marseille et Lyon me paraît excessive, et je vois bien la critique de Dupont-Aignan qui veut amplifier son opposition politique.",
-        "Je n'habite pas à Marseille ni Lyon, cette interdiction ne me concerne pas directement, donc ça ne change rien pour moi."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0016954690734051613,
-          "lo": 0.0009410853826757913,
-          "hi": 0.002535009572636545,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.00036712250140824094,
-          "lo": -0.00007109573978765552,
-          "hi": 0.000868412645382645,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0021960890738617496,
-          "lo": -0.002905658365230261,
-          "hi": -0.0015275656898976937,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0007960480493437025,
-          "lo": -0.0011915140731497398,
-          "hi": -0.0004242626461933713,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0004958738147957196,
-          "lo": -0.0014747570174624119,
-          "hi": 0.0005764154681460014,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0014254193631877733,
-          "lo": 0.0005383508645775869,
-          "hi": 0.0022991581927860653,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Manifestants lycéens à Marseille et Lyon",
-      "matchedCount": 7933,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
-        },
-        "left": {
           "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 2,
+          "noClearChange": 93
         },
         "abstention": {
-          "toward": 3,
+          "toward": 6,
           "away": 1,
-          "noClearChange": 44
+          "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça ne m'étonne pas, Macron durcit le ton partout mais interdire des manifestations à Lyon et Marseille, c'est un peu fort. Moi, ça ne change rien à mon vote, j'ai déjà mes convictions.",
-        "Interdire les manifs à Marseille et Lyon, c'est exagéré. Ça ne me concerne pas vraiment, je suis plutôt en retrait de la politique, ça ne change rien à mon vote.",
-        "Je trouve ça un peu injuste d'interdire les manifs à Marseille et Lyon. Ça ne change rien à mon vote, ça m'affecte pas vraiment."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.004982375388632534,
-          "lo": 0.003487066605314073,
-          "hi": 0.0064811556602601406,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0027418601311469137,
-          "lo": 0.0013487451081215518,
-          "hi": 0.004142017611952632,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0048709509500993705,
-          "lo": -0.005988694456073969,
-          "hi": -0.0037554750081308912,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0019793331370450977,
-          "lo": -0.002715172213254199,
-          "hi": -0.001327973405875562,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.003985782893981352,
-          "lo": -0.005403384815444455,
-          "hi": -0.0024472929775826353,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0031118314613463546,
-          "lo": 0.0006221799437097624,
-          "hi": 0.005312765714358447,
-          "stable": false
-        }
-      }
+        "Sur ce genre d'interdiction de manifester, je trouve ça un peu excessif, surtout que ça n'a rien à voir avec notre coin ici, assez calme. Ça me laisse assez indifférent.",
+        "Je ne vois pas trop pourquoi interdire les manifs à Lyon et Marseille, ça semble exagéré, et ça ne concerne pas notre région. Je reste sur mes positions habituelles sans vraiment m'y intéresser plus.",
+        "Les interdictions de manifester à Marseille et Lyon, je trouve ça dur, ça restreint la liberté d'expression. Ça m'inquiète un peu, même si ça ne touche pas directement ici, ça donne une image assez autoritaire."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:59.657Z",
-    "contentHash": "f5c9ae3766bed0ace0e2ef91f34e8ed93794db8490ab8c88620ad647a719eb37"
+    "status": "automatic",
+    "contentHash": "108a36fcb07b64a4458ee299a52798583d670a3081cff9ccdd1c5fc3e36dbe60"
   }
 }

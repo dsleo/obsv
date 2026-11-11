@@ -4,25 +4,27 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "3980e293e2a4b7a4",
-  "computedAt": "2026-11-09T22:25:15.536Z",
+  "inputHash": "4cfddf75a5601d62",
+  "eventInputHash": "d5d60e99912160d2e4c9f6d0b8d33dc8dd0d58adc66969ac7366b3d19bb2c338",
+  "computedAt": "2026-11-11T12:50:29.753Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le ministre du Travail Jean-Pierre Farandou a annoncé lundi que le Smic serait augmenté de 0,8 % dès le 1er décembre, pour atteindre environ 1.488 euros net, soit une augmentation mensuelle d'environ 12 euros.",
-    "whatChanges": "Le taux d'augmentation du Smic est réduit de moitié, ce qui pourrait provoquer une déception accrue parmi les salariés modestes et les syndicats, attisant davantage les tensions sociales lors de la conférence."
+    "description": "Sébastien Lecornu annonce le lancement anticipé d’une conférence sociale, fixée plusieurs semaines plus tôt que prévu, avec le smic comme priorité absolue, afin de répondre rapidement aux attentes des syndicats et employeurs.",
+    "whatChanges": "Le calendrier est avancé, donnant une impression d’urgence et pouvant mobiliser plus fortement les acteurs sociaux concernés, notamment les salariés au smic et les organisations patronales."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Salariés modestes de 25 à 49 ans en zone dense",
-      "mechanism": "Ces salariés modestes, principalement des employés et ouvriers âgés de 25 à 49 ans et vivant dans des communes à forte densité, sont directement concernés par l'augmentation du SMIC annoncée, car cette revalorisation impacte immédiatement leur pouvoir d'achat et leurs revenus.",
-      "reason": "L'intersection des tags occupation.modest_wage_earner (employés et ouvriers), age.25_34 et age.35_49, avec geo.dense permet d'identifier un public représentatif des bénéficiaires potentiels de la hausse du SMIC dans les zones urbaines.",
+      "name": "Salariés modestes âgés de 25 à 49 ans en commune dense",
+      "mechanism": "Le Smic est au cœur du débat lors de la conférence sociale menée par Sébastien Lecornu, ce qui concerne directement les salariés modestes actifs en milieu urbain où les enjeux de pouvoir d'achat sont particulièrement vifs.",
+      "reason": "Ce segment regroupe les employés et ouvriers de 25 à 49 ans vivant dans des communes à forte densité, susceptibles d'être très concernés par les discussions sur le Smic.",
       "all": [
-        "occupation.employee"
+        "occupation.employee",
+        "geo.dense"
       ],
       "any": [
         "age.25_34",
@@ -31,13 +33,16 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "smic_beneficiary_status"
+        "Opinion sur l'évolution du Smic",
+        "Perception des effets sur le pouvoir d'achat",
+        "Mobilisation lors de la conférence sociale"
       ],
-      "count": 12334,
-      "distinctCommunes": 149,
+      "count": 11776,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Sébastien Lecornu à la manœuvre d’une conférence sociale incertaine, avec le smic au cœur du débat",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -46,24 +51,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Travailleurs indépendants urbains de 35 à 64 ans",
-      "mechanism": "Les indépendants exerçant dans les communes denses, âgés de 35 à 64 ans, sont concernés par le débat sur le SMIC, car cette augmentation influence leur compétitivité économique et les négociations salariales avec leurs salariés.",
-      "reason": "En combinant occupation.artisan_merchant_owner (sous-classe d'indépendants), age.35_49 ou age.50_64 et geo.dense, on cible un groupe étroit issu des professions indépendantes dans les zones urbaines où le débat économique sur le SMIC est particulièrement pertinent.",
+      "name": "Jeunes sans activité professionnelle en commune dense",
+      "mechanism": "Les jeunes sans activité professionnelle sont affectés indirectement par le débat sur le Smic car il peut impacter les aides ou opportunités d'emploi pour cette population, surtout en milieu urbain où le chômage des jeunes est souvent plus élevé.",
+      "reason": "Ce segment cible les 18-24 ans sans activité professionnelle vivant en commune dense, un groupe étroitement lié au marché du travail et aux politiques sociales débattues à la conférence.",
       "all": [
-        "occupation.artisan_merchant_owner",
+        "cluster.young_without_activity",
         "geo.dense"
       ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "economic_perception"
+        "Attitude envers le Smic",
+        "Impact perçu sur les aides sociales",
+        "Intérêt pour les mesures de la conférence sociale"
       ],
-      "count": 2946,
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -75,23 +78,52 @@
     },
     {
       "id": "segment_3",
-      "name": "Femmes salariées modestes en couple avec enfants en zone dense",
-      "mechanism": "Les femmes salariées modestes vivant en couple avec enfants dans des communes denses sont directement concernées par l'augmentation du SMIC, car cette mesure peut améliorer le budget familial et influer sur leur soutien politique aux mesures sociales.",
-      "reason": "En combinant sex.female, cluster.modest_wage_earner, household.couple_with_children et geo.dense, on identifie un public familial et féminin parmi les bénéficiaires du SMIC dans les zones urbaines denses, groupe crucial pour l'impact social de la mesure.",
+      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "mechanism": "Les ouvriers proches de l'âge de la retraite sont concernés par les débats sociaux, notamment ceux portant sur le Smic qui peuvent avoir un effet indirect sur leurs revenus et leur situation sur le marché du travail.",
+      "reason": "Ce segment inclut les ouvriers âgés de 50 à 64 ans vivant en communes intermédiaires, un public susceptible de réagir aux discussions menées par Sébastien Lecornu.",
       "all": [
-        "sex.female",
-        "household.couple_with_children",
-        "geo.dense",
-        "cluster.modest_wage_earner"
+        "cluster.older_worker",
+        "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "family_income_effects"
+        "Opinion sur le Smic",
+        "Perception des politiques sociales",
+        "Sensibilité aux réformes sociales"
       ],
-      "count": 7163,
+      "count": 144,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Sébastien Lecornu à la manœuvre d’une conférence sociale incertaine, avec le smic au cœur du débat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes familles salariées en commune dense",
+      "mechanism": "Les jeunes familles composées de salariés sont particulièrement concernées par le niveau du Smic car il influence directement leur budget familial et leurs conditions de vie, ce qui est un enjeu central à la conférence sociale animée par Sébastien Lecornu.",
+      "reason": "Ce segment cible les couples avec enfants âgés de 25 à 49 ans, généralement actifs salariés en milieu urbain dense, un groupe essentiel pour comprendre l'impact social des mesures débattues.",
+      "all": [
+        "cluster.young_family",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Impact du Smic sur le budget familial",
+        "Attitude envers les mesures sociales",
+        "Participation ou soutien à la conférence sociale"
+      ],
+      "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -111,57 +143,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Femmes salariées modestes en couple avec enfants en zone dense",
-      "matchedCount": 7163,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "C'est bien que le Smic augmente, même si 24 euros par mois, ce n'est pas énorme, ça aidera un peu pour le budget familial. Si c'était moins, ça me décevrait vraiment.",
-        "Une augmentation du Smic ça va dans le bon sens, mais j'aurais préféré quelque chose de plus marqué, cela reste une augmentation modeste qui ne change pas grand-chose dans la vie quotidienne.",
-        "Une augmentation du Smic est plutôt une bonne chose, même si je trouve que ça pourrait être plus significatif. C’est mieux que rien pour les gens qui gagnent peu."
-      ]
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Travailleurs indépendants urbains de 35 à 64 ans",
-      "matchedCount": 2946,
+      "segmentName": "Jeunes sans activité professionnelle en commune dense",
+      "matchedCount": 8453,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -188,21 +173,68 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 46
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "L'augmentation du SMIC, ça aide un peu, mais 24 euros par mois, ce n'est pas énorme. Ça ne va pas changer beaucoup les choses pour nous, commerçants locaux, ni pour mes employés.",
-        "Une petite augmentation du SMIC, c'est bien, mais ça reste modeste. Pour nous, artisans, ça ne va pas fondamentalement changer la situation, alors niveau politique, ça ne me fait pas bouger.",
-        "Augmenter le SMIC c'est toujours un plus pour mes apprentis qui reçoivent des salaires modestes. Une hausse plus forte, je verrais ça plutôt d'un bon œil, car ça aide les petites familles comme la mienne."
+        "Heureusement que le SMIC est au cœur du débat, ça me touche vraiment avec mon boulot et mon salaire. J'espère que ça va aboutir à quelque chose de concret pour nous, les petits salaires.",
+        "Le SMIC au cœur du débat, ça montre que le gouvernement essaie de répondre aux préoccupations sociales. Ça me parle peu, mais je trouve important que ça avance rapidement, surtout pour les plus précaires.",
+        "Je suis content que le SMIC soit pris au sérieux, ça pourrait aider ma famille. Une action rapide me rassurerait sur l'avenir, même si ça ne change pas tout pour moi."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes âgés de 25 à 49 ans en commune dense",
+      "matchedCount": 11776,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Le débat sur le SMIC, ça me parle un peu, c’est important pour les gens comme moi qui ont un petit salaire, mais cette conférence sociale me semble un peu floue, je ne sais pas si ça va vraiment changer quelque chose.",
+        "Une conférence sociale sur le SMIC, ça m’intéresse parce qu’on gagne pas beaucoup dans mon boulot, ça pourrait améliorer mon quotidien ou celui des collègues.",
+        "Je suis plutôt attentif au SMIC parce que ça touche directement mon salaire. Une conférence sociale, surtout anticipée, ça pourrait améliorer ma vie vite, ça me plaît plutôt."
       ]
     },
     "global_1": {
@@ -235,27 +267,74 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 93
+          "away": 5,
+          "noClearChange": 91
         },
         "abstention": {
-          "toward": 0,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 92
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve cette augmentation du Smic un peu juste, moi qui vis avec une petite retraite, chaque euro compte vraiment au quotidien.",
-        "Cette hausse du Smic me semble correcte, ça peut aider un peu les plus modestes, même si ce n’est pas énorme.",
-        "Augmenter le Smic, même modestement, c’est un geste qui peut soulager certains, c’est important en cette période."
+        "Je ne suis pas très au courant de ces histoires de smic et de conférences sociales, ça ne change pas vraiment ma façon de voir les choses.",
+        "Je suis content que le sujet du smic soit enfin pris au sérieux, ça concerne beaucoup de gens comme moi.",
+        "Je trouve ça bien que le smic soit au cœur du débat, c'est important pour les salariés modestes de Marseille."
       ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Salariés modestes de 25 à 49 ans en zone dense",
-      "matchedCount": 12334,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes familles salariées en commune dense",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve intéressant que le gouvernement mette le smic au cœur du débat social, c'est important pour beaucoup, mais je ne sais pas si ça changera beaucoup pour moi ou mes proches.",
+        "Je vois que le smic est enfin au cœur des discussions, ça pourrait aider les petits commerçants comme moi, même si je crains une hausse des charges.",
+        "Le smic au cœur du débat, ça m'intéresse car ça me touche directement. Peut-être que ça améliorera un peu mon quotidien, mais je reste prudente."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "matchedCount": 144,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -282,29 +361,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 5,
+          "noClearChange": 43
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une augmentation du Smic, c’est toujours bon à prendre, même si 24 euros par mois, ça reste modeste. Je ne pense pas que ça va changer grand-chose à mes choix politiques.",
-        "Le Smic augmente un peu, c'est positif, mais ce n'est pas de quoi chambouler tout. Le plus important, c’est que le gouvernement pense aux plus modestes, mais je reste assez attachée à mes convictions politiques actuelles.",
-        "Une hausse du Smic, même modeste, est bonne à prendre. Cela ne va pas bouleverser mes intentions, mais je préfère un vrai effort sur le pouvoir d'achat."
+        "Ça parle de SMIC, ça m'intéresse un peu, c'est important pour mon salaire. Mais bon, je reste un peu sceptique, souvent ça fait beaucoup de bruit et rien ne change vraiment.",
+        "Une conférence sociale sur le SMIC ? Ça me parle, c'est peut-être l'occasion de faire bouger les choses pour les travailleurs comme moi, même si je sais pas si ça changera vraiment.",
+        "Un débat sur le SMIC, ça pourrait être intéressant, mais je me demande si ça changera vraiment ma vie ou si c'est juste de la com' politique."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:35.283Z",
-    "contentHash": "6d97cb2fcfac28102390e5459a8794d46174113ea45f869e4b2e5b2bc0a5be03"
+    "status": "automatic",
+    "contentHash": "99dcf0296b82dcec5c2b45c4fa3c4eda5010483595b98e8d3219a352ec579af2"
   }
 }

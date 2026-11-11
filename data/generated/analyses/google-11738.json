@@ -4,38 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "7ce031d23e2ec6f0",
-  "computedAt": "2026-11-09T20:35:03.321Z",
+  "inputHash": "27b11355d45616b1",
+  "eventInputHash": "5213129cba1952c5353ddc47b9a5b324910f03b5dc9bc8da48a5b5dab5e8ea11",
+  "computedAt": "2026-11-11T12:57:32.998Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Pour son premier grand discours de campagne, dimanche, à Orléans, Marine Le Pen adopte un ton plus martial et axé sur la sécurité, mettant en avant un programme très dur contre l'immigration et l'insécurité, sans évoquer de thème de \"renaissance\" ni d'optimisme.",
-    "whatChanges": "Le ton plus agressif et centrée sur la peur modifie l'image de la candidate, pouvant polariser davantage les électeurs et inquiéter les modérés qui auraient été attirés par un discours d'optimisme."
+    "description": "Marine Le Pen lance sa campagne présidentielle à Orléans mais annonce qu’elle reportera sa première grande réunion publique officielle d’une semaine pour peaufiner son programme économique.",
+    "whatChanges": "Le calendrier de lancement est modifié avec un léger report de l’événement de mobilisation majeure, ce qui pourrait influencer la dynamique initiale autour de son programme et son impact médiatique."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Retraités ruraux peu diplômés",
-      "mechanism": "Le discours de Marine Le Pen, axé sur la renaissance et l’optimisme, vise particulièrement les retraités vivant en milieu rural, souvent peu diplômés, qui peuvent se sentir marginalisés et réceptifs à un message de renouveau et protection des valeurs locales.",
-      "reason": "Les retraités ruraux peu diplômés constituent un groupe significatif sensible aux enjeux de renouvellement et de stabilité sociale promus dans le discours, situés en dehors des grands centres urbains.",
+      "name": "Ouvriers de 35 à 64 ans vivant en communes denses de taille moyenne ou grande",
+      "mechanism": "En lançant sa campagne à Orléans, Marine Le Pen vise un électorat populaire notamment ouvrier, souvent présent dans les communes denses moyennes ou grandes, qui perçoit son discours comme proche de leurs préoccupations sociales et économiques.",
+      "reason": "Ce groupe combine une tranche d’âge adulte importante susceptible d’être mobilisée par le discours social de Marine Le Pen, et leur présence en communes moyennes à grandes où la politique locale et nationale se mêlent.",
       "all": [
-        "cluster.rural_retiree",
-        "cluster.retiree_no_diploma"
+        "occupation.worker"
       ],
-      "any": [],
-      "none": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
+        "geo.rural"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result_vote_intention",
-        "mechanism_perception",
-        "exposure_to_campaign",
-        "survey_participation"
+        "Perception des enjeux économiques",
+        "Soutien à Marine Le Pen",
+        "Intention de vote"
       ],
-      "count": 351,
-      "distinctCommunes": 67,
+      "count": 8728,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -46,56 +50,27 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles en communes intermédiaires ou rurales",
-      "mechanism": "La thématique de \"renaissance\" portée par Marine Le Pen résonne auprès des jeunes familles vivant en communes de taille intermédiaire ou rurale, concernées par la dynamique locale et l’avenir de leurs enfants, ce qui constitue une cible pour sa campagne présidentielle lancée à Orléans.",
-      "reason": "Ce segment combine jeunes familles et commune de densité intermédiaire ou rurale, qui peuvent être sensibles à un message politique centré sur la relance et l’espoir pour les territoires moins urbains.",
+      "name": "Femmes de 25 à 49 ans en couple avec enfants dans les communes urbaines denses",
+      "mechanism": "Le lancement officiel à Orléans concerne également les jeunes familles urbaines, notamment les femmes en couple avec enfants, un groupe sensible aux questions d’éducation, sécurité et politique familiale mises en avant par Marine Le Pen.",
+      "reason": "Ces femmes, en leur rôle familial et social, sont un segment stratégique à cibler, vivant en commune dense proche de la ville où le lancement s’effectue.",
       "all": [
-        "household.couple_with_children"
+        "sex.female",
+        "household.couple_with_children",
+        "geo.dense"
       ],
       "any": [
-        "geo.intermediate",
-        "geo.rural"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result_vote_intention",
-        "mechanism_perception",
-        "exposure_to_campaign",
-        "survey_participation"
+        "Attitude envers politique familiale",
+        "Intention de vote",
+        "Opinion sur sécurité"
       ],
-      "count": 2003,
-      "distinctCommunes": 114,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "VIDÉO. France : Marine Le Pen lance sa campagne présidentielle à Orléans",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Employés modestes des communes périurbaines",
-      "mechanism": "Lors de son lancement de campagne à Orléans, Marine Le Pen s’adresse aux employés modestes des communes périurbaines, ciblant ce public souvent préoccupé par les questions économiques et sociales, et sensible à un discours d’optimisme et de renouvellement politique.",
-      "reason": "Le segment regroupe les employés (salariés modestes) résidant dans des zones périurbaines, souvent sensibles aux thèmes sociaux et économiques que la candidate souhaite exploiter.",
-      "all": [
-        "occupation.employee",
-        "cluster.modest_wage_earner"
-      ],
-      "any": [
-        "geo.intermediate"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "result_vote_intention",
-        "mechanism_perception",
-        "exposure_to_campaign",
-        "survey_participation"
-      ],
-      "count": 560,
-      "distinctCommunes": 24,
+      "count": 12605,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -114,53 +89,6 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Retraités ruraux peu diplômés",
-      "matchedCount": 351,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je suis un peu confortée par ce discours d'optimisme, ça donne un peu d'espoir même si je reste prudente.",
-        "Marine Le Pen lance sa campagne. Je suis habituée à ses discours, ça ne change pas vraiment mon avis ni mon vote.",
-        "Son discours à Orléans ne m'émeut guère, je préfère des candidats plus modérés et rassurants."
-      ]
-    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -203,15 +131,62 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "En tant que cadre agricole attachée à la ruralité dans les Hautes-Pyrénées, ce discours de campagne à Orléans me paraît un peu éloigné de mes préoccupations quotidiennes, même si je note cette volonté d'optimisme mise en avant.",
-        "Pour moi, ce discours d'optimisme de Marine Le Pen à Orléans n'influence pas beaucoup mon opinion, je reste concentré sur les actions concrètes localement et l'équilibre au quotidien.",
-        "En tant que jeune citoyenne à Pau, ce discours d'optimisme me semble décalé, je reste plutôt méfiante envers les discours politiques d'extrême droite."
+        "Marine Le Pen qui lance sa campagne ici près de chez nous, ça rappelle combien le débat national est orienté vers la sécurité et l'immigration, ce qui n'est pas toujours notre priorité quotidienne. Je reste prudente, ça ne change rien pour moi.",
+        "Marine Le Pen qui commence sa campagne à Orléans ? Ça ne m'intéresse pas vraiment, c'est trop loin de ma vie ici, et reporter une réunion publique ou pas, franchement, je ne changerai pas mon vote.",
+        "Que Marine Le Pen commence sa campagne à Orléans ne m'intéresse pas vraiment, c'est un peu loin, ça ne change rien pour moi. Le fait qu'elle repousse une réunion ne m'impacte pas du tout."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Ouvriers de 35 à 64 ans vivant en communes denses de taille moyenne ou grande",
+      "matchedCount": 8728,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Marine Le Pen qui lance sa campagne chez nous à Orléans, ça montre qu'elle veut jouer sérieusement cette présidentielle. Ça ne me surprend pas, mais ça ne change pas mon avis.",
+        "Une campagne de Le Pen à Orléans ? Honnêtement, ça me touche peu, c’est trop éloigné de mon quotidien parisien et je me méfie de ses propositions. Ça ne change rien pour moi.",
+        "Je vois que Marine Le Pen lance sa campagne près d'ici. Ça me parle, je suis déjà assez critique envers elle, mais ça va peut-être réveiller un peu les débats ici."
       ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes familles en communes intermédiaires ou rurales",
-      "matchedCount": 2003,
+      "segmentName": "Femmes de 25 à 49 ans en couple avec enfants dans les communes urbaines denses",
+      "matchedCount": 12605,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -237,77 +212,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que le discours de Marine Le Pen à Orléans est un peu trop optimiste, pour moi ça ne change pas grand-chose, je suis surtout préoccupée par mon travail et ma vie de famille.",
-        "Je remarque que Marine Le Pen lance sa campagne avec un discours plus positif, mais je reste un peu méfiante, je préfère voir si ça se traduit vraiment dans les faits.",
-        "Un discours optimiste de Le Pen, ça me laisse un peu perplexe. Je vois plutôt la question de la sécurité et l’immigration comme prioritaires, alors un ton martial me parlerait plus."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Employés modestes des communes périurbaines",
-      "matchedCount": 560,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas vraiment intéressée par ce genre de discours, ça ne changera pas mon vote, je préfère les candidats qui travaillent concrètement pour nos services publics locaux.",
-        "Franchement, la campagne de Le Pen à Orléans avec ce thème de renaissance semble un peu creuse, je redoute qu'une tournure plus dure sur l'immigration ne fasse qu'attiser les tensions.",
-        "Je ne suis pas très intéressé par ce genre d'événement politique, ça ne change rien à ce que je vais faire, je veux juste que ça fasse avancer mon quotidien."
+        "Je note que Marine Le Pen lance sa campagne dans une ville importante comme Orléans, mais cela ne m'influence pas vraiment, je reste concentrée sur mes projets et mes valeurs progressistes.",
+        "Une campagne officielle lancée par Marine Le Pen à Orléans ne me touche pas vraiment. Je reste vigilante mais mes préoccupations sont ailleurs.",
+        "Marine Le Pen lance sa campagne à Orléans, ça confirme sa dynamique, mais cela ne modifie pas vraiment mon vote, je reste plutôt centriste et pragmatique."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:19.921Z",
-    "contentHash": "123a683d83f5c72002fa819a30eb2b3837513d81ac4b024ce077d7c96797574a"
+    "status": "automatic",
+    "contentHash": "3dd075541381a62fca88ec872cf5e2276975d21c2b88fe1fc5c54547f5d369d8"
   }
 }

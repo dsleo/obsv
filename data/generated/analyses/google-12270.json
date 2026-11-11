@@ -4,33 +4,35 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "6fdc41a93a0ed9d6",
-  "computedAt": "2026-11-09T20:34:49.712Z",
+  "inputHash": "04fab8568c8feb20",
+  "eventInputHash": "17f5aeea5b3ecda087d5e39c6e43ba6738f53ff6d7e5546ed3f050497d1e4def",
+  "computedAt": "2026-11-11T12:54:39.654Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Natacha Polony revendique 174 parrainages de maires, mais Jean-Pierre Chevènement annonce qu'il ne prendra pas position officiellement, préférant rester neutre.",
-    "whatChanges": "L'absence de soutien officiel de Chevènement affaiblit la crédibilité de Polony auprès des électeurs souverainistes et républicains, limitant son dynamisme de campagne."
+    "description": "Jean-Pierre Chevènement annonce son soutien à une autre candidate de la gauche souverainiste, refusant de soutenir Natacha Polony à l'élection présidentielle.",
+    "whatChanges": "Le soutien de Chevènement va à une autre figure de la gauche souverainiste, ce qui fragilise la candidature de Natacha Polony et redistribue les voix souverainistes entre les électeurs de gauche."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Retraités ruraux proches des valeurs souverainistes",
-      "mechanism": "Le soutien de Jean-Pierre Chevènement, figure politique attachée à la souveraineté nationale, peut résonner auprès des retraités vivant en milieu rural qui partagent des préoccupations sur la ruralité et la France profonde, base possible pour Natacha Polony.",
-      "reason": "Retraités installés dans des communes rurales, susceptibles d'être sensibles aux discours sur la souveraineté, la ruralité et les valeurs traditionnelles.",
+      "name": "Agriculteurs, cibles potentielles du soutien de Jean-Pierre Chevènement",
+      "mechanism": "Jean-Pierre Chevènement, connu pour son engagement en faveur des campagnes et des agriculteurs, apporte son soutien à Natacha Polony, ce public d'agriculteurs, notamment les jeunes exploitants, est directement concerné par ce soutien ciblé qui pourrait renforcer leur représentation politique.",
+      "reason": "Les agriculteurs exploitants, en particulier les jeunes agriculteurs de moins de 35 ans, constituent un groupe spécifique directement visé par le soutien exprimé de Jean-Pierre Chevènement, visant à défendre les intérêts ruraux et agricoles.",
       "all": [
-        "cluster.rural_retiree",
-        "geo.rural"
+        "cluster.young_farmer"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 784,
-      "distinctCommunes": 91,
+      "measurementNeeds": [
+        "Attitude envers le soutien de Jean-Pierre Chevènement à Natacha Polony"
+      ],
+      "count": 145,
+      "distinctCommunes": 42,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -41,19 +43,21 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés des communes denses attachés à la souveraineté culturelle",
-      "mechanism": "Natacha Polony, connue pour ses positions sur la culture et l’éducation, soutenue par Jean-Pierre Chevènement, attire l'attention de jeunes diplômés urbains, concernés par les débats éducatifs et culturels actuels au sein des grandes villes.",
-      "reason": "Jeunes adultes de moins de 35 ans diplômés au moins bac+3 vivant en communes denses, base potentielle du soutien sur des thématiques éducatives et culturelles portées par la candidate.",
+      "name": "Retraités ruraux et peu diplômés concernés par le soutien de Jean-Pierre Chevènement",
+      "mechanism": "Le soutien de Jean-Pierre Chevènement à Natacha Polony vise également les retraités ruraux peu diplômés qui représentent un électorat traditionnel rural sensible aux discours de protection des campagnes et de l’identité nationale, thèmes souvent défendus par ces personnalités.",
+      "reason": "Ce segment combine retraités peu diplômés et vivant en zone rurale, groupes fréquemment sensibles au discours sur la ruralité et les campagnes portés par Jean-Pierre Chevènement et Natacha Polony.",
       "all": [
-        "cluster.young_urban_graduate",
-        "geo.dense"
+        "cluster.retiree_no_diploma",
+        "geo.rural"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Sensibilité au discours ruraliste et nationaliste"
+      ],
+      "count": 351,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -64,19 +68,46 @@
     },
     {
       "id": "segment_3",
-      "name": "Artisans, commerçants et chefs d’entreprise des communes de taille moyenne ou grande",
-      "mechanism": "Artisans, commerçants et chefs d’entreprise vivant dans des communes de taille moyenne ou grande, directement impactés par le soutien de Jean-Pierre Chevènement à Natacha Polony, car ce public indépendant est sensible au programme souverainiste et à la valorisation des acteurs économiques locaux.",
-      "reason": "Remplacement par un segment d’indépendants resserré par la taille de la commune, segment différent et non recouvrant aux salariés modestes.",
+      "name": "Cadres urbains diplômés, électorat stratégique de la présidentielle",
+      "mechanism": "Ce groupe de cadres et professions intellectuelles supérieures en commune dense peut être concerné par le soutien politique de Jean-Pierre Chevènement à Natacha Polony car ils représentent une part clé de l’électorat urbain à fort capital culturel, susceptible d’influencer le débat présidentiel.",
+      "reason": "La combinaison des cadres urbains diplômés en milieu dense est un segment important dans la dynamique électorale, particulièrement sensible aux alliances entre personnalités reconnues comme Chevènement et journalistes engagés comme Natacha Polony.",
       "all": [
-        "occupation.artisan_merchant_owner",
-        "commune_size.1000_plus"
+        "cluster.urban_executive"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 3904,
-      "distinctCommunes": 115,
+      "measurementNeeds": [
+        "Réceptivité à l’alliance Chevènement-Polony"
+      ],
+      "count": 10635,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Jean-Pierre Chevènement apporte son soutien à Natacha Polony pour l'élection présidentielle",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes sans activité professionnelle en milieu urbain concernés par l'appel au renouvellement politique",
+      "mechanism": "Les jeunes adultes sans activité professionnelle en communes denses constituent un public sensible aux appels au renouvellement politique et aux critiques du système traditionel, position dans laquelle s'inscrit le soutien apporté par Jean-Pierre Chevènement à Natacha Polony.",
+      "reason": "Ce segment rassemble des jeunes sans activité en milieu urbain, souvent moteurs de nouvelles mobilisations politiques et sociaux, ciblés par des discours alternatifs à l’offre politique classique représentée par le duo Chevènement-Polony.",
+      "all": [
+        "cluster.young_without_activity",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Intérêt pour les nouvelles propositions politiques",
+        "Perception de l’alliance Chevènement-Polony"
+      ],
+      "count": 8453,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -95,10 +126,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Retraités ruraux proches des valeurs souverainistes",
-      "matchedCount": 784,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes sans activité professionnelle en milieu urbain concernés par l'appel au renouvellement politique",
+      "matchedCount": 8453,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -124,9 +155,56 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Le soutien de Chevènement à Polony ne me parle pas vraiment, je ne suis pas très au fait de ces alliances politiques et ça ne changera pas mon vote.",
+        "Je ne connais pas bien Chevènement, mais s'il soutient Polony, ça ne va pas me faire changer d'avis, je reste assez centrée dans mes choix.",
+        "Franchement, je savais pas que Chevènement ralliait Polony, ça me fait pas changer mon vote, je suit plutôt à gauche solidaire pour Marseille."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités ruraux et peu diplômés concernés par le soutien de Jean-Pierre Chevènement",
+      "matchedCount": 351,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -137,9 +215,56 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne vois pas vraiment qui est Natacha Polony, et l'avis de Jean-Pierre Chevènement ne me touche pas trop. Ça ne change rien dans mon choix.",
-        "Jean-Pierre Chevènement, je ne le connais pas vraiment, et Natacha Polony non plus. Ce soutien ne me fait ni chaud ni froid, je reste sur mes positions.",
-        "Jean-Pierre Chevènement, c'est quelqu'un que je respecte, mais Natacha Polony je ne la vois pas comme une candidate sérieuse pour moi. Son soutien ne me fera pas changer d'avis, ni son absence de position."
+        "Je connais Jean-Pierre Chevènement, c'est un homme de gauche comme on en fait plus. Son soutien à Natacha Polony, je ne sais pas trop quoi en penser, elle me semble trop éloignée des préoccupations du village.",
+        "Chevènement, c'est un vieux routier de la politique, mais son soutien à Natacha Polony ne me parle pas vraiment. Je suis plutôt attaché à des idées plus concrètes pour les gens comme moi.",
+        "Je ne suis pas très au courant des soutiens politiques personnels, mais Chevènement appuie Polony ? Je m'en fiche un peu, ça ne change rien à mes choix habituels."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Agriculteurs, cibles potentielles du soutien de Jean-Pierre Chevènement",
+      "matchedCount": 145,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je connais Chevènement comme un homme politique engagé à gauche, mais Natacha Polony, je ne sais pas trop où elle se place exactement, ça ne change pas grand-chose pour moi.",
+        "Chevènement qui soutient Polony, ça me surprend, je vois mal l'impact, ça ne me fait pas changer d'avis.",
+        "Chevènement apporte son soutien à Polony... Je ne sais pas trop, cela ne me touche pas vraiment dans ma vie ici à Mauguio. Je reste fidèle à mes choix habituels."
       ]
     },
     "global_1": {
@@ -172,8 +297,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "abstention": {
           "toward": 1,
@@ -184,62 +309,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Jean-Pierre Chevènement, je connais de nom, mais ça ne change rien pour moi cette histoire avec Natacha Polony, je ne suis pas très intéressée par la présidentielle pour l'instant.",
-        "Jean-Pierre Chevènement qui soutient Polony ? C'est un soutien un peu vieillot, ça ne me parle pas vraiment, je reste fidèle à mes idées sans changer mes habitudes de vote.",
-        "Je connais un peu Chevènement, mais son soutien à Polony ne va pas changer ma manière de voir les choses, ça reste trop loin de mes préoccupations."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés des communes denses attachés à la souveraineté culturelle",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas vraiment convaincue par Natacha Polony, même avec le soutien de Chevènement, ça ne change pas grand-chose pour moi.",
-        "Le soutien de Chevènement à Polony ? Ce n'est pas un facteur qui influencera mon vote, je reste plutôt centré.",
-        "Polony avec Chevènement à ses côtés, c'est un peu un coup pour rien, ça ne me fait pas changer d'avis, surtout ici où l'extrême droite domine."
+        "Je ne connais pas vraiment Natacha Polony ni Jean-Pierre Chevènement. Le soutien de ce dernier me semble un détail politique qui ne change rien à ce que je pense pour la présidentielle.",
+        "Je ne vois pas vraiment l'intérêt du soutien de Chevènement à Polony. Ce genre de manœuvre politique ne m'influence pas dans mon vote, je choisis plutôt en fonction des programmes qui touchent ma vie de Réunionnaise.",
+        "Soutenir Polony, ça ne me parle pas trop et Chevènement n’a jamais eu beaucoup de poids dans mon entourage. Je reste fidèle à mes habitudes de vote, ça ne change rien."
       ]
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Artisans, commerçants et chefs d’entreprise des communes de taille moyenne ou grande",
-      "matchedCount": 3904,
+      "segmentName": "Cadres urbains diplômés, électorat stratégique de la présidentielle",
+      "matchedCount": 10635,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -278,17 +356,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne connaissais pas bien Chevènement ni Polony, ce soutien ne change pas vraiment mon opinion. Ça ne m'incite pas à voter différemment.",
-        "Jean-Pierre Chevènement, une figure politique historique, soutenant Polony... ça ne m'émeut pas. Polony ne fait pas partie de mes choix habituels.",
-        "Chevènement qui soutient Polony ? Dans mon coin, ça ne change rien, on connaît peu cette dame et son programme."
+        "Ce soutien de Chevènement à Polony m'étonne, mais ça ne change rien à ce que je pense pour l'élection, je reste concentrée sur les enjeux locaux et environnementaux.",
+        "Jean-Pierre Chevènement soutenant Natacha Polony, ça me semble assez périphérique à mes préoccupations, je reste vigilante mais ça ne me fera pas changer d'avis.",
+        "Je connais Chevènement pour ses idées souverainistes, mais son soutien à Polony ne change pas mon choix, j'ai d'autres priorités locales et familiales."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:21.235Z",
-    "contentHash": "e81bb987c0f046e986c97f3e0c2fced925cc84a96e5cedf4e2dc26266a7122a4"
+    "status": "automatic",
+    "contentHash": "93cb626261f07f2c8b862086d09e5699bdfb8ac024bfd4a6a0f73548f04ea33f"
   }
 }

@@ -4,41 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "481a4e97e6c8d5b2",
-  "computedAt": "2026-11-10T22:11:01.890Z",
+  "inputHash": "60e8729aa0d11c77",
+  "eventInputHash": "1beff27a8b0d437391491568c009bbb33cc3cd6bdc3035bb499ecd228d3bd7fd",
+  "computedAt": "2026-11-11T13:15:43.258Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Assistants parlementaires du MoDem : le procès en appel de François Bayrou s’est ouvert à Paris, l’ancien premier ministre a reconnu une partie des faits mais invoque des circonstances atténuantes pour tenter d’adoucir l’image de l’affaire.",
-    "whatChanges": "Le changement de posture de François Bayrou, qui reconnaît partiellement les faits, modifie la perception des électeurs en atténuant l’image d’un déni complet, ce qui peut améliorer son empathie auprès de certains publics."
+    "description": "Le procès pour l'assassinat par balle de l'ex-rugbyman Federico Aramburú s'ouvre avec la première audience publique, où est révélée une nouvelle preuve clé remettant en cause le mobile initialement avancé.",
+    "whatChanges": "L'apparition d'une nouvelle preuve modifie la perception du mobile du crime, impactant l'opinion publique et les électeurs sensibles à la justice et à la sécurité."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Employés et ouvriers résidant en communes urbaines denses hors grandes métropoles",
-      "mechanism": "Public populaire en communes denses hors des grands pôles urbains, sensible aux enjeux judiciaires politiques nationaux portés par l'affaire François Bayrou, ancien ministre et leader du MoDem.",
-      "reason": "Intersection de la catégorie socio-professionnelle modeste et de zones urbaines non métropolitaines, ce groupe peut être un récepteur clé des débats liés à ce procès.",
-      "all": [],
-      "any": [
-        "occupation.employee",
-        "occupation.worker"
-      ],
-      "none": [
+      "name": "Jeunes hommes cadres urbains sensibles à la violence dans les grandes villes",
+      "mechanism": "Les jeunes hommes cadres urbains, souvent exposés à des enjeux liés à la sécurité des espaces publics dans les métropoles comme Paris, Lyon et Marseille, sont concernés par le procès car ils peuvent percevoir l'assassinat de Federico Aramburú comme un symbole de violence urbaine.",
+      "reason": "Ce segment combine une tranche d'âge jeune, une catégorie socio-professionnelle élevée, une localisation métropolitaine dense, et un genre, qui ensemble ciblent un public précis possiblement réceptif à ce type d'événement.",
+      "all": [
+        "age.25_34",
+        "sex.male",
+        "occupation.executive_professional",
+        "geo.dense",
         "municipal_system.paris_lyon_marseille"
       ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "opinion_on_bayrou_trial"
+        "Perception de la violence urbaine",
+        "Opinion sur la justice pénale dans les grandes villes"
       ],
-      "count": 4149,
-      "distinctCommunes": 134,
+      "count": 1435,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Ouverture du procès : assassinat par balle de l'ex-rugbyman Federico Aramburú",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -47,20 +48,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains de moins de 35 ans dans des communes denses",
-      "mechanism": "Jeunes titulaires d’un diplôme bac+3 et plus vivant en communes denses qui suivent particulièrement les actualités politiques et judiciaires nationales, dont le procès de François Bayrou à Paris.",
-      "reason": "Ce segment représente un électorat urbain éduqué concerné par les affaires politiques de haut niveau et par la figure de François Bayrou.",
+      "name": "Parents uniparentaux féminins en milieu urbain intermédiaire",
+      "mechanism": "Les mères seules en milieu urbain, souvent exposées à des enjeux liés à la sécurité et à la protection dans leur quotidien, sont particulièrement concernées par le procès pour son aspect de violence armée et ses implications sociales.",
+      "reason": "Ce segment combine un statut familial sensible, un genre féminin, et un espace urbain à densité intermédiaire, cible cohérente pour un public touché par les faits de violence dans la vie sociale.",
       "all": [
-        "cluster.young_urban_graduate"
+        "household.single_parent",
+        "sex.female",
+        "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attention_to_political_trials"
+        "Sentiment de sécurité dans la vie quotidienne",
+        "Attitude envers la criminalité"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 224,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -71,23 +75,56 @@
     },
     {
       "id": "segment_3",
-      "name": "Retraités vivant en couple dans des communes intermédiaires ou denses",
-      "mechanism": "Seniors retraités vivant en couple pouvant avoir un intérêt pour la justice et la moralité politique à l'occasion du procès en appel d’un ancien ministre à Paris.",
-      "reason": "Cette population mature et stable dans leur lieu de vie pourrait être particulièrement réceptive aux discussions sur la conduite politique et judiciaire des élites.",
+      "name": "Jeunes artisans et commerçants masculins en zone dense",
+      "mechanism": "Mécanisme lié à l'ouverture du procès de Federico Aramburú, visant les jeunes hommes actifs dans l'artisanat et le commerce en zone urbaine dense, susceptibles d'être sensibles à un fait divers violent dans leur environnement professionnel et social ; ce groupe combine profession spécifique et densité urbaine.",
+      "reason": "Segment resserré et spécifique, intersectant profession et lieu, assurant moins de 25 % de l’échantillon et au-dessus du seuil minimal.",
       "all": [
-        "cluster.retired_couple"
+        "sex.male",
+        "geo.dense",
+        "occupation.artisan_merchant_owner"
       ],
       "any": [
-        "geo.dense",
-        "geo.intermediate"
+        "age.18_24",
+        "age.25_34"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perceptions_of_political_ethics"
+        "Attitude envers la violence urbaine",
+        "Connaissance du procès Aramburú"
       ],
-      "count": 15832,
-      "distinctCommunes": 96,
+      "count": 489,
+      "distinctCommunes": 60,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Ouverture du procès : assassinat par balle de l'ex-rugbyman Federico Aramburú",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Retraités urbains en couple sans enfant",
+      "mechanism": "Ce segment regroupe les retraités vivant en ville dans un couple sans enfant, souvent concernés par les débats sécuritaires et sensibles aux violences urbaines suite à l'assassinat de Federico Aramburú, qui peut influencer leur perception de la sécurité au sein de leur environnement urbain.",
+      "reason": "Segment de taille modérée, couvrant différents âges de retraités en zone urbaine dense et couple sans enfant, permettant une analyse spécifique.",
+      "all": [
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.65_74",
+        "age.75_plus"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la sécurité dans l’espace urbain",
+        "Opinion sur la justice suite à un fait divers violent"
+      ],
+      "count": 13125,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -106,10 +143,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Retraités vivant en couple dans des communes intermédiaires ou denses",
-      "matchedCount": 15832,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes hommes cadres urbains sensibles à la violence dans les grandes villes",
+      "matchedCount": 1435,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -126,8 +163,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -135,61 +172,70 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
           "toward": 1,
           "away": 0,
           "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis déçue par cette affaire, ce type d'accusation entache la politique et donne une mauvaise image des élus. Mais ça ne change pas mon intention de vote, je reste fidèle à mes convictions.",
-        "Je n'ai pas vraiment d'avis sur ce procès. Ces histoires politiques, ça me fatigue plus qu'autre chose, je préfère rester sur mes habitudes de vote.",
-        "Cette affaire n'est pas facile à suivre ni à comprendre. Je suis plutôt calme; cela ne va pas faire bouger mon vote."
-      ],
-      "altEffect": {
+        "Franchement, ce drame me dépasse un peu, ce n'est pas quelque chose qui change vraiment mon quotidien ni ma vision politique.",
+        "Ce procès ne m'affecte pas vraiment, je me concentre surtout sur les enjeux économiques et européens plutôt que sur des affaires judiciaires locales.",
+        "Même si le cas me touche un peu, cela ne modifie pas vraiment ma façon de voter, qui est ancrée sur les questions sociales et écologiques."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Parents uniparentaux féminins en milieu urbain intermédiaire",
+      "matchedCount": 224,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.0002535324098238345,
-          "lo": -0.00012082216615453606,
-          "hi": 0.0006560916906506688,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.00004376793405432199,
-          "lo": -0.0006448658294456495,
-          "hi": 0.0004828338128419869,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0.0027524083879171975,
-          "lo": 0.0009062910665589855,
-          "hi": 0.004739307273255364,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.001221768075058858,
-          "lo": 0.0005840088244064263,
-          "hi": 0.0020371729752682905,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.0014178968401716227,
-          "lo": -0.00006426878638971997,
-          "hi": 0.003002543497517433,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": -0.0056018377789172095,
-          "lo": -0.0073881180106421624,
-          "hi": -0.0036205111649636056,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne me sens pas concernée par ce procès, ça ne change pas vraiment ma manière de voir les choses pour la présidentielle.",
+        "Je trouve ce procès triste, mais je n'ai pas vraiment d'opinion politique qui changerait à cause de ça.",
+        "C’est une affaire importante mais elle ne me touche pas assez pour modifier mon vote, surtout au vu des priorités environnementales où je travaille."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -211,8 +257,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "right": {
           "toward": 0,
@@ -220,66 +266,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette histoire avec Bayrou, ça me dépasse un peu. Je préfère me concentrer sur ce qui touche mon quotidien ici en Martinique.",
-        "Le procès de Bayrou n'est pas vraiment ce qui m'intéresse, ça ne change rien à ma façon de voir les choses pour les présidentielles.",
-        "J'ai entendu parler de ce procès, ça me rappelle que la politique est parfois pleine de zones troubles, mais ça ne me fera pas changer d'avis."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0005089828963067575,
-          "lo": 0.00012895166739025857,
-          "hi": 0.0008802842252213709,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.000128760522128204,
-          "lo": -0.00031996587700504315,
-          "hi": 0.000587482374629399,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0011423734907333438,
-          "lo": -0.0001658124319883704,
-          "hi": 0.002510489357191859,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0002859030217692296,
-          "lo": -0.0010921845049150626,
-          "hi": 0.0004612031444912986,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.003482247372613632,
-          "lo": 0.002217549999386852,
-          "hi": 0.0046782561455114575,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.004976461260012706,
-          "lo": -0.006296255988863897,
-          "hi": -0.0035344386848003965,
-          "stable": false
-        }
-      }
+        "Moi, ce procès ne change pas grand-chose à ma vie, c'est une triste affaire, mais je reste plus préoccupé par mon quotidien et ce que je peux transmettre aux jeunes.",
+        "Je ne m'intéresse pas trop aux détails de ce genre de procès, ça ne change rien à mon vote, je préfère me concentrer sur ce qui impacte ma vie de retraité à Mâcon.",
+        "Un procès pour un ancien rugbyman, franchement ça me touche pas directement, je reste concentré sur mes affaires et ma journée au fournil."
+      ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Employés et ouvriers résidant en communes urbaines denses hors grandes métropoles",
-      "matchedCount": 4149,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes artisans et commerçants masculins en zone dense",
+      "matchedCount": 489,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -318,53 +326,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je n'ai pas vraiment d'avis sur ce genre de procès politique, ça ne change pas ma manière de voir les choses.",
-        "Ce procès, je m'en fiche un peu, c'est des histoires de politiciens loin de ma vie. Rien ne me fait changer d'avis.",
-        "Je ne connais pas vraiment cette affaire de Bayrou, alors ça ne me fait ni chaud ni froid."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.00017290234188592,
-          "lo": -0.00030268134106459466,
-          "hi": 0.0006700257957723213,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0003516250268493034,
-          "lo": -0.0004190833805388183,
-          "hi": 0.0010999069682660404,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0017836179260229113,
-          "lo": 0.00034017504207900246,
-          "hi": 0.003374469427889676,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0002970655514231447,
-          "lo": -0.00010941889949419837,
-          "hi": 0.0008230084681223951,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.001755898337270051,
-          "lo": -0.003392838835815006,
-          "hi": -0.000225405683328053,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0008493125089112218,
-          "lo": -0.002076687033726082,
-          "hi": 0.0004575288319795384,
-          "stable": false
-        }
-      }
+        "Je ne vois pas vraiment en quoi ce procès concerne ma vie quotidienne ou mes choix politiques. C'est triste comme affaire mais ça ne change rien à mon vote.",
+        "Ce procès et ses rebondissements, ce n’est pas trop mon truc, je préfère me concentrer sur le travail et ma vie à Montmartre plutôt que sur ce type d’affaires judiciaires.",
+        "Je vois bien que c’est une histoire sérieuse, mais je suis surtout concentré sur ma formation et le boulot de la boulangerie familiale, ça ne va pas me faire changer d’avis sur la présidentielle."
+      ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans dans des communes denses",
-      "matchedCount": 11394,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Retraités urbains en couple sans enfant",
+      "matchedCount": 13125,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -403,55 +373,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Le procès de François Bayrou ? Ça ne change rien à ma manière de voir la politique, ce genre d'affaires me semble trop éloigné de mon quotidien.",
-        "Le procès en appel de Bayrou ? Franchement, je n'y prêterai pas beaucoup attention, ça m'éloigne de mes préoccupations concrètes, je ne vois pas pourquoi ça influencerait mon vote.",
-        "Le procès de Bayrou n'a pas d'impact pour moi. Que ce soit avec ou sans reconnaissance partielle des faits, ça ne change pas mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.002118175543114527,
-          "lo": 0.0002612729702282021,
-          "hi": 0.003942644870608719,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0003470710272381007,
-          "lo": -0.00012001909097141949,
-          "hi": 0.0009102052007156563,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.000017127856425529046,
-          "lo": -0.0025430195139249114,
-          "hi": 0.0025704438484770026,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.00025953168077964844,
-          "lo": 0.000002823091744395389,
-          "hi": 0.0005592305584609385,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0021294590478140706,
-          "lo": 0.00041918073520463085,
-          "hi": 0.00448484978398914,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.00487136515537187,
-          "lo": -0.00688471681167725,
-          "hi": -0.00293700007793516,
-          "stable": false
-        }
-      }
+        "Je suis à la retraite et je trouve cette histoire triste, mais ce genre de procès ne m'intéresse pas vraiment, ça ne change rien à qui je vais voter.",
+        "Je ne vois pas en quoi ce procès va affecter ma façon de voter, ce genre de nouvelle reste assez loin de mon quotidien.",
+        "Ce procès ne touche pas vraiment ma vie, c'est triste mais ça ne me fait pas changer d'avis sur la présidentielle."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:52.731Z",
-    "contentHash": "e3867c181b1d81e9337a0683d92d3987ed25cb76ff1b782c8b5204ab1126e9c5"
+    "status": "automatic",
+    "contentHash": "711ee98d1535dea4cf9132f30fda99d6d8ce996f061660670f45fcf867bc77be"
   }
 }

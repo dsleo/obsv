@@ -4,35 +4,67 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "027d5578c7f398fb",
-  "computedAt": "2026-11-09T20:39:56.405Z",
+  "inputHash": "9c6dafed7048b112",
+  "eventInputHash": "9d5c121b09f6eab7181ae3cdc96a8dfaa4f8454c8ffa0878f4315cfc4ab189cc",
+  "computedAt": "2026-11-11T13:11:59.948Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Eric Zemmour, président du parti d’extrême droite Reconquête, annonce sa candidature en soulignant un recentrage sur des thèmes économiques et sociaux plutôt que sur une rhétorique nationaliste stricte.",
-    "whatChanges": "L'entrée en campagne de Zemmour avec un discours plus modéré et axé sur l’économie pourrait attirer un électorat plus large, notamment parmi les classes populaires, modifiant la perception de son positionnement politique."
+    "description": "Eric Zemmour, président du parti d’extrême droite Reconquête, annonce qu'il renonce à se présenter à l'élection présidentielle pour soutenir un autre candidat de droite.",
+    "whatChanges": "Zemmour choisit de ne pas diviser l'électorat d'extrême droite, ce qui pourrait renforcer un candidat unique face aux autres candidats pour des électeurs nationalistes et conservateurs."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Hommes de 50 à 64 ans employés ou ouvriers en milieu intermédiaire",
-      "mechanism": "Éric Zemmour cible des hommes actifs de 50 à 64 ans exerçant des professions salariées modestes (employés ou ouvriers) dans les communes à densité intermédiaire, qui peuvent être sensibles à ses discours sur la sécurité et les réformes sociales.",
-      "reason": "Cette intersection combine le genre, l’âge, la catégorie socio-professionnelle et la densité géographique, correspondant à un segment précis de sa base électorale potentielle.",
+      "name": "Seniors peu diplômés vivant en zone intermédiaire ou rurale",
+      "mechanism": "L'annonce de candidature d’Eric Zemmour vise un électorat senior, peu diplômé, souvent installé en zones intermédiaires ou rurales, sensible à ses discours sur la sécurité, la souveraineté et les valeurs traditionnelles.",
+      "reason": "Ce segment cible des retraités peu diplômés vivant hors des grandes agglomérations, profil souvent considéré comme cible potentielle de Reconquête.",
       "all": [
-        "sex.male",
-        "age.50_64",
-        "geo.intermediate"
+        "cluster.retiree_no_diploma"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
+        "geo.intermediate",
+        "geo.rural"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
+      "measurementNeeds": [
+        "Attitude envers Eric Zemmour",
+        "Sensibilité aux thèmes sécuritaires",
+        "Intention de vote à la présidentielle"
+      ],
+      "count": 870,
+      "distinctCommunes": 91,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Eric Zemmour, président du parti d’extrême droite Reconquête, annonce qu'il sera candidat à l'élection présidentielle",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Salariés modestes hommes de 50 à 64 ans en communes intermédiaires",
+      "mechanism": "Eric Zemmour cherche à mobiliser les salariés modestes masculins âgés de 50 à 64 ans résidant en communes intermédiaires, qui peuvent être sensibles à son discours sur les transformations sociales et économiques.",
+      "reason": "Ce segment combine âge, sexe, catégorie socio-professionnelle et type de commune pour identifier un groupe susceptible d'être concerné par l’offre politique de Reconquête.",
+      "all": [
+        "age.50_64",
+        "sex.male",
+        "cluster.modest_wage_earner",
+        "geo.intermediate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers Eric Zemmour",
+        "Perception des enjeux sociaux",
+        "Intention de vote à la présidentielle"
+      ],
       "count": 143,
       "distinctCommunes": 23,
       "status": "filterable_discovery_sample",
@@ -44,46 +76,23 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Couples de retraités peu diplômés vivant en commune de taille moyenne ou grande",
-      "mechanism": "Les couples de retraités, souvent peu diplômés, vivant dans les communes de 1000 habitants et plus, peuvent être attentifs au message d’Éric Zemmour sur la préservation des valeurs traditionnelles et la sécurité, sujets récurrents de son parti Reconquête.",
-      "reason": "Ce segment combine statut marital, occupation, niveau d’éducation approximé par un cluster, et taille de commune, ciblant une population généralement sensible aux questions conservatrices.",
+      "id": "segment_3",
+      "name": "Jeunes sans activité professionnelle en zone dense",
+      "mechanism": "L'annonce d’Eric Zemmour pourrait provoquer une réaction particulière parmi les jeunes sans activité professionnelle vivant en communes urbaines denses, souvent ciblés par des discours sur l'immigration et la sécurité.",
+      "reason": "Ce segment étroit vise les jeunes inactifs en zones urbaines denses, groupe souvent touché par les discours politiques du Rassemblement Reconquête.",
       "all": [
-        "cluster.retired_couple",
-        "cluster.retiree_no_diploma",
-        "commune_size.1000_plus"
+        "cluster.young_without_activity",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 6402,
-      "distinctCommunes": 119,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Eric Zemmour, président du parti d’extrême droite Reconquête, annonce qu'il sera candidat à l'élection présidentielle",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Jeunes familles vivant en commune dense",
-      "mechanism": "Les jeunes familles, couples avec enfants âgés de 25 à 49 ans vivant dans des communes denses, constituent un groupe ciblé par Éric Zemmour dans son discours sur la famille traditionnelle et la sécurité urbaine.",
-      "reason": "Cette intersection rassemble un cluster défini, la tranche d’âge et le type de commune, caractérisant un segment spécifique qui peut être interpellé par le programme de Reconquête.",
-      "all": [
-        "cluster.young_family",
-        "geo.dense"
+      "measurementNeeds": [
+        "Attitude envers Eric Zemmour",
+        "Sentiment d’insécurité",
+        "Intention de vote à la présidentielle"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 25109,
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -105,101 +114,7 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Couples de retraités peu diplômés vivant en commune de taille moyenne ou grande",
-      "matchedCount": 6402,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Zemmour veut être candidat encore, il est toujours dans sa rupture avec Le Pen, mais ça ne me change pas grand-chose, je reste fidèle à mes idées.",
-        "Zemmour qui critique Marine Le Pen comme si elle était de gauche, ça ne me semble pas très sérieux, mais bon, je reste proche de l'extrême droite quand même.",
-        "Zemmour se présente encore, je sais pas trop, mais s’il parle plus d’économie et moins de nationalisme, ça pourrait m’intéresser un peu."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes familles vivant en commune dense",
-      "matchedCount": 25109,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je connaissais déjà Zemmour, mais son surenchérissement contre Le Pen me fait penser que sa stratégie est surtout de diviser l'extrême droite sans vraiment me convaincre. Ça ne change pas trop mon choix.",
-        "Ce genre de débat entre Zemmour et Le Pen ne me fait rien, ils sont trop loin de mes valeurs pour que j'en change mon vote. Je reste centriste plutôt que de me soucier de leurs nuances.",
-        "Zemmour fait encore de la provoc contre Le Pen, mais pour moi c'est juste une autre figure de l'extrême droite, donc je reste fidèle à celle qui me représente un peu plus."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Hommes de 50 à 64 ans employés ou ouvriers en milieu intermédiaire",
+      "segmentName": "Salariés modestes hommes de 50 à 64 ans en communes intermédiaires",
       "matchedCount": 143,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -226,22 +141,116 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 11,
-          "away": 4,
-          "noClearChange": 33
+          "toward": 17,
+          "away": 8,
+          "noClearChange": 23
         },
         "abstention": {
-          "toward": 4,
-          "away": 5,
-          "noClearChange": 39
+          "toward": 6,
+          "away": 13,
+          "noClearChange": 29
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je m'en fiche un peu, Zemmour c’est toujours un type qui gueule, ça change pas grand-chose à ma vie ni à ce que je vote.",
-        "Zemmour il parle encore trop fort, je sais pas si ça me fait changer d'avis, en vrai c’est un autre ballotage d'extrême droite qui s’installe, ça m’intéresse moyennement.",
-        "Zemmour Président ? Ça me fait un peu peur qu’il parle comme ça, Marine de gauche ? Il se moque de nous. J’ai l’habitude de voter Le Pen, ça me trouble un peu mais ça change rien pour moi."
+        "Je n'aime pas trop Zemmour, ses idées sont trop dures et ça ne m'aidera pas dans mon travail ni ma vie quotidienne.",
+        "Je vois pas vraiment l'intérêt de Zemmour, ça va juste diviser la droite encore plus, c'est embêtant.",
+        "Zemmour candidat, ça risque de rendre la droite extrême plus visible, mais je reste méfiant, ça ne changera pas mon vote de base."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnelle en zone dense",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, Zemmour, ça ne me parle pas vraiment, je suis plus préoccupée par mon boulot et mes projets. S'il se présente, ça ne va pas changer grand-chose pour moi.",
+        "Je trouve ça un peu inquiétant que Zemmour se présente, ça tend l'extrême droite, mais au final je préfère qu'il ne divise pas la droite. S'il ne se présente pas, je serais un peu soulagée.",
+        "Je m'intéresse pas trop à Zemmour, je fais mes affaires, ça change pas grand-chose à ce que je vais faire le jour du vote."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Seniors peu diplômés vivant en zone intermédiaire ou rurale",
+      "matchedCount": 870,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 8,
+          "away": 1,
+          "noClearChange": 39
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ah, Zemmour qui se présente ? Ben ça change pas grand-chose pour moi, moi je vote pour l'ordre et la sécurité comme d'habitude.",
+        "Zemmour qui se lance ? Pas sûre que ce soit une bonne idée, ça va peut-être diviser la droite, je préfère qu'ils s'unissent.",
+        "Encore un de plus qui veut la présidence... Je n'y prête guère attention, ce n'est pas mon monde."
       ]
     },
     "global_1": {
@@ -264,8 +273,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -273,30 +282,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 7,
+          "toward": 11,
           "away": 3,
-          "noClearChange": 86
+          "noClearChange": 82
         },
         "abstention": {
           "toward": 3,
-          "away": 4,
-          "noClearChange": 89
+          "away": 3,
+          "noClearChange": 90
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve qu'Éric Zemmour qui se déclare candidat, ça ne me parle pas vraiment. Ce genre de discours ne change rien à ce que je pense ni à mon vote.",
-        "Zemmour qui annonce sa candidature et dit que Marine Le Pen est de gauche, je ne sais pas trop quoi penser, ça ne m'engage pas plus dans mon vote, je reste fidèle à mes idées habituelles.",
-        "Cette annonce de Zemmour me semble plus une polémique qu'autre chose, le fait qu'il change de ligne vers l'économie et le social pourrait intéresser certains, mais personnellement, ça ne me fait pas changer d'avis."
+        "Ce genre d'annonce ne change pas grand-chose pour moi, je me tiens assez éloignée de ces discussions politiques qui me paraissent trop compliquées.",
+        "Je ne me sens pas concerné par cette annonce, en Guadeloupe, ce genre de candidature extrême ne m'influence guère dans mes choix, le vote reste un acte local pour moi.",
+        "Zemmour, encore une fois, divise la droite. Sa candidature ne me motive pas, je pense qu'il peut faire perdre des voix à la droite traditionnelle."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:40.746Z",
-    "contentHash": "679de07cda87ee396c35c9cd39ccf48e5b67d7f40d39553a31c7e2628dd7b501"
+    "status": "automatic",
+    "contentHash": "b6deef7946487e69e1c685f36791af60559716005104af1b5726f2e7bf02ee69"
   }
 }

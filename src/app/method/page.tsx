@@ -4,11 +4,14 @@ import { MethodExplainer } from "../../components/radar/MethodExplainer";
 import { pageMetadata } from "../../lib/metadata";
 import "../../components/events/event-pages.css";
 
-export const metadata: Metadata = pageMetadata("Comment ça marche ?", "Du réel aux hypothèses : suivre une information, les personnes qu’elle concerne et ce qu’elle pourrait changer dans leurs choix.");
+export const metadata: Metadata = pageMetadata(
+  "Comment ça marche ?",
+  "Comprendre les sondages, les sources et la construction des scénarios de l’Observatoire.",
+);
 
 export default function MethodPage() {
   return (
-    <main className="news-page">
+    <main className="news-page" id="contenu">
       <NewsMasthead section="MÉTHODE" />
       <MethodExplainer />
     </main>

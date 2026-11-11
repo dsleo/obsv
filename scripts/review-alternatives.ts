@@ -9,7 +9,10 @@ for (const file of [".env", ".env.local"]) { try { process.loadEnvFile(file); } 
 const dir = path.resolve(process.argv[2] ?? "data/generated/analyses");
 const events = new Map<string, { title: string; summary: string }>(JSON.parse(await readFile("data/incoming/events.json", "utf8")).events.map((e: { id: string; title: string; summary: string }) => [e.id, e]));
 const files = (await readdir(dir)).filter((f) => f.startsWith("google-") && f.endsWith(".json")).sort();
-const load = async () => Promise.all(files.map(async (f) => ({ f, a: JSON.parse(await readFile(path.join(dir, f), "utf8")) })));
+const load = async () =>
+  (await Promise.all(
+    files.map(async (f) => ({ f, a: JSON.parse(await readFile(path.join(dir, f), "utf8")) })),
+  )).filter(({ a }) => events.has(a.eventId)); // historical/orphan artifacts are not current events
 const flagAll = (rows: { f: string; a: any }[]) => {
   const seen = new Map<string, string>();
   return rows.map(({ f, a }) => {

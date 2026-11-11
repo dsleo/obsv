@@ -4,37 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "06c078b7a876b889",
-  "computedAt": "2026-11-10T22:07:29.486Z",
+  "inputHash": "5febe2ea12b3c798",
+  "eventInputHash": "408ad1a4b2934e9597d71ebb37869c9dda2991f070b4f4d8d253c777f04154a5",
+  "computedAt": "2026-11-11T13:06:26.143Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Affaire Lindsay Clancy : le juge accepte l’acquittement de la mère accusée d’avoir tué ses trois enfants, clouant le débat médiatique autour de la culpabilité et évitant un nouveau procès.",
-    "whatChanges": "L’acquittement évite un nouveau procès et suscite davantage de controverse sur l’appréciation de la responsabilité pénale, affectant la perception des familles des victimes et de l’opinion publique."
+    "description": "Lors du 3e jour du procès en appel à Annecy sur l'incendie mortel à Courchevel, les victimes et leurs familles ont été entendues dans un cadre aménagé, avec un soutien psychologique renforcé, afin de limiter le traumatisme lié aux confrontations directes.",
+    "whatChanges": "La tenue du procès avec un dispositif de protection des victimes atténue l'impact émotionnel sur ces dernières, modifiant ainsi la perception de la justice pour le public et les familles concernées."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Femmes vivant seules en commune urbaine",
-      "mechanism": "Les mères seules ou femmes seules en milieu urbain peuvent s’identifier à cette tragédie familiale et être sensibles aux débats sur la parentalité difficile, la justice et la protection des enfants mis en lumière dans ce procès.",
-      "reason": "Ce segment cible les femmes vivant seules en communes denses, ce qui leur confère une exposition potentielle accrue au débat social suscité par l’affaire.",
+      "name": "Retraités ruraux non isolés",
+      "mechanism": "Les retraités ruraux non isolés sont concernés par ce procès en appel car ils forment une partie importante de la population locale dans la région montagneuse affectée, susceptibles d'être impactés moralement et socialement par l'événement tragique et son déroulement judiciaire.",
+      "reason": "L'association de statuts de retraités, de vie rurale et de non isolement au foyer identifie un groupe stable et concret à la fois nombreux et peu dispersé, lié à la zone sinistrée.",
       "all": [
-        "sex.female",
-        "household.single",
-        "geo.dense"
+        "cluster.rural_retiree",
+        "household.couple_no_children"
       ],
       "any": [],
-      "none": [],
+      "none": [
+        "geo.dense"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perception du système judiciaire",
-        "sentiment d’insécurité sociale"
+        "Sympathie envers les victimes",
+        "Impact psychologique du procès"
       ],
-      "count": 18010,
-      "distinctCommunes": 72,
+      "count": 434,
+      "distinctCommunes": 74,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -45,47 +47,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes adultes de 25 à 34 ans vivant en famille dans des communes de taille moyenne",
-      "mechanism": "Ce groupe représente de jeunes parents potentiels ou récents, qui sont sensibles aux questions relatives à la parentalité, à la protection des mineurs et aux enjeux tragiques exposés par ce procès d’une mère accusée d’infanticide lors d’un incendie mortel.",
-      "reason": "Le segment croise l’âge des jeunes adultes, leur situation familiale en couple avec enfants, et la taille intermédiaire des communes, ciblant un public qui peut s’identifier personnellement à cet événement familial dramatique.",
+      "name": "Jeunes professionnels urbains sensibles aux enjeux de sécurité",
+      "mechanism": "Les jeunes cadres et professionnels urbains sont susceptibles d’être attentifs à un procès aussi médiatisé concernant un incendie mortel dans une station de montagne, car ils forment une catégorie sociale sensibilisée aux questions de sécurité publique et judiciaire.",
+      "reason": "Ce segment combine la jeunesse, un haut niveau d’éducation et une vie en milieu urbain, ce qui reflète une audience susceptible de réagir fortement à cet événement via leur compréhension des enjeux légaux et sociaux.",
       "all": [
-        "age.25_34",
-        "household.couple_with_children",
-        "commune_size.1000_plus"
+        "cluster.urban_executive",
+        "age.25_34"
       ],
       "any": [],
-      "none": [],
+      "none": [
+        "household.single_parent"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "niveau de préoccupation parentale",
-        "visibilité de l’affaire"
+        "Opinion sur la justice",
+        "Perception de la sécurité dans les stations touristiques"
       ],
-      "count": 8479,
-      "distinctCommunes": 119,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Incendie mortel à Courchevel :3e jour du procès en appel à Annecy, les victimes de nouveau confrontées à l'horreur",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_3",
-      "name": "Femmes de 35 à 49 ans en couple avec enfants en commune dense",
-      "mechanism": "Ce segment comprend des femmes âgées de 35 à 49 ans vivant en couple avec enfants dans des communes à densité élevée, concernées par les répercussions familiales et sociales du procès en appel lié à la mort de enfants à Courchevel, notamment dans le cadre des débats sur la protection de l’enfance.",
-      "reason": "Remplace un segment trop large en resserrant l’âge et en ciblant spécifiquement les femmes en famille en zone dense.",
-      "all": [
-        "sex.female",
-        "age.35_49",
-        "household.couple_with_children",
-        "geo.dense"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8410,
+      "count": 2681,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -96,24 +74,27 @@
       }
     },
     {
-      "id": "segment_4",
-      "name": "Parents de famille monoparentale de 35 à 49 ans en commune intermédiaire ou rurale",
-      "mechanism": "Ce segment cible les mères seules âgées de 35 à 49 ans, vivant en famille monoparentale dans des communes intermédiaires ou rurales, potentiellement sensibles aux enjeux du procès en appel, notamment la protection et le bien-être des enfants dans des contextes familiaux difficiles.",
-      "reason": "Resserrement du segment en ciblant une tranche d’âge spécifique et incluant la composition familiale monoparentale ainsi que les communes moins denses.",
+      "id": "segment_3",
+      "name": "Salariés modestes parents de famille vivant en communes intermédiaires",
+      "mechanism": "Les salariés modestes, parents de famille vivant en communes à densité intermédiaire, sont concernés en tant que population vulnérable pouvant s’identifier aux victimes dans un procès public ravivant la tragédie, notamment pour la sécurité des familles dans les lieux touristiques de montagne.",
+      "reason": "Ce segment combine statut socio-économique, vie familiale et cadre géographique moyen, reflétant un public concerné personnellement et émotionnellement par la tragédie et les suites judiciaires.",
       "all": [
-        "sex.female",
-        "age.35_49",
-        "household.single_parent"
+        "cluster.modest_wage_earner",
+        "household.couple_with_children",
+        "geo.intermediate"
       ],
       "any": [
-        "geo.intermediate",
-        "geo.rural"
+        "age.35_49",
+        "age.50_64"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 127,
-      "distinctCommunes": 52,
+      "measurementNeeds": [
+        "Attitude envers la justice",
+        "Sentiment de sécurité en montagne"
+      ],
+      "count": 337,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -134,8 +115,8 @@
   "contrasts": {
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Femmes de 35 à 49 ans en couple avec enfants en commune dense",
-      "matchedCount": 8410,
+      "segmentName": "Salariés modestes parents de famille vivant en communes intermédiaires",
+      "matchedCount": 337,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -161,236 +142,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Cette histoire de procès qui dure encore, ça me met mal à l'aise, mais honnêtement, ça ne change rien à ma façon de voir la présidentielle.",
-        "C’est triste, ce procès qui continue, mais ça ne me touche pas assez pour changer mon vote.",
-        "Cette affaire est tragique et douloureuse, mais ça ne modifie pas mes priorités politiques pour la présidentielle."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0011401141531649465,
-          "lo": -0.00033829175121791264,
-          "hi": 0.002827614153164944,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0015701858791418565,
-          "lo": -0.00024323244737527115,
-          "hi": 0.003529114225344751,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0037204387556940177,
-          "lo": -0.005676566718233376,
-          "hi": -0.002267318086289357,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.00033978207331035465,
-          "lo": -0.0011413834347966066,
-          "hi": 0.0004124203662971373,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0036082097531405805,
-          "lo": -0.005665059301382342,
-          "hi": -0.0016047414344569934,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.004958130549838176,
-          "lo": 0.0026140579804662042,
-          "hi": 0.007089118935386082,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Femmes vivant seules en commune urbaine",
-      "matchedCount": 18010,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "C'est triste, mais ce genre d'affaire violente ne change pas vraiment ce que je pense de la politique.",
-        "Cette histoire est horrible, mais je ne vois pas en quoi elle influerait mon vote pour la présidentielle.",
-        "Ce drame est effroyable, mais ça ne modifie pas vraiment ce que je pense de la politique."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0019153310573902446,
-          "lo": 0.0006728861226982264,
-          "hi": 0.0033367537313432837,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0026248629776719017,
-          "lo": 0.0011682401203030486,
-          "hi": 0.0042761015495259526,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0017410944367214447,
-          "lo": -0.003744318383041427,
-          "hi": 0.0002309062279512063,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0016125175393724202,
-          "lo": -0.0025595978811763774,
-          "hi": -0.0007418891955149463,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0015287097963679348,
-          "lo": -0.004053440162714765,
-          "hi": 0.0008100209395492918,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0003421277373996563,
-          "lo": -0.0024095115942507034,
-          "hi": 0.0030641390072809484,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Parents de famille monoparentale de 35 à 49 ans en commune intermédiaire ou rurale",
-      "matchedCount": 127,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 2,
+          "away": 3,
+          "noClearChange": 43
         },
         "abstention": {
           "toward": 2,
-          "away": 0,
-          "noClearChange": 46
+          "away": 1,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est terriblement triste, surtout pour les enfants ; je comprends qu'on veuille un procès, il faut savoir la vérité et faire justice.",
-        "C'est horrible, cette affaire me touche, c'est important que la justice fasse son travail correctement et que les victimes soient entendues.",
-        "Je trouve ça très triste cette histoire, mais ce genre d'affaire ne change pas vraiment ce que je pense pour les élections."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00060382251587069,
-          "lo": -0.0016007814609861348,
-          "hi": 0.00030645769931484285,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0004064042789446761,
-          "lo": -0.0018917085788952958,
-          "hi": 0.0010489741799265585,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.003329008770323628,
-          "lo": -0.0048626796933501195,
-          "hi": -0.0019504688742398707,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0017130743217292337,
-          "lo": -0.002758386183239692,
-          "hi": -0.0005741008537061165,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0029051213524828603,
-          "lo": -0.005903509168390122,
-          "hi": 0.000207331761059829,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.008957431239351091,
-          "lo": 0.004759889904626751,
-          "hi": 0.01266181922800856,
-          "stable": true
-        }
-      }
+        "C'est terrible ce qui est arrivé à Courchevel et ça doit être dur pour les familles. Entendre parler d'un procès me touche, mais pour moi ça reste un tragique événement sans lien direct avec mon vote.",
+        "Je trouve ça horrible pour les victimes. Que ça se passe dans de meilleures conditions comme dans le scénario alternatif me semble plus humain, mais ça ne change pas mes choix politiques.",
+        "C'est vraiment triste cette histoire, mais ça reste loin de mon quotidien. Je ne vois pas que ça puisse changer mon vote à la présidentielle."
+      ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes adultes de 25 à 34 ans vivant en famille dans des communes de taille moyenne",
-      "matchedCount": 8479,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Retraités ruraux non isolés",
+      "matchedCount": 434,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -417,8 +190,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
           "toward": 0,
@@ -429,48 +202,57 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette affaire est vraiment tragique, mais ça ne change pas ce que je pense de la politique, ce n’est pas mon domaine de priorité.",
-        "C’est horrible, mais ça ne change rien à mon vote. La politique pour moi, c’est surtout l’économie et l’identité, pas ce genre d’affaires.",
-        "Cette affaire est bouleversante, surtout pour les parents. Ça me touche, mais je ne vois pas comment ça influencerait mon vote."
-      ],
-      "altEffect": {
+        "C'est tragique, ces procès qui ressortent la douleur, mais ça ne change rien à ma façon de voir les choses politiques.",
+        "C'est vraiment dur pour les familles, il faut qu'on les aide autant que possible, je trouve ça normal de soutenir ces victimes.",
+        "Je ne me sens pas concerné, c'est loin de chez moi, je continue comme d'habitude."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes professionnels urbains sensibles aux enjeux de sécurité",
+      "matchedCount": 2681,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.0007422677779820641,
-          "lo": -0.0005348473473473465,
-          "hi": 0.002514966497109354,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": 0.0007062372746896558,
-          "lo": -0.00024155405405405306,
-          "hi": 0.001789965986394557,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.001583709134304372,
-          "lo": -0.0029463851606708774,
-          "hi": -0.0006250000000000006,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.0007169214282309517,
-          "lo": -0.0011805270406460894,
-          "hi": -0.00035527193860527043,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.003415925704616183,
-          "lo": -0.005258393172083652,
-          "hi": -0.0018419461127794467,
-          "stable": false
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
-          "mean": 0.004268051214479784,
-          "lo": 0.001981869199131103,
-          "hi": 0.006614989989989987,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ce procès est vraiment éprouvant, j'espère que les victimes pourront être mieux soutenues, c'est important pour leur dignité et santé mentale.",
+        "La souffrance des victimes est immense, mais ça reste un drame un peu éloigné de mon quotidien, donc ça ne change pas vraiment ce que je pense pour la présidentielle.",
+        "Ces audiences sont difficiles à vivre pour les familles, il faudrait vraiment que le système prenne plus en compte leur souffrance."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -502,67 +284,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "abstention": {
-          "toward": 0,
           "away": 0,
           "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est vraiment tragique et ça me touche peu, mais ça ne change rien à mon vote, j'ai d'autres priorités.",
-        "Cette affaire est horrible et j'espère que justice sera faite, mais ça ne me fait pas changer d'avis politique.",
-        "J'en ai entendu parler à la télé, ça me rend triste mais ça ne change rien à mon vote, la politique c’est autre chose."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0001970608458760363,
-          "lo": -0.000407480321018417,
-          "hi": 0.0007472762406928504,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0005857103672372589,
-          "lo": 0.000003273550809026679,
-          "hi": 0.0012366022010961671,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.00024588274549764967,
-          "lo": -0.0009371395661210599,
-          "hi": 0.00048321486617205296,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0001299416013330084,
-          "lo": -0.000652641245162232,
-          "hi": 0.0004918140526164301,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.00010986664212992517,
-          "lo": -0.001624484519817419,
-          "hi": 0.001402810422785946,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.00029708022415270846,
-          "lo": -0.0014826786006566367,
-          "hi": 0.0010312053655434545,
-          "stable": false
-        }
-      }
+        "Cette histoire me touche, c’est terrible ces morts, mais ça ne change pas mon vote, c’est trop loin de ma vie.",
+        "C’est horrible pour ces familles, mais cet événement ne va pas me faire changer d’avis ou de parti favori.",
+        "Je suis triste pour les victimes, mais ça ne change pas ce que je pense de la politique ou mon vote."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:45.313Z",
-    "contentHash": "634ba02c4b04d643ee6a7b131ff97115e90baf87cbb7c0bc92b4382ee50b22ff"
+    "status": "automatic",
+    "contentHash": "1a2fba6fb78459824c19d6bb9fadbcf727af5cff7cb321bd333cbe56fe060c40"
   }
 }

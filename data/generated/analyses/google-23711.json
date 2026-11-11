@@ -4,32 +4,37 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "6b86d9352c56abe2",
-  "computedAt": "2026-11-10T22:06:30.056Z",
+  "inputHash": "aa4aeca7e9cee772",
+  "eventInputHash": "9d0f59e0ae6ba3f0ff8b2ca672eb45f8d90aa3748411094a2341fbed3d5ffa87",
+  "computedAt": "2026-11-11T13:03:57.850Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Lors de l'\"acte 3\" de la mobilisation lycéenne et étudiante de mardi, plusieurs organisations de parents d'élèves annoncent qu'elles soutiennent les revendications des jeunes et appellent à une grève solidaire dans les établissements pour renforcer la pression sur le gouvernement.",
-    "whatChanges": "Le changement est que les parents ne cherchent plus uniquement à protéger les jeunes mais participent activement à la mobilisation, renforçant ainsi la pression sur les autorités et impactant davantage l'opinion publique et les décideurs."
+    "description": "Des lycéens lancent une mobilisation en appelant directement les pouvoirs publics à instaurer des espaces de parole sécurisés dans les établissements pour exprimer leurs inquiétudes, plutôt qu'aux parents.",
+    "whatChanges": "Le changement d'interlocuteur privilégié de la mobilisation, passant des parents aux pouvoirs publics, modifie l'impact en mettant la pression sur les autorités scolaires et gouvernementales, affectant surtout les responsables éducatifs et politiques plutôt que les familles."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes sans activité résident en commune dense",
-      "mechanism": "Les manifestants lycéens et étudiants appartiennent souvent à la catégorie des jeunes sans activité professionnelle, notamment les 18-24 ans vivant en milieu urbain dense, concernés par la mobilisation \"acte 3\".",
-      "reason": "Ce segment cible la jeunesse lycéenne ou étudiante en contexte urbain dense, particulièrement exposée aux mobilisations tout en étant sans emploi ni profession déclarée.",
+      "name": "Parents seuls avec enfants (familles monoparentales) en communes urbaines",
+      "mechanism": "Les mères ou parents seuls ayant des enfants sont particulièrement ciblés dans l'événement car ils porteraient une vigilance accrue sur la protection des jeunes lycéens tout en subissant une pression socio-familiale importante durant la mobilisation.",
+      "reason": "Ce segment rassemble des parents seuls en milieu urbain concernés par les appels à protéger les jeunes et par la pression entraînée par la mobilisation lycéenne.",
       "all": [
-        "cluster.young_without_activity",
+        "household.single_parent",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8453,
+      "measurementNeeds": [
+        "Niveau de stress parental durant les mobilisations",
+        "Perception des appels à la protection des jeunes",
+        "Impacts sur la gestion familiale"
+      ],
+      "count": 9294,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -41,18 +46,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Mères seules avec enfants en âge scolaire",
-      "mechanism": "Les mères seules, souvent fortement investies dans la protection éducative des jeunes, sont un public clé des appels à calmer les manifestations et à assurer la sécurité des enfants.",
-      "reason": "Ce segment représente les familles monoparentales féminines, concernées par la mobilisation lycéenne et son impact sur le cadre familial et scolaire.",
+      "name": "Adultes de 35 à 49 ans en couple avec enfants hors des grandes métropoles",
+      "mechanism": "Ce segment capture les parents d'âge moyen avec enfants qui sont interrogés par l'appel à la protection des jeunes dans les zones intermédiaires ou rurales, où la pression sociale et familiale liée aux mobilisations lycéennes peut être différente mais néanmoins présente.",
+      "reason": "Parents en âge actif avec enfants dans des zones moins denses, concernés par la mobilisation lycéenne et les sollicitations parentales locales.",
       "all": [
-        "cluster.single_mother"
+        "household.couple_with_children",
+        "age.35_49"
       ],
       "any": [],
-      "none": [],
+      "none": [
+        "municipal_system.paris_lyon_marseille",
+        "geo.dense"
+      ],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 7855,
-      "distinctCommunes": 141,
+      "measurementNeeds": [
+        "Réception des appels à la protection des lycéens",
+        "Évaluation de la pression sur les familles",
+        "Attitude face à la mobilisation lycéenne"
+      ],
+      "count": 918,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -63,18 +76,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Cadres urbains parents d’enfants scolarisés",
-      "mechanism": "Certains cadres urbains responsables de familles avec enfants sont à la fois alertés par la mobilisation lycéenne et moteurs potentiels de solutions pour réduire la pression par des moyens éducatifs ou sociaux.",
-      "reason": "Ce segment conjugue un profil socio-professionnel urbain supérieur et la parentalité, représentant une catégorie influente dans les débats autour des mobilisations lycéennes.",
+      "name": "Jeunes sans activité professionnels résidant en milieu urbain",
+      "mechanism": "Ces jeunes, proches de la mobilisation lycéenne en âge et en situation sociale, sont concernés par la dynamique autour de la mobilisation, notamment par la pression qu'elle génère et les appels à la retenue des parents pouvant les affecter indirectement.",
+      "reason": "Les jeunes urbains sans activité peuvent être proches des lycéens mobilisés et sensibles aux appels parentaux de protection pour réduire la tension sociale.",
       "all": [
-        "cluster.urban_executive",
-        "household.couple_with_children"
+        "cluster.young_without_activity",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 5162,
+      "measurementNeeds": [
+        "Sentiment vis-à-vis des appels à la retenue parentale",
+        "Perception de la pression sociale liée à la mobilisation",
+        "Relation entre jeunes et famille dans ce contexte"
+      ],
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -94,261 +111,6 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Cadres urbains parents d’enfants scolarisés",
-      "matchedCount": 5162,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends la volonté des lycéens de se faire entendre, mais j'espère que tout cela ne perturbera pas trop leurs études ni le fonctionnement de la société. Les appels aux parents ne changent rien pour moi.",
-        "Les jeunes qui se battent, j'y suis sensible, surtout quand les parents les soutiennent ça peut faire bouger les choses. Ça me donne un peu d'espoir pour un avenir plus juste.",
-        "Je trouve que soutenir les revendications lycéennes par la mobilisation parentale, ce serait un signe fort et cohérent, mais je reste pragmatique quant à l'impact réel sur la politique gouvernementale."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00863619826280104,
-          "lo": -0.009770515733225628,
-          "hi": -0.007349656472712696,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.008028444950256876,
-          "lo": -0.009538765681301154,
-          "hi": -0.0066757356568965505,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.007332917731015719,
-          "lo": 0.005875105620349798,
-          "hi": 0.00866730783308154,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0029165992232034633,
-          "lo": 0.0022957408517874935,
-          "hi": 0.0035536940862198325,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.007245215166994039,
-          "lo": 0.00602881854556491,
-          "hi": 0.008585818823597047,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0008300889081552931,
-          "lo": -0.0030991865568247637,
-          "hi": 0.0010453874669281472,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes sans activité résident en commune dense",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends que les jeunes soient dans la rue, c'est dur pour eux mais ça m’inquiète un peu cette tension. J’espère que tout va se calmer rapidement.",
-        "J'ai entendu parler de ces mobilisations lycéennes. Si les parents soutiennent la jeunesse, ça peut avoir plus de poids, je trouve ça plutôt positif.",
-        "Ces mobilisations me préoccupent, mais si les parents soutiennent les jeunes, cela peut aider à faire entendre leurs besoins."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.011550885911707614,
-          "lo": -0.013321250508750508,
-          "hi": -0.009776730629575781,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.01100114831866613,
-          "lo": -0.012755982071443685,
-          "hi": -0.009220262377608318,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.010134974646592009,
-          "lo": 0.008885254302076437,
-          "hi": 0.011511151074851775,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0033183459867408577,
-          "lo": 0.0023947591468191595,
-          "hi": 0.004110140867349483,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.009184688005784392,
-          "lo": 0.007265748218873223,
-          "hi": 0.011293160947914658,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.00008597440874350745,
-          "lo": -0.0025340022605647512,
-          "hi": 0.002555177888658788,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Mères seules avec enfants en âge scolaire",
-      "matchedCount": 7855,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 4,
-          "noClearChange": 44
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que ces manifestations lycéennes sont un peu exagérées, mais je comprends que les jeunes aient besoin d'être entendus. Ces appels aux parents, ça me semble plutôt une bonne idée pour calmer les choses.",
-        "Ces appels aux parents pour calmer les lycéens ? Honnêtement, je ne me sens pas trop concernée. Si les parents soutiennent les jeunes, ça ne changera pas mon vote. C’est un peu loin de mes préoccupations.",
-        "Je suis ouverte aux revendications des jeunes, mais ça n’influence pas vraiment mon choix politique. Par contre, si les parents se mobilisent, ça montre que les choses deviennent sérieuses, je pourrais être un peu plus attentive."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00979460386601345,
-          "lo": -0.01263671582961043,
-          "hi": -0.006967338552323519,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.00947252845774373,
-          "lo": -0.01135292367232961,
-          "hi": -0.007356495858710056,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.008764664773479253,
-          "lo": 0.00745253954034595,
-          "hi": 0.010235368720949213,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0033047502279205956,
-          "lo": 0.0022965840693167897,
-          "hi": 0.0044637224971578555,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.00821343079988994,
-          "lo": 0.005562078507743343,
-          "hi": 0.011038281538997273,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0010157134775326375,
-          "lo": -0.0034074438137404986,
-          "hi": 0.0015350146038589595,
-          "stable": false
-        }
-      }
-    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -379,67 +141,168 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 94
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 5,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 91
+          "noClearChange": 96
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ces jeunes qui manifestent, ça m'inquiète un peu, mais je comprends aussi qu'ils ont des raisons. Ça ne change rien à ce que je pense pour les élections.",
-        "Je vois que les jeunes manifestent encore, mais si les parents les soutiennent, ça me pousse à penser que le mécontentement est plus large. Je pourrais envisager de moins voter RN si ça bouge comme ça.",
-        "Les manifestations des jeunes, ça ne m'affecte pas trop. Même avec le soutien des parents, je reste plutôt prudente et fidèle dans mes choix politiques, donc ça ne change rien."
-      ],
-      "altEffect": {
+        "Je trouve ça bien que les parents soient sollicités pour protéger les jeunes, c'est leur rôle. Tant que ça ne fait pas trop de bruit, ça me convient.",
+        "Je préfère que ce soit les parents qui soient appelés à jouer un rôle protecteur plutôt que les jeunes qui demandent eux-mêmes aux pouvoirs publics. Ça me semble plus normal ainsi.",
+        "Je comprends que les parents soient sollicités, mais j'aurais plutôt vu des espaces de parole pour les jeunes. Ça pourrait apaiser les tensions, je pense."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Adultes de 35 à 49 ans en couple avec enfants hors des grandes métropoles",
+      "matchedCount": 918,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.004639014064947682,
-          "lo": -0.005925305872356338,
-          "hi": -0.003286417855761252,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.004547834756527955,
-          "lo": -0.005828005910257328,
-          "hi": -0.003428298349579064,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0.006597305661779076,
-          "lo": 0.005677227869748562,
-          "hi": 0.00766349421179936,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.0029371238784158126,
-          "lo": 0.0021979403641946955,
-          "hi": 0.003651544842906265,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.008025539083982758,
-          "lo": 0.006722560352023742,
-          "hi": 0.009311655308466359,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": -0.008373119802702014,
-          "lo": -0.010478903847866082,
-          "hi": -0.006417686002390133,
-          "stable": true
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve qu'appeler les parents est le mieux pour protéger nos ados, même si parfois ça crée des tensions. Je suis un peu inquiète, mais ça me parle plus que des appels directs aux pouvoirs publics.",
+        "Je ne suis pas vraiment au courant de ces histoires de lycéens, ça ne change pas grand-chose pour moi. Que ce soit aux parents ou aux pouvoirs publics, ça ne modifie pas mon avis politique.",
+        "C'est bien qu'on essaie de protéger les jeunes, ça me semble logique que les parents soient impliqués. Mais appeler directement les pouvoirs publics ? Je suis un peu méfiant, ça paraît plus idéologique qu'efficace."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnels résidant en milieu urbain",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ces appels aux parents pour calmer les lycéens, je suis un peu sceptique. Je vois pas trop en quoi ça change quelque chose pour eux, moi, ça m'intéresse pas trop.",
+        "Je trouve que si les lycéens veulent un vrai espace pour discuter, mieux vaut qu'ils aient un lieu direct dans les établissements plutôt que filer la pression aux parents. Ça me paraît plus mature.",
+        "Moi, ces histoires de lycéens ça me parle pas trop, je suis plutôt concentrée sur mon boulot. Qu'ils appellent les parents ou les pouvoirs publics, je sais pas, ça change rien pour moi."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Parents seuls avec enfants (familles monoparentales) en communes urbaines",
+      "matchedCount": 9294,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que c'est compliqué tout ça, les jeunes s'agitent, mais franchement ce sont les parents qui doivent gérer à la maison. Ça me dérange pas trop, c'est pas mon combat.",
+        "Je suis plutôt pour que les jeunes soient entendus, mais appeler les parents reste normal. Des espaces neutres pourraient aussi être bien, ça serait plus serein pour eux.",
+        "Je trouve ça bien que les lycéens veuillent pouvoir s'exprimer en confiance, les espaces de parole dans les établissements seraient une bonne idée pour apaiser les tensions."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:35.851Z",
-    "contentHash": "d5cffca873d40c9acf431a65e625911bce483034b2067742eb84568703e881fe"
+    "status": "automatic",
+    "contentHash": "0d6ecc620ab318ddfd7b35ed8f2d0c917c1340b79443651aba9e245636447907"
   }
 }

@@ -4,37 +4,47 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "935c02ce9b5d9817",
-  "computedAt": "2026-11-10T22:04:18.222Z",
+  "inputHash": "30e306a148452205",
+  "eventInputHash": "2c40381884fa934b31b934dc484658825d4800faaa673bedc40a8c998c87c8dc",
+  "computedAt": "2026-11-11T12:57:59.164Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Une centaine de personnes se sont rassemblées ce dimanche à Aubervilliers pour une marche blanche organisée à 14 heures en mémoire de Pengo Bossio Wangi, jeune espoir du MMA. Le suspect a été présenté directement devant un juge d'instruction sans passage à l'infirmerie, ce qui a suscité une polémique sur les droits de la défense.",
-    "whatChanges": "Le traitement judiciaire du suspect a été accéléré, accentuant les débats sur les droits de la défense et modérant la perception sécuritaire chez certains électeurs sensibles aux libertés civiles."
+    "description": "Macron qualifie l'attaque à Trappes non pas de \"terroriste raciste\" mais de \"violence isolée liée à un conflit communautaire local\".",
+    "whatChanges": "L'interprétation de l'événement est moins portée sur une menace terroriste généralisée, ce qui pourrait réduire la mobilisation sécuritaire et l'inquiétude des électeurs sensibles aux questions d'ordre public et de lutte contre le racisme."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Habitants de Trappes en communes intermédiaires",
-      "mechanism": "Ce segment rassemble les habitants vivant dans des communes intermédiaires comme Trappes, ville où l'attentat terroriste raciste a eu lieu, ce qui les concerne directement par la localisation de l'événement.",
-      "reason": "Ce groupe est l'intersection des résidents de communes de densité intermédiaire, incluant Trappes, pour cibler la population exposée localement à l'attentat.",
+      "name": "Habitants de Trappes en communes denses âgées de 18 à 34 ans",
+      "mechanism": "Population d'habitants de Trappes, commune dense, jeunes adultes de 18 à 34 ans, directement exposée au contexte local de l'attentat terroriste raciste à Trappes rapporté par Macron.",
+      "reason": "Trappes est une commune dense, l'événement terroriste local concerne principalement ses habitants jeunes adultes, sensibles au climat social et sécuritaire.",
       "all": [
-        "geo.intermediate",
-        "commune_size.1000_plus"
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "exposure.attentat_terroriste_raciste_Trappes"
+      "membershipGaps": [
+        "commune_name"
       ],
-      "count": 3561,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
+      "measurementNeeds": [
+        "Attitude envers la sécurité à Trappes",
+        "Perception du racisme dans l'atmosphère locale",
+        "Sentiment de victimisation locale"
+      ],
+      "count": 34713,
+      "distinctCommunes": 72,
+      "status": "incomplete_membership",
+      "issue": "Attributs absents des tags : commune_name",
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Macron : \"Un attentat terroriste raciste\" à Trappes - 23/10",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -43,26 +53,28 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes hommes salariés modestes en milieu urbain dense",
-      "mechanism": "Ce segment concerne les jeunes hommes employés ou ouvriers, dans des communes urbaines denses, qui sont potentiellement sensibles aux tensions sociales et raciales exacerbées par l'attentat terroriste raciste à Trappes.",
-      "reason": "Intersection ciblée sur sexe, âge, occupation et type de commune pour cerner un groupe potentiellement mobilisé ou affecté par l'événement dans les grandes agglomérations.",
+      "name": "Couples avec enfants en communes denses et d'âge 35 à 49 ans",
+      "mechanism": "Parents vivant en couple avec enfants en commune dense, âgés de 35 à 49 ans, concernés par l'impact sécuritaire et raciste de l'attentat à Trappes sur leur environnement familial et scolaire.",
+      "reason": "Ces familles sont exposées à une préoccupation renforcée sur la sécurité et le racisme dans la commune dense de Trappes où s'est produit l'attentat terroriste.",
       "all": [
-        "sex.male",
-        "geo.dense",
-        "cluster.modest_wage_earner"
+        "household.couple_with_children",
+        "age.35_49",
+        "geo.dense"
       ],
-      "any": [
-        "age.18_24",
-        "age.25_34"
-      ],
+      "any": [],
       "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "perception.impact_attentat_terroriste_raciste"
+      "membershipGaps": [
+        "commune_name"
       ],
-      "count": 6783,
+      "measurementNeeds": [
+        "Sentiment de sécurité dans la famille",
+        "Perception du racisme et de la cohésion sociale",
+        "Mesure de la confiance envers les autorités locales"
+      ],
+      "count": 16964,
       "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
+      "status": "incomplete_membership",
+      "issue": "Attributs absents des tags : commune_name",
       "repairs": [],
       "counterfactual": {
         "intervention": "Macron : \"Un attentat terroriste raciste\" à Trappes - 23/10",
@@ -72,25 +84,28 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes familles en couple avec enfants dans des communes denses",
-      "mechanism": "Ce segment regroupe des jeunes couples avec enfants en âge actif vivant en milieu urbain dense, concernés par la sécurité et le climat social impactés par l'attentat terroriste raciste à Trappes.",
-      "reason": "Concentration sur les jeunes familles en milieu urbain dense pour prendre en compte une catégorie familiale directement impactée par la problématique de sécurité.",
+      "name": "Jeunes sans activité professionnelle en commune dense et sexe masculin",
+      "mechanism": "Jeunes hommes non actifs professionnels en commune dense, probablement étudiants ou chômeurs, concernés par l'attentat terroriste raciste à Trappes qui touche leur environnement social et générational.",
+      "reason": "Leur statut d'inactivité et présence dans la commune dense les place au centre des tensions sociales liées à cet événement raciste et terroriste.",
       "all": [
-        "household.couple_with_children",
+        "cluster.young_without_activity",
+        "sex.male",
         "geo.dense"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
+      "any": [],
       "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "attitude.securite_et_racisme_post_attentat"
+      "membershipGaps": [
+        "commune_name"
       ],
-      "count": 25109,
+      "measurementNeeds": [
+        "Attitude envers le racisme et la violence à Trappes",
+        "Sentiment d'exclusion ou de discrimination",
+        "Impacts sur la vie quotidienne et sociale"
+      ],
+      "count": 3714,
       "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
+      "status": "incomplete_membership",
+      "issue": "Attributs absents des tags : commune_name",
       "repairs": [],
       "counterfactual": {
         "intervention": "Macron : \"Un attentat terroriste raciste\" à Trappes - 23/10",
@@ -100,24 +115,27 @@
     },
     {
       "id": "segment_4",
-      "name": "Adultes de 50 à 64 ans vivant en communes intermédiaires employé ou ouvrier",
-      "mechanism": "Ce segment inclut des personnes d’âge moyen employés ou ouvriers dans des communes intermédiaires comme Trappes, qui peuvent être directement affectées par les conséquences socio-économiques locales de l’attentat terroriste raciste.",
-      "reason": "Intégration d'un groupe d'âge moyen dans la catégorie socio-professionnelle affectée localement par l'événement, pour une analyse précise des impacts.",
+      "name": "Personnes âgées retraitées en couple vivant en commune dense",
+      "mechanism": "Personnes retraitées vivant en couple dans des communes denses, concernées par l'attentat terroriste raciste à Trappes auquel elles peuvent réagir notamment en termes d'insécurité ressentie et de peur accrue.",
+      "reason": "Les retraités en couple habitant en commune dense sont un groupe socialement stable, souvent sensible aux questions de sécurité et d'ordre public en milieu urbain comme Trappes.",
       "all": [
-        "age.50_64",
-        "occupation.employee"
+        "cluster.retired_couple",
+        "geo.dense"
       ],
-      "any": [
-        "geo.intermediate"
-      ],
+      "any": [],
       "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "perception.effets_sociaux_attentat_Trappes"
+      "membershipGaps": [
+        "commune_name"
       ],
-      "count": 171,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
+      "measurementNeeds": [
+        "Perception du risque sécuritaire et du racisme",
+        "Sentiment de vulnérabilité",
+        "Confiance dans la réponse des autorités"
+      ],
+      "count": 15215,
+      "distinctCommunes": 72,
+      "status": "incomplete_membership",
+      "issue": "Attributs absents des tags : commune_name",
       "repairs": [],
       "counterfactual": {
         "intervention": "Macron : \"Un attentat terroriste raciste\" à Trappes - 23/10",
@@ -135,261 +153,6 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Habitants de Trappes en communes intermédiaires",
-      "matchedCount": 3561,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 3,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ce genre d'attentat raciste, ça me touche un peu, mais je me rends surtout compte que la situation est compliquée et que ça continue comme ça sans que grand-chose change.",
-        "Un attentat raciste ? C'est triste. Mais cette histoire de suspect présenté sans passage à l'infirmerie, ça me fait me demander si on respecte vraiment les droits, ça pourrait changer ma confiance dans la justice.",
-        "Ces événements me font de la peine, mais à mon âge je ne vais pas changer mon vote pour ça, je reste fidèle à mes convictions."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.00007957884560280855,
-          "lo": -0.0010858274059066958,
-          "hi": 0.0014207938225795382,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0011589011768231362,
-          "lo": -0.00004784118803671496,
-          "hi": 0.0025084256103527674,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0010219020684830021,
-          "lo": -0.0008124948920300324,
-          "hi": 0.002939200680272113,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0025025530403510335,
-          "lo": -0.0038498196862069476,
-          "hi": -0.0011198622805765664,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.003100874146485464,
-          "lo": 0.00021262269476555093,
-          "hi": 0.005594063846800341,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0028587031970433783,
-          "lo": -0.005922328915482572,
-          "hi": 0.00006316511753215691,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes hommes salariés modestes en milieu urbain dense",
-      "matchedCount": 6783,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 2,
-          "away": 2,
-          "noClearChange": 44
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ça me touche pas trop personnellement, on entend souvent des histoires comme ça dans les infos. Je reste surtout concentré sur ma vie et mon travail à Béziers.",
-        "C'est une nouvelle triste, j'espère que la justice sera juste et rapide, surtout que ce genre d'évènements montre que le racisme et la violence restent des problèmes.",
-        "Encore un fait divers qui montre que la violence raciste existe, c'est un peu inquiétant mais ça ne change pas vraiment mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.004170085152930802,
-          "lo": 0.0021610516326543115,
-          "hi": 0.00588765083250879,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0017886511042921633,
-          "lo": 0.0005237157609531713,
-          "hi": 0.002991731719746796,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0027666684907752676,
-          "lo": -0.004122848486088432,
-          "hi": -0.001481445999433704,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.002199265246778282,
-          "lo": -0.0035542151894210876,
-          "hi": -0.0010147783064449723,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.004885563522586517,
-          "lo": -0.0077229009149907225,
-          "hi": -0.002138082213293778,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0038927610029171195,
-          "lo": 0.0016353224300008965,
-          "hi": 0.006161435628770207,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Adultes de 50 à 64 ans vivant en communes intermédiaires employé ou ouvrier",
-      "matchedCount": 171,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 6,
-          "away": 1,
-          "noClearChange": 41
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve cette histoire troublante, mais ça ne change rien à ce que je pense pour la présidentielle.",
-        "Cette affaire me fait un peu peur et m'agace, je pense que la justice doit être bien faite, mais ça ne va pas tellement changer mon vote.",
-        "Je suis un peu inquiète de ces événements, mais ça ne modifie pas mon intention de vote pour l'instant."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00021515318085343874,
-          "lo": -0.0012939538309276637,
-          "hi": 0.0008161833187997889,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.001268976972875367,
-          "lo": 0.0002667162363557034,
-          "hi": 0.002308950879212589,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.001769212035618066,
-          "lo": -0.002932341869987301,
-          "hi": -0.0004538042746068067,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0013311284381544693,
-          "lo": -0.002119742312158956,
-          "hi": -0.0004960739470862558,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.005269874577169684,
-          "lo": 0.001970904182598616,
-          "hi": 0.008986221099127433,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.003223357895419073,
-          "lo": -0.006275496831933398,
-          "hi": -0.0007026533797367113,
-          "stable": false
-        }
-      }
-    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -410,8 +173,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -419,153 +182,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 8,
+          "toward": 17,
           "away": 8,
-          "noClearChange": 80
+          "noClearChange": 71
         },
         "abstention": {
           "toward": 7,
-          "away": 0,
-          "noClearChange": 89
+          "away": 2,
+          "noClearChange": 87
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis choqué par cet attentat, on n’a pas besoin de ça chez nous, ça renforce ma méfiance envers la montée des tensions.",
-        "Un attentat raciste, c’est très préoccupant et ça me fait peur, mais je ne pense pas que ça change vraiment mon vote habituel.",
-        "Cette histoire d’attentat raciste me préoccupe, ça montre que la haine est toujours là, ça pourrait renforcer mes convictions de gauche."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0011092380013566954,
-          "lo": 0.00009811367307654495,
-          "hi": 0.002154616011236185,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00031800110021200026,
-          "lo": -0.001260746282575388,
-          "hi": 0.0006557563981253911,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0021459671743454807,
-          "lo": -0.0034052871347247118,
-          "hi": -0.0010240588073017764,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.002967883499560144,
-          "lo": -0.003934949339026796,
-          "hi": -0.0021166109295289105,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0009125788615778953,
-          "lo": -0.0015296270989028596,
-          "hi": 0.0033497923196728983,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.003410034911183031,
-          "lo": 0.0014456548944632277,
-          "hi": 0.005482698218627617,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes familles en couple avec enfants dans des communes denses",
-      "matchedCount": 25109,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 2,
-          "away": 1,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je suis très préoccupée par ce genre d'attentat, surtout s'il est motivé par le racisme, c'est inacceptable dans notre société. Cela devrait renforcer ma vigilance et mon soutien aux politiques contre le racisme et l'extrême droite.",
-        "Ce genre d'attentat, c'est terrible, mais honnêtement ça ne change pas ce que je pense de la politique, je cherche surtout des solutions pour le boulot et la vie de famille.",
-        "Ce qui s'est passé à Trappes, j'en entends parler, mais à Béziers, c'est compliqué, je suis surtout concentrée sur la sécurité ici. Ça ne va pas me faire changer d'avis sur qui voter."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0012304188974583275,
-          "lo": -0.0004552664410600099,
-          "hi": 0.003191723783175071,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0009525917961968317,
-          "lo": -0.000271507042340378,
-          "hi": 0.002276386276386276,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0030897179093418345,
-          "lo": -0.0045729067258639825,
-          "hi": -0.0014993210897783482,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0018765349359699942,
-          "lo": -0.003063834668001336,
-          "hi": -0.0005437973085007555,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0012275026842207132,
-          "lo": -0.0013511478682535678,
-          "hi": 0.0035049743174743234,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0015557394674359567,
-          "lo": -0.0012651756378148013,
-          "hi": 0.003751674418341089,
-          "stable": false
-        }
-      }
+        "Ce genre d'attentat, c'est inquiétant, surtout quand c'est qualifié de terroriste raciste. Ça souligne les tensions qu'on n'a pas envie de voir dans notre pays.",
+        "J'entends parler de cet attentat, c'est triste. Qualifier ça de terroriste raciste, ça me fait peur, j'espère que ça ne va pas monter les gens les uns contre les autres.",
+        "C'est inquiétant que Macron parle de terrorisme raciste. J'ai peur que ça alimente la peur et les tensions, ce qui ne sert personne."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:27.622Z",
-    "contentHash": "aad42a487fc880e3519bae6d837fc8b070c6f416b0558d22b7495a4621147b39"
+    "status": "automatic",
+    "contentHash": "a5214afb5df9ff52cf9c84879e38adb4d15ca83271835c7523ae6a446c023a6d"
   }
 }

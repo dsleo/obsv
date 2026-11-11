@@ -4,35 +4,46 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "b28a219a30cfb3b3",
-  "computedAt": "2026-11-09T20:37:38.142Z",
+  "inputHash": "80fc6c8ead27a33b",
+  "eventInputHash": "985621a68691a40fc6dfa4625272e8d9bfb83cf293cfec3a9078713225358c10",
+  "computedAt": "2026-11-11T13:05:18.819Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Les rédactions de 39 médias, au lieu de condamner, publient une tribune collective appelant au dialogue après les critiques de Marine Le Pen visant Mediapart, soulignant l'importance de l'indépendance et de la diversité des médias.",
-    "whatChanges": "Au lieu d'une condamnation frontale qui renforce le clivage entre médias et Le Pen, ce ton appelant au dialogue pourrait atténuer la polarisation et modérer les récepteurs moins hostiles à la candidate."
+    "description": "Après les attaques de Marine Le Pen contre la presse, une vingtaine seulement de rédactions, au lieu de près de quarante, publient une tribune commune pour condamner ces propos.",
+    "whatChanges": "Le nombre de rédactions signataires est nettement moins élevé, ce qui réduit l'ampleur de la mobilisation contre Marine Le Pen et peut affecter la perception de son agressivité envers la presse par une partie de l'électorat."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres urbains exprimant une opposition aux attaques contre la presse",
-      "mechanism": "Les cadres et professions intellectuelles supérieures en communes denses sont une population engagée dans la vie démocratique et fortement représentée dans les médias ; ils sont directement concernés par les attaques de Marine Le Pen contre Mediapart, car elles touchent la crédibilité et la fonction de la presse dans la société.",
-      "reason": "Ce segment combine un statut socioprofessionnel élevé avec une localisation dans des milieux urbains, deux dimensions clés pour comprendre leur position face à ces attaques.",
+      "name": "Jeunes diplômés urbains sensibles à la défense de la presse",
+      "mechanism": "Cet événement concerne les jeunes diplômés vivant en commune dense qui sont à la fois consommateurs et défenseurs habituels d'une presse indépendante, particulièrement interpellés par les attaques de Marine Le Pen contre la presse exprimées dans le texte « Costard en Kevlar » appuyé par près de quarante rédactions.",
+      "reason": "Jeunes diplômés des villes sont un public expressif et attentif aux enjeux médiatiques urbains ; ils vivent en commune dense et ont un niveau d'éducation élevé, ce qui correspond à une exposition forte à la thématique de la défense de la presse.",
       "all": [
-        "occupation.executive_professional",
+        "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [],
-      "none": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "none": [
+        "occupation.retired"
+      ],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 10635,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Attitude envers la liberté de la presse",
+        "Perception des attaques politiques contre les médias"
+      ],
+      "count": 4295,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "« Costard en Kevlar » : près de quarante rédactions condamnent les attaques de Marine Le Pen contre la presse",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -41,19 +52,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes urbains avec familles",
-      "mechanism": "Les salariés modestes, employés et ouvriers vivant en couple avec enfants dans des communes denses, sont concernés par les attaques contre la presse car elles peuvent influencer le traitement médiatique des questions sociales qui les affectent directement.",
-      "reason": "Ce segment rassemble des actifs populaires ayant un lien fort avec le quotidien social et familial, potentiellement sensibles aux enjeux de défense de la presse comme garant d’une information diverse et critique.",
+      "name": "Retraités urbains en couple préoccupés par les attaques sur la presse",
+      "mechanism": "Les retraités en couple vivant en commune dense constituent un public plutôt âgé, mais socialement organisés en couple, susceptibles d'être informés et concernés par les débats sur la liberté de la presse, notamment face à des attaques médiatiques ciblées comme celle de Marine Le Pen dans « Costard en Kevlar ».",
+      "reason": "Le groupe des couples retraités en milieu urbain est un segment stable et informé, potentiellement sensible aux appels à la défense des institutions comme la presse écrite.",
       "all": [
-        "cluster.modest_wage_earner",
-        "household.couple_with_children",
+        "occupation.retired",
+        "household.couple_no_children",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 14761,
+      "measurementNeeds": [
+        "Sensibilité aux enjeux politiques et médiatiques",
+        "Connaissance des attaques contre la presse"
+      ],
+      "count": 15215,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -65,19 +79,27 @@
     },
     {
       "id": "segment_3",
-      "name": "Retraités peu diplômés en milieu rural",
-      "mechanism": "Les retraités peu diplômés vivant en milieu rural sont une catégorie sociale souvent exposée à des sources d'information limitées et peuvent être directement visés par les discours et attaques de Marine Le Pen envers la presse indépendante comme Mediapart, ce qui peut affecter leur confiance dans les médias.",
-      "reason": "Cette population, largement présente dans les zones rurales, est caractérisée par un niveau d’éducation peu élevé et une dépendance possible à certaines formes d’information, ce qui la rend particulièrement concernée par les critiques répétées contre la presse.",
+      "name": "Salariés modestes d’âges intermédiaires en commune dense",
+      "mechanism": "Ce segment comprend les salariés modestes d’âges intermédiaires vivant en commune dense, électorat potentiellement sensible aux attaques de Marine Le Pen contre la presse, car ces critiques touchent souvent les médias quotidiens qui les informent et les concernent directement.",
+      "reason": "Segment plus resserré et compatible en taille par croisement de cluster.modest_wage_earner avec geo.dense et age intermédiaire",
       "all": [
-        "cluster.retiree_no_diploma",
-        "geo.rural"
+        "cluster.modest_wage_earner",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 351,
-      "distinctCommunes": 67,
+      "measurementNeeds": [
+        "Attitude envers la presse",
+        "Perception des attaques de Marine Le Pen",
+        "Confiance dans les médias"
+      ],
+      "count": 28414,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -96,10 +118,57 @@
     }
   ],
   "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains sensibles à la défense de la presse",
+      "matchedCount": 4295,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve positif que la presse se mobilise pour défendre son indépendance face aux attaques de Marine Le Pen, cela montre l'importance d'une information libre.",
+        "Faire condamner les attaques de Marine Le Pen par la presse ? Pour moi qui habite à Béziers et soutient plutôt le RN, ça ne change rien à mon soutien.",
+        "Je soutiens la presse qui se défend contre des attaques injustes, ça me rassure de voir qu'elle reste vigilante, c'est important même pour le social."
+      ]
+    },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Retraités peu diplômés en milieu rural",
-      "matchedCount": 351,
+      "segmentName": "Salariés modestes d’âges intermédiaires en commune dense",
+      "matchedCount": 28414,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -126,27 +195,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 3,
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 4,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que ces attaques contre la presse, ce n'est pas très correct. Je préfère que les médias soient libres et pas pris dans des conflits politiques.",
-        "Ça me dérange quand on attaque la presse comme ça. Ils devraient plutôt discuter pour mieux comprendre, mais c’est important que les médias restent indépendants.",
-        "Je trouve dommage que ça se crispe entre la presse et la politique, mieux vaudrait discuter que s’attaquer comme ça."
+        "Je trouve ça un peu exagéré, ces histoires de costard en kevlar, ça ne change pas grand-chose à ma vie ni à ma manière de voir la politique.",
+        "Je suis plutôt sensible à la défense de la presse, cela me conforte dans mon idée que ces attaques sont déplacées et qu'il faut défendre notre démocratie.",
+        "Ces débats sur la presse ne m'affectent pas trop. Moi, ce qui compte, c'est ma vie locale et le boulot, pas trop les polémiques nationales."
       ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes urbains avec familles",
-      "matchedCount": 14761,
+      "segmentName": "Retraités urbains en couple préoccupés par les attaques sur la presse",
+      "matchedCount": 15215,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -173,8 +242,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -185,9 +254,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Honnêtement, je me fiche un peu de ces histoires entre la presse et Le Pen, ça ne change rien à ma vie au travail ni à ma famille, donc ça ne me fera pas bouger côté vote.",
-        "Les attaques de Le Pen contre la presse, ça m'inquiète un peu, j'accorde de l'importance à une presse indépendante, mais au fond, ça ne modifie pas vraiment mon vote, qui reste centré.",
-        "Je lis un peu la presse sérieuse, donc les critiques contre Mediapart me gênent ; ça me fait pencher légèrement à gauche, mais je garde une bonne part pour le centre aussi."
+        "Je trouve qu'attaquer la presse comme ça, ce n'est pas juste, surtout quand tant de rédactions défendent leur travail honnête. Ça me rassure de voir cette solidarité.",
+        "Honnêtement, ces attaques contre la presse, ça ne change pas grand-chose pour moi. Je préfère rester à l'écart de ces débats, ça ne m'influence pas vraiment.",
+        "Je veux bien croire que la presse peut se défendre quand on l'attaque ainsi, mais ce genre d'actions ne va pas influencer mon vote. Je suis plus sur l'efficacité et la compétence."
       ]
     },
     "global_1": {
@@ -220,76 +289,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 7,
-          "noClearChange": 89
+          "away": 8,
+          "noClearChange": 88
         },
         "abstention": {
-          "toward": 3,
+          "toward": 1,
           "away": 1,
-          "noClearChange": 92
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je n'ai pas vraiment le temps de m'occuper de ces querelles entre médias et politiques, ça m'intéresse peu. Ça ne change rien pour moi.",
-        "Je trouve ça bien que les médias condamnent ces attaques, la presse est importante pour nous informer correctement.",
-        "Je soutiens la liberté de la presse, ces attaques me dérangent. Ça me conforte dans mon idée de voter contre le RN."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Cadres urbains exprimant une opposition aux attaques contre la presse",
-      "matchedCount": 10635,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 6,
-          "noClearChange": 42
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve inquiétant que Marine Le Pen attaquent ainsi la presse, ça ressemble à une tentative d'intimidation contre la liberté d'expression.",
-        "Je trouve normal que les médias condamnent ces attaques, la presse doit rester indépendante face aux pressions politiques.",
-        "Ces attaques contre la presse m'inquiètent, elles renforcent mon scepticisme envers Marine Le Pen et son discours."
+        "Je ne suis pas trop ce qui se passe à la télé ou dans les journaux, ces conflits entre politiciens et presse me laissent indifférent, ça ne changera rien à ce que je pense.",
+        "Moi, ces attaques de Marine Le Pen contre la presse me dérangent un peu, surtout quand presque quarante rédactions s'unissent pour les critiquer. Ça me fait penser qu'on doit être prudent avec ce genre de discours.",
+        "Je trouve rassurant que la presse réagisse à ces attaques, ça montre qu'ils défendent leur liberté. Je pense que ça me conforte un peu dans mon rejet des discours d'extrême droite."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:55.938Z",
-    "contentHash": "2532a9539737f13305c6fd01deea074c523a7f0ef30d6563207ab1d530209810"
+    "status": "automatic",
+    "contentHash": "8ecc78c4b3d559c1473fc9e76fa3984bcb49af2075ce6a98d373ef5edf0b9882"
   }
 }

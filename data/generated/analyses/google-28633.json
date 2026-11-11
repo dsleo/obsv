@@ -4,27 +4,27 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "1e2eab590b29cac2",
-  "computedAt": "2026-11-10T22:01:39.807Z",
+  "inputHash": "27cb4f47cf163ab2",
+  "eventInputHash": "739e901a172e57a09b5d77f6e117dbe66153acc1044ab7a5723f279954a3ff06",
+  "computedAt": "2026-11-11T12:53:07.008Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le procès en appel de l’ancien président du SDEY, Jean-Noël Loury, pour « favoritisme » et « prise illégale d’intérêt » est avancé au 15 mai 2027 à Lyon.",
-    "whatChanges": "Le calendrier du procès est avancé, ce qui pourrait entraîner un impact plus immédiat sur la perception des électeurs locaux et la campagne présidentielle dans la région."
+    "description": "Doubs. Affaire Péchier : le procès en appel est avancé au 15 juin 2027 à Lyon, permettant un jugement plus rapide dans ce dossier.",
+    "whatChanges": "Le calendrier du procès est modifié, ce qui accélère la décision judiciaire et peut influencer l'opinion des électeurs avant l'été."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Résidents hommes de 35 à 64 ans des communes de Lyon et environ dense",
-      "mechanism": "Ce segment regroupe les habitants masculins âgés de 35 à 64 ans vivant dans la zone urbaine dense de Lyon, où le procès en appel du président du SDEY aura lieu, et qui pourraient être directement sensible à cet événement judiciaire local.",
-      "reason": "Ces personnes vivent dans la municipalité et l'environnement du procès, ce qui les rend plausiblement concernées par son impact local et médiatique.",
+      "name": "Cadres et professions intellectuelles supérieures résidant à Lyon et âgés de 35 à 64 ans",
+      "mechanism": "Ce public actif, à fort niveau d’éducation et socio-professionnel élevé, habite Lyon et est susceptible d’être concerné par les retombées médiatiques et politiques du procès en appel qui se tient à Lyon.",
+      "reason": "Segment ciblé par niveau socio-professionnel et âge pour réduire la taille",
       "all": [
-        "sex.male",
-        "geo.dense",
-        "municipal_system.paris_lyon_marseille"
+        "municipal_system.paris_lyon_marseille",
+        "occupation.executive_professional"
       ],
       "any": [
         "age.35_49",
@@ -33,14 +33,14 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.local_news_consumption"
+        "Attention portée au procès",
+        "Opinion sur le système judiciaire",
+        "Impact perçu du procès"
       ],
-      "count": 22179,
+      "count": 6727,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Doubs. Affaire Péchier : le procès en appel aura lieu le 7 septembre 2027 à Lyon",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -49,23 +49,49 @@
     },
     {
       "id": "segment_2",
-      "name": "Cadres et professionnels intellectuels supérieurs urbains féminins de 35 à 49 ans à Lyon",
-      "mechanism": "Ce segment regroupe les femmes cadres et professions intellectuelles supérieures âgées de 35 à 49 ans vivant dans la commune dense de Lyon, intéressées par les questions institutionnelles et judiciaires liées à la gestion locale.",
-      "reason": "Leur profil socio-professionnel et leur localisation dans la ville où se tient le procès les rendent directement concernées par l’affaire Péchier et son impact institutionnel.",
+      "name": "Jeunes diplômés urbains entre 25 et 34 ans vivant dans la métropole lyonnaise",
+      "mechanism": "Jeunes urbains diplômés vivant dans la métropole de Lyon, concernées par les enjeux sociétaux et judiciaires liés à l’affaire Péchier dont le procès en appel a lieu à Lyon.",
+      "reason": "Intersection âge, cluster et localisation pour segment précis",
       "all": [
-        "sex.female",
-        "age.35_49",
-        "cluster.urban_executive",
-        "municipal_system.paris_lyon_marseille"
+        "cluster.young_urban_graduate",
+        "municipal_system.paris_lyon_marseille",
+        "age.25_34"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "interest judiciaire",
-        "exposure.local_media"
+        "Niveau d’information sur le procès",
+        "Opinion sur la justice locale"
       ],
-      "count": 1854,
+      "count": 9469,
+      "distinctCommunes": 48,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Doubs. Affaire Péchier : le procès en appel aura lieu le 7 septembre 2027 à Lyon",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Employés et ouvriers urbains de 35 à 49 ans à Lyon",
+      "mechanism": "Ce segment regroupe les employés et ouvriers âgés de 35 à 49 ans vivant dans la municipalité de Lyon, concernés par le procès en appel qui se tient à Lyon le 7 septembre 2027, car ils constituent une population active locale sensible à cet événement judiciaire.",
+      "reason": "Remplace un segment trop large en resserrant sur 1 tranche d'âge et 1 catégorie socio-professionnelle dans Lyon.",
+      "all": [
+        "municipal_system.paris_lyon_marseille",
+        "occupation.employee",
+        "age.35_49"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Connaissance du procès",
+        "Opinion sur le procès Péchier"
+      ],
+      "count": 6166,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -87,8 +113,8 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Cadres et professionnels intellectuels supérieurs urbains féminins de 35 à 49 ans à Lyon",
-      "matchedCount": 1854,
+      "segmentName": "Jeunes diplômés urbains entre 25 et 34 ans vivant dans la métropole lyonnaise",
+      "matchedCount": 9469,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -127,53 +153,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas concernée directement, c’est une affaire locale qui ne touche pas vraiment mon quotidien à Paris.",
-        "Ce genre d’affaire ne m’intéresse pas vraiment, à Marseille je suis plus préoccupée par les questions sociales et économiques.",
-        "Cette affaire est trop éloignée de ma vie à Paris, ça ne change rien à mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00005849179965041149,
-          "lo": -0.0004689507723171337,
-          "hi": 0.0003230662191918045,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00005446486984313619,
-          "lo": -0.00046392376093195437,
-          "hi": 0.0003112627900144502,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.00011316304867650644,
-          "lo": -0.000048673673673673215,
-          "hi": 0.00036376873953770954,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.000045808027186621273,
-          "lo": -0.0003829546678152256,
-          "hi": 0.0002459899779539058,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0002726960642148591,
-          "lo": -0.00085764931598265,
-          "hi": 0.00022075214827385845,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0003182977122185218,
-          "lo": -0.00014161397802883897,
-          "hi": 0.0008519772250647015,
-          "stable": false
-        }
-      }
+        "Ce procès en appel en 2027 dans le Doubs, ça ne me touche pas directement. Je n'ai pas spécialement d'avis sur ce sujet, ça dépasse mon quotidien.",
+        "Un procès dans le Doubs, ça me semble lointain et sans impact sur ma vie à Marseille. Je n'y prête pas vraiment attention.",
+        "Le procès avancé au 15 juin 2027 ? Cela montre une volonté d'efficacité. J'apprécie qu'on ne traîne pas sur des dossiers importants, même si ce n'est pas mon affaire directe."
+      ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Résidents hommes de 35 à 64 ans des communes de Lyon et environ dense",
-      "matchedCount": 22179,
+      "segmentName": "Cadres et professions intellectuelles supérieures résidant à Lyon et âgés de 35 à 64 ans",
+      "matchedCount": 6727,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -212,48 +200,57 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ce procès en appel éloigné ne change rien à ma façon de voir les choses, ce genre d'affaires judiciaires ne m'impacte pas directement et ne me fera pas changer d'avis.",
-        "Je ne connais pas vraiment ce procès et ça n'impacte pas mon quotidien à Paris, donc ça ne change rien pour moi.",
-        "Un procès de favoritisme, c’est toujours inquiétant mais ça reste lointain pour moi à Marseille, ça ne va pas me mobiliser vraiment."
-      ],
-      "altEffect": {
+        "Je n'ai pas de lien direct avec cette affaire Péchier à Lyon, ça ne change rien à mes intentions de vote, c'est juste une information judiciaire.",
+        "Cette affaire à Lyon ne me touche pas, même avec un procès avancé ou pas, ça n'influencera pas mon vote présidentiel.",
+        "C'est bien que le procès de l'affaire Péchier ait une date fixée. Que le procès soit avancé ne change pas grand-chose pour moi, je suis plus centré sur les enjeux locaux et nationaux."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés et ouvriers urbains de 35 à 49 ans à Lyon",
+      "matchedCount": 6166,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0,
-          "lo": 0,
-          "hi": 0,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": 0,
-          "lo": 0,
-          "hi": 0,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0,
-          "lo": 0,
-          "hi": 0,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0,
-          "lo": 0,
-          "hi": 0,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0,
-          "lo": 0,
-          "hi": 0,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": 0,
-          "lo": 0,
-          "hi": 0,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, cette histoire de procès en appel ça ne change pas grand-chose à mon quotidien, c'est loin de ce qui me préoccupe vraiment.",
+        "Un procès qui s’étale jusqu’en septembre, ça me semble un peu long, j'aimerais bien que justice soit rendue plus vite. Peut-être que ça pourrait me donner un peu plus envie de suivre la politique.",
+        "Ce procès qui se tient si tard ne change rien pour moi, je suis plus concentrée sur mon travail et ma famille."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -284,9 +281,9 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "abstention": {
           "toward": 0,
@@ -297,55 +294,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très concernée par ces histoires de procès qui se passent loin de chez moi et qui semblent dater de quelques années, donc ça ne changera rien à ma façon de voir les choses.",
-        "Ce procès me paraît assez lointain et je ne vois pas comment ça pourrait influencer mon choix politique, donc ça ne change rien à ce que je pense ou vais faire aux prochaines élections.",
-        "Une affaire d'ancien président pour des faits de favoritisme ou prise illégale d’intérêt ne me touche pas dans mon quotidien, même si ce n’est pas très rassurant pour la justice."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00024281891672111233,
-          "lo": -0.0004840497308685931,
-          "hi": -0.00003530932379485291,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00009629983026939093,
-          "lo": -0.0003134488655321987,
-          "hi": 0.00006971473719228243,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0001640656374937812,
-          "lo": -0.00015762637637637645,
-          "hi": 0.00041597847847847825,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.00021989460768153396,
-          "lo": -0.0005014991288693887,
-          "hi": 0.000010416666666666712,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0006129069438700173,
-          "lo": 0.000008740277203350688,
-          "hi": 0.0021623081414748075,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.00021795922669176163,
-          "lo": -0.0005608158682634725,
-          "hi": 0.0000769502661343979,
-          "stable": false
-        }
-      }
+        "Franchement, ce procès aussi loin dans le temps ne me touche pas vraiment, c'est trop loin de chez moi et de mon quotidien. Je ne vois pas que ça puisse changer grand-chose pour moi.",
+        "Je reconnais que l'avance du procès pourrait être un signe que la justice veut vraiment faire vite sur ce dossier. Ça m'intéresse un peu plus, mais ça ne change pas mon vote, je suis plus préoccupée par ce qui touche ma vie de famille et mon travail.",
+        "Cette histoire de procès ne m'intéresse pas vraiment, c'est loin de mes préoccupations quotidiennes ici à Houilles. Je préfère me concentrer sur l'amélioration de la vie locale et le travail."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:48.992Z",
-    "contentHash": "368d51fd8dbf8267dcd80a49f0d2de590eca5ce0eeb8004d7ed85901db22e045"
+    "status": "automatic",
+    "contentHash": "572a95084072f192fa545539ca01462e232055e425ebbac07b56ca03c63a050f"
   }
 }

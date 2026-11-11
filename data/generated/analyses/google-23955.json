@@ -4,34 +4,44 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "81566a7e75d19d24",
-  "computedAt": "2026-11-10T22:05:38.666Z",
+  "inputHash": "b5e9e9c88de04518",
+  "eventInputHash": "c9992103beef064c448e26a02a51a9081e6695404846c7928a2bde8f8a129aab",
+  "computedAt": "2026-11-11T13:01:03.772Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "REPORTAGE. Dans la mobilisation du 17 octobre à Paris, les manifestants réussissent à faire entendre une multitude de \"ras-le-bol\" de façon pacifique, sans que des violences ne soient signalées à proximité du cortège.",
-    "whatChanges": "L'absence de violences modère la perception sécuritaire de l'événement et pourrait renforcer la légitimité du message des manifestants auprès du grand public."
+    "description": "Lors de la manifestation du 17 octobre, la mobilisation a rassemblé un nombre similaire de manifestants mais l’intervention des forces de l’ordre a été marquée par des mesures de dialogue et de désescalade, limitant les violences et les affrontements avec les manifestants.",
+    "whatChanges": "La même mobilisation populaire est observée mais l'absence relative de violences crée un climat plus favorable à l'écoute des revendications, influençant moins négativement l'opinion publique envers les manifestants."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes sans activité professionnelle en milieu urbain dense",
-      "mechanism": "Ce segment correspond aux jeunes de 18 à 24 ans sans activité professionnelle (étudiants, chômeurs, inactifs) vivant dans des communes denses, directement concernés par la mobilisation du 17 octobre qui cherche à faire entendre un ras-le-bol social, avec une sensibilité particulière aux violences observées en marge du cortège.",
-      "reason": "Intersection ciblée du groupe jeune sans activité et de la densité urbaine, formant un segment potentiellement fortement impliqué dans le mouvement social de l’événement.",
+      "name": "Jeunes actifs modestes urbains mobilisés",
+      "mechanism": "Ce segment rassemble les jeunes de 18 à 24 ans en emploi ou sans activité, appartenant aux salariés modestes, souvent présents dans les manifestations de contestation sociale à Paris, Marseille ou Lyon ; ils sont concernés par les mobilisations du 17 octobre contre les réformes sociales et les violences constatées.",
+      "reason": "Les jeunes actifs ou sans emploi, salariés modestes en milieu urbain dense, sont une base importante des manifestants mobilisés, souvent au cœur des tensions observées dans les grandes métropoles",
       "all": [
         "age.18_24",
-        "cluster.young_without_activity",
-        "geo.dense"
+        "cluster.modest_wage_earner",
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille"
       ],
-      "any": [],
+      "any": [
+        "occupation.employee",
+        "occupation.worker",
+        "occupation.other_inactive"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8453,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Perception de la mobilisation",
+        "Opinion sur les violences lors de la manifestation",
+        "Motivations à participer"
+      ],
+      "count": 4238,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -42,9 +52,9 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles urbaines engagées dans la contestation",
-      "mechanism": "Ce segment désigne les adultes de 25 à 49 ans vivant en couple avec enfants dans des communes denses qui participent ou soutiennent la mobilisation du 17 octobre à Paris, motivée par un ras-le-bol social malgré la violence en marge des manifestations.",
-      "reason": "Intersection de l’âge, du type de foyer familial et de la densité urbaine, ce segment cible un noyau probable d’électeurs actifs et concernés par les revendications sociales exprimées ce jour-là.",
+      "name": "Familles avec enfants en milieu urbain dense",
+      "mechanism": "Les couples avec enfants âgés de 25 à 49 ans habitant en commune dense sont directement concernés par la manifestation et ses conséquences locales, car ils subissent à la fois la tension sociale liée aux revendications et les nuisances urbaines des journées de mobilisation et violences.",
+      "reason": "Les familles urbaines avec enfants sont une catégorie importante impactée par l'événement, vivant les effets au quotidien dans l'espace public dense des grandes villes",
       "all": [
         "household.couple_with_children",
         "geo.dense"
@@ -55,7 +65,11 @@
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
+      "measurementNeeds": [
+        "Impact de la journée de mobilisation sur la vie familiale",
+        "Sentiment de sécurité",
+        "Soutien ou rejet des manifestations"
+      ],
       "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
@@ -70,21 +84,55 @@
     },
     {
       "id": "segment_3",
-      "name": "Cadres urbains sensibilisés à la mobilisation sociale",
-      "mechanism": "Ce segment rassemble des cadres et professions intellectuelles supérieures vivant en milieu urbain dense, attentifs à la journée du 17 octobre à Paris qui exprime un ras-le-bol social et réagit aux violences périphériques à la manifestation.",
-      "reason": "Intersection d’une catégorie socio-professionnelle élevée et de la densité urbaine, il couvre une population pouvant être concernée aussi par l’enjeu social et les choix politiques révélés par cette mobilisation.",
+      "name": "Salariés seniors de 50 ans et plus en zones intermédiaires",
+      "mechanism": "Les salariés âgés de 50 à 64 ans travaillant dans des communes à densité intermédiaire sont concernés par la manifestation du 17 octobre, car ce groupe est particulièrement sensible aux débats sur la réforme des retraites souvent à l'origine des mobilisations, et aux tensions qui en découlent.",
+      "reason": "Ce groupe combine sensibilité à la réforme des retraites et exposition géographique aux événements sociaux, souvent dans des zones moins centrales mais mobilisées",
       "all": [
-        "occupation.executive_professional",
-        "geo.dense"
+        "age.50_64",
+        "geo.intermediate"
       ],
       "any": [
-        "cluster.urban_executive"
+        "occupation.employee",
+        "occupation.worker"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 10635,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Attitude face à la réforme des retraites",
+        "Perception des manifestations et violences",
+        "Engagement dans la mobilisation"
+      ],
+      "count": 315,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Manifestation du 17 octobre : bilan d’une journée de mobilisation et de violence",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Retraités ruraux affectés par les manifestations urbaines",
+      "mechanism": "Les retraités vivant dans des communes rurales sont moins directement présents dans les manifestations urbaines du 17 octobre mais concernés par les conséquences économiques et sociales de ces mobilisations et violences, notamment par l'impact médiatique et les débats publics sur les réformes sociales.",
+      "reason": "Ce segment, bien que éloigné géographiquement, est concerné par la portée nationale de l'événement et ses répercussions sociales",
+      "all": [
+        "occupation.retired",
+        "geo.rural"
+      ],
+      "any": [
+        "cluster.rural_retiree"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Représentation des manifestations dans les médias",
+        "Opinion sur les réformes sociales et manifestations",
+        "Impact économique perçu"
+      ],
+      "count": 784,
+      "distinctCommunes": 91,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -103,9 +151,56 @@
     }
   ],
   "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés seniors de 50 ans et plus en zones intermédiaires",
+      "matchedCount": 315,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 2,
+          "noClearChange": 42
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis déçu de voir que ces manifestations dégénèrent en violence, ça ne fait qu'embrouiller les choses. J'aimerais plus de dialogue et moins de tensions.",
+        "Ce genre d'événements violents m'inquiète, je préférerais vraiment une approche plus apaisée dans les manifestations.",
+        "Les violences ça me rassure pas, ça me donne plutôt envie de me tenir à l'écart de tout ça et peut-être même de ne pas aller voter."
+      ]
+    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes familles urbaines engagées dans la contestation",
+      "segmentName": "Familles avec enfants en milieu urbain dense",
       "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -113,8 +208,8 @@
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 5,
+          "noClearChange": 43
         },
         "left": {
           "toward": 0,
@@ -132,84 +227,93 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "toward": 5,
+          "away": 4,
+          "noClearChange": 39
         },
         "abstention": {
           "toward": 12,
-          "away": 0,
-          "noClearChange": 36
+          "away": 1,
+          "noClearChange": 35
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que les manifestants expriment leur ras-le-bol, mais la violence en marge me déçoit, ça ne m'encourage pas à soutenir davantage leurs causes.",
-        "Les violences lors de la manif me renforcent dans l'idée que ces mouvements sont désordonnés et je me tiens à l'écart, peut-être un peu plus méfiant envers la gauche radicale.",
-        "J'apprécie quand on peut faire entendre nos revendications sans violence, ça donne plus de poids aux vrais messages."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.011480174830221792,
-          "lo": -0.014454021316765832,
-          "hi": -0.008724552249401654,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.01235189291776666,
-          "lo": -0.013799073052446797,
-          "hi": -0.01069658988746363,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.004281986967307762,
-          "lo": -0.006923611546432343,
-          "hi": -0.0016237378090585997,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.001173516149856733,
-          "lo": -0.0006044819751590212,
-          "hi": 0.003508017148198315,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.010296931758755266,
-          "lo": 0.0073900906656930694,
-          "hi": 0.012885521885521889,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0166436068066842,
-          "lo": 0.013092558731213512,
-          "hi": 0.020470286815266896,
-          "stable": true
-        }
-      }
+        "Ces violences dans les manifestations me stressent, ça donne une image désagréable et ça me pousse à préférer la stabilité et l'ordre pour protéger ma famille.",
+        "Je veux juste que la ville soit propre et tranquille. Ces violences ne font qu'empirer les choses, je me méfie des manifs et des politiques qui ne font rien de concret.",
+        "Ces scènes de violence me fatiguent, je trouve que ça fait plus de dégâts qu'autre chose et que ça n'aide pas à améliorer la vie des gens comme moi."
+      ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Cadres urbains sensibilisés à la mobilisation sociale",
-      "matchedCount": 10635,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Retraités ruraux affectés par les manifestations urbaines",
+      "matchedCount": 784,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 18,
+          "away": 0,
+          "noClearChange": 30
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cela inquiétant que des manifestations dégénèrent en violences, cela ne contribue pas à apaiser les tensions. J'espère que l'ordre public peut être maintenu sans excès.",
+        "Ces violences ne font que renforcer l'idée que tout cela est chaotique et dangereux, je me sens plutôt inquiète et me tiens à l'écart de ces événements. Je préfère la stabilité.",
+        "Je n'aime pas voir des violences dans la rue, cela me déplaît profondément. Je soutiens une approche plus calme pour régler les conflits."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes actifs modestes urbains mobilisés",
+      "matchedCount": 4238,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 9,
+          "noClearChange": 37
+        },
+        "left": {
+          "toward": 0,
+          "away": 1,
           "noClearChange": 47
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -218,145 +322,22 @@
         },
         "far_right": {
           "toward": 2,
-          "away": 0,
-          "noClearChange": 46
+          "away": 3,
+          "noClearChange": 43
         },
         "abstention": {
-          "toward": 13,
-          "away": 1,
-          "noClearChange": 34
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je vois ça un peu comme un échec pour le mouvement, même si je comprends leur colère. Les violences tendent à décrédibiliser les revendications.",
-        "J’ai un peu peur quand ça tourne à la violence, ça ne me donne pas envie de soutenir ces manifestations.",
-        "Je suis inquiète par ces violences, ça risque de tendre les choses, alors qu’il faut du dialogue."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.015176714572118588,
-          "lo": -0.017131576661660618,
-          "hi": -0.013637388050863985,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.012103483757447034,
-          "lo": -0.01372189053345769,
-          "hi": -0.010459110334110336,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.004048074201194666,
-          "lo": -0.007303283642835885,
-          "hi": -0.000319759234306936,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0021454872034938565,
-          "lo": 0.0002792589613951565,
-          "hi": 0.00404172504009258,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.011904885929916556,
-          "lo": 0.009294717525904864,
-          "hi": 0.01514612505377431,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.017277899397349878,
-          "lo": 0.011825243887091753,
-          "hi": 0.02271294996808056,
-          "stable": true
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes sans activité professionnelle en milieu urbain dense",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 3,
-          "away": 1,
-          "noClearChange": 44
-        },
-        "abstention": {
-          "toward": 15,
-          "away": 0,
-          "noClearChange": 33
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que la violence lors de ces manifestations ne fait qu'aggraver les choses et détourne l'attention des vrais problèmes que nous rencontrons à Dunkerque. J'espère qu'ils trouveront un moyen plus pacifique de se faire entendre.",
-        "Je comprends ce \"ras-le-bol\" exprimé par les manifestants, mais les violences ne m’attirent pas. En revanche, une manifestation pacifique me paraîtrait un vrai levier pour faire bouger les choses.",
-        "La violence lors des manifestations me choque et ne m’incite pas à soutenir ces mouvements. Mais voir un ras-le-bol exprimé pacifiquement me donnerait un peu plus d’espoir en un dialogue constructif."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.016628365207319803,
-          "lo": -0.01974261141085172,
-          "hi": -0.013649428655552125,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.011231316719666871,
-          "lo": -0.013052278437687413,
-          "hi": -0.009560457516339873,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.0044425391240992896,
-          "lo": -0.006574297888210995,
-          "hi": -0.0019274444243308052,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0010131623529260887,
-          "lo": -0.00047823826500297076,
-          "hi": 0.0025984204287775718,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.01194185226349497,
-          "lo": 0.00751477409145476,
-          "hi": 0.016802721088435363,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.019347206434664904,
-          "lo": 0.014072930943226017,
-          "hi": 0.02474305555555555,
-          "stable": true
-        }
-      }
+        "Ces violences lors de la manif, ça me laisse un peu partagé. Je comprends la colère mais j'aime pas quand ça part en vrille, ça complique tout pour tout le monde à Belleville.",
+        "Je suis désolé d’entendre parler de violences lors de la manif. Ça me fait réfléchir sur l’efficacité des forces de l’ordre. Un dialogue aurait sans doute évité ça.",
+        "Les violences lors des manifs, c'est dommage, ça ne change pas vraiment ce que je pense, mais ça me lasse un peu de voir toujours ces tensions."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -368,8 +349,8 @@
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "left": {
           "toward": 0,
@@ -378,8 +359,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -387,68 +368,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 22,
-          "away": 0,
-          "noClearChange": 74
+          "toward": 14,
+          "away": 1,
+          "noClearChange": 81
         },
         "abstention": {
-          "toward": 13,
-          "away": 0,
-          "noClearChange": 83
+          "toward": 9,
+          "away": 1,
+          "noClearChange": 86
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, avec tout ce bazar de violence dans les manifs, ça ne me donne pas envie de m'intéresser plus que ça. De toute façon, je reste sur mes habitudes.",
-        "Une manifestation violente ? Pas bon pour notre pays, ça me déçoit. Mais pacifique, ça peut être un signe que les gens veulent être entendus sans casser quoi que ce soit.",
-        "J’ai entendu parler des violences lors de cette manifestation, ça m’inquiète un peu. Si ça avait été pacifique, peut-être que j’aurais été plus attentive aux revendications."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.011719419469157452,
-          "lo": -0.012855567086224156,
-          "hi": -0.010315705025348567,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.01034146381763278,
-          "lo": -0.011312051251668934,
-          "hi": -0.009414222456045495,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.008563296865643505,
-          "lo": -0.010046192634202353,
-          "hi": -0.0069968770562524275,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0003817242356332032,
-          "lo": -0.0009371735240483528,
-          "hi": 0.001684949929604491,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.02182453654326781,
-          "lo": 0.018641684701320615,
-          "hi": 0.024868832698118792,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.008417919373532699,
-          "lo": 0.0051244377240049314,
-          "hi": 0.011705354386428585,
-          "stable": false
-        }
-      }
+        "Je n'aime pas quand ça tourne à la violence, ça ne change rien à mon vote, je veux la paix dans mon village.",
+        "La violence dans les manifestations m’inquiète, ce n’est pas le type d’engagement que je soutiens, j’espère que ça ne va pas dégénérer davantage.",
+        "Cette violence lors d'une manifestation me fait craindre des troubles, mais ça ne changera pas mon choix politique, je reste pragmatique."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:36.927Z",
-    "contentHash": "fd5fea6d9694fa5dffa275595f78bcebfd4cc4b3472ffd2f90ae0695a35fa7d9"
+    "status": "automatic",
+    "contentHash": "ad1a50f7a5acc5dc8517fedf2b5c6cd89a32dcbe9f28a36943fa817f4600e244"
   }
 }

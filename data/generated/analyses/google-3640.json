@@ -4,33 +4,43 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "c2feeb5dae9c4f97",
-  "computedAt": "2026-11-10T22:08:19.725Z",
+  "inputHash": "a72b7e562694d417",
+  "eventInputHash": "0a8d685fe8460f1fa158cace1ef4dbbc129ac4c1c930384e7f9948138fa4467b",
+  "computedAt": "2026-11-11T13:09:33.894Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Emmanuel Macron envisage une nouvelle dissolution de l'Assemblée nationale à l’issue du débat prévu fin novembre, afin de tenter de stabiliser sa majorité malgré les risques annoncés.",
-    "whatChanges": "L'option d'une dissolution est désormais envisagée par Emmanuel Macron, modifiant les perspectives politiques et impactant l'attente des électeurs ainsi que la dynamique parlementaire."
+    "description": "Emmanuel Macron évoque la possibilité d'une nouvelle dissolution de l'Assemblée nationale mais souligne que cette décision serait prise uniquement en dernier recours et en concertation avec ses alliés politiques.",
+    "whatChanges": "Le président ouvre la porte à la dissolution comme option stratégique, ce qui pourrait rassurer ses soutiens souhaitant un renouvellement de la majorité, tout en suscitant l'inquiétude chez l'opposition et les électeurs indécis sur la stabilité politique."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Retraités vivant en couple en communes intermédiaires",
-      "mechanism": "Les retraités en couple en communes intermédiaires sont un public touché par la décision de ne pas dissoudre l'Assemblée nationale, car ils ont un intérêt marqué pour la stabilité politique et les politiques publiques affectant leur cadre de vie, illustré par la reprise médiatique locale autour de Sanou Dione et Cheikh Bara.",
-      "reason": "Ce segment combine statut social (retraités en couple) et segmentation géographique intermédiaire pour éviter un groupe trop large et général.",
+      "name": "Actifs salariés modestes en communes denses",
+      "mechanism": "Emmanuel Macron écarte une nouvelle dissolution de l'Assemblée nationale, décision qui concerne particulièrement les travailleurs salariés modestes vivant dans des communes à forte densité urbaine car ils sont directement impactés par la stabilité politique et économique du pays.",
+      "reason": "Base populaire sensible à la stabilité institutionnelle, composante clef des couches populaires salariées en milieu urbain dense.",
       "all": [
-        "cluster.retired_couple",
-        "geo.intermediate"
+        "occupation.employee",
+        "cluster.modest_wage_earner",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 617,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Opinions sur la stabilité politique",
+        "Confiance envers le gouvernement",
+        "Attitude envers la dissolution de l'Assemblée"
+      ],
+      "count": 16322,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -41,22 +51,30 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains de 25 à 34 ans",
-      "mechanism": "Les jeunes diplômés urbains de 25 à 34 ans constituent un groupe fortement concerné par la décision politique d'Emmanuel Macron, notamment ceux sensibles aux enjeux démocratiques et institutionnels, et vivant dans les grandes agglomérations comme Paris, Lyon et Marseille, où le débat autour de la dissolution a un écho particulier.",
-      "reason": "Intersection âge, diplôme et zone urbaine ciblant une population spécifique potentiellement sensible aux débats institutionnels et à la stabilité gouvernementale.",
+      "name": "Retraités en couple non vivant seuls, 65 ans et plus",
+      "mechanism": "La déclaration d'Emmanuel Macron d'écarter une nouvelle dissolution impacte les retraités âgés vivant en couple car ils sont concernés par la continuité des politiques sociales et la stabilité de leurs conditions de vie, notamment dans un contexte où l'Assemblée nationale joue un rôle clé dans ces décisions.",
+      "reason": "Groupe retraité en couple avec une forte exposition à l'évolution des politiques publiques et à la stabilité institutionnelle.",
       "all": [
-        "age.25_34",
-        "education.bac_plus_3_4",
-        "geo.dense"
+        "occupation.retired",
+        "household.couple_no_children"
       ],
-      "any": [],
+      "any": [
+        "age.65_74",
+        "age.75_plus"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 3225,
-      "distinctCommunes": 70,
+      "measurementNeeds": [
+        "Préoccupation sur les politiques sociales",
+        "Attitude envers la dissolution",
+        "Sentiment de stabilité institutionnelle"
+      ],
+      "count": 14031,
+      "distinctCommunes": 163,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.65_74 ou age.75_plus regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "\"Cela ne serait pas bon pour le pays\": Emmanuel Macron écarte une nouvelle dissolution de l'Assemblée nationale",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -65,43 +83,21 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "mechanism": "Ce segment rassemble les ouvriers âgés de 50 à 64 ans vivant dans des communes de densité intermédiaire, concernés par les débats politiques nationaux sur la dissolution de l’Assemblée, car ils représentent une population mature souvent attentive aux évolutions politiques et sociales sur le plan local et national.",
-      "reason": "Segment retenant une tranche d'âge spécifique et une densité géographique pour limiter la taille et être pertinent au mécanisme.",
+      "name": "Jeunes diplômés urbains sensibles à la stabilité politique",
+      "mechanism": "La décision d'Emmanuel Macron de ne pas procéder à une nouvelle dissolution de l'Assemblée nationale touche particulièrement les jeunes diplômés vivant en milieu urbain dense, qui sont attentifs à la stabilité politique influençant leurs perspectives professionnelles et leur avenir.",
+      "reason": "Jeunes actifs diplômés des villes concernés par la stabilité politique affectant leur insertion professionnelle et projet de vie.",
       "all": [
-        "occupation.worker",
-        "age.50_64",
-        "geo.intermediate"
+        "cluster.young_urban_graduate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 144,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "\"Cela ne serait pas bon pour le pays\": Emmanuel Macron écarte une nouvelle dissolution de l'Assemblée nationale",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Cadres et professions intellectuelles supérieures en couples avec enfants en commune dense",
-      "mechanism": "Ce segment correspond aux cadres urbains en ménage avec enfants dans des communes à forte densité, population activement impliquée et sensible aux décisions nationales telles que l’éventualité d’une dissolution de l’Assemblée, notamment quand il s’agit d’enjeux politiques majeurs.",
-      "reason": "Combiné plusieurs tags précis pour retenir un groupe professionnel, familial et géographique pertinent et de taille adaptée.",
-      "all": [
-        "cluster.urban_executive",
-        "household.couple_with_children",
-        "geo.dense"
+      "measurementNeeds": [
+        "Perception de la stabilité politique",
+        "Impact sur projet professionnel",
+        "Attitude envers la dissolution"
       ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 5162,
+      "count": 11394,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -121,95 +117,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Retraités vivant en couple en communes intermédiaires",
-      "matchedCount": 617,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 41
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends qu'Emmanuel Macron ne veuille pas risquer une nouvelle dissolution, ça pourrait trop déstabiliser le pays, même si la situation est compliquée.",
-        "Je trouve que cette décision évite un trouble supplémentaire, c’est mieux comme ça, les dissolutions me font un peu peur, ça ne donne pas l’image d’un pays stable.",
-        "Je ne suis pas sûr qu’une nouvelle dissolution soit une bonne idée, ça risque surtout de créer plus d'incertitudes qu’autre chose."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.00109781549904769,
-          "lo": -0.0025823518531851854,
-          "hi": 0.00013586492399840435,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.003973249928395294,
-          "lo": 0.0021916318791318818,
-          "hi": 0.005546665493726284,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.011456005960271957,
-          "lo": 0.007576146742862634,
-          "hi": 0.014698010131467853,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0021749284062280707,
-          "lo": 0.0003701389578255252,
-          "hi": 0.003668999066878158,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.003960197077720056,
-          "lo": -0.008693462206818521,
-          "hi": 0.0006687989262759512,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.012546171718127571,
-          "lo": -0.01826503539376673,
-          "hi": -0.006662835728759235,
-          "stable": false
-        }
-      }
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains de 25 à 34 ans",
-      "matchedCount": 3225,
+      "segmentName": "Retraités en couple non vivant seuls, 65 ans et plus",
+      "matchedCount": 14031,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -225,76 +136,85 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
           "toward": 1,
           "away": 0,
           "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Honnêtement, je trouve que dissoudre l'Assemblée encore une fois ne ferait qu'ajouter de l'instabilité, et on en a assez vu comme ça. Mieux vaut se concentrer sur le travail démocratique en cours.",
-        "Une autre dissolution ? Ce serait un vrai casse-tête et ça me semble risqué. Je préfère que ça reste stable pour l'instant, même si la majorité est fragile.",
-        "Je ne suis pas concernée par ces histoires de dissolution, ça me parle peu et ça ne change rien pour moi, donc ça ne modifie pas mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0012080087680883828,
-          "lo": -0.004459929068936109,
-          "hi": 0.001918666399428368,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.003688800726148623,
-          "lo": 0.000948602260723587,
-          "hi": 0.006044205672353739,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.011813268358973261,
-          "lo": 0.007786271690014117,
-          "hi": 0.016276220642200818,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0003388736882859158,
-          "lo": -0.0019368156537042866,
-          "hi": 0.0011858491861155942,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0037994283125460434,
-          "lo": -0.006231043987532887,
-          "hi": -0.0012907951451124327,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.010155758316201528,
-          "lo": -0.015371533354723943,
-          "hi": -0.00529479058762256,
-          "stable": true
-        }
-      }
+        "Je comprends qu'une dissolution risquerait de déstabiliser davantage le pays, mieux vaut éviter ce genre de mesure brutale.",
+        "Macron a raison, une dissolution n'est pas simple et pourrait créer plus de problèmes qu'elle n'en résoudrait.",
+        "Je préfère qu'on prenne le temps et qu'on ne joue pas avec la stabilité de l'Assemblée, ça ferait trop d'agitation inutile."
+      ]
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "matchedCount": 144,
+      "segmentName": "Jeunes diplômés urbains sensibles à la stabilité politique",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas vraiment étonné, je pense que cette stabilité évite trop d'instabilité inutile et ça me convient.",
+        "Savoir qu'il envisage la dissolution comme un dernier recours me rassure un peu, ça montre une certaine prudence dans la prise de décision.",
+        "Franchement, cette histoire de dissolution ne change rien à mon quotidien, ça me semble un truc politique loin de mes préoccupations."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Actifs salariés modestes en communes denses",
+      "matchedCount": 16322,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -325,56 +245,18 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends qu'une nouvelle dissolution peut faire trop d'agitation pour rien. Autant garder le calme plutôt que de chambouler encore plus la scène politique.",
-        "Je trouve que dissoudre l'Assemblée encore une fois, ça va finir par trop désorganiser le pays. Il vaut mieux essayer d'assumer ce qu'on a et faire avec.",
-        "Une nouvelle dissolution ? Je suis un peu lassé de ces coups de théâtre politiques. Cela ne change rien pour moi, je garde mes idées."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.001838157390427849,
-          "lo": -0.00045599803895712154,
-          "hi": 0.0038632973007973006,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0030248021616534593,
-          "lo": 0.0017365788942635216,
-          "hi": 0.004462397027766288,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.004130033889390179,
-          "lo": 0.0004415005456672124,
-          "hi": 0.007402740641263598,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0008973586019494203,
-          "lo": -0.0002896609184034335,
-          "hi": 0.002060719858249799,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0026970277606505103,
-          "lo": -0.0065522188855522065,
-          "hi": 0.0012259365153576805,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.007193324282770387,
-          "lo": -0.012422577018135905,
-          "hi": -0.003013799198804181,
-          "stable": false
-        }
-      }
+        "Je ne vois pas l'intérêt de tout changer encore, on a besoin de stabilité pour avancer dans notre vie quotidienne. Une nouvelle dissolution ne nous aiderait pas.",
+        "Je préfère quand le président est sûr de sa décision et évite de trop jouer avec la dissolution, ça peut mettre la pagaille dans le pays.",
+        "J'ai un peu peur que ça crée de l'instabilité, mais s'il le fait en dernier recours et avec ses alliés, ça me rassure un peu plus."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -405,153 +287,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "abstention": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 91
+          "toward": 6,
+          "away": 1,
+          "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis un peu fatiguée de la politique, et je ne vois pas trop ce que cette histoire de dissolution va changer pour mon travail ou ma vie quotidienne.",
-        "Je pense que ce n’est pas bon de changer sans arrêt de gouvernement, ça semple créer de l'instabilité et ça m'inquiète pour l'avenir.",
-        "Je crois que dissoudre l’Assemblée encore une fois serait trop risqué, ça pourrait dérégler tout le pays. Je préfère quand même la stabilité."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0009222546942545233,
-          "lo": -0.002228556829381286,
-          "hi": 0.0003802634697529152,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0023178090897398606,
-          "lo": 0.0008879048372527561,
-          "hi": 0.003524209026124398,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.006208097868204817,
-          "lo": 0.003645952644148806,
-          "hi": 0.00868331856109464,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.00037796118664833205,
-          "lo": -0.0006634811709422447,
-          "hi": 0.0012857534112722406,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.00604285313161244,
-          "lo": -0.008875803638371418,
-          "hi": -0.002384507308309889,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0019387603187260513,
-          "lo": -0.006096570808395196,
-          "hi": 0.004117201329201508,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Cadres et professions intellectuelles supérieures en couples avec enfants en commune dense",
-      "matchedCount": 5162,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends la prudence d'Emmanuel Macron à ne pas dissoudre encore l'Assemblée, ça pourrait déstabiliser le pays alors que la situation est déjà tendue.",
-        "Une nouvelle dissolution ? Je trouve ça risqué, ça pourrait créer plus d’incertitudes et gênait la stabilité de Marseille aussi.",
-        "Sincèrement, douter de la dissolution me rend un peu soulagée, ce serait un peu le chaos politique de plus, pas sûr que cela nous aide à avancer."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.008177848429348286,
-          "lo": -0.009382803384303242,
-          "hi": -0.006913496830163496,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.0036157928853641497,
-          "lo": -0.005531510677344013,
-          "hi": -0.0016374088823971815,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.015602617945718622,
-          "lo": 0.01180018376219357,
-          "hi": 0.019462692481038255,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0005851741776895412,
-          "lo": -0.00043209768518884733,
-          "hi": 0.0015657532532532537,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.00022979366548286687,
-          "lo": -0.0026906906906906964,
-          "hi": 0.0031008105156663853,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0046239444741786,
-          "lo": -0.008766028411349602,
-          "hi": -0.00029257511462296194,
-          "stable": false
-        }
-      }
+        "Je ne suis pas vraiment surprise qu'il ne veuille pas dissoudre l'Assemblée encore une fois, ça ne servirait pas à grand-chose dans ma vie de tous les jours.",
+        "Dans mon village, on préfère la stabilité. Cette nouvelle, ça me rassure un peu, une dissolution ça aurait semé le bazar.",
+        "Macron parle encore de dissolution, ça me fatigue. Pour moi c’est du vent et ça va pas changer mon vote qui est plutôt pour le RN."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:53.516Z",
-    "contentHash": "451a5cdbbc20846b333e23757571081bb250311e9183af378bff2b23cf951cd5"
+    "status": "automatic",
+    "contentHash": "26c11b9b9642af7a5fb15772aab4d75d3600ded677b6fb54e9f409d0fc32e287"
   }
 }

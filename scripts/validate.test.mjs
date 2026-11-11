@@ -3,17 +3,32 @@ import { test } from "node:test";
 import { validateFeed } from "./lib/validate.mjs";
 
 const poll = (over = {}) => ({
-  id: "p1", publishedAt: "2026-10-20T08:00:00Z", fieldworkStart: "2026-10-10", fieldworkEnd: "2026-10-12",
-  pollster: "Ifop", sampleSize: 1200, round: "first", candidateShares: { a: 30, b: 20 },
-  source: { title: "t", url: "https://example.org/p" }, ...over,
+  id: "p1",
+  publishedAt: "2026-10-20T08:00:00Z",
+  fieldworkStart: "2026-10-10",
+  fieldworkEnd: "2026-10-12",
+  pollster: "Ifop",
+  sampleSize: 1200,
+  round: "first",
+  candidateShares: { a: 30, b: 20 },
+  source: { title: "t", url: "https://example.org/p" },
+  ...over,
 });
 const event = (over = {}) => ({
-  id: "e1", occurredAt: "2026-10-19", title: "T", summary: "S", editorialStatus: "reviewed",
-  sources: [{ title: "t", url: "https://example.org/e" }], ...over,
+  id: "e1",
+  occurredAt: "2026-10-19",
+  title: "T",
+  summary: "S",
+  editorialStatus: "reviewed",
+  sources: [{ title: "t", url: "https://example.org/e" }],
+  ...over,
 });
 const bad = (name, row, needle, opts) => {
   const { issues } = validateFeed(name, { schemaVersion: 1, [name]: [row] }, opts);
-  assert.ok(issues.some((i) => i.includes(needle)), `expected "${needle}" in ${JSON.stringify(issues)}`);
+  assert.ok(
+    issues.some((i) => i.includes(needle)),
+    `expected "${needle}" in ${JSON.stringify(issues)}`,
+  );
 };
 
 test("valid feeds pass", () => {
@@ -33,7 +48,9 @@ test("poll field errors", () => {
   bad("polls", poll({ candidateShares: { a: "30" } }), "[0, 100]");
   bad("polls", poll({ candidateShares: { a: 60, b: 50 } }), "sums to");
   bad("polls", poll({ source: { title: "t", url: "javascript:alert(1)" } }), "http(s)");
-  bad("polls", poll({ candidateShares: { zzz: 5 } }), "known candidate", { knownCandidates: new Set(["a"]) });
+  bad("polls", poll({ candidateShares: { zzz: 5 } }), "known candidate", {
+    knownCandidates: new Set(["a"]),
+  });
 });
 test("event field errors", () => {
   bad("events", event({ occurredAt: "2026-13-45" }), "occurredAt");
@@ -44,4 +61,18 @@ test("event field errors", () => {
 test("duplicate ids", () => {
   const { issues } = validateFeed("events", { schemaVersion: 1, events: [event(), event()] });
   assert.ok(issues.some((i) => i.includes("duplicates")));
+});
+
+test("invalid nested sources and date order fail without crashing the validator", () => {
+  bad("events", event({ articles: [{ title: "Source", url: "javascript:alert(1)" }] }), "http(s)");
+  bad("events", event({ importance: "invented" }), "importance");
+  bad("events", event({ image: "not-a-url" }), "image");
+  bad(
+    "polls",
+    poll({ fieldworkStart: "2026-10-15", fieldworkEnd: "2026-10-12" }),
+    "before fieldworkEnd",
+  );
+  bad("polls", poll({ fieldworkEnd: 12 }), "fieldworkEnd");
+  bad("events", event({ id: "../../secret" }), "safe non-empty identifier");
+  bad("events", event({ occurredAt: "2026-02-30" }), "occurredAt");
 });

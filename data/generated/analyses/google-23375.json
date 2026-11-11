@@ -4,40 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "8a5f03d7707993cc",
-  "computedAt": "2026-11-10T22:08:43.774Z",
+  "inputHash": "fc1cb99d101dd9f1",
+  "eventInputHash": "d45d47152433aa0af16489bcd09ab7286e7407d08abfb2251c7dff00fcfba940",
+  "computedAt": "2026-11-11T13:10:13.658Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le 29 septembre, lors de la mobilisation de la Fonction Publique pour les salaires, l’intersyndicale décide de maintenir la grève mais propose simultanément des négociations immédiates avec le gouvernement pour éviter un blocage prolongé.",
-    "whatChanges": "L’intersyndicale adopte une posture plus négociatrice, ce qui pourrait rassurer certains agents publics et l’opinion, tout en conservant la pression sur le gouvernement."
+    "description": "Le 29 septembre, la mobilisation de la Fonction Publique s'élargit aux revendications sur les conditions de travail en plus des salaires, intégrant une grève nationale de 24 heures dans plusieurs secteurs clés.",
+    "whatChanges": "L'ajout des conditions de travail aux revendications amplifie la mobilisation et suscite un plus large soutien parmi les agents publics et certains électeurs sensibles aux questions sociales."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Agents de la fonction publique employés en milieu urbain dense",
-      "mechanism": "Ce segment regroupe les employés de la fonction publique, qui sont au cœur de la mobilisation salariale du 29 septembre, travaillant dans les communes à forte densité urbaine où les revendications salariales sont particulièrement sensibles en raison du coût de la vie élevé.",
-      "reason": "Ils constituent une partie importante de la fonction publique active susceptible de participer à la grève et aux revendications salariales.",
+      "name": "Agents publics cadres des grandes villes",
+      "mechanism": "Les cadres et professions intellectuelles supérieures de la Fonction Publique travaillant dans les grandes villes sont concernés par les négociations salariales et la mobilisation le 29 septembre.",
+      "reason": "Ce groupe inclut les cadres urbains qui ont un rôle à la fois dans la Fonction Publique et dans le débat sur les salaires, en particulier en milieu urbain dense et grandes agglomérations.",
       "all": [
-        "occupation.employee",
-        "geo.dense"
+        "occupation.executive_professional",
+        "geo.dense",
+        "commune_size.1000_plus"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64"
+        "municipal_system.paris_lyon_marseille"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to.strike.call",
-        "support.for.salary_increase"
+        "Attitude envers la mobilisation salariale",
+        "Opinions sur la revalorisation des salaires",
+        "Engagement dans la Fonction Publique"
       ],
-      "count": 16322,
-      "distinctCommunes": 72,
+      "count": 9793,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -48,25 +49,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Agents intermédiaires fonctionnaires en commune intermédiaire",
-      "mechanism": "Ce segment regroupe les fonctionnaires de catégorie intermédiaire, qui composent une part significative du personnel de la fonction publique mobilisé, vivant dans des communes de densité intermédiaire, où les pressions salariales sont également palpables.",
-      "reason": "Les agents intermédiaires représentent une catégorie socio-professionnelle ciblée par les revendications de l'intersyndicale lors de cette mobilisation salariale.",
+      "name": "Jeunes agents publics de 25 à 34 ans en couple avec enfants",
+      "mechanism": "La mobilisation salariale du 29 septembre impacte les jeunes agents publics âgés de 25 à 34 ans vivant en couple avec enfants, qui doivent concilier vie familiale et situation économique incertaine.",
+      "reason": "Ce segment combine âge jeune actif, situation familiale avec enfants et appartenance à la Fonction Publique, susceptible de ressentir fortement les enjeux de salaire et conditions de travail.",
       "all": [
-        "occupation.intermediate",
-        "geo.intermediate"
+        "age.25_34",
+        "household.couple_with_children",
+        "occupation.employee"
       ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to.strike_call",
-        "salary_satisfaction"
+        "Attitude envers la mobilisation salariale",
+        "Impact des salaires sur la vie familiale",
+        "Soutien à la mobilisation"
       ],
-      "count": 346,
-      "distinctCommunes": 24,
+      "count": 2099,
+      "distinctCommunes": 114,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -77,25 +77,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers fonctionnaires de 50 à 64 ans en communes urbaines moyennes",
-      "mechanism": "Ce segment rassemble les ouvriers fonctionnaires âgés de 50 à 64 ans, un groupe susceptible d'être particulièrement sensibilisé aux enjeux salariaux avant la retraite, participant à la mobilisation du 29 septembre dans des communes intermédiaires ou urbaines moyennes.",
-      "reason": "Ils sont concernés par les réformes et les revendications salariales et constituent un groupe cible précis pour la mobilisation.",
+      "name": "Ouvriers de 50 à 64 ans dans les communes intermédiaires",
+      "mechanism": "La mobilisation salariale concerne les ouvriers de 50 à 64 ans qui, souvent en fin de carrière dans la Fonction Publique, sont fortement concernés par la question des salaires et des conditions de travail avant la retraite.",
+      "reason": "Ce segment regroupe une catégorie d'âge proche de la retraite très exposée aux enjeux salariaux et à la mobilisation dans la Fonction Publique, résidant dans des communes de taille intermédiaire.",
       "all": [
-        "occupation.worker",
-        "age.50_64"
+        "cluster.older_worker",
+        "geo.intermediate"
       ],
-      "any": [
-        "geo.intermediate",
-        "geo.dense"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "strike_participation",
-        "salary_expectations"
+        "Attitude envers la mobilisation salariale",
+        "Opinion sur les perspectives salariales",
+        "Intention de participation à la mobilisation"
       ],
-      "count": 3580,
-      "distinctCommunes": 96,
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -116,8 +114,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Agents de la fonction publique employés en milieu urbain dense",
-      "matchedCount": 16322,
+      "segmentName": "Agents publics cadres des grandes villes",
+      "matchedCount": 9793,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -134,8 +132,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -144,8 +142,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -156,241 +154,33 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "En tant qu'employée d'une PME et habitant à Paris, je ressens un peu de solidarité avec cette mobilisation, ça me parle un peu, même si ce n'est pas directement ma situation.",
-        "Le 29 septembre, je vois cette mobilisation comme justifiée, mais je crains que ça gêne pour certains services, ça me touche un peu car c'est lié à nos conditions de travail.",
-        "Moi qui travaille dans la mairie, cette mobilisation salariale me parle, ça justifie que les agents publics fassent enfin valoir leurs droits."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.005997091555470041,
-          "lo": 0.005201022840118303,
-          "hi": 0.006876396919749356,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.0027163418896865043,
-          "lo": 0.0013607552080681826,
-          "hi": 0.003852854620384124,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.004888259398801999,
-          "lo": -0.005753723186301338,
-          "hi": -0.0040400886133025804,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0021408210523150063,
-          "lo": -0.0030224231897536713,
-          "hi": -0.0014223223815782824,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.003451838038960072,
-          "lo": -0.0040352365918116745,
-          "hi": -0.0029008459024434607,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0017674850449205335,
-          "lo": 0.00021207164187457087,
-          "hi": 0.0032120111092172263,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Agents intermédiaires fonctionnaires en commune intermédiaire",
-      "matchedCount": 346,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "En tant que salariée dans une PME proche de Roissy, je comprends les revendications sur les salaires, c'est essentiel pour le pouvoir d'achat. Mais je crains qu'une grève trop longue perturbe aussi notre travail et notre quotidien.",
-        "Travaillant dans la logistique d'un établissement public, finalement, je soutiens la mobilisation pour de meilleures rémunérations dans la fonction publique car c'est justifié. Mais une grève prolongée me pose problème, ça bloque tout.",
-        "Je vois bien qu'il y a des revendications salariales dans la fonction publique, mais ça ne change pas grand-chose à mon quotidien, donc ça ne me fait pas vraiment influencer mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0044067932895771105,
-          "lo": 0.003504131896956124,
-          "hi": 0.0052766684706648725,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0025723661230464385,
-          "lo": 0.0015030406835232761,
-          "hi": 0.0036030017699942504,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.006589538316222942,
-          "lo": -0.00784867919159282,
-          "hi": -0.00531790446994928,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0015584911034323713,
-          "lo": -0.0020792897997499987,
-          "hi": -0.001094085533361237,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0016093024660124588,
-          "lo": -0.0031997563218320404,
-          "hi": 0.0002797473867794641,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0027781724730442325,
-          "lo": 0.0009152881275540439,
-          "hi": 0.004564391716809605,
-          "stable": false
-        }
-      }
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 92
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Cette mobilisation des fonctionnaires pour réclamer de meilleures rémunérations me rappelle que beaucoup peinent à joindre les deux bouts, je comprends leur colère, même si je suis à la retraite.",
-        "Je comprends bien le ras-le-bol des fonctionnaires, mais j'espère qu'ils pourront négocier rapidement, ça évitera trop de perturbations pour tout le monde.",
-        "Les revendications salariales des fonctionnaires sont justes, cela me semble légitime, surtout au regard du coût de la vie actuel."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.004360725853367169,
-          "lo": 0.0037757134427049625,
-          "hi": 0.004982898203911794,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.003520711749990179,
-          "lo": 0.0030020282439781796,
-          "hi": 0.004090247445345939,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005329982914637515,
-          "lo": -0.006057612947961619,
-          "hi": -0.004635614687460003,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0018335330992102327,
-          "lo": -0.0022550344958151523,
-          "hi": -0.0014700543310143532,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.004042523995307216,
-          "lo": -0.004852622326427389,
-          "hi": -0.0033406911371027317,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0033246024057976206,
-          "lo": 0.0020655817807787137,
-          "hi": 0.004821782387781286,
-          "stable": false
-        }
-      }
+        "Je vois que la Fonction Publique se mobilise pour ses salaires, ce qui me paraît justifié dans le contexte actuel. Si la grève inclut aussi les conditions de travail, ça peut montrer une vrai volonté de changement, mais ça pourrait aussi complexifier le dialogue.",
+        "La mobilisation des fonctionnaires pour les salaires me semble logique, ça rejoint un peu mes préoccupations sociales. Si ça s'étend aux conditions de travail, je serai plus attentif et peut-être un peu plus engagé.",
+        "La grève pour les salaires et conditions de travail dans la Fonction Publique, c’est vraiment un sujet important. Ça pourrait me conforter dans mon envie de soutenir des politiques plus à gauche."
+      ]
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Ouvriers fonctionnaires de 50 à 64 ans en communes urbaines moyennes",
-      "matchedCount": 3580,
+      "segmentName": "Ouvriers de 50 à 64 ans dans les communes intermédiaires",
+      "matchedCount": 144,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -411,55 +201,109 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça fait du bruit, mais je doute que ça change ma manière de voter, je suis plutôt pragmatique et cette mobilisation ne me touche pas directement.",
-        "C'est bien que les fonctionnaires se mobilisent, mais si ça bloque trop longtemps c'est la galère pour tout le monde. J'espère que ça débloquera vite.",
-        "Je suis contente qu'ils réclament des hausses de salaire, pour nous c'est dur, mais faut pas que ça traîne trop sinon ça embête tout le monde."
-      ],
-      "altEffect": {
+        "Je comprends la mobilisation pour les salaires, c'est important, mais je suis un peu sceptique, tout ça tourne souvent en rond sans résultat concret pour nous sur le terrain.",
+        "La revendication sur les conditions de travail en plus des salaires, ça me parle davantage, c'est plus global et ça pourra peut-être toucher mon entourage.",
+        "Je suis surtout concentré sur mon travail et la vie de famille, ces mouvements restent un spectacle un peu loin de mon quotidien, ça ne change pas grand-chose pour moi."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes agents publics de 25 à 34 ans en couple avec enfants",
+      "matchedCount": 2099,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.007764214753700846,
-          "lo": 0.006830717357882974,
-          "hi": 0.008720155942795842,
-          "stable": true
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
         },
         "left": {
-          "mean": 0.006033233564113348,
-          "lo": 0.005231354483723497,
-          "hi": 0.006854229126525588,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.007384189795689444,
-          "lo": -0.00843918405633759,
-          "hi": -0.006449468425955639,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.003075914491497059,
-          "lo": -0.003841960720968735,
-          "hi": -0.002365231793874061,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.005416528156642487,
-          "lo": -0.007231804821618548,
-          "hi": -0.003910826473424907,
-          "stable": false
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 43
         },
         "abstention": {
-          "mean": 0.0020791841260148353,
-          "lo": 0.00037147210744571554,
-          "hi": 0.003449403400862088,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends la mobilisation des agents publics pour les salaires, c'est important, même si ça ne change pas grand-chose à ma vie. Si la grève inclut aussi les conditions de travail, ça peut montrer un ras-le-bol plus profond.",
+        "Je sympathise avec cette mobilisation, surtout maintenant qu'elle concerne les conditions de travail. Ça me conforte dans l'idée que le gouvernement doit mieux écouter les salariés, même si ça ne change pas mon vote.",
+        "Je vois que les fonctionnaires se mobilisent pour de meilleurs salaires et conditions, ça pourrait me donner un peu plus envie de soutenir la gauche, même si ça ne me décide pas complètement."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 94
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que les fonctionnaires réclament une meilleure rémunération, surtout avec le coût de la vie qui ne cesse d'augmenter. Mais je suis plutôt habitué à mon quotidien tranquille en montagne, cela ne me concerne pas directement.",
+        "Une grève des fonctionnaires pour les salaires, ça me parle un peu. Si ça part aussi sur les conditions de travail, c'est un signe que ça devient vraiment difficile pour eux, mais je n'ai pas forcément envie de me mêler à tout ça.",
+        "Je suis contente de voir que les fonctionnaires se mobilisent, surtout si ça concerne les conditions de travail. Pour moi, c'est important car j'ai travaillé longtemps dans la fonction publique et je sais les efforts qu'ils fournissent."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:34.390Z",
-    "contentHash": "827feb0222fe9dbf728e7417e61c296a101a772b68899c3cbb009a6cc448d828"
+    "status": "automatic",
+    "contentHash": "980a572d3503ba47a5faef2d94c99783a7b3d243dcecef7166f5731a1c3fbf07"
   }
 }

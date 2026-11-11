@@ -4,36 +4,38 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "db6a260a932ac289",
-  "computedAt": "2026-11-10T22:10:03.059Z",
+  "inputHash": "4c7af272cd3b1903",
+  "eventInputHash": "52ff61d49e0991f607b25818b7a6610222eb8dced67a89ed633e21d167b20bb7",
+  "computedAt": "2026-11-11T13:13:32.009Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Les candidats à la présidentielle 2027 proposent une modulation des aides aux particuliers liée à leur revenu, limitant le chèque carburant aux ménages aux revenus modestes, tandis que le blocage des prix serait maintenu pour une période plus courte.",
-    "whatChanges": "L'aide financière ciblée modifie l'impact sur les catégories sociales, privilégiant les ménages modestes au lieu d'une aide universelle, ce qui peut influencer différemment le soutien électoral selon le profil économique des électeurs."
+    "description": "La grève des électriciens et gaziers débute avec une mobilisation importante, mais elle est limitée à certaines régions, tandis que le « tarif agent » est partiellement maintenu avec une légère augmentation, suite à un compromis entre les syndicats et les autorités.",
+    "whatChanges": "La grève est moins étendue et le « tarif agent » est partiellement préservé, ce qui atténue l'impact sur les clients domestiques et sur l'image des grévistes auprès des électeurs."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Ouvriers de 35 à 64 ans travaillant en zone dense",
-      "mechanism": "Le segment des ouvriers actifs âgés de 35 à 64 ans en zone urbaine dense est concerné par la mobilisation pour le maintien du « tarif agent », car les ouvriers forment une part importante des salariés du secteur de l'électricité et du gaz, souvent dans les communes denses où s'opèrent ces services.",
-      "reason": "Remplacement d’un segment trop large ou inapproprié sans le tag spécifique « profession.electrician_gazier »",
+      "name": "Agents de la fonction publique et professions intermédiaires femmes en couple avec enfants",
+      "mechanism": "Cette catégorie inclut des femmes cadres intermédiaires ou professions intermédiaires en couple avec enfants, susceptibles d’être concernées par la question des tarifs particuliers liés à leur emploi dans les secteurs publics ou para-publics d’électricité et gaz, ainsi que des enjeux sociaux sous-jacents à la mobilisation.",
+      "reason": "Intersection de sexe féminin, occupations intermédiaires, et foyer parental",
       "all": [
-        "occupation.worker",
-        "geo.dense"
+        "sex.female",
+        "occupation.intermediate",
+        "household.couple_with_children"
       ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8424,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Attitude envers le conflit des électriciens et gaziers",
+        "Connaissance du « tarif agent »"
+      ],
+      "count": 4214,
+      "distinctCommunes": 133,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,22 +46,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Couples avec enfants employés ou ouvriers résidant en commune intermédiaire",
-      "mechanism": "Les salariés employés ou ouvriers en couple avec enfants vivant en communes de densité intermédiaire sont concernés par la grève, car ils dépendent des services d’électricité et gaz et sont touchés par le maintien ou la modification du « tarif agent », dans un cadre familial urbain modéré.",
-      "reason": "Nouvelle intersection pour resserrer un segment large et toucher potentiellement les foyers concernés",
+      "name": "Ouvriers de 50 à 64 ans engagés dans la lutte pour le maintien du tarif agent",
+      "mechanism": "Les ouvriers âgés de 50 à 64 ans travaillent souvent dans les secteurs industriels et énergétique ; leur mobilisation pour le maintien du tarif agent reflète leurs intérêts professionnels et risques de précarité liés à ce tarif fiscal particulier.",
+      "reason": "Segment précis d’âge et profession exposé à cet enjeu social",
       "all": [
-        "household.couple_with_children",
-        "geo.intermediate"
+        "occupation.worker",
+        "age.50_64"
       ],
-      "any": [
-        "occupation.employee",
-        "occupation.worker"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 474,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Sensibilité aux revendications sociales des électriciens et gaziers",
+        "Perception du « tarif agent »"
+      ],
+      "count": 3663,
+      "distinctCommunes": 136,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -70,20 +72,21 @@
     },
     {
       "id": "segment_3",
-      "name": "Femmes seules âgées de 75 ans et plus en zones urbaines denses",
-      "mechanism": "Les femmes âgées de 75 ans et plus vivant seules en zones urbaines denses sont particulièrement concernées par la mobilisation pour le maintien du « tarif agent », car elles représentent une catégorie vulnérable face à la flambée des prix des services de l'électricité et du gaz dont elles dépendent souvent avec des ressources financières limitées.",
-      "reason": "Segment étroit et précis d’une catégorie socio-démographique fragile et ciblée par les enjeux tarifaires",
+      "name": "Jeunes professionnels urbains cadres et professions intellectuelles supérieures",
+      "mechanism": "Les jeunes cadres urbains, souvent employés dans des secteurs tels que l’énergie ou les infrastructures, peuvent être concernés par la mobilisation des électriciens et gaziers, notamment par leur réseau social ou par solidarité professionnelle, bien qu’ils ne soient pas les premiers touchés par le tarif agent.",
+      "reason": "Ce groupe inclut les jeunes professionnels diplômés vivant en communes denses, potentiellement sensibilisés à la grève.",
       "all": [
-        "sex.female",
-        "age.75_plus",
-        "household.single",
-        "geo.dense"
+        "age.25_34",
+        "cluster.urban_executive"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 4011,
+      "measurementNeeds": [
+        "Perception de la grève des électriciens et gaziers",
+        "Soutien au maintien du tarif agent"
+      ],
+      "count": 2948,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -103,10 +106,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Couples avec enfants employés ou ouvriers résidant en commune intermédiaire",
-      "matchedCount": 474,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes professionnels urbains cadres et professions intellectuelles supérieures",
+      "matchedCount": 2948,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -122,156 +125,127 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 4,
-          "away": 2,
-          "noClearChange": 42
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 3,
-          "noClearChange": 42
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ce blocage des prix et le chèque aux particuliers, ça peut vraiment aider notre budget quotidien. Je suis contente qu'on pense aussi aux agents avec le tarif agent. Ça me rassure pour la prochaine présidentielle.",
-        "Je travaille dur pour subvenir aux besoins de ma famille. Si les prix sont bloqués et que tout le monde y a droit, ça m’aide. Mais si l’aide est limitée selon les revenus, ça risque de faire des tensions, pas sûr que ça me plaise.",
-        "Ce tarif agent et la limitation des prix ça me parle. Ça peut soulager notre foyer. Mais moduler selon les revenus, ça peut paraître plus juste, surtout si ça évite que les plus aisés touchent le chèque."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.00169529704837805,
-          "lo": -0.0008183125308027115,
-          "hi": 0.004033319772594801,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0007997091269939201,
-          "lo": -0.002992537992537994,
-          "hi": 0.001728472989249939,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005031042383377483,
-          "lo": -0.007792897371603485,
-          "hi": -0.0023780589953835566,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0020519895245119427,
-          "lo": -0.002823666224101554,
-          "hi": -0.0012614498745761333,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0056981461652808275,
-          "lo": 0.0009885327736792748,
-          "hi": 0.011156803534009392,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0004892978212244868,
-          "lo": -0.0037721385327508,
-          "hi": 0.004624116060488406,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Ouvriers de 35 à 64 ans travaillant en zone dense",
-      "matchedCount": 8424,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
           "toward": 0,
           "away": 2,
           "noClearChange": 46
         },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
         "abstention": {
-          "toward": 2,
-          "away": 1,
-          "noClearChange": 45
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "La grève pour maintenir le tarif agent, ça me parle. Avec la flambée des prix, je suis pour que les travailleurs du gaz et de l’électricité gardent leurs avantages, c’est important pour nous qui vivons au quotidien ces hausses.",
-        "Je suis content de voir une grande mobilisation des électriciens et gaziers, ça protège nos droits face à la vie chère. Par contre la modulation des aides selon les revenus, ça semble juste aussi, même si ça complique tout...",
-        "Ça fait du bien de voir que les électriciens et gaziers se battent pour leurs droits, surtout avec la hausse des prix. Le chèque carburant pour les plus modestes, ça me semble juste et efficace."
-      ],
-      "altEffect": {
+        "Je trouve important que les droits des employés soient défendus, surtout quand cela affecte des services publics essentiels. Cela pourrait influencer la stabilité sociale locale.",
+        "Je suis sensible aux questions de justice sociale. Une grève large montre que les syndicats sont mobilisés et défendent leurs acquis. Un compromis partiel me semble plus acceptable que la rupture totale.",
+        "La grève des agents du gaz et de l’électricité est une question importante, mais elle ne bouleverse pas fondamentalement mes options politiques."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Ouvriers de 50 à 64 ans engagés dans la lutte pour le maintien du tarif agent",
+      "matchedCount": 3663,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.011647129234116224,
-          "lo": 0.007973823986258725,
-          "hi": 0.015501777743466392,
-          "stable": true
+          "toward": 6,
+          "away": 1,
+          "noClearChange": 41
         },
         "left": {
-          "mean": 0.00735893406741761,
-          "lo": 0.003881653246434982,
-          "hi": 0.01055105935434872,
-          "stable": true
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
         },
         "center": {
-          "mean": -0.012301397753443286,
-          "lo": -0.015586796141086443,
-          "hi": -0.009354357076265205,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.007216663727077187,
-          "lo": -0.009003444331276433,
-          "hi": -0.005446124371589281,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.005619527197051391,
-          "lo": -0.009875820354051393,
-          "hi": -0.001505136972030548,
-          "stable": false
+          "toward": 1,
+          "away": 5,
+          "noClearChange": 42
         },
         "abstention": {
-          "mean": 0.006131525376038019,
-          "lo": 0.001356845137370264,
-          "hi": 0.01150113140004099,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette grève des électriciens et gaziers me parle, c’est notre quotidien qui est en jeu, le tarif agent impacte notre facture. Il faut soutenir cette lutte pour conserver nos acquis.",
+        "Une grève pour le maintien du tarif agent, c’est bien, mais ça me semble assez loin de ma réalité à Paris. Cela ne changera pas mon vote.",
+        "Cette grève me semble importante, mais je suis plutôt prudente, je crains que ça mette le bazar dans mon quotidien sans que ça améliore vraiment les choses."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Agents de la fonction publique et professions intermédiaires femmes en couple avec enfants",
+      "matchedCount": 4214,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que les électriciens et gaziers veulent garder leur tarif avantageux, c'est important pour assurer leur pouvoir d'achat, mais cette grève risque de compliquer la vie en ville, ça m'embête.",
+        "Une grève pour le tarif agent me concerne peu directement, mais j'ai plutôt peur des désagréments et hausse des coûts pour le public. Un compromis partiel me semble préférable.",
+        "Cette grève semble portée par des revendications précises, mais à Lyon, si ça perturbe l'énergie, ça peut être pénible pour tout le monde, même si je soutiens le droit de grève."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -293,8 +267,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "right": {
           "toward": 0,
@@ -302,153 +276,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 89
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 4,
-          "noClearChange": 91
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Cette grève et la mobilisation pour protéger le tarif agent me parlent, c'est important pour garder des tarifs abordables, surtout quand on vit à la campagne où se déplacer coûte cher.",
-        "Je crains que ces mesures ne m’aident pas beaucoup, si le chèque est réservé aux revenus modestes, ça risque de ne pas me profiter. Ça m'inquiète un peu.",
-        "Je comprends la colère des électriciens et gaziers, cela a une importance directe sur mes dépenses. Une modulation des aides selon les revenus, ça paraît plus juste à première vue."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.001768581793879413,
-          "lo": 0.0006299420138705849,
-          "hi": 0.0028679315509672672,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0004887546033379356,
-          "lo": -0.0010548848510158052,
-          "hi": 0.0019498983993031592,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.008411382802751853,
-          "lo": -0.010947590776459829,
-          "hi": -0.006183882033584415,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0016874252603419273,
-          "lo": -0.002521197052447054,
-          "hi": -0.0007385185822685828,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.00871351475666952,
-          "lo": 0.005310380035082422,
-          "hi": 0.012286131567381564,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0008720430907930909,
-          "lo": -0.003501255423874469,
-          "hi": 0.001602871437692866,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Femmes seules âgées de 75 ans et plus en zones urbaines denses",
-      "matchedCount": 4011,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
+          "toward": 2,
           "away": 2,
-          "noClearChange": 46
+          "noClearChange": 92
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "toward": 2,
+          "away": 2,
+          "noClearChange": 92
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est bien que les électriciens et gaziers se battent pour garder des tarifs corrects, ça aide beaucoup les gens comme moi avec une retraite modeste. Mais je me méfie des grandes promesses des candidats.",
-        "Moi, je comprends qu'on veuille aider les plus modestes avec un chèque carburant, mais il faut que ce soit juste et que ça ne profite pas qu'à certains. Et le blocage des prix c'est important pour nous qui avons peu de moyens.",
-        "Je suis plus préoccupée par l’art et la tranquillité que par les batailles sur les prix du gaz ou de l’électricité, ça ne change rien à ma vie quotidienne."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.003414651879857016,
-          "lo": 0.0016819838508917854,
-          "hi": 0.00517450417065241,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.003915748926125098,
-          "lo": 0.0010259312150426476,
-          "hi": 0.0066095618718552815,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.00526499210507442,
-          "lo": -0.008553930001414115,
-          "hi": -0.0018665779958949192,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0050299581422524635,
-          "lo": -0.00679020130712265,
-          "hi": -0.0034071928792406177,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.001235994748288551,
-          "lo": -0.0029723379095604255,
-          "hi": 0.00037945177234829523,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.004200544189633321,
-          "lo": 0.0010282951643249938,
-          "hi": 0.007055300857707954,
-          "stable": false
-        }
-      }
+        "Cette grève pour maintenir le tarif agent me touche un peu, j'apprécie la défense des acquis sociaux, mais ça ne change pas vraiment mon vote habituel.",
+        "Je trouve bien que les électriciens et gaziers se battent pour garder le tarif spécial, ça peut aider comme moi, même si ça ne change pas mon choix politique habituel.",
+        "Le maintien du tarif agent, ça protège un peu les travailleurs comme moi. Cette grève me parle, ça renforce un peu mon soutien à la gauche qui défend les salariés."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:32.552Z",
-    "contentHash": "799b3fecc1b0b04307dea8d59d8ff2cee7308925112c76731d77217fc8924646"
+    "status": "automatic",
+    "contentHash": "30242a4dfedd85ffa5e0d0461406933267932aa923f3b4ccf2c53b681812079c"
   }
 }

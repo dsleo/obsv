@@ -4,38 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "ff32110cc4b30662",
-  "computedAt": "2026-11-10T22:08:43.628Z",
+  "inputHash": "e0d234f4e828b1d0",
+  "eventInputHash": "22b45e0789b635c7ca3dc6fccc12f6ceaef45f6cda9c2e19b44f41232439d641",
+  "computedAt": "2026-11-11T13:10:01.167Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Face à la menace de grève, la direction de France Télévisions obtient un compromis avec les syndicats qui suspendent leur mouvement, mais annoncent une mobilisation informelle ponctuelle sur certaines journées dans les prochaines semaines pour protester contre la coupe budgétaire.",
-    "whatChanges": "Les émissions et le site ne sont pas perturbés immédiatement, mais la mobilisation reste présente, maintenant la pression sur la direction tout en limitant l'impact sur les téléspectateurs à court terme."
+    "description": "Les syndicats de France Télévisions annoncent une grève partielle limitant les perturbations aux seules émissions d'information à partir d'une date différée de deux semaines, afin de ne pas nuire à l'audience des primes heures de grande écoute.",
+    "whatChanges": "Le choix d'une grève partielle et différée change l'impact médiatique, préservant mieux l'audience phare tout en maintenant la pression sur la direction, ce qui pourrait limiter la sympathie des téléspectateurs mais renforcer le dialogue social."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Employés et ouvriers en communes denses et moyennes",
-      "mechanism": "Les salariés des catégories employés et ouvriers sont directement concernés par le mouvement de grève des syndicats de France Télévisions, institution publique souvent perçue comme défenseuse des droits sociaux, particulièrement en zones urbaines et intermédiaires où l'audience et l'impact médiatique sont importants.",
-      "reason": "Public salarié modeste exposé à l'information locale et sensible aux revendications salariales ou sociales, vivant dans des zones urbanisées concernées par la grève dans les antennes de média public.",
+      "name": "Personnels salariés modestes et techniciens en commune dense",
+      "mechanism": "Les coups budgétaires de France Télévisions impactent particulièrement les salariés modestes et techniciens travaillant dans les grandes zones urbaines et les communes denses où se concentrent les effectifs et syndicats mobilisés.",
+      "reason": "Ce segment concentre les employés et ouvriers en communes denses, base importante des personnels concernés par les coupes budgétaires dans les principaux centres urbains de France Télévisions.",
       "all": [
-        "occupation.employee"
+        "occupation.employee",
+        "geo.dense"
       ],
       "any": [
-        "geo.dense",
-        "geo.intermediate"
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_media_perturbations",
-        "awareness_of_union_demands"
+        "Attitude envers la grève",
+        "Perception des coupes budgétaires",
+        "Soutien aux revendications syndicales"
       ],
-      "count": 19549,
-      "distinctCommunes": 96,
+      "count": 16322,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -46,21 +50,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Cadres et professions intellectuelles supérieures en commune dense",
-      "mechanism": "Les cadres et professions intellectuelles supérieures en milieux urbains denses sont concernés à la fois en tant que personnels potentiels des médias et par leur rôle d'audience engagée pour l'information publique, impactée par les perturbations dues à la grève à France Télévisions.",
-      "reason": "Public diplômé et urbain, potentiellement influenceur ou concerné par les enjeux budgétaires et syndicaux de France Télévisions situées dans grandes agglomérations.",
+      "name": "Cadres et professions intellectuelles supérieures en ville",
+      "mechanism": "Les cadres et professionnels intellectuels supérieurs en commune dense sont concernés par la grève car ils participent aussi aux services publics audiovisuels et sont affectés par les dépenses en baisse à France Télévisions.",
+      "reason": "Segment restreint aux cadres urbains qui représentent une partie de l’effectif et ont des intérêts professionnels et syndicaux dans l’entreprise.",
       "all": [
-        "occupation.executive_professional",
-        "geo.dense"
+        "cluster.urban_executive"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perception_of_budgets_public_media",
-        "engagement_with_public_broadcasting"
+        "Soutien à la grève",
+        "Impact perçu des coupes budgétaires",
+        "Attitude envers France Télévisions"
       ],
-      "count": 10635,
+      "count": 7315,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -72,21 +79,26 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes diplômés urbains en âge actif",
-      "mechanism": "Les jeunes diplômés urbains de moins de 35 ans sont une catégorie sociodémographique souvent sensibilisée aux mouvements sociaux et aux enjeux culturels liés à France Télévisions, en particulier dans les zones urbaines denses où se concentre leur résidence et activité professionnelle.",
-      "reason": "Jeunes cadres ou jeunes diplômés engagés dans les débats liés à l'audiovisuel public, impactés par les coupes budgétaires et pouvant être actifs sur les réseaux sociaux relayant la grève.",
+      "name": "Personnel en couple avec enfants, actifs en communes intermédiaires",
+      "mechanism": "Les familles actives en couple avec enfants vivant dans des communes de densités intermédiaires sont concernées car elles incluent des salariés et employés mobilisables et directement touchés par l’évolution des moyens de France Télévisions.",
+      "reason": "Ce segment combine la dimension familiale et géographique pour cibler les foyers potentiellement actifs dans France Télévisions hors des grandes métropoles.",
       "all": [
-        "cluster.young_urban_graduate"
+        "household.couple_with_children",
+        "geo.intermediate"
       ],
-      "any": [],
+      "any": [
+        "occupation.employee",
+        "occupation.intermediate"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "social_media_discussion_about_strikes",
-        "awareness_of_budget_cuts"
+        "Perception des coupes budgétaires",
+        "Soutien aux syndicats",
+        "Attitude dans l’espace public"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 464,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -107,112 +119,27 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Employés et ouvriers en communes denses et moyennes",
-      "matchedCount": 19549,
+      "segmentName": "Personnels salariés modestes et techniciens en commune dense",
+      "matchedCount": 16322,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "center": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "right": {
+        "left": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ça m'agace un peu ces grèves, ça perturbe les infos et ça ne change pas grand-chose pour moi, à part que ça met de la pagaille.",
-        "Je suis pas très branchée grève à la télé, ça me touche pas trop, je préfère me concentrer sur mes affaires.",
-        "Les coupures budgétaires à France Télévisions, c'est dommage, mais ça me semble un peu loin de mon quotidien, ça ne change pas vraiment mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0032075906838785104,
-          "lo": 0.0024552270495288475,
-          "hi": 0.003949138997089467,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0031732095707874375,
-          "lo": 0.002409323166840793,
-          "hi": 0.0039470740995460815,
-          "stable": false
-        },
         "center": {
-          "mean": -0.00295441521939669,
-          "lo": -0.0037548565239996865,
-          "hi": -0.002185343564131003,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0008594388271940447,
-          "lo": -0.0012104935175305624,
-          "hi": -0.0005247949825465625,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.003162882621623738,
-          "lo": -0.004323076855538797,
-          "hi": -0.002279067548457409,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0005959364135485276,
-          "lo": -0.0005507670580321087,
-          "hi": 0.001667909173021291,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains en âge actif",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 2,
-          "away": 0,
+          "toward": 0,
+          "away": 2,
           "noClearChange": 46
         },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
         "right": {
           "toward": 0,
           "away": 0,
@@ -220,78 +147,40 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est frustrant qu'on coupe toujours dans les moyens des médias publics, ça risque d'affecter la qualité de l'info qu'on reçoit. J'espère que la grève fera bouger les choses.",
-        "Une nouvelle grève à France Télévisions ? Ce n'est pas vraiment ma priorité, ça ne change pas grand-chose à ma façon de voter.",
-        "Franchement, ces coupures budgétaires et ces mouvements sociaux, ça ne m'intéresse pas trop. Moi, je pense surtout à mon boulot et à ma famille."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0035392232413857853,
-          "lo": 0.002571050636509991,
-          "hi": 0.004581344607497335,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0029847738696534266,
-          "lo": 0.0022168173710387213,
-          "hi": 0.0038461092997229035,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.003120532758589732,
-          "lo": -0.003968394930678452,
-          "hi": -0.0023150552097461353,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0014118225228175756,
-          "lo": -0.0019427106064412072,
-          "hi": -0.0008999976773180376,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0028186335309831052,
-          "lo": -0.003628958095682918,
-          "hi": -0.002073257142985457,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0008269917013512124,
-          "lo": -0.0000753640923139449,
-          "hi": 0.0019500276102778693,
-          "stable": false
-        }
-      }
+        "Franchement, ces grèves des syndicats à France Télévisions, c'est encore une histoire qui me fait grincer des dents. Je comprends qu'ils défendent leur job, mais ça nous embête souvent au quotidien, surtout à la télé.",
+        "Je vois que les syndicats de France Télévisions sont en grève pour protester contre une nouvelle baisse des budgets. Je suis un peu partagée, je soutiens la défense des acquis, mais j'attends aussi que ça ne dérange pas trop les téléspectateurs.",
+        "Une grève à France Télévisions ? Ça peut être embêtant, surtout si ça touche les infos. Mais si ça concerne juste leurs difficultés budgétaires, j'espère qu'ils négocient bien sans trop pénaliser les téléspectateurs."
+      ]
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Cadres et professions intellectuelles supérieures en commune dense",
-      "matchedCount": 10635,
+      "segmentName": "Cadres et professions intellectuelles supérieures en ville",
+      "matchedCount": 7315,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
@@ -304,61 +193,70 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         },
         "abstention": {
-          "toward": 1,
-          "away": 1,
+          "toward": 2,
+          "away": 0,
           "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ces grèves répétitives un peu agaçantes, mais cela montre sûrement une vraie tension sociale que je ne peux pas ignorer.",
-        "Ces grèves me paraissent justifiées face aux coupes budgétaires, mais j’espère qu’elles ne vont pas trop perturber la diffusion d’information locale importante.",
-        "Cette grève de France Télévisions ne change pas vraiment mon avis, c’est encore une histoire de pression syndicale économique qu’on voit trop souvent."
-      ],
-      "altEffect": {
+        "La grève me dérange car elle fragilise un service public essentiel, surtout en cette période déjà tendue économiquement. Si la grève se limite aux informations, ce serait plus supportable.",
+        "Je vois la grève comme une perte de temps qui perturbe inutilement. Une grève plus contenue limiterait les dégâts, mais j'en ai un peu assez des conflits sociaux incessants.",
+        "Une grève complète est gênante, mais une grève partielle limitée aux infos serait plus raisonnable. Je m'inquiète un peu de ces coups répétitifs au service public dans un contexte déjà tendu."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Personnel en couple avec enfants, actifs en communes intermédiaires",
+      "matchedCount": 464,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.0029678314157567305,
-          "lo": 0.001964430941851108,
-          "hi": 0.004148740493372394,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": 0.002740823693337414,
-          "lo": 0.0017913558103178906,
-          "hi": 0.004075017298364351,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.0028266219786924583,
-          "lo": -0.003582047762436607,
-          "hi": -0.002266829142203011,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.001570127785862691,
-          "lo": -0.001988719968136135,
-          "hi": -0.001187839994309807,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.002628414972193136,
-          "lo": -0.0033085131507943053,
-          "hi": -0.0019806384151443957,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": 0.0013165096276541676,
-          "lo": 0.00003693344451012083,
-          "hi": 0.002359994367728903,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, encore une coupe budgétaire qui va probablement dégrader la qualité des programmes publics, ça me dérange car j'aime bien ce service. Mais ce n’est pas le sujet principal de mes préoccupations au quotidien.",
+        "Je vois bien les syndicats galérer, mais je m'en fiche un peu tant que ça ne perturbe pas trop mes infos ou la télé que je regarde le soir.",
+        "Une grève, ça me paraît toujours compliqué mais là c’est surtout la manière et la limitation des perturbations qui compte. Je trouve ça un peu tendu car le service public est important."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -369,14 +267,14 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 94
         },
         "left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "center": {
           "toward": 0,
@@ -390,67 +288,27 @@
         },
         "far_right": {
           "toward": 1,
-          "away": 3,
-          "noClearChange": 92
+          "away": 2,
+          "noClearChange": 93
         },
         "abstention": {
-          "toward": 4,
-          "away": 2,
-          "noClearChange": 90
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que les syndicats protestent, mais ça ne change rien à ma façon de voir les choses, c'est toujours pareil avec les médias publics.",
-        "Cette grève montre que les salariés se battent encore pour leurs droits, ça me parle un peu, mais ça ne me fera pas changer d'avis sur mes choix politiques.",
-        "Une nouvelle coupe budgétaire dans un service public comme France Télévisions, c'est regrettable, cela montre les difficultés de notre pays. Je suis plutôt pour préserver ces services."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.002000180161100415,
-          "lo": 0.0014991600766485439,
-          "hi": 0.0025504857579852283,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0016147830657203324,
-          "lo": 0.0011256419609691505,
-          "hi": 0.0021227898266489875,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0018707579484330827,
-          "lo": -0.002244521681135517,
-          "hi": -0.0014845964658638305,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0010242781935926274,
-          "lo": -0.0013010912104605963,
-          "hi": -0.0007334969321405208,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0015648375063363011,
-          "lo": -0.002435284927951999,
-          "hi": -0.0006799097945452606,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0008449104215412685,
-          "lo": -0.00013801394630242464,
-          "hi": 0.0017816249320753103,
-          "stable": false
-        }
-      }
+        "Franchement, ces syndicats, ils pensent surtout à eux, ça me semble encore une perte d'argent inutile. Ça ne va pas changer ma façon de voter, j'ai d'autres soucis dans mon village.",
+        "Je soutiens les syndicats, ils doivent se battre face aux coupes budgétaires. Ce genre d'action est important même si c'est pénible parfois. Cela renforce un peu mon soutien à la gauche radicale et écologiste.",
+        "Ces grèves, encore une fois, ça montre un manque de responsabilité budgétaire. Je trouve ça exagéré et je serai sans doute un peu plus centrée face à ce genre d'évènement."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:34.747Z",
-    "contentHash": "e5204ee7c18917659d57b181e890ae178ce415289d90392712882211ed3c83fe"
+    "status": "automatic",
+    "contentHash": "d899789043a4b5e4050025c6c9c33106459694c95216c8afab04c152ba7867b0"
   }
 }

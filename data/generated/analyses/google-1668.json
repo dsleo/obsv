@@ -4,45 +4,44 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "c4cc0cb71d65b6d9",
-  "computedAt": "2026-11-09T20:41:25.911Z",
+  "inputHash": "1eadc9f8322882ec",
+  "eventInputHash": "e3df9d34f47491b183fbc02e11b485d6d422debe219046a92c00729620e4d709",
+  "computedAt": "2026-11-11T13:16:43.842Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Marine Tondelier propose une loi visant non pas à interdire le mensonge en politique totalement, mais à instaurer un organe indépendant chargé de vérifier et d'analyser publiquement les déclarations des candidats afin d'informer les électeurs.",
-    "whatChanges": "La mesure se concentre sur la transparence et la responsabilisation plutôt que sur la sanction, visant à renforcer la confiance des électeurs sans alimenter un climat répressif."
+    "description": "Marine Tondelier propose une loi renforçant la transparence en politique en imposant la publication des sources des informations diffusées par les candidats, plutôt qu'une interdiction générale du mensonge.",
+    "whatChanges": "Le focus passe d'une interdiction stricte du mensonge, difficile à appliquer, à une exigence de transparence qui pourrait être mieux perçue par les électeurs, notamment les indécis, tout en évitant les débats sur la liberté d'expression."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Citoyens jeunes diplômés urbains sensibles à l'honnêteté politique",
-      "mechanism": "Marine Tondelier propose une loi pour interdire le mensonge en politique, ciblant un public jeune diplômé urbain pouvant être particulièrement attentif à la transparence et à la sincérité des discours politiques dans les grandes villes.",
-      "reason": "Ce public est composé de personnes de moins de 35 ans titulaires d'un diplôme bac+3 ou plus et vivant en commune dense, correspondant à des jeunes diplômés des villes identifiés comme sensibles aux questions d'intégrité politique.",
+      "name": "Jeunes diplômés urbains sensibles à l’éthique politique",
+      "mechanism": "Marine Tondelier propose une loi pour interdire le mensonge en politique qui concerne particulièrement les jeunes diplômés des grandes villes, segment généralement attentif aux enjeux d’intégrité et transparence politique.",
+      "reason": "Ce segment rassemble les jeunes de moins de 35 ans, titulaires au moins d’un bac+3, vivant en commune dense, habituellement sensibilisés aux débats sur la moralisation de la vie politique.",
       "all": [
-        "age.18_24",
         "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [],
-      "none": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64",
-        "age.65_74",
-        "age.75_plus"
+      "any": [
+        "age.18_24",
+        "age.25_34"
       ],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perception_politics_truthfulness"
+        "Attitude envers la moralisation de la politique",
+        "Connaissance de la proposition de loi"
       ],
-      "count": 1070,
-      "distinctCommunes": 67,
+      "count": 4295,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Marine Tondelier veut une loi pour \"interdire le mensonge en politique\"",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -51,29 +50,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Adultes actifs employés et ouvriers en milieu urbain intermédiaire",
-      "mechanism": "La proposition visant à interdire le mensonge en politique concerne aussi les salariés des classes populaires urbaines ou périurbaines, souvent employés ou ouvriers, qui peuvent être affectés par des discours trompeurs ayant un impact direct sur leur vie quotidienne.",
-      "reason": "Ce segment regroupe des adultes de 35 à 64 ans actifs en emploi comme employés ou ouvriers et vivant dans des zones urbaines denses ou intermédiaires, susceptibles de ressentir les conséquences des fausses promesses politiques.",
+      "name": "Retraités vivant en couple dans des communes intermédiaires",
+      "mechanism": "La loi contre le mensonge en politique intéresse aussi les retraités en couple, souvent sensibles aux enjeux de transparence et honnêteté politique, particulièrement dans les communes de taille intermédiaire où les relations sociales sont plus personnalisées.",
+      "reason": "Ce segment regroupe les personnes retraitées en couple, résidant dans des communes de densité intermédiaire, susceptibles d’être concernés par la proposition pour renforcer la qualité démocratique.",
       "all": [
-        "age.35_49",
-        "occupation.employee"
-      ],
-      "any": [
-        "geo.dense",
+        "occupation.retired",
+        "household.couple_no_children",
         "geo.intermediate"
       ],
-      "none": [
-        "age.18_24",
-        "age.25_34",
-        "age.50_64"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perception_politics_truthfulness"
+        "Attitude envers l’intégrité politique",
+        "Evaluation de l’honnêteté des élus"
       ],
-      "count": 6856,
-      "distinctCommunes": 96,
+      "count": 617,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -84,29 +77,50 @@
     },
     {
       "id": "segment_3",
-      "name": "Seniors retraités vivant en couple en commune intermédiaire ou urbaine",
-      "mechanism": "Les retraités en couple peuvent être sensibles à la question de la vérité politique, notamment lorsqu'ils subissent les conséquences des décisions publiques basées sur des promesses mensongères. La proposition de loi de Marine Tondelier les concerne par implication directe.",
-      "reason": "Ce segment comprend des personnes retraitées vivant en couple sans enfant dans un foyer, résidant en commune dense ou intermédiaire, représentant une population stable et engagée dans le scrutin.",
+      "name": "Employés âgés de 35 à 49 ans en commune dense",
+      "mechanism": "Ces employés âgés de 35 à 49 ans en commune dense sont concernés par la proposition de Marine Tondelier car ils sont exposés aux enjeux de transparence et vérité en politique qui affectent leur confiance dans les institutions politiques urbaines.",
+      "reason": "Remplacement d’un segment trop large combinant plusieurs occupations avec une liste d’âges",
       "all": [
-        "occupation.retired",
-        "household.couple_no_children"
+        "occupation.employee",
+        "age.35_49",
+        "geo.dense"
       ],
-      "any": [
-        "geo.dense",
-        "geo.intermediate"
-      ],
-      "none": [
-        "household.single",
-        "household.couple_with_children",
-        "household.single_parent"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perception_politics_truthfulness"
+        "Attitude envers la vérité en politique",
+        "Confiance dans les institutions"
       ],
-      "count": 15832,
-      "distinctCommunes": 96,
+      "count": 6646,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Marine Tondelier veut une loi pour \"interdire le mensonge en politique\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Ouvriers âgés de 50 à 64 ans vivant en commune intermédiaire",
+      "mechanism": "Ces ouvriers entre 50 et 64 ans en commune intermédiaire sont un groupe sociodémographique ciblé qui peuvent être sensibles à la proposition de loi d’interdire le mensonge en politique car elle touche leurs préoccupations quant à l’honnêteté des représentants politiques à laquelle ils sont exposés localement.",
+      "reason": "Segment resserré pour respecter la contrainte d’intersection unique d’occupation avec une valeur d’âge",
+      "all": [
+        "occupation.worker",
+        "age.50_64",
+        "geo.intermediate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception du mensonge en politique",
+        "Soutien à la loi contre le mensonge politique"
+      ],
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -125,10 +139,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Adultes actifs employés et ouvriers en milieu urbain intermédiaire",
-      "matchedCount": 6856,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés âgés de 35 à 49 ans en commune dense",
+      "matchedCount": 6646,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -155,27 +169,168 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 8,
-          "away": 1,
-          "noClearChange": 39
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ce projet un peu compliqué : interdire le mensonge en politique, ça paraît difficile à appliquer vraiment, mais l'idée de transparence me semble importante. Je préférerais une façon plus pragmatique d'informer les citoyens.",
-        "Interdire le mensonge ? J'aime l'idée que la politique soit plus honnête, mais je préfère quand même un organe indépendant pour vérifier plutôt qu'une loi trop rigide qui pourrait être mal appliquée.",
-        "Une loi pour interdire le mensonge en politique me semble un peu utopique et compliquée à mettre en œuvre. Je préfère qu'un organe indépendant informe les électeurs sans pour autant censurer."
+        "Ça semble un peu trop restrictif et compliqué à faire appliquer. Je préfère qu'on reste pragmatique et qu'on punisse surtout les mensonges vraiment graves.",
+        "C'est important que la vérité soit respectée en politique, mais interdire le mensonge strictement, c'est peut-être utopique. Par contre, qu'on force la transparence sur les sources me paraît plus réaliste et utile.",
+        "Cela ne changera rien à ce que je pense. En général, on ne fait pas vraiment confiance aux politiques, alors une loi très restrictive ne me convainc pas."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités vivant en couple dans des communes intermédiaires",
+      "matchedCount": 617,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 12,
+          "away": 0,
+          "noClearChange": 36
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Moi, je trouve ça un peu utopique d'interdire le mensonge en politique, c'est comme croire au Père Noël. Mais qu'on demande un peu plus de sérieux, pourquoi pas.",
+        "Interdire le mensonge en politique, ça me paraît compliqué, mais au moins ça montre que ça bouge. Je préférerais quand même plus de transparence dans ce qu'on nous raconte.",
+        "Je sais que les hommes politiques ne disent pas toujours la vérité, mais interdire le mensonge me semble une idée trop forte. Mieux vaut qu'ils soient plus transparents, ça renforcerait ma confiance."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 20,
+          "away": 0,
+          "noClearChange": 76
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cette idée intéressante mais un peu utopique, il y aura toujours des candidats qui essaient de mentir à leur avantage, c'est difficile à contrôler réellement.",
+        "Interdire le mensonge ? Ça me paraît compliqué, mais au moins ça mettrait des règles. J'aimerais bien que les politiques soient un peu plus honnêtes, même si je sais que dans mon boulot on triche parfois un peu aussi.",
+        "Je préfère qu'on impose la transparence avec les sources, c'est plus concret que de vouloir interdire le mensonge qui est trop vague."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Ouvriers âgés de 50 à 64 ans vivant en commune intermédiaire",
+      "matchedCount": 144,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cette idée un peu naïve, la politique, c'est toujours un peu du marchandage, interdire le mensonge me paraît compliqué et un peu irréaliste. Ça ne changera pas ma manière de voter.",
+        "Interdire le mensonge en politique ? Ça me semble un peu utopique. Je préfère l'idée d'avoir plus de transparence avec les sources, ça me paraît plus concret et utile pour faire confiance.",
+        "Cette loi me semble irréaliste, ça ne changera pas grand-chose. Je doute que ça influence vraiment ma confiance dans les politiciens ou mon vote."
       ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Citoyens jeunes diplômés urbains sensibles à l'honnêteté politique",
-      "matchedCount": 1070,
+      "segmentName": "Jeunes diplômés urbains sensibles à l’éthique politique",
+      "matchedCount": 4295,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -214,111 +369,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça me semble une idée assez contradictoire, comment on pourrait vraiment interdire le mensonge en politique sans tomber dans la censure ? Ça me laisse un peu sceptique.",
-        "Cette idée d'interdire le mensonge en politique me semble un peu irréaliste. Par contre, un organe indépendant pour vérifier me parait plus utile, ça aiderait à se faire une véritable opinion.",
-        "Interdire totalement le mensonge en politique, ça me parait compliqué. Mais un organe qui vérifie les propos serait plus réaliste et ça pourrait un peu me rassurer."
-      ]
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 94
-        },
-        "abstention": {
-          "toward": 23,
-          "away": 1,
-          "noClearChange": 72
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça un peu irréaliste d'interdire totalement le mensonge en politique, mais l'idée d'encadrer un peu plus les discours pourrait être positive pour éviter les abus.",
-        "Je ne crois pas trop à ce genre de lois, les politiques mentent toujours. Mais un organe qui vérifierait leurs propos, ça pourrait peut-être aider à rendre les choses plus claires.",
-        "L'interdiction totale me paraît trop rigide, mais une autorité indépendante pour vérifier les propos des candidats, ça me semble une bonne idée pour être mieux informée."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Seniors retraités vivant en couple en commune intermédiaire ou urbaine",
-      "matchedCount": 15832,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 41
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Une loi qui interdit le mensonge en politique ? Ce serait bien, ça pourrait rendre les élections un peu plus sérieuses. Je suis pour, ça éviterait trop de fausses promesses.",
-        "Interdire le mensonge en politique, c'est séduisant, mais j'ai peur que ça soit compliqué à appliquer. Mieux vaut un organe indépendant qui vérifie les propos, ça me rassurerait davantage.",
-        "Je ne comprends pas trop ces débats compliqués. Moi, j'aimerais juste qu'on arrête les fausses paroles, mais ce n'est pas sûr que ça change grand-chose pour moi."
+        "C’est bien voulu de punir le mensonge, mais est-ce que ce serait vraiment applicable ou juste une autre source d’embrouille en politique ? Je préfère clairement la transparence plus pragmatique.",
+        "Interdire le mensonge en politique, c'est idéaliste, mais ça me semble compliqué. Par contre, plus de transparence sur les sources pourrait aider à mieux comprendre les discours.",
+        "Une loi qui interdirait le mensonge en politique, c’est un peu trop strict. Par contre, forcer à montrer les sources des infos, ça me paraît plus réaliste et utile."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:27.906Z",
-    "contentHash": "c9893a5d901fe301995c6a6a8d6a8a8917617713f5d0ee4f432847b7411b0c54"
+    "status": "automatic",
+    "contentHash": "43957bcad0ada99219065cbdcf15f56574efd1ef19fb73a4504ccad116edc772"
   }
 }

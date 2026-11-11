@@ -4,33 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "e7131a5473724d68",
-  "computedAt": "2026-11-09T20:34:07.818Z",
+  "inputHash": "602c849f2481a790",
+  "eventInputHash": "8cd752b5e546b591862ad83e68a728d8b8f9467c4cd72116400c28bf4ee938fd",
+  "computedAt": "2026-11-11T12:53:26.302Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le Parti communiste français annonce qu'il soutiendra officiellement un candidat commun issu d'une primaire à gauche, plutôt que de s'engager directement derrière Mélenchon, laissant ainsi la liberté à ses adhérents de choisir leur soutien.",
-    "whatChanges": "Le PCF montre une posture plus ouverte et inclusive, ce qui pourrait préserver l'unité à gauche et éviter l'exclusion des députés communistes favorables à d'autres candidats, touchant les militants et électeurs communistes indécis."
+    "description": "Le groupe communiste à l'Assemblée annonce qu'il présente son propre candidat à la présidentielle et refuse de soutenir Mélenchon.",
+    "whatChanges": "La gauche reste divisée avec une candidature communiste distincte, affaiblissant potentiellement l'impact électoral face à Mélenchon."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes familles salariées modestes en communes denses",
-      "mechanism": "Le soutien explicite à Mélenchon par le groupe communiste cible particulièrement les jeunes familles salariées modestes, qui constituent une base sociale traditionnelllement sensible à l'appel au rassemblement de la gauche et exposées aux enjeux socio-économiques portés par le PCF et la France insoumise.",
-      "reason": "Ce segment combine la catégorie cluster.jeune_family (couples avec enfants de 25 à 49 ans), la catégorie cluster.modest_wage_earner (salariés modestes), et le critère géographique geo.dense pour une concentration urbaine adaptée à la portée politique de cet engagement communiste.",
+      "name": "Salariés employés et ouvriers des communes urbaines denses",
+      "mechanism": "Le groupe communiste à l'Assemblée soutient Mélenchon, visant en particulier les salariés modestes qui vivent principalement en milieu urbain dense, comme les employés et ouvriers concernés par les questions sociales et économiques portées par cette candidature.",
+      "reason": "Ce segment correspond aux salariés modestes des zones urbaines denses où l'engagement politique et social est souvent plus important, ils sont la base populaire du soutien à Mélenchon.",
       "all": [
-        "cluster.young_family",
+        "occupation.employee",
         "cluster.modest_wage_earner",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 10842,
+      "measurementNeeds": [
+        "Soutien à Mélenchon",
+        "Opinion sur le groupe communiste à l'Assemblée",
+        "Vote déclaré"
+      ],
+      "count": 16322,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -42,19 +51,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Ouvriers actifs de 50 à 64 ans dans les communes intermédiaires",
-      "mechanism": "Les ouvriers de 50 à 64 ans règlent leur attention sur le soutien du PCF à Mélenchon car ils incarnent une catégorie populaire attachée aux revendications de gauche, souvent concernée par les enjeux de la protection sociale et des retraites que la candidature commune pourrait défendre.",
-      "reason": "Ce segment recouvre le cluster.older_worker (ouvriers de 50 à 64 ans exposés aux réformes sociales) et une catégorie géographique intermédiaire geo.intermediate pour cibler des territoires non urbains denses mais assez peuplés.",
+      "name": "Jeunes diplômés urbains des communes denses",
+      "mechanism": "Le soutien du groupe communiste à Mélenchon attire notamment les jeunes diplômés urbains, sensibles aux discours progressistes et aux enjeux sociétaux portés lors de la présidentielle.",
+      "reason": "Il s'agit des jeunes urbains diplômés (bac+3 ou plus) qui vivent dans des communes à forte densité et sont plus réceptifs à ce type de candidature engagée.",
       "all": [
-        "cluster.older_worker",
-        "geo.intermediate"
+        "age.18_24",
+        "education.bac_plus_3_4",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 144,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Soutien à Mélenchon",
+        "Opinion sur la politique de gauche",
+        "Participation électorale"
+      ],
+      "count": 1070,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -65,20 +79,25 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes diplômés urbains entre 25 et 34 ans",
-      "mechanism": "Le soutien communiste affiché à Mélenchon mobilise aussi les jeunes diplômés urbains qui représentent une frange de la gauche intellectuelle et engagée, particulièrement attentive à la dynamique politique d'union portée par ce soutien institutionnel.",
-      "reason": "Pour ce segment, on combine la tranche d'âge age.25_34 avec le cluster.young_urban_graduate (jeunes diplômés des villes) ainsi que l'habitat dense geo.dense, afin de cerner un public urbain spécialisé et engagé politiquement.",
+      "name": "Femmes en familles monoparentales en communes intermédiaires ou denses",
+      "mechanism": "Le soutien du groupe communiste à Mélenchon concerne aussi les femmes en famille monoparentale, souvent vulnérables aux questions sociales et économiques, vivant en communes intermédiaires ou denses, où les politiques de soutien social sont centrales.",
+      "reason": "Les mères seules dans ces zones représentent une base sociale sensible aux propositions de justice sociale évoquées par la campagne présidentielle du groupe communiste.",
       "all": [
-        "age.25_34",
-        "cluster.young_urban_graduate",
-        "geo.dense"
+        "cluster.single_mother"
       ],
-      "any": [],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 9916,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Soutien à Mélenchon",
+        "Conditions de vie des familles monoparentales",
+        "Préoccupations sociales"
+      ],
+      "count": 7712,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -97,100 +116,6 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes familles salariées modestes en communes denses",
-      "matchedCount": 10842,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ça me surprend un peu de voir le PCF aussi dur sur Mélenchon, j'aime bien quand on garde un peu de pluralité à gauche, mais au fond ça ne change pas trop ma façon de voir les choses.",
-        "Je ne suis pas spécialement familière avec Mélenchon et le PCF, et franchement leur décision me laisse un peu indifférente, je préfère voter pour ce qui me semble pragmatique et utile.",
-        "Le communisme qui met la pression comme ça, c'est pas mon truc. Je préfère avoir le choix, ça me donne encore plus envie de voter pour le RN que pour Mélenchon."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains entre 25 et 34 ans",
-      "matchedCount": 9916,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, cette rigidité du PCF ne me parle pas trop, ça risque de faire fuir ceux qui hésitent encore. Je ne vois pas ça changer grand-chose à mon vote, ça reste un choix personnel.",
-        "Je comprends cette décision du PCF, ça montre qu’ils veulent vraiment se rallier à Mélenchon, mais ça ferme un peu le débat à gauche. Je reste fidèle à mes convictions, donc ça ne change pas vraiment mes intentions.",
-        "Je note cette prise de position du PCF, ça va sûrement polariser la gauche. Mais moi, je réfléchis avant tout à qui peut vraiment changer les choses, la stratégie PCF ne me fait pas bouger."
-      ]
-    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -221,8 +146,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         },
         "abstention": {
           "toward": 0,
@@ -233,23 +158,23 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que cette position du PCF est un peu dure et excluante, ça me semble rigide et ça ne va pas forcément rassembler plus à gauche.",
-        "Le PCF qui met la pression sur ses membres, ça me paraît un peu autoritaire et ça risquerait de me faire réfléchir à mon vote si j'étais à gauche.",
-        "Ce genre de décision ferme au sein du PCF ne m'affecte pas trop, ce n'est pas mon camp principal et moi je note plutôt les alliances claires ou ouvertes."
+        "Je vois que le groupe communiste soutient Mélenchon, mais ça ne change pas grand-chose pour moi, je ne suis pas très investie dans ces débats.",
+        "Le soutien du groupe communiste à Mélenchon pourrait rassembler un peu davantage la gauche, ça me paraît positif, même si je ne suis pas certaine de changer mon vote.",
+        "En tant que cadre, je suis assez attentif à ces alliances à gauche, un soutien communiste à Mélenchon pourrait renforcer sa crédibilité auprès des électeurs de gauche."
       ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Ouvriers actifs de 50 à 64 ans dans les communes intermédiaires",
-      "matchedCount": 144,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes en familles monoparentales en communes intermédiaires ou denses",
+      "matchedCount": 7712,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
         },
         "left": {
           "toward": 0,
@@ -267,30 +192,122 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 3,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très au fait des disputes entre partis, ça ne change pas ce que je pense ou pour qui je vote ; c'est compliqué tout ça.",
-        "Ah, le PCF met la pression pour suivre Mélenchon ? Ça peut casser des familles à gauche, mais moi c’est surtout le programme concret qui compte.",
-        "Ça discute trop dans leurs partis, moi j’aime quand c’est clair. Si le PCF marche avec Mélenchon, ça peut peser un peu à gauche, mais ça me prend pas la tête."
+        "Je vois que le PCF soutient Mélenchon, ça confirme un choix à gauche même si je ne suis pas très attentive à ces querelles, ça ne change pas vraiment mon vote.",
+        "Le soutien du PCF à Mélenchon montre une certaine unité à gauche, c'est plutôt positif, je pourrais considérer Mélenchon un peu plus sérieusement.",
+        "Ces histoires de soutien communiste ou pas, ça m'embrouille un peu, ça ne change pas mon choix de vote qui est surtout lié à mes préoccupations locales."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains des communes denses",
+      "matchedCount": 1070,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas très surprise que les communistes soutiennent Mélenchon, ça reste cohérent avec leurs idées, même si ici à Béziers c'est largement dominé par l'extrême droite. Ça ne change pas trop mon choix, je suis un peu découragée par la politique.",
+        "Le soutien des communistes à Mélenchon pourrait renforcer un peu sa dynamique à gauche, ça me parle même si je suis parfois sceptique. S'ils se mettent à présenter un candidat séparé, ça risque de disperser la gauche, ce n'est pas idéal.",
+        "Je n'accorde pas énormément d'attention à ces soutiens politiques internes, c'est un truc un peu éloigné de mes priorités. Que les communistes soutiennent Mélenchon ou présentent un autre candidat, ça ne modifie pas ma réflexion."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés employés et ouvriers des communes urbaines denses",
+      "matchedCount": 16322,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis contente de voir que le groupe communiste soutient Mélenchon, ça renforce la gauche à Marseille où il y a déjà pas mal de soutien pour lui.",
+        "Je vois que les communistes soutiennent Mélenchon, ça pourrait renforcer la gauche, mais pour moi ça ne change pas grand-chose, je reste prudente.",
+        "Le soutien communiste à Mélenchon ne me touche pas trop, je suis plutôt centrée sur ma vie locale, ça ne me fera pas changer d'avis."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:22.583Z",
-    "contentHash": "6c4caa45f647c5b89d8f8dc446807d282bdd190a0ff5d8e7f2cae7a71ca1259f"
+    "status": "automatic",
+    "contentHash": "db464616dba770d1cc8b2a90320585018d9a98273ebb3208d3fa06d9adc5f16c"
   }
 }

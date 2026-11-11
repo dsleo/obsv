@@ -4,35 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "0f6aa8cd4bc42580",
-  "computedAt": "2026-11-10T22:02:10.727Z",
+  "inputHash": "7e4c721ae8cd9a95",
+  "eventInputHash": "a87d5f9b496a836fa7f105d628e064440b7dddf75cae2bf15a6f4e90f3b02a1e",
+  "computedAt": "2026-11-11T12:54:04.050Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Des lycéens et étudiants étaient une nouvelle fois mobilisés jeudi 5 novembre matin pour réclamer non seulement plus de moyens dans l'Éducation nationale, mais également des mesures concrètes pour réduire le coût des repas dans les cantines scolaires, avant des manifestations dans l'après-midi dans plusieurs grandes villes françaises pour protester contre la vie chère.",
-    "whatChanges": "Le contenu de la mobilisation inclut une revendication concrète sur le coût des repas scolaires, susceptible de mobiliser plus fortement les familles et d'attirer davantage l'attention sur les questions de précarité étudiante."
+    "description": "Le 5 novembre 2026, plusieurs syndicats annoncent une mobilisation partielle avec un préavis de grève ciblé uniquement sur les transports publics, épargnant d'autres secteurs comme la santé ou l'éducation.",
+    "whatChanges": "La grève limitée aux transports modifie l'impact pour les usagers quotidiens et fragilise la portée de la mobilisation auprès du grand public, affectant plus spécifiquement les électeurs urbains."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes lycéens et étudiants des communes denses",
-      "mechanism": "Ce segment représente les jeunes de 18 à 24 ans dans les communes denses qui correspondent à la base des lycéens et étudiants mobilisés le 5 novembre 2026 pour dénoncer le manque de moyens dans l'Éducation nationale et participer aux manifestations contre la vie chère.",
-      "reason": "Les manifestations ont vu une mobilisation forte des lycéens et étudiants des zones urbaines, ce groupe combine l'âge caractéristique des lycéens et étudiants ainsi que la densité élevée des quartiers concernés comme Aubervilliers.",
+      "name": "Salariés modestes des communes denses",
+      "mechanism": "Les salariés modestes (employés et ouvriers) vivant en communes à forte densité sont concernés par le préavis de grève du 5 novembre 2026 car ils sont directement touchés par les revendications sociales et économiques portées par ce mouvement.",
+      "reason": "Ce segment représente une base populaire susceptible d’être mobilisée par un préavis de grève portant sur des revendications sociales dans des zones urbaines.",
       "all": [
-        "age.18_24",
+        "occupation.employee",
+        "cluster.modest_wage_earner",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_education_protest_news",
-        "interest.education_policy"
+        "Attitude envers la grève",
+        "Participation à la grève"
       ],
-      "count": 14650,
+      "count": 16322,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -44,21 +50,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains mobilisés pour l'éducation et le pouvoir d'achat",
-      "mechanism": "Ce segment inclut les jeunes diplômés de moins de 35 ans vivant en commune dense, souvent étudiants supérieurs ou jeunes actifs sensibles aux questions d'éducation et aux revendications sociales du 5 novembre 2026.",
-      "reason": "La participation des jeunes diplômés urbains est souvent liée aux mouvements pour l'amélioration des moyens dans l'Éducation nationale et contre la vie chère, surtout dans les grandes villes comme Paris, Lyon et Marseille.",
+      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "mechanism": "Les ouvriers âgés de 50 à 64 ans vivant en communes intermédiaires sont concernés par le préavis de grève du 5 novembre 2026 en lien avec l’impact anticipé des réformes sociales sur leur situation professionnelle et retraite.",
+      "reason": "Ce segment combine âge, profession et densité communale pour cibler les travailleurs proches de la retraite et exposés aux enjeux du mouvement social.",
       "all": [
-        "cluster.young_urban_graduate"
+        "cluster.older_worker",
+        "geo.intermediate"
       ],
-      "any": [],
+      "any": [
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_education_protest_news",
-        "interest.social_movements"
+        "Attitude envers la grève",
+        "Perception des réformes sociales"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -69,29 +78,24 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers et employés urbains de 25 à 49 ans",
-      "mechanism": "Ce groupe d'emplois salariés dans les communes urbaines intermédiaires et denses est vraisemblablement concerné par les revendications sociales du 5 novembre 2026, combinant préoccupations économiques liées à la vie chère et soutien aux mobilisations pour l'Éducation.",
-      "reason": "Segment spécifique croisant l'âge, la catégorie d'emploi et la localisation urbaine, ce qui restreint la population à un groupe social susceptible de soutenir ou être affecté par la mobilisation.",
+      "name": "Cadres urbains de 25 à 49 ans",
+      "mechanism": "Les cadres urbains de 25 à 49 ans sont concernés par le préavis de grève du 5 novembre 2026 car leur position professionnelle et leur localisation en milieu urbain les rendent attentifs aux conséquences du mouvement social et aux revendications portées.",
+      "reason": "Ce segment est constitué de professionnels diplômés en milieu urbain potentiellement mobilisés par les enjeux sociaux et économiques portés par la grève.",
       "all": [
+        "cluster.urban_executive",
         "geo.dense"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
-      ],
-      "none": [
-        "age.18_24",
-        "age.50_64",
-        "age.65_74",
-        "age.75_plus",
+        "age.25_34",
         "age.35_49"
       ],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_strike_announcements",
-        "concern.social_economics"
+        "Perception du préavis de grève",
+        "Impact sur le travail"
       ],
-      "count": 8798,
+      "count": 7517,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -111,95 +115,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Ouvriers et employés urbains de 25 à 49 ans",
-      "matchedCount": 8798,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ces mobilisations, ça parle un peu de nos jeunes et leur avenir, mais ça ne change pas beaucoup mes vues. Je suis surtout préoccupée par la stabilité au boulot et la vie de tous les jours.",
-        "Je comprends les revendications sur l'éducation, mais ça ne me touche pas directement. Si en plus ils parlent des cantines, ça me paraît plus concret, ça pourrait m'encourager à voter un peu plus à gauche.",
-        "Les jeunes se battent pour l'éducation et la vie chère, c'est important. Si ça se relie aux repas à la cantine, ça me semble plus près des problèmes concrets, ça pourrait me pousser à soutenir plus la gauche radicale."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.007692275098020079,
-          "lo": -0.009429791546615511,
-          "hi": -0.006123634584175068,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.005800637334953881,
-          "lo": -0.006932706471345316,
-          "hi": -0.0047494280452678546,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.005595345016891688,
-          "lo": 0.004372009696965797,
-          "hi": 0.006860091134333868,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0030970258549300536,
-          "lo": 0.0024635083054200713,
-          "hi": 0.0039261635949021925,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.006234046547735164,
-          "lo": 0.005042071855760478,
-          "hi": 0.007487430461695167,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.001433504986582938,
-          "lo": -0.0028855678939634154,
-          "hi": -0.00003596820597987632,
-          "stable": false
-        }
-      }
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains mobilisés pour l'éducation et le pouvoir d'achat",
-      "matchedCount": 11394,
+      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "matchedCount": 144,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -226,145 +145,22 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 6,
+          "noClearChange": 42
         },
         "abstention": {
-          "toward": 0,
+          "toward": 7,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 41
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette mobilisation des lycéens et étudiants sur l'éducation et la vie chère me semble légitime, mais ça reste assez loin de mes préoccupations professionnelles et personnelles.",
-        "Ces mouvements étudiants me parlent vraiment, surtout s'ils incluent la question concrète du coût des repas, ça touche à l'injustice sociale que je ressens au quotidien.",
-        "Je comprends la colère contre le manque de moyens dans l'éducation et le coût de la vie, ça résonne avec mon travail et ma vie de famille."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0069540452615645156,
-          "lo": -0.008415827961145978,
-          "hi": -0.005394966305552906,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.0068938826462308115,
-          "lo": -0.007873874316568379,
-          "hi": -0.005794969828167414,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.005617957394380879,
-          "lo": 0.0043792987379583995,
-          "hi": 0.0068678292906555055,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0023158851961584837,
-          "lo": 0.0017557847565154588,
-          "hi": 0.0029403848423599217,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.005754478217565259,
-          "lo": 0.004618305878217843,
-          "hi": 0.006742088605611152,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0001596070996907143,
-          "lo": -0.0012077798711340744,
-          "hi": 0.0015614092697035294,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes lycéens et étudiants des communes denses",
-      "matchedCount": 14650,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends pourquoi les lycéens protestent, c'est important qu'on ait des moyens pour étudier correctement. Le coût des repas, ça me touche un peu moins, mais la vie chère, oui.",
-        "C'est bien que les jeunes se mobilisent pour l'éducation et aussi pour que les repas soient moins chers à la cantine, tout le monde devrait pouvoir bien manger, surtout à Paris où c'est cher.",
-        "J'appuie les jeunes qui demandent plus pour l'école, et si en plus ça aide à avoir des repas pas trop chers, c'est encore mieux pour nous qui galérons pas mal."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.008970538034749788,
-          "lo": -0.010445849279182613,
-          "hi": -0.007568547610214277,
-          "stable": true
-        },
-        "left": {
-          "mean": -0.0066967954470041995,
-          "lo": -0.007875549229924651,
-          "hi": -0.005367357472150392,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.007449877852140713,
-          "lo": 0.006102709790209791,
-          "hi": 0.008759947447447451,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.0031630626353405266,
-          "lo": 0.002454961656406214,
-          "hi": 0.0037487934987935003,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0051688864071546105,
-          "lo": 0.004277221932156805,
-          "hi": 0.005967394038995581,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.00011449341288185162,
-          "lo": -0.0016420587253920538,
-          "hi": 0.001166163430274994,
-          "stable": false
-        }
-      }
+        "Une grève générale, ça va encore tout foutre en l'air. J'espère juste que ça ne durera pas et que je pourrai aller bosser sans souci. Si c'est juste les transports, c'est déjà plus supportable.",
+        "Une mobilisation générale, c'est embêtant, surtout si ça bloque tout. Mais si c'est juste les transports, ça me dérangerait moins, ça reste faisable pour aller bosser.",
+        "Des grèves encore, ça va encore créer des galères. Mais si c'est juste dans les transports, je peux gérer, ça change tout. Je préfère moins de perturbations sur le travail et l’école de mes enfants."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -396,67 +192,121 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 94
+          "away": 6,
+          "noClearChange": 90
         },
         "abstention": {
-          "toward": 2,
+          "toward": 7,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ces jeunes qui se plaignent encore, sérieux, c'est bien beau mais moi je suis dans le concret, il faut bosser et pas juste demander plus d'argent. Moi ça me laisse un peu froid cette histoire de grève.",
-        "Ah, les jeunes qui se battent pour l'école, ça me parle un peu, surtout s'ils demandent aussi à manger moins cher à la cantine, ça me semble plus concret pour eux et pour leurs familles.",
-        "Des jeunes qui manifestent pour l'école, ça ne me touche pas trop. Et puis moi, je suis retraité, j’ai d’autres préoccupations que la cantine scolaire ou les moyens des lycées."
-      ],
-      "altEffect": {
+        "Une grève générale, encore une galère à gérer surtout pour les transports, c'est pénible pour nous les travailleurs qui devons assurer la famille et le boulot. J'espère que ça ne durera pas trop.",
+        "Une grève générale ? Ça peut être un peu gênant mais après tout, les syndicats défendent nos intérêts... si c’est trop envahissant, ça pourrait m’agacer toutefois.",
+        "Une grève générale, ça me dérange, ça perturbe la tranquillité, mais je comprends que certains veuillent défendre leur travail. Je n'aime pas trop quand ça touche tout d’un coup."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes des communes denses",
+      "matchedCount": 16322,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.005974588627550467,
-          "lo": -0.006849453814351297,
-          "hi": -0.005141987675796479,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.005537234988911486,
-          "lo": -0.006320737814811771,
-          "hi": -0.004824992041906974,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0.004422803854988367,
-          "lo": 0.0037416790458935875,
-          "hi": 0.005074268259380835,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.002944074628408691,
-          "lo": 0.0024794996110719617,
-          "hi": 0.0033795981494421624,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.006351533732334098,
-          "lo": 0.005337609402574806,
-          "hi": 0.00715974624682263,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": -0.0022065885992692135,
-          "lo": -0.0033439954601812392,
-          "hi": -0.0007764191405295676,
-          "stable": false
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis un peu inquiète pour le 5 novembre, ces grèves risquent de compliquer mes déplacements et ceux de ma famille.",
+        "Une grève générale comme ça, ça m'embête, ça perturbe mon boulot et ma vie quotidienne. Mais une grève seulement dans les transports, ça me semble plus raisonnable.",
+        "Ce genre de mobilisation me semble trop large et peut perturber le fonctionnement de la ville. Une grève plus ciblée serait plus acceptable."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Cadres urbains de 25 à 49 ans",
+      "matchedCount": 7517,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une grève générale, ça touche trop la vie quotidienne, je suis déjà débordée, ça me stresse. Une mobilisation limitée aux transports me dérangerait un peu moins, même si ce n'est pas idéal.",
+        "Une grève partielle dans les transports, ça peut être embêtant, mais moins grave qu'une mobilisation générale. Ça ne changera pas vraiment mon vote, je reste pragmatique.",
+        "Une grève générale, c'est compliqué avec mes enfants et le boulot, j'en ai assez. Une grève limitée aux transports serait plus supportable, ça change un peu mon ressenti mais pas mon vote."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:40.598Z",
-    "contentHash": "bc75a56d9d78db604db021a8d60f40586987b5e90a72b5dc0c2c9cd5201ed2b7"
+    "status": "automatic",
+    "contentHash": "ae2ace00b6550dcb068ad5c5742b1b4882ad450e5243d57108b9c400c64a8ebb"
   }
 }

@@ -4,34 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "0a2fb12c31f934eb",
-  "computedAt": "2026-11-10T22:09:04.846Z",
+  "inputHash": "86c55905cfd05e13",
+  "eventInputHash": "1bf04b14644356d737eb03e32b40dcdaffff192c9ed92069865efc770a9f88fe",
+  "computedAt": "2026-11-11T13:10:18.724Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "La grève et la manifestation initialement prévues ce mardi 29 septembre à Pau et Bayonne sont repoussées au jeudi après-midi, journée où les salariés de SFR appellent à se mobiliser pour exprimer leur inquiétude, colère et détermination face à la vente de l'entreprise.",
-    "whatChanges": "Le calendrier de la mobilisation est modifié, décalant l'impact de la protestation sur l'opinion publique et les employeurs, avec une concentration des actions sur une même journée jeudi au lieu de mardi jeudi, ce qui peut affecter la visibilité et la pression exercée."
+    "description": "La grève et la manifestation initialement prévues le mardi 29 septembre à Pau et Bayonne sont finalement organisées sur deux jours, mardi 29 et mercredi 30 septembre, avec une mobilisation plus étendue dans les zones rurales environnantes.",
+    "whatChanges": "L'extension sur deux jours et l'élargissement géographique renforcent la visibilité du mouvement et augmentent son impact sur les électeurs locaux, notamment dans les zones rurales habituellement moins mobilisées."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Salariés modestes de 25 à 34 ans en communes moyennement denses proches de Pau et Bayonne",
-      "mechanism": "Salariés appelés à la grève liés à la vente de SFR, parmi les jeunes actifs modestes habitant les zones urbaines intermédiaires autour de Pau et Bayonne concernées par l'événement.",
-      "reason": "Remplacement d'un segment trop grand ou générique, précision géographique par densité intermédiaire au lieu de municipal_system.",
+      "name": "Employés et ouvriers des communes denses en Nouvelle-Aquitaine",
+      "mechanism": "Ce segment regroupe les salariés modestes qui travaillent et résident dans des communes denses comme Pau et Bayonne, directement concernés par la défense des services publics et susceptibles de participer à la grève et manifestation du 29 septembre.",
+      "reason": "Base sociale typique des mobilisations pour les services publics, liée à l'emploi salarié en milieu urbain intermédiaire à dense qui mobilise sur ces questions.",
       "all": [
-        "age.25_34",
-        "cluster.modest_wage_earner",
-        "geo.intermediate"
+        "occupation.employee",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 231,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Engagement dans la grève",
+        "Participation à la manifestation",
+        "Opinion sur les services publics"
+      ],
+      "count": 16322,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -42,23 +50,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Travailleurs employés de 35 à 49 ans vivant en couple avec enfants en communes denses hors métropoles Paris, Lyon, Marseille",
-      "mechanism": "Travailleurs employés en famille, actifs et concernés par les manifestations de défense des services publics, vivant dans des communes urbaines denses hors des grandes métropoles ciblant la zone de Pau et Bayonne.",
-      "reason": "Segment resserré excluant les grandes métropoles pour mieux coller à l'événement local.",
+      "name": "Agriculteurs exploitants jeunes ou d’âge moyen en Nouvelle-Aquitaine",
+      "mechanism": "Les agriculteurs, qu'ils soient jeunes ou d'âge moyen, sont souvent concernés par les services publics ruraux (sanitaires, sociaux, administratifs) à Pau, Bayonne, et leurs environs, et peuvent être concernés par le mouvement de défense des services publics du 29 septembre.",
+      "reason": "Cette catégorie socio-professionnelle rurale ou périurbaine est affectée par les fermetures ou restructurations des services publics, ce qui les implique directement dans ce type de mobilisation.",
       "all": [
+        "occupation.farmer"
+      ],
+      "any": [
+        "age.25_34",
         "age.35_49",
-        "occupation.employee",
-        "household.couple_with_children",
-        "geo.dense"
+        "age.50_64"
       ],
-      "any": [],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 284,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Attitude envers les services publics ruraux",
+        "Participation à la mobilisation",
+        "Impact perçu des services publics"
+      ],
+      "count": 785,
+      "distinctCommunes": 91,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -69,50 +80,25 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers de 50 à 64 ans en communes urbaines intermédiaires ou denses hors Paris-Lyon-Marseille",
-      "mechanism": "Ouvriers proches de la retraite et touchés par les enjeux sociaux liés à la grève, présents dans les communes urbaines moyennes et denses de la région des manifestations.",
-      "reason": "Resserrement du segment avec exclusivité des très grandes métropoles, en gardant densité urbaine précise pertinente pour Pau et Bayonne.",
+      "name": "Retraités vivant en couple en communes rurales ou intermédiaires",
+      "mechanism": "Les retraités en couple résidant dans des communes rurales ou intermédiaires, comme aux alentours de Pau et Bayonne, sont concernés par la défense des services publics notamment de santé et d’aide sociale, en lien avec la grève et manifestations du 29 septembre.",
+      "reason": "Ces retraités bénéficient des services publics et peuvent être sensibles à leur maintien, constituant une population touchée par ces enjeux et potentiellement mobilisable.",
       "all": [
-        "age.50_64",
-        "occupation.worker"
+        "cluster.retired_couple"
       ],
       "any": [
-        "geo.dense",
-        "geo.intermediate"
+        "geo.intermediate",
+        "geo.rural"
       ],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
+      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 473,
-      "distinctCommunes": 48,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Grève et manifestation ce mardi 29 septembre à Pau et Bayonne pour la défense des services publics",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Jeunes diplômés urbains de 25 à 34 ans en zones denses hors grands centres métropolitains",
-      "mechanism": "Jeunes diplômés urbains concernés par les mouvements sociaux locaux et impliqués dans la défense des services publics.",
-      "reason": "Segment étroit combinant âge, diplôme élevé et milieu urbain spécifique hors grandes métropoles, pour affiner la cible géographique.",
-      "all": [
-        "age.25_34",
-        "education.bac_plus_3_4",
-        "geo.dense"
+      "measurementNeeds": [
+        "Opinion sur le maintien des services publics",
+        "Mobilisation aux manifestations",
+        "Usage des services publics"
       ],
-      "any": [],
-      "none": [
-        "municipal_system.paris_lyon_marseille"
-      ],
-      "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 145,
-      "distinctCommunes": 22,
+      "count": 1051,
+      "distinctCommunes": 98,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -131,10 +117,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Travailleurs employés de 35 à 49 ans vivant en couple avec enfants en communes denses hors métropoles Paris, Lyon, Marseille",
-      "matchedCount": 284,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Retraités vivant en couple en communes rurales ou intermédiaires",
+      "matchedCount": 1051,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -161,8 +147,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 1,
@@ -173,138 +159,62 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve bien que les salariés de SFR manifestent, même si ça me touche peu ici en Haute-Savoie, c'est leur combat.",
-        "Je comprends que les salariés soient inquiets, mais ça ne change pas grand-chose à mon vote pour le moment.",
-        "C'est important que les salariés se mobilisent, mais je reste centrée sur ma vie familiale et professionnelle."
-      ],
-      "altEffect": {
+        "Ah, une grève pour défendre les services publics à Pau et Bayonne, je suis un peu loin de tout ça, ça ne change rien à ma façon de voir les choses.",
+        "Une grève et manifestation, ça montre bien que les services publics ont besoin de soutien. Si ça dure deux jours et qu'ils touchent aussi nos campagnes, je me sentirais plus concernée et peut-être un peu plus décidée à les défendre en votant à gauche.",
+        "Je ne suis pas sûr que ces manifestations dans le Sud-Ouest aient beaucoup d’impact ici, je suis plus concentré sur ma vie et mes lectures que sur ces événements lointains."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Agriculteurs exploitants jeunes ou d’âge moyen en Nouvelle-Aquitaine",
+      "matchedCount": 785,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.0024424594647901566,
-          "lo": 0.0017266160134686,
-          "hi": 0.0030853047503147254,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": 0.0022758461428914315,
-          "lo": 0.001670821537866827,
-          "hi": 0.0029937843257334742,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.0019399496215018574,
-          "lo": -0.0025330857350562984,
-          "hi": -0.0013547761628224216,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.0006150660052693071,
-          "lo": -0.0008866878499775493,
-          "hi": -0.00039234230493445177,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.0027293372981891384,
-          "lo": -0.003685284116061007,
-          "hi": -0.0019368079207494014,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": 0.0005660473172786987,
-          "lo": -0.00008801954898876527,
-          "hi": 0.0012484012349413826,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je soutiens la défense des services publics, surtout qu'en ville, ça nous concerne tous, et je trouve important de maintenir ces services accessibles pour tous, même si je ne suis pas certaine que ça changera beaucoup pour moi directement dans Paris 7e.",
+        "Une grève qui s'étend dans les zones rurales me touche plus, on voit enfin que notre travail est pris au sérieux. Je suis plutôt favorable à ce genre d'actions quand elles défendent nos conditions et services essentiels.",
+        "Ces manifestations pour les services publics sont importantes, surtout dans ma région où ils se détériorent. Ça me donne un peu plus envie de voter pour des candidats à gauche, qui défendent ces causes."
+      ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Salariés modestes de 25 à 34 ans en communes moyennement denses proches de Pau et Bayonne",
-      "matchedCount": 231,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        },
-        "left": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 6,
-          "noClearChange": 42
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends que les salariés veulent défendre leurs droits, mais ces grèves compliquent la vie de tout le monde et je préfère que ça ne dure pas trop.",
-        "Je suis un peu inquiète pour les services publics et j'écoute les revendications des salariés, même si ça ne change pas vraiment mon vote.",
-        "Je trouve ces grèves un peu gênantes pour faire mes courses, mais je me demande si défendre les salariés est important."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0023797697909587992,
-          "lo": 0.001682012523788503,
-          "hi": 0.0031478026533996698,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0019641012699877156,
-          "lo": 0.0013505025966875498,
-          "hi": 0.002651808566836804,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0013477928569184663,
-          "lo": -0.0019146984833228343,
-          "hi": -0.0007644595235851331,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0007851133581014835,
-          "lo": -0.001165215588723052,
-          "hi": -0.0004777957793286808,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0027205117648712216,
-          "lo": -0.003569910604008863,
-          "hi": -0.0018183037950824134,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0005095469189446601,
-          "lo": -0.000021421432220744784,
-          "hi": 0.0010604270315091198,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes diplômés urbains de 25 à 34 ans en zones denses hors grands centres métropolitains",
-      "matchedCount": 145,
+      "segmentName": "Employés et ouvriers des communes denses en Nouvelle-Aquitaine",
+      "matchedCount": 16322,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -313,91 +223,6 @@
           "toward": 1,
           "away": 0,
           "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas très impliquée par cette grève, ce n'est pas dans mon secteur et ça ne change rien à ma situation personnelle.",
-        "Je trouve normal que les salariés se mobilisent, mais cela ne change pas ma préférence politique, ça me semble un peu loin de ma vie directe.",
-        "Je soutiens la défense des services publics, c'est important, mais cet événement local ne modifie pas mon intention de vote à la présidentielle."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0015610833674066507,
-          "lo": 0.0008635480718814061,
-          "hi": 0.0023914405102637933,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0012276594962943375,
-          "lo": 0.0006250000000000001,
-          "hi": 0.0018486871403538073,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.001087408968899757,
-          "lo": -0.001675914140738261,
-          "hi": -0.0005461117609358813,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.00048288953240795807,
-          "lo": -0.0007558626465661642,
-          "hi": -0.0002500000000000005,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0011217498372021,
-          "lo": -0.0016996078459646305,
-          "hi": -0.0006161546786546783,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.00009669452519117487,
-          "lo": -0.00036322371739038313,
-          "hi": 0.00022305638972305633,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Ouvriers de 50 à 64 ans en communes urbaines intermédiaires ou denses hors Paris-Lyon-Marseille",
-      "matchedCount": 473,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
         },
         "left": {
           "toward": 1,
@@ -416,8 +241,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -428,48 +253,10 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends la colère des salariés, mais cette grève ne changera rien à ma manière de voter, je suis plutôt pragmatique et je cherche surtout des politiques qui améliorent ma vie au travail.",
-        "J’ai toujours du respect pour les gens qui se battent pour leurs droits, cette grève des salariés de SFR me rappelle que le combat social ne s’arrête jamais, ça me touche un peu.",
-        "C’est bien que les salariés fassent entendre leur voix, mais c’est pas comme ça que je vais changer d’avis sur les élections, pour moi c’est plutôt la stabilité qui compte."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0013303526011859343,
-          "lo": 0.000788685934519266,
-          "hi": 0.00200004170837504,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0012805043013376356,
-          "lo": 0.0007666154124487466,
-          "hi": 0.001797078005411341,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0009240227365227352,
-          "lo": -0.0014031894031894011,
-          "hi": -0.0005252340252340226,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.00035036495453162126,
-          "lo": -0.0005549174299174301,
-          "hi": -0.00014589589589589585,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0016437660395993738,
-          "lo": -0.0025259255467588843,
-          "hi": -0.000896665834165835,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0003072968281301614,
-          "lo": -0.0002973901932235261,
-          "hi": 0.0010544870961537625,
-          "stable": false
-        }
-      }
+        "C'est important que les services publics soient défendus, ils rendent vraiment service à tout le monde, surtout ceux qui ont moins de moyens. Une mobilisation plus large en campagne me paraît aussi logique, il ne faut pas les oublier.",
+        "Je vois la grève comme un moyen de faire entendre la voix des salariés, surtout sur la défense des services publics qui servent beaucoup de familles comme la mienne. Ça m'intéresse que ça s'élargisse au-delà des villes.",
+        "Je ne suis pas forcément très impliqué dans ces mouvements, mais s'il s'agit de défendre des services publics qui rendent la vie plus facile, je comprends que ce soit important. Que ça se prolonge et prenne de l'ampleur en rural, je suis plus indifférent."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -485,9 +272,9 @@
           "noClearChange": 94
         },
         "left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "center": {
           "toward": 0,
@@ -501,67 +288,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 3,
+          "noClearChange": 93
         },
         "abstention": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 1,
+          "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que les salariés veuillent faire entendre leur voix, mais tout ça ne changera pas beaucoup ma façon de voir les choses. Ce n'est pas mon quotidien.",
-        "C'est bien que les travailleurs fassent valoir leurs inquiétudes, je trouve que ça montre une certaine détermination qui mérite d'être entendue, même si ça ne me concerne pas directement.",
-        "Je soutiens les actions pour défendre les services publics, c'est important, surtout dans notre ville où les projets municipaux ont aussi un impact social."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0013285633133617253,
-          "lo": 0.0009251039228384645,
-          "hi": 0.0018191945251957696,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0012680050853871583,
-          "lo": 0.0008653460446906264,
-          "hi": 0.0017335540914701017,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.001257404361550778,
-          "lo": -0.0017313781539972015,
-          "hi": -0.0008089718985038861,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0005671836887687708,
-          "lo": -0.0007749733151518863,
-          "hi": -0.00031610004302346157,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0013797176175947366,
-          "lo": -0.001937579450439256,
-          "hi": -0.0008953082682871203,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0006077372691654061,
-          "lo": 0.00015385805529152517,
-          "hi": 0.00113006277207592,
-          "stable": false
-        }
-      }
+        "Je trouve bien que les gens défendent les services publics, c'est important pour nos villages et notre vie au quotidien, même si je ne participe pas toujours aux manifestations.",
+        "Je respecte les actions pour maintenir nos services publics, surtout en Guadeloupe où c'est essentiel, mais je suis plutôt à l'affût de ce qui marche vraiment.",
+        "Une grève pour défendre les services publics à Strasbourg, ça me parle un peu, mais je ne pense pas changer d'avis pour autant."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:34.031Z",
-    "contentHash": "d7caa8563fd793ac9463a5971640aa74a8d8a95848115fbd0252fbab68d423a4"
+    "status": "automatic",
+    "contentHash": "9b45baf53760ad664f67c5427016b3369d369fb9a4c006a64236b1adb9b14bc6"
   }
 }

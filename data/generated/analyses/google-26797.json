@@ -4,39 +4,45 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "7789c6f3ffc83c51",
-  "computedAt": "2026-11-10T22:08:32.461Z",
+  "inputHash": "3171536f04437290",
+  "eventInputHash": "286838c99d613a46b52f29254413aa5d405658be8b311ccf369e46b0239c2788",
+  "computedAt": "2026-11-11T13:10:31.205Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Génocide des Yézidi·es : la Cour d’assises de Paris refuse de reconnaître un préjudice spécifique aux survivant·es et n’accorde pas de dommages et intérêts.",
-    "whatChanges": "La Cour d’assises minimise la reconnaissance du préjudice des survivant·es, ce qui pourrait susciter une déception et un sentiment d’injustice parmi les communautés concernées et les électeurs sensibles aux droits humains."
+    "description": "La Cour de cassation annule la décision de renvoyer l'accusé en procès pour viol dans l'affaire Hakimi, estimant que les preuves sont insuffisantes pour poursuivre.",
+    "whatChanges": "Cela réduit la pression médiatique et politique autour de l'affaire, pouvant faire évoluer la perception des électeurs sur le traitement judiciaire des affaires sensibles."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Femmes jeunes en milieu urbain dense pour l’affaire Hakimi",
-      "mechanism": "Population féminine jeune vivant dans des communes denses, plausiblement sensible à l'affaire Hakimi qui concerne une accusation de viol, ce qui touche particulièrement les jeunes femmes urbaines concernées par les questions de violences sexuelles en milieu urbain et médiatisées.",
-      "reason": "Le jeune âge et la densité urbaine sont des données pertinentes pour cibler les personnes potentiellement exposées à ce débat social et judiciaire, notamment en lien avec les violences sexuelles en ville.",
+      "name": "Femmes de 18 à 34 ans vivant en commune dense",
+      "mechanism": "La confirmation du renvoi en procès pour viol concerne prioritairement les jeunes femmes des zones urbaines denses, particulièrement exposées aux questions de sécurité et de violences sexuelles.",
+      "reason": "Ce groupe recouvre les jeunes femmes urbaines susceptibles d'être directement concernées par le thème du procès et la sensibilisation à la violence sexuelle.",
       "all": [
         "sex.female",
-        "age.18_24",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure to media coverage",
-        "attitudes towards sexual violence"
+        "Attitude envers la violence sexuelle",
+        "Perception de la sécurité dans l'espace public",
+        "Opinion sur la justice pénale"
       ],
-      "count": 7812,
+      "count": 18275,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Affaire Hakimi : la Cour de cassation confirme le renvoi en procès pour viol",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -45,24 +51,28 @@
     },
     {
       "id": "segment_2",
-      "name": "Survivants ou concernés par le génocide yézidi en couples avec enfants",
-      "mechanism": "Population vivant en couple avec enfants, ciblée par la reconnaissance du préjudice subi par les survivants du génocide yézidi, en raison du rôle familial et éducatif dans la transmission de la mémoire et la solidarité avec les victimes reconnues par la Cour d’assises de Paris.",
-      "reason": "Le cadre familial avec enfants est pertinent ici pour intéresser les publics impliqués dans la reconnaissance des préjudices collectifs et les suites judiciaires en mémoire des victimes de génocide.",
+      "name": "Jeunes hommes employés et ouvriers en commune dense",
+      "mechanism": "Les jeunes hommes actifs modestes en milieu urbain dense constituent un public-clé puisqu'ils sont souvent ciblés par les enjeux de justice pénale et peuvent être sensibilisés ou interpellés par ce procès.",
+      "reason": "Intersection de l'âge jeune, sexe masculin, profession ouvrière ou employée, et habitats urbains denses, restreint le groupe à une population spécifique et concernee.",
       "all": [
-        "household.couple_with_children"
+        "sex.male",
+        "geo.dense"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "occupation.employee",
+        "occupation.worker",
+        "age.18_24",
+        "age.25_34"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "knowledge of genocide yézidi case",
-        "sympathy or support attitudes"
+        "Perception de la justice",
+        "Opinion sur les violences sexuelles",
+        "Confiance dans le système judiciaire"
       ],
-      "count": 26166,
-      "distinctCommunes": 178,
+      "count": 25681,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -73,21 +83,61 @@
     },
     {
       "id": "segment_3",
-      "name": "Cadres urbains diplômés et actifs pour le débat judiciaire et de mémoire",
-      "mechanism": "Cadres et professions intellectuelles supérieures vivant en commune dense, concernés par l'affaire Hakimi et la reconnaissance judiciaire du génocide yézidi, en raison de leur intérêt potentiel pour les enjeux sociétaux, judiciaires et mémoriels souvent débattus dans ce milieu socio-professionnel urbain formé et actif.",
-      "reason": "Le segment combine le critère socio-professionnel de cadres avec la densité urbaine pour affiner vers un public probable d'opinion engagé ou exposé aux débats autour de ces affaires.",
+      "name": "Femmes de 35 à 49 ans en couple avec enfants, diplômées du baccalauréat ou plus",
+      "mechanism": "Les femmes actives, en couple avec enfants, et relativement diplômées, sont concernées car elles peuvent être sensibilisées par la dimension familiale et éducative des violences sexuelles et leur procès médiatisé.",
+      "reason": "Ce groupe rassemble des femmes d'âge adulte moyen, stables familialement et éducativement, dans des perspectives de protection et d'information du foyer et des enfants.",
       "all": [
-        "cluster.urban_executive"
+        "sex.female",
+        "household.couple_with_children"
       ],
-      "any": [],
+      "any": [
+        "education.baccalaureate",
+        "education.bac_plus_2",
+        "education.bac_plus_3_4",
+        "education.bac_plus_5_plus"
+      ],
+      "none": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers la violence sexuelle",
+        "Perception du risque familial",
+        "Impact médiatique du procès"
+      ],
+      "count": 9489,
+      "distinctCommunes": 149,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Affaire Hakimi : la Cour de cassation confirme le renvoi en procès pour viol",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Retraités vivant en commune rurale, âgés de 65 ans et plus",
+      "mechanism": "Les retraités des zones rurales, souvent éloignés des grandes villes, peuvent être interpellés par ce procès à travers les médias et leurs réseaux sociaux, avec une sensibilité particulière aux questions de morale et d'ordre social.",
+      "reason": "Ce groupe regroupe des seniors ruraux, impactés par les débats sociétaux et les enjeux de justice dans un contexte local potentiellement conservateur.",
+      "all": [
+        "occupation.retired",
+        "geo.rural"
+      ],
+      "any": [
+        "age.65_74",
+        "age.75_plus"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "opinions on judicial system effectiveness",
-        "awareness of both cases"
+        "Opinion sur la justice",
+        "Sensibilité aux affaires médiatiques",
+        "Attitude envers les crimes sexuels"
       ],
-      "count": 10635,
-      "distinctCommunes": 72,
+      "count": 653,
+      "distinctCommunes": 85,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -108,8 +158,8 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Survivants ou concernés par le génocide yézidi en couples avec enfants",
-      "matchedCount": 26166,
+      "segmentName": "Jeunes hommes employés et ouvriers en commune dense",
+      "matchedCount": 25681,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -135,66 +185,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "toward": 1,
+          "away": 2,
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 1,
+          "away": 3,
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que c'est important que la justice reconnaisse le préjudice subi par ces survivants, c'est un devoir de mémoire et de justice.",
-        "Je suis sensible à la reconnaissance du préjudice subi par les victimes, ça remet un peu d'humanité dans la justice.",
-        "C'est bien que la justice reconnaisse enfin ce préjudice, ça montre une vraie prise en compte des souffrances de ces populations."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.008020379957674927,
-          "lo": 0.0059089692707783165,
-          "hi": 0.010058755823366195,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.010827291063991199,
-          "lo": 0.008728330327220535,
-          "hi": 0.012580205981367136,
-          "stable": true
-        },
-        "center": {
-          "mean": 0.000631278149058524,
-          "lo": -0.0009855406606224984,
-          "hi": 0.002121204369643092,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.003410196300375376,
-          "lo": -0.00456593814958243,
-          "hi": -0.0022753555146416186,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.010039637593208148,
-          "lo": -0.012113771103384519,
-          "hi": -0.007846225244436981,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.006029115277141124,
-          "lo": -0.008491006109936665,
-          "hi": -0.0035024610521580224,
-          "stable": true
-        }
-      }
+        "Cette confirmation du renvoi en procès dans l'affaire Hakimi me paraît importante pour la justice, même si ce n'est pas un sujet qui affecte directement mon quotidien.",
+        "Franchement, ce genre d'affaire me donne un peu l'impression que la justice ne fait pas toujours son travail correctement. Si le procès est confirmé, je serai un peu plus méfiant envers toute cette histoire.",
+        "Je ne vois pas en quoi cette affaire changerait vraiment ma façon de penser, c'est trop loin de mes préoccupations personnelles."
+      ]
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Cadres urbains diplômés et actifs pour le débat judiciaire et de mémoire",
-      "matchedCount": 10635,
+      "segmentName": "Femmes de 35 à 49 ans en couple avec enfants, diplômées du baccalauréat ou plus",
+      "matchedCount": 9489,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -220,93 +232,8 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je suis content que la justice confirme le procès pour viol dans l'affaire Hakimi, c'est important. La reconnaissance du préjudice des Yézidis, ça me touche, mais ça ne change pas vraiment mon vote.",
-        "L'affaire Hakimi c'est bien qu'on ne laisse pas passer ce genre de choses. Que la justice reconnaisse le préjudice des Yézidis, ça me semble juste. Je ne suis pas sûre que ça modifie mon vote par contre.",
-        "Je trouve ça important que la justice prenne ces sujets au sérieux, même si cela ne change pas vraiment ma manière de voter, car autres sujets m'importent davantage."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.007233475179734408,
-          "lo": 0.005585897030950149,
-          "hi": 0.008995351973815723,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.0123769889472876,
-          "lo": 0.011085659168992507,
-          "hi": 0.013974110108821271,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.0053353930932868,
-          "lo": -0.007702623848457183,
-          "hi": -0.002777130494353548,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.005507510116900202,
-          "lo": -0.006680049765778808,
-          "hi": -0.0043375396505319925,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.012771980935109374,
-          "lo": -0.014513839292256582,
-          "hi": -0.010919067100206828,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.004004420018274379,
-          "lo": 0.0014503386039603414,
-          "hi": 0.00645805928532666,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Femmes jeunes en milieu urbain dense pour l’affaire Hakimi",
-      "matchedCount": 7812,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
           "noClearChange": 47
         },
         "abstention": {
@@ -318,48 +245,104 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette reconnaissance du préjudice subi par les survivant·es me semble juste et importante, c’est un signe que la justice prend en compte la souffrance réelle des victimes.",
-        "C’est rassurant que la justice reconnaisse ce préjudice, ça montre une vraie prise en compte des droits humains et des victimes de génocide.",
-        "Je ne connais pas bien cette histoire, ça ne change pas vraiment ma façon de voir les choses, je reste concentrée sur mes propres priorités."
-      ],
-      "altEffect": {
+        "C'est important que la justice tranche clairement dans cette affaire de viol, cela montre que les violences sont prises au sérieux.",
+        "Ce genre d'affaire me paraît compliquée, mais il faut respecter la justice. Une confirmation du procès peut renforcer la confiance que j'ai en elle.",
+        "Je ne suis ni très attentive à ce genre de nouvelle, ni concernée directement, donc cela ne change pas grand chose pour moi."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Retraités vivant en commune rurale, âgés de 65 ans et plus",
+      "matchedCount": 653,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.009709408646908654,
-          "lo": 0.007915404040404047,
-          "hi": 0.01137315231065232,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": 0.012447973322973328,
-          "lo": 0.01033333333333334,
-          "hi": 0.014291990416990424,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.003321081696081694,
-          "lo": -0.004712331649831647,
-          "hi": -0.0021826599326599297,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.0027514406889406887,
-          "lo": -0.0036032925407925424,
-          "hi": -0.0018124999999999984,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.011523643023643013,
-          "lo": -0.013273643023643015,
-          "hi": -0.009854166666666657,
-          "stable": true
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
         },
         "abstention": {
-          "mean": -0.004561216561216553,
-          "lo": -0.0069285991785991785,
-          "hi": -0.0016666666666666542,
-          "stable": false
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ça ne me surprend pas, dans ces affaires, la justice doit suivre son cours mais ça laisse un goût amer. C'est compliqué, je garde mes idées bien en place.",
+        "Je suis un peu désabusée, la justice doit être juste et claire, une annulation ça pourrait mieux refléter ça. Sinon, ça me laisse un peu froide, ce genre d’affaire me touche guère au quotidien.",
+        "La justice doit faire son travail, mais tout ça ne change rien pour moi, je vote comme d'habitude, ça me paraît loin de mes préoccupations de tous les jours."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Femmes de 18 à 34 ans vivant en commune dense",
+      "matchedCount": 18275,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça important que la justice fasse son travail correctement, même si ce genre d'affaires me paraît un peu loin de mon quotidien. Ça ne va pas changer mon vote, je reste concentrée sur ce qui impacte ma vie directement.",
+        "C’est important que la justice confirme le renvoi en procès dans une affaire aussi grave, ça me montre que ce genre de faits est pris au sérieux. Mais cela ne me ferait pas changer mon vote, je suis surtout attentive aux grandes orientations politiques.",
+        "Je suis plutôt sensible aux questions de justice et d'égalité, donc une confirmation pour qu'il y ait un procès me paraît normal. Ça ne va pas me faire changer radicalement d’avis sur qui je vote, mais ça me conforte dans l’idée que les institutions doivent être rigoureuses."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -390,68 +373,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "toward": 2,
+          "away": 2,
+          "noClearChange": 92
         },
         "abstention": {
-          "toward": 1,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis contente que la justice prenne au sérieux la reconnaissance des souffrances des survivants. C'est important qu'ils obtiennent réparation.",
-        "Je trouve important que la Cour d’assises reconnaisse le préjudice des Yézidi·es. La justice doit rendre justice aux victimes, ça me touche.",
-        "Je suis sensible à la reconnaissance officielle du préjudice des Yézidi·es, c'est important pour la mémoire et la justice internationale."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.006178506538292433,
-          "lo": 0.004888231603872154,
-          "hi": 0.007533986810439372,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.011159166377516594,
-          "lo": 0.009531967446679605,
-          "hi": 0.012872861319423159,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.0036159373530775473,
-          "lo": -0.004960876376188213,
-          "hi": -0.002210122700794344,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.005175797232633589,
-          "lo": -0.00616213678100672,
-          "hi": -0.004231754191575623,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.013234064531239367,
-          "lo": -0.014645629523894449,
-          "hi": -0.011490453517105976,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0046881262011414775,
-          "lo": 0.002018671942290456,
-          "hi": 0.006952909272871957,
-          "stable": false
-        }
-      }
+        "C'est une affaire grave, l'idée que justice soit faite m'importe, je suis rassurée que le procès ait lieu.",
+        "Je pense que si le procès est confirmé, c'est important pour la justice, surtout dans un cas de viol, il faut que la vérité soit faite.",
+        "Cette décision de la Cour de cassation est importante, cela montre que le système judiciaire prend au sérieux les accusations, je soutiens un procès équitable."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:44.217Z",
-    "contentHash": "1cfa679fa5f60c025caa702e1a3f5b2b19d64788865f453bf3049481f0f331d4"
+    "status": "automatic",
+    "contentHash": "9df41b45bcb7bf4f84fc9e4c5a9336337af927542ea19b1e6bd5f92172c6115f"
   }
 }

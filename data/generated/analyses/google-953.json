@@ -4,42 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "a29961e988a49d9e",
-  "computedAt": "2026-11-09T20:37:30.781Z",
+  "inputHash": "a511e76858ec46ee",
+  "eventInputHash": "c6afed2838458d5ffe275a1f23afa10d61cfd57dc558b01fccc4633f044dab48",
+  "computedAt": "2026-11-11T13:05:15.336Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Gabriel Attal appelle uniquement la gauche à s’unir autour d’un programme commun pour faire barrage à Marine Le Pen, excluant une alliance avec la droite traditionnelle.",
-    "whatChanges": "La proposition d’Attal se concentre sur une union de la gauche, ce qui peut renforcer la cohésion à gauche mais réduit les chances d’attirer les électeurs centristes ou de droite modérée, changeant ainsi la dynamique du bloc anti-RN."
+    "description": "Gabriel Attal appelle uniquement à une coalition élargie de toute la gauche, excluant la droite, pour faire barrage au RN lors de la présidentielle 2027.",
+    "whatChanges": "La coalition proposée exclut la droite, ce qui peut radicaliser le camp progressiste mais limite l'attrait au centre et la capacité à rassembler un large électorat anti-RN."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Couples avec enfants de la gauche et la droite unis contre le RN",
-      "mechanism": "Gabriel Attal appelle à une « grande coalition » de la gauche et de la droite, ciblant particulièrement les familles avec enfants qui sont sensibles à la stabilité politique et cherchent à faire barrage au Rassemblement National.",
-      "reason": "Le segment regroupe des adultes en couple avec enfants, âge 25-49 ans, qui forment une base électorale clé pour des appels au rassemblement contre l’extrême droite en raison de leurs préoccupations pour l'avenir de leurs enfants.",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Les jeunes diplômés en milieu urbain sont un public cible important pour l’appel de Gabriel Attal à une coalition large afin de contrer le RN, vu leur niveaux d’éducation et leurs engagements politiques souvent opposés à l’extrême droite.",
+      "reason": "Ce groupe réside majoritairement en milieu dense et peut peser significativement dans les scrutins urbains, sensibles aux appels à l’union républicaine de la gauche et de la droite modérée.",
       "all": [
-        "household.couple_with_children"
+        "cluster.young_urban_graduate"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "political_affiliation"
+        "Adhésion au projet de coalition",
+        "Rejet de l’extrême droite",
+        "Participation électorale"
       ],
-      "count": 26388,
-      "distinctCommunes": 176,
+      "count": 11394,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Présidentielle 2027 : Gabriel Attal appelle à une coalition de la gauche et de la droite pour faire barrage au RN",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -48,23 +45,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Ouvriers installés de 50 à 64 ans en zones intermédiaires",
-      "mechanism": "Le discours de Gabriel Attal sur la coalition vise aussi à convaincre les ouvriers âgés de 50 à 64 ans, un groupe souvent exposé aux conséquences économiques et sociales des choix politiques, vivant en communes à densité intermédiaire, où le vote FN/RN est historiquement sensible.",
-      "reason": "Ce segment d’ouvriers âgés est particulièrement concerné par les enjeux sociaux et économiques portés par la campagne présidentielle, et la localisation en zones intermédiaires est liée à un électorat parfois volatile entre gauche et RN.",
+      "name": "Jeunes professionnels urbains de 25 à 34 ans",
+      "mechanism": "Jeunes professionnels urbains âgés de 25 à 34 ans, électorat potentiellement concerné par l'appel de Gabriel Attal à une coalition de la gauche et de la droite pour contrer le RN, ciblant notamment les électeurs actifs en milieu urbain.",
+      "reason": "Segment resserré par âge et contexte urbain pour éviter un segment trop large",
       "all": [
-        "occupation.worker",
-        "age.50_64",
-        "geo.intermediate"
+        "geo.dense",
+        "age.25_34",
+        "occupation.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "political_attitudes"
+        "Attitude envers la coalition gauche-droite",
+        "Vote à la présidentielle"
       ],
-      "count": 144,
-      "distinctCommunes": 24,
+      "count": 4812,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -75,22 +72,52 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes diplômés urbains des communes denses",
-      "mechanism": "Gabriel Attal incite à une alliance de la gauche et de la droite qui concerne aussi les jeunes diplômés urbains, situés en communes denses, généralement favorables à un front républicain contre Marine Le Pen et sensibles aux enjeux progressistes portés par ce rassemblement.",
-      "reason": "Ces jeunes adultes diplômés, en milieu urbain dense, constituent un électorat mobilisable contre le RN par un appel à la coalition des partis du centre et de gauche.",
+      "name": "Salariés modestes de 35 à 49 ans en communes intermédiaires ou denses",
+      "mechanism": "Salariés modestes adultes de 35 à 49 ans vivant dans des communes intermédiaires ou denses, base sociale clé ciblée par l'appel à l’union contre le RN initié par Gabriel Attal",
+      "reason": "Segment combinant âge, catégorie socioprofessionnelle et densité pour réduire la taille",
       "all": [
-        "cluster.young_urban_graduate",
+        "occupation.employee",
+        "age.35_49"
+      ],
+      "any": [
+        "geo.intermediate",
         "geo.dense"
       ],
-      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "political_engagement"
+        "Attitude envers la coalition gauche-droite",
+        "Vote à la présidentielle"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 6856,
+      "distinctCommunes": 96,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Gabriel Attal appelle à une coalition de la gauche et de la droite pour faire barrage au RN",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Retraités en couple vivant hors des grandes villes",
+      "mechanism": "Retraités en couple susceptibles d'être influencés par l'appel de Gabriel Attal à une coalition contre le RN, résidant hors des grandes agglomérations Paris, Lyon et Marseille",
+      "reason": "Segment ciblé par statut familial et exclusion des plus grandes communes pour éviter doublon avec urbains",
+      "all": [
+        "cluster.retired_couple"
+      ],
+      "any": [],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers la coalition gauche-droite",
+        "Vote à la présidentielle"
+      ],
+      "count": 2510,
+      "distinctCommunes": 122,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -109,18 +136,65 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés urbains des communes denses",
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
       "matchedCount": 11394,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
           "toward": 1,
           "away": 0,
           "noClearChange": 47
+        },
+        "center": {
+          "toward": 5,
+          "away": 2,
+          "noClearChange": 41
+        },
+        "right": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 43
+        },
+        "abstention": {
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve l'idée d'une coalition gauche-droite contre le RN intéressante, ça pourrait rassembler vraiment large, mais j'ai un peu peur des effets d'un tel compromis sur les idées de chacun.",
+        "Cette coalition de gauche et droite pour barrer le RN, je ne sais pas trop, ça me semble peu réaliste et un peu hors de portée, ça ne changera pas vraiment mon vote.",
+        "Une coalition gauche-droite pour contrer le RN, ça paraît un peu compliqué et ça ne correspond pas à mes convictions, je préfère que la gauche reste unie par elle-même."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes de 35 à 49 ans en communes intermédiaires ou denses",
+      "matchedCount": 6856,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -128,19 +202,19 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 3,
-          "away": 6,
-          "noClearChange": 39
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
-          "away": 4,
-          "noClearChange": 44
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
-          "away": 3,
-          "noClearChange": 43
+          "toward": 1,
+          "away": 5,
+          "noClearChange": 42
         },
         "abstention": {
           "toward": 11,
@@ -151,103 +225,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une coalition de gauche à droite ? Ça me semble un peu fou, la gauche n'a pas forcément les mêmes valeurs que la droite. Personnellement, ça me laisse un peu sceptique, je préfère les solutions claires.",
-        "Je préfère que la gauche s'unisse plutôt que de voir une alliance avec la droite. Une grande coalition ne me parle pas beaucoup, je suis attaché à des valeurs progressistes.",
-        "Je ne vois pas trop l'intérêt d'une coalition gauche-droite, ça ne correspond pas aux personnes que je soutiens ici. Mieux vaut rester fidèle à ses convictions à gauche, surtout face au RN."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Ouvriers installés de 50 à 64 ans en zones intermédiaires",
-      "matchedCount": 144,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 9,
-          "away": 0,
-          "noClearChange": 39
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ça me paraît compliqué de rassembler tout ce monde-là, surtout au boulot on parle pas trop de ça, je reste un peu sceptique.",
-        "Je suis plutôt à droite, ça me fait un peu tiquer cette idée d'alliance avec la gauche pour contrer Le Pen, mais bon je peux comprendre le souci.",
-        "Une coalition large, je ne suis pas sûr que ça change grand-chose pour notre quotidien, ça ne me fait pas vraiment réagir."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Couples avec enfants de la gauche et la droite unis contre le RN",
-      "matchedCount": 26388,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 8,
-          "away": 0,
-          "noClearChange": 40
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je vois bien l'idée d'une coalition large, mais je doute que gauche et droite traditionnelles puissent vraiment s'entendre pour faire barrage au RN. Ça me semble trop flou pour vraiment me mobiliser.",
-        "Cela ne m'intéresse guère, je me méfie des coalitions politiques et ça ne change pas ma préférence claire pour le RN déjà forte dans ma région.",
-        "L'idée d'une coalition large semble utopique, je suis plus sensible à une union à gauche. Je pourrais être motivé à renforcer mon vote contre le RN si la gauche fait front ensemble."
+        "Je comprends l'idée d'unir la gauche et la droite pour contrer l'extrême droite, mais je suis un peu sceptique sur cette alliance improbable. Je préférerais qu'on privilégie des solutions plus concrètes pour la vie de famille.",
+        "Ça me paraît difficile que la gauche et la droite puissent vraiment s'allier, surtout que je penche plus à gauche. Une coalition de gauche élargie aurait plus de sens pour moi pour faire barrage au RN.",
+        "Je ne vois pas vraiment comment gauche et droite pourraient s'allier, ça me semble compliqué. Une coalition plus claire à gauche me conviendrait mieux car je me méfie beaucoup de l'extrême droite."
       ]
     },
     "global_1": {
@@ -260,49 +240,141 @@
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "center": {
-          "toward": 0,
-          "away": 4,
-          "noClearChange": 92
+          "toward": 2,
+          "away": 3,
+          "noClearChange": 91
         },
         "right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "far_right": {
-          "toward": 2,
-          "away": 6,
-          "noClearChange": 88
+          "toward": 3,
+          "away": 7,
+          "noClearChange": 86
         },
         "abstention": {
-          "toward": 23,
-          "away": 0,
-          "noClearChange": 73
+          "toward": 21,
+          "away": 1,
+          "noClearChange": 74
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas sûre que cette grande coalition arrangerait grand-chose pour moi, je reste assez sceptique face à ces alliances politiques. Ça ne change pas vraiment mon intention de vote.",
-        "Gabriel Attal qui veut faire une coalition entre gauche et droite ? Ça me semble irréaliste et pas très honnête, je préfère qu'on reste sur nos valeurs à gauche pour contrer le RN, ça me paraît plus juste.",
-        "Moi, je trouve que cette histoire de coalition gauche-droite, c’est compliqué. Je suis plutôt tenté par le vote RN, mais je redoute une alliance centriste, ça ne me parle pas trop. Ça ne change pas mes idées là-dessus."
+        "Honnêtement, une alliance entre gauche et droite me semble improbable et un peu déroutante. Je préfère garder mon opinion centrée sur ce que je connais.",
+        "Je ne suis pas sûre qu'une tel coalition large avec la droite soit une bonne idée. Une union de la gauche me paraîtrait plus sincère et cohérente pour contrer le RN.",
+        "Une coalition large gauche-droite, ça me paraît compliqué. Je pourrais soutenir davantage une union resserrée de gauche pour faire barrage à l'extrême droite."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Retraités en couple vivant hors des grandes villes",
+      "matchedCount": 2510,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "far_right": {
+          "toward": 4,
+          "away": 7,
+          "noClearChange": 37
+        },
+        "abstention": {
+          "toward": 11,
+          "away": 2,
+          "noClearChange": 35
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve l'idée d'une alliance gauche-droite un peu surprenante, mais si ça peut empêcher l'extrême droite de passer, pourquoi pas. Ce n'est pas mon quotidien, donc ça n'influence pas vraiment mon vote.",
+        "Une coalition large de gauche et droite pour faire barrage au RN ? Ça me paraît compliqué, et je préférerais qu'on se concentre sur un front clair à gauche contre l'extrême droite. Ça correspondrait plus à mes idées.",
+        "Qu'une grande coalition de gauche et droite se forme me semble irréaliste, j'ai du mal à voir comment ça servirait les gens comme moi. Ça ne change pas vraiment mon vote."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes professionnels urbains de 25 à 34 ans",
+      "matchedCount": 4812,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
+        },
+        "right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve l’idée d’une coalition entre gauche et droite pour faire barrage au RN plutôt surprenante, ça me semble compliqué à faire marchern, mais je suis un peu méfiante envers ce genre d’alliances politiques.",
+        "Je préfère une coalition élargie à toute la gauche plutôt qu'un pacte incluant la droite, ça me paraît plus cohérent pour contrer le RN.",
+        "Une coalition gauche-droite me semble peu crédible, je préfère que la gauche s’unisse seule pour faire barrage à l’extrême droite."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:56.637Z",
-    "contentHash": "e8d552d3f40c58766789bfa2c800ec732fc45a9ffa38e4ff82fd11a0e1c4beb5"
+    "status": "automatic",
+    "contentHash": "8682c066beb2b034d48abcfee96c980e2225b38edab50f1f4b370da4ad2ff068"
   }
 }

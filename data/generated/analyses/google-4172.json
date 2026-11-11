@@ -4,37 +4,71 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "60c3c9dfb358106a",
-  "computedAt": "2026-11-09T20:37:56.631Z",
+  "inputHash": "64c2cde56cc905b7",
+  "eventInputHash": "865a2c475abbbb2a96ce8948f6626106d1700f7b13e539592a04a763dae2a83f",
+  "computedAt": "2026-11-11T13:07:02.584Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Marine Le Pen annonce qu'elle suspend temporairement Jordan Bardella de ses fonctions dans le parti, le temps d'une enquête interne suite aux accusations d’écrits antisémites.",
-    "whatChanges": "Le ton devient plus prudent et la direction du RN cherche à limiter le scandale, ce qui pourrait rassurer certains électeurs modérés tout en provoquant des tensions au sein du parti."
+    "description": "Marine Le Pen annonce qu'elle suspend temporairement sa confiance en Jordan Bardella le temps d'une enquête indépendante sur les accusations d’écrits antisémites.",
+    "whatChanges": "Marine Le Pen se montre prudente face aux accusations contre Bardella, ce qui peut atténuer la division parmi ses électeurs et réduire la polémique dans l'opinion publique."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains sensibles aux affaires politiques",
-      "mechanism": "Ce segment rassemble les jeunes de moins de 35 ans diplômés au moins bac+3 vivant en commune dense, susceptibles de suivre de près les débats publics sur les accusations antisémites visant Jordan Bardella et la défense affichée de Marine Le Pen, compte tenu de leur profil citoyen et urbain engagé.",
-      "reason": "Cette catégorie combine l’âge jeune, un niveau d’études élevé et le fait d’habiter en zones urbaines denses où les enjeux liés à la réputation politique sont fortement débattus.",
+      "name": "Jeunes diplômés urbains de 25 à 34 ans",
+      "mechanism": "Les jeunes diplômés urbains représentent un électorat critique qui peut être particulièrement sensible aux accusations d’antisémitisme concernant Jordan Bardella, notamment dans le contexte de la présidentielle 2027.",
+      "reason": "Ce segment combine la tranche jeune-adulte, un niveau d’éducation élevé et la vie en commune dense, regroupant un public qui suit attentivement les débats politiques et les controverses autour des candidats.",
       "all": [
-        "age.18_24",
+        "age.25_34",
+        "geo.dense"
+      ],
+      "any": [
         "education.bac_plus_3_4",
+        "education.bac_plus_5_plus"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Réaction aux accusations antisémites",
+        "Confiance dans le leadership du RN",
+        "Attitudes envers la présidentielle"
+      ],
+      "count": 9916,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "education : education.bac_plus_3_4 ou education.bac_plus_5_plus regroupés en union (« any ») ; une personne n’a qu’une seule valeur de education"
+      ],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Marine Le Pen maintient « totalement » sa « confiance » en Jordan Bardella, accusé d’écrits antisémites",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Couples avec enfants de 35 à 49 ans en milieu urbain",
+      "mechanism": "Les familles constituées représentent un électorat sensible aux valeurs de société et à la stabilité, mais aussi aux polémiques politiques ; la défense publique de Jordan Bardella par Marine Le Pen peut influencer leurs perceptions et leur vote potentiel.",
+      "reason": "Ce segment est composé de personnes en âge actif avec enfants à charge, vivant en milieu urbain, souvent concernés par les questions sociales et éducatives abordées par les candidats.",
+      "all": [
+        "household.couple_with_children",
+        "age.35_49",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitudes_politique",
-        "niveau_information_election"
+        "Perception des valeurs familiales dans le débat politique",
+        "Impact des accusations antisémites sur le vote",
+        "Confiance en Marine Le Pen"
       ],
-      "count": 1070,
-      "distinctCommunes": 67,
+      "count": 16964,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,55 +78,25 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Salariés modestes de 35 à 64 ans vivant en communes intermédiaires",
-      "mechanism": "Ce groupe comprend des employés et ouvriers âgés de 35 à 64 ans vivant dans des communes de densité intermédiaire. Ils sont concernés par les positions de Jordan Bardella car ils représentent un électorat populaire important face aux polémiques impliquant le Rassemblement National, parti que Marine Le Pen défend dans cet événement.",
-      "reason": "Pour cibler des actifs salariés modestes dans une configuration territoriale moyenne qui doive être sensible aux turbulences politiques au sein de ce parti.",
-      "all": [
-        "occupation.employee",
-        "geo.intermediate"
-      ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "sensibilité_polemiques",
-        "affinité_parti_rn"
-      ],
-      "count": 381,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : Marine Le Pen maintient « totalement » sa « confiance » en Jordan Bardella, accusé d’écrits antisémites",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
       "id": "segment_3",
-      "name": "Retraités vivant en couple dans les communes rurales",
-      "mechanism": "Ce segment concentre les retraités en couple sans enfant au foyer, habitant dans des communes rurales, population souvent attentives aux questions d’identité nationale et aux discours de Marine Le Pen. Ils sont donc un public potentiellement concerné par ses prises de position publiques en défense de Jordan Bardella.",
-      "reason": "Associer statut de retraité en couple et habitat rural pour identifier une base électorale classique du Rassemblement National particulièrement sensible à ces controverses.",
+      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "mechanism": "Ce groupe, souvent sensible aux discours populistes et sécuritaires, peut être influencé par la posture défensive de Marine Le Pen envers Jordan Bardella, électorat important dans les secteurs où le RN est implanté.",
+      "reason": "L’intersection de l’âge, de la catégorie professionnelle ouvrière, et de la densité moyenne de la commune, renseigne un public à la fois attaché à l’emploi et aux questions de reconnaissance identitaire.",
       "all": [
-        "occupation.retired",
-        "household.couple_no_children",
-        "geo.rural"
+        "occupation.worker",
+        "age.50_64",
+        "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perception_parti_rn",
-        "attitudes_immigration"
+        "Attitudes envers les leaders du RN",
+        "Impact des accusations sur la fidélité électorale",
+        "Sensibilité aux thèmes identitaires et sécuritaires"
       ],
-      "count": 434,
-      "distinctCommunes": 74,
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -111,104 +115,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Salariés modestes de 35 à 64 ans vivant en communes intermédiaires",
-      "matchedCount": 381,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve préoccupant que Marine Le Pen défende Bardella malgré ces accusations, ça ne donne pas une bonne image. Ça me rend un peu méfiante sur leur parti.",
-        "Honnêtement, ce genre de nouvelles ne change pas trop mon avis, je ne suis pas trop branchée politique, mais je trouve normal de suspendre quelqu'un en attendant les résultats d'une enquête.",
-        "Je trouve ça choquant que Marine Le Pen soutienne encore Bardella dans cette situation, ça me dégoûte un peu. Si elle le suspendait le temps d'une enquête, ce serait plus sérieux."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains sensibles aux affaires politiques",
-      "matchedCount": 1070,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 4,
-          "noClearChange": 44
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, ces histoires politiques et disputes internes, ça m'intéresse peu, ça ne change rien à ma vie ou à mon vote.",
-        "Ça me déçoit un peu que Marine Le Pen continue à soutenir Bardella malgré ces accusations, ça ternit leur crédibilité.",
-        "Je trouve inquiétant que des accusations antisémites soient balayées d'un revers de main, ça ne donne pas une bonne image de ce parti."
-      ]
-    },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Retraités vivant en couple dans les communes rurales",
-      "matchedCount": 434,
+      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
+      "matchedCount": 144,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -234,22 +144,22 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 3,
-          "away": 10,
+          "toward": 0,
+          "away": 13,
           "noClearChange": 35
         },
         "abstention": {
-          "toward": 4,
-          "away": 3,
-          "noClearChange": 41
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Honnêtement, ça ne me surprend pas que Marine Le Pen soutienne Bardella, on reste solidaires chez eux. Moi, ça ne change rien à ce que je pense. C’est compliqué, mais ce genre d’affaires ne me fait pas changer d’avis.",
-        "Moi, les accusations contre Bardella ça me gêne un peu, faudrait pas que ça salisse tout le parti. Si Le Pen avait suspendu Bardella, au moins elle montrerait qu’elle prend ça au sérieux. Sinon, je reste un peu méfiant mais je suis pas sûr de changer mon vote.",
-        "Franchement, je ne suis pas trop pour les écrits antisémites, ça me choque. Que Marine Le Pen défende Bardella comme ça, ça me refroidit un peu. Si elle avait suspendu Bardella, je trouverais ça plus responsable. Ça me pousse doucement à m’éloigner du RN."
+        "Je trouve que c'est dommage que ces accusations entachent l'image du Rassemblement National, mais ça ne change pas mon avis sur eux, ils restent la meilleure option pour nous ouvriers ici.",
+        "Ces accusations sont graves, mais je suis plutôt méfiant envers Bardella. Si Marine Le Pen suspend sa confiance, ça pourrait me faire douter un peu plus du RN.",
+        "Pour moi, c'est important qu'une enquête indépendante ait lieu, sinon ça fait douter de la sincérité du RN. Je serais peut-être plus tenté de m'abstenir si ça se prolonge sans réponse claire."
       ]
     },
     "global_1": {
@@ -261,14 +171,14 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 93
-        },
-        "left": {
           "toward": 1,
           "away": 0,
           "noClearChange": 95
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         },
         "center": {
           "toward": 0,
@@ -286,25 +196,117 @@
           "noClearChange": 69
         },
         "abstention": {
-          "toward": 8,
-          "away": 1,
-          "noClearChange": 87
+          "toward": 13,
+          "away": 2,
+          "noClearChange": 81
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Eh bien, cela ne me surprend pas vraiment venant de Marine Le Pen, qui soutient toujours ses proches malgré les controverses. Moi, je ne m'intéresse pas trop à ces histoires, ça ne va pas changer mon vote.",
-        "Je trouve que Marine Le Pen qui continue de faire confiance à Bardella malgré ces accusations, ça me dérange un peu. L'alternative où elle suspend Bardella me semblerait plus responsable, ça me donnerait un peu plus confiance en eux.",
-        "Je suis assez choquée par ces accusations et que Marine Le Pen ne fasse rien. Si elle suspendait Bardella en attendant l'enquête, ça montrerait une certaine responsabilité. Sinon, ça me fait juste ne pas vouloir voter pour eux."
+        "Je ne supporte pas ces accusations, mais je reste fidèle à Marine Le Pen. Cela ne change rien à mon vote, je la soutiens toujours.",
+        "Cette histoire de Bardella me dérange, même si je ne suis pas très engagé. Si Marine Le Pen remet en cause sa confiance, ça peut me faire hésiter.",
+        "Je trouve ces accusations graves et le refus de Marine Le Pen de se distancer de Bardella m'inquiète. Ça pourrait détourner certains électeurs d'extrême droite."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Couples avec enfants de 35 à 49 ans en milieu urbain",
+      "matchedCount": 16964,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 9,
+          "noClearChange": 39
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, cette histoire avec Bardella, ça me laisse assez indifférent. Ce type de polémique ne change pas ma manière de voir les choses, je reste concentré sur les grandes questions de gestion urbaine et sociale.",
+        "Ce genre d'accusation contre Bardella me fait douter un peu plus du RN. S'ils soutiennent ça sans réfléchir, ça me donne envie de moins les soutenir.",
+        "J'entends ces accusations contre Bardella, c'est inquiétant. Si Marine Le Pen suspend sa confiance, ça serait plus sérieux et ça me rassurerait un peu."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains de 25 à 34 ans",
+      "matchedCount": 9916,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 14,
+          "noClearChange": 34
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça inquiétant que Marine Le Pen soutienne sans réserve Bardella malgré ces accusations ; ça ne correspond pas à mes valeurs, surtout sur des sujets graves comme l'antisémitisme.",
+        "Cette affaire ne m'intéresse pas vraiment, je préfère me concentrer sur les projets et les idées concrètes pour ma ville et la France.",
+        "C'est une triste confirmation des dérives au sein du RN. Le Pen devrait suspendre Bardella pour préserver un minimum d'intégrité et d'image."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:48.187Z",
-    "contentHash": "e7da27d7374792fbb40452c3bae13315bbb14428169572b65fdbad41517f239b"
+    "status": "automatic",
+    "contentHash": "82ba1125d1fb343f70a5ead867f37c617afa28b6c34707b0fb000eae4d3b741c"
   }
 }

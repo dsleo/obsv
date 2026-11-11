@@ -4,40 +4,46 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "4cd71a75c843f34d",
-  "computedAt": "2026-11-09T20:37:27.993Z",
+  "inputHash": "4ae1ce7ec9410e11",
+  "eventInputHash": "39b97df87bfc2a5d3b4224ef75c77a1597814abd6ea1513d825e62856d3fe6eb",
+  "computedAt": "2026-11-11T13:04:49.981Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Présidentielle 2027 : Raphaël Glucksmann présente des excuses publiques plus formelles et appelle à un débat apaisé entre candidats, tout en réaffirmant fermement ses critiques sur Jean-Luc Mélenchon et Marine Le Pen.",
-    "whatChanges": "Le ton passe de l'ironie agressive à une posture plus mesurée et constructive, ce qui pourrait apaiser une partie des électeurs sensibles aux débats civils tout en maintenant une opposition claire aux candidats ciblés."
+    "description": "Lors d'une interview, Raphaël Glucksmann critique sévèrement Jean-Luc Mélenchon et Marine Le Pen mais adopte un ton plus respectueux et ironique envers Ségolène Royal, soulignant son expérience et son parcours politique.",
+    "whatChanges": "Le ton plus respectueux envers Ségolène Royal adoucit son image auprès des électeurs centristes et modérés, tout en conservant une critique forte contre Mélenchon et Le Pen."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains sensibles au débat présidentiel",
-      "mechanism": "Raphaël Glucksmann s'est lâché sur Jean-Luc Mélenchon et Marine Le Pen, des figures majeures de la présidentielle 2027, ce qui concerne particulièrement les jeunes urbains diplômés, engagés dans les débats politiques de la campagne présidentielle.",
-      "reason": "Les jeunes diplômés des villes sont souvent très attentifs aux polémiques entre candidats et à leurs échanges musclés pendant la présidentielle.",
+      "name": "Jeunes diplômés urbains de 18 à 34 ans",
+      "mechanism": "Raphaël Glucksmann critique vivement Jean-Luc Mélenchon et Marine Le Pen, suscitant un impact fort chez les jeunes diplômés des villes, qui forment une part active de l’électorat progressiste urbain visé par ses propos ironiques notamment sur Ségolène Royal.",
+      "reason": "Ce groupe combine les jeunes adultes diplômés vivant en zones urbaines, constituant un segment ciblé par les discours politisés et critiques vers les figures de la gauche et de l'extrême droite.",
       "all": [
-        "age.18_24",
         "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "exposure_to_campaign",
-        "political_interest"
+        "Attitude envers Jean-Luc Mélenchon",
+        "Attitude envers Marine Le Pen",
+        "Perception de Raphaël Glucksmann",
+        "Sensibilité aux critiques politiques"
       ],
-      "count": 1070,
-      "distinctCommunes": 67,
+      "count": 4295,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Présidentielle 2027 : \"On leur pisse dessus !\" Raphaël Glucksmann se lâche sur Jean-Luc Mélenchon et Marine Le Pen et ironise sur Ségolène Royal",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -46,24 +52,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes en âge actif concernés par les tensions entre candidats",
-      "mechanism": "Les propos tranchés et « inélégants » de Raphaël Glucksmann sur Jean-Luc Mélenchon et Marine Le Pen sont susceptibles de toucher les salariés modestes actifs, souvent sensibles aux enjeux de la présidentielle 2027 et aux rivalités des figures politiques radicales.",
-      "reason": "Les salariés ouvriers ou employés en zone intermédiaire et urbaine constituent une base socio-économique importante et sont concernés par les tensions entre les candidats populaires et de gauche radicale.",
+      "name": "Retraités en couple hors zones rurales",
+      "mechanism": "La sortie médiatique de Glucksmann concernant Mélenchon et Le Pen affecte potentiellement les retraités en couple non ruraux, population sensible aux enjeux politiques nationaux et à l’image des figures politiques historiques comme Ségolène Royal.",
+      "reason": "Les retraités en couple forment un segment stable et informé, susceptibles d’être réactifs aux critiques adressées aux candidats majeurs de la présidentielle 2027.",
       "all": [
-        "occupation.employee",
-        "age.35_49",
-        "geo.intermediate"
+        "occupation.retired",
+        "household.couple_no_children"
       ],
       "any": [],
-      "none": [],
+      "none": [
+        "geo.rural"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "political_interest",
-        "vote_intention",
-        "exposure_to_campaign"
+        "Perception de la présidentielle 2027",
+        "Opinion sur Jean-Luc Mélenchon",
+        "Opinion sur Marine Le Pen",
+        "Réaction aux critiques de Raphaël Glucksmann"
       ],
-      "count": 210,
-      "distinctCommunes": 24,
+      "count": 15832,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -74,26 +82,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Retraités en couple des communes denses attentifs à la campagne présidentielle",
-      "mechanism": "Raphaël Glucksmann qui ironise sur Ségolène Royal et critique Mélenchon et Le Pen engage un débat politique qui interpelle tout particulièrement les retraités en couple, stables dans leur choix électoral et attentifs aux prises de position des candidats en 2027.",
-      "reason": "Les retraités en couple des communes denses sont une catégorie sociale stable et nombreuse souvent concernée par les débats politique de la présidentielle, notamment quand des personnalités de gauche sont évoquées.",
+      "name": "Jeunes agriculteurs de moins de 35 ans",
+      "mechanism": "Les propos provocateurs de Glucksmann peuvent interpeller particulièrement les jeunes agriculteurs, un groupe spécifique de moins de 35 ans dont les intérêts ruraux et économiques les rendent attentifs aux débats politiques inclusifs et aux critiques sur les têtes d’affiche des partis.",
+      "reason": "Segment étroit lié à la jeunesse rurale employée dans l’agriculture, directement concerné par les discours politiques nationaux en contexte présidentiel.",
       "all": [
-        "occupation.retired",
-        "household.couple_no_children",
-        "geo.dense"
+        "cluster.young_farmer"
       ],
-      "any": [
-        "age.65_74",
-        "age.75_plus"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "political_interest",
-        "vote_intention"
+        "Récepteurs des discours politiques",
+        "Opinion sur Jean-Luc Mélenchon et Marine Le Pen",
+        "Impact des propos de Raphaël Glucksmann"
       ],
-      "count": 13125,
-      "distinctCommunes": 72,
+      "count": 145,
+      "distinctCommunes": 42,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -112,10 +116,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Salariés modestes en âge actif concernés par les tensions entre candidats",
-      "matchedCount": 210,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains de 18 à 34 ans",
+      "matchedCount": 4295,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -134,53 +138,6 @@
           "toward": 0,
           "away": 0,
           "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas très intéressée par ces jeux de mots et attaques entre candidats, ça ne change pas vraiment mon opinion.",
-        "Ces propos me paraissent vulgaires et peu respectueux, ce qui me déplaît. J'aurais préféré un débat plus posé.",
-        "Je ne comprends pas trop pourquoi il se permet de parler ainsi ; ce genre de propos ne m'intéresse pas vraiment."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Retraités en couple des communes denses attentifs à la campagne présidentielle",
-      "matchedCount": 13125,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -201,15 +158,62 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne vois pas trop l'intérêt de ces insultes entre candidats, ça ne m'influence pas vraiment, je préfère qu'on parle des vrais sujets qui touchent notre vie ici à Grand-Charmont.",
-        "Ce genre de propos vulgaires ne me plaît pas, je préfère que les candidats aient du respect entre eux, mais ça ne change pas mon vote, j'écoute toujours ce qui peut améliorer notre vie à Béziers.",
-        "Je trouve ces propos un peu puérils, ce n'est pas comme ça qu'on motive les électeurs, moi ça ne me fait ni chaud ni froid, je reste centré sur mes idées."
+        "Je trouve que Glucksmann se laisse un peu emporter avec ces insultes, ça ne me plaît pas vraiment. Ce genre de paroles ne va pas améliorer les choses entre les partis.",
+        "Glucksmann qui dit ça à Mélenchon et Le Pen… c'est un peu rude, mais au moins il montre qu'il n'a pas peur. Je suis assez habituée à Le Pen ici, ça ne me pousse pas à changer d'avis.",
+        "Je trouve que Glucksmann est trop agressif sur Mélenchon et Le Pen, ça ne donne pas envie de les soutenir. Si au moins il respectait un peu Royal, on pourrait le trouver plus raisonnable."
       ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains sensibles au débat présidentiel",
-      "matchedCount": 1070,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes agriculteurs de moins de 35 ans",
+      "matchedCount": 145,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ce genre de propos me semble assez dégradant et peu constructif pour la politique. Je préfère qu'on discute des idées plutôt que des insultes.",
+        "Franchement, ces critiques très virulentes ne me touchent pas vraiment; je suis surtout préoccupée par la situation locale et mon travail à la ferme.",
+        "Je trouve ça un peu agressif, surtout venant de quelqu'un qui voudrait unifier la gauche. Ça ne m'encourage pas à changer d'avis."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités en couple hors zones rurales",
+      "matchedCount": 15832,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -240,17 +244,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 2,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ce genre de propos ne m'intéresse pas trop, ça semble plus du spectacle que de la politique sérieuse.",
-        "Ces propos de Glucksmann sont vulgaires et ne m'impressionnent pas. Je préfère un débat plus respectueux.",
-        "Je trouve que Glucksmann dépasse les bornes avec ces propos, ça ne fait pas avancer le débat politique."
+        "Je trouve que ces propos vulgaires ne font pas grand-chose pour la politique, ça m'agace plus qu'autre chose.",
+        "Franchement, les attaques grossières, ça ne m'intéresse pas. Si Glucksmann respecte un peu Ségolène Royal, ça me semble plus digne.",
+        "Ces petits conflits verbaux ne changent pas grand-chose à ma manière de voir les choses."
       ]
     },
     "global_1": {
@@ -287,25 +291,23 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 6,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 90
+          "noClearChange": 91
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne m'intéresse pas trop aux querelles personnelles entre ces politiques, ça ne change rien à ma vie ni à ce que je pense d'eux.",
-        "Franchement, je trouve ce genre de propos indignes, ça ne donne pas envie de suivre cette campagne.",
-        "Les disputes à la télé, ça ne m'intéresse pas trop, je préfère quand ça reste respectueux."
+        "Ce genre d'insultes publiques ne me plaît pas du tout, ça sent l'agitation inutile alors que j'ai d'autres choses en tête. Je préfère garder mon calme et mon pragmatisme.",
+        "Je trouve que ce ton agressif entre politiciens ne sert à rien, ça me fait surtout douter des discours et je suis un peu lassée par ces guéguerres qui ne changent rien à ma vie.",
+        "Je suis surprise par tant de virulence, ce n'est pas très digne, et ça ne me donne pas envie de m'intéresser plus à leurs disputes."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:56.989Z",
-    "contentHash": "495f24481c162877c41bd91fed02500d71c82f7d6d6db250e8f0185d629d73d2"
+    "status": "automatic",
+    "contentHash": "bc78208b440c1fe4943eb9603267f96876d72837cc617dcb0a06f67a6c441e94"
   }
 }

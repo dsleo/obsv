@@ -4,41 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "e605c2b2a24b85f6",
-  "computedAt": "2026-11-10T22:07:53.627Z",
+  "inputHash": "d67e0297d8aa7699",
+  "eventInputHash": "b8ca66f2766f972feb44b9ab07bcdef710988ebecd262de991ff6021d833675e",
+  "computedAt": "2026-11-11T13:07:47.812Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Un jeune de 16 ans dans le Haut-Rhin est placé en contrôle judiciaire pour menace d'attentat contre un lycée au lieu d'être immédiatement placé en garde à vue.",
-    "whatChanges": "La mesure de mise en cause légale est moins coercitive, ce qui pourrait influer sur la perception des risques auprès des habitants et des familles concernées."
+    "description": "Dans le Haut-Rhin, un jeune de 16 ans est placé en garde à vue non pas pour une menace d'attentat, mais pour diffusion de fausses alarmes de sécurité dans un lycée.",
+    "whatChanges": "L'incident porte sur la diffusion de fausses informations plutôt que sur une menace directe, ce qui peut rassurer les électeurs sur la sécurité mais soulève la question de la désinformation en milieu scolaire."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Parents de familles avec enfants en âge scolaire en zone dense",
-      "mechanism": "Ce segment regroupe les adultes en couple avec enfants vivant en communes denses, qui sont directement concernés par la menace d'attentat contre un lycée, car ils ont un intérêt direct dans la sécurité des établissements scolaires fréquentés par leurs enfants.",
-      "reason": "La menace visant un lycée alerte particulièrement les parents d'enfants en âge scolaire, notamment en milieu urbain ou densément peuplé.",
+      "name": "Jeunes de 16 à 18 ans scolarisés en communes intermédiaires et denses",
+      "mechanism": "Ce groupe inclut les jeunes adolescents en âge probable de fréquenter un lycée dans des communes de densité intermédiaire à dense, concernés par la menace d'attentat contre un lycée dans le Haut-Rhin.",
+      "reason": "Segment composé pour cibler précisément la tranche d'âge directement concernée par la menace, dans des communes ayant une densité compatible avec la présence de lycées.",
       "all": [
-        "household.couple_with_children",
+        "age.18_24",
         "geo.dense"
       ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perception of school security",
-        "concern about local safety"
+        "Perception du risque scolaire",
+        "Sentiment de sécurité au lycée"
       ],
-      "count": 24731,
+      "count": 14650,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "Lacune « âge précis 16-18 ans » ignorée : cet attribut existe déjà dans les tags"
+      ],
       "counterfactual": {
         "intervention": "Haut-Rhin : un jeune de 16 ans en garde à vue pour menace d'attentat contre un lycée",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -47,21 +47,29 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés des villes habitant en commune dense du Haut-Rhin",
-      "mechanism": "Jeunes diplômés urbains vivant en commune dense, potentiellement informés ou mobilisés par l'incident grave impliquant un jeune de 16 ans dans une menace d'attentat, souvent sensibilisés aux enjeux de sécurité et éducation.",
-      "reason": "Public jeune urbain diplômé en commune dense, sensible à la sécurité et à l’actualité locale",
+      "name": "Parents de jeunes adolescents en couple dans communes intermédiaires",
+      "mechanism": "Ces parents de familles avec enfants en âge d'adolescents en communes de densité intermédiaire sont directement concernés par la menace d'attentat visant un lycée dans le Haut-Rhin, via leur foyer et enfants.",
+      "reason": "Segment resserré ciblant les adultes susceptibles d'avoir un enfant lycéen dans des communes de densité intermédiaire.",
       "all": [
-        "cluster.young_urban_graduate",
-        "geo.dense"
+        "household.couple_with_children",
+        "geo.intermediate"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Préoccupation parentale pour la sécurité scolaire",
+        "Réaction face à la menace"
+      ],
+      "count": 717,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "Lacune « âge des enfants dans le foyer » ignorée : cet attribut existe déjà dans les tags"
+      ],
       "counterfactual": {
         "intervention": "Haut-Rhin : un jeune de 16 ans en garde à vue pour menace d'attentat contre un lycée",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -70,21 +78,27 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes sans activité professionnelle en communes du Haut-Rhin denses",
-      "mechanism": "Jeunes sans activité professionnelle (étudiants ou inactifs) en zones denses, groupe d’âge potentiellement proche ou en relation avec les établissements scolaires, susceptibles d’être concernés indirectement par la menace au lycée.",
-      "reason": "Public jeune sans activité en zone dense, proche des lycéens mais hors scolarisation obligatoire",
+      "name": "Jeunes masculins de 16 à 18 ans dans communes denses",
+      "mechanism": "Jeunes hommes en âge typique de lycée dans communes de densité élevée, potentiellement plus exposés à la menace d'attentat contre un lycée dans le Haut-Rhin et les débats qu'elle suscite.",
+      "reason": "Segment spécifique pour les jeunes masculins dans communes urbaines denses, avec un âge exact non couvert par les tags généraux.",
       "all": [
-        "cluster.young_without_activity",
+        "sex.male",
+        "age.18_24",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8453,
+      "measurementNeeds": [
+        "Sentiment d’insécurité chez les jeunes",
+        "Attitude envers les mesures de sécurité"
+      ],
+      "count": 6838,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "Lacune « âge précis 16-18 ans » ignorée : cet attribut existe déjà dans les tags"
+      ],
       "counterfactual": {
         "intervention": "Haut-Rhin : un jeune de 16 ans en garde à vue pour menace d'attentat contre un lycée",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -101,95 +115,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes sans activité professionnelle en communes du Haut-Rhin denses",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Cette histoire d'attentat me fait un peu peur, mais ce n'est pas quelque chose qui change ma façon de voir la politique au quotidien.",
-        "Un jeune arrêté pour menace d'attentat, ça me semble grave, mais honnêtement ça ne me fait pas changer d'avis sur les élections.",
-        "Je ne suis pas directement concernée, mais ces histoires d'attentats me rendent plutôt anxieuse sans influencer mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0016234278891541637,
-          "lo": -0.0024793989770763524,
-          "hi": -0.0009124853272036224,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0014300392031630683,
-          "lo": -0.0020607797299864307,
-          "hi": -0.0007432852398462047,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.004383811587512486,
-          "lo": -0.0057803683259394474,
-          "hi": -0.003137557067143932,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0020895122139630872,
-          "lo": 0.0011826669050469204,
-          "hi": 0.0032045087524129414,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.006008315330867764,
-          "lo": 0.004458735264155456,
-          "hi": 0.007730807497231534,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0006605488650011487,
-          "lo": -0.0024399529264708133,
-          "hi": 0.0011111925151393368,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés des villes habitant en commune dense du Haut-Rhin",
-      "matchedCount": 11394,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes de 16 à 18 ans scolarisés en communes intermédiaires et denses",
+      "matchedCount": 14650,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -221,60 +150,22 @@
         },
         "abstention": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve inquiétant qu'un jeune de 16 ans soit déjà mêlé à une affaire aussi grave, ça montre que la violence peut toucher même les plus jeunes et ça me préoccupe pour l'avenir de nos quartiers.",
-        "C'est flippant qu'un jeune de 16 ans soit suspecté d'une telle menace, ça me fait penser que la sécurité n'est pas assurée, surtout ici à Béziers où les tensions sont déjà fortes.",
-        "Ce genre d'événement m'inquiète, même si ça ne change pas beaucoup ma manière de voir la politique, ça montre que la sécurité reste un vrai sujet dans notre quotidien."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0024411058178603214,
-          "lo": -0.0036959806622911904,
-          "hi": -0.001382560172532083,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0027271842380749817,
-          "lo": -0.0038462372043718933,
-          "hi": -0.0015656747000701687,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0026096320205372843,
-          "lo": -0.004016113793326801,
-          "hi": -0.0010511449280559107,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.00023609870169162322,
-          "lo": -0.0014581404623552434,
-          "hi": 0.0010375290877943748,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.007561356667147151,
-          "lo": 0.0049658380587119825,
-          "hi": 0.010336731385707726,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.00045266411101706265,
-          "lo": -0.0024488601793080374,
-          "hi": 0.0031413426440556097,
-          "stable": false
-        }
-      }
+        "Ça me fait flipper qu'un jeune menace un lycée comme ça, c'est pas normal, ça me renforce dans l'idée qu'il faut être ferme face à ces choses-là.",
+        "C'est triste qu'un jeune soit en garde à vue pour ce genre de menace, mais je comprends que la sécurité dans les écoles est importante.",
+        "Une menace d'attentat, ça fait peur, on a besoin que les écoles soient sûres, ça me rassure un peu qu'ils prennent ça au sérieux."
+      ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Parents de familles avec enfants en âge scolaire en zone dense",
-      "matchedCount": 24731,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Parents de jeunes adolescents en couple dans communes intermédiaires",
+      "matchedCount": 717,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -300,61 +191,23 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 9,
+          "toward": 13,
           "away": 0,
-          "noClearChange": 39
+          "noClearChange": 35
         },
         "abstention": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 4,
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C’est toujours inquiétant d’entendre parler de menaces d’attentat, surtout dans un lieu fréquenté par des jeunes. Ça me rappelle qu’on n’est jamais à l’abri, même ici à Paris.",
-        "Une menace d’attentat dans le coin, ça me fait peur pour les gamins. Il faut que ça soit pris très au sérieux, la sécurité avant tout.",
-        "Je suis inquiète quand j’entends parler d’attentats ou de menaces autour de l’école, ça me trouble beaucoup et ça me donne envie que les autorités agissent vite."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.003381621359590929,
-          "lo": -0.004448959787940029,
-          "hi": -0.0022760467436195764,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004063321472532136,
-          "lo": -0.004897748655963479,
-          "hi": -0.003079864767078407,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0016285093987499007,
-          "lo": -0.0027183063676982735,
-          "hi": -0.0004544894877402405,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0026760468040098163,
-          "lo": 0.0015181157118225432,
-          "hi": 0.0038765763510233953,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.010701015507568495,
-          "lo": 0.008331864069475024,
-          "hi": 0.013258139410485011,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.004303610080705333,
-          "lo": -0.007795222877216068,
-          "hi": -0.0012247287342327107,
-          "stable": false
-        }
-      }
+        "C'est inquiétant qu'un jeune puisse menacer la sécurité d'un lycée, ça montre que les problèmes de violences scolaires sont sérieux. Mais ça change pas vraiment ma manière de voir la présidentielle.",
+        "Un jeune qui fait une vraie menace, c'est grave. Mais si c'était seulement des fausses alarmes, c'est moins inquiétant, même si ça peut perturber le lycée. Je reste surtout sensible à la sécurité et à l'ordre.",
+        "C'est préoccupant cette menace, mais en tant qu'artisan, je me concentre surtout sur le boulot et la vie locale, ça modifie pas trop mes intentions de vote."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -385,68 +238,75 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 29,
+          "toward": 37,
           "away": 0,
-          "noClearChange": 67
+          "noClearChange": 59
         },
         "abstention": {
-          "toward": 0,
-          "away": 4,
-          "noClearChange": 92
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 93
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est inquiétant ces histoires de menaces d'attentat chez les jeunes, ça me rappelle qu'il faut rester vigilant mais bon, tout ça me dépasse un peu.",
-        "C'est grave ce qui arrive, il faut vraiment prendre ces menaces au sérieux. Un jeune qui fait ça, c'est inquiétant pour notre sécurité et pour nos enfants.",
-        "Ce genre de menace ça m'inquiète vraiment ; ça me fait penser que la sécurité devient une priorité, et j'attends des politiques qu'ils agissent fermement."
-      ],
-      "altEffect": {
+        "Ça ne me surprend pas, malheureusement on entend souvent parler de ces histoires qui troublent la tranquillité des jeunes.",
+        "Une garde à vue pour menace, c’est grave, ça donne une image inquiétante. Mais pour des fausses alarmes, c’est différent, ça me paraît moins lourd comme accusation.",
+        "On entend souvent parler des violences dans les lycées, c’est inquiétant. Mais une fausse alarme, ce n’est pas pareil, plus de peur que de mal, je suppose."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes masculins de 16 à 18 ans dans communes denses",
+      "matchedCount": 6838,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.0013732968059406946,
-          "lo": -0.0019045025332719192,
-          "hi": -0.0007969849462190399,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.001437431370100873,
-          "lo": -0.0019102976287945232,
-          "hi": -0.0009777816646231216,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.0037514602858213855,
-          "lo": -0.00459401935273138,
-          "hi": -0.0029324577119989766,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.0008670454828536078,
-          "lo": -0.0017266943729004828,
-          "hi": 0.00005717673052764633,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.013687001619566532,
-          "lo": 0.011769091579497182,
-          "hi": 0.015623852461964927,
-          "stable": true
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         },
         "abstention": {
-          "mean": -0.006257767674849964,
-          "lo": -0.007730048815205331,
-          "hi": -0.004759480118074646,
-          "stable": true
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça inquiétant, mais malheureusement ce genre de faits ne me surprend plus trop. Ce n’est pas quelque chose qui va changer ma façon de voir les choses pour voter.",
+        "Une menace d’attentat, ça me fait plutôt peur. Si c’est une fausse alarme, ça serait un peu moins grave. Mais dans les deux cas, ça ne me fera pas changer de vote.",
+        "Ce genre d’affaire me rappelle les tensions actuelles sur la sécurité. C’est grave, mais ça ne me fait pas spécialement changer d’avis sur mes choix politiques."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:25.718Z",
-    "contentHash": "f184f351cc8fdeb10a9fa2059d03cc8bb679274436296cbe8e910a986adb8374"
+    "status": "automatic",
+    "contentHash": "eea9b036059a0167ebc0423ce08855ab4e7ef2d2e3c3a78eab2b913286a5107f"
   }
 }

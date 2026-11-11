@@ -4,38 +4,45 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "86b745595b2602c4",
-  "computedAt": "2026-11-09T20:34:44.287Z",
+  "inputHash": "4809135fea3d930e",
+  "eventInputHash": "65417a93620444126b013db05ce9c4efd6da45b084e6f8d7ead3a5f500b59e67",
+  "computedAt": "2026-11-11T12:55:50.377Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Après l'attentat raciste de Trappes ayant causé un mort et cinq blessés, Sébastien Lecornu appelle non seulement à dénoncer les discours haineux mais annonce également la mise en place immédiate d'un plan gouvernemental de lutte contre la propagation des discours de haine en ligne et dans l'espace public.",
-    "whatChanges": "Lecornu ne se contente plus de dénoncer les discours, il engage des mesures concrètes contre la haine, ce qui vise à rassurer davantage les victimes et les citoyens vulnérables."
+    "description": "Après un attentat raciste à Trappes ayant fait un mort et cinq blessés, Sébastien Lecornu condamne fermement les violences mais insiste sur la nécessité d'un dialogue apaisé, dénonçant les discours haineux sans toutefois mentionner l'impact direct des mots sur les passages à l'acte.",
+    "whatChanges": "Le ton de Sébastien Lecornu est moins accusateur quant à l'influence des discours, ce qui peut atténuer le sentiment d'urgence pour une partie des électeurs favorables à une action forte contre le racisme."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Résidents de Trappes adultes en couple avec enfants",
-      "mechanism": "Ce groupe rassemble des adultes vivant en couple avec enfants dans des communes de plus de 1000 habitants, dont Trappes fait partie. Ils sont concernés par l'attentat raciste car ce type de violence menace leur sécurité familiale au quotidien, et les mots dénoncés par Sébastien Lecornu visent à éviter l'escalade de ces actes dans leur environnement.",
-      "reason": "Les familles en communes intermédiaires ou plus peuplées sont souvent préoccupées par leur sécurité et l'impact des violences racistes sur leurs enfants.",
+      "name": "Jeunes diplômés des communes denses",
+      "mechanism": "Les jeunes diplômés des villes sont souvent engagés dans les débats sociaux et sont sensibles au dénonciation des discours qui peuvent entraîner des passages à l'acte racistes, notamment dans les communes denses comme Trappes.",
+      "reason": "Ce segment combine jeune âge, haut niveau d'éducation et milieu urbain correspondant au contexte social ciblé par l'interpellation de Sébastien Lecornu.",
       "all": [
-        "household.couple_with_children",
-        "commune_size.1000_plus"
+        "education.bac_plus_3_4",
+        "geo.dense"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "age.18_24",
+        "age.25_34"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 26042,
-      "distinctCommunes": 119,
+      "measurementNeeds": [
+        "Perception des discours publics à caractère raciste",
+        "Engagement politique",
+        "Sentiment d'insécurité"
+      ],
+      "count": 4295,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Un mort et cinq blessés après un attentat raciste à Trappes : Sébastien Lecornu dénonce les « mots qui finissent par armer ceux qui passent à l’acte »",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -44,25 +51,29 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes urbains sensibles aux tensions raciales",
-      "mechanism": "Il s'agit de salariés ouvriers ou employés vivant en zone dense, typiquement exposés directement ou indirectement aux effets sociaux des discours racistes et des violences qu'ils engendrent. L'attentat raciste de Trappes et la dénonciation par Sébastien Lecornu de certains discours visent leur réalité sociale et leur quotidien.",
-      "reason": "Les salariés modestes en milieu urbain dense peuvent ressentir plus fortement les impacts des violences et des propos racistes dans leur environnement de travail et voisinage.",
+      "name": "Salariés modestes des communes intermédiaires",
+      "mechanism": "Les employés et ouvriers dans les communes de densité intermédiaire peuvent être particulièrement vulnérables au climat social dégradé par des actes racistes, ainsi qu'aux conséquences sécuritaires et économiques qui en découlent.",
+      "reason": "Segment resserré sur la classe sociale et environnement territorial intermédiaire, pour proximité à un contexte sensible mais hors des grandes villes.",
       "all": [
-        "cluster.modest_wage_earner",
-        "geo.dense"
+        "geo.intermediate"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64"
+        "occupation.employee",
+        "occupation.worker"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 28414,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Sentiment d'insécurité",
+        "Impact économique local",
+        "Vision des mesures contre le racisme"
+      ],
+      "count": 1040,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
       "counterfactual": {
         "intervention": "Un mort et cinq blessés après un attentat raciste à Trappes : Sébastien Lecornu dénonce les « mots qui finissent par armer ceux qui passent à l’acte »",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -71,19 +82,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Seniors vivant seuls en milieu urbain",
-      "mechanism": "Ce segment identifie les seniors de 75 ans et plus vivant seuls en commune dense. Ils sont particulièrement vulnérables aux violences racistes et à l'insécurité urbaine, et peuvent être attentifs aux propos dénoncés par Sébastien Lecornu qui contribuent à armer ceux qui passent à l'acte.",
-      "reason": "Les personnes âgées seules en ville peuvent se sentir particulièrement exposées ou affectées par les actes de violence et intolérance, et sont un public clé pour les messages de prévention et condamnant le racisme.",
+      "name": "Jeunes sans activité professionnelle en milieu urbain",
+      "mechanism": "Les jeunes sans activité professionnelle dans les zones urbaines peuvent être un public sensible aux tensions sociales liées aux discours qui peuvent armer des actes racistes, notamment après un événement dramatique comme l'attentat à Trappes.",
+      "reason": "Ce segment combine le statut socio-professionnel des jeunes inactifs avec un environnement urbain, ciblant un groupe à risques particuliers dans ce contexte.",
       "all": [
-        "age.75_plus",
-        "household.single",
+        "cluster.young_without_activity",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 5070,
+      "measurementNeeds": [
+        "Sentiment d'exclusion",
+        "Attitude envers les discours politiques et médiatiques",
+        "Perception de la sécurité locale"
+      ],
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -103,104 +117,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Seniors vivant seuls en milieu urbain",
-      "matchedCount": 5070,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 4,
-          "away": 4,
-          "noClearChange": 40
-        },
-        "abstention": {
-          "toward": 12,
-          "away": 0,
-          "noClearChange": 36
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "C'est triste tout ça, surtout quand la violence s'infiltre au cœur même de notre ville. Mais à mon âge, ces histoires de mots qui poussent à la haine, j'en ai vu d'autres, ça ne change pas ma façon de penser.",
-        "Un attentat raciste, ça me choque profondément. Si on responsabilise les discours durs, peut-être que ça pourrait calmer les esprits. Mais j’avoue que ça ne va pas vraiment changer pour moi, je reste prudente sur tout ça.",
-        "C’est désolant qu’on en arrive là. L’appeler à la responsabilité des mots et à l’unité, ça me parle. Ça m’incite un peu plus à penser qu’on doit réagir dans le calme, c’est important."
-      ]
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Résidents de Trappes adultes en couple avec enfants",
-      "matchedCount": 26042,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 7,
-          "noClearChange": 41
-        },
-        "abstention": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 41
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Cet attentat me bouleverse profondément, c'est un rappel terrible que les mots peuvent mener à la haine et au pire. Il faut vraiment lutter contre les discours extrémistes.",
-        "Ce genre d'attentat me fait peur, mais la déclaration plus dure de Lecornu me semble un peu compliquer les choses. J'aimerais que ce soit plus apaisé.",
-        "Ces violences sont affreuses mais cette histoire de mots qui arment les actes, pour moi ça ne changera pas vraiment mon vote. C'est compliqué tout ça."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Salariés modestes urbains sensibles aux tensions raciales",
-      "matchedCount": 28414,
+      "segmentName": "Jeunes diplômés des communes denses",
+      "matchedCount": 4295,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -226,9 +146,9 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
-          "away": 6,
-          "noClearChange": 41
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
         },
         "abstention": {
           "toward": 8,
@@ -239,9 +159,9 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça me révolte, mais j'ai peur que ces discours haineux continuent à diviser plus qu'à rassembler.",
-        "C'est horrible, mais je sens que pointer du doigt les discours ne fera qu'envenimer les choses. Mieux vaut appeler à l'unité.",
-        "C’est triste, mais je reste méfiant face aux discours qui peuvent attiser la haine. L’appel à calmer le jeu me semble préférable."
+        "C'est horrible, un attentat raciste ne devrait jamais arriver ; je comprends que les mots peuvent avoir un impact, cela renforce mon inquiétude pour la société.",
+        "C'est très triste et choquant. Je pense que les mots ont un vrai pouvoir, ça doit nous pousser à plus de vigilance dans notre façon de parler.",
+        "Je condamne ces violences, mais je préfère quand on appelle au calme plutôt qu'à accuser les paroles, ça divise plus qu'autre chose."
       ]
     },
     "global_1": {
@@ -253,9 +173,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "left": {
           "toward": 0,
@@ -273,30 +193,122 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
-          "away": 14,
-          "noClearChange": 81
+          "toward": 2,
+          "away": 24,
+          "noClearChange": 70
         },
         "abstention": {
-          "toward": 18,
+          "toward": 17,
           "away": 0,
-          "noClearChange": 78
+          "noClearChange": 79
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ce genre d'attentat me révolte. J'espère que les responsables seront arrêtés, parce que ce sont des actes inacceptables qui divisent notre pays.",
-        "Une tragédie raciste comme celle-là est alarmante. Je ne suis pas pour pointer du doigt n'importe qui, mais il faut agir pour que ça n'arrive plus.",
-        "C’est horrible ce qui s’est passé. Je comprends que les discours peuvent pousser à la haine, mais appeler à l'unité, ça aurait été mieux pour éviter la peur."
+        "Ce genre d'attentat, c'est vraiment inquiétant pour la société, surtout pour les jeunes générations. Il faut que les mots et les actes de violence cessent.",
+        "C'est une tragédie, ce genre de violence n'a pas sa place. Les mots peuvent être dangereux, je comprends la condamnation de Lecornu.",
+        "Ces violences racistes me révoltent, ça me touche beaucoup, c'est terrible pour Trappes. Je comprends que Lecornu veuille stopper les discours qui poussent à la violence."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnelle en milieu urbain",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C’est vraiment horrible ce qu’il s’est passé à Trappes, ces actes racistes sont insupportables. Il faut condamner fermement les discours de haine qui peuvent donner envie de passer à l’acte.",
+        "C’est terrible un tel attentat, ça me fait peur. Il faut vraiment combattre la haine, les mots peuvent blesser et pousser à la violence, ça se sent bien.",
+        "Une attaque raciste, c’est grave et triste. Je comprends qu’il faille condamner la haine, mais je ne me sens pas assez concernée pour changer mes choix politiques."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes des communes intermédiaires",
+      "matchedCount": 1040,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 5,
+          "away": 7,
+          "noClearChange": 36
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est vraiment triste et inquiétant de voir que des paroles peuvent pousser à de telles violences. Il faut que ça cesse.",
+        "Ce genre d'actes est abominable. Je pense que les mots ont un vrai pouvoir et doivent être tenus responsables.",
+        "C'est horrible, mais je ne suis pas sûr que ce soit les mots qui causent tout. Je préfère qu'on encourage le calme et le dialogue."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:28.231Z",
-    "contentHash": "87c771768e01d1d4018a0a21e7eb0e0a96418932a1c0e6da72ca39879d489311"
+    "status": "automatic",
+    "contentHash": "dd40864e92ccf648aef7165f8d2bce5b5f717bb61e6432482ba5d42b46ae7e0b"
   }
 }

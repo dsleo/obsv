@@ -4,33 +4,36 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "d28f2656baab2276",
-  "computedAt": "2026-11-10T22:09:46.554Z",
+  "inputHash": "d1df02874d6ee41d",
+  "eventInputHash": "b9d1d6d1622e2e0ca66695ae76c14688f31b94e17c6a8ff38c48eaed44db2840",
+  "computedAt": "2026-11-11T13:20:50.128Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Pour les salaires des agent⋅es, une journée d’appel à la grève est lancée pour le mardi 6 octobre 2026, avec des manifestations organisées aux mêmes lieux mais une semaine plus tard en Franche-Comté.",
-    "whatChanges": "Le calendrier est décalé d'une semaine, ce qui modifie l'impact immédiat sur les électeurs en donnant plus de temps de préparation aux autorités et syndicats."
+    "description": "L'appel à la grève du mardi 29 septembre 2026 se limite aux secteurs des transports et de l'éducation, excluant les services publics essentiels comme la santé et la sécurité.",
+    "whatChanges": "La grève affecte principalement les usagers des transports et les familles d'élèves, réduisant l'impact sur l'opinion publique en raison de la continuité des services essentiels."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Employés de 25 à 34 ans en zone dense",
-      "mechanism": "Les employés âgés de 25 à 34 ans vivant dans des communes à densité dense en Franche-Comté sont directement concernés par l'appel à la grève pour les salaires des agent⋅es, car ils constituent une part active du personnel salarié en ville où les rassemblements sont prévus.",
-      "reason": "Segment resserré et homogène conjuguant occupation, âge et densité urbaine, respectant les contraintes de taille et d'exclusion.",
+      "name": "Jeunes diplômés vivant en communes denses",
+      "mechanism": "La mobilisation du 29 septembre 2026 concerne particulièrement les jeunes diplômés urbains, souvent sensibles aux questions sociales et économiques débattues lors de la journée d’appel à la grève, notamment en milieu dense où l’impact des politiques publiques est ressenti.",
+      "reason": "Ce segment rassemble les jeunes adultes diplômés habitant dans des communes à forte densité, qui peuvent être à la fois soutiens ou acteurs de la mobilisation liée à cet événement.",
       "all": [
-        "occupation.employee",
-        "age.25_34",
+        "cluster.young_urban_graduate",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 5130,
+      "measurementNeeds": [
+        "Soutien aux revendications du 29 septembre",
+        "Perception de l’impact de la grève sur la vie urbaine"
+      ],
+      "count": 11394,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -42,19 +45,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Ouvriers de 35 à 49 ans en communes intermédiaires",
-      "mechanism": "Les ouvriers âgés de 35 à 49 ans vivant dans des communes de densité intermédiaire en Franche-Comté sont ciblés par la journée d'appel à la grève car ils travaillent souvent comme agents salariés dont les salaires sont revendiqués lors des manifestations.",
-      "reason": "Segment resserré par âge, profession et densité limitant à un groupe spécifique et répondant aux contraintes.",
+      "name": "Actifs âgés de 50 à 64 ans en emploi intermédiaire ou ouvrier dans communes intermédiaires",
+      "mechanism": "La journée d’appel à la grève cible les actifs proches de la retraite, notamment les ouvriers et employés intermédiaires, dans les communes intermédiaires, car ils sont concernés par les réformes sociales et professionnelles débattues pendant la mobilisation.",
+      "reason": "Ce segment regroupe des actifs en âge proche de la retraite et exerçant des professions exposées aux changements sociaux, vivant dans des communes ni rurales ni très denses, mettant en lumière des profils directement impactés par les mesures contestées lors de l’événement.",
       "all": [
-        "occupation.worker",
-        "age.35_49",
+        "age.50_64",
         "geo.intermediate"
       ],
-      "any": [],
+      "any": [
+        "occupation.worker",
+        "occupation.intermediate"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 160,
+      "measurementNeeds": [
+        "Intentions de grève",
+        "Préoccupations professionnelles vis-à-vis des réformes annoncées"
+      ],
+      "count": 276,
       "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -66,20 +74,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Salariés modestes de 50 à 64 ans en couples avec enfants",
-      "mechanism": "Les salariés modestes âgés de 50 à 64 ans vivant en couple avec enfants en Franche-Comté sont susceptibles d'être concernés par l'appel à la grève pour les salaires des agent⋅es, car ils sont une catégorie importante de salariés actifs souvent mobilisés pour les augmentations salariales.",
-      "reason": "Combinaison de cluster, âge, et type de foyer pour un segment resserré qui respecte les contraintes de taille et composition.",
+      "name": "Salariés modestes employés ou ouvriers de 25 à 49 ans en communes de plus de 1000 habitants",
+      "mechanism": "Salariés modestes jeunes adultes de 25 à 49 ans, souvent exposés aux revendications sociales lors d’une journée d’appel à la grève, vivant dans des communes de plus de 1000 habitants",
+      "reason": "Plus restreint que le segment précédent trop large, pour respecter la taille maximale et coller au profil revendicatif",
       "all": [
         "cluster.modest_wage_earner",
-        "age.50_64",
-        "household.couple_with_children"
+        "commune_size.1000_plus",
+        "age.25_34"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 3127,
-      "distinctCommunes": 131,
+      "measurementNeeds": [
+        "Participation à la grève",
+        "Attitude face aux revendications sociales"
+      ],
+      "count": 9169,
+      "distinctCommunes": 119,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -98,23 +109,23 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Salariés modestes de 50 à 64 ans en couples avec enfants",
-      "matchedCount": 3127,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Actifs âgés de 50 à 64 ans en emploi intermédiaire ou ouvrier dans communes intermédiaires",
+      "matchedCount": 276,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 5,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 43
+          "noClearChange": 48
         },
         "left": {
-          "toward": 3,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
@@ -127,66 +138,75 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 6,
+          "toward": 3,
+          "away": 3,
           "noClearChange": 42
         },
         "abstention": {
-          "toward": 1,
-          "away": 2,
-          "noClearChange": 45
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette journée de grève me fait craindre des perturbations à la mairie, ça va compliquer notre organisation. Je comprends la revendication sur les salaires, mais ça m'embête vraiment dans mon travail quotidien.",
-        "Une autre journée de grève pour nos salaires, c'est important. Je suis ouvrier et ça me concerne directement. Je pourrais être plus tentée de soutenir la gauche radicale qui parle de défendre nos conditions.",
-        "Une grève de salariés, ça ne me touche pas tellement, mais je comprends qu'ils demandent de meilleurs salaires. Ça ne va pas changer mon vote."
-      ],
-      "altEffect": {
+        "Je suis habitué aux perturbations dans l'industrie, mais une grève générale me gène car elle complique la vie de tout le monde, surtout quand elle est étendue aux services essentiels.",
+        "Qu’une grève concerne surtout les transports et l’éducation, ça me paraît plus supportable. Si ça touche trop les services publics essentiels, ça me perturbe et je suis moins favorable.",
+        "Une grève générale, ça me dérange, surtout quand elle impacte les services publics essentiels, j’ai peur que ça crée trop de problèmes inutiles."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes employés ou ouvriers de 25 à 49 ans en communes de plus de 1000 habitants",
+      "matchedCount": 9169,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.006501443176402974,
-          "lo": 0.00509199767625752,
-          "hi": 0.007902380973484946,
-          "stable": true
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
         },
         "left": {
-          "mean": 0.005945973987301238,
-          "lo": 0.004670659769936909,
-          "hi": 0.00753401292206498,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.0049944434146824215,
-          "lo": -0.006028552397709335,
-          "hi": -0.00394887501732993,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.0018133763471866505,
-          "lo": -0.00256919990716264,
-          "hi": -0.00108153447537472,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.00603582671085059,
-          "lo": -0.008254061710469909,
-          "hi": -0.004388047920636669,
-          "stable": true
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
         },
         "abstention": {
-          "mean": 0.00039622930901547955,
-          "lo": -0.002151937728994063,
-          "hi": 0.002762724545715981,
-          "stable": false
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "La grève générale, ça fait toujours des embêtements dans les usines et les transports, ça me fatigue. Mais bon, si c'est pour défendre nos droits, je comprends un peu. Je trouve ça un peu trop global quand même.",
+        "Une grève dans les transports et l’éducation ? Ça me parle plus car ça touche mon boulot et la vie de ma famille. Mais je trouve que c’est bien de ne pas pénaliser au-delà, ça peut avoir plus de sens.",
+        "Une grosse grève, ça va encore perturber mon travail à l’usine et mes déplacements. J’aime pas trop ces mouvements trop larges, ça fout le bazar inutilement parfois."
+      ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Employés de 25 à 34 ans en zone dense",
-      "matchedCount": 5130,
+      "segmentName": "Jeunes diplômés vivant en communes denses",
+      "matchedCount": 11394,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -203,8 +223,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -217,56 +237,18 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une journée de grève pour les salaires des agents municipaux me parle, car je travaille à la mairie. Ça me semble juste, mais je ne suis pas certaine que ça changera grand-chose pour moi au quotidien.",
-        "Une grève pour les salaires, pourquoi pas, mais le 29 septembre je bosse et ce genre de truc ne change pas vraiment mon intention de vote.",
-        "Je suis plutôt préoccupée par mes horaires de travail que par une journée de grève qui ne m'affecte pas directement, donc ça ne change rien pour moi."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.00531563505223472,
-          "lo": 0.004050515245448245,
-          "hi": 0.006643220539053873,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.005205766650909025,
-          "lo": 0.003974694253169962,
-          "hi": 0.006260218551885216,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005711400977418557,
-          "lo": -0.0070500267695619385,
-          "hi": -0.0044126040231567765,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.001963721751410195,
-          "lo": -0.0027344699179916946,
-          "hi": -0.0011292008960560064,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0040339961145028184,
-          "lo": -0.005252699955380025,
-          "hi": -0.0030071678196678235,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0011877171401878238,
-          "lo": -0.0003645289895289911,
-          "hi": 0.002616457116457116,
-          "stable": false
-        }
-      }
+        "Je trouve que cette journée d’appel à la grève peut troubler la vie et ralentir les projets, mais c’est aussi une manière pour les travailleurs de faire entendre leurs revendications, donc je comprends le geste.",
+        "Une grève générale, ça complique la vie, surtout avec des enfants, mais ça peut montrer un vrai mécontentement. Si c'est ciblé sur les transports et l’éducation, c’est plus supportable, je suppose.",
+        "Je comprends les revendications derrière l’appel à la grève, mais ça perturbe beaucoup la vie parisienne. Qu’ils épargnent les services essentiels des fois, ça me paraît une bonne idée pour moins gêner."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -277,9 +259,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 96
         },
         "left": {
           "toward": 0,
@@ -297,153 +279,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "abstention": {
           "toward": 3,
+          "away": 5,
+          "noClearChange": 88
+        },
+        "abstention": {
+          "toward": 7,
           "away": 0,
-          "noClearChange": 93
+          "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une nouvelle grève annoncée alors que je gère ma boulangerie me stresse un peu, surtout si ça perturbe les livraisons ou la clientèle.",
-        "Je préfère éviter les manifestations, à mon âge les rassemblements me fatiguent, cette grève me laisse assez indifférent.",
-        "Une grève ? Je salue la démarche pour les salaires, mais cela complique la vie quotidienne, surtout pour les transports ou la logistique."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0031199859529470303,
-          "lo": 0.0022791086306708976,
-          "hi": 0.004087968350650476,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.00246246534807688,
-          "lo": 0.0018037069336225484,
-          "hi": 0.003200063114015087,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.002558478724426913,
-          "lo": -0.003227535982065873,
-          "hi": -0.00186882147102588,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0013153886061597142,
-          "lo": -0.0017378611550830827,
-          "hi": -0.0009395589143731264,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0035261375465933907,
-          "lo": -0.004640393699717704,
-          "hi": -0.0025508040744359165,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0018175535761561152,
-          "lo": 0.000967962914391486,
-          "hi": 0.0028145954429563314,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Ouvriers de 35 à 49 ans en communes intermédiaires",
-      "matchedCount": 160,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 11,
-          "noClearChange": 37
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 1,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Une nouvelle journée de grève, encore pour les salaires. Ça me fatigue un peu, ça parle d'usine ici, mais si ça bouge pour les conditions, ça peut aussi me concerner un peu.",
-        "Une grève pour les salaires ? Ça me parle, surtout si ça peut peser un peu ici à Basse-Goulaine. Je serais un peu plus enclin à soutenir les gaucheux là-dessus.",
-        "Une nouvelle grève en Franche-Comté ? Pas sûr d'y être sensible moi, surtout que ça ne touche pas directement ma boîte. Je me concentre surtout sur le boulot et la famille."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.005847517563321026,
-          "lo": 0.004639529225046617,
-          "hi": 0.0072287231063367175,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.005045786609348128,
-          "lo": 0.003997351956746807,
-          "hi": 0.006085507150001504,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0031823473391940442,
-          "lo": -0.004184742393075729,
-          "hi": -0.002227352876251244,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0010675011966642114,
-          "lo": -0.0015288523280898717,
-          "hi": -0.0006665056777315922,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.008615898786786232,
-          "lo": -0.011217550589307866,
-          "hi": -0.006596296422212306,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.001972443149975326,
-          "lo": -0.00003813257701831309,
-          "hi": 0.0038539544789544795,
-          "stable": false
-        }
-      }
+        "Une journée de grève générale, ça risque de perturber l'activité de la région et peut ralentir mes livraisons. Mais ça ne va pas changer mes convictions politiques, je reste pragmatique.",
+        "A mon âge, une grève, ça me fatigue plus qu'autre chose, surtout si c'est général. Si ça touche moins de secteurs, ça me semble plus raisonnable, mais ça change pas vraiment mon vote.",
+        "Je vois ce genre de grève comme un souci qui complique mes trajets pour aller travailler. Si c'est limité aux transports et écoles, c'est moins pénible, mais cela ne me fait pas changer d'avis politique."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:32.914Z",
-    "contentHash": "15c58d4bc0ccb092876c44ccf33e80b60a7734e1b9181ae41a5761d83fb50a3c"
+    "status": "automatic",
+    "contentHash": "0d327ab5fc6fba7e1465a133d10cfdd6ec7efa9dfc81da3f8ffef1ae7929c113"
   }
 }

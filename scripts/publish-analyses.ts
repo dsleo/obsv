@@ -1,5 +1,6 @@
 // Copies experiment artifacts (made with --out) to the published folder WITHOUT the vote magnitudes (`effect`, `altEffect`), validated by the schema.
-// Review status stays "pending": nothing appears on the site until `npm run data:approve`. Usage: npx tsx scripts/publish-analyses.ts <dir> [--keep-magnitudes]
+// Publication is automatic when the content/input integrity checks pass. Usage: npx tsx scripts/publish-analyses.ts <dir> [--keep-magnitudes]
+import { analysisContentHash } from "../src/lib/radar/analysisReview";
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { analysisArtifactSchema } from "../src/lib/radar/analysisArtifact";
@@ -17,8 +18,8 @@ for (const file of (await readdir(source)).filter((name) => name.endsWith(".json
     if (!keep) delete contrast.effect;
     if (!keep || review[artifact.eventId]?.status !== "ok") delete contrast.altEffect;
   }
-  artifact.review = { status: "pending" };
+  artifact.review = { status: "automatic", contentHash: analysisContentHash(artifact) };
   await writeFile(path.join(target, file), `${JSON.stringify(analysisArtifactSchema.parse(artifact), null, 2)}\n`);
   written += 1;
 }
-console.log(`published ${written} artifacts to ${target} (${keep ? "WITH" : "without"} magnitudes, review pending)`);
+console.log(`published ${written} artifacts to ${target} (${keep ? "WITH" : "without"} magnitudes, automatic integrity gate)`);

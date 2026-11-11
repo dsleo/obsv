@@ -4,36 +4,36 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "506992aa4f6d02c6",
-  "computedAt": "2026-11-09T20:39:46.758Z",
+  "inputHash": "3b9a922096657be5",
+  "eventInputHash": "8c82be8f4726aad56f4705157bf2baca11330294ded1ba679e554d0f0ba78496",
+  "computedAt": "2026-11-11T13:11:41.200Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Éric Zemmour annonce sur BFMTV qu'il renonce à se présenter à l'élection présidentielle 2027, préférant soutenir un candidat de droite plus modéré pour éviter la division du vote conservateur.",
-    "whatChanges": "La droite conservatrice se rassemble autour d'un candidat unique, réduisant la fragmentation du vote à droite et modifiant le paysage des électeurs potentiels de Zemmour."
+    "description": "Éric Zemmour annonce sur BFMTV qu'il renonce finalement à se présenter à l'élection présidentielle, estimant que son mouvement doit d'abord renforcer sa base locale avant une candidature nationale.",
+    "whatChanges": "Éric Zemmour retarde sa candidature, ce qui modère l'impact immédiat sur l'électorat d'extrême droite et modifie la dynamique de la campagne présidentielle."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Couples retraités vivant en commune intermédiaire",
-      "mechanism": "L'annonce de la candidature d'Eric Zemmour mobilise particulièrement les retraités en couple habitant en communes de densité intermédiaire, populations souvent concernées par les questions de sécurité et migration, thèmes centraux du discours de Zemmour.",
-      "reason": "Ce segment regroupe les retraités stables en couple, potentiellement sensibles au discours conservateur et sécuritaire de Zemmour, vivant hors des grandes métropoles mais sans être ruraux profonds.",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Les jeunes diplômés des villes seront concernés par la candidature d’Éric Zemmour, en particulier en raison de son positionnement sur les valeurs, la modernité et l’avenir du pays, suscitant potentiellement des réactions contrastées.",
+      "reason": "Ce groupe urbain très diplômé représente une population socio-économique distincte et souvent plus critique face au discours d'extrême droite.",
       "all": [
-        "cluster.retired_couple",
-        "geo.intermediate"
+        "cluster.young_urban_graduate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote intention",
-        "issue salience"
+        "Attitude envers la candidature d'Éric Zemmour",
+        "Perception du discours politique d'Éric Zemmour"
       ],
-      "count": 617,
-      "distinctCommunes": 24,
+      "count": 11394,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,22 +44,25 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes sans activité professionnelle en milieu urbain dense",
-      "mechanism": "Eric Zemmour, en annonçant sa candidature, suscite une forte réaction chez les jeunes sans activité professionnelle vivant dans les communes denses, souvent concernés par les questions d'identité, emploi et sécurité abordées dans son discours.",
-      "reason": "Ce groupe restreint et spécifique comprend des jeunes urbains sans emploi ni études actives, un segment électoral à part, sensible aux discours polarisants et souvent exclu des débats politiques traditionnels.",
+      "name": "Femmes vivant seules en zone dense âgées de 25 à 49 ans",
+      "mechanism": "Les femmes adultes vivant seules en zones urbaines denses peuvent être particulièrement concernées par l’annonce d’Éric Zemmour, notamment par son discours sur la sécurité, l'immigration et les valeurs sociétales.",
+      "reason": "L’intersection âge, sexe, condition de foyer et contexte urbain renforce la pertinence de ce public ciblé ou réactif à la candidature d’Éric Zemmour.",
       "all": [
-        "cluster.young_without_activity",
+        "sex.female",
+        "household.single",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote intention",
-        "political engagement",
-        "perception of immigration"
+        "Attitude envers la candidature d'Éric Zemmour",
+        "Sentiment d’insécurité et réactions politiques"
       ],
-      "count": 8453,
+      "count": 3943,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -71,20 +74,24 @@
     },
     {
       "id": "segment_3",
-      "name": "Salariés modestes de 35 à 49 ans en commune intermédiaire",
-      "mechanism": "Les salariés modestes adultes de 35 à 49 ans vivant en communes de taille moyenne sont concernés par les propos d'Éric Zemmour, qui vise traditionnellement l'électorat populaire et modeste, souvent en zone périurbaine.",
-      "reason": "Réduction du segment salarié modeste par tranche d'âge et géographie pour respecter la taille maximale.",
+      "name": "Employés et ouvriers âgés de 35 à 49 ans en communes denses",
+      "mechanism": "L'annonce de la candidature d'Éric Zemmour concerne les salariés modestes urbains et périurbains, notamment ceux en âge de travailler susceptibles de réagir à ses propositions économiques et sociétales.",
+      "reason": "Restriction d'âge pour modérer la taille du segment tout en ciblant une catégorie socio-professionnelle sensible",
       "all": [
         "cluster.modest_wage_earner",
-        "age.35_49",
-        "commune_size.1000_plus"
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 12206,
-      "distinctCommunes": 119,
+      "measurementNeeds": [
+        "Attitude envers la candidature d'Éric Zemmour",
+        "Perception des propositions économiques"
+      ],
+      "count": 11634,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -103,57 +110,104 @@
     }
   ],
   "contrasts": {
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés et ouvriers âgés de 35 à 49 ans en communes denses",
+      "matchedCount": 11634,
+      "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 48
         },
         "far_right": {
-          "toward": 14,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 82
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 2,
-          "away": 5,
-          "noClearChange": 89
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve qu’Éric Zemmour fait beaucoup de bruit, mais ça ne changera pas vraiment mon vote, je préfère la rigueur politique et le pragmatisme.",
-        "Éric Zemmour candidat ? Franchement, il divise plus qu'il ne rassemble, je préférerais un candidat de droite plus modéré qui peut vraiment rassembler sans faire fuir trop de monde.",
-        "Zemmour candidat, ça me parle pas trop, c’est trop à l’extrême pour moi. Je préfère un vote soit à gauche soit au centre quand je me décide."
+        "Je trouve ça un peu trop polémique, ça ne changera pas vraiment ma façon de voter, je préfère les candidats qui parlent de concret pour notre vie de tous les jours.",
+        "Zemmour, ça ne me parle pas, elle fait trop de bruit pour rien. S'il se retire, ça ne me touche pas, je reste fidèle à ce que je pense depuis toujours.",
+        "Zemmour qui annonce sa candidature, ça ne change pas vraiment mon avis. Je vote plutôt pour des valeurs progressistes que pour ses discours."
       ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Salariés modestes de 35 à 49 ans en commune intermédiaire",
-      "matchedCount": 12206,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Femmes vivant seules en zone dense âgées de 25 à 49 ans",
+      "matchedCount": 3943,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 5,
+          "noClearChange": 43
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, l'annonce de Zemmour, ça ne me surprend pas et ça ne change pas grand-chose à ma façon de voir les choses, je reste assez sceptique sur ce qu'il peut apporter.",
+        "Zemmour qui se candidate, ça me semble toujours très polémique. Je ne suis pas vraiment concernée, donc ça ne modifie pas mon vote, mais je remarque qu'il attire un certain public.",
+        "Je vois que Zemmour confirme sa candidature, mais cela ne m'intéresse pas trop, je continue à privilégier les candidats plus centrés sur les solutions sociales."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 11394,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -184,119 +238,70 @@
           "noClearChange": 45
         },
         "abstention": {
-          "toward": 1,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve qu'Éric Zemmour représente une droite très dure, pas trop pour moi, donc sa candidature ne change pas trop mon choix, je préfère quelqu'un qui parle plus de travail et de vie quotidienne.",
-        "Éric Zemmour, ce n'est pas mon truc, je préfère clairement un candidat de droite plus centré, alors s'il renonce et soutient un autre, ça m'arrangerait, sinon je le vois comme un débat de plus qui ne me touche pas trop.",
-        "Zemmour, ce n'est pas pour moi, il divise plus qu'il rassemble, ça ne me change rien que ce soit lui ou un autre de droite qui se présente."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Couples retraités vivant en commune intermédiaire",
-      "matchedCount": 617,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 20,
-          "away": 0,
-          "noClearChange": 28
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 5,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Zemmour qui se représente, ça ne change rien pour moi, je préfère la stabilité et la tradition, son discours est trop extrême à mon goût.",
-        "Zemmour qui se lance à nouveau, ça va risquer de diviser la droite dure, je ne suis pas certaine que ce soit une bonne nouvelle, ça va brouiller les cartes.",
-        "Je trouve qu’un nouveau candidat comme Zemmour, ça complique la droite. Je ne suis pas convaincu par ses idées, et ça risque de diviser le vote conservateur."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes sans activité professionnelle en milieu urbain dense",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 1,
           "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ça ne me surprend pas qu'Éric Zemmour veuille encore se présenter, mais ce n'est pas quelqu'un auquel je pense voter. Je m'intéresse plus aux enjeux locaux et aux candidats plus à gauche.",
-        "Zemmour qui se représente ? Je n'en ai rien à faire, ça ne change pas grand-chose pour moi, je préfère les candidats plus progressistes et ouverts sur la société.",
-        "Zemmour candidat à nouveau ? Je trouve ça un peu agaçant, ça polarisera encore plus le débat, mais ça ne change pas vraiment mon vote personnel."
+        "Je trouve qu'Éric Zemmour va encore plus diviser et polémiquer inutilement, ça ne me donne pas envie de suivre son parcours mais plutôt de m'en désintéresser.",
+        "Zemmour qui annonce sa candidature, ça me semble un risque d'exacerber davantage les tensions. Je doute que cela change vraiment ma décision de vote.",
+        "Zemmour candidat, c’est de plus en plus clair qu’il polarise dans ma ville. Je suis curieux de voir comment ça va influencer ceux autour de moi, ça pourrait renforcer l’extrême droite ou provoquer plus d'abstention."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 10,
+          "away": 2,
+          "noClearChange": 84
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 92
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Zemmour candidat ? Je trouve ça un peu trop extrême pour mon milieu professionnel et mes valeurs, ça ne me parle pas plus que ça.",
+        "Zemmour qui se lance, ça ne m'inspire pas confiance. Il y a mieux côté droite, mais je m'en tiens plutôt à ce que je connais.",
+        "La candidature de Zemmour ? Ça ne me touche pas vraiment, ce n’est pas quelqu’un qui me parle ou qui correspond à mes préoccupations."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:42.028Z",
-    "contentHash": "da63d9e253f80e7cd84bb98a4fe53ef8a8a682e97b5947e18eed4e9b8a6f0222"
+    "status": "automatic",
+    "contentHash": "32cfe0a9a85c27e0b3aa0a2dfa950c8e03e5c9163840e9995267ea1eab0cdd82"
   }
 }

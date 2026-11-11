@@ -4,33 +4,36 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "0b0892a33f13667f",
-  "computedAt": "2026-11-10T22:07:24.949Z",
+  "inputHash": "ccb9eea924f7c2dd",
+  "eventInputHash": "122b6387d5828cecd2888f3f5b3b774745191426049f801a9874f889da1979fa",
+  "computedAt": "2026-11-11T13:05:40.242Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Blocage des lycées : Jean-Luc Mélenchon appelle à une journée de mobilisation pacifique le 6 octobre, en reprenant l'expression \"un point de départ\" mais en condamnant fermement les violences urbaines qui ont pu surgir.",
-    "whatChanges": "Mélenchon insiste sur la non-violence de la mobilisation et condamne les violences, ce qui pourrait rassurer une partie de l'opinion publique et atténuer les critiques sur le mouvement parmi les électeurs modérés."
+    "description": "Matignon dénonce les blocages des lycées comme \"une mobilisation citoyenne pacifique\" sans faire référence à des violences urbaines.",
+    "whatChanges": "Le gouvernement adoucit son ton en valorisant la mobilisation des lycéens, ce qui peut apaiser une partie de l'opinion publique et des jeunes concernés."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes lycéens et étudiants mobilisés",
-      "mechanism": "Ce segment rassemble les jeunes de 18 à 24 ans sans activité professionnelle, qui sont vraisemblablement lycéens ou étudiants et constituent la base principale des blocages des lycées dénoncés par Matignon.",
-      "reason": "Les blocages de lycées touchent directement les jeunes en formation, notamment ceux qui ne travaillent pas et sont dans des établissements urbains où ces mouvements sont fréquents.",
+      "name": "Jeunes lycéens et étudiants urbains",
+      "mechanism": "Ce segment regroupe les jeunes de 18 à 24 ans, souvent lycéens ou étudiants vivant en milieu urbain dense, qui sont directement concernés par les blocages des lycées dénoncés comme \"violences urbaines\" par Matignon.",
+      "reason": "Les jeunes de 18 à 24 ans dans les zones denses sont les plus susceptibles d'être impliqués ou affectés par les blocages de lycées, constituant la base principale du mouvement.",
       "all": [
         "age.18_24",
-        "occupation.other_inactive",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8453,
+      "measurementNeeds": [
+        "Attitude envers les blocages de lycées",
+        "Perception des violences urbaines liées aux manifestations"
+      ],
+      "count": 14650,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -42,19 +45,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles urbaines engagées",
-      "mechanism": "Les jeunes adultes de 25 à 34 ans en couple avec enfants en milieu urbain dense peuvent soutenir ou être influencés par la mobilisation du 6 octobre, notamment à cause des effets des blocages sur la scolarité de leurs enfants.",
-      "reason": "Cette population est concernée par les conséquences pratiques des blocages dans les lycées et les mobilisations urbaines qui en découlent, et peut être sensible aux prises de position de leaders comme Jean-Luc Mélenchon.",
+      "name": "Jeunes sans activité professionnelle dans les communes urbaines",
+      "mechanism": "Ce groupe rassemble les jeunes de 18 à 24 ans sans activité professionnelle (étudiants, chômeurs, inactifs) vivant dans des communes denses, directement concernés par les blocages des lycées et leur contexte social.",
+      "reason": "Les jeunes inactifs en ville peuvent être à la fois acteurs ou témoins des blocages dans le contexte urbain dénoncé comme \"violences urbaines\".",
       "all": [
-        "age.25_34",
-        "household.couple_with_children",
+        "age.18_24",
+        "cluster.young_without_activity",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 8145,
+      "measurementNeeds": [
+        "Implication dans les mouvements lycéens",
+        "Perception des mesures gouvernementales"
+      ],
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -66,20 +72,29 @@
     },
     {
       "id": "segment_3",
-      "name": "Étudiants et jeunes diplômés des villes",
-      "mechanism": "Ce segment rassemble les jeunes de moins de 35 ans diplômés de niveau bac+3 ou plus vivant en communes denses, susceptibles d'être sensibles aux enjeux éducatifs et sociaux stimulés par la mobilisation du 6 octobre et les débats sur les violences urbaines à Matignon.",
-      "reason": "Les jeunes diplômés urbains sont souvent très concernés par les questions de politique éducative et sociale qui sous-tendent les journées de mobilisation comme celle mentionnée.",
+      "name": "Parents de familles avec enfants scolarisés en milieu urbain",
+      "mechanism": "Les couples avec enfants de 25 à 49 ans vivant en milieu urbain sont concernés par les blocages des lycées car ils subissent l'impact direct sur la scolarité de leurs enfants et la sécurité évoquée par Matignon.",
+      "reason": "Ce segment inclut les parents qui peuvent être affectés par la perturbation des lycées, la sécurité urbaine et les violences associées à ces événements.",
       "all": [
-        "cluster.young_urban_graduate"
+        "household.couple_with_children",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11394,
+      "measurementNeeds": [
+        "Impact des blocages sur la scolarité des enfants",
+        "Sentiment de sécurité dans l'environnement scolaire"
+      ],
+      "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Blocages des lycées : Matignon dénonce \"des violences urbaines\"",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -96,188 +111,18 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes lycéens et étudiants mobilisés",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 4,
-          "away": 3,
-          "noClearChange": 41
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, ces blocages, ça complique la vie, surtout si ça tourne à la violence. Je comprends l'engagement mais je ne cautionne pas les débordements.",
-        "Je trouve que qualifier ça de \"violences urbaines\" c’est un peu exagéré, mais les blocages m’embêtent un peu. S’il y avait juste une mobilisation pacifique, ça m’irait mieux.",
-        "Je soutiens les mobilisations lycéennes quand elles restent calmes, mais je ne veux pas de violence dans la rue, ça gâche tout."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.004407579327983123,
-          "lo": -0.007836207478120631,
-          "hi": -0.00040823878587772374,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00653647151226595,
-          "lo": -0.0076638450158656194,
-          "hi": -0.0053855155072425566,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.001404439157438152,
-          "lo": -0.0038398657116101727,
-          "hi": 0.0009699870214649672,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0004714477916176244,
-          "lo": -0.0007474377160657598,
-          "hi": 0.0017303845460886749,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.004015896403307992,
-          "lo": 0.0015671641669413171,
-          "hi": 0.00674936630194527,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.007861145802761609,
-          "lo": 0.004742596965443873,
-          "hi": 0.011130599630306512,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes familles urbaines engagées",
-      "matchedCount": 8145,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 5,
-          "away": 5,
-          "noClearChange": 38
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 5,
-          "away": 1,
-          "noClearChange": 42
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ces blocages, ça me fatigue, surtout quand ça dégénère en violences. Ce genre de débordements, j'en ai marre, ça ne sert pas nos intérêts à nous, ouvriers.",
-        "Je comprends que Mélenchon parle de mobilisation, mais les violences, ce n’est pas mon truc. Une journée pacifique, ça me plairait plus.",
-        "Ces histoires de violences, franchement, ça me dérange. Il faut que ça reste calme sinon ça donne une très mauvaise image."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0019336176710927206,
-          "lo": -0.006034404948487494,
-          "hi": 0.0020616202974945022,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.008464489399141689,
-          "lo": -0.010189358361674452,
-          "hi": -0.0069107975357975415,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.002296058527078057,
-          "lo": -0.005719056496808708,
-          "hi": 0.0008809245112589959,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0016114872902594426,
-          "lo": -0.00035311963058419195,
-          "hi": 0.003907938134290865,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.004851481220866367,
-          "lo": 0.001850288838811628,
-          "hi": 0.008318629809361934,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.006231197086186663,
-          "lo": 0.0027788778385793313,
-          "hi": 0.0098239522361147,
-          "stable": true
-        }
-      }
-    },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Étudiants et jeunes diplômés des villes",
-      "matchedCount": 11394,
+      "segmentName": "Parents de familles avec enfants scolarisés en milieu urbain",
+      "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
-          "away": 3,
-          "noClearChange": 43
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
@@ -286,8 +131,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 3,
+          "noClearChange": 45
         },
         "right": {
           "toward": 0,
@@ -295,61 +140,23 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
+          "toward": 7,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 41
         },
         "abstention": {
           "toward": 3,
-          "away": 0,
-          "noClearChange": 45
+          "away": 2,
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "J'espère que ces blocages ne nuisent pas trop à la vie des lycéens et ne deviennent pas violents. Mélenchon qui parle de violence, ça m'inquiète un peu.",
-        "Je ne soutiens pas ces blocages qui perturbent la ville et créent des tensions. Mélenchon devrait appeler à calmer ces violences plutôt que de les encourager.",
-        "La violence, ce n'est jamais la solution. J'apprécie quand Mélenchon condamne fermement ces actes, ça montre un engagement responsable."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0011835625870279245,
-          "lo": -0.004316265409548981,
-          "hi": 0.0025701320132013217,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.005679134744497901,
-          "lo": -0.006877921654105709,
-          "hi": -0.004662747524752471,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.003549649201839972,
-          "lo": -0.005429125136353223,
-          "hi": -0.0016352147023788691,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.00046074922093652953,
-          "lo": -0.0009886284337388958,
-          "hi": 0.0020014780816280772,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.003232751706161271,
-          "lo": 0.001022491708126038,
-          "hi": 0.0056980242185281455,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.00671884560626803,
-          "lo": 0.00387748756218906,
-          "hi": 0.009232750233978626,
-          "stable": false
-        }
-      }
+        "Je trouve que qualifier les blocages de lycées de \"violences urbaines\" exagère et stigmatise surtout les jeunes, ça ne me plaît pas. Reconnaître ça comme une mobilisation citoyenne pacifique serait plus juste.",
+        "J'entends l'inquiétude autour des blocages, mais les qualifier de violences urbaines me semble un peu trop dur. Parler d'une mobilisation pacifique, ça me semblerait plus compréhensible, surtout vue de mon milieu culturel.",
+        "Je vois les blocages comme une nuisance, mais la notion de violences urbaines me semble trop alarmiste. S'ils restent pacifiques, ça m'irait mieux, même si je ne suis pas trop concerné."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -360,9 +167,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 96
         },
         "left": {
           "toward": 0,
@@ -380,68 +187,122 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 5,
-          "away": 1,
-          "noClearChange": 90
+          "toward": 9,
+          "away": 4,
+          "noClearChange": 83
         },
         "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 94
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 92
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que ce genre de blocage ne m'aide pas dans mon travail, ça perturbe surtout les lycéens et leurs familles mais je comprends qu'ils veulent se faire entendre. Les violences, c’est malsain.",
-        "Les violences urbaines, ça me fait peur. Je pense que Mélenchon qui encourage la mobilisation, ça m’inquiète un peu, même si c’est pour exprimer un point de vue. J’espère que ça reste pacifique.",
-        "Je suis inquiète quand il y a des violences en ville, surtout si c’est lié à une mobilisation. Si Mélenchon condamne les violences, ça me rassure un peu, mais je reste attentive."
-      ],
-      "altEffect": {
+        "Je trouve un peu exagéré de parler de \"violences urbaines\" pour des jeunes qui essaient juste de se faire entendre, ça donne un côté trop tendu et dramatique à une situation qui pourrait être pacifique.",
+        "Dire que ce sont des violences urbaines, ça me semble exagéré et injuste, ces jeunes cherchent juste à exprimer leur colère. Je préfère quand on parle de mobilisation citoyenne pacifique.",
+        "J’ai un peu peur quand j’entends parler de violences urbaines. Ça renforce l’idée que la société est de plus en plus violente, ce qui ne me rassure pas du tout."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes sans activité professionnelle dans les communes urbaines",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.0011054594279074543,
-          "lo": -0.0026073581382699885,
-          "hi": 0.0006544496150427825,
-          "stable": false
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
         },
         "left": {
-          "mean": -0.004334951172115825,
-          "lo": -0.005065528286859741,
-          "hi": -0.0035995689138628474,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.006171883140363667,
-          "lo": -0.007213023430300396,
-          "hi": -0.005175810983511053,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.0009306073094584961,
-          "lo": 0.000040166899623909155,
-          "hi": 0.0016686724726836185,
-          "stable": false
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "far_right": {
-          "mean": 0.00798940017533175,
-          "lo": 0.0058513413768907195,
-          "hi": 0.009991402612708037,
-          "stable": true
+          "toward": 6,
+          "away": 3,
+          "noClearChange": 39
         },
         "abstention": {
-          "mean": 0.0026922862555966895,
-          "lo": 0.0008214381336288634,
-          "hi": 0.004985912931393183,
-          "stable": false
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que qualifier les blocages des lycées comme des violences urbaines, c'est un peu exagéré et ça peut braquer les jeunes comme moi. Une mobilisation pacifique, ça aurait plus de sens.",
+        "Moi, je pense que les blocages, ce sont surtout des jeunes en colère, pas des délinquants. Dire que c'est des violences urbaines, ça me décourage de voter, comme si on ne voulait pas écouter les plus faibles.",
+        "Ce genre de termes comme \"violences urbaines\" me paraît fort, ça ne correspond pas à ce que je vois autour de moi. Plutôt parler de mobilisation citoyenne, c'est plus juste."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes lycéens et étudiants urbains",
+      "matchedCount": 14650,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 1,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve un peu exagéré de parler de \"violences urbaines\" pour les blocages des lycées, ce sont surtout des jeunes qui veulent se faire entendre, pas des casseurs.",
+        "Je suis assez gênée par le gouvernement qui parle de violences urbaines pour ces blocages ; ça me semble déformer la réalité d’une mobilisation citoyenne pacifique.",
+        "Ces blocages ne sont pas vraiment mon problème et cette polémique sur des violences urbaines ne change pas grand-chose à ce que je pense."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:23.144Z",
-    "contentHash": "c634cdc1479712884db2c80a1fa136041523ede0c08dd57ca799bf9c1b4614e1"
+    "status": "automatic",
+    "contentHash": "863113091d9eaecc9e76cb45a5902c9f2eec4b3493f763f54b1b786e8a672ce7"
   }
 }

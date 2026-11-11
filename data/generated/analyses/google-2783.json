@@ -4,40 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "034b3b96143ab670",
-  "computedAt": "2026-11-09T20:40:45.821Z",
+  "inputHash": "0af313644c5c323b",
+  "eventInputHash": "288f76b466512b0232641695ff373996324d6327ad456abbac3ae9feba4b3602",
+  "computedAt": "2026-11-11T13:21:10.995Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Bruno Retailleau élargit son discours en intégrant une proposition forte de réduction ciblée des impôts pour les classes moyennes, en plus de ses critiques sur les prétendus « bonimenteurs » du pouvoir d’achat.",
-    "whatChanges": "Retailleau ne se limite plus à dénoncer mais propose une mesure concrète qui pourrait séduire les classes moyennes, rendant son offre plus palpable et ciblée dans la campagne."
+    "description": "Bruno Retailleau présente un plan détaillé de réduction des impôts directs ciblant principalement les classes moyennes afin de renforcer leur pouvoir d'achat, avec un calendrier d'application étalé sur les deux premières années de mandat.",
+    "whatChanges": "Le candidat se distingue en proposant une baisse d'impôts plutôt qu'en axant uniquement le discours sur le pouvoir d'achat, ce qui peut séduire plus particulièrement les classes moyennes imposées."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Salariés modestes urbains avec enfants",
-      "mechanism": "Bruno Retailleau met en avant le pouvoir d’achat, sujet crucial pour les salariés modestes vivant en commune dense, en particulier ceux ayant des enfants à charge, car ils subissent directement la pression sur leur budget familial.",
-      "reason": "Ces salariés modestes urbains avec enfants constituent un public ciblé par le discours sur le pouvoir d’achat, avec un nombre suffisant et une pertinence directe liée au foyer et à la composition familiale.",
+      "name": "Salariés modestes des communes intermédiaires",
+      "mechanism": "Bruno Retailleau met l'accent sur le pouvoir d'achat, thème principal pour les salariés modestes (employés et ouvriers) vivant dans des communes intermédiaires, directement concernés par l'évolution de leur revenu.",
+      "reason": "Ce segment regroupe une base socio-professionnelle sensible aux questions économiques dans des zones où le terrain du pouvoir d'achat est pertinent.",
       "all": [
-        "household.couple_with_children",
-        "cluster.modest_wage_earner",
-        "geo.dense"
+        "occupation.employee"
       ],
       "any": [
         "age.25_34",
         "age.35_49"
       ],
-      "none": [],
+      "none": [
+        "geo.dense"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perception_pouvoir_achat"
+        "Opinion sur le pouvoir d'achat",
+        "Perception des propositions économiques de Bruno Retailleau",
+        "Intérêt pour la campagne présidentielle"
       ],
-      "count": 10842,
-      "distinctCommunes": 72,
+      "count": 558,
+      "distinctCommunes": 77,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -48,23 +50,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "mechanism": "Le discours de Bruno Retailleau sur le pouvoir d’achat résonne particulièrement auprès des ouvriers proches de la retraite et vivant en communes de densité intermédiaire, qui anticipent les effets des réformes sociales et des contraintes économiques sur leur budget.",
-      "reason": "Ce segment combine l’âge, la profession et le contexte géographique pour cibler un groupe concerné par le thème du pouvoir d’achat et les réformes annoncées, avec une taille compatible et une couverture multiple de communes.",
+      "name": "Couples de retraités en communes rurales",
+      "mechanism": "Ce segment regroupe des retraités vivant en couple dans des communes rurales, particulièrement concernés par les enjeux du pouvoir d'achat face aux dépenses fixes (logement, santé) et à la hausse des prix dans les zones rurales évoquées par Bruno Retailleau.",
+      "reason": "Ils vivent une réalité économique où le pouvoir d'achat est un enjeu concret et central dans leur quotidien, constituant une cible de la campagne.",
       "all": [
-        "age.50_64",
-        "occupation.worker",
-        "geo.intermediate"
+        "cluster.retired_couple",
+        "geo.rural"
       ],
-      "any": [],
+      "any": [
+        "age.65_74",
+        "age.75_plus"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perception_pouvoir_achat"
+        "Sensibilité aux questions de pouvoir d'achat",
+        "Attitude envers les politiques économiques",
+        "Préférence électorale liée au pouvoir d'achat"
       ],
-      "count": 144,
-      "distinctCommunes": 24,
+      "count": 382,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -75,50 +80,26 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes familles en communes intermédiaires",
-      "mechanism": "Les jeunes familles vivant en communes intermédiaires sont directement touchées par les évolutions du pouvoir d’achat, notamment en raison des dépenses liées à l’éducation et à la vie familiale, ce qui fait d’elles une cible naturelle pour la campagne de Retailleau.",
-      "reason": "Cette intersection d’âge, composition familiale et géographie permet de définir un segment représentatif des familles concernées tout en respectant les contraintes de taille et multiples communes.",
+      "name": "Jeunes familles en communes denses",
+      "mechanism": "Les jeunes familles avec enfants vivant en commune dense sont une cible de Bruno Retailleau sur la thématique du pouvoir d'achat, car elles font face à de fortes dépenses familiales dans un contexte urbain souvent coûteux.",
+      "reason": "Elles sont particulièrement concernées par les propositions sur le pouvoir d'achat dans les grandes agglomérations où le coût de la vie est élevé.",
       "all": [
-        "cluster.young_family",
-        "geo.intermediate"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "vote_intention",
-        "perception_pouvoir_achat"
-      ],
-      "count": 717,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : Bruno Retailleau repart sur le terrain du pouvoir d’achat pour se démarquer des « bonimenteurs » dans la campagne",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Retraités ruraux peu diplômés",
-      "mechanism": "Les retraités ruraux, souvent peu diplômés, subissent fortement la pression sur le pouvoir d’achat liée aux pensions et aux coûts de la vie dans les zones rurales, ce qui les place au cœur du mécanisme évoqué par Retailleau pour se démarquer sur ce thème.",
-      "reason": "Ce segment combine la situation géographique, le statut de retraité et le niveau de diplôme pour définir un groupe significatif et distinct, sensible à la thématique du pouvoir d’achat dans un contexte rural.",
-      "all": [
-        "cluster.rural_retiree",
-        "education.no_diploma"
+        "household.couple_with_children",
+        "geo.dense"
       ],
       "any": [
-        "occupation.retired"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "vote_intention",
-        "perception_pouvoir_achat"
+        "Importance accordée au pouvoir d'achat familial",
+        "Évaluation des mesures économiques proposées",
+        "Comportement électoral en matière de pouvoir d'achat"
       ],
-      "count": 277,
-      "distinctCommunes": 65,
+      "count": 25109,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -139,8 +120,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Salariés modestes urbains avec enfants",
-      "matchedCount": 10842,
+      "segmentName": "Salariés modestes des communes intermédiaires",
+      "matchedCount": 558,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -166,28 +147,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 3,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 48
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Le pouvoir d'achat, c'est important pour moi, surtout avec des enfants, mais je suis un peu sceptique sur Retailleau qui parle beaucoup sans vraiment changer ma situation.",
-        "Retailleau me paraît un peu déconnecté, mais s’il propose de réduire les impôts pour les classes moyennes, ça m'intéresse plus, ça toucherait directement ma famille.",
-        "Je suis plus attentif aux discours qui proposent de réels changements pour le pouvoir d'achat, mais les critiques sur les bonimenteurs, ça me lasse un peu."
+        "Le pouvoir d'achat, c'est vraiment ce qui me préoccupe au quotidien, surtout avec mes difficultés à évoluer au boulot. Si Retailleau se distingue sur ce point, je suis plus attentive.",
+        "Si Retailleau parle encore du pouvoir d'achat, ça me parle un peu car c'est compliqué pour ma famille monoparentale. Un plan concret pour la classe moyenne pourrait vraiment m'intéresser.",
+        "Je suis surtout à la recherche d'améliorations dans mon budget, donc Retailleau qui insiste sur le pouvoir d'achat, ça peut me pousser à le regarder de plus près."
       ]
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Jeunes familles en communes intermédiaires",
-      "matchedCount": 717,
+      "segmentName": "Jeunes familles en communes denses",
+      "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -218,64 +199,17 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Le discours sur le pouvoir d'achat parle à beaucoup de gens, mais je reste un peu sceptique sur tous ces candidats qui promettent sans vraiment détailler comment ils feront mieux que les autres.",
-        "Retailleau parle toujours d'argent, mais cette fois avec son idée de baisses d'impôts pour les classes moyennes, ça m'intéresse, ça pourrait vraiment alléger notre budget familial.",
-        "Le pouvoir d'achat est effectivement un sujet qui touche tout le monde, mais j'attends surtout des propositions concrètes et justes, pas des slogans."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "matchedCount": 144,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Le pouvoir d'achat, c'est mon quotidien ; si Retailleau fait le tri entre ceux qui parlent pour rien et ceux qui agissent, ça peut me parler un peu. Mais je reste méfiant, ça change vite tout.",
-        "Je suis sensible au pouvoir d'achat, mais Retailleau, franchement, je regarde plus ce que Macron ou Le Pen peuvent faire. Sa démarche m'intéresse pas trop, à moins qu'il propose vraiment du concret pour les classes moyennes.",
-        "J'ai du mal à croire aux promesses sur le pouvoir d'achat, surtout venant des politiques. Mais proposer une baisse d'impôts ciblée pour les classes moyennes, ça pourrait me parler un peu."
+        "Je suis fatiguée d'entendre toujours les mêmes promesses sur le pouvoir d'achat sans voir de vrai changement pour ma famille. Ça ne va probablement pas changer mon vote.",
+        "Un plan précis sur la baisse des impôts pour les classes moyennes me semble intéressant. Ça montre un engagement plus concret, ça pourrait me faire réfléchir un peu plus.",
+        "Je suis assez méfiante envers les promesses politiques sur le pouvoir d'achat. Sans preuves solides, ça ne change rien pour moi."
       ]
     },
     "global_1": {
@@ -297,9 +231,9 @@
           "noClearChange": 96
         },
         "center": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -307,28 +241,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 0,
-          "away": 1,
+          "toward": 1,
+          "away": 0,
           "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Le pouvoir d'achat, c'est vrai que ça nous concerne tous ici à Sézanne, mais ces histoires de « bonimenteurs », franchement, j'y crois moyen.",
-        "C'est bien que Bruno Retailleau parle du pouvoir d'achat, c'est important pour ma famille, mais je me demande si on peut vraiment lui faire confiance quand il s'agit de vraies solutions concrètes.",
-        "Le pouvoir d'achat est effectivement un sujet important, mais je manque un peu de confiance dans Retailleau, surtout s’il n’apporte pas de mesures précises et crédibles."
+        "Comme beaucoup ici, je trouve que parler de pouvoir d'achat, c'est important, ça nous touche tous au quotidien. Mais je reste un peu sceptique sur les promesses politiques, je préfère voir ce qui sera vraiment fait.",
+        "Le pouvoir d'achat, c'est ce qui me préoccupe le plus, alors entendre une proposition claire pour aider les classes moyennes, ça me parle vraiment. J'espère que ce plan pourra m'aider et à ma famille.",
+        "Ce genre de discours sur le pouvoir d'achat me touche surtout si c'est concret. Mais je suis plutôt prudente, ça ne va pas bouleverser mon choix de vote à l'heure actuelle."
       ]
     },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Retraités ruraux peu diplômés",
-      "matchedCount": 277,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Couples de retraités en communes rurales",
+      "matchedCount": 382,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -354,9 +288,9 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 1,
@@ -367,17 +301,15 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ce discours sur le pouvoir d'achat, ça me parle un peu, car je compte chaque centime. Mais je me méfie des promesses vagues, alors ça n'influencera pas trop mon vote.",
-        "La question du pouvoir d’achat, je comprends bien, c’est important ici. Mais Retailleau, ça ne me fait pas changer d’avis, ça reste trop à droite pour moi.",
-        "Le pouvoir d’achat est important, mais Retailleau, je ne vois pas en quoi il changerait grand-chose. Je reste fidèle à ce que je connais."
+        "Je suis toujours attentive au pouvoir d’achat, ça me parle, surtout que je dois gérer le budget serré de la retraite. Ce qu'il dit me semble juste, enfin quelqu'un qui se tourne vers les gens qui galèrent vraiment.",
+        "Le pouvoir d'achat, c’est important, mais j’ai du mal à croire que ça change vraiment. S'il s'agissait d'impôts sur les classes moyennes, je serais plus intéressée à voir un vrai plan, ça me toucherait plus concrètement.",
+        "Je comprends qu’il parle encore de pouvoir d’achat, c’est ce qui touche tout le monde ici. Mais un plan clair pour alléger les impôts des classes moyennes, ça m'intéresse plus. J'aime bien la méthode quand c'est précis et progressif."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:38.391Z",
-    "contentHash": "c75edb241762f66d36ea848336f848a658b8e852e5eb8ec5334048e9f2ba81b5"
+    "status": "automatic",
+    "contentHash": "0e7e9fc7086f2e1fa273168326c02bb154d78708fdf023f7448a5523f2f067bd"
   }
 }

@@ -4,43 +4,43 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "5d831bd0cf9690ff",
-  "computedAt": "2026-11-10T21:59:58.029Z",
+  "inputHash": "70a43d512ca52eae",
+  "eventInputHash": "be5f177c20915de7deb9eb33233e902538d08c24d2700db74ef0aec41f9c2fb7",
+  "computedAt": "2026-11-11T15:17:07.353Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Blocage des lycées : une élue condamne fermement les dégradations et appelle à un dialogue immédiat avec les jeunes pour apaiser les tensions, tandis qu'un établissement aixois subit des tags mais sans incendie.",
-    "whatChanges": "Le ton de l'élue devient plus constructif et l'ampleur des dégradations est moindre, ce qui modère les réactions des parents et des électeurs concernés par la sécurité et le dialogue social."
+    "description": "Lors d'un dîner familial, parents et adolescents discutent du blocage des lycées mais parviennent à exprimer leurs points de vue respectifs calmement, sans véritable conflit.",
+    "whatChanges": "Le ton pacifié de l'échange réduit la polarisation entre générations sur la mobilisation lycéenne, atténuant l'image d'un clivage familial profond."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Parents avec adolescents en communes denses",
-      "mechanism": "Parents vivant en commune dense avec des enfants adolescents concernés par les blocages des lycées, source majeure de tensions à table entre générations.",
-      "reason": "Ces parents sont directement concernés par les blocages des lycées car ils vivent avec des adolescents en âge de lycée, dans un environnement urbain où le phénomène est marqué.",
+      "name": "Parents d’adolescents en couples avec enfants en communes denses",
+      "mechanism": "Ce public est concerné car il comprend les adultes en couple avec enfants scolarisés au lycée, directement touchés par les blocages des lycées. C’est dans leur foyer et autour de la table qu’apparaissent les tensions avec les adolescents à propos de ces blocages.",
+      "reason": "Les parents en couple avec enfants en milieu urbain forment un groupe significatif exposé au débat familial sur les blocages des lycées, ce qui correspond à l’évènement familial « s’embrouillent » à table.",
       "all": [
         "household.couple_with_children",
         "geo.dense"
       ],
       "any": [
         "age.35_49",
-        "age.18_24"
+        "age.50_64"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_lycee_blockade_news",
-        "opinion_on_lycee_blockade"
+        "Opinion sur les blocages des lycées",
+        "Relations parents-ados",
+        "Fréquence des conflits familiaux à propos de l’école"
       ],
-      "count": 19606,
+      "count": 24731,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.35_49 ou age.18_24 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "À table, parents et ados « s’embrouillent » sur le blocage des lycées",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -49,25 +49,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes lycéens bacheliers en milieu urbain",
-      "mechanism": "Lycéens bacheliers potentiels vivant en commune dense, directement impliqués ou touchés par les blocages, souvent source de conflits familiaux avec leurs parents.",
-      "reason": "Ce public regroupe les jeunes concernés par le blocage des lycées et qui vivent en milieu urbain où l’incident a eu lieu, participant au mécanisme de tension familiale.",
+      "name": "Adolescents sans activité professionnelle en milieu urbain dense",
+      "mechanism": "Les adolescents et jeunes adultes sans activité professionnelle (étudiants, chômeurs, inactifs) vivant en commune dense sont plausiblement les acteurs ou premiers concernés par les blocages des lycées qui génèrent des conflits avec leurs parents.",
+      "reason": "Ce segment représente les jeunes directement concernés par les blocages des lycées et susceptibles d’être à l’origine ou impliqués dans les tensions parent-ado décrites dans l’évènement.",
       "all": [
-        "age.18_24",
-        "education.baccalaureate",
+        "cluster.young_without_activity",
         "geo.dense"
       ],
-      "any": [],
-      "none": [
-        "household.single_parent"
+      "any": [
+        "age.18_24"
       ],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_lycee_blockade_news",
-        "personal_involvement_in_blockade",
-        "family_conflict_due_to_blockade"
+        "Attitude envers les blocages lycéens",
+        "Sentiment de conflit familial",
+        "Participation aux blocages"
       ],
-      "count": 5493,
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -79,29 +78,25 @@
     },
     {
       "id": "segment_3",
-      "name": "Parents seuls avec adolescents vivant en communes intermédiaires",
-      "mechanism": "Parents seuls avec enfants adolescents en communes intermédiaires, concernés par les blocages des lycées et les tensions à table liées au désaccord sur ce thème.",
-      "reason": "Ce groupe de parents seuls représente une configuration familiale potentiellement plus fragile face aux tensions générées par les blocages en milieu semi-urbain.",
+      "name": "Parents solos avec enfants en âge scolaire urbains",
+      "mechanism": "Les mères seules avec enfants scolarisés en milieu urbain sont une catégorie familiale exposée à des tensions particulières au sujet des blocages des lycées, souvent vécus dans un contexte familial plus fragile.",
+      "reason": "Les familles monoparentales urbaines avec enfants forment un groupe plus restreint mais concerné par les conflits autour des blocages et la gestion familiale de ces tensions à table.",
       "all": [
-        "household.single_parent",
-        "geo.intermediate"
+        "cluster.single_mother",
+        "geo.dense"
       ],
-      "any": [
-        "age.35_49",
-        "age.18_24"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_lycee_blockade_news",
-        "family_relations_tension_due_to_blockade"
+        "Perception des conflits parent-ado",
+        "Impact des blocages sur la vie familiale",
+        "Stratégies de gestion des tensions"
       ],
-      "count": 119,
-      "distinctCommunes": 23,
+      "count": 7488,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.35_49 ou age.18_24 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "À table, parents et ados « s’embrouillent » sur le blocage des lycées",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -110,27 +105,23 @@
     },
     {
       "id": "segment_4",
-      "name": "Jeunes actifs ou étudiants en milieu urbain denses",
-      "mechanism": "Jeunes actifs ou étudiants vivant en communes denses, sensibles au contexte social des blocages lycéens et potentiellement source de divergences avec les générations plus âgées.",
-      "reason": "Ce segment regroupe de jeunes adultes, souvent issus des milieux urbains denses où les débats autour des blocages lycéens sont vifs, affectant les relations intergénérationnelles.",
+      "name": "Couples de retraités vivant en communes rurales",
+      "mechanism": "Ce groupe est concerné indirectement car il peut comprendre des grands-parents témoins ou impactés par les blocages des lycées de leurs petits-enfants, particulièrement en milieu rural où les relations intergénérationnelles sont fréquentes.",
+      "reason": "Les retraités en couple dans des communes rurales forment un groupe largEment distinct, pouvant ressentir les effets sociaux ou discuter des tensions liées aux blocages lycéens.",
       "all": [
-        "geo.dense"
+        "cluster.retired_couple",
+        "geo.rural"
       ],
-      "any": [
-        "age.18_24",
-        "age.25_34"
-      ],
-      "none": [
-        "household.couple_with_children"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_lycee_blockade_news",
-        "attitudes_towards_lycee_blockade",
-        "intergenerational_conflict"
+        "Opinion sur les blocages scolaires",
+        "Relations intergénérationnelles dans la famille",
+        "Communication familiale autour des bloque lycéens"
       ],
-      "count": 23926,
-      "distinctCommunes": 72,
+      "count": 434,
+      "distinctCommunes": 74,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -149,103 +140,18 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes actifs ou étudiants en milieu urbain denses",
-      "matchedCount": 23926,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 2,
-          "away": 2,
-          "noClearChange": 44
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ces incidents aux lycées me déplaisent, surtout quand ça part en violences inutiles. Je comprends la colère des jeunes mais ça ne justifie pas les dégradations.",
-        "C'est inquiétant ces violences dans les lycées, ça me fait peur pour l'avenir des jeunes. Je prefererais un dialogue calme plutôt que ces conflits.",
-        "Je trouve triste que les lycées soient bloqués et qu'il y ait des violences. Je préfère que les choses soient réglées par le dialogue plutôt que par la dégradation."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0025130985998560646,
-          "lo": 0.00029993981365263105,
-          "hi": 0.004405410379008394,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004117987139232598,
-          "lo": -0.005138829967751578,
-          "hi": -0.002975032785637778,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005644133858249879,
-          "lo": -0.007966504581221702,
-          "hi": -0.0034892204520716834,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0013525181840700973,
-          "lo": -0.002641408127095656,
-          "hi": -0.00017940896869174028,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.002137179050363857,
-          "lo": -0.0004634880256225426,
-          "hi": 0.005029796451815464,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.006464361531332622,
-          "lo": 0.002750966800562362,
-          "hi": 0.010649875873942503,
-          "stable": true
-        }
-      }
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes lycéens bacheliers en milieu urbain",
-      "matchedCount": 5493,
+      "segmentName": "Adolescents sans activité professionnelle en milieu urbain dense",
+      "matchedCount": 8453,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -254,173 +160,50 @@
         },
         "center": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "toward": 3,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 41
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ces blocages me font un peu peur, surtout quand ça vire à la violence, sinon je comprends que parfois faut se faire entendre. Ça ne change pas vraiment mon vote, je reste dans ce que je pensais.",
-        "Je suis triste qu’une élue ait été blessée, ces violences n’aident pas à avancer. Un appel au dialogue, c’est ce qu’il faudrait pour apaiser les tensions entre générations.",
-        "Les lycées bloqués, ça me gonfle. Surtout que ça part parfois en dégâts graves, ça ne change rien à mon vote, c’est trop loin de mon quotidien."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.00218392866837766,
-          "lo": -0.00015724603211279253,
-          "hi": 0.004361170008852093,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004436918245541092,
-          "lo": -0.005984006650143792,
-          "hi": -0.002852125823036353,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.00677497554737215,
-          "lo": -0.008008485387113079,
-          "hi": -0.005515787298312712,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0028280339037144568,
-          "lo": -0.004292327954713048,
-          "hi": -0.001368144990027945,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0037644819830939635,
-          "lo": 0.001208799578745946,
-          "hi": 0.006689294826237161,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.00809151704515605,
-          "lo": 0.004600782508221672,
-          "hi": 0.011657649749012238,
-          "stable": true
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Parents seuls avec adolescents vivant en communes intermédiaires",
-      "matchedCount": 119,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
           "toward": 1,
           "away": 0,
           "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 5,
-          "away": 2,
-          "noClearChange": 41
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ces blocages et violences, ça me dépasse un peu, ça doit être dur pour les élus mais aussi pour les jeunes et les familles. J'espère qu'on trouvera vite un moyen d'apaiser tout ça.",
-        "Je ne suis pas très au courant des blocages à mon avis, mais j'ai peur que ça fasse encore plus désordre pour les jeunes. Je préférerais que les choses restent calmes, ça m'arrangerait.",
-        "C'est inquiétant ces dégradations, ça ne donne pas une bonne image du quartier. Il faudrait que tout le monde calme le jeu et qu'on parle plutôt que de casser des choses."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.002992523630948487,
-          "lo": -0.005143062324432267,
-          "hi": -0.0010193956895689568,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0076845052585139744,
-          "lo": -0.009391451714975544,
-          "hi": -0.006149564676616921,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.004500062704418732,
-          "lo": -0.006502100210021,
-          "hi": -0.0023403124554510477,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0010090119257889843,
-          "lo": -0.002446300693502186,
-          "hi": 0.00038764665950299015,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.010232685700193783,
-          "lo": 0.006723752190270039,
-          "hi": 0.014070299543946932,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.0059534178194763825,
-          "lo": 0.0028606849102198752,
-          "hi": 0.009368801444281646,
-          "stable": false
-        }
-      }
+        "Franchement, ces embrouilles entre parents et ados sur le blocage des lycées, ça me parle un peu, mais ça ne va pas changer pour moi ce que je pense.",
+        "Ces disputes sur le blocage dans les lycées, ça montre juste que les jeunes et les parents ne se comprennent pas toujours. Je suis plus pour le calme, mais ça ne change rien à mon vote.",
+        "Je trouve dommage que ces discussions familiales sur le blocage des lycées finissent en disputes, surtout quand on pourrait s'écouter et comprendre nos points de vue tranquillement."
+      ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Parents avec adolescents en communes denses",
-      "matchedCount": 19606,
+      "segmentName": "Parents d’adolescents en couples avec enfants en communes denses",
+      "matchedCount": 24731,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
@@ -433,9 +216,56 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 8,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 40
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ça ne m'étonne pas que dans une famille on puisse s'embrouiller à cause du blocage des lycées, c'est un sujet qui touche les jeunes et ça crée forcément des tensions.",
+        "C'est dommage quand ça dégénère, mais je comprends que ces blocages peuvent être un réel sujet pour des familles avec des ados. Une discussion calme serait bien plus constructive.",
+        "Les blocages, c'est toujours compliqué ; j'imagine que ça peut créer des débats animés à table. Ça ne va pas changer mon vote, c'est trop loin de ma réalité personnelle."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Couples de retraités vivant en communes rurales",
+      "matchedCount": 434,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
         },
         "abstention": {
           "toward": 3,
@@ -446,48 +276,10 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ce genre de blocages et violences dans les lycées me choque ; ce n’est pas comme ça qu’on doit résoudre les problèmes des jeunes. Ça me rend plutôt défavorable à ce mouvement.",
-        "Je trouve scandaleux qu’une élue se fasse attaquer, ça montre un vrai manque de respect et de civisme. Le dialogue, c’est bien, mais la violence n’est pas acceptable.",
-        "Voir des lycées bloqués et une élue blessée par un incendie, ça m’inquiète. Je ne soutiens pas ces dégradations, il faut du calme et qu’on trouve un compromis."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0008849876974876978,
-          "lo": -0.0030772144522144516,
-          "hi": 0.001544191919191921,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.005649003774003773,
-          "lo": -0.007106312668812671,
-          "hi": -0.004111966736966737,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005552620990120993,
-          "lo": -0.007126075313575317,
-          "hi": -0.003733176545676548,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.001993240555740555,
-          "lo": -0.0032327186702186717,
-          "hi": -0.0008541666666666666,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.006589912402412408,
-          "lo": 0.003439604377104381,
-          "hi": 0.009788732101232106,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.007489940614940612,
-          "lo": 0.0037885517260517246,
-          "hi": 0.012013257575757573,
-          "stable": true
-        }
-      }
+        "Ça me rappelle mes dîners avec mes petits-enfants où on ne sait plus très bien comment s'entendre sur certains sujets. C'est fatigant mais ça montre qu'ils ont leurs opinions bien trempées.",
+        "Je trouve ça assez courant que les jeunes veuillent exprimer leurs idées, même si ça part souvent en disputes. Mais ça ne change rien à ce que je pense sur la politique.",
+        "Je n'aime pas les conflits, surtout à table. C'est mieux quand on peut parler calmement, ça évite les rancunes et ça respecte les générations."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -498,9 +290,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "left": {
           "toward": 0,
@@ -518,68 +310,75 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 11,
-          "away": 7,
-          "noClearChange": 78
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 91
         },
         "abstention": {
-          "toward": 10,
-          "away": 1,
-          "noClearChange": 85
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est triste de voir la violence se mêler à ces manifestations, ça ne fait qu'envenimer les choses entre jeunes et autorités. Je comprends leurs revendications, mais pas ce genre d'excès.",
-        "J'entends parler de ces blocages, mais ça me fait un peu peur cette violence. Je préférerais que ça se règle calmement, avec du dialogue, ça me semble plus raisonnable.",
-        "Ces blocages sont un vrai caillou dans ma chaussure, surtout avec les dégradations, ça me met en colère, mais je comprends que les jeunes veulent se faire entendre."
-      ],
-      "altEffect": {
+        "Je trouve que ces embrouilles à table montrent bien le fossé qui se creuse entre générations, ça ne m'encourage pas vraiment à prendre parti davantage.",
+        "Je suis habitué aux discussions animées, mais un conflit à table sur les lycées ça ne change pas mon avis, ce genre de disputes ne m'intéressent pas trop.",
+        "Entre parents et ados qui s'embrouillent, je vois bien la tension mais pas sûr que ça change mon vote, ça reflète souvent des tensions qui existent déjà."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Parents solos avec enfants en âge scolaire urbains",
+      "matchedCount": 7488,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.00201685244036135,
-          "lo": -0.0029399343969037737,
-          "hi": -0.0010458715603347483,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": -0.004885075711845335,
-          "lo": -0.005682693356315947,
-          "hi": -0.004202660582612613,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.006586783440788877,
-          "lo": -0.007579079238290345,
-          "hi": -0.005521478290313819,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.0016162987185274567,
-          "lo": -0.0025246044206498706,
-          "hi": -0.0007368037010110467,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.009299624608160067,
-          "lo": 0.00675707104304613,
-          "hi": 0.011691680264532387,
-          "stable": true
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "abstention": {
-          "mean": 0.0058053857033629475,
-          "lo": 0.003502176458700148,
-          "hi": 0.008148906196906646,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que ces disputes à table sur le blocage des lycées, ça ne mène à rien. Chacun campe sur ses positions, c'est fatigant et ça ne change rien à ma manière de voir la présidentielle.",
+        "Ces disputes familiales à propos des blocages au lycée me paraissent malheureuses. Je préfère quand on arrive à discuter calmement, même sur des sujets difficiles, ça fait du bien de s'écouter un peu plus.",
+        "Je trouve dommage que les discussions sur le blocage des lycées finissent en disputes. Quand on arrive à parler calmement, on avance mieux, surtout entre parents et ados."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:29.986Z",
-    "contentHash": "8653b4ef7cf5a70e119505c02c79fa8627afae1601794a472347f278fbc0d999"
+    "status": "automatic",
+    "contentHash": "72a836d2ccf70690e3f98775361392d7c5975a4f710d565874cbb43fa171f2f3"
   }
 }

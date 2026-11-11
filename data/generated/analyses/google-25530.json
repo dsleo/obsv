@@ -4,42 +4,46 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "12ef56c7ffe3b158",
-  "computedAt": "2026-11-10T22:02:34.346Z",
+  "inputHash": "adb79c3bd56406be",
+  "eventInputHash": "b6e29160a279ccce68aa255a81b85fa4347ba35feb6d43b305565ebacb4d0fea",
+  "computedAt": "2026-11-11T12:54:10.958Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Manifestation du 5 novembre : les cortèges évitent les centres-villes, avec un parcours prolongé incluant une boucle supplémentaire entre République et Nation à Paris, et un dispositif de sécurité renforcé dans toutes les zones, y compris à Montpellier, Perpignan, Nîmes et Carcassonne.",
-    "whatChanges": "Le parcours parisien est allongé avec une boucle supplémentaire, augmentant la visibilité du cortège, ce qui mobilise davantage d'électeurs sensibles à la contestation sociale."
+    "description": "La grève du 5 novembre à Paris maintient sa manifestation prévue, mais modifie son parcours initial en partant de Nation pour rejoindre République, inversant ainsi le trajet habituel entre ces deux places.",
+    "whatChanges": "Le parcours de la manifestation est inversé, ce qui pourrait affecter la dynamique du rassemblement et la perception des électeurs dans les quartiers concernés."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes actifs salariés en couple avec enfants en commune dense",
-      "mechanism": "Ce public concerne les jeunes actifs salariés, notamment en couple avec enfants et vivant en milieu urbain dense, qui peuvent être directement affectés par la manifestation en termes d'accès aux services, travail et déplacements durant le 5 novembre.",
-      "reason": "La manifestation en milieu urbain dense impacte fortement les familles actives salariées ayant des enfants, car elles combinent mobilité, obligations professionnelles et scolaires le jour de l'événement.",
+      "name": "Jeunes actifs employés ou ouvriers en zone dense à Paris",
+      "mechanism": "Le parcours de la manifestation entre République et Nation à Paris concerne particulièrement les jeunes actifs salariés modestes vivant dans des zones urbaines denses de Paris, qui sont potentiellement concernés par les revendications syndicales lors de la grève du 5 novembre.",
+      "reason": "Ces personnes jeunes et salariées en milieu urbain dense sont fréquemment impliquées ou sensibles aux mobilisations sociales dans les grandes villes comme Paris.",
       "all": [
-        "household.couple_with_children",
-        "occupation.employee",
-        "geo.dense"
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille",
+        "age.18_24"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49"
+        "occupation.employee",
+        "occupation.worker"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure_to_manifestation_route",
-        "work_disruption"
+        "Implication dans le mouvement social",
+        "Opinion sur la grève du 5 novembre",
+        "Perception du parcours de la manifestation"
       ],
-      "count": 6184,
-      "distinctCommunes": 72,
+      "count": 4238,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
       "counterfactual": {
         "intervention": "Grève du 5 novembre à Paris : voici le parcours de la manifestation entre République et Nation",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -48,24 +52,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Femmes seules jeunes de 18 à 24 ans en milieu urbain",
-      "mechanism": "Ce segment comprend les femmes jeunes de 18 à 24 ans vivant seules en milieu urbain dense, population souvent très impliquée dans les manifestations et potentiellement exposée aux mesures de sécurité mises en place le 5 novembre.",
-      "reason": "Le profil de jeunes femmes seules vivant en milieu urbain dense correspond à un public potentiellement mobilisé ou affecté par la manifestation dans les espaces publics et les transports.",
+      "name": "Cadres urbains parisiens mariés sans enfant",
+      "mechanism": "Le parcours de la manifestation à Paris entre République et Nation a un impact direct sur les cadres urbains mariés sans enfant qui résident à Paris et peuvent être sensibles aux perturbations liées à cette grève, notamment dans leurs déplacements quotidiens.",
+      "reason": "Le profil cadre en milieu urbain dense à Paris, marié et sans enfant, représente une catégorie socio-professionnelle spécifiquement touchée par les blocages des transports lors de telles manifestations.",
       "all": [
-        "sex.female",
-        "age.18_24",
-        "household.single",
-        "geo.dense"
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille",
+        "cluster.urban_executive",
+        "marital.married",
+        "household.couple_no_children"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "engagement_in_protest",
-        "perception_of_security_measures"
+        "Réactions aux perturbations du trajet République-Nation",
+        "Opinion sur la grève du 5 novembre",
+        "Impact sur les déplacements professionnels"
       ],
-      "count": 5544,
-      "distinctCommunes": 72,
+      "count": 1331,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -76,26 +82,61 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers urbains d’âge moyen impactés par la manifestation à Paris",
-      "mechanism": "Ce segment regroupe des ouvriers actifs d'âge 35 à 49 ans vivant en milieu urbain dense, susceptibles d'être touchés par les perturbations liées à la manifestation à Paris, notamment dans leurs trajets domicile-travail du 5 novembre.",
-      "reason": "Les ouvriers urbains d'âge moyen représentent une catégorie socio-professionnelle exposée aux effets pratiques de la manifestation urbaine, comme les difficultés de déplacement et l'organisation du travail.",
+      "name": "Jeunes sans activité professionnelle en commune dense de Paris",
+      "mechanism": "Les jeunes sans activité professionnelle (étudiants, chômeurs) vivant en commune dense à Paris sont particulièrement concernés par le parcours de la manifestation du 5 novembre, pouvant être à la fois participants ou spectateurs des événements.",
+      "reason": "Ce groupe d’âge et de situation professionnelle, localisé précisément à Paris en zone dense, est souvent plus engagé ou exposé aux manifestations urbaines.",
       "all": [
-        "occupation.worker",
-        "geo.dense"
+        "age.18_24",
+        "cluster.young_without_activity",
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Participation ou présence aux manifestations",
+        "Attitude envers la grève du 5 novembre",
+        "Perception du mouvement social"
+      ],
+      "count": 7933,
+      "distinctCommunes": 48,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Grève du 5 novembre à Paris : voici le parcours de la manifestation entre République et Nation",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Femmes de 25 à 49 ans en couple avec enfants dans Paris dense",
+      "mechanism": "Le tracé de la manifestation entre République et Nation affecte particulièrement les femmes âgées de 25 à 49 ans vivant en couple avec enfants dans les zones denses de Paris, qui peuvent être concernées par les perturbations des transports et la sécurité proche de leur environnement familial.",
+      "reason": "Ce segment combine le sexe féminin, un âge adulte actif, une situation familiale avec enfants, et la localisation dans Paris en zone dense, une intersection pertinente face aux perturbations liées à la manifestation.",
+      "all": [
+        "sex.female",
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille",
+        "household.couple_with_children"
       ],
       "any": [
+        "age.25_34",
         "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "work_disruption",
-        "exposure_to_manifestation_route"
+        "Impact des perturbations sur la vie familiale",
+        "Opinion sur la manifestation",
+        "Mesure du sentiment de sécurité"
       ],
-      "count": 4988,
-      "distinctCommunes": 72,
+      "count": 11682,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Grève du 5 novembre à Paris : voici le parcours de la manifestation entre République et Nation",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -112,10 +153,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Femmes seules jeunes de 18 à 24 ans en milieu urbain",
-      "matchedCount": 5544,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Femmes de 25 à 49 ans en couple avec enfants dans Paris dense",
+      "matchedCount": 11682,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -146,61 +187,23 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que la manifestation qui évite le centre-ville limite un peu l'impact, mais c'est mieux que rien. Je comprends que ça donne moins de dérangement à la ville, même si ça reste compliqué pour qui travaille en ville.",
-        "Les manifestations, c'est toujours compliqué, surtout quand ça bloque la ville. À Dunkerque, c'est pas directement chez moi, donc ça ne change pas grand-chose. Je préfère la stabilité.",
-        "Une manif dans le centre, ça me gêne un peu car je bosse en boutique, mais si ça évite trop de pagaille dans le centre, tant mieux. Je suis pas trop investie dans ça, mais j'écoute un peu."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0020207960349545025,
-          "lo": -0.0032826665660575277,
-          "hi": -0.0009845106186692695,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0012906939121067713,
-          "lo": -0.0021717393787117397,
-          "hi": -0.0005142093702604555,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.002227284145683343,
-          "lo": 0.0009600911960911854,
-          "hi": 0.0035057221802582243,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0009490834993827042,
-          "lo": 0.00019931896923420026,
-          "hi": 0.0017346592843707723,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0020009680225470034,
-          "lo": 0.0011740878185118417,
-          "hi": 0.002890684446767634,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0018658457205517666,
-          "lo": -0.0032915363500702886,
-          "hi": -0.0007168996080378099,
-          "stable": false
-        }
-      }
+        "Je trouve que ces mouvements sociaux sont importants, ça montre la détermination des travailleurs pour défendre leurs droits, même si ça se passe loin de chez moi.",
+        "Je regarde un peu ces manifs, c'est surtout un effet d'image, le parcours me semble secondaire, ça ne modifie pas mon avis.",
+        "Une manifestation qui traverse Paris, ça me touche un peu, ça témoigne d’un climat social tendu, même si j’habite plutôt côté 16e, ça me fait réfléchir à l’engagement citoyen."
+      ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes actifs salariés en couple avec enfants en commune dense",
-      "matchedCount": 6184,
+      "segmentName": "Jeunes actifs employés ou ouvriers en zone dense à Paris",
+      "matchedCount": 4238,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -227,8 +230,8 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -239,133 +242,10 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas vraiment concernée par ces manifestations à Paris, ça n'a pas d'impact sur ma vie à Tournefeuille.",
-        "Habitant dans le 12e à Paris, je trouve ça plutôt embêtant et fatigant, ces manifs qui durent et les cortèges qui tournent en boucle.",
-        "Je n'ai pas trop le temps de suivre ces manifs, et être à Paris ne me concerne pas directement."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.002096816879700325,
-          "lo": -0.0029744354261621556,
-          "hi": -0.0012727982366518324,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0015445496579664906,
-          "lo": -0.0022335689671116733,
-          "hi": -0.0007759820494803085,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0032818538536564194,
-          "lo": 0.0022062039473526407,
-          "hi": 0.004510390642993642,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.0016825087989272168,
-          "lo": 0.0010756553336183333,
-          "hi": 0.0022927991112070716,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0016025361230962022,
-          "lo": 0.0004511104664722115,
-          "hi": 0.002674953778847189,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.002925532238013024,
-          "lo": -0.0046513059846724925,
-          "hi": -0.0014034963889151344,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Ouvriers urbains d’âge moyen impactés par la manifestation à Paris",
-      "matchedCount": 4988,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ces grèves à Paris, ça ne me touche pas directement ici à Saint-Cyr. Ça va peut-être créer des embouteillages mais sinon, je reste concentré sur mon boulot et ma famille.",
-        "La manifestation à Paris, surtout avec ce parcours entre République et Nation, ça fait partie du paysage dans ma ville, même si ça complique un peu mes trajets. Je comprends les revendications, mais ça ne change pas vraiment ma façon de penser.",
-        "Encore une grève à Paris, ça m'affecte pas vraiment directement, même si ça fait du bruit dans les médias. Sorry, mais je suis plus préoccupée par le boulot et garder le rythme au dépôt."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0029273255510429033,
-          "lo": -0.004618119539994538,
-          "hi": -0.0014369680059978535,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.00019306311272262663,
-          "lo": -0.0011312520118490234,
-          "hi": 0.0006555006499036363,
-          "stable": false
-        },
-        "center": {
-          "mean": 0.0016955775313984255,
-          "lo": 0.0007571176162594057,
-          "hi": 0.0026271966505175444,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.001436510844432176,
-          "lo": 0.0005282863320409968,
-          "hi": 0.002324646142354477,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0029099366426014414,
-          "lo": 0.0016882255389718004,
-          "hi": 0.004208446517526118,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.002921636354666517,
-          "lo": -0.004614663425297754,
-          "hi": -0.001644056224785392,
-          "stable": false
-        }
-      }
+        "Je travaille près de la manifestation, ça cause souvent des retards ou des embouteillages qui compliquent mon travail, mais je ne suis pas spécialement concernée par le parcours précis.",
+        "Je ne suis pas très attentif au détail exact du parcours d'une manif, si ça se fait ou pas ne change rien à mon vote, je prends juste sur moi au boulot quand ça coince dehors.",
+        "La manif ça doit faire du bruit dans la rue, mais tant que ça change pas mes horaires ni mon trajet, le sens du parcours m'indiffère totalement."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -396,68 +276,122 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une manifestation à Montpellier, ça ne me touche pas vraiment, j'habite en Haute-Saône, loin de tout ça. Je préfère ne pas me préoccuper de ces déplacements.",
-        "Les manifestations à Saint-Chamond, je n'y prête pas beaucoup attention, ça ne change rien à ma vie de famille et mes priorités du moment.",
-        "Une manifestation à Paris avec un parcours un peu plus long et un dispositif de sécurité renforcé, ça me semble compliqué pour les habitants, mais c'est le lot des grandes villes. Ça ne me fera pas changer d'avis politique."
-      ],
-      "altEffect": {
+        "Je ne suis pas concernée par cette manifestation à Paris, ça ne change rien à ce que je pense ou à mon vote.",
+        "Cette grève parisienne, ce n'est pas vraiment mon problème ici à Saint-Chamond. Ça ne va pas changer mon vote, franchement.",
+        "Cette grève parisienne me rappelle les mouvements sociaux pour nos droits. Le parcours modifié me semble juste une question d'organisation, ça n'affecte pas ma position mais je suis attentive à cette mobilisation."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnelle en commune dense de Paris",
+      "matchedCount": 7933,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": -0.0006885978866371243,
-          "lo": -0.001430568161061135,
-          "hi": -0.00007193294500956889,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": 0.00017955304211640468,
-          "lo": -0.00036802561749348903,
-          "hi": 0.0008397040358939346,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": 0.0013151263048082442,
-          "lo": 0.0006896179674434113,
-          "hi": 0.0019062128596151115,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": 0.0007791617481776519,
-          "lo": 0.000285025847791751,
-          "hi": 0.001255061608959493,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": 0.0006072433352140317,
-          "lo": -0.0000829858921922814,
-          "hi": 0.0014489290772226806,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": -0.0021924865436792067,
-          "lo": -0.003390617882844255,
-          "hi": -0.0010983567307604866,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas très impliqué dans les manifestations, donc ce parcours ne change rien pour moi, ça me laisse un peu indifférent.",
+        "La manifestation à Paris, ce n'est pas vraiment mon truc. Que le parcours soit de République à Nation ou l'inverse, ça ne m'affecte pas directement.",
+        "Je suis habituée à mon quotidien, cette grève et ce changement de parcours de manifestation ne changent pas vraiment mon opinion sur la politique."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Cadres urbains parisiens mariés sans enfant",
+      "matchedCount": 1331,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "La grève à Paris ne me touche pas directement ici à Marseille; cela me semble un mouvement d'ampleur habituelle, pas d'impact sur ma vie quotidienne ni sur mon vote.",
+        "Étant à Paris, je connais cette grève et le parcours de la manifestation me semble important, signe d'une contestation visible. Je pourrais comprendre que cela renforce l'image de la gauche radicale chez certains, mais je reste centrée sur mes valeurs modérées.",
+        "Je vois souvent ces manifestations à Paris. Ce changement de parcours ne change pas mon avis sur le fond, je reste attentif mais peu affecté dans mon intention de vote."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:40.217Z",
-    "contentHash": "46d481c42dfb85c2fd0ab2f49c6380bd0b92f7556d48bdaeb7f975abcab3c08b"
+    "status": "automatic",
+    "contentHash": "7ba21991c95230ab5fe509601439220f33ec1d77e3619fb205866c982520f51a"
   }
 }

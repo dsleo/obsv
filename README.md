@@ -1,57 +1,81 @@
-# L’Observatoire — site statique
+# L’Observatoire
 
-Site éditorial en français, conçu pour être généré et servi par GitHub Pages. Le navigateur ne lance aucune analyse, n’appelle aucun modèle et ne contient aucun secret. `npm run build` génère le dossier `out/` avec les pages radar, événements et candidats.
+Publication éditoriale statique en français : sondages observés, événements sourcés et hypothèses générées à partir de profils synthétiques. L’interface distingue les observations des simulations. Les analyses sont précalculées ; le navigateur ne contient aucune clé et ne lance aucun modèle.
 
-## Développement local
+## Démarrer
 
 ```sh
 npm ci
+npm run data:collect       # ELECTION_API_KEY dans .env pour l’API événements
+npm run data:prepare
 npm run dev
 ```
 
-## Contrôles et préparation des données
+`npm run build` prépare les données et exporte le site dans `out/`. `npm start` sert cet export sur http://127.0.0.1:4173, avec la page 404 française. `SITE_PUBLIC=false` garde les aperçus hors indexation.
 
-Les collecteurs publient deux JSON versionnés, décrits dans [`docs/data-contracts.md`](docs/data-contracts.md). En local, placez-les sous `data/incoming/` puis lancez :
+## Sources et intégrité du fil
+
+Les sondages sont collectés depuis le CSV Sondax (configuration principale au premier tour, taille d’échantillon obligatoire), avec leur notice et les dates du terrain. Le CSV est lu avec un parseur prenant en charge les champs entre guillemets.
+
+Les événements proviennent de l’API election-tracker, implémentée dans [danchemla/sondageTracker](https://github.com/danchemla/sondageTracker). L’adaptateur privilégie son contrat `articles` : titres, éditeurs et résumés originaux de chaque article. Les anciennes `source_descriptions` Google peuvent contenir plusieurs titres concaténés : elles ne sont jamais utilisées comme résumé factuel. Le mode de compatibilité conserve seulement les articles associés au sujet et sépare le premier titre de son média. Sans résumé original fiable, le site renvoie aux sources.
+
+Les contrôles excluent les tests de produits faussement classés comme faits judiciaires et les articles étrangers au sujet du regroupement. La source, son crédit et l’URL sont conservés ensemble. Le nombre de médias affiché correspond aux sources effectivement proposées, pas au cluster d’origine avant filtrage.
+
+La correction amont des règles et du contrat est proposée dans [sondageTracker #16](https://github.com/danchemla/sondageTracker/pull/16). Déployer l’API ne répare pas ses anciens clusters : une reconstruction Gold contrôlée, puis une nouvelle collecte, reste nécessaire. Le site reste protégé par ses contrôles locaux pendant cette transition.
+
+## Publication automatique
+
+`data/publication-policy.json` définit la sélection automatique des événements et la publication automatique des hypothèses. **Aucune relecture humaine obligatoire.** Les mentions publiques décrivent ce mode sans inventer de relecteur.
+
+Un événement importé reste une donnée brute ; seuls les enregistrements explicitement publiés ou passant la politique automatique et ses contrôles qualité entrent dans le snapshot public. Une rétractation prévaut toujours. `data/events-curation.json` peut contenir des listes `pin` et `hide` ; une exclusion qualité ne peut pas être contournée en épinglant un test de produit.
+
+Les feeds manquants, invalides ou anormalement vides sont rejetés sans remplacer le dernier snapshot. `ALLOW_EMPTY_FEEDS=true` sert uniquement aux fixtures intentionnellement vides. Les collections publiques sont typées indépendamment du contenu du JSON. Le navigateur ne reçoit qu’un jeu de données léger pour les graphiques ; les collections d’articles restent dans le rendu serveur/build.
+
+## Analyses hors ligne
+
+Configurer les index locaux et les variables de `.env.example`, puis :
 
 ```sh
-npm run data:validate
-npm run data:prepare
-npm run typecheck
+npm run data:analyze
+npm run data:check-analyses
 npm run build
 ```
 
-Les entrées brutes et le snapshot normalisé ne sont pas suivis par Git par défaut. Les sondages sont collectés chaque jour depuis le CSV Sondax (historique complet depuis février 2026, voir [`docs/data-contracts.md`](docs/data-contracts.md)) ; `POLLS_FEED_URL` et `EVENTS_FEED_URL` peuvent remplacer ces sources. Les événements viennent par défaut de l’API election-tracker (`scripts/lib/events-api.mjs`) : règles de sélection (tier A/B, nombre de médias) → « majeurs » (traits verticaux du graphique) et « notables » (listes). Revue quotidienne facultative via `data/events-curation.json` : `{ "pin": ["google-123"], "hide": ["google-456"] }`. `EVENTS_FEED_URL` remplace cette source.
+La génération publie automatiquement un artefact complet avec modèle et méthode épinglés, empreinte des entrées, empreinte de cache du code/configuration pertinent, date de calcul et hash du contenu. Une réponse de modèle manquante empêche la publication partielle. Les fichiers sont remplacés atomiquement. Les événements inchangés réutilisent le cache.
 
-## GitHub Pages
+Le build ne présente une hypothèse que si son entrée correspond encore au titre, au résumé factuel et à la source de l’événement public. Résoudre une redirection ne change pas cette identité lorsqu’un identifiant source stable existe. Un contenu modifié, une ancienne entrée ou une méthode incompatible ne sont pas publiés. Les anciens artefacts non liés aux entrées corrigées restent en attente de recalcul ; les démonstrations historiques sont sous `scripts/fixtures/legacy-analyses/`.
 
-Le workflow [pages.yml](.github/workflows/pages.yml) valide les types, génère le site statique et déploie `out/` à chaque push sur `main` ou à la demande. Le `basePath` est calculé automatiquement pour le site projet `owner/repo` ; pour `owner.github.io`, la racine est utilisée.
+Les pourcentages décrivent des **réponses simulées**, sans estimer la proportion réelle des électeurs. Les effets chiffrés `effect` et `altEffect` restent hors publication par défaut tant que la validation n’est pas concluante. Une absence de chiffre publié n’est pas présentée comme un effet nul. Les pages candidat utilisent un contraste global de bloc, sans additionner des groupes exploratoires qui peuvent se recouper.
 
-Activer Pages dans **Settings → Pages → Build and deployment → GitHub Actions**. Le dépôt peut rester privé selon le plan GitHub, mais le site Pages doit être traité comme public : tout contenu embarqué dans l’export peut être consulté.
+`npm run trust:refresh` collecte les données, recalcule les expériences de validation et les contrôles, puis complète l’historique de backtest. Il nécessite les index locaux et tourne hors du build Pages. Les index volumineux ne sont pas versionnés ; voir `docs/radar-trust.md` et `docs/radar/` pour le moteur et les limites scientifiques.
 
-Le workflow [refresh-data.yml](.github/workflows/refresh-data.yml) collecte les feeds configurés, valide le contrat et conserve un snapshot comme artefact Actions. Il ne promeut pas automatiquement de résultats analytiques en production : la revue humaine et l’intégration des collecteurs/moteur sont requises avant de publier des changements de données.
-
-## Analyse des sous-populations (hors ligne)
-
-Le moteur (extraction de segments par tags + contrastes directionnels LLM) a été porté depuis `tweenverse` sans réécriture : `pipeline/radar/` et `src/lib/radar/`. Il tourne uniquement en CLI :
+## Vérification
 
 ```sh
-npm run data:analyze          # OPENAI_API_KEY + index de personas requis, voir .env.example
-npm run data:check-analyses   # valide les artefacts data/generated/analyses/*.json
+npm test                    # validateurs, collecteurs, publication, durabilité, moteur
+npm run typecheck
+npm run data:check-analyses
+npm run build
+npm run smoke
+npm run test:browser         # Chromium/Chrome, parcours et axe dans les deux thèmes
+npm audit
 ```
 
-Pipeline par événement (méthode v2, voir [docs/radar-trust.md](docs/radar-trust.md)) : (1) un LLM propose des publics en composant des tags (titre + description seulement) ; (2) le code filtre les 115 011 profils en mémoire (index allégé `*.slim.json` construit une fois), rejette les segments trop petits/larges/doublons/génériques et relance si besoin ; (3) un LLM propose UN scénario alternatif proche de l’événement ; (4) des profils échantillonnés jouent leur propre rôle et donnent leur intention de vote sans événement / avec l’événement / avec l’alternative ; (5) les effets chiffrés (`effect`, `altEffect`) sont retirés des artefacts publiés tant qu’un test contre les sondages ne les valide pas (`PUBLISH_MAGNITUDES=1` pour les garder). `npm run data:analyze -- --out <dossier>` écrit ailleurs (expériences), `npx tsx scripts/publish-analyses.ts <dossier>` copie sans les chiffres, `--method v1` relance l’ancienne méthode.
+Pour les tests navigateur en CI : `npx playwright install --with-deps chromium`. En local, Chrome est utilisé. Le lanceur détecte automatiquement le préfixe d’un export GitHub Pages. Les tests Python hors ligne utilisent NumPy, SciPy et PyArrow : `python -m unittest discover -s scripts/radar -p 'test_*.py'`.
 
-Les index `data/radar/*.jsonl` et `geography-2026.json` ne sont pas versionnés et doivent être fournis (non présents dans ce dépôt) ; sans eux la commande s’arrête avec la liste des fichiers manquants. Les artefacts sont lus au build par les pages événement ; sans artefact, la page affiche « Analyse non disponible ».
+## Ouverture publique et hébergement
 
-## Reproductibilité et revue humaine des analyses
+Le workflow Pages collecte, valide, teste et exporte à chaque push sur `main`, à la demande et chaque jour. Il exécute les tests complets, le contrôle des artefacts, les vérifications des routes et les parcours navigateur avant déploiement.
 
-- **Modèle épinglé** : `PINNED_MODEL` dans `pipeline/radar/openaiStructured.ts` (instantané daté). Chaque artefact enregistre le modèle ; `npm run data:check-analyses` refuse les autres.
-- **Index versionnés** : `data/radar-index.lock.json` fixe le SHA-256 de chaque index. `RADAR_INDEX_BASE_URL=<hébergement versionné> npm run data:fetch-index` télécharge et vérifie ; `npm run data:fetch-index -- --verify` vérifie seulement les fichiers locaux. L’hébergement reste à choisir.
-- **Revue avant publication** : `npm run data:analyze` écrit chaque artefact avec `review.status = "pending"`. Après relecture du contenu, `npm run data:approve -- <eventId> --reviewer "Nom"` enregistre l’approbation liée au hash du contenu. Toute modification ou regénération annule l’approbation. Seuls les artefacts approuvés apparaissent sur le site.
+Configurer les variables de dépôt (ou les variables de build sur un autre hébergeur) :
 
-## État et limites actuels
+- `SITE_PUBLIC=true` pour l’indexation d’une ouverture publique ; `false` pour un aperçu.
+- `SITE_URL` : URL HTTPS publique définitive, avec son éventuel chemin de projet.
+- `SITE_PUBLISHER` : identité exacte de l’éditeur.
+- `SITE_CONTACT_EMAIL` : adresse publique pour les corrections et les demandes liées aux données.
 
-- Les intentions de vote affichées sont les sondages réels collectés (premier tour uniquement). Les événements sont réels (presse, sélection automatique) ; leurs effets restent simulés et signalés comme tels.
-- Les validateurs et workflows constituent l’ossature d’ingestion et de publication ; ils ne remplacent pas encore les collecteurs de votre collègue.
-- La prochaine intégration est de faire produire à ces collecteurs les contrats versionnés, puis de connecter le snapshot validé à l’interface. L’analyse des sous-populations devra tourner comme étape CLI avec versions de méthode, cache par empreinte et revue ; pas comme endpoint utilisateur.
-- Les associations événement-candidat ne sont pas des effets causaux. Le site ne doit pas transformer une hypothèse issue de personas synthétiques en variation réelle d’intentions de vote.
+`npm run release:check` refuse une configuration publique sans ces faits. Ces informations ne sont jamais inventées. L’URL/configuration génère les canoniques, l’image de partage, le sitemap et robots.txt. Sans domaine personnalisé, l’adresse GitHub Pages est dérivée du dépôt. `SITE_BASE_PATH` permet un préfixe explicite si nécessaire.
+
+Les photographies d’actualité ne sont affichées que si `imageRights` vaut `licensed` ou `permission`, avec `imageCredit`. Les URL et le repli photographique local existant sont conservés dans les données ; une URL publique ne constitue pas une autorisation de reproduction. Les pages À propos, corrections et confidentialité décrivent le fonctionnement réel du site.
+
+L’audit initial est dans `docs/audit-2026-11-11/`. L’état des corrections et les limites de vérification sont suivis dans `docs/prelaunch-fixes.md`. L’avis juridique/les droits et les tests sur de vrais appareils restent des vérifications humaines externes, distinctes du mécanisme de publication automatique.

@@ -4,37 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "b0ca754017b1a604",
-  "computedAt": "2026-11-10T22:07:52.420Z",
+  "inputHash": "1f7441728b2304f1",
+  "eventInputHash": "f1a265e5a574732a5198702673c7622879e62abf753693bbd9fd6f01678c6be5",
+  "computedAt": "2026-11-11T13:08:23.553Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Les pompiers en grève ont organisé une journée portes ouvertes au pied de la tour Eiffel, invitant le public à découvrir leur métier tout en exprimant leur demande de moyens supplémentaires.",
-    "whatChanges": "Le ton devient plus pédagogique et ouvert, visant à sensibiliser l’opinion publique plutôt qu'à simplement manifester leur colère, ce qui peut rallier un plus large soutien citoyen."
+    "description": "Les pompiers annoncent une grève symbolique d'une demi-journée au pied de la tour Eiffel, limitant la mobilisation afin de minimiser l'impact sur la sécurité publique.",
+    "whatChanges": "La mobilisation est moins importante avec une grève de courte durée, ce qui réduit les perturbations visibles pour les citoyens et peut atténuer la pression sur le gouvernement, tout en maintenant le message des pompiers."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes habitants de Paris, Lyon ou Marseille",
-      "mechanism": "L'action de grève se déroule au pied de la tour Eiffel, en région parisienne, il s'agit donc d'un événement localisé dans les grandes agglomérations ; ce segment cible les jeunes adultes vivant dans Paris/Lyon/Marseille, populations plus susceptibles d'être exposées ou concernées par le mouvement.",
-      "reason": "Le fait que la mobilisation ait lieu au pied de la tour Eiffel implique une forte exposition locale pour les jeunes résidents des grandes métropoles, notamment dans Paris, Lyon et Marseille.",
+      "name": "Jeunes actifs et parents en couple avec enfants en zone urbaine dense",
+      "mechanism": "La mobilisation des pompiers en zone touristique urbaine concerne particulièrement les jeunes familles urbaines avec enfants, qui sont des utilisateurs réguliers des services d'urgence et sensibles à la sécurité locale.",
+      "reason": "Combinaison des caractéristiques d'âge, situation familiale et densité urbaine pour cerner un public directement concerné par le bon fonctionnement des services de secours.",
       "all": [
-        "age.18_24",
-        "municipal_system.paris_lyon_marseille"
+        "age.25_34",
+        "household.couple_with_children",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "occupation.employee",
+        "occupation.intermediate",
+        "occupation.executive_professional"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposition locale",
-        "perception de la mobilisation",
-        "attitudes politiques"
+        "Satisfaction vis-à-vis des services de secours",
+        "Inquiétudes liées à la grève des pompiers"
       ],
-      "count": 13742,
-      "distinctCommunes": 48,
+      "count": 5220,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -45,19 +50,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Ouvriers de 25 à 49 ans en commune dense",
-      "mechanism": "Les ouvriers de 25 à 49 ans vivant en commune dense sont concernés car ils font partie des catégories populaires susceptibles de soutenir la mobilisation des pompiers pour plus de moyens, particulièrement en milieu urbain.",
-      "reason": "Segment resserré sur âge, profession et densité pour éviter un groupe trop large.",
+      "name": "Jeunes employés urbains sensibles à la mobilisation des pompiers",
+      "mechanism": "Les jeunes employés actifs en milieu urbain dense sont plausiblement concernés par la mobilisation des pompiers au pied de la tour Eiffel car ils vivent dans un contexte urbain où la sécurité incendie est cruciale et ont une exposition probable aux revendications sociales locales.",
+      "reason": "Remplacement plus précis d'un segment trop large sur employés et ouvriers en zone urbaine dense",
       "all": [
         "age.25_34",
-        "occupation.worker",
+        "occupation.employee",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 3668,
+      "measurementNeeds": [
+        "Connaissance de la grève des pompiers",
+        "Attitude envers la mobilisation des pompiers"
+      ],
+      "count": 5130,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -69,20 +77,26 @@
     },
     {
       "id": "segment_3",
-      "name": "Employés de 35 à 49 ans dans Paris, Lyon ou Marseille",
-      "mechanism": "Les employés âgés de 35 à 49 ans dans les grandes agglomérations (Paris, Lyon, Marseille) sont un public potentiellement mobilisé par la grève des pompiers, en raison de leur ancrage urbain et leur proximité sociale avec les demandes de moyens supplémentaires.",
-      "reason": "Segment combinant âge, occupation et municipalité spécifique pour réduire la taille du public tout en ciblant les zones clés.",
+      "name": "Ouvriers actifs en communes urbaines intermédiaires hors grandes métropoles",
+      "mechanism": "Les ouvriers exerçant dans des communes urbaines de plus de 1000 habitants, hors Paris, Lyon, Marseille, sont un public concerné par la grève des pompiers car ils partagent des conditions professionnelles proches et peuvent soutenir les revendications des services de secours locaux.",
+      "reason": "Segment ciblé plus restreint qu'un segment sur tous les employés et ouvriers urbains denses trop large",
       "all": [
-        "age.35_49",
-        "occupation.employee",
+        "occupation.worker",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "geo.intermediate"
+      ],
+      "none": [
         "municipal_system.paris_lyon_marseille"
       ],
-      "any": [],
-      "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 6166,
-      "distinctCommunes": 48,
+      "measurementNeeds": [
+        "Soutien à la grève des pompiers",
+        "Perception des contraintes professionnelles"
+      ],
+      "count": 480,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -93,19 +107,24 @@
     },
     {
       "id": "segment_4",
-      "name": "Cadres urbains âgés de 35 à 49 ans",
-      "mechanism": "Les cadres urbains de 35 à 49 ans sont concernés par la mobilisation au pied de la tour Eiffel, symbole parisien, où ils peuvent être sensibles aux revendications des pompiers pour plus de moyens face aux enjeux urbains de sécurité.",
-      "reason": "Public resserré avec un cluster reconnu et tranche d’âge précise pour éviter un groupe trop large.",
+      "name": "Cadres et professions intellectuelles supérieures en communes denses hors grandes métropoles",
+      "mechanism": "Les cadres et professions intellectuelles supérieures habitant des communes denses hors Paris, Lyon et Marseille peuvent être concernés par la mobilisation devant un monument emblématique comme la tour Eiffel, car ils sont exposés à la gestion de la sécurité urbaine et aux débats publics sur les services publics.",
+      "reason": "Segment resserré pour dépasser la taille excessive d'un segment élargi à tout urbain dense",
       "all": [
-        "cluster.urban_executive",
-        "age.35_49"
+        "occupation.executive_professional",
+        "geo.dense"
       ],
       "any": [],
-      "none": [],
+      "none": [
+        "municipal_system.paris_lyon_marseille"
+      ],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 4569,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Perception de la mobilisation des pompiers",
+        "Impact sur la vie urbaine"
+      ],
+      "count": 842,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -124,18 +143,65 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Employés de 35 à 49 ans dans Paris, Lyon ou Marseille",
-      "matchedCount": 6166,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes actifs et parents en couple avec enfants en zone urbaine dense",
+      "matchedCount": 5220,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que les pompiers soient en colère, mais ça m'inquiète un peu cette grève au pied de la tour Eiffel, ça fait beaucoup de bruit pour moi.",
+        "Je vois que les pompiers manifestent fort, ça montre leur détermination, mais ça perturbe un peu l'image de la ville.",
+        "Je soutiens les pompiers qui veulent de meilleures conditions, cette grève montre qu’ils ne lâchent rien, c’est important."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes employés urbains sensibles à la mobilisation des pompiers",
+      "matchedCount": 5130,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
@@ -158,141 +224,18 @@
           "noClearChange": 47
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends leur colère, les pompiers jouent un rôle important, il faut vraiment plus de moyens pour eux. Par contre, je ne suis pas sûre que ça change grand-chose à ma façon de voter.",
-        "C'est bien qu'ils expriment leurs difficultés, je trouve ça inquiétant qu'ils doivent en arriver là. Mais pour moi, c’est pas un sujet qui change mon vote.",
-        "C'est inquiétant de voir qu’ils manquent de moyens, surtout ici à Marseille. Je suis plutôt sensible à ces luttes, ça me touche un peu."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.004837839917571214,
-          "lo": 0.0033948322564092775,
-          "hi": 0.006298979426596297,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0001214430816697916,
-          "lo": -0.001073988283537693,
-          "hi": 0.0012088385531103848,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.006317828469261898,
-          "lo": -0.007557951966534059,
-          "hi": -0.005045005317393375,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0035491701181076113,
-          "lo": -0.0042769979112339115,
-          "hi": -0.002764490935015171,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.002189014418104125,
-          "lo": -0.003890701787157022,
-          "hi": -0.0005922930804802487,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.007096730006232617,
-          "lo": 0.004811092769724729,
-          "hi": 0.009531409512740478,
-          "stable": true
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Cadres urbains âgés de 35 à 49 ans",
-      "matchedCount": 4569,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends que les pompiers soient en colère et réclament plus de moyens, c'est important pour la sécurité de tous, mais dormir au pied de la tour Eiffel n'est pas très pratique ni très rassurant pour les touristes ni les Marseillais. Une approche plus pédagogique me conviendrait mieux.",
-        "Les pompiers vivent un vrai malaise, et je respecte leur lutte pour plus de moyens. Mais une grève devant la tour Eiffel, ça fait un peu revendication radicale, alors qu'une journée portes ouvertes qui fait mieux comprendre leur métier, ça me parle davantage.",
-        "Je trouve que la mobilisation des pompiers est justifiée, ils risquent leur vie et manquent de moyens. Dormir au pied de la tour Eiffel, c'est un signe fort mais un peu extrême, une journée portes ouvertes m'inspire plus de respect et d'écoute."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.002503212185145461,
-          "lo": 0.0013830388401586862,
-          "hi": 0.003751520664235912,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.00008623523613249598,
-          "lo": -0.0009158526648981917,
-          "hi": 0.0011423355443877844,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005588525170968945,
-          "lo": -0.006765268430380375,
-          "hi": -0.0044256427390755694,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.001985102167333406,
-          "lo": -0.0028227812643408616,
-          "hi": -0.0013335028189056994,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0006841511686255398,
-          "lo": -0.0022071459841982214,
-          "hi": 0.0006619078836118675,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.00566833108564993,
-          "lo": 0.003440275732594572,
-          "hi": 0.007991638949410969,
-          "stable": true
-        }
-      }
+        "C'est important que les pompiers se fassent entendre, mais j'espère qu'ils n'iront pas trop loin dans la grève car il faut que notre sécurité soit assurée.",
+        "Une grève des pompiers me dérangerait, j'apprécie que la sécurité reste prioritaire, donc une grève symbolique me semblerait plus raisonnable.",
+        "Je comprends que les pompiers veuillent faire valoir leurs revendications, mais une grande grève pourrait inquiéter ma famille et moi."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -308,14 +251,14 @@
           "noClearChange": 96
         },
         "left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 2,
+          "noClearChange": 94
         },
         "right": {
           "toward": 0,
@@ -323,79 +266,41 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 90
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
+          "toward": 10,
+          "away": 1,
+          "noClearChange": 85
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça me peine de voir ces pompiers dormir à même le sol, c'est dur pour eux mais ça ne change pas vraiment mon vote.",
-        "Je respecte leur combat, mais cette grève au pied de la tour Eiffel, ça me dérange un peu. J'aurais préféré une journée portes ouvertes, ça montre mieux leur travail.",
-        "Je comprends qu'ils veulent plus de moyens, mais ça ne me touche pas trop. Pour moi, ça ne change pas mon choix pour l'élection."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0018284316116309249,
-          "lo": 0.0011160651990894661,
-          "hi": 0.00255688983069005,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0005488221440817262,
-          "lo": -0.0013947616845267706,
-          "hi": 0.0002536369527601255,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.004970554312681754,
-          "lo": -0.005983868563882993,
-          "hi": -0.004127428521386899,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0013792312747471383,
-          "lo": -0.0019758230298217053,
-          "hi": -0.0006313004240623167,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.0006889163694757174,
-          "lo": -0.0006361839582191756,
-          "hi": 0.002251538117410396,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.004381259750403972,
-          "lo": 0.002914120080923399,
-          "hi": 0.005894816252383851,
-          "stable": false
-        }
-      }
+        "Je comprends que les pompiers soient en colère, mais cette grève au pied de la Tour Eiffel ne me touche pas vraiment dans mon quotidien à la campagne.",
+        "Je trouve que la grève des pompiers est importante, ils risquent leur vie chaque jour, mais je préfère une action symbolique qui ne pénalise personne.",
+        "Les pompiers en grève, c'est un signal d'alerte que je ressens directement, même si ca me cause des soucis au boulot ou avec la famille, je suis plutôt solidaire."
+      ]
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes habitants de Paris, Lyon ou Marseille",
-      "matchedCount": 13742,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Cadres et professions intellectuelles supérieures en communes denses hors grandes métropoles",
+      "matchedCount": 842,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
@@ -409,65 +314,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 2,
-          "away": 1,
+          "toward": 3,
+          "away": 0,
           "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que les pompiers galèrent pour leurs conditions, c’est important qu’ils se fassent entendre, mais dormir sous la tour Eiffel, ça fait un peu trop spectacle pour moi.",
-        "Des pompiers en grève qui passent leur colère en pleine ville, ça montre qu’ils ont besoin d’attention, c’est normal. Une journée portes ouvertes, c’est plus calme et pédagogique, j’aurais préféré ça.",
-        "Les pompiers qui dorment sous la tour Eiffel, ça m’impressionne, ils veulent vraiment se faire entendre. Ça me donne envie qu’on les soutienne un peu plus."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.007259058024208141,
-          "lo": 0.005768950215917115,
-          "hi": 0.008785301470624856,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.002482373681375578,
-          "lo": 0.0009793081158100125,
-          "hi": 0.0037991671539526345,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.006488830158787921,
-          "lo": -0.00760854315536659,
-          "hi": -0.005407467079290511,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.002839702067221649,
-          "lo": -0.0033698175787728046,
-          "hi": -0.002363592448169564,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0040278201795460825,
-          "lo": -0.0053794992840236954,
-          "hi": -0.0029539963557222593,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0036149206999719265,
-          "lo": 0.0013512509356802711,
-          "hi": 0.005734668748350339,
-          "stable": false
-        }
-      }
+        "Les pompiers en grève, c’est important, j’admire leur dévouement, mais je m’inquiète pour l’impact sur la sécurité des gens au quotidien.",
+        "Je comprends l'appel à la mobilisation des pompiers. Leur grève montre qu’ils sont en souffrance, mais la sécurité publique doit être préservée.",
+        "Une grève aussi visible des pompiers attire l'attention, mais ce n'est pas quelque chose qui change vraiment mon vote, je me méfie de trop de perturbations."
+      ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Ouvriers de 25 à 49 ans en commune dense",
-      "matchedCount": 3668,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Ouvriers actifs en communes urbaines intermédiaires hors grandes métropoles",
+      "matchedCount": 480,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -494,67 +361,27 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 4,
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 1,
+          "toward": 6,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 42
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends la colère des pompiers, ils ont un boulot important. Cette grève me touche parce que j'aime quand les services essentiels sont bien soutenus, mais dormir là-bas, ça me semble un peu trop dur. La journée portes ouvertes me paraît plus calme et utile.",
-        "Je trouve naturel que les pompiers demandent plus de moyens, ils font un métier dur. La grève au pied de la tour Eiffel montre leur sérieux, c’est un peu fort, mais ça insiste bien sur leur appel. La journée portes ouvertes, ça peut aider à mieux comprendre leur métier et leur cause.",
-        "Je suis un peu touché par la grève des pompiers, ils font un boulot important qui me rassure. Mais ça me laisse un peu indifférent, leur méthode est un truc un peu dur pour la ville. La journée portes ouvertes m'aurait plu, ça rapproche les gens et le métier."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.002968428218428222,
-          "lo": 0.0016565254065254113,
-          "hi": 0.0041886233552900255,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0011428694137027458,
-          "lo": -0.00016973223223223327,
-          "hi": 0.0022837053253719915,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.0037084367501034176,
-          "lo": -0.004884389217722552,
-          "hi": -0.002651233713733715,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.0017038936413936417,
-          "lo": -0.0021069933569933578,
-          "hi": -0.001243476430976431,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0012737984612984643,
-          "lo": -0.0024860884444217815,
-          "hi": 5.687505687512288e-7,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.002574831220664551,
-          "lo": 0.0007426972426972395,
-          "hi": 0.004492246742246738,
-          "stable": false
-        }
-      }
+        "Les pompiers, eux, ils font un boulot dur, mais faire grève au pied de la Tour Eiffel ? Ça me semble un peu loin de nos préoccupations à Tergnier. Je suis surtout inquiet que ça perturbe la sécurité.",
+        "Une grève des pompiers, ça me parle. Ils assurent notre sécurité, mais faut aussi penser à pas trop bloquer. Une grève symbolique me paraît plus raisonnable que d'être en pagaille toute la journée.",
+        "Je respecte le fait que les pompiers se mobilisent, ils sont essentiels. Mais une grosse grève me ferait peur, j’aimerais mieux une action plus limitée et symbolique pour ne pas mettre en danger la population."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:50.906Z",
-    "contentHash": "bf06a9df021ed74ca86a6b203d2c899a00de7eb6e088b7b244bfb7bdbb9796dd"
+    "status": "automatic",
+    "contentHash": "beaa817feb4514cb8bc57e0b848234d3acbda07178e4190bf596f7699e28d02c"
   }
 }

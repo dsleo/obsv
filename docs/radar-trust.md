@@ -304,3 +304,9 @@ Fix in `pipeline/radar/alternative.ts`: stricter prompt (no new person/organisat
 1. Run `npm run trust:refresh` about once a month (it appends to `docs/radar-trust-history.jsonl`): the question is whether the event-specific r ≈ 0.15 stays and the interval separates from 0. Decision rule, fixed now: publish calibrated magnitudes (scaled by the fitted factor, with interval, labelled hypothesis) only if the event-specific shuffle test reaches p < 0.05 on data that did not exist at this entry, with the configuration unchanged.
 2. A human fills the status column of [alternative-review.md](alternative-review.md) (and `data/alternative-review.json`) before any `altEffect` is shown.
 3. A richer outcome would still help (daily trackers, a past campaign); none is available in our data today.
+
+### Contrat de publication actualisé — 11 novembre 2026
+
+Le concept produit confirmé est une **publication automatique**, sans relecture humaine obligatoire des hypothèses. Le statut `automatic` identifie cette génération sans inventer de relecteur. Les conditions de publication sont techniques : modèle/méthode autorisés, réponses complètes, schéma valide, empreinte des entrées factuelles identique à l’actualité publiée, hash d’intégrité du contenu. Les anciennes mentions de revue obligatoire dans l’historique ci-dessus décrivent une politique remplacée.
+
+Le libellé visible « Hypothèse simulée » et son explication accessible indiquent qu’aucune personne réelle n’est interrogée. Les parts sont des réponses simulées, non des proportions de l’électorat. Les magnitudes non validées restent retirées des artefacts publics. Les changements d’entrées déclenchent le recalcul ; un résultat ancien n’est pas présenté comme portant sur un résumé corrigé.

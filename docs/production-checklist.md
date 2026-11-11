@@ -1,15 +1,23 @@
-# Checklist de production
+# État de préparation — 11 novembre 2026
 
-## Fait dans cette passe
+## Implémenté
 
-- **Images** : la vignette d’un événement vient de l’API (`representative_image_url` / `source_image_urls`), sinon de l’`og:image` de la page de l’éditeur. Les liens Google News sont décodés à la collecte (`resolveGoogleUrl`, point d’accès Google non officiel : s’il casse, on retombe sur l’API puis sur un pavé de couleur). Les vignettes restent des ressources tierces chargées depuis le serveur de l’éditeur : **droits à valider avant publication**, et le décodage / la lecture des pages éditeurs relève de notre côté (à faire porter par l’API : URL résolue + `image_url`).
-- **Partage et SEO** : titre, description, `og:*` (type `article` pour les événements, `fr_FR`) et `twitter:card` sur les pages racine, événement et candidat (`src/lib/metadata.ts`).
-- **Accessibilité, audit automatisé** : axe-core 4.10.2 exécuté dans le navigateur sur `/`, `/events/`, `/events/vat/`, `/events/pensions/`, `/candidates/`, `/candidates/lepen/` (build statique local). Corrections : contraste des textes orange, gris et de l’accent italique ; `role="img"` remplacé par `role="group"` sur le graphique interactif ; `aside` imbriqués remplacés par des sections/divs ; bandeau de démonstration désormais une région nommée. **Résultat final : aucune violation automatique relevée sur ces pages.**
+- Contrôles des sources et des champs imbriqués, parseur CSV complet et protection du dernier snapshot contre les feeds invalides ou anormalement vides.
+- Publication automatique explicite des actualités contrôlées ; les rétractations prévalent. Les métadonnées ne prétendent pas qu’une relecture humaine a eu lieu.
+- Publication automatique des hypothèses complètes et valides, liées à leurs entrées factuelles et à un hash du contenu. Aucune relecture humaine obligatoire, conformément au concept du produit.
+- Libellé compact de simulation, explication accessible au survol/toucher/clavier, dénominateurs des réponses et détails de méthode. Les effets non publiés ne sont pas présentés comme nuls.
+- Graphique avec contrôles de période/comparaison, libellés directs, dates d’observation, tableau sourcé accessible et export CSV. Jeux de données du navigateur séparés des collections d’articles.
+- Archive recherchable et filtrable, sélection conservée dans l’URL, états vides et page 404 française.
+- Méthode contextualisée, pages À propos/corrections/confidentialité, métadonnées dédiées, sitemap et robots.
+- Photos d’actualité non affichées sans droit renseigné ; les URL brutes et le repli local sont conservés. Crédits et images responsives pour les photos autorisées.
+- Contrôles de release publique sur l’identité/contact/URL configurés. Les aperçus restent hors indexation.
+- Tests complets et navigateur exécutés par le workflow de publication. Dépendances auditées et corrigées.
 
-## À faire (non couvert ici)
+## À finaliser avec les faits de publication
 
-- **Test sur appareils réels** : non réalisé. Vérifier au minimum iOS Safari, Android Chrome, Firefox desktop, avec le bandeau, le graphique, les tableaux repliables et les pages événement. Un aperçu à 375 px a été contrôlé visuellement, pas un appareil.
-- **Lecteur d’écran et clavier** : navigation au clavier des points du graphique (boutons dans un `role="group"`) et annonce des séries simulées avec VoiceOver et NVDA. L’audit automatisé ne couvre qu’une partie des critères WCAG.
-- **Licences d’images** : valider juridiquement l’affichage des vignettes d’articles (voir ci-dessus) ; ne pas copier d’images tierces dans le dépôt.
-- **URL publique** : `sitemap.xml`, `robots.txt` et `og:image` (PNG ou JPEG) demandent une URL de site définitive, non encore fixée.
-- **Revue juridique** : voir [`legal-review.md`](legal-review.md).
+- Renseigner SITE_PUBLISHER, SITE_CONTACT_EMAIL et SITE_URL, puis SITE_PUBLIC=true pour l’ouverture. L’identité et les coordonnées ne sont pas inventées.
+- Fusionner/déployer la correction amont [sondageTracker #16](https://github.com/danchemla/sondageTracker/pull/16), reconstruire les clusters Gold puis recollecter. Les contrôles locaux protègent déjà le site ; les données de production amont n’ont pas été modifiées pendant cette passe.
+- Valider le cadre juridique et les droits du projet en utilisant les descriptions techniques actualisées. Cette vérification n’ajoute pas une relecture humaine à la génération des hypothèses.
+- Vérifier l’hébergement public effectif, la compression/cache, et les parcours sur iOS Safari/Android Chrome ainsi qu’avec VoiceOver/NVDA. Chromium émulé et axe ne remplacent pas ces essais.
+
+Voir `prelaunch-fixes.md` pour les résultats concrets et les preuves de cette passe.

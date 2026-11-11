@@ -4,60 +4,35 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "086018f810bb3035",
-  "computedAt": "2026-11-10T22:06:05.694Z",
+  "inputHash": "35a5d89f75f922e8",
+  "eventInputHash": "8523540fb91fe27fdbd43a92730164e4ce65396dd8788d60bc24c79f86af3812",
+  "computedAt": "2026-11-11T13:02:25.028Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Des manifestations plus limitées, concentrées dans quelques grandes villes seulement, avec un dénouement pacifique et un maintien du concours de médecine, suite à un accord partiel obtenu lors de la plateforme de concertation.",
-    "whatChanges": "La mobilisation lycéenne est moins massive et moins perturbatrice, ce qui rassure certains parents et étudiants concernés par le concours de médecine, tout en marquant une avancée dans le dialogue avec les autorités."
+    "description": "Une forte mobilisation lycéenne s'exprime dès les premiers jours de la plateforme de concertation, avec une participation plus large et plus diversifiée que prévu, incluant des revendications centrées sur l'amélioration immédiate des conditions d'apprentissage plutôt que sur des réformes structurelles à long terme.",
+    "whatChanges": "La mobilisation est plus large et porteuse d'exigences concrètes et immédiates, ce qui met une pression accrue sur les décideurs pour des réponses rapides, notamment sur les questions de conditions scolaires, touchant directement élèves, enseignants et autorités éducatives."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Lycéens mobilisés en milieu urbain dense",
-      "mechanism": "Les manifestations lycéennes, notamment dans les grandes villes, mobilisent particulièrement les jeunes de 18 à 24 ans vivant dans des communes urbaines denses, directement concernés par le futur concours de médecine et l'agenda scolaire.",
-      "reason": "Ce segment comprend les jeunes potentiellement lycéens ou étudiants proches de l'âge lycéen, dans des zones à forte concentration urbaine où les mobilisations sont annoncées ; leur environnement quotidien est directement impacté par les mesures discutées.",
+      "name": "Lycéens de communes denses",
+      "mechanism": "Les lycéens résidant dans des communes à forte densité urbaine sont directement concernés par la mobilisation lycéenne annoncée, car ils sont la catégorie d'âge la plus impliquée dans ce type de mouvement scolaire.",
+      "reason": "Les lycéens sont généralement des jeunes âgés de 15 à 18 ans, mais l'échantillon ne possède pas explicitement ce groupe d'âge. Le segment retenu est un proxy plausible par âge proche et profil social (18-24 ans sans activité, souvent étudiants ou jeunes en formation) en commune dense, ce qui correspond aux zones où les mobilisations lycéennes sont souvent observées.",
       "all": [
         "age.18_24",
-        "geo.dense"
+        "geo.dense",
+        "cluster.young_without_activity"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "exposure.to_mobilisation",
-        "attitude.towards_reform",
-        "participation.intention"
-      ],
-      "count": 14650,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Mobilisation lycéenne : les premières surprises de la plateforme de concertation",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_2",
-      "name": "Jeunes sans activité professionnelle dans les grandes villes",
-      "mechanism": "Le segment des jeunes sans activité professionnelle, souvent étudiants ou en situation d'inactivité, est particulièrement sensible à la mobilisation lycéenne et à la contestation du concours de médecine, surtout en milieu urbain densément peuplé où les manifestations sont nombreuses.",
-      "reason": "Cette catégorie rassemble les 18-24 ans sans emploi ni activité, qui sont une base importante des manifestations étudiantes, souvent dans les grandes villes où se concentre l'agitation.",
-      "all": [
-        "cluster.young_without_activity",
-        "geo.dense"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "exposure.to_mobilisation",
-        "participation.intention"
+        "Engagement dans la mobilisation lycéenne",
+        "Opinion sur la plateforme de concertation"
       ],
       "count": 8453,
       "distinctCommunes": 72,
@@ -70,20 +45,52 @@
       }
     },
     {
-      "id": "segment_3",
-      "name": "Lycéens mobilisés en commune dense âgés de 18 à 24 ans et vivant seuls",
-      "mechanism": "Ces jeunes lycéens sont concernés par la mobilisation et manifestent en milieu urbain dense, notamment ceux vivant seuls et donc potentiellement plus engagés dans les mouvements collectifs sans responsabilités familiales.",
-      "reason": "Segment étroit combinant âge, densité urbaine et type de foyer pour cibler précisément les lycéens potentiellement mobilisés, avec un effectif suffisant et couvrant plusieurs communes.",
+      "id": "segment_2",
+      "name": "Jeunes diplômés urbains étudiants ou sans activité",
+      "mechanism": "Les jeunes urbains diplômés du supérieur, souvent étudiants, sont concernés par la mobilisation lycéenne et ses suites car ils sont proches du public lycéen et souvent actifs dans les discussions et actions sur l'éducation et la concertation autour des projets éducatifs.",
+      "reason": "Ce segment représente les moins de 35 ans diplômés au moins bac+3 et vivant dans des communes denses, incluant ceux sans activité professionnelle, ce qui correspond à un public proche des lycéens et impliqué dans le débat sur l'éducation.",
       "all": [
         "age.18_24",
         "geo.dense",
-        "household.single"
+        "cluster.young_urban_graduate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 10511,
+      "measurementNeeds": [
+        "Participation à la concertation lycéenne",
+        "Perception de la réforme éducative"
+      ],
+      "count": 1478,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Mobilisation lycéenne : les premières surprises de la plateforme de concertation",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Parents de famille avec enfants en âge scolaire en communes denses",
+      "mechanism": "Les parents de familles vivant en commune dense avec enfants sont concernés par la mobilisation lycéenne car leurs enfants peuvent être directement impliqués dans ces mouvements, et l'annonce de la plateforme de concertation peut influencer leur perception des politiques éducatives à venir.",
+      "reason": "Ce segment combine les parents (couples avec enfants), la géographie urbaine dense propice aux mobilisations lycéennes, et des âges d'adultes en phase parentale probable (25-49 ans).",
+      "all": [
+        "household.couple_with_children",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Soutien aux mobilisations lycéennes",
+        "Attentes vis-à-vis de la concertation éducative"
+      ],
+      "count": 25109,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -95,19 +102,25 @@
     },
     {
       "id": "segment_4",
-      "name": "Lycéens de 18 à 24 ans en milieu urbain intermédiaire",
-      "mechanism": "Les lycéens jeunes adultes âgés de 18 à 24 ans vivant en communes à densité intermédiaire, concernés par les mobilisations hors des très grandes villes mais où la mobilisation peut rester forte.",
-      "reason": "Segment géographiquement distinct, ciblé par âge et densité visant un public lycéen dans les zones urbaines moyennes, avec effectif suffisant.",
+      "name": "Cadres urbains jeunes et moyens âges",
+      "mechanism": "Les cadres urbains, jeunes et d'âge moyen, sont concernés par la plateforme de concertation lycéenne car ils représentent souvent une population impliquée dans l'éducation, proches des enjeux scolaires et sensibles aux dynamiques sociales en milieu urbain.",
+      "reason": "Les cadres et professions intellectuelles supérieures en communes denses, âgés entre 25 et 49 ans, forment un segment socialement pertinent pour comprendre les réactions à ces mobilisations éducatives.",
       "all": [
-        "age.18_24",
-        "geo.intermediate"
+        "occupation.executive_professional",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 346,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Opinion sur la concertation éducative",
+        "Soutien aux initiatives de mobilisation lycéenne"
+      ],
+      "count": 7517,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -126,18 +139,18 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Lycéens de 18 à 24 ans en milieu urbain intermédiaire",
-      "matchedCount": 346,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains étudiants ou sans activité",
+      "matchedCount": 1478,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -156,8 +169,102 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "En tant que coordinatrice d'ateliers pédagogiques, je trouve intéressant qu'on cherche à dialoguer avec les lycéens, même si souvent ça reste trop abstrait. Une vraie mobilisation sur des améliorations concrètes, ça me paraîtrait plus utile.",
+        "Cette mobilisation lycéenne me parle : ils réclament des choses concrètes pour leurs conditions d'apprentissage, c'est important. Ça me donne envie de croire un peu plus en l'avenir et au pouvoir d'action des jeunes.",
+        "En tant que jeune actif à Marseille, je suis un peu détaché de ces mobilisations; cela ne change pas grand-chose dans ma vie pour le moment, même si je pense que les jeunes ont raison de demander de meilleures conditions."
+      ]
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Cadres urbains jeunes et moyens âges",
+      "matchedCount": 7517,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je suis curieuse de voir ces premières réactions lycéennes, ça peut influencer positivement les débats, mais ce n'est pas directement lié à mon quotidien professionnel.",
+        "Une mobilisation lycéenne forte ici, ça pourrait bousculer un peu les priorités, surtout si les revendications sont centrées sur le concret plutôt que sur de grandes réformes.",
+        "Je ne suis pas très impliqué dans ce genre de mobilisation lycéenne, ça reste un peu éloigné de ma vie et de mes priorités quotidiennes."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Lycéens de communes denses",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 1,
@@ -168,48 +275,57 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je comprends que les lycéens se mobilisent, même si ça ne me touche pas directement, c'est important pour eux et pour l'avenir, mais ça ne me fera pas changer d'avis.",
-        "Des manifestations lycéennes ? Je trouve que ça peut vite embrouiller les choses, mais ça ne me concerne pas vraiment, donc ça ne changera rien pour moi.",
-        "Ces manifs me concernent un peu, ça parle de mon avenir et de mes conditions d'études, donc je suis un peu attentif, ça peut me faire pencher vers ceux qui les soutiennent."
-      ],
-      "altEffect": {
+        "Franchement, cette mobilisation lycéenne ne m'impacte pas vraiment, je suis plus concentrée sur mes recherches d'alternance et mon quotidien à Paris.",
+        "Une mobilisation lycéenne plus large et axée sur des revendications à court terme, ça me parle un peu plus, surtout que je m'occupe d'un enfant et que l'école, c'est important au quotidien.",
+        "À Béziers, je doute que cette mobilisation lycéenne change grand-chose à ma manière de voir les choses, la précarité et la sécurité sont plus urgentes pour moi."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Parents de famille avec enfants en âge scolaire en communes denses",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
         "radical_left": {
-          "mean": 0.007084069478249894,
-          "lo": 0.005291215613567671,
-          "hi": 0.008732447022460772,
-          "stable": true
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
-          "mean": 0.0031355963883621663,
-          "lo": 0.002020022143401957,
-          "hi": 0.004375161236479648,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
-          "mean": -0.006241654363070312,
-          "lo": -0.007465254829208096,
-          "hi": -0.0052662545151580245,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
-          "mean": -0.001668542282511909,
-          "lo": -0.002291936510072803,
-          "hi": -0.001186495820202288,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "far_right": {
-          "mean": -0.003308315899602888,
-          "lo": -0.005510568252352756,
-          "hi": -0.0010228981108956262,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "mean": 0.000998846678573052,
-          "lo": -0.0006082947410683716,
-          "hi": 0.002618767923494296,
-          "stable": false
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         }
-      }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, tout ça me semble un peu éloigné de mes préoccupations au quotidien. Je ne suis pas très concernée par la mobilisation lycéenne, ça n'influence pas vraiment mon intention de vote.",
+        "Je vois ces lycéens protester, mais ici à Dunkerque, franchement, ça ne me semble pas changer grand-chose. Je reste assez méfiante envers ce genre de mouvements sans impact direct.",
+        "Une forte mobilisation lycéenne pour des conditions d'apprentissage ? Ça me parle plus, ça pourrait vraiment faire bouger les choses pour nos jeunes. Je suis un peu plus attentive à ça."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -220,9 +336,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
         },
         "left": {
           "toward": 0,
@@ -240,323 +356,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
-          "away": 3,
-          "noClearChange": 92
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 3,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 93
+          "noClearChange": 96
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ces manifestations de lycéens me préoccupent un peu, surtout avec cette histoire du concours de médecine qui pourrait être menacé. Cela risque de troubler la tranquillité de notre commune.",
-        "Franchement, ces manifestations des lycéens, ça me fait un peu peur pour l'ordre et la tranquillité, surtout si ça commence à toucher des trucs importants comme le concours de médecine.",
-        "Je comprends la mobilisation des lycéens, mais ça commence à faire beaucoup d'agitations. J'espère que ce ne sera pas plus violent, car ça pourrait perturber mon quartier et le travail."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.0040846867911969184,
-          "lo": 0.002838603616347277,
-          "hi": 0.005191101477927228,
-          "stable": false
-        },
-        "left": {
-          "mean": 0.0014811363389384512,
-          "lo": 0.0005303056420906681,
-          "hi": 0.002486337287762407,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.006021154047245072,
-          "lo": -0.006928329515305357,
-          "hi": -0.0050102461393994845,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0028961969739084627,
-          "lo": -0.0035838079848259617,
-          "hi": -0.0022699351477161686,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.0023407475770533905,
-          "lo": -0.003829426879245467,
-          "hi": -0.0006544701747940891,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.005692275468071541,
-          "lo": 0.00442294424805912,
-          "hi": 0.0071992615364366375,
-          "stable": true
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Lycéens mobilisés en milieu urbain dense",
-      "matchedCount": 14650,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        },
-        "left": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        },
-        "center": {
-          "toward": 0,
-          "away": 4,
-          "noClearChange": 44
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 3,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 1,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, ces manifs des lycéens, ça me touche pas trop. J'espère juste que ça va pas trop perturber mon quartier ni mon future boulot.",
-        "Je comprends la mobilisation des lycéens, mais si ça commence à gêner le concours de médecine, ça m'inquiète pour mon avenir et celui de mon fils.",
-        "Les infos sur ces manifs lycéennes me font stresser un peu, j'espère surtout que ça ne dégénèrera pas ici et que le concours de médecine sera maintenu."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.010983103913366328,
-          "lo": 0.008245002790764787,
-          "hi": 0.01345167023780063,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.005249866773214154,
-          "lo": 0.0034567490265525243,
-          "hi": 0.006880055704634844,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.010492367223515035,
-          "lo": -0.012211749994060814,
-          "hi": -0.008868135016421861,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0027920018306069948,
-          "lo": -0.0035188432011992073,
-          "hi": -0.0020756268969071043,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.005277553455825652,
-          "lo": -0.007393933194104922,
-          "hi": -0.003236457741038887,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0023289518233672256,
-          "lo": -0.00014314862826767782,
-          "hi": 0.0045592471949154395,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes sans activité professionnelle dans les grandes villes",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ça m'intéresse un peu, ces mobilisations lycéennes. Je comprends leurs revendications, surtout à Paris où on voit souvent la jeunesse s'engager. Si ça finit par un accord, ce serait mieux pour tout le monde.",
-        "Je trouve ça bien que les lycéens se fassent entendre, même si je suis pas sûr que ça change grand-chose à mon quotidien. Si le concours de médecine est menacé, ça me semble un peu extrême, mais ça montre leur détermination.",
-        "Moi, franchement, ces manifs lycéennes, je m'en fous un peu. Ça ne me touche pas directement et à La Garde, c'est pas très chaud non plus. Tant que ça ne dérange pas trop, ça va."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.007233855222512404,
-          "lo": 0.0053971406511530776,
-          "hi": 0.009040400881759066,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.0033864792063884324,
-          "lo": 0.0020709971590227787,
-          "hi": 0.004701286895078315,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.007306276841812252,
-          "lo": -0.008750342567180325,
-          "hi": -0.0058528688283942774,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.003355190460505799,
-          "lo": -0.004350055348063317,
-          "hi": -0.0023807925663005343,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.004514290261661331,
-          "lo": -0.006828362217582558,
-          "hi": -0.0018398816852485446,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.004555423135078544,
-          "lo": 0.0021059636701236933,
-          "hi": 0.007344840380945954,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Lycéens mobilisés en commune dense âgés de 18 à 24 ans et vivant seuls",
-      "matchedCount": 10511,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Les manifs lycéennes, ça fait un peu trop de bruit dans le quartier, ça me dérange mais ça change pas grand-chose à ce que je pense pour la présidentielle.",
-        "Je ne cautionne pas trop les grosses manifestations, surtout si ça bloque les choses comme le concours de médecine. Un accord pacifique me semble mieux.",
-        "Les manifs lycéennes, ça m’atteint pas trop. Tant que mon taf continue sans problème, ça va. Sinon, ça finira bien par se calmer."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": 0.009780022384663654,
-          "lo": 0.007847937143620368,
-          "hi": 0.011707062435197186,
-          "stable": true
-        },
-        "left": {
-          "mean": 0.005782787750124835,
-          "lo": 0.004573290309630939,
-          "hi": 0.006928069317347966,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.010050496882338708,
-          "lo": -0.012081099620401528,
-          "hi": -0.008020465055176942,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.00431794675412088,
-          "lo": -0.005417350414619687,
-          "hi": -0.003365749153489751,
-          "stable": false
-        },
-        "far_right": {
-          "mean": -0.004724487683521029,
-          "lo": -0.006024510633030532,
-          "hi": -0.003090333003346451,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0035301211851921353,
-          "lo": 0.0013027889242369847,
-          "hi": 0.005491628411715476,
-          "stable": false
-        }
-      }
+        "Je comprends que les jeunes veulent s'exprimer, mais tout ça me semble un peu trop compliqué, ça ne change pas grand-chose pour moi.",
+        "Je vois bien les jeunes vouloir de meilleures conditions pour apprendre, c’est important pour eux. Ça ne me touche pas trop, mais je préfère qu’ils aient des revendications réalistes.",
+        "Une mobilisation des lycéens, ça peut faire bouger les choses, surtout si leurs demandes sont concrètes. Je suis plus sensible aux revendications immédiates qu’aux grandes réformes abstraites."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:36.208Z",
-    "contentHash": "78ac825a684685a11155f42558f9e39940fbad66ad66f468e2cbf193ddfc2ab1"
+    "status": "automatic",
+    "contentHash": "ab2a4b4719481d45ee912f3556cb987adae4e2fbd24c42ffbe7f387aac4b631f"
   }
 }

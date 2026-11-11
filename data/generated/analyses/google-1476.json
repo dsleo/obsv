@@ -4,37 +4,74 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "0901cfd39aa8a7bf",
-  "computedAt": "2026-11-09T20:41:36.224Z",
+  "inputHash": "29036e041c057a8e",
+  "eventInputHash": "d35ab5067f8bd45f11ed08d78e4c194063e872440bd70694cbd40403f9234fd3",
+  "computedAt": "2026-11-11T13:17:02.165Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "David Lisnard annonce avoir recueilli 600 promesses de parrainages, dépassant ainsi largement le seuil des 500 nécessaires pour valider une candidature à la présidentielle de 2027. Il critique la procédure de parrainage comme étant trop restrictive mais se félicite de cette avance, renforçant ainsi sa légitimité pour la course présidentielle.",
-    "whatChanges": "Lisnard dépasse nettement le seuil des parrainages, montrant une dynamique plus forte et un poids institutionnel accru, ce qui pourrait séduire les électeurs modérés et les élus qui hésitaient."
+    "description": "David Lisnard annonce avoir réuni environ 300 promesses de parrainages, soulignant la difficulté du processus mais restant confiant pour atteindre le seuil requis avant la fin de l'année.",
+    "whatChanges": "La déclaration apparaît plus prudente et met en lumière les défis administratifs, ce qui pourrait rendre son projet présidentiel moins certain aux yeux des élus locaux et des électeurs potentiels."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres urbains en communes très denses",
-      "mechanism": "David Lisnard a déjà recueilli 500 promesses de parrainages en vue de la présidentielle de 2027, mobilisation probable parmi les cadres et professions intellectuelles supérieures vivant en communes denses où le poids politique est important.",
-      "reason": "Ce segment réunit des personnes occupant des postes à responsabilité dans des zones urbaines denses où l'enjeu des parrainages présidentiels est crucial.",
+      "name": "Cadres urbains d’âge moyen et seniors en communes denses",
+      "mechanism": "David Lisnard annonce avoir déjà recueilli 500 promesses de parrainages en vue de la présidentielle de 2027, ciblant probablement un électorat de cadres urbains et seniors dans les grandes communes denses où ses appuis sont mobilisables.",
+      "reason": "Ce segment rassemble les cadres urbains de plus de 50 ans dans les communes denses, susceptibles d’être les donneurs de parrainages favorables à un candidat centriste ou local.",
       "all": [
         "occupation.executive_professional",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.50_64",
+        "age.65_74",
+        "age.75_plus"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result.vote_intention",
-        "exposure.media_exposure",
-        "mechanism.support_explanation"
+        "Attitude envers David Lisnard",
+        "Intention de parrainage présidentielle",
+        "Connaissance de David Lisnard"
       ],
-      "count": 10635,
+      "count": 2838,
       "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.50_64 ou age.65_74 ou age.75_plus regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "David Lisnard assure avoir déjà recueilli 500 promesses de parrainages en vue de la présidentielle de 2027",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Indépendants urbains dans les grandes communes",
+      "mechanism": "L’annonce de promesses de parrainages de David Lisnard concerne les indépendants urbains (artisans, commerçants, chefs d’entreprise) dans les grandes communes, qui peuvent soutenir financièrement et politiquement sa candidature présidentielle en 2027.",
+      "reason": "Ce segment isolé rassemble les indépendants en communes denses ou de taille importante, un groupe resserré susceptibles d’être mobilisés pour des parrainages.",
+      "all": [
+        "occupation.artisan_merchant_owner",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers David Lisnard",
+        "Disposition à parrainer un candidat",
+        "Participation électorale passée"
+      ],
+      "count": 3825,
+      "distinctCommunes": 95,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,56 +81,27 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Employés et ouvriers de 35 à 64 ans en communes intermédiaires",
-      "mechanism": "Ces salariés modestes, figurant parmi les 200 premiers parrainages revendiqués, sont directement concernés par les débats politiques autour de la présidentielle 2027 et la difficulté à recueillir 500 signatures.",
-      "reason": "Segment ciblant des actifs dans des communes intermédiaires, catégorie socio-professionnelle souvent sollicitée dans les campagnes de parrainages.",
-      "all": [
-        "geo.intermediate"
-      ],
-      "any": [
-        "occupation.employee",
-        "occupation.worker"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "result.vote_intention",
-        "exposure.news_following",
-        "mechanism.parrainage_attention"
-      ],
-      "count": 1040,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [
-        "Lacune « age » ignorée : cet attribut existe déjà dans les tags"
-      ],
-      "counterfactual": {
-        "intervention": "David Lisnard assure avoir déjà recueilli 500 promesses de parrainages en vue de la présidentielle de 2027",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
       "id": "segment_3",
-      "name": "Jeunes diplômés des villes de 25 à 34 ans",
-      "mechanism": "Les jeunes diplômés urbains sont concernés par l'annonce des promesses de parrainages pour 2027, car cette tranche d'âge et catégorie socio-éducative est souvent engagée ou exposée à l'enjeu électoral en milieu urbain.",
-      "reason": "Regroupe un public jeune, diplômé et urbain, dont la participation politique peut être impactée par le contexte présidentiel.",
+      "name": "Jeunes familles en communes intermédiaires à denses",
+      "mechanism": "David Lisnard pourrait chercher à s’appuyer sur de jeunes familles, couples avec enfants dans des communes de densité intermédiaire à denses, constituant une base électorale familiale pour recueillir des parrainages en vue de 2027.",
+      "reason": "Segment représentatif des familles avec enfants, d’âge moyen 25-49 ans, dans des espaces plus urbanisés où la mobilisation électorale est clés.",
       "all": [
-        "cluster.young_urban_graduate"
-      ],
-      "any": [
+        "household.couple_with_children",
         "age.25_34"
       ],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "result.vote_intention",
-        "exposure.social_media_usage",
-        "mechanism.campaign_engagement"
+        "Soutien à David Lisnard",
+        "Intention de vote présidentielle",
+        "Attitude envers la politique familiale"
       ],
-      "count": 9916,
-      "distinctCommunes": 72,
+      "count": 8361,
+      "distinctCommunes": 96,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -112,147 +120,6 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Cadres urbains en communes très denses",
-      "matchedCount": 10635,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne connais pas trop ce Lisnard, et ces histoires de parrainages me paraissent assez techniques et un peu déconnectées de la réalité qui me préoccupe à Béziers.",
-        "Lisnard, franchement, je ne le vois pas comme un vrai candidat utile pour Marseille. Ce genre d'annonce ne me fait ni chaud ni froid, c'est trop politique et loin de mes préoccupations du quotidien.",
-        "Ce Lisnard qui parle de parrainages, c’est trop administratif pour moi. Je fais plus attention à ce que proposent les candidats sur la culture et la société que ces petites joutes techniques."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes diplômés des villes de 25 à 34 ans",
-      "matchedCount": 9916,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne connais pas bien Lisnard, ça me parle assez peu, surtout qu'ici j'écoute plutôt Mélenchon ou les écologistes. Que quelqu'un ait déjà 500 parrainages ne change pas grand-chose à ce que je pense, je reste concentré sur ce qui me semble plus proche de mes valeurs.",
-        "Lisnard ? Je n’y prête pas vraiment attention, là où j’habite c’est plutôt Le Pen qui fait parler. Ça ne me motive pas à changer de vote, honnêtement je trouve ça un peu trop technique pour que ça ait un impact direct pour moi.",
-        "Je ne suivrais pas trop les tractations sur les signatures, ce n’est pas ce qui me fait décider. Ce genre de nouvelle sur Lisnard m’indiffère un peu, je reste plus attentive aux programmes et aux idées."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Employés et ouvriers de 35 à 64 ans en communes intermédiaires",
-      "matchedCount": 1040,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne connais pas trop ce David Lisnard, ça ne change pas grand-chose pour moi ni pour notre quotidien à Bezannes.",
-        "David Lisnard, c'est pas un nom que j'entends beaucoup, ça me parle pas. Je reste centré sur mes idées, ça ne modifie pas mon vote.",
-        "Je comprends qu'il faille beaucoup de parrainages pour la présidentielle, mais ça ne me touche pas dans ma vie quotidienne à Amilly."
-      ]
-    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -295,17 +162,156 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Les parrainages, ce système compliqué, ça ne me parle pas trop. Je préfère suivre ce qui se passe dans ma commune et les sujets concrets.",
-        "Je m'en fiche un peu, ce genre d'annonce sur les parrainages ne change rien à mon vote. Je reste fidèle à ceux que je soutiens habituellement.",
-        "Je trouve que ces histoires de parrainages et de procédures compliquées n'ont pas grand impact sur la vraie politique. Ça ne me fait pas changer d'avis."
+        "Je trouve rassurant qu'un candidat comme David Lisnard, à droite, montre de la force en obtenant déjà beaucoup de parrainages. Cela me conforte dans mes convictions pour une droite ferme mais responsable.",
+        "Je suis un peu fier qu'un candidat de la droite classique commence à avoir des soutiens solides, ça montre qu'on peut avoir un futur contre l'extrême droite.",
+        "Franchement, ce genre d'annonce sur les parrainages, ça me passe un peu au-dessus, je ne vois pas trop d'impact direct sur moi ou sur ce que je veux voter."
+      ]
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes familles en communes intermédiaires à denses",
+      "matchedCount": 8361,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne connais pas trop David Lisnard, ça ne change rien à mon vote, le plus important c'est ce qu'il propose réellement, pas son nombre de signatures.",
+        "Savoir que Lisnard a 500 promesses de parrainages ne me fait pas changer d'avis, ce n'est pas un nom qui m'inspire pour la présidentielle.",
+        "Lisnard ou pas, ça n'a pas d'impact sur ma décision, je vote plutôt en fonction du terrain et de ce que ça m'apporte."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Indépendants urbains dans les grandes communes",
+      "matchedCount": 3825,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne connais pas trop ce David Lisnard, mais ce genre d'annonce ne change rien à ma manière de penser. Ce n'est pas mon sujet principal, alors ça m'intéresse peu.",
+        "Lisnard, c'est encore un politique local qui essaie de se faire une place. Que ce soit 500 ou 300 signatures, ça ne change pas grand-chose à ce que je pense ni à mon vote.",
+        "Je ne suis pas certain que cette histoire de parrainages Lisnard m'intéresse. Cela ne fait pas partie de mes critères pour voter, donc ça ne me touchera pas."
+      ]
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Cadres urbains d’âge moyen et seniors en communes denses",
+      "matchedCount": 2838,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cela ne me fait ni chaud ni froid, je ne suis pas vraiment intéressée par ces parrainages, ça semble loin de mes préoccupations culturelles et locales.",
+        "Je vois bien que Lisnard avance, mais 500 promesses ça reste quand même très en deçà des gros candidats. Je reste un peu sceptique sur sa candidature.",
+        "Je ne suis pas vraiment concernée par ces détails de parrainages, ça ne change rien à mon vote habituel."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:25.239Z",
-    "contentHash": "dbb25fc5010e66d6201de9baea957311076eb662e7d561d870d3635572be1de2"
+    "status": "automatic",
+    "contentHash": "2c72278dbeaee0fea2d0ea05675cf78276328f3aee9fde240c20bfe538baea21"
   }
 }

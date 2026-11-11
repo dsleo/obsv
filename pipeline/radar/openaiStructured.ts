@@ -52,7 +52,8 @@ function getClient() {
 }
 
 // Dated snapshot: the analysis artifacts record it, and check-analyses rejects other models.
-export const PINNED_MODEL = "gpt-4.1-mini-2025-04-14";
+export { PINNED_ANALYSIS_MODEL as PINNED_MODEL } from "../../src/lib/radar/analysisPolicy";
+import { PINNED_ANALYSIS_MODEL as PINNED_MODEL } from "../../src/lib/radar/analysisPolicy";
 
 function getModel() {
   return process.env.OPENAI_MODEL || PINNED_MODEL;

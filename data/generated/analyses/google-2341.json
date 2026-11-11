@@ -4,36 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "9adaca0ed84d654a",
-  "computedAt": "2026-11-09T20:40:35.846Z",
+  "inputHash": "a0fcb26d8026dc1a",
+  "eventInputHash": "0fb5880474add48f813b411d9b052a7930ebba38add5e2287093e529f5067b3a",
+  "computedAt": "2026-11-11T13:14:18.394Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Au lieu de vouloir reporter la prise de fonctions du futur président à septembre pour des raisons personnelles, Édouard Philippe propose un report exceptionnel au 15 juillet afin de permettre une meilleure transition et consultation avec les acteurs économiques face à une conjoncture tendue.",
-    "whatChanges": "Le report est justifié par des raisons économiques plutôt que personnelles, ce qui peut apparaître plus sérieux aux yeux des électeurs et calmer les critiques sur un prétendu désir de \"se reposer\"."
+    "description": "En 2027, Édouard Philippe annonce au contraire vouloir avancer la prise de fonction du futur président à juillet au lieu de septembre, invoquant la nécessité de réagir rapidement aux défis économiques et sociaux.",
+    "whatChanges": "L'anticipation de la prise de fonction modifie la perception des électeurs quant à la réactivité et l'engagement du pouvoir exécutif face aux enjeux immédiats, impactant notamment les électeurs préoccupés par la situation économique."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Actifs cadres urbains d’âge moyen",
-      "mechanism": "Ce segment comprend les cadres et professions intellectuelles supérieures vivant en commune dense, d’âge 35 à 49 ans, concernés par la proposition concernant le report de la prise de fonction du futur président à septembre, susceptible d'impacter leur organisation professionnelle et leurs attentes en matière de gouvernance stable.",
-      "reason": "Les cadres urbains d’âge moyen constituent un public professionnellement engagé et sensible aux changements du calendrier politique affectant l’exercice du pouvoir. Leur vie professionnelle dans des communes denses les rend particulièrement concernés par la stabilité politique effective à partir de mai.",
+      "name": "Personnes actives vivant dans des communes denses âgées de 25 à 49 ans",
+      "mechanism": "Ce segment regroupe les personnes actives majeures dans une tranche d'âge 25-49 ans vivant en communes denses, population concernée par les débats autour du report de la prise de fonction présidentielle en raison de leur engagement dans le temps politique et social urbain.",
+      "reason": "Ces adultes en activité dans des zones urbaines denses sont vraisemblablement concernés ou affectés par la temporalité politique, notamment un éventuel report de prise de fonction présidentiel.",
       "all": [
-        "age.35_49",
-        "occupation.executive_professional",
-        "geo.dense"
+        "geo.dense",
+        "age.25_34"
       ],
-      "any": [],
+      "any": [
+        "occupation.employee",
+        "occupation.intermediate",
+        "occupation.executive_professional"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "mécanisme d'exposition",
-        "comprendre l’opinion sur le report de prise de fonction"
+        "Perception du report de la prise de fonction présidentielle",
+        "Connaissance des raisons du report",
+        "Opinion sur Édouard Philippe"
       ],
-      "count": 4569,
+      "count": 12890,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -45,29 +50,28 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles avec enfants en commune dense",
-      "mechanism": "Les couples avec enfants âgés de 25 à 49 ans en communes denses forment un public familial directement concerné par la durée de transition et les effets concrets du report de prise de fonction du président envisagé par Édouard Philippe, qui pourrait affecter leur sentiment de continuité politique et organisation familiale.",
-      "reason": "Ce segment rassemble des ménages familiaux actifs avec enfants, vivant en milieu urbain, susceptibles d’être attentifs aux débats politiques influençant la continuité des institutions et leur impact sur les services publics qui les concernent.",
+      "name": "Retraités en couple résidant dans des communes rurales ou intermédiaires",
+      "mechanism": "Les retraités vivant en couple dans des communes rurales ou à densité intermédiaire sont concernés par la polémique autour du report de prise de fonction présidentielle à cause de leur intérêt pour la stabilité politique et leur exposition aux discours locaux sur le sujet.",
+      "reason": "Ce segment inclut des retraités en couple dans des zones rurales ou intermédiaires qui suivent l'actualité politique, dont l'annonce de report de prise de fonction présidentielle peut affecter leur confiance dans les institutions.",
       "all": [
-        "household.couple_with_children",
-        "geo.dense"
+        "occupation.retired",
+        "household.couple_no_children"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49"
+        "geo.rural",
+        "geo.intermediate"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "attitude envers la prolongation du mandat sortant",
-        "impact perçu sur la vie familiale"
+        "Opinion sur la stabilité politique",
+        "Réactions au report de la prise de fonction présidentielle",
+        "Confiance envers Édouard Philippe"
       ],
-      "count": 25109,
-      "distinctCommunes": 72,
+      "count": 1051,
+      "distinctCommunes": 98,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "2027 : Édouard Philippe accusé de vouloir reporter la prise de fonction du futur président à septembre pour \"se reposer\", qu'en est-il",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -76,22 +80,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Retraités vivant en commune rurale",
-      "mechanism": "Les retraités résidant en zones rurales sont concernés par les débats sur le report de la prise de fonction présidentielle, car leur rapport au temps politique, la stabilité institutionnelle et les services publics locaux peuvent être différents, rendant sensibles aux justifications d’un report évoquant la nécessité de \"se reposer\" ou de préparer la transition.",
-      "reason": "Ce segment regroupe des personnes retraitées dans des zones rurales, souvent plus attachées à la continuité institutionnelle et aux échéances officielles, donc directement sensibles à tout report ressenti comme une rupture ou un ralentissement politique.",
+      "name": "Jeunes diplômés urbains de moins de 35 ans concernés par les débats politiques",
+      "mechanism": "Jeunes urbains diplômés du supérieur moins de 35 ans, plus sensibles aux débats politiques sur la transition et la gouvernance présidentielle, partie prenante des controverses autour du report de la prise de fonction présidentielle pour 'se reposer'.",
+      "reason": "Cette population jeune et diplômée vivant en milieu urbain dense est susceptible d’être informée et réactive à une polémique politique concernant un acteur de premier plan comme Édouard Philippe.",
       "all": [
-        "occupation.retired",
-        "geo.rural"
+        "cluster.young_urban_graduate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "perception du rôle du président sortant",
-        "attitude envers le report"
+        "Notoriété d'Édouard Philippe",
+        "Opinion sur le report de la prise de fonction",
+        "Intérêt pour la vie politique nationale"
       ],
-      "count": 784,
-      "distinctCommunes": 91,
+      "count": 11394,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -110,10 +114,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes familles avec enfants en commune dense",
-      "matchedCount": 25109,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans concernés par les débats politiques",
+      "matchedCount": 11394,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -130,8 +134,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 6,
+          "noClearChange": 42
         },
         "right": {
           "toward": 0,
@@ -139,28 +143,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 2,
-          "noClearChange": 45
+          "noClearChange": 46
         },
         "abstention": {
-          "toward": 5,
-          "away": 1,
-          "noClearChange": 42
+          "toward": 9,
+          "away": 0,
+          "noClearChange": 39
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, reporter l'investiture pour que Philippe \"se repose\" me semble indécent, surtout quand on bosse dur comme moi. Ça me donne plutôt envie de m'éloigner de ces jeux politiques.",
-        "Ce genre de report pour des raisons personnelles ne m'intéresse pas trop, je préfère de loin une prise de fonction claire et rapide pour la continuité du pays.",
-        "Reporter l'investiture jusqu'en septembre pour que Philippe se repose ? Ça ne me parle pas, je trouve ça un peu déplacé, je vais plutôt rester sur mes idées habituelles."
+        "C'est un peu n'importe quoi, ce genre d'histoire ne change pas vraiment ma vie ou mon vote.",
+        "Un report pour \"se reposer\" ? Ça ne me tranche pas franchement. Ce que je veux, c'est de l'efficacité, peu importe quand ça commence.",
+        "Avancer la prise de fonction pour agir vite, ça me paraît plutôt sensé, je préfère ça plutôt qu’un report pour se reposer."
       ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Retraités vivant en commune rurale",
-      "matchedCount": 784,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités en couple résidant dans des communes rurales ou intermédiaires",
+      "matchedCount": 1051,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -177,8 +181,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 10,
-          "noClearChange": 38
+          "away": 5,
+          "noClearChange": 43
         },
         "right": {
           "toward": 0,
@@ -186,28 +190,75 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 4,
-          "away": 0,
+          "toward": 3,
+          "away": 1,
           "noClearChange": 44
         },
         "abstention": {
-          "toward": 12,
+          "toward": 11,
           "away": 0,
-          "noClearChange": 36
+          "noClearChange": 37
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça un peu indécent comme excuse. Le président doit prendre ses fonctions à temps, ce n’est pas question de se reposer sur le dos des Français.",
-        "C’est bizarre, ça ne me plaît pas ce genre d’hésitation. Le président doit commencer son mandat au moment prévu, c’est une question de sérieux.",
-        "Reporter la prise de fonctions juste pour se reposer ? Ça ne me semble pas responsable, ça me dérange un peu."
+        "Ça ne me surprend pas trop qu'un politicien veuille repousser sa prise de poste pour se reposer. On dirait que certains pensent d'abord à eux-même plutôt qu'à la France.",
+        "Je trouve ça assez maladroit, ce genre de décision. J’espère que ça ne va pas déstabiliser le pays. Mais bon, ça ne change pas vraiment ma façon de penser.",
+        "Je préfère qu'on avance la prise de fonction s'il faut agir vite sur l'économie et la société. Reposer sur ses lauriers, ça ne me plaît pas du tout."
+      ]
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 11,
+          "away": 5,
+          "noClearChange": 80
+        },
+        "abstention": {
+          "toward": 13,
+          "away": 3,
+          "noClearChange": 80
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu déplacé, vouloir retarder une prise de fonction officielle juste pour \"se reposer\", ça me paraît irresponsable, surtout pour notre pays.",
+        "Honnêtement, reporter pour \"se reposer\" me semble un manque de sérieux, surtout quand on a une mission importante à venir. J'espère que ce genre de rumeurs n'affectera pas la politique à venir.",
+        "Ce n’est pas une nouvelle qui va vraiment changer ma façon de voir les choses. Que ce soit septembre ou juillet, ce qui compte c’est l’efficacité du président une fois en fonction."
       ]
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Actifs cadres urbains d’âge moyen",
-      "matchedCount": 4569,
+      "segmentName": "Personnes actives vivant dans des communes denses âgées de 25 à 49 ans",
+      "matchedCount": 12890,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -233,77 +284,28 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça un peu abusé comme accusation. Reporter la prise de fonction pour se \"reposer\" me paraît déconnecté de la réalité politique, surtout après une élection. Ça ne changera rien à mon vote.",
-        "Je suis sceptique sur l’idée de repousser la prise de fonction pour des raisons perso, ça me semble manquer de sérieux. Par contre, un report pour assurer une meilleure transition avec les acteurs économiques, ça me paraît plus justifié.",
-        "Je trouve ça ridicule d’imaginer un président qui attendrait pour \"se reposer\". La fonction est difficile, il faut au contraire un minimum de stabilité. Mais un report fait pour préparer une meilleure transition économique, ça a du sens."
-      ]
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
           "toward": 0,
           "away": 2,
-          "noClearChange": 94
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 8,
-          "away": 0,
-          "noClearChange": 88
+          "noClearChange": 46
         },
         "abstention": {
-          "toward": 10,
+          "toward": 8,
           "away": 0,
-          "noClearChange": 86
+          "noClearChange": 40
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça un peu ridicule de penser que le président ne peut pas commencer son mandat en mai. On a déjà assez de choses à gérer comme ça, pas besoin de retarder pour des raisons personnelles.",
-        "Reporter la prise de fonctions pour \"se reposer\" ? Franchement, ça me parait complètement irrespectueux envers le pays et ses citoyens.",
-        "Ce genre de polémique m'indiffère un peu, mais je préfère une prise de fonctions rapide. Par contre, un report pour une meilleure transition économique, ça pourrait être valable."
+        "Franchement, reporter la prise de fonction juste pour \"se reposer\" ça me paraît un peu léger et montre un manque de sérieux. Mais ça ne changera pas vraiment mon vote, je reste plutôt éloignée de la politique.",
+        "Je trouve ça un peu décalé, reporter la prise de fonction pour se reposer en pleine période de défi pour la France, ce n'est pas très responsable. Si au contraire il veut avancer la prise de fonction, je trouverais ça plus sérieux et engagé.",
+        "Reporter la prise de fonction du futur président, ça me paraît irresponsable, surtout dans un contexte économique compliqué. S’il veut avancer ça, je serais plus rassurée car on a besoin d’actions rapides."
       ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T07:38:36.794Z",
-    "contentHash": "bfd043c22190aa8dc9102176b0aa0a85cd7fee5c9a2e3a75e267282b51a4dfaf"
+    "status": "automatic",
+    "contentHash": "caba07ac7fd8ee8d2d83b357acd8603e276ce459f003bddb4386d85f5c4c962d"
   }
 }

@@ -4,36 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "1df08686ce4610fd",
-  "computedAt": "2026-11-10T22:06:57.029Z",
+  "inputHash": "af45fd7c4814bcaf",
+  "eventInputHash": "6f83c06c8913798dbe23b1ecce73499165cbf72f1498c1bc695e19352e9a44ee",
+  "computedAt": "2026-11-11T13:04:55.207Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le procureur général des Emirats arabes unis affirme que le copilote du vol FlyDubai a agi dans un état psychologique perturbé sans lien avec un acte terroriste.",
-    "whatChanges": "L'accusation de terrorisme est remplacée par un trouble psychologique, ce qui pourrait réduire la stigmatisation et l'impact politique liée à la menace terroriste auprès de l'opinion publique."
+    "description": "L'enquête émiratie révèle que le copilote planifiait un acte de sabotage personnel motivé par des troubles psychologiques, sans lien avec un acte terroriste.",
+    "whatChanges": "La nature de la menace perçue change, réduisant les inquiétudes du public et des électeurs sur le terrorisme, tout en focalisant le débat sur la santé mentale des personnels de vol."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Adultes actifs employés et ouvriers de 35 à 64 ans vivant en communes denses",
-      "mechanism": "Ce segment regroupe les actifs employés et ouvriers dans des communes à forte densité de population, susceptibles d'être concernés par la question de la sécurité aérienne et la menace terroriste dans la vie quotidienne, via leur attention aux sujets d'actualité liés à la sécurité qui peuvent toucher aussi l'économie.",
-      "reason": "Employés et ouvriers de zones urbaines densément peuplées constituent une catégorie socioprofessionnelle exposée aux enjeux de sécurité dans les transports et plus largement à la menace terroriste.",
+      "name": "Jeunes urbains diplômés d’au moins bac+3",
+      "mechanism": "Le copilote planifiant un acte terroriste sur le vol Flydubai concerne particulièrement les jeunes diplômés urbains sensibles aux questions de sécurité et d'intégration dans les grandes villes.",
+      "reason": "Ce segment est composé de jeunes urbains diplômés d’au moins bac+3, groupe souvent concerné par les débats sécuritaires post-événement terroriste en zone urbaine dense.",
       "all": [
-        "occupation.employee",
+        "age.18_24",
+        "education.bac_plus_3_4",
         "geo.dense"
       ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11192,
-      "distinctCommunes": 72,
+      "measurementNeeds": [
+        "Attitude envers la sécurité dans les transports aériens",
+        "Perception du terrorisme",
+        "Confiance dans les autorités de sécurité"
+      ],
+      "count": 1070,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,17 +47,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "Ce groupe rassemble les jeunes diplômés des villes, qui ont une bonne éducation et sont généralement bien informés, pouvant être sensibilisés aux questions de terrorisme et sécurité internationale à la suite des révélations sur le vol Flydubai.",
-      "reason": "Les jeunes diplômés urbains sont une population probablement attentive à l’actualité internationale et susceptible de se forger des opinions sur les comportements des acteurs liés à un acte terroriste planifié.",
+      "name": "Jeunes actifs employés ou ouvriers en commune dense",
+      "mechanism": "Ce segment rassemble les jeunes de 18 à 24 ans qui sont employés ou ouvriers en milieu urbain dense, une population sensible aux enjeux de sécurité et aux conséquences d’un acte terroriste sur les transports aériens.",
+      "reason": "Segment resserré pour réduire l'effectif sous le maximum autorisé.",
       "all": [
-        "cluster.young_urban_graduate"
+        "age.18_24",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 11394,
+      "measurementNeeds": [
+        "Niveau de préoccupation sur la sécurité dans les transports",
+        "Attitude envers les mesures antiterroristes"
+      ],
+      "count": 4508,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -66,19 +76,51 @@
     },
     {
       "id": "segment_3",
-      "name": "Seniors vivant seuls âgés de 75 ans et plus",
-      "mechanism": "Ce segment cible les personnes âgées vivant seules, âgées de 75 ans et plus, potentiellement plus vulnérables et attentives aux questions de sécurité publique et terrorisme qui peuvent affecter leur sentiment de sécurité personnelle au quotidien.",
-      "reason": "Les seniors isolés sont un public sensible à la sécurité extérieure, notamment en cas d’événements hors du commun comme une menace terroriste avérée dans un vol commercial.",
+      "name": "Femmes célibataires âgées de 25 à 34 ans en commune dense",
+      "mechanism": "Ce groupe inclut les femmes jeunes célibataires vivant en milieu urbain dense, susceptibles de réagir aux nouvelles sur un copilote planifiant un acte terroriste, notamment en termes de peur et de sentiment d'insécurité dans les transports et les lieux publics.",
+      "reason": "Segment distinct et plus étroit en croisant âge, sexe, statut marital et densité pour respecter la taille et éviter le recouvrement.",
       "all": [
-        "age.75_plus",
-        "household.single"
+        "age.25_34",
+        "sex.female",
+        "marital.single",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 5405,
-      "distinctCommunes": 145,
+      "measurementNeeds": [
+        "Sentiment d’insécurité",
+        "Impact des événements terroristes sur la mobilité"
+      ],
+      "count": 3911,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Vol Flydubai : l'enquête émiratie établit que le copilote planifiait un \"acte terroriste\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Cadres urbains de 35 à 49 ans vivant en couple avec enfants",
+      "mechanism": "Les cadres urbains de 35 à 49 ans en couple avec enfants sont concernés par l'annonce d'un acte terroriste planifié par un copilote car ils utilisent fréquemment les transports aériens pour raisons professionnelles et familiales, ce qui influence leur perception des risques et leur soutien aux mesures sécuritaires.",
+      "reason": "Segment croisant catégorie socioprofessionnelle, âge et type de foyer pour un public spécifique et pertinent.",
+      "all": [
+        "age.35_49",
+        "cluster.urban_executive",
+        "household.couple_with_children"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception du risque dans les transports aériens",
+        "Soutien aux politiques antiterroristes"
+      ],
+      "count": 2878,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -97,10 +139,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Adultes actifs employés et ouvriers de 35 à 64 ans vivant en communes denses",
-      "matchedCount": 11192,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes célibataires âgées de 25 à 34 ans en commune dense",
+      "matchedCount": 3911,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -116,9 +158,9 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -126,74 +168,36 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 8,
+          "toward": 19,
           "away": 0,
-          "noClearChange": 40
+          "noClearChange": 29
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 2,
+          "away": 6,
+          "noClearChange": 40
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette histoire de copilote planifiant un acte terroriste me choque, mais je n'ai pas l'impression que ça changera quoi que ce soit à ma façon de voter.",
-        "Je trouve ce genre d'affaire inquiétante, ça me conforte dans mes craintes sur la sécurité. Je suis un peu plus tentée de soutenir les candidats qui promettent fermeté contre le terrorisme.",
-        "C'est dramatique, mais je ne me sens pas personnellement concernée, donc ça ne changera pas mon vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0018535871854993887,
-          "lo": -0.002783979504167394,
-          "hi": -0.0011132280313358872,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.002817566203597263,
-          "lo": -0.0033710452475874705,
-          "hi": -0.002211808987372031,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.005676033090200527,
-          "lo": -0.006717652548533915,
-          "hi": -0.004589712503691939,
-          "stable": false
-        },
-        "right": {
-          "mean": 0.000005784175245198847,
-          "lo": -0.001413860360794266,
-          "hi": 0.0014846221197998527,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.014095027986421387,
-          "lo": 0.011516215220499051,
-          "hi": 0.017078399281825554,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.0037536256823694127,
-          "lo": -0.00598868626597827,
-          "hi": -0.0013740872069076336,
-          "stable": false
-        }
-      }
+        "Franchement, chaque fois qu'on parle de terrorisme, j'ai peur, surtout en voyage. Mais tant que ça ne touche pas directement ma vie, ça ne change pas trop ce que je pense des élections.",
+        "Une histoire de terrorisme fait toujours peur, mais moi je préfère attendre les preuves avant de me faire une opinion. Si c'est un acte psychologique, ça change beaucoup la manière dont on voit les choses.",
+        "Ce genre d'affaire me fait réfléchir sur la santé mentale et la pression qu'on met parfois sur les gens. Un acte terroriste ou un sabotage psychologique, c'est dans tous les cas triste, mais ça ne change rien à mon vote."
+      ]
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Seniors vivant seuls âgés de 75 ans et plus",
-      "matchedCount": 5405,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Cadres urbains de 35 à 49 ans vivant en couple avec enfants",
+      "matchedCount": 2878,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -202,8 +206,55 @@
         },
         "center": {
           "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 13,
+          "away": 0,
+          "noClearChange": 35
+        },
+        "abstention": {
+          "toward": 1,
           "away": 2,
-          "noClearChange": 46
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est inquiétant de voir qu'un copilote pouvait préparer un acte terroriste, ça renforce ma méfiance envers la sécurité aérienne.",
+        "Un acte terroriste organisé par un copilote ? Ça justifie une vigilance accrue, mais j’espère que c’est pas une raison pour stigmatiser certaines communautés.",
+        "Une tentative d'acte terroriste de la part d'un copilote, c’est grave. Je me sens un peu inquiété pour la sécurité des transports."
+      ]
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes actifs employés ou ouvriers en commune dense",
+      "matchedCount": 4508,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 1,
@@ -211,66 +262,28 @@
           "noClearChange": 47
         },
         "far_right": {
-          "toward": 18,
+          "toward": 13,
           "away": 0,
-          "noClearChange": 30
+          "noClearChange": 35
         },
         "abstention": {
-          "toward": 2,
-          "away": 0,
+          "toward": 0,
+          "away": 2,
           "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis bouleversée par ce genre de nouvelles, ça me fait peur de penser à un pilote qui complote un acte terroriste.",
-        "Cela me choque, mais aussi ça ne change pas vraiment mon vote. J'espère juste que la justice fera bien son travail.",
-        "Je me méfie toujours de ce genre d'incidents, mais ça ne touche pas vraiment ma façon de voter."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.004698354260122051,
-          "lo": -0.006057053565032371,
-          "hi": -0.003515408997572382,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.006374425168791435,
-          "lo": -0.007937801521988344,
-          "hi": -0.004798301135472968,
-          "stable": true
-        },
-        "center": {
-          "mean": -0.008076763211435668,
-          "lo": -0.01042837383631598,
-          "hi": -0.006047672209707648,
-          "stable": true
-        },
-        "right": {
-          "mean": 0.001030786395946088,
-          "lo": -0.0010237371668110082,
-          "hi": 0.003398182882317495,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.020549679068702517,
-          "lo": 0.016950852128170577,
-          "hi": 0.025131379415245902,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.00243092282429944,
-          "lo": -0.005140462102682881,
-          "hi": -0.0002371651829098185,
-          "stable": false
-        }
-      }
+        "C'est vraiment inquiétant, ce genre d'actes... Mais ça me semble loin de ma vie quotidienne, ça ne va pas trop changer mon vote.",
+        "C'est triste, mais je suis plus préoccupée par mes propres trucs. Si c'est vraiment un acte terroriste, ça me fait un peu plus peur et ça peut me pousser à voter plus à droite.",
+        "Un pilote qui complote un acte terroriste, c'est flippant, ça pourrait me faire réfléchir à la sécurité et la politique."
+      ]
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 11394,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes urbains diplômés d’au moins bac+3",
+      "matchedCount": 1070,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -287,8 +300,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -296,61 +309,23 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 5,
+          "toward": 16,
           "away": 0,
-          "noClearChange": 43
+          "noClearChange": 32
         },
         "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "toward": 1,
+          "away": 3,
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "J'ai du mal à croire que ce genre de drame ait un lien avec un acte terroriste, ça me fait un peu peur mais ça ne changera pas mon vote.",
-        "C'est triste cette affaire, mais je pense que c'est plus un problème de santé mentale qu'autre chose. Ça ne me fera pas changer d'avis politique.",
-        "Je trouve que c'est important que la vérité soit connue, mais cela n’influence pas vraiment mes intentions de vote."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0032843399299674458,
-          "lo": -0.004538663442833451,
-          "hi": -0.0021340896891751753,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.004870167888729286,
-          "lo": -0.006349598891297049,
-          "hi": -0.0035646551898076474,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.007418838074423635,
-          "lo": -0.008787908332138985,
-          "hi": -0.006153575877799199,
-          "stable": true
-        },
-        "right": {
-          "mean": -0.0009434512324277234,
-          "lo": -0.0024032614178891858,
-          "hi": 0.0003108155926058018,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.014662362356074094,
-          "lo": 0.01226345615024385,
-          "hi": 0.017405957915605626,
-          "stable": true
-        },
-        "abstention": {
-          "mean": 0.001854434769473989,
-          "lo": -0.0008034898636196091,
-          "hi": 0.00469739400011725,
-          "stable": false
-        }
-      }
+        "Je suis un peu inquiète mais ce genre de faits me fait surtout penser que la sécurité devrait être renforcée dans les transports, ça ne va pas forcément changer mon vote.",
+        "J'espère que ce genre d'affaires sera bien traitée, mais tout ça reste un peu loin de ma vie quotidienne, ça ne modifie pas vraiment mon vote.",
+        "Cette histoire est inquiétante, mais en tant qu'artisane à Paris, je me concentre plus sur les problèmes locaux et professionnels, donc mon choix ne change pas vraiment."
+      ]
     },
     "global_1": {
       "segmentId": "global_1",
@@ -372,8 +347,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 2,
+          "noClearChange": 94
         },
         "right": {
           "toward": 0,
@@ -381,68 +356,28 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 57,
+          "toward": 45,
           "away": 0,
-          "noClearChange": 39
+          "noClearChange": 51
         },
         "abstention": {
           "toward": 0,
-          "away": 16,
-          "noClearChange": 80
+          "away": 8,
+          "noClearChange": 88
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est inquiétant, mais cela me semble un peu loin de chez moi et de mes préoccupations quotidiennes. Je préfère me concentrer sur la vie de mon village.",
-        "Ce genre d’événement renforce ma méfiance vis-à-vis de certains groupes. La sécurité est importante, je vais peut-être renforcer mon vote pour l’extrême droite.",
-        "C'est choquant, mais aussi inquiétant que cela soit lié à un acte terroriste. Cela me fait craindre une atmosphère plus tendue dans le pays."
-      ],
-      "altEffect": {
-        "radical_left": {
-          "mean": -0.0027117756673449137,
-          "lo": -0.0034053240432080217,
-          "hi": -0.0020001189082125156,
-          "stable": false
-        },
-        "left": {
-          "mean": -0.0031114092962546366,
-          "lo": -0.003866134729327481,
-          "hi": -0.0023598257105612573,
-          "stable": false
-        },
-        "center": {
-          "mean": -0.006480334401296303,
-          "lo": -0.007997805062026722,
-          "hi": -0.005193819651310379,
-          "stable": false
-        },
-        "right": {
-          "mean": -0.002685078391011909,
-          "lo": -0.0037577724242066506,
-          "hi": -0.0017525867323311968,
-          "stable": false
-        },
-        "far_right": {
-          "mean": 0.02751201778194587,
-          "lo": 0.023985181118058353,
-          "hi": 0.031214988731526006,
-          "stable": true
-        },
-        "abstention": {
-          "mean": -0.012523420026038103,
-          "lo": -0.014699839681366372,
-          "hi": -0.010550651552644228,
-          "stable": true
-        }
-      }
+        "Je suis vraiment choquée d'apprendre qu'un copilote aurait pu vouloir commettre un acte terroriste, ça fait peur pour la sécurité dans les transports.",
+        "Si c’est un acte terroriste, ça me conforte dans l'idée qu'il faut être très vigilant face aux menaces extérieures, ça renforce ma méfiance envers certains groupes.",
+        "Je suis naturellement préoccupée par ce genre d'événements, mais ça ne change pas trop mon choix politique, je reste prudente face aux conclusions hâtives."
+      ]
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "approved",
-    "reviewer": "dev-bulk-approval (debug phase)",
-    "reviewedAt": "2026-11-10T22:11:55.428Z",
-    "contentHash": "8538b431a6602bc10cb2b1ac6034a452af156d229c173aae3b8049928a3f97f6"
+    "status": "automatic",
+    "contentHash": "a16d79565328f44df501b1d0803bace9f445f19a7a950ec7c96a9ac4033a27ef"
   }
 }
