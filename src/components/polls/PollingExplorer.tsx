@@ -246,7 +246,6 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
                           cx={x(point.day)}
                           cy={y(point.value)}
                           r="7"
-                          aria-label={`${candidate.name}, ${formatShortDate(dayToIso(point.day))}, ${formatPct(point.value)}`}
                           onPointerEnter={(pointerEvent) => revealPoint(candidate, point, pointerEvent.currentTarget)}
                           onPointerLeave={() => setHoveredPoint(null)}
                           onFocus={(focusEvent) => revealPoint(candidate, point, focusEvent.currentTarget)}
