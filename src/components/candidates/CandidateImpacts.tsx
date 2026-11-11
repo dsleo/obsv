@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { pct } from "../../lib/radar/labels";
+import { sitePath } from "../../lib/paths";
 
 export type ImpactRow = {
   id: string;
@@ -34,7 +35,7 @@ function List({ rows: all, kind }: { rows: ImpactRow[]; kind: "gain" | "loss" })
           return (
             <Link
               className="candidate-impact-row"
-              href={`/events/${r.id}`}
+              href={sitePath(`/events/${r.id}`)}
               key={r.id}
               title={r.title}
             >

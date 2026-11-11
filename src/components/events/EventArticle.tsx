@@ -8,6 +8,7 @@ import { diverseArticles } from "../../lib/radar/labels";
 import { EventSubpopulationAnalysis } from "./EventSubpopulationAnalysis";
 import { ArticleList } from "./ArticleList";
 import { NewsMasthead } from "./NewsMasthead";
+import { sitePath } from "../../lib/paths";
 import "./event-pages.css";
 export function EventArticle({
   event,
@@ -101,7 +102,7 @@ export function EventArticle({
           </div>
           <div className="article-related-grid">
             {recommended.map((e) => (
-              <Link href={`/events/${e.id}`} key={e.id}>
+              <Link href={sitePath(`/events/${e.id}`)} key={e.id}>
                 <span>{e.tag}</span>
                 <strong>{e.title}</strong>
                 <ArrowUpRight size={15} />

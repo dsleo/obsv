@@ -8,6 +8,7 @@ import {
   pollCandidates,
 } from "../../data/radarData";
 import { currentPollValue, formatPct, getSmoothedPollValue } from "../../lib/chart";
+import { sitePath } from "../../lib/paths";
 import { NewsMasthead } from "../events/NewsMasthead";
 import "../events/event-pages.css";
 import "./candidates.css";
@@ -42,7 +43,7 @@ export function CandidatesIndex() {
             const change = current !== null && first !== null ? current - first : null;
             return (
               <Link
-                href={`/candidates/${candidate.id}`}
+                href={sitePath(`/candidates/${candidate.id}`)}
                 className="candidate-roster-row"
                 key={candidate.id}
               >

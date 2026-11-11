@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { pollCandidates } from "../../data/chartData";
+import { sitePath } from "../../lib/paths";
 export type GridEvent = {
   id: string;
   title: string;
@@ -151,7 +152,7 @@ export function EventGrid({ events }: { events: GridEvent[] }) {
       </div>
       <section className="news-event-grid" aria-label="Résultats de l’archive">
         {rows.slice(0, filters.page * PAGE).map((e) => (
-          <Link href={`/events/${e.id}`} className="news-story-card" key={e.id}>
+          <Link href={sitePath(`/events/${e.id}`)} className="news-story-card" key={e.id}>
             {e.imageUrl && <StoryImage event={e} />}
             <div className="news-story-card-copy">
               <div className="news-story-meta">

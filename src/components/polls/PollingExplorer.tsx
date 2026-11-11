@@ -13,6 +13,7 @@ import {
   type CandidateId,
 } from "../../data/chartData";
 import { formatPct, getSmoothedPollValue } from "../../lib/chart";
+import { sitePath } from "../../lib/paths";
 import "./polls.css";
 
 const DASHES = ["", "8 3", "3 3", "10 3 2 3", "1 3", "12 4"];
@@ -178,7 +179,7 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
             {chartEvents.map((event, index) => (
               <a
                 key={event.id}
-                href={`/events/${event.id}`}
+                href={sitePath(`/events/${event.id}`)}
                 className="poll-event-marker"
                 aria-label={event.title}
                 onPointerEnter={(pointerEvent) => revealEvent(event, pointerEvent.currentTarget)}

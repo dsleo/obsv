@@ -2,6 +2,7 @@ import Link from "next/link";
 import { radarEvents } from "../../data/radarData";
 import { EventGrid, StoryImage } from "./EventGrid";
 import { NewsMasthead } from "./NewsMasthead";
+import { sitePath } from "../../lib/paths";
 import "./event-pages.css";
 export function EventsIndex() {
   const lead = radarEvents[0];
@@ -24,7 +25,7 @@ export function EventsIndex() {
           >
             {lead.imageUrl && (
               <Link
-                href={`/events/${lead.id}`}
+                href={sitePath(`/events/${lead.id}`)}
                 className="news-lead-image-link"
                 aria-label={lead.title}
               >
@@ -36,7 +37,7 @@ export function EventsIndex() {
                 <span>{lead.tag}</span>
                 <time dateTime={lead.isoDate}>{lead.date}</time>
               </div>
-              <Link href={`/events/${lead.id}`} className="news-story-link">
+              <Link href={sitePath(`/events/${lead.id}`)} className="news-story-link">
                 <h2 id="lead-story-heading">{lead.title}</h2>
               </Link>
               {lead.summaryKind !== "coverage" && <p>{lead.summary}</p>}

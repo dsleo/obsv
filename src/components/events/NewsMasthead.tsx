@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BrandMark } from "../BrandMark";
+import { sitePath } from "../../lib/paths";
 
 export function NewsMasthead({ section }: { section: string }) {
   return (
@@ -14,21 +15,21 @@ export function NewsMasthead({ section }: { section: string }) {
 
         <nav className="news-nav" aria-label="Rubriques">
           <Link
-            href="/"
+            href={sitePath("/")}
             className={section === "ACCUEIL" ? "active" : undefined}
             aria-current={section === "ACCUEIL" ? "page" : undefined}
           >
             Le radar
           </Link>
           <Link
-            href="/events"
+            href={sitePath("/events")}
             className={section === "ÉVÉNEMENTS" || section === "ÉVÉNEMENT" ? "active" : undefined}
             aria-current={section === "ÉVÉNEMENTS" ? "page" : undefined}
           >
             Événements
           </Link>
           <Link
-            href="/candidates"
+            href={sitePath("/candidates")}
             className={section === "CANDIDATS" ? "active" : undefined}
             aria-current={section === "CANDIDATS" ? "page" : undefined}
           >

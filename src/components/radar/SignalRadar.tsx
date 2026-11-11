@@ -6,6 +6,7 @@ import { BrandMark } from "../BrandMark";
 import { OverflowFilters } from "../OverflowFilters";
 import { PollingExplorer } from "../polls/PollingExplorer";
 import { chartEvents, eventFilters, type EventFilter } from "../../data/chartData";
+import { sitePath } from "../../lib/paths";
 import "./radar.css";
 export function SignalRadar() {
   const [filter, setFilter] = useState("all");
@@ -64,7 +65,7 @@ export function SignalRadar() {
         />
         <div className="feed-list">
           {events.map((e) => (
-            <Link key={e.id} href={`/events/${e.id}`} className="feed-item">
+            <Link key={e.id} href={sitePath(`/events/${e.id}`)} className="feed-item">
               <time className="feed-date" dateTime={e.isoDate}>
                 {e.shortDate}
                 <small>{e.isoDate.slice(0, 4)}</small>
