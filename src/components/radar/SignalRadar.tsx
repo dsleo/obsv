@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChevronRight, Minus, Orbit, Plus } from "lucide-react";
+import { ChevronRight, Minus, Plus } from "lucide-react";
+import { BrandMark } from "../BrandMark";
+import { OverflowFilters } from "../OverflowFilters";
 import { useMemo, useState } from "react";
 import { pollCandidates, pollObservations, chartEvents, eventFilters, LAST_POLL_DAY, POLL_DAYS, pollWindowLabel, type EventFilter, type PollObservation, type RadarEvent } from "../../data/radarData";
 import { AXIS_DAYS, axisLabel, createScale, getSmoothedPollValue, pollDateLong, trendPath, Y_TICKS } from "../../lib/chart";
 import { ScrollChart } from "../ScrollChart";
-import { MethodExplainer } from "./MethodExplainer";
 import "./radar.css";
 
 type FilterKey = "all" | EventFilter;
@@ -121,7 +122,7 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
         <small>{hoveredLine.candidate.party}</small>
       </div>}
       {hoveredEvent && <div className="radar-poll-tooltip" style={{ left: hoveredEvent.x, top: hoveredEvent.y }} aria-hidden="true">
-        <span>{hoveredEvent.event.tag} · {hoveredEvent.event.date}</span>
+        <span>{[hoveredEvent.event.tag, hoveredEvent.event.date].filter(Boolean).join(" · ")}</span>
         <strong>{hoveredEvent.event.title}</strong>
         <small>Cliquer pour ouvrir l’événement</small>
       </div>}
@@ -134,7 +135,7 @@ function RadarChart({ selectedId, onSelect, shown }: { selectedId: string; onSel
   );
 }
 
-export function SignalRadar({ publics = {} }: { publics?: Record<string, string> }) {
+export function SignalRadar() {
   const [selectedId, setSelectedId] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
   const [expanded, setExpanded] = useState(false);
@@ -146,9 +147,15 @@ export function SignalRadar({ publics = {} }: { publics?: Record<string, string>
   return (
     <main className="radar-page">
       <header className="radar-header">
-        <a className="radar-brand" href="#radar" aria-label="L’Observatoire, accueil"><span className="radar-brand-mark"><Orbit size={19} strokeWidth={1.7} /></span><span>L’OBSERVATOIRE</span></a>
-        <nav className="radar-nav" aria-label="Navigation principale"><a className="active" href="#radar">Le radar</a><Link href="/events">Événements</Link><Link href="/candidates">Candidats</Link></nav>
+        <Link className="radar-brand" href="/" aria-label="L’Observatoire, accueil"><span className="radar-brand-mark"><BrandMark /></span><span>L’Observatoire</span></Link>
+        <nav className="radar-nav" aria-label="Navigation principale"><Link className="active" href="/" aria-current="page">Le radar</Link><Link href="/events">Événements</Link><Link href="/candidates">Candidats</Link></nav>
       </header>
+
+      <section className="radar-motto" aria-labelledby="motto-title">
+        <span className="panel-kicker">NOTRE BOUSSOLE</span>
+        <h2 id="motto-title">Une seule question : que change l’actualité pour les Français ?</h2>
+        <p>Seul compte ce qui pèse sur le quotidien des Français. Pour chaque événement, nous repérons qui est touché, et vers quel candidat son vote peut basculer.</p>
+      </section>
 
       <section className="radar-workspace" id="radar">
         <div className="radar-chart-panel">
@@ -163,16 +170,14 @@ export function SignalRadar({ publics = {} }: { publics?: Record<string, string>
 
       <section className="radar-feed-section" id="events">
         <div className="feed-heading"><div><h2>Les événements qui <i>font bouger les lignes.</i></h2></div></div>
-        <div className="feed-filters" aria-label="Filtrer les événements">{(["all", ...Object.keys(eventFilters)] as FilterKey[]).map((filter) => <button key={filter} type="button" className={activeFilter === filter ? "active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{filter === "all" ? "Tous" : eventFilters[filter]}</button>)}</div>
+        <OverflowFilters className="feed-filters" label="Filtrer les événements" value={activeFilter} onChange={(key) => setActiveFilter(key as FilterKey)} items={[{ key: "all", label: "Tous" }, ...(Object.keys(eventFilters) as EventFilter[]).filter((k) => k !== "context").map((k) => ({ key: k, label: eventFilters[k] }))]} />
         <div className="feed-list" onMouseLeave={() => setSelectedId("")}>{visibleEvents.map((event) => <Link id={`feed-event-${event.id}`} key={event.id} href={`/events/${event.id}`} className={`feed-item ${selectedId === event.id ? "is-selected" : ""}`} onMouseEnter={() => setSelectedId(event.id)}>
           <time className="feed-date">{event.shortDate}<small>2026</small></time>
           <span className="feed-image" style={{ backgroundImage: event.image }}><span style={{ backgroundColor: event.color }} /></span>
-          <span className="feed-item-copy"><span className="feed-item-topline"><b>{event.tag}</b>{publics[event.id] ? <span>Public analysé : {publics[event.id]}</span> : null}</span><strong>{event.title}</strong><span className="feed-summary">{event.summary}</span></span>
+          <span className="feed-item-copy"><span className="feed-item-topline"><b>{event.tag}</b></span><strong>{event.title}</strong><span className="feed-summary">{event.summary}</span></span>
         </Link>)}</div>
         <div className="feed-footer"><Link href="/events">Tous les événements <ChevronRight size={14} /></Link></div>
       </section>
-
-      <MethodExplainer />
 
     </main>
   );

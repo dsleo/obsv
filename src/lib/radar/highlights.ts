@@ -7,23 +7,24 @@ export const blocLabels: Record<string, string> = {
 
 export type Signal = { bloc: string; label: string; direction: "toward" | "away"; count: number; sampled: number };
 
-/** The segment whose sampled personas react most (toward or away, any bloc). Pure: shared by server and client. */
-export function leadSegment(analysis: AnalysisArtifact | null) {
-  if (!analysis) return null;
-  let best: { segment: AnalysisArtifact["segments"][number]; contrast: AnalysisArtifact["contrasts"][string]; signals: Signal[] } | null = null;
-  let bestScore = -1;
-  for (const segment of analysis.segments) {
+export type RankedSegment = { segment: AnalysisArtifact["segments"][number]; contrast: AnalysisArtifact["contrasts"][string]; signals: Signal[] };
+
+/** Filterable segments ranked by their strongest directional reaction (toward or away, any bloc). Pure: shared by server and client. */
+export function rankedSegments(analysis: AnalysisArtifact | null): RankedSegment[] {
+  if (!analysis) return [];
+  return analysis.segments.flatMap((segment): RankedSegment[] => {
     const contrast = analysis.contrasts[segment.id];
-    if (!contrast || segment.status !== "filterable_discovery_sample") continue;
+    if (!contrast || segment.status !== "filterable_discovery_sample") return [];
     const signals = Object.entries(contrast.summary).flatMap(([bloc, v]): Signal[] => [
       { bloc, label: blocLabels[bloc] ?? bloc, direction: "toward", count: v.toward, sampled: contrast.sampledCount },
       { bloc, label: blocLabels[bloc] ?? bloc, direction: "away", count: v.away, sampled: contrast.sampledCount },
     ]).filter((s) => s.count > 0).sort((a, b) => b.count - a.count);
-    const score = signals[0]?.count ?? 0;
-    if (score > bestScore) { bestScore = score; best = { segment, contrast, signals }; }
-  }
-  return best;
+    return [{ segment, contrast, signals }];
+  }).sort((a, b) => (b.signals[0]?.count ?? 0) - (a.signals[0]?.count ?? 0));
 }
+
+/** The most impacted segment. */
+export const leadSegment = (analysis: AnalysisArtifact | null) => rankedSegments(analysis)[0] ?? null;
 
 /** Engine bloc of each candidate (the engine's own bloc definitions: LFI, social-democratic/green left, macronist centre, LR, RN and allies). */
 export const candidateBloc: Record<string, string> = {

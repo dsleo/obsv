@@ -1,23 +1,12 @@
 import Link from "next/link";
 import type { RadarEvent } from "../../data/radarData";
 import { radarEvents } from "../../data/radarData";
-import { leadSegment } from "../../lib/radar/highlights";
-import { loadAnalysis } from "../../lib/radar/loadAnalysis";
+import { EventGrid, StoryImage } from "./EventGrid";
 import { NewsMasthead } from "./NewsMasthead";
 import "./event-pages.css";
 
-function StoryImage({ event, featured = false }: { event: RadarEvent; featured?: boolean }) {
-  return (
-    <span className={`news-story-image ${featured ? "is-featured" : ""}`} style={{ backgroundImage: event.image }}>
-      <span className="news-story-image-mark" style={{ backgroundColor: event.color }} />
-      <span className="news-story-image-index">{event.date.slice(0, 2)}</span>
-    </span>
-  );
-}
-
 export function EventsIndex() {
   const [lead, ...secondary] = [...radarEvents].sort((a, b) => b.pollDay - a.pollDay);
-  const leadGroup = leadSegment(loadAnalysis(lead.id));
 
   return (
     <main className="news-page">
@@ -42,7 +31,6 @@ export function EventsIndex() {
               <h2 id="lead-story-heading">{lead.title}</h2>
             </Link>
             <p>{lead.summary}</p>
-            {leadGroup ? <div className="news-lead-footer"><span><b>{leadGroup.segment.count.toLocaleString("fr-FR")}</b> profils synthétiques</span><span>Public analysé : {leadGroup.segment.name}</span></div> : null}
           </div>
         </section>
 
@@ -50,18 +38,7 @@ export function EventsIndex() {
           <div><span className="news-kicker"><span /> DANS LES ARCHIVES</span><h2>À la une des événements</h2></div>
         </div>
 
-        <section className="news-event-grid" aria-label="Événements à la une">
-          {secondary.map((event, index) => (
-            <Link href={`/events/${event.id}`} className={`news-story-card ${index === 0 ? "is-offset" : ""}`} key={event.id}>
-              <StoryImage event={event} />
-              <div className="news-story-card-copy">
-                <div className="news-story-meta"><span>{event.tag}</span><time>{event.shortDate}</time></div>
-                <h3>{event.title}</h3>
-                <p>{event.summary}</p>
-              </div>
-            </Link>
-          ))}
-        </section>
+        <EventGrid events={secondary.map(({ id, title, summary, tag, shortDate, date, image, color }) => ({ id, title, summary, tag, shortDate, date, image, color }))} />
 
       </div>
     </main>

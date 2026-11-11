@@ -1,25 +1,22 @@
 import Link from "next/link";
-import { Orbit } from "lucide-react";
+import { BrandMark } from "../BrandMark";
 
 export function NewsMasthead({ section }: { section: string }) {
   return (
     <>
       <header className="news-masthead">
         <Link href="/" className="news-brand" aria-label="L’Observatoire, accueil">
-          <span className="news-brand-mark"><Orbit size={19} strokeWidth={1.7} /></span>
-          <span>L’OBSERVATOIRE</span>
+          <span className="news-brand-mark"><BrandMark /></span>
+          <span>L’Observatoire</span>
         </Link>
 
         <nav className="news-nav" aria-label="Rubriques">
-          <Link href="/" className={section === "ACCUEIL" ? "active" : undefined}>Le radar</Link>
-          <Link href="/events" className={section === "ÉVÉNEMENTS" || section === "ÉVÉNEMENT" ? "active" : undefined}>Événements</Link>
-          <Link href="/candidates" className={section === "CANDIDATS" ? "active" : undefined}>Candidats</Link>
+          <Link href="/" className={section === "ACCUEIL" ? "active" : undefined} aria-current={section === "ACCUEIL" ? "page" : undefined}>Le radar</Link>
+          <Link href="/events" className={section === "ÉVÉNEMENTS" || section === "ÉVÉNEMENT" ? "active" : undefined} aria-current={section === "ÉVÉNEMENTS" ? "page" : undefined}>Événements</Link>
+          <Link href="/candidates" className={section === "CANDIDATS" ? "active" : undefined} aria-current={section === "CANDIDATS" ? "page" : undefined}>Candidats</Link>
         </nav>
 
       </header>
-      <div className="news-section-rule">
-        <span>{section}</span>
-      </div>
     </>
   );
 }

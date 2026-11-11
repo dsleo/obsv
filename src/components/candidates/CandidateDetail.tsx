@@ -1,25 +1,14 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { dayToIso, FIRST_POLL_DAY, formatShortDate, LAST_POLL_DAY, pollCandidates, pollWindowLabel, radarEvents, type RadarEvent } from "../../data/radarData";
-import { blocLabels, blocSignal, candidateBloc } from "../../lib/radar/highlights";
+import { dayToIso, FIRST_POLL_DAY, formatShortDate, LAST_POLL_DAY, pollCandidates, pollWindowLabel, radarEvents } from "../../data/radarData";
+import { blocSignal, candidateBloc } from "../../lib/radar/highlights";
 import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import { formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { CandidateChart } from "./CandidateChart";
+import { CandidateImpacts, type ImpactRow } from "./CandidateImpacts";
 import { NewsMasthead } from "../events/NewsMasthead";
 import "../events/event-pages.css";
 import "./candidates.css";
-
-type Signal = { event: RadarEvent; toward: number; away: number; sampled: number };
-
-function ImpactList({ rows, kind }: { rows: Signal[]; kind: "gain" | "loss" }) {
-  return (
-    <div className="candidate-impact-list">
-      {rows.length ? rows.map(({ event, toward, away, sampled }) => <Link className="candidate-impact-row" href={`/events/${event.id}`} key={event.id}>
-        <time>{event.shortDate}</time><span><small>{event.tag}</small><strong>{event.title}</strong></span><b className={kind === "gain" ? "candidate-up" : "candidate-down"}>{kind === "gain" ? toward : away}/{sampled} <small>{kind === "gain" ? "vers" : "s’éloignent"}</small></b>
-      </Link>) : <p className="candidate-impact-empty">Aucun signal {kind === "gain" ? "de rapprochement" : "d’éloignement"} dans les analyses.</p>}
-    </div>
-  );
-}
 
 export function CandidateDetail({ candidateId }: { candidateId: string }) {
   const candidate = pollCandidates.find((entry) => entry.id === candidateId);
@@ -29,12 +18,10 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
   const current = getSmoothedPollValue(candidate.id, LAST_POLL_DAY);
   const netChange = current !== null && first !== null ? current - first : null;
   const bloc = candidateBloc[candidate.id];
-  const signals = radarEvents.flatMap((event): Signal[] => {
+  const rows = radarEvents.flatMap((event): ImpactRow[] => {
     const signal = blocSignal(loadAnalysis(event.id), bloc);
-    return signal ? [{ event, ...signal }] : [];
+    return signal ? [{ id: event.id, title: event.title, tag: event.tag, shortDate: event.shortDate, pollDay: event.pollDay, ...signal }] : [];
   });
-  const gains = signals.filter((s) => s.toward > s.away).sort((a, b) => (b.toward - b.away) - (a.toward - a.away));
-  const losses = signals.filter((s) => s.away > s.toward).sort((a, b) => (b.away - b.toward) - (a.away - a.toward));
 
   return (
     <main className="news-page candidate-page">
@@ -54,12 +41,8 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
         </section>
 
         <section className="candidate-impacts">
-          <div className="candidate-section-heading"><h2>Les événements qui ont compté</h2><span>Signaux de l’analyse · bloc {blocLabels[bloc]}</span></div>
-          <div className="candidate-impact-columns">
-            <section><h3>Progressions</h3><ImpactList rows={gains} kind="gain" /></section>
-            <section><h3>Reculs</h3><ImpactList rows={losses} kind="loss" /></section>
-          </div>
-          <p className="candidate-data-note">Nombre de profils synthétiques échantillonnés dont l’inclination va vers ce bloc ou s’en éloigne, par rapport au scénario comparé de chaque analyse. Ce n’est ni un sondage, ni une variation en points, ni un effet causal ; le bloc regroupe les candidats proches, pas un candidat seul.</p>
+          <CandidateImpacts rows={rows} />
+          <p className="candidate-data-note">Part des profils synthétiques dont l’intention de vote se rapproche de ce bloc (« plus enclins ») ou s’en éloigne (« moins enclins »), par rapport à un monde sans l’événement. Ce n’est ni un sondage ni un effet mesuré ; le bloc regroupe les candidats proches, pas un candidat seul.</p>
         </section>
       </article>
     </main>

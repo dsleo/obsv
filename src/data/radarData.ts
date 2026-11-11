@@ -1,4 +1,5 @@
 import snapshot from "../../data/generated/snapshot.json";
+import { relatedArticles } from "../lib/radar/labels";
 
 // Real first-round polls from the validated snapshot (`npm run data:collect && npm run data:prepare`).
 // The collector backfills from February 2026; the site only shows polls from SHOW_FROM onward.
@@ -25,18 +26,18 @@ export const pollWindowLabel = `${formatShortDate(POLL_START)} — ${formatShort
 // Candidates polled in the retained first-round scenario since September (data/candidates.json is the wider collection allow-list;
 // Bardella was the RN line only until June, so he is collected but not shown).
 export const pollCandidates = [
-  { id: "le-pen", name: "Marine Le Pen", short: "Le Pen", party: "RN", color: "#2b5a8c" },
-  { id: "philippe", name: "Édouard Philippe", short: "Philippe", party: "Horizons", color: "#577572" },
-  { id: "attal", name: "Gabriel Attal", short: "Attal", party: "Renaissance", color: "#e08a3c" },
-  { id: "glucksmann", name: "Raphaël Glucksmann", short: "Glucksmann", party: "Place publique", color: "#8e7b5e" },
-  { id: "melenchon", name: "Jean-Luc Mélenchon", short: "Mélenchon", party: "LFI", color: "#a95a56" },
-  { id: "tondelier", name: "Marine Tondelier", short: "Tondelier", party: "Les Écologistes", color: "#6aa36b" },
-  { id: "roussel", name: "Fabien Roussel", short: "Roussel", party: "PCF", color: "#c0392b" },
-  { id: "retailleau", name: "Bruno Retailleau", short: "Retailleau", party: "LR", color: "#9c8d6a" },
-  { id: "lisnard", name: "David Lisnard", short: "Lisnard", party: "LR", color: "#c9b458" },
-  { id: "zemmour", name: "Éric Zemmour", short: "Zemmour", party: "Reconquête", color: "#273033" },
-  { id: "dupont-aignan", name: "Nicolas Dupont-Aignan", short: "Dupont-Aignan", party: "DLF", color: "#5f6b8a" },
-  { id: "arthaud", name: "Nathalie Arthaud", short: "Arthaud", party: "LO", color: "#7a2e4f" },
+  { id: "le-pen", name: "Marine Le Pen", short: "Le Pen", party: "RN", color: "var(--cand-le-pen)" },
+  { id: "philippe", name: "Édouard Philippe", short: "Philippe", party: "Horizons", color: "var(--cand-philippe)" },
+  { id: "attal", name: "Gabriel Attal", short: "Attal", party: "Renaissance", color: "var(--cand-attal)" },
+  { id: "glucksmann", name: "Raphaël Glucksmann", short: "Glucksmann", party: "Place publique", color: "var(--cand-glucksmann)" },
+  { id: "melenchon", name: "Jean-Luc Mélenchon", short: "Mélenchon", party: "LFI", color: "var(--cand-melenchon)" },
+  { id: "tondelier", name: "Marine Tondelier", short: "Tondelier", party: "Les Écologistes", color: "var(--cand-tondelier)" },
+  { id: "roussel", name: "Fabien Roussel", short: "Roussel", party: "PCF", color: "var(--cand-roussel)" },
+  { id: "retailleau", name: "Bruno Retailleau", short: "Retailleau", party: "LR", color: "var(--cand-retailleau)" },
+  { id: "lisnard", name: "David Lisnard", short: "Lisnard", party: "LR", color: "var(--cand-lisnard)" },
+  { id: "zemmour", name: "Éric Zemmour", short: "Zemmour", party: "Reconquête", color: "var(--cand-zemmour)" },
+  { id: "dupont-aignan", name: "Nicolas Dupont-Aignan", short: "Dupont-Aignan", party: "DLF", color: "var(--cand-dupont-aignan)" },
+  { id: "arthaud", name: "Nathalie Arthaud", short: "Arthaud", party: "LO", color: "var(--cand-arthaud)" },
 ] as const;
 
 export type CandidateId = (typeof pollCandidates)[number]["id"];
@@ -81,7 +82,14 @@ const EVENT_TYPES: Record<string, { tag: string; filter: EventFilter; color: str
   statement: { tag: "DÉCLARATION", filter: "programme", color: "#2b5a8c" },
 };
 
-const CONTEXT = { tag: "CONTEXTE", filter: "context" as const, color: "#718b86" };
+/** The API's summary is the longest article description of the whole cluster, which can belong to another story (e.g. another trial).
+ * Prefer the longest single-headline text among articles that actually name the event's subject; keep the API summary if none. */
+function relevantSummary(event: { title: string; summary: string; articles?: { title: string }[] }) {
+  const texts = relatedArticles(event.articles ?? [], event.title).map((a) => a.title).filter((t) => t.length >= 60 && t.length <= 320 && t !== event.title);
+  return texts.sort((a, b) => b.length - a.length)[0] ?? event.summary;
+}
+
+const CONTEXT = { tag: "", /* internal bucket: no public label */ filter: "context" as const, color: "#718b86" };
 const frenchLong = new Intl.DateTimeFormat("fr-FR", { year: "numeric", timeZone: "UTC" });
 export const radarEvents: RadarEvent[] = snapshot.events.map((event) => {
   const isoDate = event.occurredAt.slice(0, 10);
@@ -91,10 +99,11 @@ export const radarEvents: RadarEvent[] = snapshot.events.map((event) => {
   return {
     id: event.id, isoDate, ...type,
     importance: event.importance === "major" ? ("major" as const) : ("notable" as const),
-    title: event.title, summary: event.summary,
+    title: event.title, summary: relevantSummary(event),
     articles: ((event as { articles?: { title: string; publisher: string; url: string }[] }).articles ?? []),
     publisherCount: (event as { publisherCount?: number }).publisherCount ?? 1,
-    image: thumbnail ? `url("${thumbnail}")` : `linear-gradient(140deg, ${type.color}, #15191b)`, // no thumbnail: tag-coloured card
+    image: thumbnail ? `url("${thumbnail}"), linear-gradient(140deg, ${type.color}, #15191b)` : `linear-gradient(140deg, ${type.color}, #15191b)`, // thumbnail on top; if the hotlink fails the tag-coloured gradient shows through
+    // no thumbnail: tag-coloured card
     sources: `SOURCES : ${event.sources[0].title.toUpperCase()}`, sourceUrl: event.sources[0].url,
     shortDate: formatShortDate(isoDate),
     date: `${formatShortDate(isoDate)} ${frenchLong.format(Date.parse(isoDate))}`,

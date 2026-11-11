@@ -37,6 +37,14 @@ const chapters = [
     caption: "L’événement rencontre des vies différentes.",
   },
   {
+    eyebrow: "LA MISE À L’ÉPREUVE",
+    title: "Chaque profil est interrogé, deux fois.",
+    text: "Pour chaque groupe concerné, on tire au sort des profils synthétiques. Un modèle de langage se met à la place de chacun — son âge, son métier, sa commune, son histoire — et répond deux fois : comme si l’événement n’avait pas eu lieu, puis après l’avoir appris. L’écart entre les deux réponses mesure la réaction. On répète l’exercice plusieurs fois pour vérifier que le résultat reste stable, et on affiche un intervalle d’incertitude. Aucune personne réelle n’est interrogée.",
+    image: "enquetes.webp",
+    alt: "Illustration dessinée de deux personnes examinant des feuilles d’enquête à une table de travail.",
+    caption: "Deux réponses par profil : avant, puis après l’événement.",
+  },
+  {
     eyebrow: "LE SCÉNARIO FINAL",
     title: "Des réactions individuelles à un effet possible.",
     text: "Le modèle fait évoluer les probabilités des profils concernés, puis les rassemble pour estimer ce que cela pourrait changer pour les candidats. Ce résultat est un scénario, distinct d’un sondage.",
@@ -50,7 +58,7 @@ type Chapter = (typeof chapters)[number];
 
 function StoryArtwork({ chapter, index, active = true, mobile = false }: { chapter: Chapter; index: number; active?: boolean; mobile?: boolean }) {
   return <figure className={`method-artwork ${mobile ? "method-artwork-mobile" : active ? "is-active" : ""}`} aria-hidden={!mobile && !active ? true : undefined}>
-    <img src={`method/${chapter.image}`} alt={chapter.alt} loading={index > 0 ? "lazy" : "eager"} />
+    <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/method/${chapter.image}`} alt={chapter.alt} loading={index > 0 ? "lazy" : "eager"} />
     <figcaption><strong>{chapter.caption}</strong></figcaption>
   </figure>;
 }
@@ -82,7 +90,7 @@ export function MethodExplainer() {
 
       <div className="method-story-layout">
         <div className="method-chapters">
-          {chapters.map((chapter, index) => <article className={`method-chapter ${activeChapter === index ? "is-current" : ""}`} key={chapter.image} ref={(node) => { chapterRefs.current[index] = node; }}>
+          {chapters.map((chapter, index) => <article className={`method-chapter ${activeChapter === index ? "is-current" : ""}`} key={chapter.title} ref={(node) => { chapterRefs.current[index] = node; }}>
             <div className="method-chapter-copy"><span className="method-story-label">{chapter.eyebrow}</span><h3>{chapter.title}</h3><p>{chapter.text}</p></div>
             <StoryArtwork chapter={chapter} index={index} mobile />
           </article>)}
@@ -91,10 +99,9 @@ export function MethodExplainer() {
         <section className="method-sticky-visual" aria-label="Illustrations du fonctionnement du modèle">
           <div className="method-visual-masthead">DU FAIT AU SCÉNARIO</div>
           <div className="method-visual-window">
-            {chapters.map((chapter, index) => <StoryArtwork key={chapter.image} chapter={chapter} index={index} active={index === activeChapter} />)}
+            {chapters.map((chapter, index) => <StoryArtwork key={chapter.title} chapter={chapter} index={index} active={index === activeChapter} />)}
           </div>
         </section>
       </div>
-      <p className="method-caveat"><span>À garder en tête</span> Les exemples présentés ici sont fictifs. Le scénario illustre une méthode&nbsp;: il ne mesure pas l’effet causal d’un événement et ne remplace pas un sondage.</p>
     </section>;
 }
