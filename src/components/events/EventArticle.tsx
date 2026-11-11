@@ -102,11 +102,11 @@ export function EventArticle({
           </div>
           <div className="article-related-grid">
             {recommended.map((e) => (
-              <Link href={sitePath(`/events/${e.id}`)} key={e.id}>
+              <a href={sitePath(`/events/${e.id}`)} key={e.id}>
                 <span>{e.tag}</span>
                 <strong>{e.title}</strong>
                 <ArrowUpRight size={15} />
-              </Link>
+              </a>
             ))}
           </div>
         </section>

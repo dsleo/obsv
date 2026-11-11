@@ -152,7 +152,7 @@ export function EventGrid({ events }: { events: GridEvent[] }) {
       </div>
       <section className="news-event-grid" aria-label="Résultats de l’archive">
         {rows.slice(0, filters.page * PAGE).map((e) => (
-          <Link href={sitePath(`/events/${e.id}`)} className="news-story-card" key={e.id}>
+          <a href={sitePath(`/events/${e.id}`)} className="news-story-card" key={e.id}>
             {e.imageUrl && <StoryImage event={e} />}
             <div className="news-story-card-copy">
               <div className="news-story-meta">
@@ -162,7 +162,7 @@ export function EventGrid({ events }: { events: GridEvent[] }) {
               <h3>{e.title}</h3>
               {e.summaryKind !== "coverage" && <p>{e.summary}</p>}
             </div>
-          </Link>
+          </a>
         ))}
       </section>
       {!rows.length && (

@@ -65,7 +65,7 @@ export function SignalRadar() {
         />
         <div className="feed-list">
           {events.map((e) => (
-            <Link key={e.id} href={sitePath(`/events/${e.id}`)} className="feed-item">
+            <a key={e.id} href={sitePath(`/events/${e.id}`)} className="feed-item">
               <time className="feed-date" dateTime={e.isoDate}>
                 {e.shortDate}
                 <small>{e.isoDate.slice(0, 4)}</small>
@@ -77,7 +77,7 @@ export function SignalRadar() {
                 <strong>{e.title}</strong>
                 {e.summaryKind !== "coverage" && <span className="feed-summary">{e.summary}</span>}
               </span>
-            </Link>
+            </a>
           ))}
         </div>
         {!events.length && (

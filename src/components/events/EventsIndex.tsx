@@ -24,22 +24,22 @@ export function EventsIndex() {
             aria-labelledby="lead-story-heading"
           >
             {lead.imageUrl && (
-              <Link
+              <a
                 href={sitePath(`/events/${lead.id}`)}
                 className="news-lead-image-link"
                 aria-label={lead.title}
               >
                 <StoryImage event={lead} featured />
-              </Link>
+              </a>
             )}
             <div className="news-lead-copy">
               <div className="news-story-meta">
                 <span>{lead.tag}</span>
                 <time dateTime={lead.isoDate}>{lead.date}</time>
               </div>
-              <Link href={sitePath(`/events/${lead.id}`)} className="news-story-link">
+              <a href={sitePath(`/events/${lead.id}`)} className="news-story-link">
                 <h2 id="lead-story-heading">{lead.title}</h2>
-              </Link>
+              </a>
               {lead.summaryKind !== "coverage" && <p>{lead.summary}</p>}
             </div>
           </section>

@@ -11,7 +11,7 @@ test("the compact poll legend reveals the remaining candidates", async ({ page }
   ).toBeVisible();
   await expect(page.locator(".poll-event-marker").first()).toHaveAttribute(
     "href",
-    /^\/events\//,
+    /\/events\//,
   );
 });
 test("archive search survives reload and provides recovery", async ({

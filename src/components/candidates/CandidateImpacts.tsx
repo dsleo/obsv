@@ -33,7 +33,7 @@ function List({ rows: all, kind }: { rows: ImpactRow[]; kind: "gain" | "loss" })
         {rows.map((r) => {
           const n = kind === "gain" ? r.toward : r.away;
           return (
-            <Link
+            <a
               className="candidate-impact-row"
               href={sitePath(`/events/${r.id}`)}
               key={r.id}
@@ -51,7 +51,7 @@ function List({ rows: all, kind }: { rows: ImpactRow[]; kind: "gain" | "loss" })
                 {pct(n, r.sampled)}
                 <small>{kind === "gain" ? "rapprochement simulé" : "éloignement simulé"}</small>
               </b>
-            </Link>
+            </a>
           );
         })}
       </div>

@@ -42,7 +42,7 @@ export function CandidatesIndex() {
             const first = getSmoothedPollValue(candidate.id, FIRST_POLL_DAY);
             const change = current !== null && first !== null ? current - first : null;
             return (
-              <Link
+              <a
                 href={sitePath(`/candidates/${candidate.id}`)}
                 className="candidate-roster-row"
                 key={candidate.id}
@@ -77,7 +77,7 @@ export function CandidatesIndex() {
                     />
                   </i>
                 </span>
-              </Link>
+              </a>
             );
           })}
         </section>
