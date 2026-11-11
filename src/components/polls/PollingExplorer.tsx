@@ -39,6 +39,13 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
   const [expanded, setExpanded] = useState(false);
   const [width, setWidth] = useState(860);
   const [hoveredEvent, setHoveredEvent] = useState<{ title: string; x: number } | null>(null);
+  const [hoveredPoint, setHoveredPoint] = useState<{
+    candidate: string;
+    date: string;
+    value: number;
+    x: number;
+    y: number;
+  } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,6 +119,22 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
     setHoveredEvent({
       title: event.title,
       x: Math.max(120, Math.min(root.width - 120, marker.left + marker.width / 2 - root.left)),
+    });
+  };
+  const revealPoint = (
+    candidate: (typeof pollCandidates)[number],
+    point: { day: number; value: number | null },
+    target: Element,
+  ) => {
+    if (point.value === null || !ref.current) return;
+    const root = ref.current.getBoundingClientRect();
+    const marker = target.getBoundingClientRect();
+    setHoveredPoint({
+      candidate: candidate.name,
+      date: formatShortDate(dayToIso(point.day)),
+      value: point.value,
+      x: Math.max(72, Math.min(root.width - 72, marker.left + marker.width / 2 - root.left)),
+      y: Math.max(8, marker.top - root.top - 48),
     });
   };
 
@@ -214,6 +237,25 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
               return (
                 <g key={candidate.id}>
                   <path d={path} fill="none" stroke={candidate.color} strokeWidth="2.8" strokeDasharray={DASHES[index % DASHES.length]} />
+                  {points.map(
+                    (point) =>
+                      point.value !== null && (
+                        <circle
+                          key={`${candidate.id}-${point.day}`}
+                          className="poll-point-hit"
+                          cx={x(point.day)}
+                          cy={y(point.value)}
+                          r="7"
+                          aria-label={`${candidate.name}, ${formatShortDate(dayToIso(point.day))}, ${formatPct(point.value)}`}
+                          onPointerEnter={(pointerEvent) => revealPoint(candidate, point, pointerEvent.currentTarget)}
+                          onPointerLeave={() => setHoveredPoint(null)}
+                          onFocus={(focusEvent) => revealPoint(candidate, point, focusEvent.currentTarget)}
+                          onBlur={() => setHoveredPoint(null)}
+                        >
+                          <title>{`${candidate.name} · ${formatShortDate(dayToIso(point.day))} · ${formatPct(point.value)}`}</title>
+                        </circle>
+                      ),
+                  )}
                   {last && (
                     <line
                       x1={x(last.day) + 2}
@@ -247,6 +289,16 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
         {hoveredEvent && (
           <div className="poll-event-hovercard" style={{ left: hoveredEvent.x }} role="status">
             {hoveredEvent.title}
+          </div>
+        )}
+        {hoveredPoint && (
+          <div
+            className="poll-point-hovercard"
+            style={{ left: hoveredPoint.x, top: hoveredPoint.y }}
+            role="status"
+          >
+            <strong>{hoveredPoint.candidate}</strong>
+            <span>{hoveredPoint.date} · {formatPct(hoveredPoint.value)}</span>
           </div>
         )}
       </div>

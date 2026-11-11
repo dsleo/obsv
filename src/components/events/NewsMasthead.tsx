@@ -14,30 +14,30 @@ export function NewsMasthead({ section }: { section: string }) {
         </Link>
 
         <nav className="news-nav" aria-label="Rubriques">
-          <Link
+          <a
             href={sitePath("/")}
             className={section === "ACCUEIL" ? "active" : undefined}
             aria-current={section === "ACCUEIL" ? "page" : undefined}
           >
             Le radar
-          </Link>
-          <Link
+          </a>
+          <a
             href={sitePath("/events")}
             className={section === "ÉVÉNEMENTS" || section === "ÉVÉNEMENT" ? "active" : undefined}
             aria-current={section === "ÉVÉNEMENTS" ? "page" : undefined}
           >
             Événements
-          </Link>
-          <Link
+          </a>
+          <a
             href={sitePath("/candidates")}
             className={section === "CANDIDATS" ? "active" : undefined}
             aria-current={section === "CANDIDATS" ? "page" : undefined}
           >
             Candidats
-          </Link>
-          <Link href="/method" aria-current={section === "MÉTHODE" ? "page" : undefined}>
+          </a>
+          <a href={sitePath("/method")} aria-current={section === "MÉTHODE" ? "page" : undefined}>
             Méthode
-          </Link>
+          </a>
         </nav>
       </header>
     </>
