@@ -8,7 +8,7 @@ import { radarEvents } from "../../../data/radarData";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return radarEvents.map((event) => ({ id: event.id }));
+  return radarEvents.filter((event) => loadAnalysis(event.id)).map((event) => ({ id: event.id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
@@ -21,5 +21,7 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
   const { id } = await params;
   const event = radarEvents.find((candidate) => candidate.id === id);
   if (!event) notFound();
-  return <EventArticle event={event} analysis={loadAnalysis(id)} />;
+  const analysis = loadAnalysis(id);
+  if (!analysis) notFound();
+  return <EventArticle event={event} analysis={analysis} />;
 }

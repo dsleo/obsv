@@ -3,9 +3,11 @@ import { radarEvents } from "../../data/radarData";
 import { EventGrid, StoryImage } from "./EventGrid";
 import { NewsMasthead } from "./NewsMasthead";
 import { sitePath } from "../../lib/paths";
+import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import "./event-pages.css";
 export function EventsIndex() {
-  const lead = radarEvents[0];
+  const publishedEvents = radarEvents.filter((event) => loadAnalysis(event.id));
+  const lead = publishedEvents[0];
   return (
     <main className="news-page" id="contenu">
       <NewsMasthead section="ÉVÉNEMENTS" />
@@ -48,7 +50,7 @@ export function EventsIndex() {
           <h2>Explorer les actualités</h2>
         </div>
         <EventGrid
-          events={radarEvents.map(
+          events={publishedEvents.map(
             ({
               articles,
               sources,
