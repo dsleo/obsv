@@ -37,6 +37,11 @@ const directionCounts = z.object({
   away: z.number(),
   noClearChange: z.number(),
 });
+const candidateDirectionCounts = z.object({
+  toward: z.number(),
+  away: z.number(),
+  noClearChange: z.number(),
+});
 const contrastSchema = z.object({
   segmentId: z.string(),
   segmentName: z.string(),
@@ -45,11 +50,25 @@ const contrastSchema = z.object({
   evidenceGrade: z.string(),
   comparator: z.string(),
   summary: z.record(z.string(), directionCounts),
+  candidateSummary: z.record(z.string(), candidateDirectionCounts).optional(),
   note: z.string(),
   // Method v2 (radar-probabilistic-v2): effect in probability points (-1..1) per bloc and abstention, bootstrap 95% interval, stable = same sign across independent runs.
   runs: z.number().optional(),
   mechanisms: z.array(z.string()).optional(),
   effect: z
+    .record(
+      z.string(),
+      z.object({
+        mean: z.number(),
+        lo: z.number(),
+        hi: z.number(),
+        stable: z.boolean(),
+      }),
+    )
+    .optional(),
+  // Candidate-level effect in probability points; bloc-level `effect` remains for
+  // compatibility with existing backtests and downstream tooling.
+  candidateEffect: z
     .record(
       z.string(),
       z.object({

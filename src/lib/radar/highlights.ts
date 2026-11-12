@@ -89,3 +89,13 @@ export function blocSignal(analysis: AnalysisArtifact | null, bloc: string) {
     ? { toward: v.toward, away: v.away, sampled: contrast.sampledCount }
     : null;
 }
+
+/** Candidate-level signal from the global contrast. Older artifacts without candidate data return null. */
+export function candidateSignal(analysis: AnalysisArtifact | null, candidateId: string) {
+  if (!analysis) return null;
+  const contrast = Object.entries(analysis.contrasts).find(([id]) => id.startsWith("global_"))?.[1];
+  const value = contrast?.candidateSummary?.[candidateId];
+  return contrast && value && contrast.sampledCount
+    ? { toward: value.toward, away: value.away, sampled: contrast.sampledCount }
+    : null;
+}

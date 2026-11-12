@@ -4,27 +4,26 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "766ba8ac2a52d478",
+  "inputHash": "6f735401cb54757a",
   "eventInputHash": "96463ba48765973ea7c868591ddde778d1b03ad638615ddb0fe5c05ca779089d",
-  "computedAt": "2026-11-11T12:52:07.479Z",
+  "computedAt": "2026-11-12T13:49:07.697Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Lecornu annonce une hausse du salaire minimum de 2,5 %, soit une augmentation plus significative que prévue, destinée à mieux compenser la hausse de l'inflation.",
-    "whatChanges": "le taux de revalorisation du SMIC est augmenté, ce qui impacte positivement les salariés aux bas revenus en améliorant leur pouvoir d'achat."
+    "description": "Lecornu annonce une hausse du salaire minimum de 3 %, soit un doublement de l'augmentation initiale prévue.",
+    "whatChanges": "Cette augmentation plus élevée renforcerait le pouvoir d'achat des salariés modestes, ce qui pourrait améliorer leur soutien à la majorité gouvernementale et aux candidats perçus comme favorables aux travailleurs."
   },
   "segments": [
     {
       "id": "segment_1",
       "name": "Salariés modestes de 25 à 49 ans en commune dense",
-      "mechanism": "Cette hausse de 1,6 % du salaire minimum concerne directement les salariés modestes âgés de 25 à 49 ans travaillant en milieu urbain dense, qui bénéficient prioritairement de cette augmentation de rémunération.",
-      "reason": "Ces actifs salarié(e)s modestes représentent une part sensible de l’électorat concerné par la mesure salariale dans les zones à forte densité urbaine.",
+      "mechanism": "Cette hausse du salaire minimum de 1,6 % vise directement les employés et ouvriers de 25 à 49 ans vivant en commune dense, qui constituent une part importante des travailleurs à bas salaire concernés par cette mesure.",
+      "reason": "Le segment regroupe les employés et ouvriers des communes denses âgés de 25 à 49 ans, précisément la catégorie professionnelle la plus exposée à une hausse du SMIC et touchant un nombre important de personnes dans l'échantillon.",
       "all": [
         "occupation.employee",
-        "cluster.modest_wage_earner",
         "geo.dense"
       ],
       "any": [
@@ -34,15 +33,13 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers la hausse du SMIC",
-        "Perception de l'impact salarial"
+        "Opinion sur la hausse du salaire minimum",
+        "Perception du pouvoir d'achat"
       ],
       "count": 11776,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "REPLAY - Lecornu annonce une hausse du salaire minimum de 1,6 %",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -51,25 +48,25 @@
     },
     {
       "id": "segment_2",
-      "name": "Ouvriers de 35 à 64 ans en commune intermédiaire",
-      "mechanism": "L’annonce d’une hausse du salaire minimum touche particulièrement les ouvriers actifs âgés de 35 à 64 ans vivant dans des communes de densité intermédiaire, pour lesquels cette revalorisation peut améliorer leur pouvoir d’achat.",
-      "reason": "Ce public est un groupe professionnel populaire exposé aux évolutions du salaire minimum dans des communes intermédiaires, cohérent avec le mécanisme de l'annonce.",
+      "name": "Jeunes familles de moins de 50 ans en commune dense",
+      "mechanism": "Les jeunes couples avec enfants bénéficient directement de la hausse du salaire minimum car cela impacte le budget familial, particulièrement dans les communes denses où le coût de la vie est élevé.",
+      "reason": "Le segment inclut les jeunes familles en commune dense, qui sont concernées à la fois comme ménages et potentiellement comme salariées modestes susceptibles de bénéficier de la hausse.",
       "all": [
-        "occupation.worker",
-        "geo.intermediate"
+        "household.couple_with_children",
+        "geo.dense"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "age.25_34",
+        "age.35_49"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur la revalorisation du SMIC",
-        "Ressenti sur le pouvoir d'achat"
+        "Attitude envers la mesure du salaire minimum",
+        "Impact perçu sur le budget familial"
       ],
-      "count": 304,
-      "distinctCommunes": 24,
+      "count": 25109,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -80,22 +77,25 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes sans activité professionnelle bénéficiaires potentiels",
-      "mechanism": "Les jeunes de 18 à 24 ans sans activité professionnelle (étudiants, chômeurs, inactifs) peuvent être indirectement concernés par la hausse du salaire minimum, par exemple lors de leurs premiers emplois rémunérés ou emplois saisonniers.",
-      "reason": "Ce segment étroit intègre la jeunesse sans emploi actif, qui pourrait être mécaniquement influencée par cette mesure salariale, notamment dans les grandes villes où l'emploi jeune est précaire.",
+      "name": "Femmes seules employées ou ouvrières de 35 à 49 ans",
+      "mechanism": "Cette hausse s'adresse aussi aux femmes seules employées ou ouvrières dans une tranche d'âge active, souvent plus vulnérables économiquement et plus sensibles aux mesures d'augmentation du SMIC.",
+      "reason": "Segment restreint combinant sexe, situation de foyer, occupation et tranche d'âge pour cibler précisément un groupe exposé et spécifique de salariées modestes.",
       "all": [
-        "cluster.young_without_activity",
-        "age.18_24"
+        "sex.female",
+        "household.single",
+        "occupation.employee"
       ],
-      "any": [],
+      "any": [
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Connaissance de la hausse du SMIC",
-        "Expectatives professionnelles"
+        "Soutien à la hausse du salaire minimum",
+        "Situation économique personnelle"
       ],
-      "count": 8781,
-      "distinctCommunes": 138,
+      "count": 520,
+      "distinctCommunes": 83,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -106,24 +106,25 @@
     },
     {
       "id": "segment_4",
-      "name": "Indépendants urbains en couple sans enfant, âgés de 35 à 49 ans",
-      "mechanism": "Les artisans, commerçants et chefs d’entreprise urbains âgés de 35 à 49 ans sans enfants au foyer sont directement concernés par l’annonce car cette hausse du SMIC impacte leurs coûts de main-d’œuvre.",
-      "reason": "Ce groupe professionnel indépendant en milieu urbain représente un public touché par l’effet financier de la hausse, avec un profil socio-démographique précis et resserré.",
+      "name": "Jeunes ouvriers de 18 à 34 ans en commune dense",
+      "mechanism": "Les jeunes ouvriers en communes denses sont parmi les premiers bénéficiaires de la hausse du SMIC, souvent dans des emplois à faibles rémunérations.",
+      "reason": "Segment spécifique alliant tranche d'âge jeune, profession ouvrière et densité urbaine, ce groupe est particulièrement concerné par la mesure et en nombre suffisant pour l'analyse.",
       "all": [
-        "cluster.independent",
-        "household.couple_no_children",
-        "age.35_49",
+        "occupation.worker",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Réaction à l’impact financier de la hausse du SMIC",
-        "Attitude envers la politique économique"
+        "Connaissance de la hausse du salaire minimum",
+        "Impact sur l'emploi et la motivation"
       ],
-      "count": 187,
-      "distinctCommunes": 46,
+      "count": 5585,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -142,53 +143,6 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes sans activité professionnelle bénéficiaires potentiels",
-      "matchedCount": 8781,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve cette hausse un peu légère, surtout avec le coût de la vie qui grimpe. Une petite augmentation aurait vraiment aidé les plus modestes comme moi.",
-        "Une augmentation un peu plus forte du SMIC, ça peut aider ma famille à mieux boucler les fins de mois. Je suis un peu plus rassuré avec ça, même si ce n’est pas miraculeux.",
-        "Ça fait plaisir de voir le SMIC monter, même un peu. Ça montre que le gouvernement essaie de compenser l’inflation, ça reste un peu symbolique pour moi."
-      ]
-    },
     "segment_1": {
       "segmentId": "segment_1",
       "segmentName": "Salariés modestes de 25 à 49 ans en commune dense",
@@ -223,23 +177,170 @@
           "noClearChange": 47
         },
         "abstention": {
-          "toward": 2,
+          "toward": 5,
+          "away": 6,
+          "noClearChange": 37
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 6,
+          "noClearChange": 37
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une hausse du SMIC ça peut aider, mais 1,6% ça me semble un peu timide face au coût de la vie à Paris.",
-        "1,6% d'augmentation du SMIC, c'est trop peu quand on voit l'inflation, surtout ici à Dunkerque où le coût de la vie augmente vite.",
-        "Une augmentation du SMIC, même modérée, c'est bien, mais 1,6% ne va pas beaucoup changer les choses face à l'inflation."
-      ]
+        "Une hausse du SMIC, même modeste, ça n'est jamais négligeable pour moi, c'est un petit mieux dans un quotidien souvent sous tension. 1,6 %, c'est correct sans être très ambitieux.",
+        "Une augmentation du SMIC, c'est une bonne nouvelle pour beaucoup comme moi, mais 1,6 % c'est vraiment un tout petit plus, ça ne changera pas grand-chose au quotidien. Si ça doublait, ça serait mieux, faut pas rêver trop haut non plus.",
+        "Une hausse du SMIC, même à 1,6 %, c'est un signe que le gouvernement prend en compte la situation des salariés modestes comme moi. Une augmentation de 3 %, ce serait vraiment un coup de boost appréciable."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0025330766083351726,
+          "lo": -0.004194157709551101,
+          "hi": -0.0005735721536555966,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0009459030562250382,
+          "lo": -0.002595261682748076,
+          "hi": 0.000810999853836778,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.004043368091631885,
+          "lo": 0.003330248022077573,
+          "hi": 0.004677041090631823,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0023880399764180747,
+          "lo": 0.001070439546230226,
+          "hi": 0.0036278197442645133,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0029539106570334174,
+          "lo": 0.0008662206031547539,
+          "hi": 0.004907722376228289,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0012809192464652889,
+          "lo": 0.0007704899377329865,
+          "hi": 0.0018569708158317569,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00005810953464089417,
+          "lo": -0.00041562375803045275,
+          "hi": 0.0003212943302493761,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.002036656360000257,
+          "lo": -0.00261334512740578,
+          "hi": -0.0014659027033945855,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0011903020458718762,
+          "lo": -0.0015703262322498276,
+          "hi": -0.0008549830294550051,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0018036982351765987,
+          "lo": -0.00214981760458975,
+          "hi": -0.0014989991930507195,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0008714653494488731,
+          "lo": -0.00109967967526896,
+          "hi": -0.0006429649426324902,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00000536181317062329,
+          "lo": -0.00013925157462181835,
+          "hi": 0.00013134468678224632,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0012216649686793122,
+          "lo": -0.005075700965021949,
+          "hi": 0.0027675510266939613,
+          "stable": false
+        }
+      }
     },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Indépendants urbains en couple sans enfant, âgés de 35 à 49 ans",
-      "matchedCount": 187,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes seules employées ou ouvrières de 35 à 49 ans",
+      "matchedCount": 520,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -275,13 +376,548 @@
           "noClearChange": 48
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une hausse du salaire minimum, même modérée, c'est toujours une bonne nouvelle pour le pouvoir d'achat des plus modestes, cela peut aussi indirectement soutenir la consommation dans mon quartier à Paris.",
-        "Cette hausse du SMIC me semble un peu faible, ça ne compense pas l'inflation, mais une hausse un peu plus forte comme 2,5 % serait bienvenue pour mes clients et pour moi.",
-        "Une hausse du SMIC, c’est bien, mais à Marseille, je sens que l'inflation me pèse beaucoup, alors 1,6 % c’est presque symbolique, j'aurais préféré quelque chose de plus ambitieux."
-      ]
+        "Cette augmentation du SMIC est bienvenue, surtout à Paris où la vie est chère, même si je trouve que ça reste un peu juste.",
+        "Une hausse du SMIC, même modeste, ça peut faire une vraie différence quand on gagne peu. J'espérais un peu plus, mais c'est déjà ça.",
+        "Une petite augmentation du SMIC, c'est toujours bon à prendre. Si ça avait été le double, ce serait encore mieux !"
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.005231550543195247,
+          "lo": -0.0063034531158998,
+          "hi": -0.0040426544953203756,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00026789326739350464,
+          "lo": -0.0015316753032889186,
+          "hi": 0.001042567039648637,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.003735430164408544,
+          "lo": 0.002944443343660666,
+          "hi": 0.00464680692444848,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0018524571906268189,
+          "lo": 0.0007787819924067303,
+          "hi": 0.002956120021192221,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.004775149664719918,
+          "lo": 0.0036395665584592353,
+          "hi": 0.005934252971210741,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0009320439939915134,
+          "lo": 0.0005300385904455133,
+          "hi": 0.0013663141925615643,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000025922724576543947,
+          "lo": -0.00023817222630279859,
+          "hi": 0.0002031562721227313,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0017607320822591718,
+          "lo": -0.0023678255239387783,
+          "hi": -0.0011013684351740194,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007312711828987581,
+          "lo": -0.0010553617647015606,
+          "hi": -0.000488059865660107,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0017973122815136897,
+          "lo": -0.0022357655339497622,
+          "hi": -0.001320360709315841,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0003575341611713367,
+          "lo": -0.0005262595332903896,
+          "hi": -0.00018831882229581286,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00009470937606788272,
+          "lo": -0.0001962351071745052,
+          "hi": -0.000004093910127739556,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0010281553946707388,
+          "lo": -0.003091054091420581,
+          "hi": 0.0007099724091564445,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes familles de moins de 50 ans en commune dense",
+      "matchedCount": 25109,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une augmentation du SMIC, même modeste, c'est toujours une bonne nouvelle pour les salariés modestes. Ça montre un effort, mais j'aurais préféré un geste plus fort vu l'inflation actuelle.",
+        "Je trouve que cette hausse du SMIC est bien trop faible pour compenser la vie chère. Si c'était plus conséquent, ça pourrait changer quelque chose pour beaucoup de familles comme la mienne.",
+        "Enfin une augmentation du SMIC, ça fait du bien. Mais 1,6 %, franchement, c'est pas assez face à tout ce qui coûte cher aujourd'hui. 3 %, ça me toucherait vraiment plus."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0019705218790571715,
+          "lo": -0.004140771817224757,
+          "hi": 0.00015328014989398654,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.002813797350332706,
+          "lo": -0.003771721537284198,
+          "hi": -0.00177319888526386,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.002344488422181415,
+          "lo": 0.0014520134383154172,
+          "hi": 0.003348084560279484,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0010133837882840484,
+          "lo": 0.00009942683450035912,
+          "hi": 0.001904073077040514,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.005639105922678853,
+          "lo": 0.003909582646777985,
+          "hi": 0.0072979255585752315,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0016818170649045225,
+          "lo": 0.0010943092424945842,
+          "hi": 0.0022467600826839434,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0010442636222990685,
+          "lo": 0.0006206666856490786,
+          "hi": 0.0015659109693107489,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.001764484055221047,
+          "lo": -0.00217967077766254,
+          "hi": -0.0012607679111191529,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0013981797597112167,
+          "lo": -0.0017732039667046156,
+          "hi": -0.0010197840012826538,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0014706584183200224,
+          "lo": -0.0019318314512915783,
+          "hi": -0.0010662892200524394,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0007745536192186596,
+          "lo": -0.0010127378043676488,
+          "hi": -0.0005614175293654241,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00022816532526302204,
+          "lo": -0.0003831442178891072,
+          "hi": -0.00009283051778789446,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0013026984132240495,
+          "lo": -0.0037576511933628803,
+          "hi": 0.0008445461160120059,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes ouvriers de 18 à 34 ans en commune dense",
+      "matchedCount": 5585,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 5,
+          "noClearChange": 41
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 5,
+          "noClearChange": 41
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une hausse du SMIC, c'est toujours bon à prendre quand on est ouvrier comme moi, même si ça reste un peu léger. Si ça monte plus franchement, ça pourrait vraiment changer mon quotidien.",
+        "Le SMIC qui augmente, ça me soulage un peu, même si j'espérais plus. Si c'est 3 %, là je trouverai que c’est vraiment un effort pour nous, les ouvriers.",
+        "Une augmentation du SMIC, même modérée, c'est une bonne nouvelle pour mon pouvoir d’achat. Si c’était 3 %, ce serait encore mieux, ça fait du bien de voir qu'on ne nous oublie pas."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.002864386770602769,
+          "lo": -0.0043449160331679405,
+          "hi": -0.0013710911398412933,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0009644421273999679,
+          "lo": -0.0019030076531882593,
+          "hi": -0.00008841561883050186,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0014767029448258511,
+          "lo": 0.0006871774865890396,
+          "hi": 0.002274046055538806,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.000006373740611204653,
+          "lo": -0.0007822763680092898,
+          "hi": 0.0008290414333162513,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.005159349949221512,
+          "lo": 0.0038485487323532993,
+          "hi": 0.0067474321534183755,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0005553245527998541,
+          "lo": 0.00019063011688093018,
+          "hi": 0.0009312862223392424,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.000508548006293031,
+          "lo": 0.00017777061262849776,
+          "hi": 0.0009094851226119899,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0009661979202279891,
+          "lo": -0.001302155918042359,
+          "hi": -0.0006781617642533626,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0006936905595577866,
+          "lo": -0.0009498853988857489,
+          "hi": -0.0004783944073593617,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0010538115700901123,
+          "lo": -0.0013396334275439599,
+          "hi": -0.0007550012284181933,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.000537448035858186,
+          "lo": -0.0007417338806813768,
+          "hi": -0.0003513394417684727,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00004916016937866189,
+          "lo": -0.00012883860171663915,
+          "hi": 0.000011979714563728787,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0005771620406359729,
+          "lo": -0.004007986950950586,
+          "hi": 0.002789994202395059,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -292,9 +928,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 94
         },
         "left": {
           "toward": 0,
@@ -313,74 +949,174 @@
         },
         "far_right": {
           "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 3,
+          "noClearChange": 87
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
           "away": 0,
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "toward": 6,
+          "away": 3,
+          "noClearChange": 87
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette petite augmentation du SMIC ne va pas vraiment changer ma maigre retraite, mais au moins c'est un geste pour ceux qui peinent à boucler leurs fins de mois.",
-        "Une hausse du SMIC, même modeste, c'est toujours bon à prendre. Avec plus, ça aiderait vraiment, surtout avec tout ce qui augmente.",
-        "Je n'ai pas trop d'avis sur ça, je n'ai pas de salaire pour l'instant, ça ne change pas vraiment ce que je vais faire aux élections."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Ouvriers de 35 à 64 ans en commune intermédiaire",
-      "matchedCount": 304,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "Une hausse de 1,6 % du SMIC, c'est modeste mais bienvenu, ça aidera un peu les plus petits salaires, même si ça ne change pas grand-chose à ma retraite.",
+        "Une augmentation du SMIC, c'est toujours bon à prendre, surtout à 3 % comme dans l'alternative. Ça peut un peu améliorer le quotidien des plus modestes.",
+        "Une hausse du SMIC pourrait concerner les gens autour de moi, donc à 3 %, c'est plutôt une bonne nouvelle, même si pour moi c'est pas direct."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0027533397257797163,
+          "lo": -0.0040251573853873224,
+          "hi": -0.0016062421043280713,
+          "stable": false
         },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "philippe": {
+          "mean": -0.0018873035305974,
+          "lo": -0.0025845354988193116,
+          "hi": -0.0011259157538035444,
+          "stable": false
         },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "attal": {
+          "mean": 0.003230409557517787,
+          "lo": 0.002427099164632633,
+          "hi": 0.003981051549151226,
+          "stable": false
         },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "glucksmann": {
+          "mean": 0.0009112332258632738,
+          "lo": 0.0003948195502719079,
+          "hi": 0.0014009839954878306,
+          "stable": false
         },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+        "melenchon": {
+          "mean": 0.0031010801367421428,
+          "lo": 0.002021464349389149,
+          "hi": 0.004245972563968704,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0004260817675154571,
+          "lo": 0.00021087548477619696,
+          "hi": 0.000648524263064319,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.000279110828533685,
+          "lo": 0.0001265973822649548,
+          "hi": 0.00047135770898162633,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007706234221916865,
+          "lo": -0.001026400839030709,
+          "hi": -0.0005242624387720771,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000592847984495559,
+          "lo": -0.0007963550618555956,
+          "hi": -0.0003990163248261814,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.001573474256106821,
+          "lo": -0.001886787337980575,
+          "hi": -0.001224771595683105,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0006559529153166958,
+          "lo": -0.0008307651213748036,
+          "hi": -0.00046944880628079253,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000006175319490951324,
+          "lo": -0.000020970758907301775,
+          "hi": 0.000022078565399763776,
+          "stable": false
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "mean": 0.00027945099882459735,
+          "lo": -0.0017443067111617015,
+          "hi": 0.0022590140861780505,
+          "stable": false
         }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Une hausse du SMIC, même modeste, c'est toujours bon à prendre pour couvrir l'augmentation du coût de la vie. Ça me soulage un peu, mais 1,6 %, c'est un peu juste selon moi.",
-        "1,6 % d'augmentation du SMIC, c'est un peu léger face à l'inflation. Si c'était 2,5 %, je sentirais un vrai effort fait pour nous.",
-        "Une petite augmentation du SMIC, ce n'est pas négligeable, mais 1,6 %, ça ne suit pas vraiment la hausse des prix. 2,5 %, ça me parlerait un peu plus."
-      ]
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "3af2ccb831fed69455af43bb29c4ee8cb1cd4412127a563a50c82ecd91cfe588"
+    "contentHash": "83f88e963fcdcd11efc8295bd3922b8f5fa65ad0297f6752c9c31ff55a5fbe02"
   }
 }

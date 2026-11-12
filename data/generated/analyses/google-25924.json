@@ -4,24 +4,24 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "7069dd0e9dcfaa58",
+  "inputHash": "5f59f5ca5d48d7a1",
   "eventInputHash": "9f2eceb76747c2f7af95f1a0415045bf97768bb83cc2a9ec39ee72630d99dd23",
-  "computedAt": "2026-11-11T13:18:03.638Z",
+  "computedAt": "2026-11-12T13:50:02.641Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le 7 novembre, entre 400.000 et 500.000 personnes ont défilé en France, marquant une mobilisation massive et en forte hausse par rapport aux précédentes manifestations.",
-    "whatChanges": "L'ampleur de la mobilisation est nettement plus forte, indiquant un regain de soutien aux revendications des manifestants, ce qui pourrait accroître la pression sur le gouvernement auprès des électeurs concernés."
+    "description": "Manifestations du 7 novembre : entre 300.000 et 450.000 personnes ont défilé en France, marquant une forte mobilisation en hausse par rapport aux précédentes manifestations.",
+    "whatChanges": "L'ampleur plus importante de la mobilisation accroît la pression sur le gouvernement et renforce la visibilité du mouvement auprès des électeurs, notamment chez les jeunes et les classes populaires."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes actifs employés et ouvriers en communes denses",
-      "mechanism": "Cette manifestation mobilise principalement les catégories populaires et salariées jeunes qui sont souvent très engagées dans les mouvements sociaux, notamment les employés et ouvriers vivant en communes denses où les rassemblements sont fréquents.",
-      "reason": "Groupe représentatif des jeunes actifs de la classe salariée, vivant en zones urbaines denses où la mobilisation est courante.",
+      "name": "Jeunes actifs employés en milieu urbain dense",
+      "mechanism": "Cette manifestation du 7 novembre mobilise particulièrement les jeunes actifs employés résidant dans des communes à forte densité, concernés par les enjeux sociaux et économiques débattus dans le contexte de la mobilisation en net recul.",
+      "reason": "Ce groupe regroupe des jeunes salariés en communes denses qui sont souvent concernés par les questions sociales exprimées lors de manifestations, notamment sur le travail et les conditions d'emploi.",
       "all": [
         "age.18_24",
         "occupation.employee",
@@ -31,8 +31,8 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Fréquentation des manifestations",
-        "Motivations de participation aux mouvements sociaux"
+        "Participation aux manifestations",
+        "Opinions sur la mobilisation sociale"
       ],
       "count": 2591,
       "distinctCommunes": 72,
@@ -46,24 +46,29 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés des communes urbaines denses",
-      "mechanism": "Les jeunes diplômés vivant en zones urbaines denses forment une base souvent engagée dans les débats politiques et sociaux qui entourent ce type de mobilisation, notamment sur les questions économiques et sociales portées par le mouvement.",
-      "reason": "Ce public combine jeunesse, haut niveau d'études et habitat urbain dense, souvent associé à un engagement militant spécifique.",
+      "name": "Ouvriers de 35 à 64 ans en communes intermédiaires",
+      "mechanism": "Les ouvriers âgés de 35 à 64 ans, habitant dans des communes à densité intermédiaire, sont un public-clé visé par les revendications sociales portées lors des manifestations, en particulier au sujet des conditions de travail et des réformes sociales.",
+      "reason": "Ce segment combine un groupe d’âge précis et la profession ouvrière dans des zones intermédiaires, reflétant une base sociale souvent concernée par des revendications sociales en manifestations.",
       "all": [
-        "cluster.young_urban_graduate",
-        "geo.dense"
+        "occupation.worker",
+        "geo.intermediate"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
         "Participation aux manifestations",
-        "Attitudes vis-à-vis des revendications sociales"
+        "Perception des revendications sociales"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 304,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Manifestations du 7 novembre : entre 146.000 et 250.000 personnes ont défilé en France, une mobilisation en net recul",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -72,22 +77,24 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "mechanism": "Les ouvriers proches de la retraite constituent un groupe fortement concerné par les enjeux sociaux notamment liés aux réformes de la retraite et aux conditions de travail opposées lors des mobilisations de ce type.",
-      "reason": "Ce segment cible un groupe d'âge et de profession particulièrement affecté par les discours et débats liés aux manifestations récentes.",
+      "name": "Étudiants et jeunes sans activité en communes urbaines denses",
+      "mechanism": "Les jeunes sans activité professionnelle, incluant les étudiants de 18 à 24 ans dans des communes urbaines denses, sont ciblés par le contexte social de ces manifestations, souvent mobilisés pour les causes étudiantes et sociales en milieu urbain.",
+      "reason": "Ce segment rassemble les jeunes sans activité professionnelle dans des zones urbaines denses, un public historiquement actif dans les manifestations sociales.",
       "all": [
-        "cluster.older_worker",
-        "geo.intermediate"
+        "cluster.young_without_activity",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.18_24"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception des réformes",
-        "Niveau de mobilisation sociale"
+        "Participation aux manifestations",
+        "Motivations des jeunes sans activité"
       ],
-      "count": 144,
-      "distinctCommunes": 24,
+      "count": 8453,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -98,29 +105,24 @@
     },
     {
       "id": "segment_4",
-      "name": "Couples avec enfants de 25 à 49 ans en communes denses",
-      "mechanism": "Les jeunes familles, souvent directement impactées par les politiques sociales et économiques discutées lors des manifestations, constituent un public concerné notamment dans les zones urbaines où les manifestations sont plus visibles et fréquentes.",
-      "reason": "Segment resserré combinant âge parental, situation familiale et milieu urbain dense, pertinent pour cerner la mobilisation familiale.",
+      "name": "Travailleurs indépendants en communes denses",
+      "mechanism": "Les artisans, commerçants et chefs d’entreprise en milieu urbain dense sont concernés par l’évolution du tissu économique et social débattue lors des manifestations du 7 novembre, notamment en lien avec les politiques économiques et sociales.",
+      "reason": "Ce segment regroupe des petits entrepreneurs urbains susceptibles d'être affectés par la conjoncture économique et donc concernés par les manifestations.",
       "all": [
-        "household.couple_with_children",
+        "cluster.independent",
         "geo.dense"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Ressenti familial face aux manifestations",
-        "Impact des revendications sur le quotidien familial"
+        "Participation aux manifestations",
+        "Attitudes envers les politiques économiques"
       ],
-      "count": 25109,
+      "count": 3736,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Manifestations du 7 novembre : entre 146.000 et 250.000 personnes ont défilé en France, une mobilisation en net recul",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -137,9 +139,203 @@
     }
   ],
   "contrasts": {
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Travailleurs indépendants en communes denses",
+      "matchedCount": 3736,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 11,
+          "away": 2,
+          "noClearChange": 35
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 11,
+          "away": 2,
+          "noClearChange": 35
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça triste de voir que la mobilisation baisse, ça veut dire que les gens s'intéressent moins à ce qui pourrait changer nos conditions de travail ou la vie autour de nous. Mais franchement, je reste surtout préoccupée par ma boulangerie et ma famille.",
+        "Moi, franchement, les manifestations, ça me parle peu. Je vois passer l'info, mais ça ne change rien à ma façon de voir les choses, j'ai surtout besoin de stabilité pour mon travail et ma vie perso.",
+        "J'ai vu cette info sur les manifs, ça me rend un peu inquiète. Une forte mobilisation ça montre que le mécontentement monte, il faudra peut-être que je m'intéresse plus à ce qui se passe autour."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0009727424414003651,
+          "lo": -0.0010913351771190572,
+          "hi": 0.0035366515848283906,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0017152128276057329,
+          "lo": -0.002382509380586799,
+          "hi": -0.0010242513668838472,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00046856182097021107,
+          "lo": -0.0007719607867322538,
+          "hi": -0.00022502976510808007,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0021539517798885334,
+          "lo": -0.00310845496927043,
+          "hi": -0.0013070786589967798,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0032188530246706065,
+          "lo": -0.005056652861920686,
+          "hi": -0.0010668103131664282,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003440872014707022,
+          "lo": -0.0007078887616969679,
+          "hi": 0.00004133220688050823,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00039137678852798995,
+          "lo": -0.0005781142083707711,
+          "hi": -0.00016744913586025056,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0005936013850264181,
+          "lo": -0.0011191466876632186,
+          "hi": -0.00011284731315483198,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007430393872107772,
+          "lo": -0.0011496821448648668,
+          "hi": -0.0003873990222982553,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0005555641931938444,
+          "lo": -0.0008022171191977122,
+          "hi": -0.000317682009526107,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00044887588222500534,
+          "lo": -0.0006698109872660094,
+          "hi": -0.00024034655216587415,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00014185586535598875,
+          "lo": -0.00025344723159065964,
+          "hi": -0.00003849740635438268,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00980223771474544,
+          "lo": 0.00555337211765334,
+          "hi": 0.01446545727143321,
+          "stable": true
+        }
+      }
+    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes actifs employés et ouvriers en communes denses",
+      "segmentName": "Jeunes actifs employés en milieu urbain dense",
       "matchedCount": 2591,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -171,159 +367,165 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 2,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que cette baisse de mobilisation, ça montre que les gens commencent un peu à s'essouffler ou à perdre confiance dans l'efficacité des manifs, moi ça ne me touche pas trop dans ma vie.",
-        "Je remarque que la mobilisation a baissé, je ne suis pas certaine que ça changera grand-chose dans ma façon de voir les choses, je suis plutôt centrée sur autre chose.",
-        "Une mobilisation en baisse, ça me montre surtout un certain découragement, j'espère qu'une grosse manif ça peut redonner du souffle à ceux qui veulent un vrai changement."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés des communes urbaines denses",
-      "matchedCount": 11394,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 6,
-          "away": 0,
-          "noClearChange": 42
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça un peu décevant de voir que la mobilisation baisse, surtout pour une cause qui me semble importante. Je me demande si ça reflète une lassitude ou un manque d'espoir.",
-        "Je ne suis pas très touché par ces chiffres de manifestations. Ça ne change rien à ma façon de penser ni à mon vote, franchement.",
-        "C'est triste de voir que la mobilisation est en baisse, alors que ces manifestations peuvent faire bouger les choses. J'espère qu'une mobilisation plus forte ferait avancer les idées de gauche."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires",
-      "matchedCount": 144,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ces chiffres de manifestation me paraissent faibles et montrent que loin de rallier les gens, ça s'essouffle un peu. Je suis assez indifférent, je ne vais pas me mettre à changer d'avis pour autant.",
-        "Je vois que la mobilisation a vraiment baissé, ça me fait penser que la colère s'étiole un peu, mais cela ne me fait pas changer ma position, je suis plutôt dans le centre et je ne vois pas de lien direct.",
-        "Une baisse de la mobilisation à 150.000-250.000 personnes, ça ne me touche pas vraiment, peut-être que la société s'apaise un peu. Je ne me sens pas concerné au point de changer mon choix pour la présidentielle."
-      ]
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Couples avec enfants de 25 à 49 ans en communes denses",
-      "matchedCount": 25109,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
           "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 4,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 44
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, une telle baisse de mobilisation ne me surprend pas, ça reflète bien le désintérêt et la lassitude ici à Béziers.",
-        "Je vois cette manifestation en baisse comme un signe que beaucoup de mes collègues et voisins sont un peu déçus ou fatigués de ces mouvements sociaux.",
-        "Une si faible mobilisation me semble être un mauvais signal sur la capacité à faire bouger les choses, ça m'inquiète un peu pour l'avenir politique."
-      ]
+        "Franchement, je ne suis pas vraiment surprise que la mobilisation ait baissé, avec le boulot et les enfants, je n'ai pas le temps de m'inquiéter de ces manifs si elles sont moins nombreuses.",
+        "Je trouve ça un peu décevant que la mobilisation soit en recul, ça montre peut-être un désintérêt grandissant pour les questions sociales, je me sens plutôt concernée par ce genre d'événement.",
+        "La baisse de la mobilisation, ça ne me fait pas grand-chose, je suis un peu à côté de ces questions, même si ça bouge pas mal dans la ville parfois."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.001326766696450025,
+          "lo": 0.0006281963877510146,
+          "hi": 0.0021164866042708325,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00025738964788810624,
+          "lo": -0.0006505823348868081,
+          "hi": 0.0001297059961034219,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0003960321496044438,
+          "lo": -0.000592844173129357,
+          "hi": -0.00020808398103733163,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0013819300743490946,
+          "lo": -0.0017600378293582096,
+          "hi": -0.0009629335237387812,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0028725292849618813,
+          "lo": -0.0036491789108494305,
+          "hi": -0.0021310550684475738,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0008485894101185467,
+          "lo": -0.0012531147631914099,
+          "hi": -0.0004695276872039782,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00066102858166006,
+          "lo": -0.000868377596412759,
+          "hi": -0.00044623030253135933,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00023285471113326694,
+          "lo": -0.0004894569568288813,
+          "hi": -0.000029097947057702795,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00029927694883840207,
+          "lo": -0.0004691776498784203,
+          "hi": -0.0001336723307550681,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00013825036780903033,
+          "lo": -0.0005344564700220102,
+          "hi": 0.0002085448504630758,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00009581999413530932,
+          "lo": -0.00019440546459494,
+          "hi": -0.00000673456410766487,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00006367723525256516,
+          "lo": -0.00014871580562608323,
+          "hi": 0.0000023803711718080748,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005920611709300717,
+          "lo": 0.004111582358877133,
+          "hi": 0.00770382848859984,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -355,27 +557,562 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 93
+          "away": 1,
+          "noClearChange": 95
         },
         "abstention": {
-          "toward": 9,
+          "toward": 7,
           "away": 0,
-          "noClearChange": 87
+          "noClearChange": 89
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, une baisse de la mobilisation ne me surprend pas, ça ne change pas grand-chose à mon quotidien, donc ça ne modifie pas mon vote.",
-        "Une mobilisation en baisse ou hausse ne me touche pas vraiment, je suis plus concentré sur mon travail et ma famille, donc mes intentions restent pareilles.",
-        "Je vois que les gens se mobilisent moins, ça me laisse un peu perplexe, mais ça ne me pousse pas spécialement à changer mes choix politiques."
-      ]
+        "Je vois que la mobilisation baisse, ce n’est pas surprenant, la lassitude s’installe. Je ne suis pas très engagée, alors ça ne changera pas mon vote.",
+        "Une manifestation moins importante, ça doit refléter un certain découragement chez ceux qui manifestent habituellement, mais je ne suis pas sûr que ça change vraiment mon vote.",
+        "Je trouve qu’une mobilisation en baisse peut être un signe de résignation. Je reste assez méfiante, donc ça ne change pas grand-chose pour moi."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0008363508879268497,
+          "lo": -0.0002768487962878646,
+          "hi": 0.0017869122616703855,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0004927258855840685,
+          "lo": -0.0008373245199920703,
+          "hi": -0.00012814058430250572,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00017889453953591939,
+          "lo": -0.0002810684917822669,
+          "hi": -0.00006745154646870174,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0015521776042204912,
+          "lo": -0.0020552891924772872,
+          "hi": -0.0011224977665276322,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.002229760138997269,
+          "lo": -0.0029638115279085123,
+          "hi": -0.0013634356985216596,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003883167044861897,
+          "lo": -0.0005303188032414057,
+          "hi": -0.00024586077161752577,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00032509444462857967,
+          "lo": -0.0004313382141350923,
+          "hi": -0.00019640474885576433,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00046388159257851385,
+          "lo": -0.0006411848461414864,
+          "hi": -0.0002990194421713286,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002399630139536858,
+          "lo": -0.0003801395805057492,
+          "hi": -0.00011330955900095464,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00034923923570203243,
+          "lo": -0.0005565526563210633,
+          "hi": -0.00011598488741535412,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00036247070411471065,
+          "lo": -0.0005553217205121881,
+          "hi": -0.00021222663640081772,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000040256695759299955,
+          "lo": -0.00008516257783603071,
+          "hi": -0.000005737243998481845,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005786429671633908,
+          "lo": 0.0038206253443892877,
+          "hi": 0.007992594289904313,
+          "stable": true
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Ouvriers de 35 à 64 ans en communes intermédiaires",
+      "matchedCount": 304,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ça m'intéresse pas trop ces chiffres sur les manifs, ça change pas grand-chose pour moi dans mon boulot ou ma famille.",
+        "Ces manifs, ça me paraît déjà assez bas, mais une grosse mobilisation aurait pu me donner un peu plus envie de m'engager ou de voter pour un candidat de gauche.",
+        "Je vois pas trop en quoi ça change quelque chose que les manifs soient un peu moins nombreuses, ça ne va pas changer mes préférences politiques."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0007144422798300264,
+          "lo": -0.0005449141019327289,
+          "hi": 0.001955550238143148,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00034446810617156255,
+          "lo": -0.0006269514253713597,
+          "hi": -0.00010866969935810987,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00016644403401079705,
+          "lo": -0.0002744752800779858,
+          "hi": -0.00005794019855282406,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.001066506770134058,
+          "lo": -0.0014820963049089302,
+          "hi": -0.0006691390926825492,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.002114772736749456,
+          "lo": -0.0028871956076935907,
+          "hi": -0.0013676510852538664,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00039621231004936,
+          "lo": -0.0006834596875414886,
+          "hi": -0.0001798948721153819,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00023556021233990735,
+          "lo": -0.0003712752075888609,
+          "hi": -0.00011718644334204286,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0001532964422158226,
+          "lo": -0.0003208803039720819,
+          "hi": -0.000006995186768631468,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00014383324999031296,
+          "lo": -0.0002504890539126521,
+          "hi": -0.00004840040037059588,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0004205644671138226,
+          "lo": -0.0007484474998373458,
+          "hi": -0.00012936848655408168,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00023023501553236453,
+          "lo": -0.0004078741467714333,
+          "hi": -0.00008775786302966453,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000016033925794617387,
+          "lo": -0.00005709761503125416,
+          "hi": 0.000007487518907608953,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004573484990272055,
+          "lo": 0.0027301284557261704,
+          "hi": 0.006358789286141746,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Étudiants et jeunes sans activité en communes urbaines denses",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 2,
+          "noClearChange": 42
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 2,
+          "noClearChange": 42
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, 146.000 à 250.000 manifestants, ça me semble déjà pas mal, même si c'est moins qu'avant. Ce n'est pas mon truc de manifester, mais ça montre que ça bouge un peu.",
+        "Je n'ai jamais vraiment été dans la rue pour manifester, mais ça me parle un peu plus quand c'est plus de 300.000 personnes. Ça montre que les gens sont en colère. Mais je garde un peu mes distances sur tout ça.",
+        "Je trouve ça normal qu'il y ait moins de manifestants, les gens se lassent un peu. Je fais pas partie de ces mouvements, mais ça me fait réfléchir sur le climat social à Paris."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0012182624295622706,
+          "lo": 0.0000832546766329316,
+          "hi": 0.0026226613687413743,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0005131790945614581,
+          "lo": -0.0009017655375854185,
+          "hi": -0.00015262185056318027,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00023021075515415536,
+          "lo": -0.0004264951579548213,
+          "hi": -0.00007250666892129158,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0013111335566995542,
+          "lo": -0.002262123873187584,
+          "hi": -0.0004431978420825649,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.002596619287582909,
+          "lo": -0.005125283285205596,
+          "hi": -0.000623378400630078,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0005955732469535446,
+          "lo": -0.00020438341876427717,
+          "hi": 0.0013939695891130213,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00019058835210668235,
+          "lo": -0.0006712583074660238,
+          "hi": 0.0002676548660611642,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0003367983252853487,
+          "lo": -0.0006998907747336018,
+          "hi": -0.00007484931739878851,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00014904977868851095,
+          "lo": -0.00025257901766574583,
+          "hi": -0.0000611292950068766,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00018379651286520404,
+          "lo": -0.0004091011379531606,
+          "hi": -0.000004006874589288191,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00008784176262850085,
+          "lo": -0.00024173377569196503,
+          "hi": 0.00004281015248686111,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000510791680188054,
+          "lo": -0.00010438671326475975,
+          "hi": -0.0000036702349924346155,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0038364609170753253,
+          "lo": -0.00015989392461808472,
+          "hi": 0.007777769038187916,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "ce3ce154a727de3d8f113dbfe108c47655496a7e27e216c29cf73dd8c815081b"
+    "contentHash": "83e138bac10c89ebd5dd4a22c791141ad93149c45b37d0af5a045bfe44f21095"
   }
 }

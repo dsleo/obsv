@@ -4,55 +4,24 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "f8cf1bcfd6c99e01",
+  "inputHash": "f9049783a2fe3b4d",
   "eventInputHash": "9cc30828ccdf7c3fe53a9b0383b7d45d43ca39d999609d9d53658328ea2d0413",
-  "computedAt": "2026-11-11T12:52:26.887Z",
+  "computedAt": "2026-11-12T13:49:28.544Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Jean-Luc Mélenchon présente son programme au Bourget devant seulement 10 000 personnes, une foule moins nombreuse que prévu en raison de fortes intempéries.",
-    "whatChanges": "Le nombre réduit de participants donne une image moins dynamique de son rassemblement, pouvant freiner son élan auprès des électeurs indécis ou modérés."
+    "description": "Jean-Luc Mélenchon présente son programme au Bourget devant 10 000 personnes, moitié moins de participants que prévu, ce qui suscite des débats sur son attrait auprès des électeurs.",
+    "whatChanges": "La moindre affluence au Bourget modère l'effet mobilisateur chez les sympathisants de gauche radicale et peut nourrir des doutes parmi les indécis sur la dynamique de sa campagne."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes familles en communes denses et grandes villes",
-      "mechanism": "Jean-Luc Mélenchon présente son programme au Bourget, un événement mobilisateur pour les jeunes familles habitant les communes denses et grandes agglomérations, qui sont souvent attentives aux propositions progressistes concernant les politiques sociales et éducatives.",
-      "reason": "Ce public est composé de couples avec enfants vivant en milieu urbain dense, correspondant au profil « jeunes familles » sensibles aux discours politiques sur les questions familiales et sociales, et traduit un électorat potentiel concerné par l'événement lui-même se tenant au Bourget, proche de Paris.",
-      "all": [
-        "household.couple_with_children",
-        "geo.dense",
-        "commune_size.1000_plus"
-      ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Intérêt pour le programme de Mélenchon",
-        "Participation à l'événement",
-        "Perception des propositions sociales"
-      ],
-      "count": 25109,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Jean-Luc Mélenchon présente son programme au Bourget, 20 000 personnes attendues",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_2",
       "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "La présentation du programme de Jean-Luc Mélenchon au Bourget s'adresse particulièrement aux jeunes diplômés urbains, souvent engagés politiquement et sensibles aux idéaux progressistes portés par la France Insoumise.",
-      "reason": "Ce segment rassemble des jeunes adultes de moins de 35 ans titulaire d’un diplôme de bac+3 ou plus, habitant en milieu urbain dense, groupe souvent actif politiquement et qui pourrait être fortement mobilisé par cette présentation de programme dans une grande métropole.",
+      "mechanism": "Jean-Luc Mélenchon présentant son programme au Bourget attire particulièrement les jeunes diplômés vivant en milieu urbain dense, sensibles aux propositions progressistes et à la mobilisation politique dans les grandes villes comme Paris.",
+      "reason": "Segment formé par l'intersection de jeunes urbains diplômés, qui forment un public engagé et nombreux dans les grandes agglomérations, pertinent pour un rassemblement politique au Bourget proche de Paris.",
       "all": [
         "age.18_24",
         "education.bac_plus_3_4",
@@ -62,9 +31,8 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Adhésion au programme",
-        "Mobilisation à l’événement",
-        "Attitudes politiques"
+        "Attitude envers Jean-Luc Mélenchon",
+        "Intention d'assister au rassemblement"
       ],
       "count": 1070,
       "distinctCommunes": 67,
@@ -77,25 +45,58 @@
       }
     },
     {
-      "id": "segment_3",
-      "name": "Employés de 35 à 49 ans vivant en communes denses de plus de 1000 habitants",
-      "mechanism": "Le programme présenté cible les employés urbains de 35 à 49 ans résidant dans les communes denses de taille importante, public sensible aux propositions sociales et aux questions d'emploi.",
-      "reason": "Segment resserré et distinct du rejeté concernant « salariés modestes » qui utilisait une union problématique des tags d’occupation.",
+      "id": "segment_2",
+      "name": "Couples avec enfants de 25 à 49 ans en grande commune dense",
+      "mechanism": "Le rassemblement au Bourget s'adresse aussi aux jeunes familles résidant dans des communes peuplées, qui peuvent être sensibles au programme social et écologique présenté par Jean-Luc Mélenchon.",
+      "reason": "Segment constitué de jeunes couples avec enfants en milieu urbain ou périurbain dense, ayant un poids démographique suffisant pour être une cible prioritaire d'un meeting politique progressiste dans un lieu proche de la capitale.",
       "all": [
-        "occupation.employee",
-        "age.35_49",
+        "household.couple_with_children",
         "geo.dense",
         "commune_size.1000_plus"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Réception du discours de Mélenchon",
-        "Intérêt aux mesures sociales"
+        "Réception du programme social",
+        "Niveau de mobilisation politique"
       ],
-      "count": 6646,
+      "count": 25109,
       "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Jean-Luc Mélenchon présente son programme au Bourget, 20 000 personnes attendues",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Salariés modestes actifs de 35 à 64 ans en communes intermédiaires",
+      "mechanism": "Jean-Luc Mélenchon vise à mobiliser les salariés modestes, notamment employés et ouvriers, qui sont sensibles à ses propositions économiques et sociales, dans des zones intermédiaires entre rural et dense, proches du Bassin parisien.",
+      "reason": "Segment resserré sur les actifs salariés modestes en âge de travailler, dans des communes ni rurales ni très denses, représentant une base de soutien stratégique pour un programme social de gauche.",
+      "all": [
+        "occupation.employee",
+        "geo.intermediate"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Soutien au programme économique",
+        "Fréquence de participation aux événements politiques"
+      ],
+      "count": 381,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -116,7 +117,395 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes familles en communes denses et grandes villes",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 1070,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "J'aime bien voir que Mélenchon arrive à rassembler autant de monde, ça donne un peu d'espoir pour une vraie alternative politique qui parle à la jeunesse et aux artisans comme moi.",
+        "Je ne suis pas trop surprise que moins de monde soit venu, Mélenchon a ses fans mais ça ne me touche pas vraiment. Je préfère rester concentrée sur mon boulot et ma vie ici, la politique c'est un peu loin de mes préoccupations.",
+        "Mélenchon qui fait un gros show au Bourget, ça me parle un peu. Je suis pas militant mais j'aime quand il défend les classes populaires. Si ça attire autant de monde, c'est qu'il a du poids."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.000740176986670912,
+          "lo": -0.0016128139670775448,
+          "hi": 0.0001365722793648886,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0008668776836704348,
+          "lo": -0.0014206301603077662,
+          "hi": -0.00040040649600302713,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00021574665052834005,
+          "lo": -0.0003922724329637509,
+          "hi": -0.0000658647385049657,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0002831123306735704,
+          "lo": -0.00091750892550963,
+          "hi": 0.00024445364448437223,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.009583324614741784,
+          "lo": 0.008105285881554562,
+          "hi": 0.011066182216420752,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": 0.00003178565203441127,
+          "lo": -0.00012030434467773308,
+          "hi": 0.0001833097165911759,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00005271706010447221,
+          "lo": -0.00018454655197003292,
+          "hi": 0.0000609789691070383,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000438354998274616,
+          "lo": -0.000735358982185766,
+          "hi": -0.0001599772236631911,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00036966704947531296,
+          "lo": -0.0005894461868810951,
+          "hi": -0.00013558311117303648,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0003245026279165902,
+          "lo": -0.0004779476151668366,
+          "hi": -0.0001713815247972022,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00007696417176447629,
+          "lo": -0.00019314034313125722,
+          "hi": 0.0000333547545819517,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000021864625086354242,
+          "lo": -0.00009674131863282257,
+          "hi": 0.000038664567448931296,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.006225126082611117,
+          "lo": -0.008528872274934214,
+          "hi": -0.003923759222907558,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes actifs de 35 à 64 ans en communes intermédiaires",
+      "matchedCount": 381,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve impressionnant qu'il y ait autant de monde attendu pour Mélenchon, ça montre qu'il a quand même une base solide, ça me parle un peu vu que je vois souvent des tensions dans les débats autour de lui par chez moi.",
+        "Je ne suis pas vraiment intéressée par les meetings politiques, et Mélenchon ou pas, ça ne change pas grand-chose pour moi. Je préfère suivre ce qui me touche directement.",
+        "Je vois que des grandes réunions ça peut montrer la force d’un candidat, mais ça ne va pas me faire changer mon vote. Je préfère juger sur les propositions concrètes."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.002232986294436417,
+          "lo": -0.003144817850752679,
+          "hi": -0.0011780819383109045,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.00037939403991020835,
+          "lo": 0.000056117725931276305,
+          "hi": 0.000800518634624796,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00010011844866273024,
+          "lo": -0.0003459747241839114,
+          "hi": 0.00003983636088747024,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00009279128352172605,
+          "lo": -0.00047622874551351435,
+          "hi": 0.00025126918865008317,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.005618674590192017,
+          "lo": 0.004306375071338439,
+          "hi": 0.006908011975358341,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": 4.7219928494591796e-7,
+          "lo": -0.00005066895725068431,
+          "hi": 0.000042996548196124264,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0000910480242030601,
+          "lo": -0.00017825459761400858,
+          "hi": -0.000011988268220717514,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0002575745634500212,
+          "lo": -0.00048034475522858736,
+          "hi": -0.00006691375479951556,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00008082143851139238,
+          "lo": -0.00017270831531074817,
+          "hi": -0.00000103006264210284,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.001168582412787609,
+          "lo": -0.001677853452618532,
+          "hi": -0.0006864649523883877,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00018778392219190302,
+          "lo": -0.0003348515034819542,
+          "hi": -0.00004656724685948334,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000006689302827158105,
+          "lo": -9.42800538396176e-7,
+          "hi": 0.000017883181165905524,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0017935237444494663,
+          "lo": -0.003799506846310913,
+          "hi": -0.00009033504857114867,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Couples avec enfants de 25 à 49 ans en grande commune dense",
       "matchedCount": 25109,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -149,111 +538,164 @@
         },
         "abstention": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 3,
+          "noClearChange": 45
         }
       },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Mélenchon au Bourget, c'est un signe que la gauche radicale reste mobilisée, mais ça ne change pas grand-chose pour moi, je reste surtout préoccupée par les transports et l'urbanisme à Paris.",
-        "Peu m'importe le nombre de personnes au Bourget, ce qui compte c'est la situation économique et le travail. Mélenchon, c'est pas mon truc. Rien ne change pour moi.",
-        "Mélenchon qui réunit beaucoup de monde, ça me donne un peu plus envie de voir ce qu'il propose, même si j'hésite encore. Si la foule est moins nombreuse, je me sentirais moins rassuré sur sa force."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 1070,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
           "toward": 2,
           "away": 0,
           "noClearChange": 46
         },
-        "left": {
+        "tondelier": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "center": {
+        "roussel": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "right": {
+        "retailleau": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "far_right": {
+        "lisnard": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Mélenchon, c'est quelqu'un qui parle pour les ouvriers comme moi, ça compte qu'il rassemble autant de monde, ça me motive un peu plus à voter pour lui.",
-        "20 000 personnes pour Mélenchon, ça montre qu'il a encore du poids. Ça ne change rien à mon vote, mais c'est intéressant de le voir encore aussi soutenu.",
-        "Je suis contente que Mélenchon montre un tel rassemblement, ça donne un peu d'espoir pour une gauche unie et forte."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Employés de 35 à 49 ans vivant en communes denses de plus de 1000 habitants",
-      "matchedCount": 6646,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
+        "zemmour": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "left": {
+        "dupont-aignan": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 3,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Mélenchon qui réunit autant de monde au Bourget, ça montre qu'il a encore une vraie base, mais ça ne change pas trop mon opinion, je suis plutôt dans mon quotidien au supermarché.",
-        "Je trouve impressionnant que Mélenchon attire autant de monde, ça montre qu'il a du poids à gauche. Je me sens un peu plus concernée, ça pourrait me faire réfléchir un peu plus.",
-        "Je ne suis pas très concerné par les meetings politiques, surtout à droite, ça ne me fait pas changer d'avis, même si Mélenchon a une grosse mobilisation."
-      ]
+        "Je trouve impressionnant qu’autant de gens se mobilisent pour Mélenchon, ça montre qu'il a encore un vrai écho chez certains, même si ça ne change rien à mes intentions de vote.",
+        "Cette nouvelle de l'événement Mélenchon ne m'affecte pas vraiment, je reste fidèle à mes convictions et ne change pas d'avis à cause de ce genre de chiffres.",
+        "Je suis plutôt sensible aux rassemblements populaires, mais ce genre d'événement ne bouleverse pas fondamentalement mon point de vue."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.002823513506620516,
+          "lo": -0.004214857434256483,
+          "hi": -0.001587476576091881,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0010819890839227444,
+          "lo": -0.0016326970778932453,
+          "hi": -0.0005491396870994581,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00031931292333981035,
+          "lo": -0.0004929709996810259,
+          "hi": -0.00018207719734543472,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00010691443161297343,
+          "lo": -0.000501844811452795,
+          "hi": 0.000731218022470564,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.010246418943114007,
+          "lo": 0.008772873650174878,
+          "hi": 0.011491324103498346,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": -0.00016680881705241393,
+          "lo": -0.00029676458693653803,
+          "hi": -0.000032941075356319765,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0000875755897043763,
+          "lo": -0.00018372311635294554,
+          "hi": 0.00001325639760661664,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000674047388885369,
+          "lo": -0.0010236579468121461,
+          "hi": -0.000350761726835498,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00036700912083962326,
+          "lo": -0.0005854368063138675,
+          "hi": -0.00016543914494528535,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00043632292071083467,
+          "lo": -0.000637542515857533,
+          "hi": -0.00022954022199969418,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0003021978544985183,
+          "lo": -0.0004560752245129993,
+          "hi": -0.00015919254730207354,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00002283357512649642,
+          "lo": -0.00009495632697207399,
+          "hi": 0.00002898878335872091,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0040717225940262594,
+          "lo": -0.006582184226786795,
+          "hi": -0.0013545189010325056,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -264,9 +706,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 95
         },
         "left": {
           "toward": 0,
@@ -285,27 +727,174 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 93
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 2,
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 90
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 90
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je n'ai pas vraiment suivi cette histoire de meeting, ça ne change rien à ce que je pense ou à mes votes. Les grands rassemblements politiques, ce n'est pas pour moi.",
-        "Mélenchon fait un grand meeting au Bourget, c’est bon pour sa visibilité, ça montre qu’il rassemble. Cela me donne un peu plus envie de voter pour lui, ça dynamise ses chances.",
-        "Ce genre de meeting, je regarde de loin. Qu’il y ait beaucoup ou peu de monde ne me dérange pas, cela n'affecte pas ma décision de vote."
-      ]
+        "Oh, 20 000 personnes pour Mélenchon, ça me semble beaucoup, mais je trouve ça bien qu'il essaie de parler à autant de gens. Je ne sais pas trop si cela change grand-chose pour moi.",
+        "Mélenchon au Bourget, c'est un gros rassemblement, ça montre qu'il a du soutien. Mais si c'est que la moitié, ça me ferait douter un peu, même si je le respecte assez.",
+        "Je vois Mélenchon qui rassemble autant de monde, ça me semble impressionnant, mais je ne suis pas sûre que ça change mon opinion sur lui."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0019074667527674994,
+          "lo": -0.00271121313743719,
+          "hi": -0.0009956552451918285,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0005712711668830575,
+          "lo": -0.0009439194388768003,
+          "hi": -0.00027269635361496127,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00015397191377467727,
+          "lo": -0.0002714830803718871,
+          "hi": -0.00004506462145339864,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00038359653913408004,
+          "lo": -0.0006879394944570707,
+          "hi": -0.0001047564493686958,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.005876303976002444,
+          "lo": 0.005046511262064918,
+          "hi": 0.006791204391098115,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": -0.0001105009563792122,
+          "lo": -0.00021191715344728973,
+          "hi": -0.000018111159193895208,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00011751585257732385,
+          "lo": -0.00018275626040904717,
+          "hi": -0.0000539770542716816,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000356416146966694,
+          "lo": -0.0005562259250606811,
+          "hi": -0.00017301579966538555,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00020994150398292186,
+          "lo": -0.00035642964214925907,
+          "hi": -0.00007737449509062675,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0005959841897740116,
+          "lo": -0.0008082283497907766,
+          "hi": -0.00035706068747145804,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0002416544084236093,
+          "lo": -0.0003541798703674204,
+          "hi": -0.0001356868997024446,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.0000031424807088305525,
+          "lo": -0.000022124506061069078,
+          "hi": 0.000018737205363670002,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0012311270260481802,
+          "lo": -0.0029838680212957856,
+          "hi": 0.00043791109754765054,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "0704715c284966998df5f4f038c2699e133a275a9b5dbb69c99ca213f19fa002"
+    "contentHash": "21ea890aef0560debdffa8fb46d18259e7ac8f862cf9d12e2b11f14c85e7fa16"
   }
 }

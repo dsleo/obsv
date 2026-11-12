@@ -4,38 +4,38 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "a9e5e92e9ee6af85",
+  "inputHash": "f18c517634b5091e",
   "eventInputHash": "16aac0921774b1b40f34370eedf22636020aeeb2e962973e71f6eb505b5182e3",
-  "computedAt": "2026-11-11T12:51:25.315Z",
+  "computedAt": "2026-11-12T13:48:12.730Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Eric Zemmour annonce sa candidature à l'élection présidentielle française, mais en précisant qu'il ne mènera pas une campagne agressive et axera ses propositions principalement sur des thèmes économiques, en minimisant sa rhétorique sur les questions identitaires.",
-    "whatChanges": "L'orientation plus économique et moins identitaire de sa campagne modifie l’image d’Eric Zemmour auprès des électeurs, pouvant attirer un électorat plus large et moins polarisé."
+    "description": "Eric Zemmour annonce sa candidature un mois plus tard que prévu, juste après les résultats du premier tour, afin de capitaliser sur les débats politiques en cours.",
+    "whatChanges": "Le décalage de l'annonce modère l'impact initial sur les électeurs de droite dure, qui s'étaient mobilisés rapidement, en réduisant l'effet de surprise et en donnant plus de temps aux concurrents pour affiner leurs positions."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Retraités en couple sans enfant vivant en zone intermédiaire",
-      "mechanism": "Les couples de retraités sans enfant de foyer, souvent préoccupés par la sécurité et l'identité nationale, sont directement concernés par les propositions d'Eric Zemmour sur ces thématiques.",
-      "reason": "Il s'agit d'un groupe d'âge élevé structuré en couple, vivant hors des grandes villes, sensibles aux discours conservateurs sur la sécurité et l'identité.",
+      "name": "Jeunes salariés modestes en communes denses",
+      "mechanism": "Les jeunes employés et ouvriers en communes urbaines denses représentent un électorat clé touché par les discours d'Eric Zemmour sur les questions d'emploi, d'identité et de sécurité dans les grandes villes.",
+      "reason": "Jeunes actifs modestes vivant en zones urbaines, cible majeure du discours socio-économique et sécuritaire lié à la candidature.",
       "all": [
-        "cluster.retired_couple",
-        "geo.intermediate"
+        "age.25_34",
+        "cluster.modest_wage_earner",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intention de vote pour Eric Zemmour",
-        "Opinion sur les questions d'identité et sécurité",
-        "Sentiment d'appartenance locale"
+        "Attitude envers les propositions d'Eric Zemmour",
+        "Sentiment d'identité nationale"
       ],
-      "count": 617,
-      "distinctCommunes": 24,
+      "count": 8798,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -46,29 +46,25 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes actifs en communes moyennement denses",
-      "mechanism": "Les employés et ouvriers des communes ni rurales ni très denses, concernés par les propositions économiques et sécuritaires d'Eric Zemmour, représentent une base sociale populaire en débat.",
-      "reason": "Ce segment cible les salariés modestes employés dans des milieux urbains modérés, plus sensibles aux questions d'ordre et d'économie abordées lors de l'annonce.",
+      "name": "Retraités vivant en couple dans les grandes agglomérations",
+      "mechanism": "Les retraités en couple dans les grandes villes sont concernés par les propositions d'Eric Zemmour sur la sécurité, la retraite et la place des traditions françaises urbaines.",
+      "reason": "Retraités en couple, souvent sensibles aux discours sur la sécurité et l'identité, dans un contexte urbain.",
       "all": [
-        "geo.intermediate"
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.dense"
       ],
-      "any": [
-        "occupation.employee",
-        "occupation.worker"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception des propositions économiques de Zemmour",
-        "Sensibilité aux thématiques de sécurité",
-        "Mobilisation électorale possible"
+        "Opinion sur les réformes de retraite proposées",
+        "Perception de la sécurité urbaine"
       ],
-      "count": 1040,
-      "distinctCommunes": 24,
+      "count": 15215,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Eric Zemmour annonce sa candidature à l'élection présidentielle française",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -77,25 +73,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes hommes de 25 à 34 ans diplômés du supérieur en milieu urbain dense",
-      "mechanism": "Jeunes diplômés urbains, notamment hommes, qui peuvent réagir à l'annonce d'Eric Zemmour en fonction de leur positionnement politique et social dans les grands centres urbains.",
-      "reason": "Ce segment restreint cible un groupe jeune et diplômé en milieu urbain dense, potentiellement critique ou réactif à la candidature Zemmour.",
+      "name": "Employés de 35 à 49 ans en communes intermédiaires",
+      "mechanism": "Eric Zemmour évoque des thèmes économiques et sociaux ciblant aussi les employés urbains ou périurbains âgés de 35 à 49 ans, vivant en communes intermédiaires et plus urbanisées, un groupe sensible aux enjeux économiques actuels.",
+      "reason": "Remplacement d'un segment trop petit par un groupe plus large et géographiquement rééquilibré",
       "all": [
-        "age.25_34",
-        "sex.male",
-        "education.bac_plus_3_4",
-        "geo.dense"
+        "occupation.employee",
+        "age.35_49",
+        "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers Eric Zemmour",
-        "Sensibilité aux enjeux urbains et sociaux",
-        "Participation électorale"
+        "Soutien à la candidature d'Eric Zemmour",
+        "Perception des enjeux économiques locaux"
       ],
-      "count": 1266,
-      "distinctCommunes": 69,
+      "count": 210,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -114,57 +108,10 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes hommes de 25 à 34 ans diplômés du supérieur en milieu urbain dense",
-      "matchedCount": 1266,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je connais Zemmour, mais honnêtement ça ne change rien à mon vote. Je ne me sens pas concerné par ses idées, ça reste trop clivant pour moi.",
-        "Zemmour qui fait campagne sans ses attaques habituelles ? Ça me laisse perplexe, je suis plus attiré par les propositions écologiques et sociales que par le bruit autour de son personnage.",
-        "Zemmour se lance ? Pas mon type de candidat, et je ne vois pas ce que ça change pour moi, surtout s'il devait adoucir son discours, je ne crois pas que ça m'attire en particulier."
-      ]
-    },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes actifs en communes moyennement denses",
-      "matchedCount": 1040,
+      "segmentName": "Retraités vivant en couple dans les grandes agglomérations",
+      "matchedCount": 15215,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -181,8 +128,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -190,28 +137,175 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 7,
-          "away": 1,
-          "noClearChange": 40
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
-          "away": 6,
-          "noClearChange": 41
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Honnêtement, Zemmour m'intéresse peu, ses discours sont souvent trop agressifs et ça ne me parle pas dans ma vie quotidienne.",
-        "Zemmour, je le vois plutôt comme un concurrent direct de Le Pen, donc ça pourrait diviser l'extrême droite ou, au contraire, renforcer la droite dure. Perso, ça me fait réfléchir mais je reste prudent.",
-        "Zemmour ? Ce genre de candidat ne me parle pas vraiment, c'est surtout à droite extrême et j'ai tendance à me méfier de tout ce qui peut diviser encore plus la société."
-      ]
+        "Je trouve que l'annonce de Zemmour ne change pas grand-chose pour moi, ce n'est pas un candidat que je soutiens. Je continue à suivre surtout les débats locaux et les candidats qui me parlent plus directement.",
+        "Zemmour, ce n'est pas vraiment mon truc, mais je comprends que certains se rallient à lui. Son annonce précoce ne me fait pas changer d'avis, et une annonce après le premier tour me laisserait de marbre aussi.",
+        "Je ne suis pas très intéressée par cette candidature de Zemmour. Ça ne me touche pas vraiment, je reste fidèle à mes convictions habituelles."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.00021158200410797677,
+          "lo": -0.0005474820873946062,
+          "hi": 0.000891690415886519,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0008724469437161457,
+          "lo": -0.0017145444928855908,
+          "hi": -0.00006725872845886789,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00007856164073257572,
+          "lo": -0.00021148062430407271,
+          "hi": 0.00003377557935327094,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0006066972022765339,
+          "lo": -0.0011521089897937472,
+          "hi": -0.0001925972908420451,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0007469280850816887,
+          "lo": -0.0013265068073190771,
+          "hi": -0.0002610987180125471,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0000268803397717194,
+          "lo": -0.00007495502651804933,
+          "hi": 0.00010240922064392428,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00000558667261720026,
+          "lo": -0.00006444606824428137,
+          "hi": 0.00006071635165205227,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00006578856336677048,
+          "lo": -0.00034564463509840815,
+          "hi": 0.0002066350761605965,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0000965598857102739,
+          "lo": -0.0003092697812038055,
+          "hi": 0.00010478950832679337,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.003515054890118852,
+          "lo": 0.0024112106355232807,
+          "hi": 0.004697321340157146,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00039064223163847497,
+          "lo": -0.0007589426430543492,
+          "hi": -0.00014491486998436247,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000010951915235783303,
+          "lo": 0.000004756372030450828,
+          "hi": 0.000017578639775701502,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0009124312693290712,
+          "lo": -0.0032574988651007265,
+          "hi": 0.0016142907015986117,
+          "stable": false
+        }
+      }
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Retraités en couple sans enfant vivant en zone intermédiaire",
-      "matchedCount": 617,
+      "segmentName": "Jeunes salariés modestes en communes denses",
+      "matchedCount": 8798,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -228,8 +322,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -237,23 +331,364 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 22,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 26
+          "noClearChange": 46
         },
         "abstention": {
           "toward": 0,
-          "away": 7,
-          "noClearChange": 41
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve qu'Éric Zemmour, avec sa façon de faire souvent très vive, ne correspond pas à ce que j'attends d'un candidat, je préfère la stabilité et la sérénité. Son annonce ne change pas vraiment ce que je pense.",
-        "Zemmour, je trouve qu'il embrouille souvent les débats avec ses propos. Une campagne plus calme sur l'économie serait peut-être plus intéressante, mais ça ne va pas me faire changer d'avis trop vite.",
-        "L’annonce de Zemmour ne m’intéresse pas vraiment, ça ne touchera pas ma façon de voir les choses. Par contre, s’il se concentrait surtout sur l’économie, je pourrais être un peu plus attentive, mais sans être convaincue."
-      ]
+        "Zemmour ? Franchement, ça ne change rien à ma façon de voir les choses, je suis plus préoccupée par mon boulot et la vie de tous les jours.",
+        "Zemmour candidat ? Peu importe le moment où il le dit, je suis plus intéressée par ce qui peut vraiment améliorer ma vie à Paris.",
+        "La candidature de Zemmour, ça me laisse plutôt indifférente. Je ne vois pas bien ce que ça peut changer pour mon travail et ma vie quotidienne."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0016856512265264387,
+          "lo": 0.0007530011420994309,
+          "hi": 0.002636262600967543,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0011419811848963743,
+          "lo": -0.0016040616467898504,
+          "hi": -0.0006934717610872338,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00027853410280751504,
+          "lo": -0.0004431017979175758,
+          "hi": -0.0001364179093036776,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0007045499307228861,
+          "lo": -0.001135057324834668,
+          "hi": -0.0003441746357109059,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0013751968754203271,
+          "lo": -0.002333289778575983,
+          "hi": -0.0006464042411037313,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00014186613648280036,
+          "lo": -0.00027504485778325367,
+          "hi": -0.000021427186375527248,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00017758498969754074,
+          "lo": -0.0003090219571677061,
+          "hi": -0.0000512453732476517,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00045657360845700396,
+          "lo": -0.0007736918385390801,
+          "hi": -0.00022359015935362304,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002333507408813731,
+          "lo": -0.000418210316149308,
+          "hi": -0.00008623438137093894,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.0014230927020416134,
+          "lo": -0.000022225093101665695,
+          "hi": 0.002931878161487211,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0002526983513542945,
+          "lo": -0.00043909339666088463,
+          "hi": -0.00007692365663440669,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00008741610298414442,
+          "lo": -0.0001803454063259003,
+          "hi": -0.000011021197141622888,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0017410080951362223,
+          "lo": -0.00044913232066712445,
+          "hi": 0.003990537146638523,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés de 35 à 49 ans en communes intermédiaires",
+      "matchedCount": 210,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Zemmour qui se présente ? Honnêtement, ça ne change pas grand-chose pour moi, j'aime bien la stabilité et je ne me sens pas vraiment concernée par ses idées.",
+        "Zemmour qui se lance, ça ne me fait ni chaud ni froid, ça ne changera pas mon vote, je préfère ceux qui défendent mes idées, comme Mélenchon.",
+        "Zemmour qui annonce sa candidature, ça ne m'emballe pas. Je suis plutôt proche de Marine Le Pen, et ce nouveau candidat me semble un peu trop radical."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0003215719071462698,
+          "lo": -0.0008416867311570655,
+          "hi": 0.0015829059455660054,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0004648700895630922,
+          "lo": -0.0007542510054958338,
+          "hi": -0.0001701734605814702,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0002507055120434243,
+          "lo": -0.00042749704170228116,
+          "hi": -0.0001081740748185377,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0011348066088592678,
+          "lo": -0.0015718430198515638,
+          "hi": -0.000790232019877091,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0013730248593714172,
+          "lo": -0.0018514047151267253,
+          "hi": -0.0009007871271850724,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00008585338501874375,
+          "lo": -0.00022321894656755154,
+          "hi": 0.000007135625598832269,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00016074203841923046,
+          "lo": -0.00027988106838899184,
+          "hi": -0.000045282003899992225,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0003980975226598957,
+          "lo": -0.0007370810362863416,
+          "hi": -0.00012253262175650082,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00027243454566229557,
+          "lo": -0.0005210001397599283,
+          "hi": -0.00006967913490480425,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.003690601929390773,
+          "lo": 0.0026119320165703397,
+          "hi": 0.004798673560648997,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0007752294867452618,
+          "lo": -0.0010909237186598154,
+          "hi": -0.0004746710318512029,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000008231776876557759,
+          "lo": 0.0000027873311735823354,
+          "hi": 0.000015456733077202873,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0008953584349290401,
+          "lo": -0.0009812688747231804,
+          "hi": 0.0026157128785377405,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -284,28 +719,175 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 18,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 78
+          "noClearChange": 94
         },
         "abstention": {
-          "toward": 1,
-          "away": 6,
+          "toward": 5,
+          "away": 2,
+          "noClearChange": 89
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 2,
           "noClearChange": 89
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je n'ai jamais vraiment prêté attention à Zemmour, il me semble un peu trop radical pour moi. Ce genre d'annonce ne va pas changer ce que je pense vraiment.",
-        "Zemmour, ça parle à certains ici, mais sa politique trop axée sur l'identité ne m'emballe pas. S'il se concentrait plus sur l'économie, je pourrais écouter, mais sinon, ça ne me fait pas bouger.",
-        "Zemmour, ce n'est pas mon style, trop extrême dans ses idées. S'il se concentre sur l'économie seulement, ça serait moins agressif, ça pourrait être un peu plus acceptable à écouter, mais je reste sceptique."
-      ]
+        "Zemmour, encore lui ? Franchement, j'en entends parler sans que ça change grand-chose à ma vie ici, sur l'île. Je reste fidèle à mes habitudes.",
+        "Cette annonce de candidature de Zemmour, ça fait parler au boulot, mais ça ne va pas vraiment changer mon vote, je reste fidèle à Le Pen, elle représente mieux mes préoccupations.",
+        "Zemmour se représente ? Franchement, je trouve son discours trop radical, ça ne me parle pas. Je préfère rester sur mes convictions actuelles."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.002182943138204845,
+          "lo": 0.0013068497404065463,
+          "hi": 0.0030956973882195014,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0012347136877311135,
+          "lo": -0.0015693332290848217,
+          "hi": -0.0008967467811756708,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0006595199332429653,
+          "lo": -0.0008392875488195775,
+          "hi": -0.0004886749344312507,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0014563805913124048,
+          "lo": -0.0018595266447999717,
+          "hi": -0.0010801233414168023,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0015881125042671177,
+          "lo": -0.0020203412276205714,
+          "hi": -0.0011471477556648912,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00035669274902164856,
+          "lo": -0.00046256974208357197,
+          "hi": -0.00024353540110571,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0003171288135231572,
+          "lo": -0.0004119365578209903,
+          "hi": -0.0002163023009833822,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0010570243025385456,
+          "lo": -0.0013247923930637551,
+          "hi": -0.0008020194877888942,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00069071519757551,
+          "lo": -0.0008810742211542008,
+          "hi": -0.0005227204556974868,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.0037665654784653085,
+          "lo": 0.0029778122117186372,
+          "hi": 0.004509756588353444,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0009117418631895269,
+          "lo": -0.0011361698084657714,
+          "hi": -0.0006606465096991774,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00008582616002596355,
+          "lo": -0.00015211910697205254,
+          "hi": -0.00003301171243223645,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0024083471857578214,
+          "lo": 0.0006859760356906502,
+          "hi": 0.004118450625328306,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "be1f5d031426e7119745e38386741a6789680ad488ddafba44edfca9bad08d84"
+    "contentHash": "c607a2778c8dfce6a67bb26ed92840588bb0187ea76c9d566ceba0e719611fd5"
   }
 }

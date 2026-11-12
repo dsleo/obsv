@@ -10,7 +10,7 @@ import {
   pollWindowLabel,
   radarEvents,
 } from "../../data/radarData";
-import { blocLabels, blocSignal, candidateBloc } from "../../lib/radar/highlights";
+import { candidateSignal } from "../../lib/radar/highlights";
 import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import { currentPollValue, formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { CandidateChart } from "./CandidateChart";
@@ -26,9 +26,8 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
   const first = getSmoothedPollValue(candidate.id, FIRST_POLL_DAY);
   const current = currentPollValue(candidate.id);
   const netChange = current !== null && first !== null ? current - first : null;
-  const bloc = candidateBloc[candidate.id];
   const rows = radarEvents.flatMap((event): ImpactRow[] => {
-    const signal = blocSignal(loadAnalysis(event.id), bloc);
+    const signal = candidateSignal(loadAnalysis(event.id), candidate.id);
     return signal
       ? [
           {
@@ -85,25 +84,28 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
             <h2>Évolution des intentions de vote</h2>
             <span>{pollWindowLabel}</span>
           </div>
-          <CandidateChart candidateId={candidate.id} color={candidate.color} />
+          <CandidateChart
+            candidateId={candidate.id}
+            color={candidate.color}
+            eventIds={rows
+              .slice()
+              .sort((a, b) => Math.max(b.toward, b.away) / b.sampled - Math.max(a.toward, a.away) / a.sampled)
+              .slice(0, 6)
+              .map((row) => row.id)}
+          />
         </section>
 
         <section className="candidate-impacts">
           <p className="candidate-data-note">
-            Les réponses ci-dessous concernent le bloc « {blocLabels[bloc]} », qui réunit{" "}
-            {pollCandidates
-              .filter((c) => candidateBloc[c.id] === bloc)
-              .map((c) => c.name)
-              .join(", ")}
-            . Elles décrivent un échantillon synthétique à l’échelle de l’index, sans additionner
-            les groupes qui peuvent se recouper.
+            Les réponses ci-dessous portent sur {candidate.name} directement. Elles décrivent un
+            échantillon synthétique à l’échelle de l’index, sans additionner les groupes qui peuvent
+            se recouper.
           </p>
           <CandidateImpacts rows={rows} />
           <p className="candidate-data-note">
-            Part des réponses synthétiques dont l’intention de vote se rapproche de ce bloc (« plus
-            enclins ») ou s’en éloigne (« moins enclins »), par rapport à un monde sans l’événement.
-            Ce n’est ni un sondage ni un effet mesuré ; le bloc regroupe les candidats proches, pas
-            un candidat seul.
+            Part des réponses synthétiques dont l’intention de vote se rapproche de cette
+            candidature (« plus enclins ») ou s’en éloigne (« moins enclins »), par rapport à un
+            monde sans l’événement. Ce n’est ni un sondage ni un effet mesuré.
           </p>
         </section>
       </article>

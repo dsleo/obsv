@@ -35,6 +35,26 @@ function Reactions({ group }: { group: RankedSegment }) {
   );
 }
 
+function ReactionFlow({ group }: { group: RankedSegment }) {
+  const strongest = group.signals.slice(0, 3);
+  if (!strongest.length) return null;
+  return (
+    <div className="event-reaction-flow" aria-label="Mouvements directionnels les plus fréquents">
+      <div className="event-reaction-flow-head"><span>Sans l’événement</span><span>Avec l’événement</span></div>
+      {strongest.map((signal) => (
+        <div className="event-reaction-flow-row" key={`${signal.bloc}-${signal.direction}`}>
+          <span className="event-reaction-flow-label">{signal.label}</span>
+          <div className={`event-reaction-flow-track ${signal.direction}`}>
+            <i style={{ width: `${Math.max(8, (signal.count / group.contrast.sampledCount) * 100)}%` }} />
+          </div>
+          <b>{pct(signal.count, signal.sampled)}</b>
+        </div>
+      ))}
+      <small>Part des profils simulés devenant plus ou moins enclins à choisir ce bloc ; ce n’est pas une part de vote.</small>
+    </div>
+  );
+}
+
 function Group({ group }: { group: RankedSegment }) {
   return (
     <div className="event-analysis-segment">
@@ -70,7 +90,22 @@ export function EventSubpopulationAnalysis({
           <p className="event-analysis-caveat">Aucune analyse n’est disponible pour cet événement.</p>
         ) : (
           <div className="event-analysis-results">
+            <div className="event-analysis-group-tabs" role="tablist" aria-label="Groupes analysés">
+              {groups.map((group, groupIndex) => (
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={groupIndex === index}
+                  className={groupIndex === index ? "is-active" : undefined}
+                  key={group.segment.id}
+                  onClick={() => setIndex(groupIndex)}
+                >
+                  <span>{groupIndex + 1}</span>{group.segment.name}
+                </button>
+              ))}
+            </div>
             <Group key={groups[index].segment.id} group={groups[index]} />
+            <ReactionFlow group={groups[index]} />
             {groups.length > 1 && (
               <div className="event-analysis-carousel">
                 <button

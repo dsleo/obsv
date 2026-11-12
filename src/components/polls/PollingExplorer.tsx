@@ -11,6 +11,7 @@ import {
   pollObservations,
   POLL_DAYS,
   type CandidateId,
+  type PollObservation,
 } from "../../data/chartData";
 import { formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { sitePath } from "../../lib/paths";
@@ -31,7 +32,7 @@ const defaultIds = rankedIds.slice(0, 5);
  * line, open a marked event directly, and reveal the remaining series only on
  * demand. Poll tables and method notes live on the Method page.
  */
-export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) {
+export function PollingExplorer({ candidateId, eventIds }: { candidateId?: CandidateId; eventIds?: string[] }) {
   const initialIds = candidateId
     ? ([candidateId, ...defaultIds.filter((id) => id !== candidateId)].slice(0, 5) as CandidateId[])
     : defaultIds;
@@ -46,6 +47,7 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
     x: number;
     y: number;
   } | null>(null);
+  const [selectedPoll, setSelectedPoll] = useState<{ observation: PollObservation; candidate: string; value: number } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,6 +114,7 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
     );
   const legendCandidates = expanded ? pollCandidates : candidates;
   const ticks = [...new Set([0, Math.round(POLL_DAYS / 2), POLL_DAYS])];
+  const plottedEvents = eventIds ? chartEvents.filter((event) => eventIds.includes(event.id)) : chartEvents;
   const revealEvent = (event: (typeof chartEvents)[number], target: Element) => {
     if (!ref.current) return;
     const root = ref.current.getBoundingClientRect();
@@ -199,7 +202,7 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
                 {formatShortDate(dayToIso(day))}
               </text>
             ))}
-            {chartEvents.map((event, index) => (
+            {plottedEvents.map((event, index) => (
               <a
                 key={event.id}
                 href={sitePath(`/events/${event.id}`)}
@@ -241,20 +244,46 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
                     (point) =>
                       point.value !== null && (
                         <circle
-                          key={`${candidate.id}-${point.day}`}
+                          key={`smooth-${candidate.id}-${point.day}`}
                           className="poll-point-hit"
                           cx={x(point.day)}
                           cy={y(point.value)}
                           r="7"
                           onPointerEnter={(pointerEvent) => revealPoint(candidate, point, pointerEvent.currentTarget)}
-                          onPointerLeave={() => setHoveredPoint(null)}
+                          onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
                           onFocus={(focusEvent) => revealPoint(candidate, point, focusEvent.currentTarget)}
                           onBlur={() => setHoveredPoint(null)}
+                          onClick={() => {
+                            const poll = pollObservations.find((observation) => observation.day === point.day && observation.values[candidate.id] !== undefined) ?? null;
+                            setSelectedPoll(poll ? { observation: poll, candidate: candidate.name, value: poll.values[candidate.id]! } : null);
+                          }}
                         >
                           <title>{`${candidate.name} · ${formatShortDate(dayToIso(point.day))} · ${formatPct(point.value)}`}</title>
                         </circle>
                       ),
                   )}
+                  {pollObservations
+                    .filter((poll) => poll.values[candidate.id] !== undefined)
+                    .map((poll) => {
+                      const observedPoint = { day: poll.day, value: poll.values[candidate.id]! };
+                      return (
+                        <circle
+                          key={`${candidate.id}-${poll.id}`}
+                          className="poll-observation-hit"
+                          cx={x(poll.day)}
+                          cy={y(observedPoint.value)}
+                          r="5"
+                          fill={candidate.color}
+                          onPointerEnter={(pointerEvent) => revealPoint(candidate, observedPoint, pointerEvent.currentTarget)}
+                          onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
+                          onFocus={(focusEvent) => revealPoint(candidate, observedPoint, focusEvent.currentTarget)}
+                          onBlur={() => setHoveredPoint(null)}
+                          onClick={() => setSelectedPoll({ observation: poll, candidate: candidate.name, value: observedPoint.value })}
+                        >
+                          <title>{`${candidate.name} · ${formatShortDate(poll.fieldworkEnd)} · ${formatPct(observedPoint.value)} % · ${poll.pollster}`}</title>
+                        </circle>
+                      );
+                    })}
                   {last && (
                     <line
                       x1={x(last.day) + 2}
@@ -271,13 +300,6 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
                       {candidate.short} {formatPct(last.value!)}%
                     </text>
                   )}
-                  {pollObservations
-                    .filter((poll) => poll.values[candidate.id] !== undefined)
-                    .map((poll) => (
-                      <circle key={poll.id} cx={x(poll.day)} cy={y(poll.values[candidate.id]!)} r="3" fill={candidate.color}>
-                        <title>{`${candidate.name} : ${poll.values[candidate.id]} %, ${poll.pollster}`}</title>
-                      </circle>
-                    ))}
                 </g>
               );
             })}
@@ -299,6 +321,16 @@ export function PollingExplorer({ candidateId }: { candidateId?: CandidateId }) 
             <strong>{hoveredPoint.candidate}</strong>
             <span>{hoveredPoint.date} · {formatPct(hoveredPoint.value)}</span>
           </div>
+        )}
+        {selectedPoll && (
+          <aside className="poll-source-card" aria-label="Détail du sondage sélectionné">
+            <div>
+              <strong>{selectedPoll.candidate} · {formatPct(selectedPoll.value)} %</strong>
+              <span>{selectedPoll.observation.pollster} · {selectedPoll.observation.fieldworkStart ? `${formatShortDate(selectedPoll.observation.fieldworkStart)} — ` : ""}{formatShortDate(selectedPoll.observation.fieldworkEnd)} · n={selectedPoll.observation.sample.toLocaleString("fr-FR")}</span>
+            </div>
+            <a href={selectedPoll.observation.source.url} target="_blank" rel="noreferrer">Voir la source <span aria-hidden="true">↗</span></a>
+            <button type="button" onClick={() => setSelectedPoll(null)} aria-label="Fermer le détail du sondage">×</button>
+          </aside>
         )}
       </div>
     </div>

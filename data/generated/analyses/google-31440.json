@@ -4,45 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "0197e7fad3c39e4d",
+  "inputHash": "cd44a0c35da5c48e",
   "eventInputHash": "2bca5dc1fdc76a58ec2b53422a2961a270452961de7665669d1ac4a3cc59adf2",
-  "computedAt": "2026-11-11T12:51:57.848Z",
+  "computedAt": "2026-11-12T13:48:36.097Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Marine Le Pen affirme que le programme de LFI est un \"projet de réforme sociale ambitieuse\", tandis que Jean-Luc Mélenchon critique le RN en le qualifiant d'extrême droite.",
-    "whatChanges": "Les positions de Marine Le Pen et Jean-Luc Mélenchon sont inversées, modifiant l'impact sur leurs électorats respectifs en adoucissant le ton de Le Pen et en radicalisant celui de Mélenchon."
+    "description": "Jean-Luc Mélenchon présente son programme de LFI pour 2027 en insistant sur la souveraineté nationale et la réduction des inégalités, ce qui pousse Marine Le Pen à dénoncer un \"projet de transformation radicale du pays\" plutôt qu'un démantèlement, tandis que Mélenchon souligne que le RN représente une droite conservatrice classique.",
+    "whatChanges": "Le ton employé par Marine Le Pen est moins alarmiste, ce qui modère l'opposition frontale entre LFI et RN, impactant la perception des électeurs modérés et ceux sensibles au discours d'extrême droite."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes familles en milieu urbain dense",
-      "mechanism": "Le programme de LFI pour 2027, vivement critiqué par Marine Le Pen, concerne particulièrement les jeunes familles urbaines d’âge actif qui pourraient être sensibles aux questions sociales et économiques abordées dans ce projet.",
-      "reason": "Ce segment couvre les couples avec enfants entre 25 et 49 ans résidant en commune dense, dans un contexte où le programme social de LFI est important pour ce public.",
+      "name": "Agriculteurs exploitants âgés",
+      "mechanism": "Jean-Luc Mélenchon et Marine Le Pen débattent du programme de LFI, qui vise notamment des réformes impactant le monde agricole. Ce segment concerne spécifiquement les agriculteurs de 50 ans et plus, qui sont directement concernés par ces réformes et par le démantèlement possible selon Marine Le Pen.",
+      "reason": "Les agriculteurs de 50 ans et plus sont un groupe professionnel directement touché par les politiques agricoles et économiques proposées et critiquées dans ce contexte.",
       "all": [
-        "household.couple_with_children"
+        "occupation.farmer",
+        "age.50_64"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [
-        "geo.rural"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur le programme social de LFI",
-        "Connaissance de la critique de Marine Le Pen"
+        "Opinion sur le programme de LFI",
+        "Perception du RN"
       ],
-      "count": 25826,
-      "distinctCommunes": 96,
+      "count": 376,
+      "distinctCommunes": 78,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Programme de LFI pour 2027: Marine Le Pen y voit un \"projet de démantèlement de la France\", Jean-Luc Mélenchon estime que le RN \"c'est presque du Édouard Philippe\"",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -51,22 +45,22 @@
     },
     {
       "id": "segment_2",
-      "name": "Cadres urbains diplômés supérieurs",
-      "mechanism": "Jean-Luc Mélenchon compare le RN à Édouard Philippe, une alliance ou proximité qui peut résonner différemment chez les cadres urbains diplômés qui composent une partie importante de l’électorat influencé par les débats d’extrême droite et de gauche radicale.",
-      "reason": "Ce segment comprend les cadres et professions intellectuelles supérieures en commune dense avec un haut niveau d’éducation, le groupe potentiellement sensible aux ramifications politiques et critiques partagées dans l’événement.",
+      "name": "Couples de retraités vivant en zone urbaine dense",
+      "mechanism": "Le débat public sur le programme de LFI et les accusations de « démantèlement de la France » visent aussi la sécurité sociale et les protections sociales, ce qui concerne particulièrement les retraités en couple vivant en zone urbaine dense susceptibles d’être plus sensibles aux propositions sociales et économiques.",
+      "reason": "Les retraités en couple en zone dense forment un segment sociodémographique sensible aux enjeux sociaux et économiques liés au programme de LFI.",
       "all": [
-        "cluster.urban_executive",
-        "education.bac_plus_5_plus",
+        "occupation.retired",
+        "household.couple_no_children",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception des discours de Jean-Luc Mélenchon et Marine Le Pen",
-        "Évaluation des implications politiques du programme LFI"
+        "Perception des protections sociales",
+        "Attitude envers les candidats"
       ],
-      "count": 7587,
+      "count": 15215,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -78,26 +72,55 @@
     },
     {
       "id": "segment_3",
-      "name": "Salariés modestes en communes intermédiaires âgés de 35 à 49 ans",
-      "mechanism": "Ce segment cible les salariés modestes âgés de 35 à 49 ans résidant en communes intermédiaires, un groupe spécifique exposé aux débats politiques entre LFI et RN sur l'avenir du pays.",
-      "reason": "Segment réduit par intersection avec la tranche d'âge 35_49 et géographie plus ciblée pour réduire un segment trop large initialement rejeté.",
+      "name": "Jeunes diplômés urbains",
+      "mechanism": "Jean-Luc Mélenchon défend son programme progressiste contre les accusations de Marine Le Pen. Ce segment de jeunes diplômés en milieu urbain dense est un public clé pour évaluer la réception du projet de LFI et leur comparaison entre RN et gouvernement précédent.",
+      "reason": "Les jeunes diplômés urbains sont généralement plus investis dans les débats politiques progressistes et sont un public cible du programme de LFI.",
       "all": [
-        "cluster.modest_wage_earner",
-        "age.35_49",
-        "geo.intermediate"
+        "age.18_24",
+        "education.bac_plus_3_4",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur le projet de LFI",
-        "Attitude envers Marine Le Pen",
-        "Perception du RN"
+        "Opinion sur LFI",
+        "Comparaison Mélenchon / RN"
       ],
-      "count": 370,
-      "distinctCommunes": 24,
+      "count": 1070,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [],
+      "counterfactual": {
+        "intervention": "Programme de LFI pour 2027: Marine Le Pen y voit un \"projet de démantèlement de la France\", Jean-Luc Mélenchon estime que le RN \"c'est presque du Édouard Philippe\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Salariés modestes en communes intermédiaires ou denses",
+      "mechanism": "La critique de Marine Le Pen sur le programme de LFI touche aux questions sociales et économiques qui impactent fortement les salariés modestes, notamment employés et ouvriers, vivant en zones urbaines ou semi-urbaines, qui peuvent être attentifs à ces enjeux et à la radicalité supposée du programme.",
+      "reason": "Les salariés modestes dans des zones plus peuplées sont un groupe socio-économique directement concerné par les propositions économiques et sociales.",
+      "all": [
+        "occupation.employee"
+      ],
+      "any": [
+        "geo.intermediate",
+        "geo.dense"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers le programme de LFI",
+        "Perception du RN"
+      ],
+      "count": 19549,
+      "distinctCommunes": 96,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "geo : geo.intermediate ou geo.dense regroupés en union (« any ») ; une personne n’a qu’une seule valeur de geo"
+      ],
       "counterfactual": {
         "intervention": "Programme de LFI pour 2027: Marine Le Pen y voit un \"projet de démantèlement de la France\", Jean-Luc Mélenchon estime que le RN \"c'est presque du Édouard Philippe\"",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -114,151 +137,10 @@
     }
   ],
   "contrasts": {
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 3,
-          "noClearChange": 92
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 93
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, ces grandes phrases des politiciens, ça m'embrouille plus qu'autre chose, je préfère rester discrète sur tout ça.",
-        "Ah ça, Mélenchon qui dit que Le Pen c'est presque du Philippe, j'avoue que ça me surprend. Ça ne change pas grand-chose à ce que je pense vraiment de tout ça.",
-        "Entre Mélenchon et Le Pen qui s’échangent les coups, ça me paraît surtout du théâtre politique, pas de quoi changer mon vote."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Salariés modestes en communes intermédiaires âgés de 35 à 49 ans",
-      "matchedCount": 370,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que ces accusations entre LFI et le RN sont juste une guerre de mots qui ne change rien pour moi ni pour ma famille.",
-        "Je ne me sens pas vraiment concernée par les critiques entre Mélenchon et Le Pen, c'est un peu loin de mes préoccupations.",
-        "Ces attaques entre Mélenchon et Le Pen ne me font ni chaud ni froid, ça ne m’incite pas vraiment à changer d’avis."
-      ]
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes familles en milieu urbain dense",
-      "matchedCount": 25826,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 3,
-          "away": 3,
-          "noClearChange": 42
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 2,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que les attaques entre LFI et le RN compliquent encore plus mon choix, mais ça ne me fait pas changer d'avis car je suis surtout préoccupée par la stabilité et la sécurité pour ma famille.",
-        "Je suis un peu surprise par ces propos de Mélenchon qui minimise le RN, ça me fait réfléchir sur leur vrai positionnement, mais je reste plutôt attachée aux idées de gauche écologiste.",
-        "Ces propos politiques sont un peu éloignés de ma vie quotidienne, je n’en tiens pas trop compte pour mon vote, je reste fidèle à mes convictions."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Cadres urbains diplômés supérieurs",
-      "matchedCount": 7587,
+      "segmentName": "Agriculteurs exploitants âgés",
+      "matchedCount": 376,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -289,23 +171,946 @@
           "noClearChange": 47
         },
         "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ces propos de Mélenchon et Le Pen sur leurs programmes montrent surtout une guerre de communication. Ça ne change pas vraiment mon opinion, je reste critique mais stable.",
-        "Je suis plutôt à droite, et entendre Mélenchon dire que RN c’est extrême droite me conforte dans mon idée que LFI ne comprend pas la réalité. Mais que Le Pen adoucisse son discours sur LFI, ça me semble bizarre, ça ne me rassure pas.",
-        "Ces échanges ont plus valeur de politique spectacle que d'information utile. Je suis attachée à un certain équilibre, donc ça ne me fait pas bouger."
-      ]
+        "Je vois surtout des disputes politiciennes qui ne changent pas le quotidien de mes exploitations agricoles. Je reste concentré sur mon travail plus que sur ces polémiques.",
+        "Ce genre de propos montre bien qu’ils n’ont pas la même lecture des enjeux. Cela me conforte un peu dans mon choix, j'ai plutôt confiance en Marine Le Pen mais j’entends aussi les critiques de Mélenchon.",
+        "Ces débats me paraissent un peu éloignés de la réalité quotidienne. J’ai du mal à me faire une opinion précise sur leurs accusations croisées."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0019529434600879126,
+          "lo": 0.0006371793221173448,
+          "hi": 0.0032120777507217697,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0017472424334988494,
+          "lo": -0.002657695565897355,
+          "hi": -0.0009100374692511248,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00041666920425934175,
+          "lo": -0.0006107478768735906,
+          "hi": -0.00023928212038939133,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0014827115528375618,
+          "lo": -0.002195808898796578,
+          "hi": -0.0008803333821101769,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0015882613932305144,
+          "lo": -0.002689090023280719,
+          "hi": -0.0003876659502248191,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0005183010456309933,
+          "lo": -0.0007594246886488573,
+          "hi": -0.00031487406594806996,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0003055688792261169,
+          "lo": -0.0004383956938584757,
+          "hi": -0.00018894170944754163,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0011441107079607465,
+          "lo": -0.00167817672647146,
+          "hi": -0.000661176821704169,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0005705026145332618,
+          "lo": -0.0008925677907066751,
+          "hi": -0.00029945732271301515,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0006610712212600858,
+          "lo": -0.0011922370997096913,
+          "hi": -0.00014358696087687114,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0004106813663048545,
+          "lo": -0.0006241671344366807,
+          "hi": -0.00020366760254449503,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00006693487984855977,
+          "lo": -0.00013090237385803398,
+          "hi": -0.0000036124357127196984,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006959111838502962,
+          "lo": 0.004163601906451775,
+          "hi": 0.010690819001139667,
+          "stable": true
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés urbains",
+      "matchedCount": 1070,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu simpliste que Marine Le Pen parle de démantèlement alors que Mélenchon veut surtout changer les choses en profondeur. Ça ne change pas vraiment mon choix, je suis plutôt méfiant envers les extrêmes.",
+        "Je comprends que Le Pen voit cela comme un démantèlement, ça me fait un peu peur. Je suis déjà assez intéréssée par ses idées, ce discours me conforte un peu dans ma méfiance envers Mélenchon.",
+        "Je ne vois pas vraiment de différence importante entre les deux discours, ça ne me fait pas changer d'avis. Je reste assez centrée, méfiante envers les extrêmes."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0014300977268258384,
+          "lo": 0.000039987019965056235,
+          "hi": 0.003248675099336313,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0006747803395848187,
+          "lo": -0.0013156453084782697,
+          "hi": -0.00010829268626761478,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.000019782187409942435,
+          "lo": -0.000060440918903247334,
+          "hi": 0.000028112796926515035,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00043790545938158615,
+          "lo": -0.0008702112092279331,
+          "hi": -0.00009113705473103664,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0011977242949944965,
+          "lo": -0.002878944086682024,
+          "hi": 0.0006471440708477842,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00003485021132819876,
+          "lo": -0.00008977804292599153,
+          "hi": 0.000007567640030697557,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000009472758823172328,
+          "lo": -0.000030432045287302025,
+          "hi": 0.000010630576935133102,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00003564770542837408,
+          "lo": -0.00008646518591229838,
+          "hi": 0.000013146785499116212,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000024101322462769382,
+          "lo": -0.00006183522616327803,
+          "hi": 0.00000779484322177863,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.000012447022599777728,
+          "lo": -0.00006683709060782688,
+          "hi": 0.00010430322272756119,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.000004811119358222886,
+          "lo": -0.000017393959049056466,
+          "hi": 0.00002880194836179953,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000025828309063090135,
+          "lo": -0.000011213296232225606,
+          "hi": 0.000006223558070015481,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0009894912415358253,
+          "lo": -0.0008276851595478257,
+          "hi": 0.0030337504443805788,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Couples de retraités vivant en zone urbaine dense",
+      "matchedCount": 15215,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je vois que Mélenchon critique le RN en les comparant à Édouard Philippe, ça me semble intéressant, même si je trouve que Le Pen exagère beaucoup en parlant de démantèlement. Ça ne change pas trop mon opinion.",
+        "Pour moi, ce n'est pas une surprise que Le Pen crie au \"démantèlement\". Ce genre de discours me laisse un peu distante, je préfère quand on parle de choses concrètes, alors ça n'influence pas vraiment mon vote.",
+        "Je trouve que les querelles entre Mélenchon et Le Pen ne changent pas grand-chose à ce que je pense. Je préfère bien réfléchir avant de voter, ces polémiques m’intéressent peu."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.003376379556622221,
+          "lo": 0.0016493723724838553,
+          "hi": 0.005365534710488534,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0026339814840873714,
+          "lo": -0.003756705786101848,
+          "hi": -0.001770872885643974,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0003991982034308077,
+          "lo": -0.000688181477994987,
+          "hi": -0.00013846665226739053,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0016956917030751062,
+          "lo": -0.002301540038358351,
+          "hi": -0.0010511305196406805,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0036228134030200977,
+          "lo": -0.004666157957799005,
+          "hi": -0.002528734164981789,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00037229902759594466,
+          "lo": -0.000650754054437089,
+          "hi": -0.00015729439327803553,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00030440600301743316,
+          "lo": -0.0004688059350879945,
+          "hi": -0.00017900122883205,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008616713787013964,
+          "lo": -0.0013835392732847271,
+          "hi": -0.0004009356562318191,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00044772145596136094,
+          "lo": -0.0007323977227406174,
+          "hi": -0.00017813654393123313,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00012657587086392302,
+          "lo": -0.00027791206333937227,
+          "hi": 0.00004851979223853502,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00008360406176915862,
+          "lo": -0.00019955093468675136,
+          "hi": 0.000004653554723394396,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000007628387344304844,
+          "lo": -3.762079959023958e-7,
+          "hi": 0.00001746125714765674,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0071639546475561165,
+          "lo": 0.004175136098786065,
+          "hi": 0.00994893764502756,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 11,
+          "away": 0,
+          "noClearChange": 85
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 11,
+          "away": 0,
+          "noClearChange": 85
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas très fan de ces grandes promesses, ça me semble trop compliqué et un peu éloigné de ma vie quotidienne à la campagne.",
+        "Ce débat entre Mélenchon et Le Pen ne me touche pas trop, je continue à penser qu'il faut surtout protéger mon entreprise et mes traditions locales.",
+        "C'est intéressant de voir ces visions opposées, mais je reste prudent et je préfère voter pour un candidat qui semble fiable et sérieux."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.004198000845174917,
+          "lo": 0.00287355291217575,
+          "hi": 0.005690023423673464,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0021888436824476242,
+          "lo": -0.0028013989071393255,
+          "hi": -0.0016478878323664358,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00038153884445344424,
+          "lo": -0.000581400151399152,
+          "hi": -0.00020857259340529544,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.001418660578699783,
+          "lo": -0.001832101022144282,
+          "hi": -0.0010530849319400498,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0035143936339249392,
+          "lo": -0.004409269292285336,
+          "hi": -0.002570642276919538,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00028889225740781854,
+          "lo": -0.00042500076935528334,
+          "hi": -0.00016930348540106127,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00033121053129179574,
+          "lo": -0.0004546558967654813,
+          "hi": -0.00022058672937189097,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007473765214496527,
+          "lo": -0.0009931834290376224,
+          "hi": -0.0005149063347367786,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000632859597469504,
+          "lo": -0.0008325771892306282,
+          "hi": -0.0004388187049596467,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0008253271068876297,
+          "lo": -0.0010816711053966619,
+          "hi": -0.0005853126037059775,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00039045389717565866,
+          "lo": -0.0005213088039163321,
+          "hi": -0.00026453943938177586,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00003323736757971106,
+          "lo": -0.00007605560294502257,
+          "hi": 0.0000013607349969805286,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006554793173612639,
+          "lo": 0.00453427116766657,
+          "hi": 0.008357096862992361,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Salariés modestes en communes intermédiaires ou denses",
+      "matchedCount": 19549,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ces critiques un peu trop théâtrales, je préfère juger sur les propositions concrètes plutôt que les attaques entre Mélenchon et Le Pen.",
+        "Je préfère les discours clairs sur la souveraineté, mais les attaques ne changent rien à ce que je pense du RN ou LFI, c'est surtout leur action au quotidien qui compte.",
+        "À mon âge, je vois surtout les grandes figures politiques se chamailler, ça ne me touche pas vraiment ni ne change mon vote."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.001919349936305383,
+          "lo": 0.0005358217516454877,
+          "hi": 0.003354099782740174,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0011005045377486663,
+          "lo": -0.00207880263209188,
+          "hi": -0.0004462207715283362,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0001750686387313981,
+          "lo": -0.00035800963408529166,
+          "hi": -0.00002295341613176793,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0005957877098809863,
+          "lo": -0.0012221891451206096,
+          "hi": -0.00014970127910436684,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0019017063921521558,
+          "lo": -0.0033806902543535096,
+          "hi": -0.00012654424516729892,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00009034272439376928,
+          "lo": -0.00026350646900412427,
+          "hi": 0.00003814858176238212,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0001306899637096097,
+          "lo": -0.0002759287832377989,
+          "hi": -0.000033697314952458474,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00025682907395591044,
+          "lo": -0.0005778051996579754,
+          "hi": -0.00006071351710700428,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00022602084354413307,
+          "lo": -0.0005295166247500422,
+          "hi": -0.000037180841220239205,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00016157256548302544,
+          "lo": -0.0004178269487484512,
+          "hi": 0.00007098661295325639,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00018494499777827074,
+          "lo": -0.000327421178630886,
+          "hi": -0.0000741258808841882,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -5.651736491337606e-7,
+          "lo": -0.00000926976613801865,
+          "hi": 0.00000802648031990889,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.002904682684721664,
+          "lo": 0.00023049115967270785,
+          "hi": 0.006184536886517748,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "620bca883e7546d9fd98b2fcc5d806d63da623fef91fdd7967d42858ea486396"
+    "contentHash": "48dea38df120a8e6752ed90d86b1c269ceae8c1bef7ddc9ce869b596febd2301"
   }
 }

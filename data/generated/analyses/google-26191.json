@@ -4,45 +4,44 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "f10b6128b01523cd",
+  "inputHash": "00e463a021bf9a1b",
   "eventInputHash": "e3c5831209df92bfb9bc20b8a8d350d8e8b14fa5cf0464524bc5b22f3f9e9630",
-  "computedAt": "2026-11-11T12:50:47.913Z",
+  "computedAt": "2026-11-12T13:47:19.201Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Les syndicats du secteur de l'éducation sont invités individuellement à Matignon pour des réunions de concertation, tandis que plusieurs collectifs syndicaux appellent à une manifestation nationale mais sans grève générale annoncée, ce qui modère la tension sociale dans l'éducation pendant la semaine.",
-    "whatChanges": "La convocation individuelle remplace une rencontre collective syndicale, et l'absence d'appel à une grève générale dans l'éducation réduit l'impact de la contestation pour les enseignants et les familles."
+    "description": "Les syndicats se réunissent à Matignon, mais parviennent à un accord avec le gouvernement qui prévoit une augmentation modérée des salaires dans l'éducation tout en évitant une grève générale.",
+    "whatChanges": "La signature d'un accord évite la grève dans l'éducation, ce qui atténue la tension sociale et rassure les enseignants et parents d'élèves."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Ouvriers de 35 à 64 ans en zones intermédiaires",
-      "mechanism": "La grève dans l'éducation et la tension sociale sont particulièrement ressenties par les ouvriers de 35 à 64 ans qui sont impactés par les conditions de travail et les réformes liées au secteur public dans les communes de densité intermédiaire.",
-      "reason": "Ce segment regroupe des ouvriers adultes d'âge moyen vivant dans des communes ni très denses ni très rurales, directement concernés par les mouvements sociaux dans l'éducation à cause de leur position professionnelle et âge.",
+      "name": "Salariés modestes en communes denses",
+      "mechanism": "Ce segment réunit des employés et ouvriers vivant dans des communes à forte densité urbaine, directement concernés par les tensions sociales et les appels à la grève dans l'éducation et d'autres secteurs annoncés par les syndicats à Matignon, car leur situation professionnelle les rend sensibles aux mesures sociales discutées.",
+      "reason": "Les salariés modestes en milieu urbain sont souvent très impliqués dans les mouvements sociaux et grèves touchant les services publics tels que l'éducation, notamment après les annonces gouvernementales.",
       "all": [
-        "occupation.worker",
-        "geo.intermediate"
+        "occupation.employee",
+        "geo.dense",
+        "cluster.modest_wage_earner"
       ],
       "any": [
+        "age.25_34",
         "age.35_49",
         "age.50_64"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur la grève dans l'éducation",
-        "Sentiment d'impact des réformes sociales",
-        "Soutien aux syndicats"
+        "Support à la grève dans l'éducation",
+        "Perception des annonces gouvernementales"
       ],
-      "count": 304,
-      "distinctCommunes": 24,
+      "count": 16322,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Syndicats à Matignon, grève dans l'éducation… Une nouvelle semaine qui s'annonce tendue sur le front social",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -51,31 +50,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles salariées en communes denses",
-      "mechanism": "Les jeunes familles actives salariées résidant en communes denses sont concernées par la grève et la tension sociale, notamment avec les impacts sur les enfants scolarisés et la gestion de la vie familiale pendant les mouvements sociaux.",
-      "reason": "Ce segment cible les couples avec enfants de moins de 50 ans, salariés, vivant en commune dense, directement touchés par les perturbations dans l’éducation et le climat social tendu.",
+      "name": "Ouvriers de 50 à 64 ans dans des communes intermédiaires",
+      "mechanism": "Ce groupe d'ouvriers âgés proches de la retraite, résidant en communes de densité intermédiaire, est concerné par les tensions sociales liées aux réformes et mouvements syndicaux évoqués par Matignon, notamment car ils peuvent craindre des répercussions sur leur sécurité sociale et emploi.",
+      "reason": "Les ouvriers expérimentés sont une base importante des revendications sociales et sont susceptibles d’être impactés par les décisions sur les retraites et le secteur public.",
       "all": [
-        "household.couple_with_children",
-        "geo.dense",
-        "occupation.employee"
+        "occupation.worker",
+        "age.50_64",
+        "geo.intermediate",
+        "cluster.older_worker"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Impacts sur la vie familiale",
-        "Gestion des perturbations scolaires",
-        "Opinion sur le mouvement social"
+        "Attitude envers la grève",
+        "Perception des réformes sociales"
       ],
-      "count": 6184,
-      "distinctCommunes": 72,
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Syndicats à Matignon, grève dans l'éducation… Une nouvelle semaine qui s'annonce tendue sur le front social",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -84,24 +78,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Retraités ruraux sans diplôme",
-      "mechanism": "Les retraités résidant en communes rurales et sans diplôme sont concernés par la tension sociale car ils peuvent ressentir l'impact indirect des mouvements sociaux sur leur environnement local et être sensibles aux discours sur les conditions de travail des actifs.",
-      "reason": "Ce groupe combine la retraite, vie en zone rurale et faible niveau de diplôme, un segment spécifique touché par les évolutions sociales dans leur commune et pouvant être une base sociale à mobiliser ou inquiète face aux tensions.",
+      "name": "Jeunes diplômés urbains sans activité professionnelle",
+      "mechanism": "Ce segment regroupe des jeunes diplômés des communes denses qui ne sont actuellement pas en activité professionnelle, un public potentiellement sensible aux annonces des syndicats à Matignon sur la situation sociale et éducative, car ils peuvent être inquiets pour leur insertion et impactés indirectement par les conflits sociaux.",
+      "reason": "Les jeunes diplômés sans emploi en milieu urbain sont un segment étroit lié aux débats sur l'éducation et le marché du travail et concernés par les tensions sociales récentes.",
       "all": [
-        "occupation.retired",
-        "cluster.rural_retiree",
-        "education.no_diploma"
+        "cluster.young_urban_graduate",
+        "cluster.young_without_activity",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception des mouvements sociaux",
-        "Impact local des grèves",
-        "Opinion sur les politiques sociales"
+        "Intérêt pour les mouvements sociaux",
+        "Attitude envers les politiques éducatives"
       ],
-      "count": 277,
-      "distinctCommunes": 65,
+      "count": 423,
+      "distinctCommunes": 49,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -122,21 +115,215 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Ouvriers de 35 à 64 ans en zones intermédiaires",
-      "matchedCount": 304,
+      "segmentName": "Salariés modestes en communes denses",
+      "matchedCount": 16322,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 46
         },
         "left": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
           "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 9,
+          "away": 5,
+          "noClearChange": 34
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 9,
+          "away": 5,
+          "noClearChange": 34
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette tension sociale dans l'éducation, ça me fatigue un peu, j'espère juste que ça ne va pas trop perturber la vie des écoles et de nos enfants.",
+        "Je travaille dans un boulot pas facile, cette histoire de grève dans l'éducation me parle. Si ça dure, ça peut me pénaliser aussi. Une bonne négociation serait mieux.",
+        "Je vois ces tensions sociales, mais en général ça ne touche pas directement ma vie, je préfère rester prudent et ne pas changer d'avis facilement sur la présidentielle."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.007803440657253802,
+          "lo": 0.006030735439662517,
+          "hi": 0.01008911204285823,
+          "stable": true
+        },
+        "philippe": {
+          "mean": -0.007258989775684749,
+          "lo": -0.008201567102760094,
+          "hi": -0.0061678297036340856,
+          "stable": true
+        },
+        "attal": {
+          "mean": -0.002301167357023324,
+          "lo": -0.0028681816021617966,
+          "hi": -0.0017832986501287165,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0030020886525006993,
+          "lo": -0.004081566259029762,
+          "hi": -0.0017873801147649838,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.003772749399075973,
+          "lo": 0.0012075273719332098,
+          "hi": 0.0062136253398390575,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.001816284179304196,
+          "lo": 0.000895011131012863,
+          "hi": 0.002764007196869723,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.000264214396226071,
+          "lo": -0.0002146498261500041,
+          "hi": 0.0007916414415666613,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0017341090986958015,
+          "lo": -0.002312605057939572,
+          "hi": -0.001178224845891687,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0014748691124662908,
+          "lo": -0.001924579483939312,
+          "hi": -0.00106086502227298,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00110942659771841,
+          "lo": -0.0016165835469918197,
+          "hi": -0.0005834139204439211,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0008699041279976769,
+          "lo": -0.0011810930900646272,
+          "hi": -0.0005052970231837501,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00021311506433079183,
+          "lo": -0.00033919592683492856,
+          "hi": -0.00010058328066603945,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004306981154557699,
+          "lo": -0.0025514849788366577,
+          "hi": 0.010568184643726114,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés urbains sans activité professionnelle",
+      "matchedCount": 423,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
@@ -150,22 +337,363 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 45
+          "away": 2,
+          "noClearChange": 46
         },
         "abstention": {
-          "toward": 3,
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
           "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
           "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je vois beaucoup de tension dans les médias mais ça ne change pas vraiment ce que je pense : je suis surtout préoccupée par mon travail et ma famille.",
-        "Une grève dans l'éducation, ça pourrait me déranger dans mon quotidien, mais sans grève générale je suis moins inquiet. Ça renforce mon choix habituel.",
-        "Les syndicats à Matignon, ça fait toujours du bruit. Une grève dans l'éducation ? Pas sûr que ça change mon vote, je ne suis pas directement concerné."
-      ]
+        "Je vois que ça gronde dans l'éducation, mais je suis un peu déconnectée de ces débats. Je continue à greffer mes pellicules sans trop m'en faire pour la politique.",
+        "Une grève dans l'éducation, ça pourrait toucher ma famille à Tournefeuille, mais je crains que ça n'aggrave la situation plus qu'autre chose. J'espère un accord pour éviter trop de tensions.",
+        "Je suis papa et je m'inquiète pour l'avenir de l'école. Une grève pourrait gêner le quotidien et montre des tensions graves, mais un accord serait plus rassurant."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0036819061139495954,
+          "lo": 0.0016742123017576428,
+          "hi": 0.00608064074303175,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.005939940702401666,
+          "lo": -0.006936605921932658,
+          "hi": -0.004795163394929885,
+          "stable": true
+        },
+        "attal": {
+          "mean": -0.0019815515073004046,
+          "lo": -0.002524392744751434,
+          "hi": -0.0014421818072986269,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0005409447703619961,
+          "lo": -0.0018171226386237346,
+          "hi": 0.0007217212142899713,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0077914201608633585,
+          "lo": 0.005716398306020452,
+          "hi": 0.010055064599723917,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": 0.003193867120167246,
+          "lo": 0.0023747725118674254,
+          "hi": 0.004076451826583845,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.001037237175509218,
+          "lo": 0.0005673687816441054,
+          "hi": 0.0015096411112154916,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0017830268512848205,
+          "lo": -0.0022547599464530217,
+          "hi": -0.001344309851676232,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0013232098007636861,
+          "lo": -0.001790622813016394,
+          "hi": -0.0009762715035738006,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0018380493606647771,
+          "lo": -0.0023437421715394725,
+          "hi": -0.001365312459901761,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0005497551749472895,
+          "lo": -0.0007103506146994504,
+          "hi": -0.0003554118645667336,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00007810948737243762,
+          "lo": -0.0001679940388438458,
+          "hi": 0.000004383851467373607,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0016698429153924135,
+          "lo": -0.00458046354662774,
+          "hi": 0.001407503827050162,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Ouvriers de 50 à 64 ans dans des communes intermédiaires",
+      "matchedCount": 144,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 5,
+          "noClearChange": 42
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 8,
+          "away": 2,
+          "noClearChange": 38
+        },
+        "abstention": {
+          "toward": 16,
+          "away": 2,
+          "noClearChange": 30
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 12,
+          "away": 2,
+          "noClearChange": 34
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 3,
+          "noClearChange": 44
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 16,
+          "away": 2,
+          "noClearChange": 30
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ça devient toujours plus tendu, je vois où ça va mener... Je suis inquiet pour mes collègues dans l'éducation et notre pouvoir d'achat.",
+        "La grève dans l'éducation, ça perturbe et ça fait peur. J'espère que ça ne va pas trop s'envenimer, sinon ça va être compliqué pour tout le monde.",
+        "Encore une semaine tendue, ça ne m'étonne pas, mais franchement ça m'intéresse peu. Je fais mon boulot, la politique sociale m'affecte modérément."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.013208292827499732,
+          "lo": 0.009066919034250939,
+          "hi": 0.017569084247125544,
+          "stable": true
+        },
+        "philippe": {
+          "mean": -0.006510324764377372,
+          "lo": -0.00737921540817845,
+          "hi": -0.005730628986456343,
+          "stable": true
+        },
+        "attal": {
+          "mean": -0.0022998786524595274,
+          "lo": -0.002656469799652754,
+          "hi": -0.0019449059676168515,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.005984030413330301,
+          "lo": -0.006926940018284511,
+          "hi": -0.005052101865644363,
+          "stable": true
+        },
+        "melenchon": {
+          "mean": -0.0009693981750127496,
+          "lo": -0.003994358137955504,
+          "hi": 0.0019336019999625826,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0004648736242787862,
+          "lo": -0.0011200733118779305,
+          "hi": 0.0001647585462233223,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000429662531490133,
+          "lo": -0.0008419879615562895,
+          "hi": 0.000052314997312275604,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0028462288598372545,
+          "lo": -0.0032370387203904537,
+          "hi": -0.002454565679441196,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0021609142027136648,
+          "lo": -0.0024300913146243328,
+          "hi": -0.0019014658582235668,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0018744384051037587,
+          "lo": -0.0033218951725851307,
+          "hi": -0.0003302687908351876,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.002545139736609967,
+          "lo": -0.0029181568050495547,
+          "hi": -0.002218248460557279,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0004316890579684007,
+          "lo": -0.0005766303321614292,
+          "hi": -0.00027721235220242336,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.013308285595682146,
+          "lo": 0.007732858903819653,
+          "hi": 0.018588635728611507,
+          "stable": true
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -176,142 +704,195 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 95
-        },
-        "left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 5,
-          "away": 2,
-          "noClearChange": 89
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 1,
           "noClearChange": 94
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Des grèves dans l'éducation, ça perturbe tout alors qu'on essaie juste de faire tourner la mairie normalement. Ça ne va pas faciliter les choses, même si ce n'est pas mon domaine direct.",
-        "Je vois ces grèves comme une nuisance. J'espère que ça ne dure pas trop, parce que ça complique la vie de tout le monde, surtout quand on est retraité et qu'on aime la tranquillité.",
-        "Une grève dans l'éducation, ça me parle un peu, mais tant que ça ne touche pas trop mon boulot direct, ça ne change pas trop mon avis sur la politique."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes familles salariées en communes denses",
-      "matchedCount": 6184,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
         },
         "left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 95
         },
         "center": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
           "toward": 0,
           "away": 3,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 5,
-          "away": 0,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, cette nouvelle sur la tension sociale ne me surprend pas, mais ça me stresse un peu. Entre le boulot et la famille, j'ai pas besoin de plus de conflit, surtout que ça ne changerait pas grand-chose pour moi.",
-        "Je vois qu'ils sont encore en train de faire du bruit dans l'éducation. Moi, je préfère quand ça reste calme, ça soulage un peu mon quotidien déjà bien rempli.",
-        "Une nouvelle semaine tendue dans l'éducation, ça me rend un peu anxieuse, mais honnêtement ça ne changera pas mon vote, je fais ce que je peux pour que tout roule au boulot."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Retraités ruraux sans diplôme",
-      "matchedCount": 277,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "noClearChange": 93
         },
         "right": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 9,
+          "away": 6,
+          "noClearChange": 81
         },
         "abstention": {
-          "toward": 5,
+          "toward": 29,
+          "away": 2,
+          "noClearChange": 65
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 10,
+          "away": 4,
+          "noClearChange": 82
+        },
+        "philippe": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 43
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 29,
+          "away": 2,
+          "noClearChange": 65
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je vois souvent ces histoires de grèves à la télé, ça ne m'intéresse pas tellement, ça ne change pas vraiment ma vie au village.",
-        "Ces histoires de grèves dans l'éducation, ça me fatigue un peu. Si ça se passe plus calmement, ce serait peut-être mieux pour tous, je suis un peu préoccupé par le désordre sur la route et les écoles fermées.",
-        "Je suis habituée à ce genre de nouvelles, mais elles ne me touchent pas directement. J'espère juste que ça ne va pas trop perturber la vie du village."
-      ]
+        "Je vois bien que les tensions sociales vont encore perturber le quotidien, surtout dans un village comme Sionne où tout le monde se connaît. Ça m'inquiète un peu, mais ça ne change pas grand-chose à mon choix politique.",
+        "Avec mon âge et mes habitudes, ces histoires de grèves, ça me lasse un peu. J'espère surtout que ça ne va pas trop compliquer les choses pour tout le monde. Je reste attentif mais sans changement dans mes convictions.",
+        "Je travaille dans un milieu pas mal touché par ces questions de salaires et grèves dans les services publics. Cette agitation, ça m'agace un peu, mais ça me conforte aussi dans l'idée qu'il faut un vrai changement."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0064615291157086125,
+          "lo": 0.00386496203582745,
+          "hi": 0.009077006521377584,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.006882933589864807,
+          "lo": -0.00768780977502649,
+          "hi": -0.006109855356142689,
+          "stable": true
+        },
+        "attal": {
+          "mean": -0.002475815047604138,
+          "lo": -0.002820208014517812,
+          "hi": -0.002141280003602614,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.003698747999401017,
+          "lo": -0.004390323095944727,
+          "hi": -0.002872973877544561,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0021616115334712215,
+          "lo": 0.000586476651124044,
+          "hi": 0.003965079018870817,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0011129756426021078,
+          "lo": 0.0006054687260177706,
+          "hi": 0.0016536054524053485,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00038390347194764817,
+          "lo": 0.0000860800664605185,
+          "hi": 0.0007118916728946597,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.002651964037370246,
+          "lo": -0.0030364296512756,
+          "hi": -0.0022311935056854577,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00246184008934845,
+          "lo": -0.002815720502261447,
+          "hi": -0.0021135669000607086,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.002201100224381743,
+          "lo": -0.0028032636997157943,
+          "hi": -0.0015985112534150948,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0013851095740887208,
+          "lo": -0.0016581248573381765,
+          "hi": -0.0011341843265317419,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00012434006125249523,
+          "lo": -0.00022585184161891985,
+          "hi": -0.000015516007995406395,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.01176183085958205,
+          "lo": 0.007947283917212297,
+          "hi": 0.015112197127365458,
+          "stable": true
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "493df69828cb6461fe6f439fa1434abe8f70feb02832dc3f37122a7a980d05f4"
+    "contentHash": "a74b31a7ab95713501de303add4e8bab56e5c0e3a8ca03b0c6f3b6ee58d489f4"
   }
 }

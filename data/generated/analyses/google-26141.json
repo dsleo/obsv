@@ -4,38 +4,66 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "36240e90ea95a100",
+  "inputHash": "9da61ffa4449f2fd",
   "eventInputHash": "adc96c150a8106fc6a5175862addfc6a31856175d63d5559a4a0a255ea2098e5",
-  "computedAt": "2026-11-11T12:51:40.122Z",
+  "computedAt": "2026-11-12T13:49:08.802Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "À Dijon, la journée de grève et de manifestation dans l’éducation du mardi 10 novembre est maintenue, mais les syndicats annoncent une participation nettement inférieure par rapport aux précédentes mobilisations.",
-    "whatChanges": "La mobilisation dans l’éducation est plus faible que prévu, ce qui peut affaiblir le message des syndicats auprès des électeurs concernés par l’éducation et les réformes scolaires."
+    "description": "À Dijon, la nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre se traduit par une mobilisation plus restreinte, avec principalement les personnels enseignants du primaire, tandis que les lycéens participent à une série d’actions symboliques mais sans arrêt des cours.",
+    "whatChanges": "La mobilisation paraît moins massive, ce qui pourrait réduire la pression sur le gouvernement et modérer le soutien des familles concernées par l’éducation."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Parents de familles avec enfants à charge dans une commune de taille moyenne à grande",
-      "mechanism": "Les jeunes familles avec enfants sont indirectement concernées par cette journée de grève et de manifestation, car les décisions ou conflits dans le secteur éducatif affectent directement leurs enfants scolarisés à Dijon, impactant ainsi leurs attentes et réactions vis-à-vis de l’éducation publique lors du mouvement du 10 novembre.",
-      "reason": "Parents de familles concernées par les enjeux scolaires et la qualité de l’éducation publique locale.",
+      "name": "Jeunes diplômés actifs en milieu urbain denses de 25 à 34 ans",
+      "mechanism": "Les jeunes diplômés actifs travaillant en milieu urbain dense à Dijon sont concernés par la manifestation car ils représentent une partie des personnels éducatifs ou des soutiens aux revendications, souvent sensibles aux enjeux de l’éducation.",
+      "reason": "Ce segment cible les jeunes actifs diplômés dans des environnements urbains, susceptibles d’être mobilisés ou concernés par la grève éducative.",
+      "all": [
+        "geo.dense",
+        "age.25_34",
+        "cluster.young_urban_graduate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Participation à la grève",
+        "Opinion sur les politiques éducatives",
+        "Engagement social"
+      ],
+      "count": 9916,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Dijon : nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Parents avec enfants en âge scolaire dans les communes de taille moyenne et grandes",
+      "mechanism": "Les parents d’enfants en âge scolaire résident dans les communes à partir de 1000 habitants, notamment à Dijon, et sont concernés par la grève dans l’éducation car les mouvements peuvent impacter la scolarité de leurs enfants.",
+      "reason": "Ce segment regroupe les adultes vivants en couple avec enfants, directement concernés par les perturbations possibles dans le système éducatif lors des grèves.",
       "all": [
         "household.couple_with_children",
         "commune_size.1000_plus"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49"
+        "age.35_49",
+        "age.25_34"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception des impacts de la grève sur la scolarité",
-        "Soutien aux revendications éducatives",
-        "Participation aux manifestations"
+        "Perception de la grève",
+        "Impact sur la vie scolaire des enfants",
+        "Soutien aux revendications éducatives"
       ],
       "count": 26279,
       "distinctCommunes": 119,
@@ -48,82 +76,23 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Salariés modestes employés dans des secteurs périphériques à l’éducation, habitants en milieu urbain intermédiaire",
-      "mechanism": "Les salariés modestes employés dans des secteurs périphériques à l'éducation mais résidant en zones urbaines intermédiaires à Dijon peuvent subir les répercussions du mouvement social éducatif du 10 novembre, notamment via des perturbations locales et solidarités interprofessionnelles.",
-      "reason": "Salariés modestes résidant dans la périphérie urbaine, potentiellement sensibles aux mouvements sociaux et solidaires.",
-      "all": [
-        "cluster.modest_wage_earner",
-        "geo.intermediate"
-      ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Attitude envers la grève et manifestations",
-        "Réactions face aux perturbations liées",
-        "Soutien aux revendications dans l’éducation"
-      ],
-      "count": 685,
-      "distinctCommunes": 24,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Dijon : nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
       "id": "segment_3",
-      "name": "Jeunes actifs employés en milieu urbain dense dans l’éducation et services associés",
-      "mechanism": "Ce segment concerne les jeunes actifs, principalement employés, habitant dans des communes urbaines denses, qui constituent une partie significative du personnel éducatif ou des services liés à l’éducation à Dijon, directement impliqués par l’appel à la grève et la manifestation dans l’éducation.",
-      "reason": "Segment resserré pour cibler les jeunes actifs employés en zone dense liés à l'éducation",
+      "name": "Jeunes actifs de 18 à 24 ans sans activité professionnelle en milieu urbain dense",
+      "mechanism": "Ce segment correspond aux jeunes de 18 à 24 ans qui sont sans activité professionnelle et résident en milieu urbain dense, susceptibles de participer ou soutenir la grève et manifestation dans l’éducation à Dijon, un événement mobilisant souvent les jeunes étudiants et chômeurs.",
+      "reason": "Remplacement pour segment trop large ou inexistant, utilise cluster exact pour garantie d'effectif suffisant et pertinence au thème de l'éducation et jeunesse",
       "all": [
-        "age.25_34",
-        "occupation.employee",
-        "geo.dense"
+        "geo.dense",
+        "cluster.young_without_activity",
+        "age.18_24"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers la grève dans l'éducation",
-        "Participation à la manifestation"
+        "Mobilisation pour la grève dans l’éducation",
+        "Attitude envers les manifestations étudiantes"
       ],
-      "count": 5130,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Dijon : nouvelle journée de grève et de manifestation dans l’éducation ce mardi 10 novembre",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Enseignants cadres et professions intellectuelles supérieures en commune dense à Dijon",
-      "mechanism": "Ce segment inclut les cadres et professions intellectuelles supérieures dans le secteur de l’éducation vivant en zone urbaine dense à Dijon, qui sont directement concernés par la grève et la manifestation du 10 novembre.",
-      "reason": "Ciblage plus précis des cadres du secteur éducatif en zone dense",
-      "all": [
-        "occupation.executive_professional",
-        "geo.dense"
-      ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Opinion sur la mobilisation dans l'éducation",
-        "Soutien à la grève"
-      ],
-      "count": 7517,
+      "count": 8453,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -143,65 +112,18 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Enseignants cadres et professions intellectuelles supérieures en commune dense à Dijon",
-      "matchedCount": 7517,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, cette grève à Dijon, ça ne me touche pas directement, donc ça ne change rien à mon vote. Je suis surtout préoccupée par l’environnement et la gestion locale à Martigues.",
-        "Je trouve que cette grève à Dijon ne m'impacte pas personnellement. À Marseille, c’est pas mon combat principal, alors je ne change rien à mon choix politique.",
-        "Cette grève à Dijon, ce n’est pas vraiment dans mon quotidien parisien, je reste un peu à distance. Ça ne modifie pas mes intentions de vote."
-      ]
-    },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Jeunes actifs employés en milieu urbain dense dans l’éducation et services associés",
-      "matchedCount": 5130,
+      "segmentName": "Jeunes actifs de 18 à 24 ans sans activité professionnelle en milieu urbain dense",
+      "matchedCount": 8453,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
@@ -210,8 +132,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -220,35 +142,182 @@
         },
         "far_right": {
           "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 5,
+          "noClearChange": 42
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 1,
+          "away": 5,
+          "noClearChange": 42
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette grève dans l'éducation à Dijon ne me touche pas vraiment ici à Lyon, c'est un problème local et je ne vois pas de raison de changer mon vote pour ça.",
-        "Je suis bien plus préoccupée par ma vie et le travail ici à Dunkerque, cette grève à Dijon ne me touche pas, je ne vois pas pourquoi ça changerait mon vote.",
-        "Je connais ces mouvements à Dijon, mais franchement, ça ne change rien à ce que je pense de la présidentielle ici chez nous."
-      ]
+        "Franchement, une nouvelle grève dans l'éducation ça ne m'intéresse pas trop, ça ne change rien à ma vie ni à ce que je vote.",
+        "Une nouvelle grève dans l'éducation, c'est important; ça montre que les enseignants sont en colère, ça me fait un peu plus pencher vers la gauche solidaire.",
+        "Les grèves dans l’éducation, ça me parle un peu, surtout quand c’est un mouvement important, ça me donne un peu plus envie de soutenir la gauche."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0008075678302682399,
+          "lo": -0.0022588711421795706,
+          "hi": 0.00046961177893813214,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0018701205507875996,
+          "lo": -0.002848109172257512,
+          "hi": -0.0009737075611252081,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0006147699579481157,
+          "lo": -0.0011490947419100356,
+          "hi": -0.00014293682049169453,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0009657802798295314,
+          "lo": 0.00017718429774302085,
+          "hi": 0.00187478069742822,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.004993229484974768,
+          "lo": 0.0034618368369813382,
+          "hi": 0.006715271794878355,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0028303884406744757,
+          "lo": 0.001929256124389228,
+          "hi": 0.003761411624317158,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0007050336658773717,
+          "lo": 0.0003238652358312993,
+          "hi": 0.001120645797117066,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008672417380027716,
+          "lo": -0.0013945975626102848,
+          "hi": -0.00043315002500285573,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0006407168717231846,
+          "lo": -0.0010501564448349716,
+          "hi": -0.000301068606415288,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0007892725490595531,
+          "lo": -0.0011756520220670237,
+          "hi": -0.0004084809647044,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0002346436817018204,
+          "lo": -0.000414047115800767,
+          "hi": -0.0000863373942911181,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000006611642308278775,
+          "lo": -0.00008908611666305154,
+          "hi": 0.0000711165500898679,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.003663487049556573,
+          "lo": -0.006957778285761294,
+          "hi": -0.0011057432135812937,
+          "stable": false
+        }
+      }
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Parents de familles avec enfants à charge dans une commune de taille moyenne à grande",
-      "matchedCount": 26279,
+      "segmentName": "Jeunes diplômés actifs en milieu urbain denses de 25 à 34 ans",
+      "matchedCount": 9916,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
@@ -272,64 +341,164 @@
         },
         "abstention": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 46
         }
       },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "En tant qu'assistante dans le secteur culturel à Paris, ces grèves dans l'éducation me touchent un peu, même si ce n'est pas mon domaine direct. Cela montre que les tensions sociales persistent dans la capitale.",
-        "La grève dans l'éducation, ça ne me touche pas vraiment, sauf si ça perturbe les écoles de mes enfants. Une mobilisation en baisse, ça me paraît normal, les gens veulent avancer.",
-        "Une nouvelle journée de grève dans l'éducation à Paris ? C'est encore du désordre qui risque de perturber l'activité, je préfère voir les choses s'organiser et pas s'enliser."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Salariés modestes employés dans des secteurs périphériques à l’éducation, habitants en milieu urbain intermédiaire",
-      "matchedCount": 685,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "left": {
+        "philippe": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "center": {
+        "attal": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "right": {
+        "glucksmann": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "far_right": {
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 46
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne vis pas à Dijon et la grève dans l'éducation ne me touche pas directement, donc ça ne va pas changer mon vote.",
-        "Cette grève à Dijon ne concerne pas mon quotidien à Louvres, du coup ça ne change rien à ce que je pense ni à mon vote.",
-        "Je ne suis pas dans le milieu éducatif, ni à Dijon, donc la manifestation là-bas ne change rien à ma manière de voter."
-      ]
+        "En tant que cadre dans le secteur urbain, je suis attentive à la mobilisation des enseignants, surtout dans une grande ville comme Dijon. Cela montre que les revendications dans l'éducation restent importantes, même si je ne vis pas directement cela à Paris.",
+        "Je comprends l'inquiétude des enseignants, mais ce genre de grève à Dijon me semble un peu éloigné de ma vie à Paris 16e. Cela ne change pas vraiment mon intention de vote.",
+        "À Dunkerque, je ne suis pas vraiment touché par cette grève à Dijon. La mobilisation semble plutôt limitée et pas vraiment liée à ma vie ici, donc ça ne me fait ni chaud ni froid."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0016746529946360198,
+          "lo": -0.002659411522060284,
+          "hi": -0.0006728186900824643,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0010738672685183979,
+          "lo": -0.0017924165288347674,
+          "hi": -0.0004698260659574218,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00023074472610053374,
+          "lo": -0.00044695099559054403,
+          "hi": -0.00005305977060016449,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0008420148596859249,
+          "lo": 0.00015192654430894919,
+          "hi": 0.0014596784815313379,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.003868511977687939,
+          "lo": 0.0022542131367802487,
+          "hi": 0.00587924150594838,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0017767560694226397,
+          "lo": 0.0011211530149649119,
+          "hi": 0.0024775428595846722,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00031963780889913995,
+          "lo": 0.00009347891195520593,
+          "hi": 0.0005355624078145438,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000842729815547079,
+          "lo": -0.0013260754044385089,
+          "hi": -0.0004437150981344619,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00034873328403832237,
+          "lo": -0.0006426975575906539,
+          "hi": -0.00014688783707026288,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00017575784324156034,
+          "lo": -0.00035709106526304814,
+          "hi": -0.0000021283971758503362,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00006858698938120909,
+          "lo": -0.00017038278040128204,
+          "hi": 0.00001717364485460482,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000626542766327732,
+          "lo": -0.0001289798010958121,
+          "hi": -0.0000014399013712579221,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0023291935175997398,
+          "lo": -0.004819759649104033,
+          "hi": -0.00009379096017964803,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -366,22 +535,363 @@
         },
         "abstention": {
           "toward": 1,
-          "away": 0,
+          "away": 1,
+          "noClearChange": 94
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
           "noClearChange": 95
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 94
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas concernée directement par cette grève à Dijon, donc ça ne change pas vraiment mon opinion ni mon vote.",
-        "C'est une situation qui m'intéresse peu même si je comprends les enjeux éducatifs, cela ne bouleverse pas mes intentions de vote habituelles.",
-        "Les grèves dans l’éducation attirent mon attention, je ressens plutôt de la sympathie pour les revendications mais ça ne me fera pas changer mon vote pour autant."
-      ]
+        "Je ne suis pas vraiment concernée par ces journées de grève à Dijon, ça semble loin et pas directement lié à mon quotidien dans la gestion d'entreprise.",
+        "Cette grève qui dure, même si elle concerne seulement l’éducation, m'inquiète un peu sur le fonctionnement de nos administrations, notamment avec des enfants qui pourraient être perturbés. Je reste attentif à l'impact réel.",
+        "Franchement, ces grèves dans l’éducation, ça me perturbe un peu, mais comme ça n’affecte pas directement mon travail, je reste distante. Plus de calme serait appréciable."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.00026233525017421537,
+          "lo": -0.000874436962841159,
+          "hi": 0.0014070060025207665,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0013106781574578551,
+          "lo": -0.0018544873943939666,
+          "hi": -0.0007577379404863986,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00001448682385293179,
+          "lo": -0.00025512035539959426,
+          "hi": 0.000241085832271583,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00001812633044664274,
+          "lo": -0.00033410604335488227,
+          "hi": 0.0004018000598695379,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0019606105708326656,
+          "lo": 0.0011531517024226258,
+          "hi": 0.0027509513528156293,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0013050341564191676,
+          "lo": 0.0008911291341737329,
+          "hi": 0.0017783201808205511,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00019931787034319225,
+          "lo": 0.000039857978971276726,
+          "hi": 0.00041836047103847575,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0004867769030284727,
+          "lo": -0.0007774220160417329,
+          "hi": -0.00023400365665924224,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00026271521730179495,
+          "lo": -0.0005061057054966876,
+          "hi": -0.0000877777690811674,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00038959915671856984,
+          "lo": -0.000680645332461647,
+          "hi": -0.00011170187807879428,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00024751921554453456,
+          "lo": -0.00038324046129063283,
+          "hi": -0.0001378515028805123,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000010905423348390487,
+          "lo": 0.000005913947308495514,
+          "hi": 0.000016700222513956434,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.001044554127660108,
+          "lo": -0.002349175784232826,
+          "hi": 0.00023982781806743732,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Parents avec enfants en âge scolaire dans les communes de taille moyenne et grandes",
+      "matchedCount": 26279,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, ces grèves dans l'éducation, ça me dérange un peu, ça complique la vie des familles comme la mienne, surtout que je ne vois pas bien ce que ça va changer.",
+        "Une nouvelle journée de grève à Dijon en éducation, je vois ça surtout comme un rappel que la question sociale et l'éducation restent cruciales pour notre avenir.",
+        "Je soutiens les profs, ces mouvements dans l’éducation me semblent justifiés, mais il faut aussi garder les cours pour les jeunes."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.001099064209455643,
+          "lo": -0.0029206389436141223,
+          "hi": 0.0011593063658204984,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0026660344373022286,
+          "lo": -0.0035754184357756082,
+          "hi": -0.0018318395254301317,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00008036638429524212,
+          "lo": -0.0003193119186548971,
+          "hi": 0.0005413348764667388,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0001342560086343691,
+          "lo": -0.0012377437700082127,
+          "hi": 0.0011000987231531347,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0028391561050484133,
+          "lo": 0.0010986337821311508,
+          "hi": 0.004238808002139469,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00216311479934329,
+          "lo": 0.0013878897067985754,
+          "hi": 0.0029335466760329176,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0003684603935073723,
+          "lo": 0.00006988178652556948,
+          "hi": 0.0006790769532965055,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000965021783011677,
+          "lo": -0.0014039128462531574,
+          "hi": -0.0005718285811212555,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007075402542301073,
+          "lo": -0.0011190550786044494,
+          "hi": -0.0003686442344564789,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0003650463307437491,
+          "lo": -0.0007214239061121116,
+          "hi": 0.000041771468531914706,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00044895877489993475,
+          "lo": -0.0006766424808891432,
+          "hi": -0.0002477388774787752,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000004729113954135725,
+          "lo": -0.00011724443994518575,
+          "hi": 0.00011150568760967906,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0009300950021292696,
+          "lo": -0.0012325577727756935,
+          "hi": 0.003920133988208184,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "394b3eae6e65b09650a903e683cf09f73e20faa3e9bade10d88e99d554a5e936"
+    "contentHash": "d89c5b701800880e13f388758ea7d3d1291d8a0847e247fa1438c39a213087a1"
   }
 }

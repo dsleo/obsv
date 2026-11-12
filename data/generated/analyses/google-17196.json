@@ -4,38 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "e486ca4b9c91d461",
+  "inputHash": "7081b301fac6a4bb",
   "eventInputHash": "a500bc1c784d67a904d3d49e088a75cf68b91d4c4c693a319c21bea181c1bcdc",
-  "computedAt": "2026-11-11T12:54:59.623Z",
+  "computedAt": "2026-11-12T13:53:12.102Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le suspect de l’attentat raciste de Trappes a été placé sous surveillance étroite après avoir manifesté des pensées suicidaires, mais n’a pas tenté de se suicider.",
-    "whatChanges": "L’absence de tentative de suicide du suspect modifie la perception médiatique et politique de l’affaire, notamment chez les sympathisants des droits humains et de la justice pénale."
+    "description": "Le suspect de l’attentat raciste de Trappes a été placé en garde à vue sans tentative de suicide.",
+    "whatChanges": "La stabilité du suspect évite d'attirer la compassion liée à une crise personnelle, renforçant une image plus strictement judiciaire qui pourrait polariser davantage l'opinion entre fermeté et préoccupations sécuritaires."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes adultes urbains sensibles aux questions raciales",
-      "mechanism": "Ce segment comprend des jeunes de 18 à 24 ans vivant en commune dense, exposés à la diversité urbaine et potentiellement concernés par la dimension raciste de l'attentat à Trappes, villes souvent associées à ce type de tensions.",
-      "reason": "Les jeunes urbains forment un public potentiellement réceptif au débat sur le racisme et à l'impact médiatique de l'attentat.",
+      "name": "Jeunes adultes des communes denses vivant dans le système municipal de Trappes",
+      "mechanism": "Ce segment rassemble les jeunes de 18 à 24 ans vivant dans des communes denses du système municipal de Paris, Lyon, Marseille, qui sont proches du contexte urbain et démographique du lieu de l’attentat raciste à Trappes, ce qui les rend concernées par l’événement.",
+      "reason": "Les jeunes adultes sont souvent investis dans les débats sociaux liés au racisme et à la violence, particulièrement dans les milieux urbains où ces phénomènes sont médiatisés.",
       "all": [
         "age.18_24",
-        "geo.dense"
+        "geo.dense",
+        "municipal_system.paris_lyon_marseille"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
         "Attitude envers le racisme",
-        "Sentiment de sécurité dans la commune",
-        "Opinion sur la justice suite à l'attentat"
+        "Sentiment de sécurité",
+        "Soutien à la justice face à l’attentat"
       ],
-      "count": 14650,
-      "distinctCommunes": 72,
+      "count": 13742,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -46,24 +47,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Résidents masculins des communes moyennes autour de Trappes",
-      "mechanism": "Ce groupe est composé d'hommes vivant dans des communes de taille intermédiaire, susceptibles d'être plus proches géographiquement et socialement des événements de Trappes, et ainsi plus concernées par les conséquences locales de l'attentat et la tentative de suicide du suspect.",
-      "reason": "La proximité géographique augmente la pertinence politique et sociale de l'événement pour ce segment.",
+      "name": "Hommes employés et ouvriers des communes intermédiaires ou denses",
+      "mechanism": "Ce segment cible les hommes actifs (employés ou ouvriers) des communes intermédiaires ou denses, qui peuvent être plus directement concernés par les enjeux sociaux liés à la violence raciste et à son impact sur le monde du travail et la cohésion sociale locale.",
+      "reason": "Les hommes actifs dans ces catégories socio-professionnelles constituent un groupe dont les conditions de vie et sociales peuvent interagir avec les phénomènes de violence et de tensions urbaines.",
       "all": [
         "sex.male",
-        "geo.intermediate",
-        "commune_size.1000_plus"
+        "occupation.employee"
       ],
-      "any": [],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception de la sécurité publique",
-        "Connaissance de l'affaire de Trappes",
-        "Réactions face à la tentative de suicide du suspect"
+        "Perception de la sécurité au travail",
+        "Attitude face aux actes racistes",
+        "Réactions à la tentative de suicide du suspect"
       ],
-      "count": 1635,
-      "distinctCommunes": 24,
+      "count": 4894,
+      "distinctCommunes": 95,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -74,22 +77,54 @@
     },
     {
       "id": "segment_3",
-      "name": "Personnes actives intermédiaires en milieu urbain",
-      "mechanism": "Les actifs en catégorie intermédiaire vivant en commune dense sont concernés par cet événement car ils vivent et travaillent souvent en milieu urbain, où les tensions raciales et sécuritaires peuvent affecter la vie quotidienne et les politiques locales.",
-      "reason": "Ce groupe professionnel et géographique lie exposition au contexte urbain et potentiel d'engagement face à l'attentat raciste.",
+      "name": "Femmes célibataires vivant seules en communes denses ou intermédiaires",
+      "mechanism": "Ce segment se compose de femmes célibataires vivant seules en communes denses ou intermédiaires, population potentiellement plus sensible au climat d’insécurité et de tension après un attentat raciste et l’impact de la tentative de suicide du suspect dans leur environnement proche.",
+      "reason": "Les femmes vivant seules en milieu urbain ou semi-urbain peuvent percevoir et ressentir différemment les violences urbaines et racistes, influençant leur sentiment de sécurité et attitudes politiques.",
       "all": [
-        "occupation.intermediate",
+        "sex.female",
+        "household.single",
+        "marital.single"
+      ],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Sentiment d’insécurité",
+        "Attitudes envers les dispositifs de prévention",
+        "Opinion sur la justice après l’attentat"
+      ],
+      "count": 11067,
+      "distinctCommunes": 96,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Le suspect de l’attentat raciste de Trappes a tenté de se suicider",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Jeunes familles de 25 à 49 ans en communes denses",
+      "mechanism": "Ce segment regroupe les couples avec enfants âgés de 25 à 49 ans vivant en communes denses, qui peuvent être concernés par les enjeux de sécurité et de cohésion sociale suite à l’attentat raciste de Trappes et la tentative de suicide du suspect.",
+      "reason": "Les jeunes familles sont souvent attentives aux questions de sécurité locale et aux impacts des violences racistes sur la vie quotidienne des enfants et du quartier.",
+      "all": [
+        "age.25_34",
+        "household.couple_with_children",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Sentiment d'inclusion sociale",
-        "Attitude envers la diversité ethnique",
-        "Perception des mesures policières post-attentat"
+        "Préoccupation pour la sécurité familiale",
+        "Attitude envers le racisme",
+        "Confiance dans les institutions locales"
       ],
-      "count": 16234,
+      "count": 8145,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -111,8 +146,8 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Résidents masculins des communes moyennes autour de Trappes",
-      "matchedCount": 1635,
+      "segmentName": "Hommes employés et ouvriers des communes intermédiaires ou denses",
+      "matchedCount": 4894,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -148,46 +183,66 @@
           "noClearChange": 48
         }
       },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça un peu dramatique, mais ce genre d'affaires ne change pas vraiment ma façon de voir les choses politiques.",
-        "C'est triste pour ce gars, mais ça ne me pousse pas à changer d'opinion politique.",
-        "Je comprends que ce soit grave, mais ça n’interfère pas vraiment dans comment je vais voter."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes adultes urbains sensibles aux questions raciales",
-      "matchedCount": 14650,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "left": {
+        "philippe": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "center": {
+        "attal": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "right": {
+        "glucksmann": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "far_right": {
+        "melenchon": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -198,15 +253,95 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Avec tout ce qui se passe, j'avoue que la tentative de suicide du suspect ne me touche pas trop, ça reste loin de ma vie quotidienne.",
-        "Cette histoire du suspect qui a tenté de se suicider me rend triste mais honnêtement, je ne pense pas que ça change grand-chose à mon vote, je suis plus préoccupé par d’autres choses.",
-        "Le fait que le suspect ait tenté de se suicider montre à quel point la situation est tragique, ça me fait réfléchir sur la violence et la stigmatisation dans notre société."
-      ]
+        "Cette histoire de tentative de suicide du suspect m'interpelle, c'est un événement grave qui montre que même ceux dont on parle comme criminels sont humains.",
+        "Ça ne me touche pas directement, je trouve ça triste mais je ne pense pas que ça change beaucoup ma façon de voir la politique.",
+        "C’est choquant ce genre d’attentat, et la tentative de suicide du suspect, ça montre peut-être qu’il y a un vrai mal-être derrière."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0005639674551703912,
+          "lo": -0.0009898882800538449,
+          "hi": 0.0020517388036816273,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0017552932628495416,
+          "lo": -0.00246349313616639,
+          "hi": -0.00106414186954753,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0004490564363768223,
+          "lo": -0.0006670970959878402,
+          "hi": -0.00017044366877468745,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00020762020267163462,
+          "lo": -0.0008252253962628114,
+          "hi": 0.000398874687441582,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.001243770766009203,
+          "lo": 0.00024488125291590785,
+          "hi": 0.002520265166067053,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00006490901758091545,
+          "lo": -0.0002266346333747554,
+          "hi": 0.0000978889583356614,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00007519193161773316,
+          "lo": -0.00004534411366494922,
+          "hi": 0.0002181348037135199,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0011624037604045262,
+          "lo": -0.0015756095883345345,
+          "hi": -0.0007362900540409445,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0005371508393255481,
+          "lo": -0.0008090870409341204,
+          "hi": -0.00027178017041692927,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.00014673061379629846,
+          "lo": -0.0003070528866128645,
+          "hi": 0.0006164920016570861,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00019888724238261292,
+          "lo": -0.0003562030056697899,
+          "hi": -0.00005982491601430473,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00007799493327210277,
+          "lo": -0.00016024766756931244,
+          "hi": -0.000013172300845865154,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.002423654928270064,
+          "lo": 0.0014336767726227863,
+          "hi": 0.003573507303835107,
+          "stable": false
+        }
+      }
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Personnes actives intermédiaires en milieu urbain",
-      "matchedCount": 16234,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Jeunes familles de 25 à 49 ans en communes denses",
+      "matchedCount": 8145,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -232,23 +367,364 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
           "toward": 2,
           "away": 0,
           "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça triste et inquiétant, mais ça ne change pas vraiment mon opinion sur la politique, ça reste un fait isolé qui ne me concerne pas directement.",
-        "C’est un drame humain, ça montre que la situation est grave. J’espère que la surveillance étroite permettra d’éviter un pire. Ça me touche, mais ça ne modifie pas trop mon vote.",
-        "C’est très triste, cela reflète les tensions raciales fortes. Un suicide aurait été dramatique, cela montre la souffrance, ça me rend un peu plus critique sur les discours d’extrême droite."
-      ]
+        "C’est vraiment triste et inquiétant qu’un tel acte raciste ait eu lieu et que le suspect en soit arrivé à cette extrémité. Cela montre combien ces violences laissent des traces profondes.",
+        "Je trouve ça très dur, mais honnêtement ça ne va pas vraiment changer mon opinion ou donner un élan particulier pour un candidat. C’est un fait dramatique, mais je reste un peu en retrait.",
+        "Ça ne me surprend pas mais ça ne me fait ni chaud ni froid pour l’instant. Je suis surtout concentrée sur ma vie de famille et le boulot. C’est loin de mes préoccupations principales."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0015081027295314956,
+          "lo": -0.0006665661682466311,
+          "hi": 0.004027865529772076,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.002293227161172981,
+          "lo": -0.0029464151761551664,
+          "hi": -0.001620053176551281,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.000761994914541534,
+          "lo": -0.0011017442912064116,
+          "hi": -0.0004936980148336458,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0005652068943304694,
+          "lo": -0.0011707185002368878,
+          "hi": 0.0002063614474281061,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0014221194365340896,
+          "lo": -0.00268716018442954,
+          "hi": -0.0001280457784966635,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0002031456248359952,
+          "lo": -0.00042725860769253786,
+          "hi": 0.000009587321396193523,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0003293046284494927,
+          "lo": -0.0005465503693228143,
+          "hi": -0.00010125462179587254,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0011362969311954202,
+          "lo": -0.0015629914437234732,
+          "hi": -0.0007667505759714221,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007234136658910819,
+          "lo": -0.0009657815299957836,
+          "hi": -0.0004960344180594957,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.00003330629645308757,
+          "lo": -0.0009565626699292673,
+          "hi": 0.001068480771231792,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0006812495283721264,
+          "lo": -0.0009171217261457961,
+          "hi": -0.00048427418378705836,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00016671315125337829,
+          "lo": -0.00027746550823361894,
+          "hi": -0.0000743298474677951,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006741262910591988,
+          "lo": 0.0037317304238885366,
+          "hi": 0.010300198309318123,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes célibataires vivant seules en communes denses ou intermédiaires",
+      "matchedCount": 11067,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est triste d'entendre ça, ça montre vraiment qu'il faut qu'on parle plus de ces questions de racisme et de santé mentale. Je comprends que ça puisse choquer mais je ne sais pas si ça va changer mon vote.",
+        "C'est une situation grave, ça me rend triste et inquiète. Le fait qu'il ait essayé de se suicider montre que ça ne va pas bien du tout. Ça me fait penser à combien il est important de lutter contre le racisme et soutenir les personnes fragiles.",
+        "C'est un fait préoccupant, mais je suis un peu distante de ce genre d'affaires. J'espère simplement que la justice fera son travail correctement. Cela ne modifie pas mon choix politique pour l'instant."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.000047284586274257016,
+          "lo": -0.00167247014194579,
+          "hi": 0.0016392115504679668,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0027370301660511937,
+          "lo": -0.0036614037473997325,
+          "hi": -0.0018666108715270134,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0006657904109691835,
+          "lo": -0.0011334266276896295,
+          "hi": -0.00016489671149628866,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.000264113934002545,
+          "lo": -0.0009265009368030446,
+          "hi": 0.0013720649506914265,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.001619986475683492,
+          "lo": 0.000010140158612462202,
+          "hi": 0.0035624416695033533,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0005387287864354994,
+          "lo": 0.00006526322102641192,
+          "hi": 0.001097842795304642,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000003443997802211805,
+          "lo": -0.0002559975103471701,
+          "hi": 0.0003209831629107074,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0013979409086388496,
+          "lo": -0.0019077295750703075,
+          "hi": -0.0009704939796125293,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0012461619428611947,
+          "lo": -0.0017537103672153765,
+          "hi": -0.0008600793540169772,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0004554464503685736,
+          "lo": -0.0008083191786527466,
+          "hi": -0.00008004456190360448,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0005533420530740517,
+          "lo": -0.0007294043611965388,
+          "hi": -0.0003843328851905206,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00005388374240959681,
+          "lo": -0.0001589996663055661,
+          "hi": 0.00003990384501890631,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004737495062327556,
+          "lo": 0.0012651143464675687,
+          "hi": 0.008108118354797474,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -279,28 +755,369 @@
           "noClearChange": 96
         },
         "far_right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 93
+        },
+        "abstention": {
+          "toward": 12,
+          "away": 1,
+          "noClearChange": 83
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "toward": 12,
+          "away": 1,
+          "noClearChange": 83
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve cette histoire très triste, mais ça ne change pas mon opinion politique, ça me dépasse un peu.",
-        "C'est une nouvelle qui me fait de la peine mais je ne vois pas en quoi ça changerait mon vote.",
-        "Cette tentative de suicide, c'est dramatique, mais je reste centrée sur ce qui touche mon quotidien et mes convictions, ça ne me fait pas changer d'avis."
-      ]
+        "C'est vraiment triste, il y a des choses qu'on ne comprend pas. Je me demande comment on va pouvoir vivre tous ensemble dans cette ambiance.",
+        "Je trouve ça très inquiétant, ces actes racistes et tout ce qui entoure ce genre de drame. Mais ça ne change pas grand-chose à mon choix de vote.",
+        "C'est terrible, mais je suis plus préoccupée par la vie de famille et le travail au quotidien. Ça ne va pas vraiment changer mon vote."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0019052984036205284,
+          "lo": 0.00046417309213074635,
+          "hi": 0.003335546574641475,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0019040774832797588,
+          "lo": -0.002534139415746322,
+          "hi": -0.0012281757309896538,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0006082524467925003,
+          "lo": -0.0008626302809997834,
+          "hi": -0.0003977866437674343,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0015280541468018344,
+          "lo": -0.002107030994668714,
+          "hi": -0.0009929916421567888,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0009633526556813589,
+          "lo": -0.0016498411448015629,
+          "hi": -0.00008406639866516531,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003026657829858644,
+          "lo": -0.0005184950973734201,
+          "hi": -0.0000598986544287567,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0002638193041118294,
+          "lo": -0.00046960775629183095,
+          "hi": -0.000091164446754176,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0011278673135811212,
+          "lo": -0.0015661712829429244,
+          "hi": -0.0007624166600855711,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007141005924535689,
+          "lo": -0.0009803089946801584,
+          "hi": -0.00047786862542245466,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.001230501277448443,
+          "lo": -0.0017333961748320864,
+          "hi": -0.0007195409899341886,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0005782951495588914,
+          "lo": -0.0007783900171193449,
+          "hi": -0.0003843134701887749,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000016811844960710655,
+          "lo": -0.00004855236470250753,
+          "hi": 0.000004893350774514056,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.007332499594035371,
+          "lo": 0.00480570361533981,
+          "hi": 0.010097706248401372,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes adultes des communes denses vivant dans le système municipal de Trappes",
+      "matchedCount": 13742,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "center": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C’est vraiment choquant et triste de voir que des actes racistes continuent, et le fait qu’il ait tenté de se suicider montre bien la gravité de la situation.",
+        "C’est affreux, ces actes racistes devraient être combattus sans relâche. Le fait qu’il ait voulu se suicider me fait me poser des questions sur sa détresse, mais ça ne change pas mon vote.",
+        "Cette histoire est choquante, mais ça ne m’impacte pas particulièrement dans mes choix pour la présidentielle."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0015286964197470919,
+          "lo": -0.0002558404830040161,
+          "hi": 0.003274674211688609,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.003304800353384528,
+          "lo": -0.004553818533362967,
+          "hi": -0.0021657923234978753,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00023796881623594244,
+          "lo": -0.0007024077983700458,
+          "hi": 0.0003690221348268149,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0006034392705275061,
+          "lo": -0.0015936527909704682,
+          "hi": 0.0005363020342668284,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0003896340321222147,
+          "lo": -0.0014995899676307938,
+          "hi": 0.0007940499296067429,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0008817814374290474,
+          "lo": 0.00021712159693772136,
+          "hi": 0.0016971957223424641,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00031417554743585287,
+          "lo": -0.0005144288531932494,
+          "hi": -0.00015710965611485117,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007511546239872937,
+          "lo": -0.0010522633042560788,
+          "hi": -0.0004500851105250149,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000348773532998605,
+          "lo": -0.0005751308892440939,
+          "hi": -0.0001764593641170459,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.0009553840566867757,
+          "lo": 0.00034414179124226497,
+          "hi": 0.0016328923035966664,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00036464520445533556,
+          "lo": -0.0005399612414132803,
+          "hi": -0.0002023483239899737,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00008792109899186317,
+          "lo": -0.0001788562190562097,
+          "hi": -0.0000102016639480187,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0030366505662761563,
+          "lo": 0.0010876938473371109,
+          "hi": 0.004782574827139925,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "9e7a7bacff2a32f7dca2374e14a579635ff307019f99565de61123eecb499991"
+    "contentHash": "afff7dd0e517bff7925cdff5dee394661d88921b76347f6c8b821abb8cd34934"
   }
 }

@@ -4,35 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "04fab8568c8feb20",
+  "inputHash": "f88ea941e8b85063",
   "eventInputHash": "17f5aeea5b3ecda087d5e39c6e43ba6738f53ff6d7e5546ed3f050497d1e4def",
-  "computedAt": "2026-11-11T12:54:39.654Z",
+  "computedAt": "2026-11-12T13:52:40.326Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Jean-Pierre Chevènement annonce son soutien à une autre candidate de la gauche souverainiste, refusant de soutenir Natacha Polony à l'élection présidentielle.",
-    "whatChanges": "Le soutien de Chevènement va à une autre figure de la gauche souverainiste, ce qui fragilise la candidature de Natacha Polony et redistribue les voix souverainistes entre les électeurs de gauche."
+    "description": "Jean-Pierre Chevènement décide finalement de ne pas soutenir Natacha Polony et annonce qu'il restera neutre durant la campagne présidentielle.",
+    "whatChanges": "Ce retrait de soutien affaiblit la crédibilité de Natacha Polony auprès des électeurs attachés à la gauche souverainiste, rendant sa campagne moins visible parmi ces électeurs potentiels."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Agriculteurs, cibles potentielles du soutien de Jean-Pierre Chevènement",
-      "mechanism": "Jean-Pierre Chevènement, connu pour son engagement en faveur des campagnes et des agriculteurs, apporte son soutien à Natacha Polony, ce public d'agriculteurs, notamment les jeunes exploitants, est directement concerné par ce soutien ciblé qui pourrait renforcer leur représentation politique.",
-      "reason": "Les agriculteurs exploitants, en particulier les jeunes agriculteurs de moins de 35 ans, constituent un groupe spécifique directement visé par le soutien exprimé de Jean-Pierre Chevènement, visant à défendre les intérêts ruraux et agricoles.",
+      "name": "Salariés modestes des communes intermédiaires",
+      "mechanism": "Le soutien de Jean-Pierre Chevènement à Natacha Polony interpelle particulièrement les salariés modestes, notamment employés et ouvriers, des communes intermédiaires, concernés par les questions sociales et économiques abordées par la candidature.",
+      "reason": "Cette population active dans les communes de taille moyenne regroupe une base populaire susceptible d'être sensible à la campagne mettant en avant les enjeux sociaux et territoriaux dont s'empare le soutien politique.",
       "all": [
-        "cluster.young_farmer"
+        "occupation.employee"
       ],
-      "any": [],
-      "none": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
+        "geo.dense"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers le soutien de Jean-Pierre Chevènement à Natacha Polony"
+        "Attitudes face à Natacha Polony",
+        "Réception du soutien de Jean-Pierre Chevènement"
       ],
-      "count": 145,
-      "distinctCommunes": 42,
+      "count": 639,
+      "distinctCommunes": 85,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -43,21 +49,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Retraités ruraux et peu diplômés concernés par le soutien de Jean-Pierre Chevènement",
-      "mechanism": "Le soutien de Jean-Pierre Chevènement à Natacha Polony vise également les retraités ruraux peu diplômés qui représentent un électorat traditionnel rural sensible aux discours de protection des campagnes et de l’identité nationale, thèmes souvent défendus par ces personnalités.",
-      "reason": "Ce segment combine retraités peu diplômés et vivant en zone rurale, groupes fréquemment sensibles au discours sur la ruralité et les campagnes portés par Jean-Pierre Chevènement et Natacha Polony.",
+      "name": "Jeunes diplômés urbains de 25 à 34 ans",
+      "mechanism": "La candidature de Natacha Polony soutenue par Jean-Pierre Chevènement cherche aussi à capter l'attention des jeunes urbains diplômés, en particulier ceux âgés de 25 à 34 ans, qui forment une population éduquée et sensible aux débats intellectuels et politiques actuels.",
+      "reason": "Ce groupe correspond à une catégorie socioprofessionnelle dynamique en milieu urbain, souvent en quête de renouveau politique et d'arguments culturels avancés par la candidate et son soutien.",
       "all": [
-        "cluster.retiree_no_diploma",
-        "geo.rural"
+        "age.25_34",
+        "education.bac_plus_3_4",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Sensibilité au discours ruraliste et nationaliste"
+        "Perception de Natacha Polony",
+        "Influence du soutien de Jean-Pierre Chevènement"
       ],
-      "count": 351,
-      "distinctCommunes": 67,
+      "count": 3225,
+      "distinctCommunes": 70,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -68,45 +76,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Cadres urbains diplômés, électorat stratégique de la présidentielle",
-      "mechanism": "Ce groupe de cadres et professions intellectuelles supérieures en commune dense peut être concerné par le soutien politique de Jean-Pierre Chevènement à Natacha Polony car ils représentent une part clé de l’électorat urbain à fort capital culturel, susceptible d’influencer le débat présidentiel.",
-      "reason": "La combinaison des cadres urbains diplômés en milieu dense est un segment important dans la dynamique électorale, particulièrement sensible aux alliances entre personnalités reconnues comme Chevènement et journalistes engagés comme Natacha Polony.",
+      "name": "Femmes en famille monoparentale vivant en communes denses",
+      "mechanism": "Le soutien de Jean-Pierre Chevènement à Natacha Polony peut aussi viser les femmes en famille monoparentale dans les zones urbaines denses, qui sont un public souvent concerné par les politiques sociales, économiques et éducatives mises en débat.",
+      "reason": "Ces femmes, souvent confrontées à des défis particuliers en milieu urbain dense, sont un segment étroit susceptible de réagir au discours porté par ce duo politique pour défendre leurs intérêts spécifiques.",
       "all": [
-        "cluster.urban_executive"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Réceptivité à l’alliance Chevènement-Polony"
-      ],
-      "count": 10635,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Jean-Pierre Chevènement apporte son soutien à Natacha Polony pour l'élection présidentielle",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Jeunes sans activité professionnelle en milieu urbain concernés par l'appel au renouvellement politique",
-      "mechanism": "Les jeunes adultes sans activité professionnelle en communes denses constituent un public sensible aux appels au renouvellement politique et aux critiques du système traditionel, position dans laquelle s'inscrit le soutien apporté par Jean-Pierre Chevènement à Natacha Polony.",
-      "reason": "Ce segment rassemble des jeunes sans activité en milieu urbain, souvent moteurs de nouvelles mobilisations politiques et sociaux, ciblés par des discours alternatifs à l’offre politique classique représentée par le duo Chevènement-Polony.",
-      "all": [
-        "cluster.young_without_activity",
+        "sex.female",
+        "household.single_parent",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intérêt pour les nouvelles propositions politiques",
-        "Perception de l’alliance Chevènement-Polony"
+        "Opinion sur la candidature",
+        "Réaction au soutien de Jean-Pierre Chevènement"
       ],
-      "count": 8453,
+      "count": 7488,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -126,57 +111,10 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes sans activité professionnelle en milieu urbain concernés par l'appel au renouvellement politique",
-      "matchedCount": 8453,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Le soutien de Chevènement à Polony ne me parle pas vraiment, je ne suis pas très au fait de ces alliances politiques et ça ne changera pas mon vote.",
-        "Je ne connais pas bien Chevènement, mais s'il soutient Polony, ça ne va pas me faire changer d'avis, je reste assez centrée dans mes choix.",
-        "Franchement, je savais pas que Chevènement ralliait Polony, ça me fait pas changer mon vote, je suit plutôt à gauche solidaire pour Marseille."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Retraités ruraux et peu diplômés concernés par le soutien de Jean-Pierre Chevènement",
-      "matchedCount": 351,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Femmes en famille monoparentale vivant en communes denses",
+      "matchedCount": 7488,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -212,18 +150,165 @@
           "noClearChange": 48
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je connais Jean-Pierre Chevènement, c'est un homme de gauche comme on en fait plus. Son soutien à Natacha Polony, je ne sais pas trop quoi en penser, elle me semble trop éloignée des préoccupations du village.",
-        "Chevènement, c'est un vieux routier de la politique, mais son soutien à Natacha Polony ne me parle pas vraiment. Je suis plutôt attaché à des idées plus concrètes pour les gens comme moi.",
-        "Je ne suis pas très au courant des soutiens politiques personnels, mais Chevènement appuie Polony ? Je m'en fiche un peu, ça ne change rien à mes choix habituels."
-      ]
+        "Honnêtement, je ne vois pas trop en quoi le soutien de Jean-Pierre Chevènement à Natacha Polony peut changer ma façon de voir la présidentielle, ça ne m'intéresse pas beaucoup.",
+        "Je connais un peu Chevènement mais ça ne me pousse vraiment pas à changer d'avis, Natacha Polony ce n'est pas l'une de mes préoccupations principales.",
+        "Jean-Pierre Chevènement... ce nom m'évoque plus la vieille politique, je ne suis pas du tout concernée, c'est loin de mes préoccupations."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        }
+      }
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Agriculteurs, cibles potentielles du soutien de Jean-Pierre Chevènement",
-      "matchedCount": 145,
+      "segmentName": "Salariés modestes des communes intermédiaires",
+      "matchedCount": 639,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -259,13 +344,354 @@
           "noClearChange": 48
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je connais Chevènement comme un homme politique engagé à gauche, mais Natacha Polony, je ne sais pas trop où elle se place exactement, ça ne change pas grand-chose pour moi.",
-        "Chevènement qui soutient Polony, ça me surprend, je vois mal l'impact, ça ne me fait pas changer d'avis.",
-        "Chevènement apporte son soutien à Polony... Je ne sais pas trop, cela ne me touche pas vraiment dans ma vie ici à Mauguio. Je reste fidèle à mes choix habituels."
-      ]
+        "Chevènement, c'est un gaulliste historique, mais je ne suis pas sûre que son soutien à Polony me touche beaucoup, ça ne change pas grand-chose pour moi.",
+        "Je ne connais pas trop Chevènement, et son soutien à Polony ne me fait ni chaud ni froid. La politique, c’est compliqué, je reste sur mes choix habituels.",
+        "Je ne suis pas très au courant des soutiens politiques de Chevènement, et particulièrement à Polony. Ça ne me touche pas vraiment."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0000454585199777593,
+          "lo": -0.00043877964013728604,
+          "hi": 0.0005782428493756042,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00016930332778940932,
+          "lo": -0.0002981606882571074,
+          "hi": -0.00006981922280930332,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00007839157439482238,
+          "lo": -0.0001661582185955982,
+          "hi": -0.000014097038659677047,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0002947169606494033,
+          "lo": -0.0005124823423266609,
+          "hi": -0.00009369854011556497,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00042710309733435685,
+          "lo": -0.0006982364574372579,
+          "hi": -0.00017260140845394423,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00010041711060284116,
+          "lo": -0.00018545136562516773,
+          "hi": -0.00002167402332281302,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.000002857437600931519,
+          "lo": -9.068943764165041e-7,
+          "hi": 0.000007983602454914062,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00009751059111237192,
+          "lo": -0.00019658048595435468,
+          "hi": -0.000032137666807020415,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000058707441460512046,
+          "lo": -0.00012328532921740537,
+          "hi": 0.0000029982597556128215,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0001825336959001537,
+          "lo": -0.0003348673055730606,
+          "hi": -0.00005979153672886492,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0001564632746031983,
+          "lo": -0.00029999273939255376,
+          "hi": -0.0000417453577017321,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.0000011213065668335017,
+          "lo": -3.1032585704553173e-7,
+          "hi": 0.0000028326600696118368,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00151570980970154,
+          "lo": 0.0004456783037575275,
+          "hi": 0.002605670513690946,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains de 25 à 34 ans",
+      "matchedCount": 3225,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, je ne connais pas trop Chevènement et Polony, ça ne change pas vraiment ce que je pense de la présidentielle.",
+        "Je connais Chevènement, mais ça ne m'incite pas spécialement à changer d'avis sur cette élection.",
+        "Chevènement qui soutient Polony ? Non, ça ne me parle pas, je reste sur mes choix habituels."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -297,74 +723,174 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne connais pas vraiment Natacha Polony ni Jean-Pierre Chevènement. Le soutien de ce dernier me semble un détail politique qui ne change rien à ce que je pense pour la présidentielle.",
-        "Je ne vois pas vraiment l'intérêt du soutien de Chevènement à Polony. Ce genre de manœuvre politique ne m'influence pas dans mon vote, je choisis plutôt en fonction des programmes qui touchent ma vie de Réunionnaise.",
-        "Soutenir Polony, ça ne me parle pas trop et Chevènement n’a jamais eu beaucoup de poids dans mon entourage. Je reste fidèle à mes habitudes de vote, ça ne change rien."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Cadres urbains diplômés, électorat stratégique de la présidentielle",
-      "matchedCount": 10635,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "Je ne connais pas vraiment ce Chevènement ni Polony, ça ne me parle pas trop, ça ne changera pas mon vote.",
+        "Je ne m'intéresse pas trop aux soutiens politiques personnels, ça ne va pas vraiment changer mon vote habituel.",
+        "Je ne suis pas vraiment concernée par ce soutien de Chevènement, ça ne change rien à mon choix de vote personnel."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.00026135862159752145,
+          "lo": 0.00009071785300783393,
+          "hi": 0.00045507847796293137,
+          "stable": false
         },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "philippe": {
+          "mean": -0.00004783230041172635,
+          "lo": -0.00015097946508928076,
+          "hi": 0.00003436860656849686,
+          "stable": false
         },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "attal": {
+          "mean": 0.0000024892856954091664,
+          "lo": -0.000024473981634698665,
+          "hi": 0.000022990861971394765,
+          "stable": false
         },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "glucksmann": {
+          "mean": -0.00006188320029794222,
+          "lo": -0.00017011829762096512,
+          "hi": 0.000020206231999222248,
+          "stable": false
         },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "melenchon": {
+          "mean": -0.0003472834777269327,
+          "lo": -0.0006395974601674258,
+          "hi": -0.00012246941947573284,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.000007345968252588893,
+          "lo": 0.000002131509435559381,
+          "hi": 0.000013941746881812733,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000015676056328808175,
+          "lo": -0.000048141456941841236,
+          "hi": 0.0000065137648259568186,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000020443219398426344,
+          "lo": -0.00006456908066003496,
+          "hi": 0.000021081186527147115,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.00001262279770057093,
+          "lo": 0.000002260359736462899,
+          "hi": 0.00002669161106679437,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.00015016269925206415,
+          "lo": 0.000045045884796578737,
+          "hi": 0.0002801242560272438,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.000010126214564919257,
+          "lo": 0.000002743783331077775,
+          "hi": 0.000018767881485847035,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000001514496634406229,
+          "lo": 4.5269587760538244e-7,
+          "hi": 0.0000028779895018872896,
+          "stable": false
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "mean": 0.00004749817046635427,
+          "lo": -0.00010702094122156704,
+          "hi": 0.0002138701046387742,
+          "stable": false
         }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ce soutien de Chevènement à Polony m'étonne, mais ça ne change rien à ce que je pense pour l'élection, je reste concentrée sur les enjeux locaux et environnementaux.",
-        "Jean-Pierre Chevènement soutenant Natacha Polony, ça me semble assez périphérique à mes préoccupations, je reste vigilante mais ça ne me fera pas changer d'avis.",
-        "Je connais Chevènement pour ses idées souverainistes, mais son soutien à Polony ne change pas mon choix, j'ai d'autres priorités locales et familiales."
-      ]
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "93cb626261f07f2c8b862086d09e5699bdfb8ac024bfd4a6a0f73548f04ea33f"
+    "contentHash": "94bf82b9165ffeb5bc9206fb19dcdecb20253c705fc5c1e167b277b83ee76200"
   }
 }

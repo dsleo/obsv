@@ -4,24 +4,24 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "70a43d512ca52eae",
+  "inputHash": "831bd2d03fcb69e7",
   "eventInputHash": "be5f177c20915de7deb9eb33233e902538d08c24d2700db74ef0aec41f9c2fb7",
-  "computedAt": "2026-11-11T15:17:07.353Z",
+  "computedAt": "2026-11-12T13:46:53.807Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Lors d'un dîner familial, parents et adolescents discutent du blocage des lycées mais parviennent à exprimer leurs points de vue respectifs calmement, sans véritable conflit.",
-    "whatChanges": "Le ton pacifié de l'échange réduit la polarisation entre générations sur la mobilisation lycéenne, atténuant l'image d'un clivage familial profond."
+    "description": "Lors d’un repas, des parents et des adolescents discutent vivement du blocage des lycées, mais certains parents expriment clairement leur compréhension des motifs des jeunes et leur soutien aux revendications, ce qui apaise partiellement la tension.",
+    "whatChanges": "Le changement de position de certains parents vers un soutien limité modère les tensions entre générations et pourrait renforcer la sympathie d’électeurs jeunes et leurs familles envers les candidats défendant ce mouvement."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Parents d’adolescents en couples avec enfants en communes denses",
-      "mechanism": "Ce public est concerné car il comprend les adultes en couple avec enfants scolarisés au lycée, directement touchés par les blocages des lycées. C’est dans leur foyer et autour de la table qu’apparaissent les tensions avec les adolescents à propos de ces blocages.",
-      "reason": "Les parents en couple avec enfants en milieu urbain forment un groupe significatif exposé au débat familial sur les blocages des lycées, ce qui correspond à l’évènement familial « s’embrouillent » à table.",
+      "name": "Parents avec enfants adolescents en commune dense",
+      "mechanism": "Ce groupe rassemble les parents vivant en commune dense qui sont directement concernés par les conflits à table liés aux blocages des lycées, car leurs adolescents sont probablement lycéens impactés par ces mouvements.",
+      "reason": "Les parents en couple avec enfants dans des communes denses sont les premiers affectés par les tensions familiales autour du blocage des lycées ; ils ont un enfant adolescent vivant à la maison dans un contexte urbain dense qui favorise la mobilisation lycéenne.",
       "all": [
         "household.couple_with_children",
         "geo.dense"
@@ -33,9 +33,9 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur les blocages des lycées",
-        "Relations parents-ados",
-        "Fréquence des conflits familiaux à propos de l’école"
+        "Attitude envers le blocage des lycées",
+        "Relations familiales autour des manifestations lycéennes",
+        "Sentiment d’impact des mouvements lycéens sur la vie familiale"
       ],
       "count": 24731,
       "distinctCommunes": 72,
@@ -49,11 +49,12 @@
     },
     {
       "id": "segment_2",
-      "name": "Adolescents sans activité professionnelle en milieu urbain dense",
-      "mechanism": "Les adolescents et jeunes adultes sans activité professionnelle (étudiants, chômeurs, inactifs) vivant en commune dense sont plausiblement les acteurs ou premiers concernés par les blocages des lycées qui génèrent des conflits avec leurs parents.",
-      "reason": "Ce segment représente les jeunes directement concernés par les blocages des lycées et susceptibles d’être à l’origine ou impliqués dans les tensions parent-ado décrites dans l’évènement.",
+      "name": "Jeunes lycéens et étudiants vivant dans des foyers monoparentaux en commune dense",
+      "mechanism": "Ces jeunes, souvent adolescents ou jeunes adultes sans activité professionnelle, vivant seuls ou en famille monoparentale en zone dense, sont directement impliqués ou sensibles aux blocages des lycées et aux tensions familiales qui y sont liées.",
+      "reason": "Leur statut de jeunes sans activité ou étudiants dans un contexte familial monoparental urbain dense les rend particulièrement concernés par le blocage des lycées et les disputes qu’il provoque.",
       "all": [
         "cluster.young_without_activity",
+        "household.single_parent",
         "geo.dense"
       ],
       "any": [
@@ -62,12 +63,12 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers les blocages lycéens",
-        "Sentiment de conflit familial",
-        "Participation aux blocages"
+        "Implication dans les blocages lycéens",
+        "Attitude envers les conflits familiaux liés",
+        "Sentiment de reconnaissance familiale durant les mouvements"
       ],
-      "count": 8453,
-      "distinctCommunes": 72,
+      "count": 546,
+      "distinctCommunes": 60,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -78,50 +79,27 @@
     },
     {
       "id": "segment_3",
-      "name": "Parents solos avec enfants en âge scolaire urbains",
-      "mechanism": "Les mères seules avec enfants scolarisés en milieu urbain sont une catégorie familiale exposée à des tensions particulières au sujet des blocages des lycées, souvent vécus dans un contexte familial plus fragile.",
-      "reason": "Les familles monoparentales urbaines avec enfants forment un groupe plus restreint mais concerné par les conflits autour des blocages et la gestion familiale de ces tensions à table.",
+      "name": "Adolescents en couple avec enfants et employés salariés en commune intermédiaire",
+      "mechanism": "Employés plus âgés en couple avec enfants dans des zones à densité intermédiaire connaissant des tensions familiales dues aux blocages lycéens car leurs enfants adolescents sont directement concernés et les parents sont dans des emplois salariés.",
+      "reason": "Ce groupe associe parents salariés en couple avec enfants et adolescents lycéens dans une commune de densité intermédiaire, représentant un foyer exposé au conflit familial sur le blocage des lycées.",
       "all": [
-        "cluster.single_mother",
-        "geo.dense"
+        "household.couple_with_children",
+        "occupation.employee",
+        "geo.intermediate"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception des conflits parent-ado",
-        "Impact des blocages sur la vie familiale",
-        "Stratégies de gestion des tensions"
+        "Conflits familiaux liés aux blocages lycéens",
+        "Perception des parents salariés sur le mouvement",
+        "Impacts sur la vie quotidienne du foyer"
       ],
-      "count": 7488,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "À table, parents et ados « s’embrouillent » sur le blocage des lycées",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Couples de retraités vivant en communes rurales",
-      "mechanism": "Ce groupe est concerné indirectement car il peut comprendre des grands-parents témoins ou impactés par les blocages des lycées de leurs petits-enfants, particulièrement en milieu rural où les relations intergénérationnelles sont fréquentes.",
-      "reason": "Les retraités en couple dans des communes rurales forment un groupe largEment distinct, pouvant ressentir les effets sociaux ou discuter des tensions liées aux blocages lycéens.",
-      "all": [
-        "cluster.retired_couple",
-        "geo.rural"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Opinion sur les blocages scolaires",
-        "Relations intergénérationnelles dans la famille",
-        "Communication familiale autour des bloque lycéens"
-      ],
-      "count": 434,
-      "distinctCommunes": 74,
+      "count": 173,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -140,10 +118,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Adolescents sans activité professionnelle en milieu urbain dense",
-      "matchedCount": 8453,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Adolescents en couple avec enfants et employés salariés en commune intermédiaire",
+      "matchedCount": 173,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -155,8 +133,8 @@
         },
         "left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "center": {
           "toward": 0,
@@ -169,27 +147,174 @@
           "noClearChange": 48
         },
         "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 9,
+          "away": 1,
+          "noClearChange": 38
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "toward": 9,
+          "away": 1,
+          "noClearChange": 38
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ces embrouilles entre parents et ados sur le blocage des lycées, ça me parle un peu, mais ça ne va pas changer pour moi ce que je pense.",
-        "Ces disputes sur le blocage dans les lycées, ça montre juste que les jeunes et les parents ne se comprennent pas toujours. Je suis plus pour le calme, mais ça ne change rien à mon vote.",
-        "Je trouve dommage que ces discussions familiales sur le blocage des lycées finissent en disputes, surtout quand on pourrait s'écouter et comprendre nos points de vue tranquillement."
-      ]
+        "Franchement, ces disputes à table sur les blocages au lycée, ça me soûle un peu. Je comprends la jeunesse, mais ça me paraît aussi un peu trop radical, ça fait débat inutile à la maison.",
+        "Ce genre de dispute entre parents et ados sur le blocage des lycées, ça me parle. Je comprends les revendications des jeunes, même si c'est compliqué au quotidien, ça mérite d'être apaisé autour de la table.",
+        "Ces embrouilles familiales à cause du blocage des lycées, ça me fait penser qu'on est dans une génération tiraillée. Je me sens un peu concernée mais ça ne change pas vraiment mon vote."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.004986591391101251,
+          "lo": 0.003060666795039296,
+          "hi": 0.0070620441654058235,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0020953909937526534,
+          "lo": -0.00275609287321449,
+          "hi": -0.0014059806422752894,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0007560412506996657,
+          "lo": -0.0010202254438328312,
+          "hi": -0.0005225067989144402,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.002444110593253451,
+          "lo": -0.003415784196828083,
+          "hi": -0.001697300623370308,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0026009757840426977,
+          "lo": -0.004175114663747,
+          "hi": -0.001133438333515294,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0005881247659665412,
+          "lo": -0.0010384621139196586,
+          "hi": -0.00016680288765105047,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0006354535087819048,
+          "lo": -0.0008955173541746675,
+          "hi": -0.000364378432773105,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008368957271667585,
+          "lo": -0.0011697967742908641,
+          "hi": -0.0005580119948036504,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007595374997302227,
+          "lo": -0.0010188222570144088,
+          "hi": -0.0004885913045915934,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0005052009198525106,
+          "lo": -0.0010204681198708794,
+          "hi": 0.00001698915438456498,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0007773535609793837,
+          "lo": -0.001096174814275099,
+          "hi": -0.00048061010189594716,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000036974169603395966,
+          "lo": -0.00009790833934614576,
+          "hi": 0.000008413974869114229,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.007049467382727946,
+          "lo": 0.003429803482576247,
+          "hi": 0.010589360548921808,
+          "stable": true
+        }
+      }
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Parents d’adolescents en couples avec enfants en communes denses",
+      "segmentName": "Parents avec enfants adolescents en commune dense",
       "matchedCount": 24731,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -217,27 +342,174 @@
         },
         "far_right": {
           "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 6,
+          "toward": 4,
           "away": 0,
-          "noClearChange": 42
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça ne m'étonne pas que dans une famille on puisse s'embrouiller à cause du blocage des lycées, c'est un sujet qui touche les jeunes et ça crée forcément des tensions.",
-        "C'est dommage quand ça dégénère, mais je comprends que ces blocages peuvent être un réel sujet pour des familles avec des ados. Une discussion calme serait bien plus constructive.",
-        "Les blocages, c'est toujours compliqué ; j'imagine que ça peut créer des débats animés à table. Ça ne va pas changer mon vote, c'est trop loin de ma réalité personnelle."
-      ]
+        "Franchement, ces disputes à table entre parents et ados pour les blocages des lycées, ça me dépasse un peu, ça ne change rien à ce que je pense.",
+        "Ce blocage des lycées et les discussions qui en découlent me laissent un peu indifférent, cela ne modifie pas mon vote, je préfère attendre des mesures concrètes.",
+        "Ces blocages dans les lycées, ça m'agace un peu, je comprends les revendications mais ça complique la vie de tout le monde, surtout des travailleurs comme moi."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0027595820591283433,
+          "lo": 0.000889812310924515,
+          "hi": 0.0045843754893953766,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0029791081991216357,
+          "lo": -0.003977640606992916,
+          "hi": -0.0018570521875865388,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0004179480897846973,
+          "lo": -0.0007753776555649511,
+          "hi": -0.00009318106120407833,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0021377800465993916,
+          "lo": -0.0032148996314768905,
+          "hi": -0.0011225641974585109,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0001861867879787227,
+          "lo": -0.0017535321724649231,
+          "hi": 0.0023625674095126468,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00011871778086342329,
+          "lo": -0.0003805537411914928,
+          "hi": 0.0005685033885926544,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00026621907311871604,
+          "lo": -0.0005816691397622665,
+          "hi": 0.000013565440511374227,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0010519382871696005,
+          "lo": -0.0015186280022509088,
+          "hi": -0.0006431862115863952,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007108528683629668,
+          "lo": -0.0010264480625478587,
+          "hi": -0.0004413663941709209,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00043323367699721273,
+          "lo": -0.000944433532924636,
+          "hi": 0.00003871256411389643,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0004710307777480973,
+          "lo": -0.0006905417944017294,
+          "hi": -0.00026804361831961007,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00013318862141364516,
+          "lo": -0.00024164671750023952,
+          "hi": -0.00005143842755809152,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005536813012345463,
+          "lo": 0.0024301765732082665,
+          "hi": 0.009001367080395967,
+          "stable": false
+        }
+      }
     },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Couples de retraités vivant en communes rurales",
-      "matchedCount": 434,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes lycéens et étudiants vivant dans des foyers monoparentaux en commune dense",
+      "matchedCount": 546,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -263,23 +535,170 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 3,
+          "toward": 5,
+          "away": 1,
+          "noClearChange": 42
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 1,
+          "noClearChange": 42
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça me rappelle mes dîners avec mes petits-enfants où on ne sait plus très bien comment s'entendre sur certains sujets. C'est fatigant mais ça montre qu'ils ont leurs opinions bien trempées.",
-        "Je trouve ça assez courant que les jeunes veuillent exprimer leurs idées, même si ça part souvent en disputes. Mais ça ne change rien à ce que je pense sur la politique.",
-        "Je n'aime pas les conflits, surtout à table. C'est mieux quand on peut parler calmement, ça évite les rancunes et ça respecte les générations."
-      ]
+        "Je trouve ça un peu agaçant quand ça crée des tensions inutiles à table, mais en même temps, je comprends que les lycéens aient des raisons de se mobiliser.",
+        "Ça me parle, cette tension avec les parents et les ados, mais ça ne change pas grand-chose à ce que je pense des blocages ou à mon vote.",
+        "Les disputes à table sur ces blocages, ça me fatigue. Mais si certains parents comprennent les jeunes, ça me donne un peu d'espoir."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.003256413669265742,
+          "lo": 0.0018033643646493836,
+          "hi": 0.004699987990917491,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0026092060725301535,
+          "lo": -0.003642287449268561,
+          "hi": -0.001498007417365375,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0007008939267676304,
+          "lo": -0.000977568320267591,
+          "hi": -0.0004574485170529314,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0014148857311237085,
+          "lo": -0.0021462718153176523,
+          "hi": -0.0008237406801377703,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0001833319296407823,
+          "lo": -0.0022968753864839645,
+          "hi": 0.0016237293036853366,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003335379484298564,
+          "lo": -0.0008027543234065078,
+          "hi": 0.0001987296300025272,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000029384747616192778,
+          "lo": -0.0001954411640375181,
+          "hi": 0.00014828259941783206,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0009566610360829268,
+          "lo": -0.0012593498655380842,
+          "hi": -0.0006688702139747291,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0005775094055483431,
+          "lo": -0.0008066990338505845,
+          "hi": -0.0003713467568116526,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.00005265301471485515,
+          "lo": -0.00030299588505016827,
+          "hi": 0.0004223235147446111,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00007671937601198347,
+          "lo": -0.00019945607506625254,
+          "hi": 0.00003305228688220299,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000692564285075613,
+          "lo": -0.00017073917965214968,
+          "hi": -0.000004103504984148981,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.003642319918278479,
+          "lo": 0.000688220402164522,
+          "hi": 0.006555920748503848,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -310,75 +729,175 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 1,
-          "away": 4,
+          "toward": 4,
+          "away": 2,
+          "noClearChange": 90
+        },
+        "abstention": {
+          "toward": 21,
+          "away": 1,
+          "noClearChange": 74
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 3,
+          "away": 2,
           "noClearChange": 91
         },
-        "abstention": {
-          "toward": 3,
+        "philippe": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 93
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 21,
+          "away": 1,
+          "noClearChange": 74
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que ces embrouilles à table montrent bien le fossé qui se creuse entre générations, ça ne m'encourage pas vraiment à prendre parti davantage.",
-        "Je suis habitué aux discussions animées, mais un conflit à table sur les lycées ça ne change pas mon avis, ce genre de disputes ne m'intéressent pas trop.",
-        "Entre parents et ados qui s'embrouillent, je vois bien la tension mais pas sûr que ça change mon vote, ça reflète souvent des tensions qui existent déjà."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Parents solos avec enfants en âge scolaire urbains",
-      "matchedCount": 7488,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "Je trouve ces disputes aux repas un peu stériles, chacun campant sur ses positions sans vraiment écouter l'autre. Ce genre de tensions me lasse plus qu'autre chose.",
+        "Ces embrouilles à table, ça ne m'intéresse pas trop, mais si les parents comprennent un peu mieux les jeunes, ça peut calmer le jeu, tant mieux.",
+        "Quand j'entends que ça s'embrouille entre parents et ados sur le blocage des lycées, je comprends les jeunes, c'est leur avenir qui est en jeu. Mais ça ennuie aussi de voir les tensions à la maison."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.004129482618140878,
+          "lo": 0.00250510466164903,
+          "hi": 0.00610061117099847,
+          "stable": false
         },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "philippe": {
+          "mean": -0.003049288156666876,
+          "lo": -0.0036939522493128446,
+          "hi": -0.002420100610672311,
+          "stable": false
         },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "attal": {
+          "mean": -0.0010076369421305848,
+          "lo": -0.0012348345682961072,
+          "hi": -0.000784642221764502,
+          "stable": false
         },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "glucksmann": {
+          "mean": -0.002148143755653749,
+          "lo": -0.002707421741342983,
+          "hi": -0.0016381610324788405,
+          "stable": false
         },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+        "melenchon": {
+          "mean": -0.0024443346332100302,
+          "lo": -0.0035480330950234326,
+          "hi": -0.0014381959198870309,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0008508345257114266,
+          "lo": -0.0011044936366839274,
+          "hi": -0.0005882542111225005,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0006367293699292296,
+          "lo": -0.0007981224287722417,
+          "hi": -0.00046506783800608753,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0009644729733315162,
+          "lo": -0.0013048745590984743,
+          "hi": -0.0006497223274868702,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0008627754123769326,
+          "lo": -0.0011929101020090162,
+          "hi": -0.0005336921487728799,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00019446492747599497,
+          "lo": -0.0007773851746112299,
+          "hi": 0.00038086378632363116,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0006560288098339667,
+          "lo": -0.0009506131536732859,
+          "hi": -0.0003984693854836611,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00014181571218724448,
+          "lo": -0.0002057988216016479,
+          "hi": -0.00007434691130616119,
+          "stable": false
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "mean": 0.008827042600366685,
+          "lo": 0.006149497630743512,
+          "hi": 0.01171708326495171,
+          "stable": true
         }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que ces disputes à table sur le blocage des lycées, ça ne mène à rien. Chacun campe sur ses positions, c'est fatigant et ça ne change rien à ma manière de voir la présidentielle.",
-        "Ces disputes familiales à propos des blocages au lycée me paraissent malheureuses. Je préfère quand on arrive à discuter calmement, même sur des sujets difficiles, ça fait du bien de s'écouter un peu plus.",
-        "Je trouve dommage que les discussions sur le blocage des lycées finissent en disputes. Quand on arrive à parler calmement, on avance mieux, surtout entre parents et ados."
-      ]
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "72a836d2ccf70690e3f98775361392d7c5975a4f710d565874cbb43fa171f2f3"
+    "contentHash": "253417067f5b1edca5d040c23af8b82f587a8a2d3f7ba436cbba0c6a9012fcf5"
   }
 }

@@ -4,44 +4,46 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "6b9dd679118c0ef7",
+  "inputHash": "0bcdeff99458defe",
   "eventInputHash": "eb5a9592f905494e0049fb3cce2472b22c4964047e9a64b5512093afcf25e919",
-  "computedAt": "2026-11-11T12:54:20.766Z",
+  "computedAt": "2026-11-12T13:52:18.265Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Attal affirme que la primaire reste possible mais uniquement si Philippe accepte d'engager un dialogue constructif dans les prochaines semaines, appelant à un report de la décision finale.",
-    "whatChanges": "Le maintien d'une ouverture conditionnelle à la primaire peut inciter les électeurs centristes à rester attentifs à un compromis, évitant une division immédiate dans ce camp."
+    "description": "Malgré le refus initial de Philippe, Attal annonce qu'il suspend temporairement son projet de primaire et privilégie une démarche de consultations informelles avec les principaux responsables de la droite pour tenter une candidature unitaire sans primaire.",
+    "whatChanges": "Le report de la primaire pourrait apaiser les divisions à droite et rassurer les électeurs modérés réticents à une campagne trop fracturée."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres urbains recherchant une primaire présidentielle",
-      "mechanism": "Le juge Attal évoque la nécessité d'une primaire \"inéluctable\" pour la présidentielle, un mécanisme qui intéresse particulièrement les cadres et professions intellectuelles supérieures vivant en milieu urbain dense, groupés dans l'électorat sensible aux appels à l'union politique formelle.",
-      "reason": "Ces cadres urbains ont une forte sensibilité aux dynamiques politiques nationales et sont concernés par les débats internes dans les partis en vue de la présidentielle.",
+      "name": "Jeunes diplômés urbains argumentant pour la primaire présidentielle",
+      "mechanism": "Ces jeunes diplômés vivant en commune dense constituent une base électorale influencée par le discours d'Olivier Véran jugeant la primaire présidentielle \"inéluctable\", car ils sont sensibles aux débats sur les candidatures dans les milieux urbains éduqués.",
+      "reason": "L'alliance de l'âge (moins de 35 ans), du haut niveau d'éducation (bac+3 ou plus) et de la vie en milieu urbain dense est un profil cohérent pour être sensibilisé aux enjeux de primaire présidentielle argumentée par Olivier Véran.",
       "all": [
-        "occupation.executive_professional",
+        "education.bac_plus_3_4",
         "geo.dense"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64"
+        "age.18_24",
+        "age.25_34"
       ],
-      "none": [],
+      "none": [
+        "occupation.retired"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
         "Attitude envers la primaire présidentielle",
-        "Connaissance des propos du juge Attal",
-        "Opinion sur la position de Philippe"
+        "Perception d'Olivier Véran"
       ],
-      "count": 10263,
-      "distinctCommunes": 72,
+      "count": 4295,
+      "distinctCommunes": 71,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Présidentielle : primaire \"inéluctable\", juge Attal malgré le refus de Philippe",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -50,23 +52,28 @@
     },
     {
       "id": "segment_2",
-      "name": "Agriculteurs exploitants âgés de 50 ans et plus",
-      "mechanism": "Le débat sur la primaire présidentielle engage également les agriculteurs âgés de 50 ans et plus qui s'interrogent sur les orientations politiques futures affectant la filière agricole et leurs conditions de vie, notamment en milieu rural.",
-      "reason": "Ce segment affecte des agriculteurs expérimentés souvent concernés par des enjeux politiques affectant leur profession et leur cadre de vie en milieu rural.",
-      "all": [
-        "cluster.older_farmer"
+      "name": "Salariés modestes des communes intermédiaires soutenant la primaire présidentielle",
+      "mechanism": "Les salariés modestes, essentiellement employés et ouvriers dans les communes de densité intermédiaire, sont directement concernés par la dynamique politique de la primaire évoquée, car ils constituent une large base électorale mobilisable.",
+      "reason": "La combinaison de la catégorie socio-professionnelle ouvriers/employés avec la résidence en commune intermédiaire restreint à un groupe structuré potentiellement réceptif à l'appel à la primaire.",
+      "all": [],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
       ],
-      "any": [],
-      "none": [],
+      "none": [
+        "geo.dense"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intérêt pour la primaire présidentielle",
-        "Attente sur les politiques agricoles"
+        "Mobilisation pour la primaire présidentielle",
+        "Opinion sur la candidature unique"
       ],
-      "count": 384,
-      "distinctCommunes": 79,
+      "count": 1718,
+      "distinctCommunes": 110,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
       "counterfactual": {
         "intervention": "Présidentielle : primaire \"inéluctable\", juge Attal malgré le refus de Philippe",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -75,50 +82,28 @@
     },
     {
       "id": "segment_3",
-      "name": "Salariés modestes de 35 à 64 ans en milieu urbain",
-      "mechanism": "Salariés cadres intermédiaires ou employés/ouvriers de 35 à 64 ans vivant en commune dense, groupe socioprofessionnel clé visé par les débats sur la primaire présidentielle évoquée par Attal, représentant la base populaire urbaine potentiellement mobilisable.",
-      "reason": "Remplacement d'un segment trop large en affinant l'intersection par type d'occupation individuelle",
+      "name": "Couples retraités des grandes villes concernés par l'enjeu de la primaire présidentielle",
+      "mechanism": "Les couples retraités vivant en milieu urbain, notamment dans les grandes villes comme Paris, Lyon et Marseille, forment une population concernée par la question de la primaire présidentielle, notamment dans le contexte de débats sur les candidatures politiques venus de leurs représentants.",
+      "reason": "Les retraités en couple sans enfant au foyer en communes urbaines sont une section démographique riche en électeurs stables susceptibles d'être sensibles aux enjeux de la primaire présidentielle.",
       "all": [
-        "geo.dense",
-        "age.35_49",
-        "occupation.employee"
+        "occupation.retired",
+        "household.couple_no_children",
+        "geo.dense"
       ],
-      "any": [],
-      "none": [],
+      "any": [
+        "municipal_system.paris_lyon_marseille"
+      ],
+      "none": [
+        "age.18_24",
+        "age.25_34"
+      ],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intention de vote pour la primaire",
-        "Connaissance de la position de Gabriel Attal"
+        "Intérêt pour la primaire présidentielle",
+        "Soutien aux candidats des partis traditionnels"
       ],
-      "count": 6646,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle : primaire \"inéluctable\", juge Attal malgré le refus de Philippe",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Salariés ouvriers de 35 à 64 ans en milieu urbain",
-      "mechanism": "Ouvriers urbains de 35 à 64 ans concernés par la primaire présidentielle, susceptibles d'être impactés par les positions politiques sur leurs conditions de travail et l'avenir syndical, donc importants dans le débat public illustré par Attal.",
-      "reason": "Zoom sur une catégorie spécifique dans les salariés modestes rejetée initialement trop large",
-      "all": [
-        "geo.dense",
-        "age.35_49",
-        "occupation.worker"
-      ],
-      "any": [],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Intention de vote pour la primaire",
-        "Sensibilité aux enjeux sociaux liés aux primaires"
-      ],
-      "count": 4988,
-      "distinctCommunes": 72,
+      "count": 13756,
+      "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -137,10 +122,10 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Cadres urbains recherchant une primaire présidentielle",
-      "matchedCount": 10263,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Couples retraités des grandes villes concernés par l'enjeu de la primaire présidentielle",
+      "matchedCount": 13756,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -171,23 +156,170 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça ne change pas grand-chose pour moi, j'écoute surtout ce qui peut être fait concrètement, pas trop ces histoires de primaires.",
-        "Je trouve dommage que Philippe refuse la primaire car cela pourrait rapprocher la gauche et le centre et éviter une dispersion nuisible.",
-        "Ça ne change rien pour moi, je regarde plutôt les candidats qui peuvent vraiment préserver notre sécurité et ordre local."
-      ]
+        "Je ne suis pas sûr que ces querelles à droite changent vraiment quoi que ce soit pour nous, simples citoyens. Je préfère suivre ce qui me semble sérieux et stable.",
+        "Cette histoire de primaire à droite ne me touche pas vraiment, je suis plutôt préoccupée par les questions sociales et l'avenir de Marseille, pas ces jeux politiques.",
+        "Je ne comprends pas tout à ces histoires de primaire, ça m'échappe un peu. Moi, j'attends surtout que ça parle des vrais problèmes de boulot et d’argent."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0008412900950916877,
+          "lo": -0.00000741582136477327,
+          "hi": 0.0017548889947182646,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.002888531667781955,
+          "lo": -0.004380671213948163,
+          "hi": -0.001395789778559725,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0006637351334494599,
+          "lo": -0.00036753697439887947,
+          "hi": 0.001796725997011585,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0001824821037596499,
+          "lo": -0.0004179573405456444,
+          "hi": 0.00001257139690145108,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.00018237781907291199,
+          "lo": -0.00020871445834979492,
+          "hi": 0.0006502812631474123,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00007308635384731255,
+          "lo": -0.00016852885599301753,
+          "hi": 0.0000015895656395904427,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000013721588106291815,
+          "lo": -0.00005863873462978608,
+          "hi": 0.000021963167545324934,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0004619441979430493,
+          "lo": -0.0009879960370809489,
+          "hi": -0.0000745447099481875,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00010228962945413838,
+          "lo": -0.00022121401638944908,
+          "hi": -0.000003178191059953758,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.000014918214787730113,
+          "lo": -0.00012426885268990046,
+          "hi": 0.00010046992556862993,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00009298488686704867,
+          "lo": -0.00018033150336359242,
+          "hi": -0.000007584272778672918,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000002407096987277554,
+          "lo": -0.0000019970283442503334,
+          "hi": 0.00000620081853127735,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0021401484979458488,
+          "lo": 0.00048783771205489153,
+          "hi": 0.004154397462969304,
+          "stable": false
+        }
+      }
     },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Salariés ouvriers de 35 à 64 ans en milieu urbain",
-      "matchedCount": 4988,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains argumentant pour la primaire présidentielle",
+      "matchedCount": 4295,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -223,13 +355,160 @@
           "noClearChange": 47
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, si Philippe refuse la primaire, ça montre que les gros partis préfèrent s’entêter plutôt que d’écouter le terrain. Peu importe, ça ne va pas changer mon vote pour ceux qui défendent les ouvriers.",
-        "Cette histoire de primaire, je m'en fiche un peu. Tant que le dialogue politique ne me promet pas du concret pour ma vie de tous les jours, ça ne changera pas mon vote.",
-        "Je trouve dommage qu’on soit déjà en conflit alors que la primaire pourrait peut-être remettre un peu de sens à tout ça. Mais bon, ça ne bouleverse pas ce que je compte faire."
-      ]
+        "Cette histoire de primaire dans la droite, ça ne me parle pas trop, ça semble compliqué pour rien. Moi je regarde surtout ce que ça va changer concrètement pour Paris.",
+        "La primaire qui divise la droite, ce n'est pas trop mon sujet d'inquiétude. Je ne vois pas que ça change vraiment mon choix pour l'élection.",
+        "Franchement, entre Philippe et Attal, ça me donne surtout l'impression qu'ils n'arrivent pas à s'entendre. Moi je reste fidèle à Marine Le Pen, qui correspond plus à ce que j'attends."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0012688015060689482,
+          "lo": 0.00047765152842205405,
+          "hi": 0.0022578471031172794,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0030117420086976433,
+          "lo": -0.004670915977390303,
+          "hi": -0.0016170741497890755,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.002463540029139149,
+          "lo": 0.0015683189538191662,
+          "hi": 0.0034707174555062476,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0002247330993463348,
+          "lo": -0.0000091930921106609,
+          "hi": 0.0004121663416282848,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00025007230161222006,
+          "lo": -0.0008561861192765951,
+          "hi": 0.0003341672854137821,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.000030945708450825,
+          "lo": -0.0002418933288710157,
+          "hi": 0.00009393072462355905,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00001204416811349503,
+          "lo": -0.00013277640712958106,
+          "hi": 0.00006322092005228502,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008581414509081284,
+          "lo": -0.0016953506795483874,
+          "hi": -0.0002169520457196092,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.00008526628383601065,
+          "lo": 0.00004324684788359172,
+          "hi": 0.00012441582348521945,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.00006623327248995706,
+          "lo": 0.000016244886428946632,
+          "hi": 0.00011640703108044797,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.000027391599523379166,
+          "lo": 0.000007323074408136967,
+          "hi": 0.00004528771779392634,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000019907353374387963,
+          "lo": 0.00000941479300412482,
+          "hi": 0.00003219679289606579,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.000007072494004129598,
+          "lo": -0.0013077785239505844,
+          "hi": 0.0017005524061919925,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -245,9 +524,9 @@
           "noClearChange": 96
         },
         "left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 96
         },
         "center": {
           "toward": 0,
@@ -260,10 +539,77 @@
           "noClearChange": 96
         },
         "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
           "toward": 0,
           "away": 1,
           "noClearChange": 95
         },
+        "attal": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
         "abstention": {
           "toward": 0,
           "away": 0,
@@ -273,62 +619,95 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, toute cette histoire de primaire et de discussions, ça me dépasse un peu, je préfère rester sur ce que je connais et ce qui affecte mon quotidien ici.",
-        "Cette histoire de primaire, ça me semble un peu compliquée et loin de mes préoccupations. Je préfère me concentrer sur ce qui me touche vraiment à Claye-Souilly.",
-        "Ce débat sur la primaire m'intéresse un peu plus car il montre les tensions sur la gauche et le centre. Je suis plutôt pour un dialogue constructif, ça pourrait clarifier les choses."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Salariés modestes de 35 à 64 ans en milieu urbain",
-      "matchedCount": 6646,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "Franchement, ces histoires de primaire, ça me fait un peu penser à des chamailleries d'enfants, ça ne change pas ma façon de voir les choses.",
+        "Cette histoire de primaire me semble compliquée, ça ne correspond pas vraiment à ma façon de choisir un candidat, ça ne changera pas mon vote.",
+        "Je vois ça comme une lutte de pouvoir chez les politiques, ça ne change rien à mon choix pour le premier tour."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0013555077326109811,
+          "lo": 0.0006015847555207263,
+          "hi": 0.0021852123977671605,
+          "stable": false
         },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "philippe": {
+          "mean": -0.003563919897651362,
+          "lo": -0.0047337649656310635,
+          "hi": -0.0025332750822044834,
+          "stable": false
         },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "attal": {
+          "mean": 0.0017807921589151664,
+          "lo": 0.0010364773731005568,
+          "hi": 0.0026860542428251226,
+          "stable": false
         },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "glucksmann": {
+          "mean": 0.0000063890210462549625,
+          "lo": -0.0001050354927872837,
+          "hi": 0.00012668988891006449,
+          "stable": false
         },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "melenchon": {
+          "mean": 0.00023850544939277817,
+          "lo": -0.000042934092521432904,
+          "hi": 0.0005609535241045323,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.000019128013609164506,
+          "lo": -0.00000929888959732444,
+          "hi": 0.00005034722418612004,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00001508008768530842,
+          "lo": -0.00006375817004054749,
+          "hi": 0.00002564358468027047,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00016506456305552398,
+          "lo": -0.0004275273249627306,
+          "hi": 0.0001000579463322965,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00006722558389318762,
+          "lo": -0.00015914441071977664,
+          "hi": 0.000009928895579191097,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.000026875836966397978,
+          "lo": -0.00024570821756322853,
+          "hi": 0.0002538222751108019,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00005067486716591631,
+          "lo": -0.00011096485168327832,
+          "hi": 0.000004434662502379879,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.00000213030241755435,
+          "lo": -0.0000020405464038767397,
+          "hi": 0.000006429369716766608,
+          "stable": false
         },
         "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
+          "mean": 0.0004326364844930081,
+          "lo": -0.000542861228252361,
+          "hi": 0.0014329085710408148,
+          "stable": false
         }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça compliqué ces disputes dans la majorité, ça me lasse un peu, je me demande si ça sert vraiment à quelque chose. Ça ne change pas ce que je vais faire, honnêtement.",
-        "Franchement, ces histoires de primaire, ça me dépasse, je vois pas en quoi ça va améliorer la situation, je reste fidèle à ce que je pense déjà.",
-        "Je ne suis pas très intéressée par les querelles politiques internes, ça ne change rien à ce que je ferai le moment venu."
-      ]
+      }
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Agriculteurs exploitants âgés de 50 ans et plus",
-      "matchedCount": 384,
+      "segmentName": "Salariés modestes des communes intermédiaires soutenant la primaire présidentielle",
+      "matchedCount": 1718,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -354,28 +733,175 @@
           "noClearChange": 48
         },
         "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je n'ai pas grand-chose à voir avec ces histoires de primaires entre politiciens, ça me laisse plutôt indifférente.",
-        "Cette bataille sur la primaire ne me passionne pas trop, tant que la gauche reste unie, ça me va.",
-        "Je trouve ça compliqué tout ça. Que ce soit oui ou non la primaire, ça ne changera pas grand‑chose à mon vote."
-      ]
+        "Franchement, cette histoire de primaire à droite, ça m'embrouille un peu. Je préfère qu'ils s'entendent rapidement, ça m'éviterait des divisions inutiles de leur côté.",
+        "Une primaire à droite ou pas, ça ne change pas grand-chose pour moi. J'ai d'autres soucis que leurs chamailleries politiques.",
+        "Je trouve que cette politique interne à droite est un vrai cirque, ça ne me donne pas envie de m'y intéresser d'avantage."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0013616679353062322,
+          "lo": 0.000162160756089749,
+          "hi": 0.002843308333991932,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.002761242406367656,
+          "lo": -0.003726717223790685,
+          "hi": -0.001768235704848488,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0012330912232757568,
+          "lo": 0.000602619054351273,
+          "hi": 0.0018797771892354101,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00002565054976988778,
+          "lo": -0.00008037187211959249,
+          "hi": 0.00012597232544805034,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0000417139493826374,
+          "lo": -0.0001863341328087463,
+          "hi": 0.00011131787822067554,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.000026872833325821592,
+          "lo": -0.00009341804013482338,
+          "hi": 0.000018645429168753834,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00001100345404966976,
+          "lo": -0.00005750121283186148,
+          "hi": 0.000015007181529408915,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00017869942355677463,
+          "lo": -0.000313725889738608,
+          "hi": -0.00005904155317239828,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000044416804739580484,
+          "lo": -0.00012224684739870685,
+          "hi": 0.000010192237938278794,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00007651012315195143,
+          "lo": -0.00028011137278778544,
+          "hi": 0.00012096814364476848,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00019773708535480202,
+          "lo": -0.000347809308419827,
+          "hi": -0.00007923030240280565,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000004802389298141788,
+          "lo": 7.011821138084594e-7,
+          "hi": 0.000009511515590527754,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0007129839822788772,
+          "lo": -0.0006176307883503512,
+          "hi": 0.002162802548029268,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "ed1da509926bf785f861732eafa2ffd074a5e3c1abd6977563cde963906a3ca0"
+    "contentHash": "5b4656769ea7a9c0ae414be9e09e6a9ec845ab206bd345906fb210987b9feba9"
   }
 }

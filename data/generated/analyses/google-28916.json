@@ -4,24 +4,24 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "40c72f396dca7ef2",
+  "inputHash": "5437233f752e1833",
   "eventInputHash": "c27960acee918656894bc06fae762025caec8a890826143ac9fecb15553dd19e",
-  "computedAt": "2026-11-11T12:50:53.141Z",
+  "computedAt": "2026-11-12T13:47:21.528Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Un accident de car dans l’Ain entraîne la mise en examen du chauffeur pour « mise en danger de la vie d’autrui » plutôt que pour « homicide involontaire ».",
-    "whatChanges": "Le chauffeur est poursuivi pour une infraction moins grave, ce qui pourrait influencer l’opinion sur sa responsabilité pénale et la sévérité des sanctions envisagées, rassurant certains électeurs quant au traitement judiciaire."
+    "description": "Un conducteur de car est placé sous contrôle judiciaire sans mise en examen après l'accident dans l'Ain, en attendant les résultats complets de l'enquête sur les causes de l'accident.",
+    "whatChanges": "Le chauffeur évite la mise en examen immédiate, ce qui limite la stigmatisation juridique dans l'immédiat, rassurant certains électeurs sensibles à la présomption d'innocence et aux conditions de travail des transporteurs."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Habitants de l’Ain de communes rurales et petites",
-      "mechanism": "Les habitants des communes rurales et de petite taille dans l’Ain sont directement concernés par l'accident de car survenu dans leur département, notamment en termes de sécurité routière locale et de vie communautaire.",
-      "reason": "Ce segment rassemble les populations vivant dans des communes rurales et de moins de 1000 habitants dans le département où l'accident a eu lieu, qui peuvent être sensibilisées aux risques liés à l'accident et à la nécessité de mesures de sécurité.",
+      "name": "Habitants des communes rurales de l’Ain",
+      "mechanism": "L’accident de car s’est produit dans l’Ain, une zone caractérisée par des communes rurales ; les habitants de ces communes sont directement concernés par l’événement tragique local et ses conséquences sur la sécurité des transport en commun.",
+      "reason": "Les populations rurales peuvent être plus affectées émotionnellement et socialement par cet accident local qui touche leur quotidien et la mobilité.",
       "all": [
         "geo.rural",
         "commune_size.under_1000"
@@ -30,9 +30,8 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception du risque routier local",
-        "Connaissance de l’accident de car",
-        "Opinion sur la sécurité des transports"
+        "Perception de la sécurité dans les transports",
+        "Attitude envers la gestion locale de l’accident"
       ],
       "count": 476,
       "distinctCommunes": 88,
@@ -46,22 +45,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Seniors vivant seuls en milieu urbain dense",
-      "mechanism": "Les seniors vivant seuls en commune dense peuvent être particulièrement sensibles à un événement tragique de sécurité routière comme cet accident, dans la mesure où cela touche à leur sentiment de sécurité dans l’espace public urbain.",
-      "reason": "Ce segment regroupe des personnes âgées vivant seules en milieu urbain, potentiellement plus vulnérables et attentives à la prévention des risques routiers.",
+      "name": "Familles avec enfants des communes proches de l’accident",
+      "mechanism": "Les familles avec enfants vivant dans les communes de taille moyenne ou petite dans la région de l’Ain sont concernées par cet accident car elles utilisent fréquemment les transports scolaires et collectifs, et sont sensibles aux risques pour leurs enfants.",
+      "reason": "Ce groupe est directement impacté par les questions de sécurité des transports scolaires et collectifs suite à cet accident grave dans leur environnement proche.",
       "all": [
-        "cluster.isolated_senior",
-        "geo.dense"
+        "household.couple_with_children",
+        "commune_size.1000_plus",
+        "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Sentiment de sécurité dans l’espace public",
-        "Connaissance de l’accident de car"
+        "Niveau d’inquiétude sur la sécurité des enfants dans les transports",
+        "Soutien aux mesures de renforcement de la sécurité routière"
       ],
-      "count": 5070,
-      "distinctCommunes": 72,
+      "count": 1142,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -72,23 +72,54 @@
     },
     {
       "id": "segment_3",
-      "name": "Actifs employés de 35 à 49 ans en communes rurales",
-      "mechanism": "Ce segment regroupe des actifs employés âgés de 35 à 49 ans vivant dans des communes rurales de l’Ain, susceptibles d’être concernés par les enjeux locaux de sécurité routière après l’accident de car",
-      "reason": "Segment ciblé et de taille correcte, intersection de l’âge, occupation et géographie",
+      "name": "Agents de la route ruraux de 35 à 64 ans",
+      "mechanism": "Conducteurs professionnels potentiellement concernés par la responsabilité dans l’accident du car dans l’Ain, vivant en zone rurale où l’accident s’est produit.",
+      "reason": "Segment resserré sur l’âge et la zone rurale pour cibler les conducteurs professionnels potentiellement concernés.",
       "all": [
-        "age.35_49",
         "occupation.employee",
         "geo.rural"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers la sécurité routière",
-        "Perception des risques dans les transports en commun"
+        "Connaissance de l’accident",
+        "Opinion sur la responsabilité du chauffeur"
       ],
-      "count": 143,
-      "distinctCommunes": 45,
+      "count": 258,
+      "distinctCommunes": 61,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Accident de car dans l’Ain : le chauffeur mis en examen pour « homicide involontaire »",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Résidents âgés dans les communes rurales de l’Ain",
+      "mechanism": "Population âgée vivant dans des communes rurales proches du lieu de l’accident, susceptibles d’être concernés par l’événement et ses conséquences locales.",
+      "reason": "Segment précis combinant âge avancé et zone rurale pour cibler les personnes potentiellement impactées localement.",
+      "all": [
+        "age.65_74",
+        "geo.rural"
+      ],
+      "any": [
+        "occupation.retired",
+        "occupation.other_inactive"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Niveau d’inquiétude suite à l’accident",
+        "Connaissance des mesures de sécurité routière"
+      ],
+      "count": 352,
+      "distinctCommunes": 65,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -107,18 +138,18 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Seniors vivant seuls en milieu urbain dense",
-      "matchedCount": 5070,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Habitants des communes rurales de l’Ain",
+      "matchedCount": 476,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
@@ -136,70 +167,558 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 44
         }
       },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Un accident est toujours tragique, mais la mise en examen du chauffeur pour homicide involontaire me paraît logique si sa responsabilité est engagée, ça doit être pris au sérieux.",
-        "C'est triste, mais cette mise en examen pour homicide involontaire, ça montre que la justice fait son travail. Ça ne change rien pour moi cependant.",
-        "C'est une affaire triste. La justice qui met en examen le chauffeur pour homicide involontaire, c'est normal. Mais ça ne change pas mon vote, ça ne me concerne pas vraiment."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Actifs employés de 35 à 49 ans en communes rurales",
-      "matchedCount": 143,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "left": {
+        "attal": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "center": {
+        "glucksmann": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "right": {
+        "melenchon": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "tondelier": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "far_right": {
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
           "toward": 3,
-          "away": 0,
-          "noClearChange": 45
+          "away": 1,
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Un accident aussi grave, c'est terrible, mais ça ne va pas vraiment changer mon vote, je m'intéresse plus aux grandes orientations politiques qu'à ce genre d'affaires.",
-        "C'est triste cet accident, mais la différence entre 'homicide involontaire' et 'mise en danger' ne me parle pas vraiment. Ça ne changera pas mon choix aux présidentielles.",
-        "C'est dramatique cet accident, mais ça ne change rien pour moi car j'ai d'autres préoccupations plus proches de mon quotidien. La nuance juridique ne m'intéresse pas assez."
-      ]
+        "Franchement, ça me choque pas plus que ça, c'est le genre d'accident qui peut arriver, même si ça fait toujours de la peine.",
+        "Je suis un peu triste pour les familles, mais je ne vois pas en quoi ça change vraiment ma façon de voir la politique.",
+        "C’est triste, mais ça ne me fait pas changer de candidat. Je suis plutôt concentrée sur ce qui me touche dans mon quotidien."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.003401268253474126,
+          "lo": 0.001857251885091547,
+          "hi": 0.005353147601186866,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0009993359930833988,
+          "lo": -0.002140077262031298,
+          "hi": 0.00018425755978680852,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00016568947851664838,
+          "lo": -0.00034793451366650386,
+          "hi": -0.000022215784156591673,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0010678418815232658,
+          "lo": -0.0016551992027022538,
+          "hi": -0.0005823853965316143,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.001398121866362841,
+          "lo": -0.0023538801899993574,
+          "hi": -0.0005597921426532059,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00013993205325527495,
+          "lo": -0.0002589843260679951,
+          "hi": -0.000042393072173667486,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00017448899618634686,
+          "lo": -0.0003064859010310628,
+          "hi": -0.00006009206747215991,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0010472379552550761,
+          "lo": -0.0016393533262212805,
+          "hi": -0.0004811884404899644,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00079594182460818,
+          "lo": -0.0012333497673596002,
+          "hi": -0.00040249513402322145,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0008609874748302491,
+          "lo": -0.0014289707810799105,
+          "hi": -0.0001658758700935631,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00012845551722616907,
+          "lo": -0.00029089196183752455,
+          "hi": 0.00004216017204963499,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000009011365123618762,
+          "lo": 0.0000023370169595641574,
+          "hi": 0.000017144496305593462,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0033677534222497133,
+          "lo": 0.0007352930672315337,
+          "hi": 0.0062487319771326365,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Agents de la route ruraux de 35 à 64 ans",
+      "matchedCount": 258,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 0,
+          "noClearChange": 40
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 0,
+          "noClearChange": 40
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C’est triste ce qui s’est passé dans l’Ain, mais honnêtement, ça ne change pas vraiment mon avis sur la politique. Ce genre d’accident est regrettable, mais je reste focalisé sur mes préoccupations du quotidien.",
+        "Cette histoire d’accident et de mise en examen est inquiétante, mais je ne vois pas comment ça pourrait influer sur mes opinions politiques. Je reste prudente, ça pourrait me faire réfléchir sur la nécessité de meilleures règles de sécurité.",
+        "Je trouve ça assez triste, mais ça ne me fait pas changer d’avis pour la présidentielle. Je me concentre plus sur l’économie et les services dans ma région."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.004666021002827994,
+          "lo": 0.002862343872152761,
+          "hi": 0.006674651701403835,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0031715744303837303,
+          "lo": -0.004010296785268209,
+          "hi": -0.0023651548675383345,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0006249263487227864,
+          "lo": -0.0008489329256355493,
+          "hi": -0.0004163120000172928,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.002598982379504357,
+          "lo": -0.003320977766597282,
+          "hi": -0.0019093880259665266,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.002706902890034928,
+          "lo": -0.003699410263948324,
+          "hi": -0.001753440109213403,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0004976969073339155,
+          "lo": -0.0006820986844615919,
+          "hi": -0.0003315500663625624,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0005879766351569804,
+          "lo": -0.0008236431564343865,
+          "hi": -0.0003772606135752858,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007602735006053156,
+          "lo": -0.001131205034801654,
+          "hi": -0.00041508714262554437,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000519726609836553,
+          "lo": -0.0008040115066014039,
+          "hi": -0.00029035293254543406,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0012618238749660677,
+          "lo": -0.001651570032943481,
+          "hi": -0.0008466088560601075,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0009093661052109459,
+          "lo": -0.0012198344560947984,
+          "hi": -0.0006127522994144326,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00007959222646469336,
+          "lo": -0.00016479757085057994,
+          "hi": -0.000014336007492259505,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00905282090539227,
+          "lo": 0.006209090761448942,
+          "hi": 0.011909969599758333,
+          "stable": true
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Familles avec enfants des communes proches de l’accident",
+      "matchedCount": 1142,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 1,
+          "noClearChange": 42
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 1,
+          "noClearChange": 42
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est triste cet accident, j'espère que la justice fera la lumière mais ça ne change pas vraiment mon vote, je suis déjà bien décidé.",
+        "Un chauffeur mis en examen, c’est un coup dur, mais je ne me sens pas directement concerné dans ma vie. Ça ne change pas mon vote.",
+        "C’est triste cet accident, mais ce genre d’affaire ne me fait pas vraiment bouger sur mes convictions politiques."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0039065422617419665,
+          "lo": 0.0017734367024464157,
+          "hi": 0.006538637907436678,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0024481640033622632,
+          "lo": -0.0036284163925752477,
+          "hi": -0.0014711969278142101,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0003990402582052452,
+          "lo": -0.0006715524748022345,
+          "hi": -0.00017011302801556917,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0014250052948338004,
+          "lo": -0.0021672361741175354,
+          "hi": -0.0006497131888233281,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0016518927839894602,
+          "lo": -0.0024403460998388333,
+          "hi": -0.0009274193670529658,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00029758957946465216,
+          "lo": -0.00048324020051447174,
+          "hi": -0.00012524691524294328,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00032323567097222614,
+          "lo": -0.0005134526296667589,
+          "hi": -0.0001578873224187337,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0005404009840286875,
+          "lo": -0.0009471285820010973,
+          "hi": -0.00023031573902041703,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0005027520273076163,
+          "lo": -0.0009341579975867782,
+          "hi": -0.0002067425962300921,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0009386170947569193,
+          "lo": -0.0017309618196523057,
+          "hi": -0.00034487254328612206,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.000551167312390158,
+          "lo": -0.0008953760192473374,
+          "hi": -0.0002750318562543639,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00014310770413561726,
+          "lo": -0.0002505315270206337,
+          "hi": -0.00005751369726424719,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005314430451704662,
+          "lo": 0.0018466968684206966,
+          "hi": 0.009174828949080336,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -221,8 +740,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 2,
+          "noClearChange": 94
         },
         "right": {
           "toward": 0,
@@ -231,27 +750,174 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 6,
-          "noClearChange": 90
+          "away": 1,
+          "noClearChange": 95
         },
         "abstention": {
-          "toward": 11,
+          "toward": 9,
+          "away": 1,
+          "noClearChange": 86
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "philippe": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 85
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 9,
+          "away": 1,
+          "noClearChange": 86
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est triste cet accident, mais je pense que c'est important que la justice fasse son travail. Je ne vois pas cela changer grand-chose à mon vote, c'est trop loin de mon quotidien.",
-        "C'est affreux cet accident, mais honnêtement, ça ne me fait pas changer d'avis pour la présidentielle. Je suis déjà bien engagée sur mes idées et ça ne touche pas vraiment ma vie.",
-        "C’est tellement triste que quelqu’un ait pu causer la mort par négligence. Je comprends la gravité des charges, mais ça ne change pas mon vote, ce n’est pas directement lié à ma vie."
-      ]
+        "Cette histoire est bien triste, mais je ne vois pas comment cela pourrait changer mon vote, je suis plutôt attachée à mes convictions déjà établies.",
+        "C’est triste cet accident, ça me fait un peu peur pour la sécurité des transports. Sans mise en examen, ça paraît plus prudent, au moins ils attendent avant de juger trop vite.",
+        "Je trouve ça triste, mais c’est un drame assez éloigné de ma vie pour que ça ne change pas ma façon de voir la politique."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.002239834006692139,
+          "lo": 0.0011193592659421946,
+          "hi": 0.0034369003307648392,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0021336475436018842,
+          "lo": -0.003009075188704802,
+          "hi": -0.0014308996861694303,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0003575405593250314,
+          "lo": -0.000549081814427541,
+          "hi": -0.00014937215808656464,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0008623404189536627,
+          "lo": -0.001361165419288787,
+          "hi": -0.00046829055463603605,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0008917512772180582,
+          "lo": -0.0016282650480302693,
+          "hi": -0.00021364670244423904,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0002124226251705989,
+          "lo": -0.0003320091873975802,
+          "hi": -0.00009568738849146557,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00017947754954198932,
+          "lo": -0.000287693015717343,
+          "hi": -0.00008759078991219351,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00077236449326047,
+          "lo": -0.0010403951429143535,
+          "hi": -0.0005082852262613456,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0006112353707629809,
+          "lo": -0.0008392281324548918,
+          "hi": -0.0004187649607168803,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0010063494262466822,
+          "lo": -0.0013664628018410273,
+          "hi": -0.0006349345332228071,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00038982018296937655,
+          "lo": -0.0005839370949965453,
+          "hi": -0.00017809695980111387,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00005668008308536759,
+          "lo": -0.00010975679078568505,
+          "hi": -0.000015857338831987123,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005233795523443965,
+          "lo": 0.0031462903561426795,
+          "hi": 0.007665787030938981,
+          "stable": false
+        }
+      }
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Habitants de l’Ain de communes rurales et petites",
-      "matchedCount": 476,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Résidents âgés dans les communes rurales de l’Ain",
+      "matchedCount": 352,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -263,13 +929,13 @@
         },
         "left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 46
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -277,28 +943,175 @@
           "noClearChange": 48
         },
         "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 11,
+          "away": 0,
+          "noClearChange": 37
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 11,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 37
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne connais pas trop les détails, mais c’est triste cet accident, ça ne me fera pas changer mon vote.",
-        "C’est tragique, mais ça ne change pas vraiment ce que je pense de la politique, ce genre d’affaire est trop loin de mon quotidien.",
-        "C’est vraiment triste, mais ça ne changera pas pour qui je vote. Ce genre d’accident ne me touche pas vraiment."
-      ]
+        "Cette histoire est triste, mais je me demande si le chauffeur est vraiment responsable ou si c'est un malheureux accident. Je préfère attendre les conclusions avant de me faire une opinion.",
+        "Un accident tragique, bien sûr, mais je trouve que mettre directement en examen le chauffeur peut paraître prématuré. Il faut voir les résultats exacts de l'enquête.",
+        "C'est une situation pénible, mais je ne suis pas sûre que ces événements influencent mon vote. J'aimerais simplement que justice soit rendue avec discernement."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.003412214209732123,
+          "lo": 0.001760440011199068,
+          "hi": 0.00513416273957885,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.003662141289404523,
+          "lo": -0.0046564029900602695,
+          "hi": -0.0025011060677846584,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0007702202215368868,
+          "lo": -0.00121445282799317,
+          "hi": -0.000394204594407869,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.002359805203457887,
+          "lo": -0.003455087429680145,
+          "hi": -0.0014464281246569849,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0018616643917359883,
+          "lo": -0.002554898949750218,
+          "hi": -0.0012333728581024976,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.000765236442502816,
+          "lo": -0.0011215996739677742,
+          "hi": -0.00041012835478207427,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0005187797824983681,
+          "lo": -0.0007369153210455851,
+          "hi": -0.00032172319620973216,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0017327238462005769,
+          "lo": -0.0025518009511521357,
+          "hi": -0.0010913315141989413,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0011611901354910224,
+          "lo": -0.0017174901220920024,
+          "hi": -0.0007157268685507341,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0014655432749112924,
+          "lo": -0.0020633876980630213,
+          "hi": -0.0009818583764172092,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0007909490738947324,
+          "lo": -0.0012589589442205799,
+          "hi": -0.0004483042919453208,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 4.468439257034648e-7,
+          "lo": -0.000003556450574189165,
+          "hi": 0.00000428027430842203,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.011675592607976302,
+          "lo": 0.007700041295356844,
+          "hi": 0.01588403301213527,
+          "stable": true
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "930d3795bd36672f9d49f5c1767e5fc2ad33a929394e67ee3262db8a2f6bcd48"
+    "contentHash": "a44b545cb9c8fba275559ae6fb0db836e16953abc8e33ada3e0715d8d720a161"
   }
 }

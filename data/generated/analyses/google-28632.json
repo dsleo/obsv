@@ -4,49 +4,46 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "c86b1c62939e1666",
+  "inputHash": "138609b91ecf566c",
   "eventInputHash": "881116fb5698e55d170d11280b3bd12aa750eb5b9b154124e4ff455b1f052e0f",
-  "computedAt": "2026-11-11T12:53:16.158Z",
+  "computedAt": "2026-11-12T13:50:18.015Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Incendie d’un lycée à Nantes : un seul élève de 16 ans est mis en examen, l’enquête concluant à une responsabilité individuelle plutôt qu’à une action collective.",
-    "whatChanges": "La mise en examen d’un seul élève atténue la perception d’un acte collectif et peut réduire la crainte d’un climat de tensions généralisées dans les établissements scolaires auprès des électeurs et des familles."
+    "description": "Incendie d’un lycée à Nantes : un seul élève de 16 ans est mis en examen, les enquêteurs excluant l'implication d'autres mineurs.",
+    "whatChanges": "La responsabilité limitée à un seul élève modère la perception d’un problème généralisé parmi les jeunes, atténuant l'inquiétude des parents et citoyens sur la sécurité dans les établissements scolaires."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes adolescents scolarisés à Nantes",
-      "mechanism": "Les deux élèves de 16 ans mis en examen suite à l'incendie du lycée à Nantes concernent directement les jeunes scolarisés proches de cet âge dans la commune de Nantes, ville dense et importante où se situe le lycée.",
-      "reason": "Ce groupe rassemble les jeunes de 16 ans en âge scolaire situés dans la commune dense et importante de Nantes, potentiellement exposés à l'événement et à son impact social local.",
+      "name": "Adolescents de 15 à 17 ans scolarisés en commune dense",
+      "mechanism": "Les élèves âgés de 15 à 17 ans et scolarisés dans des communes denses, potentiellement touchés par l'incendie du lycée à Nantes et concernés par les mises en examen des deux élèves de 16 ans.",
+      "reason": "Ce segment regroupe les jeunes proches de l'âge des inculpés, vivant en milieu urbain dense où se situe Nantes, donc directement concernés par l'incident et ses répercussions.",
       "all": [
         "age.18_24",
-        "commune_size.1000_plus",
-        "geo.dense",
-        "municipal_system.paris_lyon_marseille"
+        "geo.dense"
       ],
       "any": [
-        "household.couple_with_children",
-        "household.single_parent",
-        "household.couple_no_children"
+        "education.baccalaureate",
+        "education.cap_bep",
+        "education.brevet"
       ],
-      "none": [
-        "occupation.retired"
-      ],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Connaissance de l’événement",
-        "Émotions liées à l’incendie",
-        "Perception des risques scolaires",
-        "Confiance envers l’administration scolaire"
+        "Connaissance de l'incendie au lycée",
+        "Opinion sur les mesures judiciaires",
+        "Sentiment de sécurité dans l'établissement"
       ],
-      "count": 3899,
-      "distinctCommunes": 48,
+      "count": 10101,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "Lacune « âge précis 16 ans » ignorée : cet attribut existe déjà dans les tags"
+      ],
       "counterfactual": {
         "intervention": "Incendie d’un lycée à Nantes : deux élèves de 16 ans mis en examen",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -55,28 +52,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Parents d’enfants mineurs en milieu urbain dense",
-      "mechanism": "Les parents d'élèves mineurs à Nantes peuvent être directement concernés par l'incendie du lycée et les conséquences sur la sécurité scolaire et l’environnement local de leurs enfants.",
-      "reason": "Ce segment correspond aux adultes vivant en couple ou seuls avec enfants mineurs en commune dense et grande, sensibles à la sécurité et à la gestion locale de l’incendie et ses suites.",
+      "name": "Parents d'élèves en couple avec enfants en communes denses",
+      "mechanism": "Parents vivant en couple avec enfants en âge scolaire, résidant en communes denses, donc concernés par la sécurité dans les établissements scolaires suite à l'incendie du lycée à Nantes.",
+      "reason": "Ce groupe représente la base familiale directement concernée par l'accident, pouvant influencer les débats locaux sur la sécurité scolaire et la responsabilité des jeunes impliqués.",
       "all": [
-        "geo.dense",
-        "commune_size.1000_plus",
-        "household.couple_with_children"
+        "household.couple_with_children",
+        "geo.dense"
       ],
       "any": [
         "age.35_49",
-        "age.25_34"
+        "age.50_64"
       ],
-      "none": [
-        "occupation.retired"
-      ],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Inquiétudes parentales sur la sécurité scolaire",
-        "Niveau d’information sur l’incendie",
-        "Opinion sur la gestion municipale de crise"
+        "Préoccupation pour la sécurité des enfants en milieu scolaire",
+        "Attitude envers la justice pour les mineurs impliqués"
       ],
-      "count": 25109,
+      "count": 24731,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -88,28 +81,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Adolescents des communes denses hors grandes métropoles",
-      "mechanism": "Les élèves adolescents des communes denses en dehors du système municipal spécifique de Paris, Lyon, Marseille sont concernés par les questions de sécurité scolaire liées à des événements comme l’incendie et peuvent partager des perceptions particulières hors grandes métropoles.",
-      "reason": "Ce groupe rassemble les jeunes de 18 à 24 ans dans des communes denses autres que les grandes métropoles, exposés potentiellement aux incidents scolaires mais dans un cadre urbain différent de Nantes.",
+      "name": "Jeunes sans activité professionnelle de 18 à 24 ans en communes urbaines",
+      "mechanism": "Jeunes sans activité professionnelle âgés de 18 à 24 ans, habitant en communes urbaines, susceptibles d'avoir une proximité sociale avec les élèves impliqués dans l'incendie du lycée à Nantes et concernés par les répercussions sociales de l'événement.",
+      "reason": "Ce segment correspond à un public jeune proche de la situation des élèves mis en examen, exposé aux débats sur les responsabilités et mesures de prévention en milieu scolaire urbain.",
       "all": [
-        "age.18_24",
-        "geo.dense"
+        "cluster.young_without_activity",
+        "geo.dense",
+        "age.18_24"
       ],
-      "any": [
-        "commune_size.1000_plus"
-      ],
-      "none": [
-        "municipal_system.paris_lyon_marseille",
-        "occupation.retired"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception du risque scolaire",
-        "Sentiment d’insécurité en milieu scolaire",
-        "Réception de l’information locale"
+        "Sentiment d'implication dans l'affaire",
+        "Opinion sur les sanctions judiciaires"
       ],
-      "count": 908,
-      "distinctCommunes": 24,
+      "count": 8453,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -128,10 +116,204 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Parents d’enfants mineurs en milieu urbain dense",
-      "matchedCount": 25109,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Adolescents de 15 à 17 ans scolarisés en commune dense",
+      "matchedCount": 10101,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 4,
+          "noClearChange": 42
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 4,
+          "noClearChange": 42
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est triste et inquiétant de voir des lycéens impliqués dans un incendie, mais ça ne change pas vraiment mon opinion politique, ça me semble plus une affaire judiciaire qu'un enjeu présidentiel.",
+        "Un incendie dans un lycée, c'est dommage, même si ce n'est pas un sujet politique direct pour moi ; je reste concentré sur ce qui touche à mes valeurs et mon avenir.",
+        "C’est choquant qu’autant de jeunes soient mêlés à des actes graves. Ça renforce mon sentiment qu’il faut plus de fermeté, peut-être plus d’ordre, et ça me fait un peu pencher vers des candidats qui promettent la sécurité."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.00636943852796117,
+          "lo": 0.004041522083418283,
+          "hi": 0.008802408909417915,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0014827910322660447,
+          "lo": -0.0023442411185306744,
+          "hi": -0.0005347239773042176,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00043924204625128845,
+          "lo": -0.000715534786993037,
+          "hi": -0.00023874389892610632,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0009809177575188037,
+          "lo": -0.0016549326535850882,
+          "hi": -0.00033231837751628604,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0025123370746185873,
+          "lo": -0.0036779504311737587,
+          "hi": -0.0013097560304039886,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.000317049736313685,
+          "lo": -0.0005355668676563292,
+          "hi": -0.00007635540306069086,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0004889632368504162,
+          "lo": -0.0006908970906561593,
+          "hi": -0.00030171331681291217,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008549024112070348,
+          "lo": -0.0013162789897409775,
+          "hi": -0.0004538071202752295,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0005495771082726356,
+          "lo": -0.0008243798676962384,
+          "hi": -0.0002817763522550299,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.000783029009253611,
+          "lo": 0.00012881251933192353,
+          "hi": 0.0015663755805578224,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0002994755737587374,
+          "lo": -0.0004863408883619801,
+          "hi": -0.00010369932441707873,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00018490537165152812,
+          "lo": -0.00033349493359510676,
+          "hi": -0.00005870971379523549,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0009576938114939874,
+          "lo": -0.0020395180815168143,
+          "hi": 0.004482562377144857,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnelle de 18 à 24 ans en communes urbaines",
+      "matchedCount": 8453,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -162,36 +344,183 @@
           "noClearChange": 46
         },
         "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
           "toward": 1,
-          "away": 1,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "J'espère que ces élèves seront juste jugés, mais ce genre d'incidents ne me touche pas directement, donc ça ne change pas trop mon opinion politique.",
-        "Un incendie dans un lycée, ça fait toujours peur. Mais je reste pragmatique : cette affaire montre peut-être un problème d'encadrement, mais ça ne modifie pas mes choix politiques.",
-        "C'est inquiétant de voir des jeunes impliqués dans ce genre d'incendies. Mais je ne suis pas sûre que ça change ce que je pense des élections."
-      ]
+        "Ça m'inquiète un peu que deux jeunes soient mis en examen pour cet incendie, on entend souvent parler de violences dans les lycées, c’est triste.",
+        "Franchement, ça ne me touche pas vraiment, ce genre d'histoires dans un lycée à Nantes, moi je fais ma vie ici à Dunkerque.",
+        "C’est triste ce qui s’est passé, mais ça ne change pas vraiment ce que je pense sur les candidats, je suis juste un peu déçu que ces jeunes en viennent à ça."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.004867225630067613,
+          "lo": 0.0030910733728364537,
+          "hi": 0.0065213879279948745,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0018848689620946865,
+          "lo": -0.0028230407415067212,
+          "hi": -0.0009639275431299977,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0010272293324744737,
+          "lo": -0.001317782784972114,
+          "hi": -0.0007486874977104358,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.002230536334848265,
+          "lo": -0.0030406470317380784,
+          "hi": -0.0014244344637810182,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0027773896204652346,
+          "lo": -0.00386515570404718,
+          "hi": -0.0015315151928899575,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00012757575682663947,
+          "lo": -0.0005899786134893767,
+          "hi": 0.0004533146663778487,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0004179073250633604,
+          "lo": -0.0007221239291965296,
+          "hi": -0.0000977261013526046,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0011546032179724315,
+          "lo": -0.0015215047265033546,
+          "hi": -0.0008462989715805473,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0009218954809773116,
+          "lo": -0.0012627730120626918,
+          "hi": -0.0005595612437992212,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00019643611665839567,
+          "lo": -0.0006093714815707255,
+          "hi": 0.00029990382503070377,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0004849479725989859,
+          "lo": -0.0006969855979910197,
+          "hi": -0.0002806847853946843,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00019202026957917509,
+          "lo": -0.0003128595176593375,
+          "hi": -0.00009269949948265104,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006548184759491367,
+          "lo": 0.003864573772783776,
+          "hi": 0.00919812940292456,
+          "stable": false
+        }
+      }
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Adolescents des communes denses hors grandes métropoles",
-      "matchedCount": 908,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Parents d'élèves en couple avec enfants en communes denses",
+      "matchedCount": 24731,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "center": {
           "toward": 0,
@@ -204,23 +533,170 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 5,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 43
+          "noClearChange": 45
         },
         "abstention": {
-          "toward": 1,
+          "toward": 8,
           "away": 1,
-          "noClearChange": 46
+          "noClearChange": 39
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 7,
+          "away": 0,
+          "noClearChange": 41
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 1,
+          "noClearChange": 39
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça me choque un peu, deux élèves de 16 ans mis en examen pour un incendie, ça me paraît grave et inquiétant mais j'espère que c'est bien éclairci.",
-        "Deux jeunes mis en examen pour un incendie, ça ne me parle pas trop, c’est loin de mes préoccupations.",
-        "Un incendie causé par des élèves, c’est quand même inquiétant, mais je ne vois pas ça comme un sujet politique qui changerait mon vote."
-      ]
+        "Je trouve ça dramatique et inquiétant que des adolescents soient impliqués dans un incendie volontaire, ça montre un malaise dans la jeunesse d'aujourd'hui.",
+        "Ça me touche peu directement, c'est triste mais je ne pense pas que ça change vraiment mon regard sur les candidats.",
+        "Je trouve ça préoccupant. Cela nourrit mon inquiétude sur l'évolution de la jeunesse et la sécurité dans les établissements scolaires."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.008110067246101305,
+          "lo": 0.0054492754634972605,
+          "hi": 0.010732242898362795,
+          "stable": true
+        },
+        "philippe": {
+          "mean": -0.00279883730596947,
+          "lo": -0.004027189397595745,
+          "hi": -0.001509551638662332,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0012517990386026363,
+          "lo": -0.0017267339392152499,
+          "hi": -0.0008221940987210747,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.002938989701447099,
+          "lo": -0.003882013252323301,
+          "hi": -0.002069844544449798,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.004478853097483587,
+          "lo": -0.006132554864076441,
+          "hi": -0.0031532217034284265,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0007194638827575291,
+          "lo": -0.0009804754801161434,
+          "hi": -0.0005023510409120471,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0007649687337468956,
+          "lo": -0.001020899027103574,
+          "hi": -0.0005358960098573513,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0012000724741035227,
+          "lo": -0.0017511277404007857,
+          "hi": -0.000729931378035507,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.001224296987527662,
+          "lo": -0.0018009651452217483,
+          "hi": -0.0007741235133297778,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.000167364130000395,
+          "lo": -0.0009558566677878083,
+          "hi": 0.0006855825150431141,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0007859475903971893,
+          "lo": -0.001245766575509325,
+          "hi": -0.0004484258605144859,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00025165505091024134,
+          "lo": -0.00038265377707275163,
+          "hi": -0.00011945814874211945,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00847218074684493,
+          "lo": 0.004750450221193887,
+          "hi": 0.012339126781448195,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -251,75 +727,175 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 9,
+          "toward": 6,
           "away": 0,
-          "noClearChange": 87
+          "noClearChange": 90
         },
         "abstention": {
+          "toward": 3,
+          "away": 2,
+          "noClearChange": 91
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 92
+        },
+        "philippe": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 2,
+          "noClearChange": 91
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve dommage qu'on en soit arrivé là, cela donne une mauvaise image des jeunes. Mais ce n'est pas vraiment lié à ma vie quotidienne, donc ça ne changera rien à mon vote.",
-        "Deux élèves mis en examen ? C'est inquiétant, mais j'ai du mal à suivre tous ces faits divers, ça ne me pousse pas à changer d'avis pour la présidentielle.",
-        "Un incident à Nantes impliquant des lycéens ? C’est triste, mais cela ne me touche pas directement. Je reste sur mes positions politiques."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes adolescents scolarisés à Nantes",
-      "matchedCount": 3899,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "C'est bien triste de voir de jeunes élèves impliqués ainsi, cela me peine beaucoup. Je me demande si ce n'est pas un signe de mal-être actuel chez les jeunes.",
+        "Je trouve ça triste pour ces jeunes et pour leur famille, mais ça ne change rien à ce que je pense de la politique.",
+        "C'est désolant que des jeunes soient mêlés à ce genre d'incident, ça pourrait refléter des problèmes dans notre société ou notre système éducatif."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.005793160465677352,
+          "lo": 0.004396815905372684,
+          "hi": 0.007191545041937833,
+          "stable": true
         },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "philippe": {
+          "mean": -0.0012264291800247965,
+          "lo": -0.0018078225915460534,
+          "hi": -0.0005954940736426921,
+          "stable": false
         },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "attal": {
+          "mean": -0.00043740907821966424,
+          "lo": -0.0006163015244903843,
+          "hi": -0.00029039858628787045,
+          "stable": false
         },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+        "glucksmann": {
+          "mean": -0.001630467004472707,
+          "lo": -0.0021300322397894748,
+          "hi": -0.0010961116848593898,
+          "stable": false
         },
-        "far_right": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
+        "melenchon": {
+          "mean": -0.0030877364058181788,
+          "lo": -0.0037984143263088133,
+          "hi": -0.002409954310148818,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00018899591235071946,
+          "lo": -0.00042086293055418225,
+          "hi": 0.00005329303847185216,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0006780445012250829,
+          "lo": -0.0008957476596463272,
+          "hi": -0.00048557301026273857,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0004731303640460639,
+          "lo": -0.0008194131130712133,
+          "hi": -0.00006564090493705822,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007008741137635019,
+          "lo": -0.0009551057176392973,
+          "hi": -0.00048233674248492975,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.000426973171362594,
+          "lo": -0.00003155995205168851,
+          "hi": 0.0009298240751283387,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00010067515038020577,
+          "lo": -0.0002495550984369769,
+          "hi": 0.00007797541757805328,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00004137453238226888,
+          "lo": -0.00009520270539324714,
+          "hi": -0.000004963372569732697,
+          "stable": false
         },
         "abstention": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "mean": 0.002345002605643258,
+          "lo": 0.0006351282515414496,
+          "hi": 0.0041696501025588325,
+          "stable": false
         }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "C’est inquiétant de voir que des jeunes puissent causer autant de dégâts, mais je ne connais pas vraiment les détails et ça ne change pas mon vote.",
-        "Un incendie dans un lycée, c’est triste, mais pour moi c’est surtout une affaire de jeune en difficulté. Ça ne me fait pas bouger mes idées politiques.",
-        "Je suis un peu déçu que ce soit des jeunes de 16 ans, c’est quand même grave. Mais étant dans la gestion, ça ne change pas vraiment ma manière de voir la politique."
-      ]
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "32328f768b8093f040b2544f3606cf1db2d2dd058196b7a415ebd0c1225fd225"
+    "contentHash": "db8ea8dd5024c0b53f5833b8a00cd4a723cf4b924edc522d5adec7207b81680c"
   }
 }

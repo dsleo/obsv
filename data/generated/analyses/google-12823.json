@@ -4,45 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "d4ba73d199c57ac7",
+  "inputHash": "4928fb893bd26a41",
   "eventInputHash": "0b5ee749bbe8a6f75d28be971e705713df049aa209b2795144954fcd2e244404",
-  "computedAt": "2026-11-11T12:52:26.151Z",
+  "computedAt": "2026-11-12T13:49:34.838Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "François Ruffin annonce qu’il maintiendra sa candidature quelle que soit l’évolution des candidatures pour battre Marine Le Pen, insistant sur la nécessité de proposer une alternative propre à sa sensibilité politique.",
-    "whatChanges": "Au lieu de retirer sa candidature, Ruffin choisit de rester en lice, ce qui risque de diviser davantage l’électorat de gauche engagé contre Le Pen."
+    "description": "François Ruffin annonce qu'il maintiendra sa candidature quelle que soit la situation, affirmant qu'il veut porter un projet critique indépendant sans compromis, même face à une possible cohabitation avec Marine Le Pen.",
+    "whatChanges": "Ruffin refuse de retirer sa candidature malgré le risque de diviser la gauche, ce qui pourraient décourager certains électeurs pragmatiques cherchant à empêcher la victoire de Le Pen."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "Ce segment correspond aux jeunes diplômés des villes, potentiellement sensibles à la candidature de François Ruffin et à l’appel au rassemblement contre Marine Le Pen dans un contexte urbain et étudiant.",
-      "reason": "Les jeunes diplômés en commune dense sont un électorat mobilisable et concerné par la dynamique politique opposant Ruffin à Marine Le Pen, avec un intérêt pour les enjeux progressistes portés par Ruffin.",
+      "name": "Agriculteurs jeunes concernés par l'enjeu anti-Marine Le Pen",
+      "mechanism": "François Ruffin menace de retirer sa candidature à la présidentielle 2027 si une solution se dégage pour battre Marine Le Pen, ce qui concerne directement les jeunes agriculteurs, souvent sensibles aux questions sociales et politiques liées à l'avenir rural et à la défense des milieux populaires agricoles.",
+      "reason": "Ce segment se compose des jeunes agriculteurs exploitants, une population active dans le secteur agricole souvent concernée par les enjeux politiques de gauche mêlant défense sociale et ruralité, au cœur du positionnement de Ruffin.",
       "all": [
-        "education.bac_plus_3_4",
-        "geo.dense"
+        "cluster.young_farmer"
       ],
-      "any": [
-        "age.18_24",
-        "age.25_34"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intention de vote à la présidentielle",
-        "Connaissance de la candidature Ruffin",
-        "Perception de Marine Le Pen"
+        "Intérêt pour la candidature de François Ruffin",
+        "Opinion sur Marine Le Pen",
+        "Attitude envers l'union de la gauche"
       ],
-      "count": 4295,
-      "distinctCommunes": 71,
+      "count": 145,
+      "distinctCommunes": 42,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Présidentielle 2027: François Ruffin retirera sa candidature \"si une solution se dégage pour battre Marine Le Pen\"",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -51,27 +45,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes en communes intermédiaires d’âge moyen",
-      "mechanism": "Les salariés modestes entre 35 et 49 ans constituent une base sociale qui peut être attentive à la campagne de François Ruffin contre Marine Le Pen, notamment dans les communes intermédiaires où le vote ouvrier et employé est plus structuré.",
-      "reason": "Ce groupe combine une catégorie socio-professionnelle exposée aux enjeux politiques et économiques actuels avec une tranche d’âge susceptible d’être politisée par l’enjeu de battre Marine Le Pen.",
+      "name": "Jeunes diplômés urbains sensibles à l'enjeu anti-Le Pen",
+      "mechanism": "L'enjeu de battre Marine Le Pen mobilise fortement les jeunes diplômés des communes denses où le vote de gauche est plus présent ; François Ruffin, figure de la gauche radicale, s'adresse à ce public susceptible d'être influencé par sa décision de maintien ou retrait de candidature.",
+      "reason": "Ce segment est constitué des jeunes diplômés de moins de 35 ans vivant en commune dense, un public urbain éduqué, souvent engagé politiquement et attentif aux candidatures de gauche anti-extrême droite.",
       "all": [
-        "occupation.employee"
+        "cluster.young_urban_graduate"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
-      "none": [
         "geo.dense"
       ],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intention de vote à la présidentielle",
-        "Confiance dans les candidats",
-        "Attitude envers le RN"
+        "Intérêt pour la candidature de François Ruffin",
+        "Opinion sur Marine Le Pen",
+        "Attitude envers l'union de la gauche"
       ],
-      "count": 639,
-      "distinctCommunes": 85,
+      "count": 11394,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -82,23 +73,50 @@
     },
     {
       "id": "segment_3",
-      "name": "Couples de retraités vivant en couple sans enfant",
-      "mechanism": "Les couples de retraités peuvent être sensibles à l’appel de François Ruffin à empêcher Marine Le Pen d’accéder au pouvoir, en raison de leur préoccupation pour la stabilité sociale et économique post-retraite.",
-      "reason": "Ce segment regroupe des retraités en couple sans enfant au foyer, souvent concernés par les enjeux de sécurité, de coût de la vie et par la rivalité politique nationale, et pouvant réagir à ce type d’annonce.",
+      "name": "Jeunes salariés modestes en communes denses",
+      "mechanism": "Salariés modestes jeunes vivant dans des communes à forte densité, sensibles à la compétition électorale visant à battre Marine Le Pen dans les grandes villes.",
+      "reason": "Segment resserré pour rester sous le seuil maximal de taille",
       "all": [
-        "occupation.retired",
-        "household.couple_no_children"
+        "cluster.modest_wage_earner",
+        "geo.dense",
+        "age.25_34"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intention de vote à la présidentielle",
-        "Attitudes vis-à-vis des candidats",
-        "Priorités politiques liées au pouvoir d'achat"
+        "Intention de vote",
+        "Sensibilité anti-Le Pen"
       ],
-      "count": 16266,
-      "distinctCommunes": 170,
+      "count": 8798,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027: François Ruffin retirera sa candidature \"si une solution se dégage pour battre Marine Le Pen\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Couples avec enfants en communes intermédiaires d'âge moyen",
+      "mechanism": "Couples avec enfants de 35 à 49 ans vivant dans des communes de densité intermédiaire, particulièrement concernés par l'appel au rassemblement pour battre Marine Le Pen dans leur environnement local.",
+      "reason": "Segment resserré par âge et densité pour respecter la taille maximale",
+      "all": [
+        "household.couple_with_children",
+        "geo.intermediate",
+        "age.35_49"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Intention de vote",
+        "Perception du risque Le Pen"
+      ],
+      "count": 501,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -117,18 +135,18 @@
     }
   ],
   "contrasts": {
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 4295,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains sensibles à l'enjeu anti-Le Pen",
+      "matchedCount": 11394,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 10,
-          "noClearChange": 38
+          "away": 2,
+          "noClearChange": 46
         },
         "left": {
           "toward": 0,
@@ -136,9 +154,9 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -146,23 +164,170 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 1,
+          "toward": 0,
           "away": 4,
-          "noClearChange": 43
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 15,
+          "toward": 12,
+          "away": 4,
+          "noClearChange": 32
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 33
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 12,
+          "away": 4,
+          "noClearChange": 32
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je vois que François Ruffin veut jouer le jeu en retirant sa candidature pour éviter de disperser la gauche et ainsi battre Le Pen. Cela me semble raisonnable pour ne pas affaiblir la lutte contre l'extrême droite.",
-        "Je ne connais pas trop Ruffin, mais s’il retire sa candidature pour battre Le Pen, ça me rassure, car il faut éviter le morcellement. Sinon, ce serait l’opposé et ça m’embêterait.",
-        "Ruffin qui se retire s’il y a moyen de battre Le Pen, c’est une bonne chose, ça évite de diviser la gauche quand il faut vraiment être unis."
-      ]
+        "Je comprends le geste de Ruffin, vouloir faire front commun contre Le Pen a du sens, mais ça ne changera pas grand-chose à mon vote, ça fait longtemps que je penche vers elle par défaut.",
+        "C’est un bon calcul de Ruffin de retirer sa candidature s’il peut vraiment faire barrage à Le Pen. Perso, je préfère éviter qu’elle passe, même si je suis partagé entre Mélenchon et d’autres.",
+        "Ça ne m’emballe pas trop, Ruffin qui se retire pour faire battre Le Pen... Je préfère garder une option qui porte des idées plus critiques indépendantes, même si ça ne change pas mon vote souvent."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0057665763164673435,
+          "lo": -0.007697609626541989,
+          "hi": -0.003824535209726983,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.0029059461266413462,
+          "lo": 0.0017038859676378347,
+          "hi": 0.004234319286860774,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0011789242579646534,
+          "lo": 0.0006003281512192631,
+          "hi": 0.0017020828892465572,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00041721459197281057,
+          "lo": -0.0009606589030121193,
+          "hi": 0.001583161219584006,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.004627267453624153,
+          "lo": -0.007357664079100831,
+          "hi": -0.002006581669213661,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0004117686914656187,
+          "lo": -0.00017261376527557905,
+          "hi": 0.0008934562054401979,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00029715076059632907,
+          "lo": -0.000018893403162225128,
+          "hi": 0.0006453461031986934,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0005058546223784934,
+          "lo": -0.0010574449919571582,
+          "hi": 0.00006476964037944225,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.000019974858941224484,
+          "lo": -0.00030242987687556614,
+          "hi": 0.00036901173146183954,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0007551978895801945,
+          "lo": -0.0011293522360535824,
+          "hi": -0.0004633642150051436,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0005083988679111471,
+          "lo": -0.0007977129643898477,
+          "hi": -0.0002596611914753059,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000037518334595011754,
+          "lo": -0.00014452649048206964,
+          "hi": 0.00006868664263812449,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006969834196974385,
+          "lo": 0.0025378205197656985,
+          "hi": 0.011567289073495442,
+          "stable": true
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -173,8 +338,8 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
-          "away": 1,
+          "toward": 1,
+          "away": 0,
           "noClearChange": 95
         },
         "left": {
@@ -183,9 +348,9 @@
           "noClearChange": 96
         },
         "center": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 95
         },
         "right": {
           "toward": 0,
@@ -193,36 +358,183 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 3,
-          "away": 8,
-          "noClearChange": 85
+          "toward": 0,
+          "away": 21,
+          "noClearChange": 75
         },
         "abstention": {
-          "toward": 26,
+          "toward": 14,
+          "away": 2,
+          "noClearChange": 80
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 12,
+          "noClearChange": 84
+        },
+        "philippe": {
+          "toward": 1,
           "away": 0,
-          "noClearChange": 70
+          "noClearChange": 95
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 14,
+          "away": 2,
+          "noClearChange": 80
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve ça intéressant, si ça peut éviter un duel Le Pen, ce serait bien. Mais franchement, ça ne change pas trop ce que je pense de la politique en général.",
-        "Je ne connais pas trop ce Ruffin, mais il paraît qu'il veut faire barrage à Le Pen, ça me paraît important. Si c'est pour éviter qu'elle passe, tant mieux.",
-        "Ah, Ruffin qui se retire s'il y a une entente contre Le Pen ? Pourquoi pas, ça donne un peu plus de chance à la gauche de ne pas exploser, ça peut mobiliser un peu plus."
-      ]
+        "Je trouve bien que quelqu'un cherche une solution pour ne pas diviser la gauche et éviter que Le Pen passe, ça me rassure un peu.",
+        "Je suis un peu indifférente à ces manœuvres politiques, ça ne change rien à ce que je pense ni à mon vote.",
+        "Si Ruffin se retire pour empêcher Le Pen, ça peut aider, mais je reste un peu inquiète du résultat, on verra."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.009531644504381676,
+          "lo": -0.011401561226927918,
+          "hi": -0.007764349022378635,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.0028404593300943933,
+          "lo": 0.002022700489498767,
+          "hi": 0.0037424479414350444,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0009044714418847529,
+          "lo": 0.0006169600703395913,
+          "hi": 0.0011846146750192068,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.001530430008359494,
+          "lo": 0.0009758508934870863,
+          "hi": 0.0021759636117812376,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.000730758922992224,
+          "lo": -0.0005839724102269125,
+          "hi": 0.001965786100782575,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0004222024743240351,
+          "lo": 0.00015841605297353594,
+          "hi": 0.0006529464604062462,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0005457570449374215,
+          "lo": 0.00030718514134780544,
+          "hi": 0.0007738738694541839,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0003959259771024201,
+          "lo": -0.0008256908078132863,
+          "hi": -0.00000896069392328803,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002606470378163186,
+          "lo": -0.0005201336811220192,
+          "hi": -0.000008998669826712152,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.002221840104392157,
+          "lo": -0.0026258412656087055,
+          "hi": -0.001839708740164911,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00047295530853947235,
+          "lo": -0.0006444001557904962,
+          "hi": -0.00027703761049318606,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.00001668214384093527,
+          "lo": -0.00002067597786241162,
+          "hi": 0.00005694876157100101,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005892251565798795,
+          "lo": 0.003440268571259951,
+          "hi": 0.008509621010989364,
+          "stable": true
+        }
+      }
     },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Salariés modestes en communes intermédiaires d’âge moyen",
-      "matchedCount": 639,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Couples avec enfants en communes intermédiaires d'âge moyen",
+      "matchedCount": 501,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 45
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -240,36 +552,183 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 3,
-          "away": 4,
-          "noClearChange": 41
+          "toward": 0,
+          "away": 12,
+          "noClearChange": 36
         },
         "abstention": {
-          "toward": 8,
+          "toward": 4,
+          "away": 1,
+          "noClearChange": 43
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 7,
+          "noClearChange": 41
+        },
+        "philippe": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 40
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 1,
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que ce retrait éventuel de Ruffin montre qu'il essaie de ne pas diviser la gauche face à Le Pen, c'est peut-être intelligent pour éviter que l'extrême droite gagne, même si j'aime bien ses idées.",
-        "Je suis un peu partagée, mais le fait que Ruffin se retire pour faire barrage à Le Pen me rassure un peu, ça évite une dispersion à gauche qui profiterait à l'extrême droite.",
-        "François Ruffin qui maintient sa candidature, ça m'embête un peu, il faudrait vraiment éviter de diviser la gauche surtout pour faire barrage à Le Pen, ce serait mieux qu'il se retire."
-      ]
+        "Ça me paraît logique que Ruffin se retire s'il peut aider à faire barrage à Le Pen, je préfère qu'on évite l'extrême droite même si je ne suis pas fan de tous les candidats.",
+        "Je ne vais pas trop suivre ça, franchement; Ruffin, c’est pas un gars que je connais bien. Si ça peut faire changer les choses contre Le Pen, tant mieux, sinon tant pis.",
+        "Je ne suis pas sûr que le retrait de Ruffin ait beaucoup d’importance pour moi, je préfère surtout suivre les grands candidats, mais je peux comprendre pourquoi il ferait ça contre Le Pen."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.010062030249830272,
+          "lo": -0.01223960283030344,
+          "hi": -0.007673260396914839,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.002763323029993801,
+          "lo": 0.0020899071077134404,
+          "hi": 0.003398521904557082,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.001246727760295755,
+          "lo": 0.0009314626540399138,
+          "hi": 0.0016252340189358884,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00222167272150418,
+          "lo": 0.0014391620349827356,
+          "hi": 0.0030877913198934046,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0010321692872662137,
+          "lo": -0.0007231477279705795,
+          "hi": 0.002455488805905097,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0007144044745628458,
+          "lo": 0.00044637593255351563,
+          "hi": 0.0009764539656535172,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.000540932666894703,
+          "lo": 0.00035861597061844316,
+          "hi": 0.0007389822487670061,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0.00019323175323540404,
+          "lo": -0.00014963145692246658,
+          "hi": 0.0004952217799975963,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.000032820511637145215,
+          "lo": -0.00021761275177296338,
+          "hi": 0.0002622645245070395,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0021820536478113074,
+          "lo": -0.002783507961030602,
+          "hi": -0.001600138153445942,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00037436064242702197,
+          "lo": -0.000644933167559383,
+          "hi": -0.00010444427299358709,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000014307663656539505,
+          "lo": -0.00009237926615635849,
+          "hi": 0.0000538192482928395,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.003887469998335076,
+          "lo": 0.0006920521100457494,
+          "hi": 0.006825917162998923,
+          "stable": false
+        }
+      }
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Couples de retraités vivant en couple sans enfant",
-      "matchedCount": 16266,
+      "segmentName": "Jeunes salariés modestes en communes denses",
+      "matchedCount": 8798,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
-          "away": 5,
-          "noClearChange": 43
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
@@ -288,27 +747,368 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 45
+          "away": 6,
+          "noClearChange": 42
         },
         "abstention": {
-          "toward": 6,
+          "toward": 4,
+          "away": 3,
+          "noClearChange": 41
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 42
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 3,
+          "noClearChange": 41
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, si Ruffin peut s'effacer pour éviter que Le Pen gagne, je trouve ça honorable et pragmatique, on a déjà assez de divisions à gauche.",
-        "C’est une stratégie intéressante, cette alliance pour éviter l’extrême droite, ça me rassure un peu qu’ils cherchent des solutions pour l’unité.",
-        "S’il se retire pour faire barrage à Le Pen, ça peut aider, parce que je n'aime pas la division à gauche qui affaiblit nos chances."
-      ]
+        "Si Ruffin arrête sa candidature pour battre Le Pen, ça peut peut-être éviter un second tour qui me fait vraiment peur. Je suis déjà fatiguée de cette ambiance politique divisée.",
+        "François Ruffin qui retire sa candidature pour faire bloc contre Le Pen, ça me semble responsable, je préfère éviter l'extrême droite. Sinon s'il insiste, ça risque de diviser la gauche et d'avantager Le Pen.",
+        "C'est bien si Ruffin s'efface pour éviter que Le Pen profite de la division. Mais il veut parfois faire entendre la voix des moins représentés, donc je comprends s'il insiste à se présenter aussi."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0073833896625795465,
+          "lo": -0.00917723610853565,
+          "hi": -0.005628827374820334,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.00244277746531154,
+          "lo": 0.001551027250505729,
+          "hi": 0.003384289777373257,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0003936844352127932,
+          "lo": 0.00016459950638788442,
+          "hi": 0.0006082821101221053,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.000026400036853992576,
+          "lo": -0.0010319522937234744,
+          "hi": 0.0008065589298351406,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0069894535185897775,
+          "lo": 0.004848348577340073,
+          "hi": 0.00912176430321142,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0006625661748477925,
+          "lo": 0.0002653050683231942,
+          "hi": 0.0011014308143172512,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00006600045895474844,
+          "lo": -0.00021208458363161466,
+          "hi": 0.0003453854014613916,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0006043197147261582,
+          "lo": -0.0011220487931745116,
+          "hi": -0.00016162965641545137,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00022779805819133663,
+          "lo": -0.0005265065279245401,
+          "hi": 0.000056595281184035273,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.001856886799026857,
+          "lo": -0.0023060320600200197,
+          "hi": -0.0014358296180775677,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00036055933103260334,
+          "lo": -0.0006254212395295569,
+          "hi": -0.00012571799742020894,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00017961689395175668,
+          "lo": -0.00031311184915040394,
+          "hi": -0.000042478920663753136,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00008448844344561533,
+          "lo": -0.003590331289185499,
+          "hi": 0.0035561796297707018,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Agriculteurs jeunes concernés par l'enjeu anti-Marine Le Pen",
+      "matchedCount": 145,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 10,
+          "noClearChange": 38
+        },
+        "abstention": {
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est intéressant que Ruffin puisse se retirer pour éviter le pire, ça montre un peu de responsabilité. Mais je suis surtout préoccupée par ce que ça changera pour nous à la campagne.",
+        "J'apprécie la démarche de Ruffin qui veut éviter d'aider Le Pen, ça me rassure un peu dans ce climat politique très tendu. Si je sais ça, je me sentirai un peu plus motivé à voter contre elle.",
+        "Je ne suis pas sûre que le retrait de Ruffin change grand-chose pour moi, je me concentre surtout sur les propositions. Mais c’est bien qu’on discute de stratégies pour éviter Le Pen."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.009544011410393403,
+          "lo": -0.011612351373621314,
+          "hi": -0.007457025708588825,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.0017050449149532629,
+          "lo": 0.0007575671618967055,
+          "hi": 0.0027254759989515354,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0002811843495734269,
+          "lo": -0.00007881090278719083,
+          "hi": 0.0006849943845932579,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0005779606330316108,
+          "lo": -0.0013665655803117302,
+          "hi": 0.0000976392800104109,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0025441831326207605,
+          "lo": -0.00016975806790329542,
+          "hi": 0.00504424703335781,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00018105913382574052,
+          "lo": -0.0004721320455186627,
+          "hi": 0.00008618031144621154,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00010097987518049888,
+          "lo": -0.00009667948469987496,
+          "hi": 0.0003640795628587097,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0011815892018114756,
+          "lo": -0.0016606120387592487,
+          "hi": -0.0006776035912439524,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0005714639061898185,
+          "lo": -0.0008576087009710305,
+          "hi": -0.00030303792224515777,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0014809855770971097,
+          "lo": -0.001961066106890773,
+          "hi": -0.0010296129696383723,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00046652344657353216,
+          "lo": -0.0006987084982772954,
+          "hi": -0.0002695609188003233,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0002192289503983394,
+          "lo": -0.00034829089776025705,
+          "hi": -0.00008410268530619615,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.009591429986993081,
+          "lo": 0.005572057957832666,
+          "hi": 0.01366941271450653,
+          "stable": true
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "08397b682ff7af55c64396c2bef920da4886451c6a7a882401b0071bd8f4facf"
+    "contentHash": "257410009e226350f4b97d3ef3d4e43d37a86e3af2b9345a828609af96b4fe59"
   }
 }

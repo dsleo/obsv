@@ -4,46 +4,44 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "adb79c3bd56406be",
+  "inputHash": "d6eb7c862f71e6aa",
   "eventInputHash": "b6e29160a279ccce68aa255a81b85fa4347ba35feb6d43b305565ebacb4d0fea",
-  "computedAt": "2026-11-11T12:54:10.958Z",
+  "computedAt": "2026-11-12T13:51:47.734Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "La grève du 5 novembre à Paris maintient sa manifestation prévue, mais modifie son parcours initial en partant de Nation pour rejoindre République, inversant ainsi le trajet habituel entre ces deux places.",
-    "whatChanges": "Le parcours de la manifestation est inversé, ce qui pourrait affecter la dynamique du rassemblement et la perception des électeurs dans les quartiers concernés."
+    "description": "Le 5 novembre, la manifestation parisienne part de Nation pour rejoindre République, inversant le parcours initialement prévu entre République et Nation.",
+    "whatChanges": "Ce changement de parcours modifie l'impact visuel et symbolique de la manifestation, pouvant influencer la mobilisation des riverains et la participation des manifestants, notamment ceux attachés aux quartiers de départ et d'arrivée."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes actifs employés ou ouvriers en zone dense à Paris",
-      "mechanism": "Le parcours de la manifestation entre République et Nation à Paris concerne particulièrement les jeunes actifs salariés modestes vivant dans des zones urbaines denses de Paris, qui sont potentiellement concernés par les revendications syndicales lors de la grève du 5 novembre.",
-      "reason": "Ces personnes jeunes et salariées en milieu urbain dense sont fréquemment impliquées ou sensibles aux mobilisations sociales dans les grandes villes comme Paris.",
+      "name": "Actifs employés et ouvriers des quartiers parisiens concernés",
+      "mechanism": "Le parcours de la manifestation entre République et Nation concerne particulièrement les actifs employés et ouvriers vivant dans les communes denses de Paris concernés par le trajet, car ils sont directement impliqués ou impactés par l'événement social dans leur vie quotidienne.",
+      "reason": "Intersection pertinente pour cibler un public directement touché par la manifestation, plausible en tant que participant ou riverain affecté.",
       "all": [
+        "occupation.employee",
         "geo.dense",
-        "municipal_system.paris_lyon_marseille",
-        "age.18_24"
+        "municipal_system.paris_lyon_marseille"
       ],
       "any": [
-        "occupation.employee",
-        "occupation.worker"
+        "age.25_34",
+        "age.35_49",
+        "age.50_64"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Implication dans le mouvement social",
-        "Opinion sur la grève du 5 novembre",
-        "Perception du parcours de la manifestation"
+        "Opinion sur la manifestation",
+        "Participation à la manifestation"
       ],
-      "count": 4238,
+      "count": 15092,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Grève du 5 novembre à Paris : voici le parcours de la manifestation entre République et Nation",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -52,25 +50,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Cadres urbains parisiens mariés sans enfant",
-      "mechanism": "Le parcours de la manifestation à Paris entre République et Nation a un impact direct sur les cadres urbains mariés sans enfant qui résident à Paris et peuvent être sensibles aux perturbations liées à cette grève, notamment dans leurs déplacements quotidiens.",
-      "reason": "Le profil cadre en milieu urbain dense à Paris, marié et sans enfant, représente une catégorie socio-professionnelle spécifiquement touchée par les blocages des transports lors de telles manifestations.",
+      "name": "Jeunes diplômés urbains parisiens de 25 à 34 ans",
+      "mechanism": "Les jeunes diplômés urbains de 25 à 34 ans résidant dans Paris sont concernés par le parcours de la manifestation car ils forment un public souvent engagé politiquement dans ce type d’événement social organisé en zone dense de la capitale.",
+      "reason": "Ce segment restreint cible un public jeune, diplômé et urbain, potentiellement participant actif ou attentif à la manifestation sur le parcours répertorié.",
       "all": [
-        "geo.dense",
+        "age.25_34",
+        "cluster.young_urban_graduate",
         "municipal_system.paris_lyon_marseille",
-        "cluster.urban_executive",
-        "marital.married",
-        "household.couple_no_children"
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Réactions aux perturbations du trajet République-Nation",
-        "Opinion sur la grève du 5 novembre",
-        "Impact sur les déplacements professionnels"
+        "Intérêt pour la manifestation",
+        "Engagement politique",
+        "Opinion sur le parcours de manifestation"
       ],
-      "count": 1331,
+      "count": 9469,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -82,24 +79,26 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes sans activité professionnelle en commune dense de Paris",
-      "mechanism": "Les jeunes sans activité professionnelle (étudiants, chômeurs) vivant en commune dense à Paris sont particulièrement concernés par le parcours de la manifestation du 5 novembre, pouvant être à la fois participants ou spectateurs des événements.",
-      "reason": "Ce groupe d’âge et de situation professionnelle, localisé précisément à Paris en zone dense, est souvent plus engagé ou exposé aux manifestations urbaines.",
+      "name": "Salariés modestes vivant en couple avec enfants dans Paris",
+      "mechanism": "Les salariés modestes en couple avec enfants vivant dans Paris sont concernés par la manifestation entre République et Nation car ils peuvent être mobilisés à la fois comme participants ou comme usagers affectés par le déroulement de la grève et du trajet dans leur quotidien familial.",
+      "reason": "Combinant situation familiale et catégorie socio-professionnelle en milieu urbain précis, ce segment donne une cible efficace pour comprendre les réactions et impacts de l'événement familialement et socialement.",
       "all": [
-        "age.18_24",
-        "cluster.young_without_activity",
-        "geo.dense",
+        "cluster.modest_wage_earner",
+        "household.couple_with_children",
         "municipal_system.paris_lyon_marseille"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.25_34"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Participation ou présence aux manifestations",
-        "Attitude envers la grève du 5 novembre",
-        "Perception du mouvement social"
+        "Impact familial de la manifestation",
+        "Participation ou soutien à la grève",
+        "Perception de la sécurité pendant la manifestation"
       ],
-      "count": 7933,
+      "count": 10117,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -111,14 +110,14 @@
     },
     {
       "id": "segment_4",
-      "name": "Femmes de 25 à 49 ans en couple avec enfants dans Paris dense",
-      "mechanism": "Le tracé de la manifestation entre République et Nation affecte particulièrement les femmes âgées de 25 à 49 ans vivant en couple avec enfants dans les zones denses de Paris, qui peuvent être concernées par les perturbations des transports et la sécurité proche de leur environnement familial.",
-      "reason": "Ce segment combine le sexe féminin, un âge adulte actif, une situation familiale avec enfants, et la localisation dans Paris en zone dense, une intersection pertinente face aux perturbations liées à la manifestation.",
+      "name": "Femmes seules de 25 à 49 ans en milieu urbain dense parisien",
+      "mechanism": "Les femmes vivant seules âgées de 25 à 49 ans dans le Paris dense sont concernées par le passage de la manifestation entre République et Nation, notamment en raison du ressenti de sécurité et de l'impact sur leurs déplacements en milieu urbain dense où se déroule l'événement.",
+      "reason": "Segment étroit, combinant sexe, situation familiale, âge, et localisation pour cibler une population féminine à risque ou sensible à l’environnement urbain perturbé par la manifestation.",
       "all": [
         "sex.female",
+        "household.single",
         "geo.dense",
-        "municipal_system.paris_lyon_marseille",
-        "household.couple_with_children"
+        "municipal_system.paris_lyon_marseille"
       ],
       "any": [
         "age.25_34",
@@ -127,16 +126,14 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Impact des perturbations sur la vie familiale",
-        "Opinion sur la manifestation",
-        "Mesure du sentiment de sécurité"
+        "Sentiment de sécurité pendant la manifestation",
+        "Adaptation des déplacements",
+        "Opinion envers les manifestations urbaines"
       ],
-      "count": 11682,
+      "count": 3683,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
-      ],
+      "repairs": [],
       "counterfactual": {
         "intervention": "Grève du 5 novembre à Paris : voici le parcours de la manifestation entre République et Nation",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -153,10 +150,398 @@
     }
   ],
   "contrasts": {
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Femmes de 25 à 49 ans en couple avec enfants dans Paris dense",
-      "matchedCount": 11682,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes diplômés urbains parisiens de 25 à 34 ans",
+      "matchedCount": 9469,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une manifestation à Paris, ça ne change rien pour moi à Lyon, surtout ce détail de parcours entre République et Nation.",
+        "La manifestation à Paris, même si je ne participe pas, je trouve ça important pour faire entendre les revendications. Le parcours importe peu, c'est le message qui compte.",
+        "Je vois passer cette info sur la manif à Paris, mais ça n'a pas d'impact direct sur ma vie ici. Je ne change rien à ma façon de voter."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.00004580312761104377,
+          "lo": -0.0001265562227998693,
+          "hi": 0.0000230758003370504,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00003816727244827789,
+          "lo": -0.00010213945326013538,
+          "hi": 0.00001792226905894881,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.000010536681245405076,
+          "lo": -0.000027170492585550012,
+          "hi": 0.0000038728430567792965,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0000261691300858117,
+          "lo": -0.00007348559438453018,
+          "hi": 0.000010114341694411494,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0006581136616590332,
+          "lo": 0.00009985044955224988,
+          "hi": 0.0013162273233180664,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0007193447704630264,
+          "lo": 0.0001067740813925476,
+          "hi": 0.0014491482593809654,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000004162666143152259,
+          "lo": -0.00001229355869743065,
+          "hi": 0.000003128146915797337,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000011600213390534764,
+          "lo": -0.00003255709614626605,
+          "hi": 0.000004587948809836161,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000006840565828177571,
+          "lo": -0.000019224178365655122,
+          "hi": 0.000002711060660357745,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00004731070392607331,
+          "lo": -0.00013300360235318624,
+          "hi": 0,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00000226496148714281,
+          "lo": -0.000006615354251483868,
+          "hi": 0.0000018880761623204661,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000017311213857992582,
+          "lo": -0.000004713501537917473,
+          "hi": 0.0000012512587663189563,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0011828719885706416,
+          "lo": -0.002414447456147677,
+          "hi": -0.00022291174921971446,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés modestes vivant en couple avec enfants dans Paris",
+      "matchedCount": 10117,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, une manif à Paris, ça ne me concerne pas ici à Lyon, ça ne change rien à mon vote.",
+        "Une manif qui change de parcours à Paris, ça ne m'intéresse pas trop, je suis plus préoccupée par mon boulot et ma famille ici à Marseille.",
+        "Je travaille dans le métro, cette manif entre République et Nation c’est important, ça peut perturber mon travail et mes déplacements. Je comprends la manifestation, mais le parcours a son importance pour la gestion de la ville."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0004859361304289991,
+          "lo": -0.000970923399365309,
+          "hi": -0.00007770169497278712,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0003245420666224431,
+          "lo": -0.0006361809870800457,
+          "hi": -0.00008901122958037593,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00009051295089647898,
+          "lo": -0.00018497135279092422,
+          "hi": -0.000016796409910928968,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00034899004409253326,
+          "lo": -0.0006959988184264575,
+          "hi": -0.00002564789075871667,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0009525091168913997,
+          "lo": 0.0002489403670045455,
+          "hi": 0.0017273359502021704,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00042869205502603787,
+          "lo": 0.0001523972022296698,
+          "hi": 0.0007157467292430949,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000055304098039189774,
+          "lo": -0.00012213765245079928,
+          "hi": 9.913610262365484e-7,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0001248576937767348,
+          "lo": -0.0002672622958936228,
+          "hi": -0.00000390171044873603,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00011282247622003068,
+          "lo": -0.00025181296615354033,
+          "hi": -0.000017254004498439566,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0001526635806100002,
+          "lo": -0.0002831365096960719,
+          "hi": -0.00004009831657594094,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00007775622730813962,
+          "lo": -0.00017208220398539717,
+          "hi": -0.000017333266203609267,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000059542565007926256,
+          "lo": -0.0001225298355710286,
+          "hi": -0.0000013272550097165636,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00045172666108504733,
+          "lo": -0.0003010286033532956,
+          "hi": 0.0013008102534641356,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Actifs employés et ouvriers des quartiers parisiens concernés",
+      "matchedCount": 15092,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -192,60 +577,160 @@
           "noClearChange": 47
         }
       },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve que ces mouvements sociaux sont importants, ça montre la détermination des travailleurs pour défendre leurs droits, même si ça se passe loin de chez moi.",
-        "Je regarde un peu ces manifs, c'est surtout un effet d'image, le parcours me semble secondaire, ça ne modifie pas mon avis.",
-        "Une manifestation qui traverse Paris, ça me touche un peu, ça témoigne d’un climat social tendu, même si j’habite plutôt côté 16e, ça me fait réfléchir à l’engagement citoyen."
-      ]
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes actifs employés ou ouvriers en zone dense à Paris",
-      "matchedCount": 4238,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "left": {
+        "philippe": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "center": {
+        "attal": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "right": {
+        "glucksmann": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "far_right": {
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je travaille près de la manifestation, ça cause souvent des retards ou des embouteillages qui compliquent mon travail, mais je ne suis pas spécialement concernée par le parcours précis.",
-        "Je ne suis pas très attentif au détail exact du parcours d'une manif, si ça se fait ou pas ne change rien à mon vote, je prends juste sur moi au boulot quand ça coince dehors.",
-        "La manif ça doit faire du bruit dans la rue, mais tant que ça change pas mes horaires ni mon trajet, le sens du parcours m'indiffère totalement."
-      ]
+        "Je ne suis pas vraiment concernée par le trajet précis de la manifestation à Paris, ça me semble plus un détail pour les Parisiens que pour moi à Lyon.",
+        "Vivant à Paris et étant dans un emploi assez stable, ces manifestations me dérangent un peu, surtout quand elles perturbent les transports. Le changement de parcours ne change pas vraiment mon avis sur tout ça.",
+        "Je suis assez habituée aux manifestations à Paris, mais ce genre de détail ne change pas vraiment mon opinion ou mon vote, ça reste une agitation habituelle."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0004606965886496817,
+          "lo": -0.0009491822661714672,
+          "hi": -0.0000515002060008235,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00030439242566737977,
+          "lo": -0.0005946194420999807,
+          "hi": -0.00010239999798383025,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00012830145683048166,
+          "lo": -0.00023885398866769917,
+          "hi": -0.00001891110790788857,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.000053960785523902176,
+          "lo": -0.000359139137191668,
+          "hi": 0.0002674605429421603,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0003996599388170665,
+          "lo": -0.00010241812086488403,
+          "hi": 0.0011569209331658374,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00010239766120192512,
+          "lo": -0.00010313686352784637,
+          "hi": 0.00039377883000565964,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00008159573614979801,
+          "lo": -0.000010689751493051305,
+          "hi": 0.0002270556236560221,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00021918307023581656,
+          "lo": -0.0004534750086140946,
+          "hi": -0.000036620729816252365,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00021491117486863664,
+          "lo": -0.00041047145118067743,
+          "hi": -0.0000698666535004801,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0001484813065787952,
+          "lo": -0.0002817300029722734,
+          "hi": -0.000033222770145982504,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00008468558300646508,
+          "lo": -0.00016594086998254428,
+          "hi": -0.00002412671415391544,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00002062092702492299,
+          "lo": -0.00007762257806175859,
+          "hi": 0.0000011256313831674873,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.001051579982217294,
+          "lo": 0.00009007131988124246,
+          "hi": 0.0023564685780191087,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -286,18 +771,165 @@
           "noClearChange": 96
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas concernée par cette manifestation à Paris, ça ne change rien à ce que je pense ou à mon vote.",
-        "Cette grève parisienne, ce n'est pas vraiment mon problème ici à Saint-Chamond. Ça ne va pas changer mon vote, franchement.",
-        "Cette grève parisienne me rappelle les mouvements sociaux pour nos droits. Le parcours modifié me semble juste une question d'organisation, ça n'affecte pas ma position mais je suis attentive à cette mobilisation."
-      ]
+        "Cette manifestation à Paris, même si je ne suis pas de la capitale, montre un certain mécontentement social que je comprends mais qui ne change rien à mon vote chez moi.",
+        "Je ne suis pas vraiment concernée par l'itinéraire précis de la manifestation, ça n'influence pas ma façon de voter, je fais attention surtout à ce qui a un impact direct chez moi.",
+        "En vivant à Paris, je suis consciente que ce genre de manifestation reflète des tensions sociales importantes, mais l'itinéraire de la manifestation ne change pas mon analyse politique."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.00008595536421136345,
+          "lo": -0.0003529941308049282,
+          "hi": 0.00016889975227244296,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.000016431002016532468,
+          "lo": -0.00015018390502523926,
+          "hi": 0.00007907319282470205,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.000013826176080141103,
+          "lo": -0.00004680217730791516,
+          "hi": 0.000011113720499229221,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0000017179171685935701,
+          "lo": -0.000056735337183373485,
+          "hi": 0.00005376964225051133,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0002507512465883175,
+          "lo": 0.000011190889687694291,
+          "hi": 0.0006093026912428887,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.000025149687797435497,
+          "lo": -0.000015525227299958255,
+          "hi": 0.0000752509674367569,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0000029962121716347817,
+          "lo": -3.5862350557558316e-7,
+          "hi": 0.000008278087435841408,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00006675698502603266,
+          "lo": -0.0001364569252273014,
+          "hi": -0.000005892378199747127,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -6.547106835716321e-7,
+          "lo": -0.000028358233996012737,
+          "hi": 0.00001995930847955818,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.000006700740647107555,
+          "lo": -0.00008493382817046948,
+          "hi": 0.00006479549405409098,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.000005739913946295826,
+          "lo": -3.375064668800024e-7,
+          "hi": 0.000013945232691331443,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 7.466906966637363e-7,
+          "lo": -3.828507306806282e-7,
+          "hi": 0.0000024129428616576624,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.00009334085536700312,
+          "lo": -0.00048497427756201764,
+          "hi": 0.0002166703235980949,
+          "stable": false
+        }
+      }
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes sans activité professionnelle en commune dense de Paris",
-      "matchedCount": 7933,
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Femmes seules de 25 à 49 ans en milieu urbain dense parisien",
+      "matchedCount": 3683,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -328,70 +960,170 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 45
         }
       },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas très impliqué dans les manifestations, donc ce parcours ne change rien pour moi, ça me laisse un peu indifférent.",
-        "La manifestation à Paris, ce n'est pas vraiment mon truc. Que le parcours soit de République à Nation ou l'inverse, ça ne m'affecte pas directement.",
-        "Je suis habituée à mon quotidien, cette grève et ce changement de parcours de manifestation ne changent pas vraiment mon opinion sur la politique."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Cadres urbains parisiens mariés sans enfant",
-      "matchedCount": 1331,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "left": {
+        "philippe": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "center": {
+        "attal": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "right": {
+        "glucksmann": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
-        "far_right": {
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 45
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "La grève à Paris ne me touche pas directement ici à Marseille; cela me semble un mouvement d'ampleur habituelle, pas d'impact sur ma vie quotidienne ni sur mon vote.",
-        "Étant à Paris, je connais cette grève et le parcours de la manifestation me semble important, signe d'une contestation visible. Je pourrais comprendre que cela renforce l'image de la gauche radicale chez certains, mais je reste centrée sur mes valeurs modérées.",
-        "Je vois souvent ces manifestations à Paris. Ce changement de parcours ne change pas mon avis sur le fond, je reste attentif mais peu affecté dans mon intention de vote."
-      ]
+        "Je ne suis pas vraiment concernée par ce genre de manifestation à Paris, ça ne change rien à mes opinions ou à mon vote.",
+        "Cette manifestation à Paris ne m'affecte pas, je suis plus préoccupée par les questions locales et le travail. Ça ne m'incite pas à changer mon vote.",
+        "Habitant Paris, cette inversion de parcours de manifestation ne m'intéresse pas vraiment. C'est surtout une affaire de circulation, ça ne changera pas mon choix aux présidentielles."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0003155222417236565,
+          "lo": -0.00003530533565938911,
+          "hi": 0.0008212381500615276,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0006206569239815728,
+          "lo": -0.0010958656627204696,
+          "hi": -0.00022956742995942624,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00018838817201718852,
+          "lo": -0.0003280488467605036,
+          "hi": -0.00006699941230463346,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00023984998778661323,
+          "lo": -0.0005275855488197258,
+          "hi": 0.00009918211917467074,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0001986962193681168,
+          "lo": -0.0008653096107394635,
+          "hi": 0.0004681409060958916,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00011979298373235871,
+          "lo": -0.000458061960205929,
+          "hi": 0.0002218230857735054,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0002603551342302536,
+          "lo": -0.0004600696409026773,
+          "hi": -0.0001067040257615002,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00032209214174979013,
+          "lo": -0.0005769350711924417,
+          "hi": -0.0001198512294370705,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002468801087697377,
+          "lo": -0.00042787920678731203,
+          "hi": -0.00009279925451559851,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00007458087060264078,
+          "lo": -0.0001558184868893852,
+          "hi": -0.0000072350449338271705,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0001710771889521235,
+          "lo": -0.0002844646942903233,
+          "hi": -0.00006436946889540226,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000657222191344334,
+          "lo": -0.00013194008621511964,
+          "hi": -0.0000010397183431473775,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0021925697086011635,
+          "lo": -0.00003195181824712396,
+          "hi": 0.004937938052333229,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "7ba21991c95230ab5fe509601439220f33ec1d77e3619fb205866c982520f51a"
+    "contentHash": "6ad1abc61fa5fff532dc16e623d11677931875504c0a03c3d7fe818c6c81ca47"
   }
 }

@@ -4,40 +4,38 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "27cb4f47cf163ab2",
+  "inputHash": "f14c3dca60351c53",
   "eventInputHash": "739e901a172e57a09b5d77f6e117dbe66153acc1044ab7a5723f279954a3ff06",
-  "computedAt": "2026-11-11T12:53:07.008Z",
+  "computedAt": "2026-11-12T13:50:13.848Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Doubs. Affaire Péchier : le procès en appel est avancé au 15 juin 2027 à Lyon, permettant un jugement plus rapide dans ce dossier.",
-    "whatChanges": "Le calendrier du procès est modifié, ce qui accélère la décision judiciaire et peut influencer l'opinion des électeurs avant l'été."
+    "description": "Le procès en appel de l’affaire Péchier, initialement prévu le 7 septembre 2027 à Lyon, est avancé au 15 juin 2027 dans la même ville.",
+    "whatChanges": "Le calendrier anticipé du procès pourrait intensifier la mobilisation et les réactions des électeurs locaux pendant la campagne présidentielle."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres et professions intellectuelles supérieures résidant à Lyon et âgés de 35 à 64 ans",
-      "mechanism": "Ce public actif, à fort niveau d’éducation et socio-professionnel élevé, habite Lyon et est susceptible d’être concerné par les retombées médiatiques et politiques du procès en appel qui se tient à Lyon.",
-      "reason": "Segment ciblé par niveau socio-professionnel et âge pour réduire la taille",
+      "name": "Habitants de Lyon cadres et professions supérieures",
+      "mechanism": "Le procès en appel aura lieu à Lyon, ville où résident des cadres et professions intellectuelles supérieures qui peuvent être concernés par des débats politico-judiciaires locaux.",
+      "reason": "Segment resserré sur des cadres en zone urbaine dense de Lyon, effectif conforme aux contraintes.",
       "all": [
         "municipal_system.paris_lyon_marseille",
+        "geo.dense",
         "occupation.executive_professional"
       ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attention portée au procès",
-        "Opinion sur le système judiciaire",
-        "Impact perçu du procès"
+        "Opinion sur le procès",
+        "Connaissance de l'affaire Péchier",
+        "Attitude envers la justice"
       ],
-      "count": 6727,
+      "count": 9793,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -49,22 +47,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains entre 25 et 34 ans vivant dans la métropole lyonnaise",
-      "mechanism": "Jeunes urbains diplômés vivant dans la métropole de Lyon, concernées par les enjeux sociétaux et judiciaires liés à l’affaire Péchier dont le procès en appel a lieu à Lyon.",
-      "reason": "Intersection âge, cluster et localisation pour segment précis",
+      "name": "Jeunes familles lyonnaises en zone dense",
+      "mechanism": "Le procès en appel à Lyon peut intéresser les jeunes familles vivant en milieu urbain dense, concernés par la sécurité et la justice locale.",
+      "reason": "Segment combinant statut familial jeune et localisation précise pour respecter taille et spécificité.",
       "all": [
-        "cluster.young_urban_graduate",
         "municipal_system.paris_lyon_marseille",
-        "age.25_34"
+        "geo.dense",
+        "cluster.young_family"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Niveau d’information sur le procès",
-        "Opinion sur la justice locale"
+        "Perception du procès",
+        "Confiance dans la justice locale",
+        "Impact médiatique local"
       ],
-      "count": 9469,
+      "count": 23278,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -76,22 +75,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Employés et ouvriers urbains de 35 à 49 ans à Lyon",
-      "mechanism": "Ce segment regroupe les employés et ouvriers âgés de 35 à 49 ans vivant dans la municipalité de Lyon, concernés par le procès en appel qui se tient à Lyon le 7 septembre 2027, car ils constituent une population active locale sensible à cet événement judiciaire.",
-      "reason": "Remplace un segment trop large en resserrant sur 1 tranche d'âge et 1 catégorie socio-professionnelle dans Lyon.",
+      "name": "Ouvriers âgés résidant à Lyon",
+      "mechanism": "Les ouvriers âgés de 50 à 64 ans vivant à Lyon peuvent être sensibilisés par un procès local impliquant des personnalités ou enjeux régionaux.",
+      "reason": "Segment ciblé par âge, catégorie socio-professionnelle et municipalité précise, taille adéquate.",
       "all": [
         "municipal_system.paris_lyon_marseille",
-        "occupation.employee",
-        "age.35_49"
+        "age.50_64",
+        "occupation.worker"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Connaissance du procès",
-        "Opinion sur le procès Péchier"
+        "Intérêt pour l'affaire",
+        "Confiance dans les institutions",
+        "Perception locale de la justice"
       ],
-      "count": 6166,
+      "count": 3107,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -111,57 +111,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains entre 25 et 34 ans vivant dans la métropole lyonnaise",
-      "matchedCount": 9469,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ce procès en appel en 2027 dans le Doubs, ça ne me touche pas directement. Je n'ai pas spécialement d'avis sur ce sujet, ça dépasse mon quotidien.",
-        "Un procès dans le Doubs, ça me semble lointain et sans impact sur ma vie à Marseille. Je n'y prête pas vraiment attention.",
-        "Le procès avancé au 15 juin 2027 ? Cela montre une volonté d'efficacité. J'apprécie qu'on ne traîne pas sur des dossiers importants, même si ce n'est pas mon affaire directe."
-      ]
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Cadres et professions intellectuelles supérieures résidant à Lyon et âgés de 35 à 64 ans",
-      "matchedCount": 6727,
+      "segmentName": "Habitants de Lyon cadres et professions supérieures",
+      "matchedCount": 9793,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -197,18 +150,165 @@
           "noClearChange": 48
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je n'ai pas de lien direct avec cette affaire Péchier à Lyon, ça ne change rien à mes intentions de vote, c'est juste une information judiciaire.",
-        "Cette affaire à Lyon ne me touche pas, même avec un procès avancé ou pas, ça n'influencera pas mon vote présidentiel.",
-        "C'est bien que le procès de l'affaire Péchier ait une date fixée. Que le procès soit avancé ne change pas grand-chose pour moi, je suis plus centré sur les enjeux locaux et nationaux."
-      ]
+        "Je ne vois pas vraiment en quoi le procès Péchier à Lyon pourrait changer ma façon de voir les choses, c’est un fait lointain et national qui ne touche pas mon quotidien à Marseille.",
+        "Un changement de date pour un procès lointain ne chamboule pas mon engagement ou mes priorités électorales, j’ai d’autres sujets qui m’importent plus à Paris.",
+        "Le procès à Lyon, même s’il est local, ne me paraît pas interférer avec mes opinions politiques ou mon vote, je reste concentré sur des enjeux plus globaux."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        }
+      }
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Employés et ouvriers urbains de 35 à 49 ans à Lyon",
-      "matchedCount": 6166,
+      "segmentName": "Ouvriers âgés résidant à Lyon",
+      "matchedCount": 3107,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -244,13 +344,354 @@
           "noClearChange": 48
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, cette histoire de procès en appel ça ne change pas grand-chose à mon quotidien, c'est loin de ce qui me préoccupe vraiment.",
-        "Un procès qui s’étale jusqu’en septembre, ça me semble un peu long, j'aimerais bien que justice soit rendue plus vite. Peut-être que ça pourrait me donner un peu plus envie de suivre la politique.",
-        "Ce procès qui se tient si tard ne change rien pour moi, je suis plus concentrée sur mon travail et ma famille."
-      ]
+        "Franchement, cette histoire de procès ne me touche pas trop, je suis plutôt concentrée sur mon boulot et ma famille.",
+        "Je ne vois pas vraiment ce que ce procès a à voir avec ma vie ni à changer mes idées sur les élections.",
+        "Je ne suis pas vraiment intéressé par ce genre d'affaires judiciaires, ça ne change pas ma façon de voter."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0001918779440709268,
+          "lo": -0.0010817067067067088,
+          "hi": 0.0005060728744939284,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.00009170950777620708,
+          "lo": -0.00034455365885355943,
+          "hi": 0.0006196821821821807,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0000031452394080663314,
+          "lo": -0.000008601550723364706,
+          "hi": 0,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00009152091037228395,
+          "lo": -0.000031993825439703694,
+          "hi": 0.00030655655655655555,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00023014167564813087,
+          "lo": -0.00058344304496241,
+          "hi": 0,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.000018039260963789137,
+          "lo": -0.000004712268863212397,
+          "hi": 0.00006118618618618601,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00003976261606185471,
+          "lo": -0.000003224183959039936,
+          "hi": 0.00012412412412412404,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0.00003562420200122941,
+          "lo": -0.000015624891493809002,
+          "hi": 0.00012249749749749725,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.0000584647388272015,
+          "lo": -0.00001041659432920593,
+          "hi": 0.00023733115341854132,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0000470265333928028,
+          "lo": -0.00014566786196627303,
+          "hi": 0,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0000021729189430281996,
+          "lo": -0.0000062059440162717415,
+          "hi": 0,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -8.483133896904264e-7,
+          "lo": -0.000002440669231466993,
+          "hi": 0,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00014009138885007788,
+          "lo": 0,
+          "hi": 0.0003552578527752301,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes familles lyonnaises en zone dense",
+      "matchedCount": 23278,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Le procès de cette affaire me semble assez éloigné de mes préoccupations quotidiennes à Paris, je n'y prête pas vraiment attention.",
+        "C'est pas vraiment un sujet qui m'intéresse, c'est loin de ma vie ici à Marseille.",
+        "Ça se passe à Lyon, chez moi... mais ce procès ne change pas grand-chose à ce que je pense de la politique."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.00037397311931274164,
+          "lo": -0.0008619880193339313,
+          "hi": 0,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.000009000531003750268,
+          "lo": -0.00006473488854917958,
+          "hi": 0.000029599979247512884,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.000002748250817904829,
+          "lo": -0.0000013791346456674379,
+          "hi": 0.000008832219641047821,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00009603273583399004,
+          "lo": -0.000004847867239316193,
+          "hi": 0.00027253291233416636,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.000055411762574828515,
+          "lo": -0.0002388951537248106,
+          "hi": 0.00007265986600032508,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0000027873973776857057,
+          "lo": -0.0000010447989739906585,
+          "hi": 0.000008027717651395925,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0000018859592235952384,
+          "lo": -7.522552612731874e-7,
+          "hi": 0.000006036259812694786,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000015989365155976164,
+          "lo": -0.000059901404256781195,
+          "hi": 0.0000119333087888527,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00001754123416380449,
+          "lo": -0.000059437559437559503,
+          "hi": 0.00000806761571493468,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.000015486098049008468,
+          "lo": -0.000058562558562558686,
+          "hi": 0.000012605767923048813,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.000018631372477029507,
+          "lo": -0.00006135548052715708,
+          "hi": 0.000005043443506472364,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 9.650078922561636e-7,
+          "lo": -2.5075175375776526e-7,
+          "hi": 0.000002937441888859364,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00040161413159171014,
+          "lo": 0,
+          "hi": 0.0008749778314083157,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -286,23 +727,170 @@
           "noClearChange": 96
         },
         "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, ce procès aussi loin dans le temps ne me touche pas vraiment, c'est trop loin de chez moi et de mon quotidien. Je ne vois pas que ça puisse changer grand-chose pour moi.",
-        "Je reconnais que l'avance du procès pourrait être un signe que la justice veut vraiment faire vite sur ce dossier. Ça m'intéresse un peu plus, mais ça ne change pas mon vote, je suis plus préoccupée par ce qui touche ma vie de famille et mon travail.",
-        "Cette histoire de procès ne m'intéresse pas vraiment, c'est loin de mes préoccupations quotidiennes ici à Houilles. Je préfère me concentrer sur l'amélioration de la vie locale et le travail."
-      ]
+        "Je ne suis pas très impliquée dans cette affaire judiciaire, ça ne change rien à mon vote pour le moment.",
+        "Le procès Péchier à Lyon ? Ce n'est pas quelque chose qui me touche au quotidien, ça ne modifie pas mon choix politique.",
+        "Franchement, cette histoire de procès ne change rien pour moi, je reste concentrée sur ce qui impacte mon quartier et mon travail."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.00010650877668644601,
+          "lo": -0.00026997826646773214,
+          "hi": 0.0005895045965270702,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00002900484682523198,
+          "lo": -0.0002515002553626147,
+          "hi": 0.00016448571488691878,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.000015525197157171693,
+          "lo": -0.000079673135852911,
+          "hi": 0.00003309754438139592,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00003635959219106129,
+          "lo": -0.0001785303881511747,
+          "hi": 0.00004630107438532722,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00004604569136437213,
+          "lo": -0.00014728038815117468,
+          "hi": 0.00000914331405805829,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00001742758007866533,
+          "lo": -0.000053785750766087795,
+          "hi": 0.0000010020070200612013,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000018711792688920682,
+          "lo": -0.000057137385086823234,
+          "hi": 0.0000010020070200611833,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0000617866623598002,
+          "lo": -0.00021983529111338062,
+          "hi": 0.000034475304033980024,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000044446867431270036,
+          "lo": -0.00013546986721144007,
+          "hi": 0.0000014195099450866357,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00007494964673135413,
+          "lo": -0.0002248489401940624,
+          "hi": 0,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0000065787196614369016,
+          "lo": -0.000021865423901940657,
+          "hi": 0.0000014195099450866357,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 5.721354536057142e-7,
+          "lo": 0,
+          "hi": 0.0000017164063608171424,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0002437556843492347,
+          "lo": -0.000021605776370068122,
+          "hi": 0.0007528728294177722,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "572a95084072f192fa545539ca01462e232055e425ebbac07b56ca03c63a050f"
+    "contentHash": "f4d4e634d32ac2b582be94375c2d79c98cd051f4951e036e370f30bb4d61051f"
   }
 }

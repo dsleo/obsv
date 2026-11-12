@@ -4,35 +4,59 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "64b98bde9d1db08e",
+  "inputHash": "0cbe594732de90bf",
   "eventInputHash": "65d952e78c4df7de0addd50b4409ab6f700a6b9dce2c9ab1cff1eed70b25d161",
-  "computedAt": "2026-11-11T12:52:02.753Z",
+  "computedAt": "2026-11-12T13:49:04.204Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Édouard Philippe annonce qu'il suspend temporairement son tour de France afin de se concentrer sur plusieurs débats télévisés majeurs prévus dans les prochaines semaines.",
-    "whatChanges": "l'accent est mis sur une présence médiatique renforcée plutôt que sur la rencontre directe avec les électeurs, ciblant plutôt les téléspectateurs et les indécis plutôt que les militants de terrain"
+    "description": "Édouard Philippe décide de concentrer son tour de France sur les grandes métropoles uniquement, évitant les petites villes et zones rurales, pour cibler un électorat plus urbain et professionnel.",
+    "whatChanges": "Cette variation modifie l'impact de sa campagne en privilégiant les électeurs urbains et les cadres, au détriment des ruraux et petites communes qui pourraient se sentir délaissés."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres et professions intellectuelles en communes denses",
-      "mechanism": "La campagne présidentielle d'Édouard Philippe met l'accent sur une relance politique auprès des cadres et professions intellectuelles supérieures qui vivent en commune dense, car ce sont souvent des électeurs influents et sensibles aux propositions de réforme et de modernisation liées à son projet.",
-      "reason": "Ce segment rassemble les urbains qualifiés dans des zones à forte densité urbaine, cohérent avec un public à convaincre pour une campagne de réforme et d'image moderne.",
+      "name": "Jeunes diplômés urbains de moins de 35 ans",
+      "mechanism": "Le nouveau départ de campagne d'Édouard Philippe dans les grandes villes s'adresse particulièrement aux jeunes diplômés urbains de moins de 35 ans, souvent connectés aux débats politiques et sensibles aux propositions innovantes.",
+      "reason": "Ce groupe représente un électorat urbain jeune et diplômé à convaincre lors des étapes urbaines de cette tournée présidentielle.",
       "all": [
-        "occupation.executive_professional",
+        "cluster.young_urban_graduate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Intérêt pour la candidature d'Édouard Philippe",
+        "Perception des propositions pour la jeunesse"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Présidentielle 2027 : Édouard Philippe se lance dans un tour de France pour tenter donner un nouveau départ à sa campagne",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Cadres et professions intellectuelles supérieures en communes denses",
+      "mechanism": "Les étapes de la campagne dans les communes denses ciblent les cadres urbains, un groupe clé pour une relance politique, étant donné leur influence sociale et leur potentiel de mobilisation.",
+      "reason": "Ce segment regroupe les cadres vivant en zones urbaines denses, sensibles aux messages politiques et souvent mobilisateurs lors d'échéances électorales.",
+      "all": [
+        "cluster.urban_executive",
         "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Connaissance de la campagne Philippe",
-        "Intention de vote présidentielle",
-        "Opinion sur le renouveau politique"
+        "Réception des messages d'Édouard Philippe",
+        "Attitude envers la campagne politique"
       ],
       "count": 10635,
       "distinctCommunes": 72,
@@ -45,55 +69,25 @@
       }
     },
     {
-      "id": "segment_2",
-      "name": "Employés et ouvriers de 35 à 64 ans vivant en communes moyennement peuplées",
-      "mechanism": "Le tour de France d'Édouard Philippe inclut une démarche auprès des salariés employés et ouvriers de 35 à 64 ans vivant en communes intermédiaires, car cette catégorie est souvent impactée par les politiques économiques et sociales et leur soutien est crucial pour le succès de la campagne présidentielle.",
-      "reason": "Cet électorat populaire est un groupe clé à cause de ses enjeux socio-économiques et sa répartition géographique, important pour la dynamique locale de campagne.",
-      "all": [
-        "occupation.employee",
-        "age.35_49"
-      ],
-      "any": [
-        "geo.intermediate",
-        "geo.dense"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Réceptivité aux discours économiques",
-        "Soutien aux propositions sociales",
-        "Intention de vote"
-      ],
-      "count": 6856,
-      "distinctCommunes": 96,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle 2027 : Édouard Philippe se lance dans un tour de France pour tenter donner un nouveau départ à sa campagne",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
       "id": "segment_3",
-      "name": "Jeunes familles de 25 à 49 ans en communes denses",
-      "mechanism": "Les jeunes familles âgées de 25 à 49 ans vivant en communes denses sont directement concernées par le tour de France d’Édouard Philippe, qui vise à renouer contact avec la population familiale urbaine.",
-      "reason": "Remplace un segment trop large en réduisant l’âge à 25-49 ans et en excluant les communes intermédiaires pour restreindre la taille.",
+      "name": "Ouvriers de 35 à 64 ans en communes intermédiaires",
+      "mechanism": "Le tour de France vise parmi les catégories populaires les ouvriers de 35 à 64 ans résidant dans des communes de densité intermédiaire, susceptibles de s'intéresser aux propositions sociales d'une campagne présidentielle.",
+      "reason": "Segment resserré qui évite l'interdiction d'union multiple dans « any » en se limitant à occupation.worker et un age resserré",
       "all": [
-        "household.couple_with_children",
-        "age.25_34",
-        "geo.dense"
+        "occupation.worker",
+        "geo.intermediate",
+        "age.50_64"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intérêt pour la campagne d’Édouard Philippe",
-        "Intention de vote",
-        "Perception du renouveau politique"
+        "Soutien à Edouard Philippe",
+        "Perception de la campagne présidentielle",
+        "Priorités sociales"
       ],
-      "count": 8145,
-      "distinctCommunes": 72,
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -112,100 +106,6 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes familles de 25 à 49 ans en communes denses",
-      "matchedCount": 8145,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Ça m'est un peu égal ce tour de France d'Édouard Philippe, ça ne changera pas ma façon de voter, je vote pour qui me semble le plus proche de mes intérêts, pas pour des déplacements médiatiques.",
-        "Je ne vois pas trop l'intérêt de son tour de France, mais peut-être que se concentrer sur les débats peut être plus clair pour savoir ce qu'il propose, ça m'intéresserait plus.",
-        "Ce n'est pas mal qu'Édouard Philippe fasse un tour de France, au moins il essaie de rester proche des territoires. Mais se concentrer sur les débats aussi, ça peut être intéressant pour mieux comparer les idées."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Employés et ouvriers de 35 à 64 ans vivant en communes moyennement peuplées",
-      "matchedCount": 6856,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 1,
-          "noClearChange": 45
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne connais pas vraiment Édouard Philippe ni ses ambitions, son tour de France ne change rien à mon quotidien, ça m'indiffère un peu.",
-        "Édouard Philippe, c'est un homme de droite, mais ce tour de France ne me parle pas beaucoup, je préfère suivre les débats télévisés, c'est là que je me fais une opinion.",
-        "C'est intéressant qu'Édouard Philippe fasse un tour de France, ça montre un effort pour rencontrer les gens, ça peut peut-être faire bouger les choses au centre droit."
-      ]
-    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -236,26 +136,367 @@
         },
         "far_right": {
           "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 90
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
           "away": 0,
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 90
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Édouard Philippe fait son tour de France ; ça ne change pas grand-chose à ma vie quotidienne, je reste prudente sur ces initiatives politiques médiatiques.",
-        "Je ne suis pas très branchée politique, le tour d'Édouard Philippe ne me parle pas, mais s’il fait des débats importants, ça peut être plus intéressant à suivre.",
-        "Je me méfie un peu de ces coups de com, ça ne changera rien à mon vote, je reste plutôt sur mes idées actuelles."
-      ]
+        "Je ne me sens pas vraiment concernée par ce tour de France d'Édouard Philippe, c'est un personnage que je connais peu et son initiative ne change rien à mes inquiétudes pour ma petite commune rurale.",
+        "Je vois bien que Philippe veut convaincre plus de monde, ça m'intéresse un peu plus vu qu'il est proche de nos préoccupations, mais un tour dans les grandes villes uniquement me laisse un peu sceptique, j'espère qu'il pense à tout le monde.",
+        "Philippe qui fait un tour de France ? Ça me semble un peu loin des réalités du quotidien des quartiers populaires, surtout s’il évite les petites villes, ça ne m’intéresse pas vraiment."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.001283831220404977,
+          "lo": -0.0024775151031502514,
+          "hi": 0.000015097201550598344,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.0032560982945878214,
+          "lo": 0.0019378753021376243,
+          "hi": 0.004315891648416246,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.000029627764308434094,
+          "lo": -0.000040221747960519773,
+          "hi": 0.00010257778217744172,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0004149180648463581,
+          "lo": -0.0006476432153783053,
+          "hi": -0.0001825192715130406,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0012891365380822038,
+          "lo": -0.0016793253055395068,
+          "hi": -0.0009040241405311357,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00009818061419212707,
+          "lo": -0.0001815812057096326,
+          "hi": -0.00002551556267065427,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00019041657007589415,
+          "lo": -0.00027706238691465847,
+          "hi": -0.00010350946968791705,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0004185631462981479,
+          "lo": -0.0006005454928187173,
+          "hi": -0.0002492779752709155,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00022149240668241038,
+          "lo": -0.000329622699782241,
+          "hi": -0.0001168328156786638,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0004028565007533826,
+          "lo": -0.0006225493047700012,
+          "hi": -0.0002329086256123965,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00012711066667876584,
+          "lo": -0.0002092650240612446,
+          "hi": -0.00004331828762675939,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 7.000197888507192e-7,
+          "lo": -0.00002145974221545107,
+          "hi": 0.000015383114840704327,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0011600796493291753,
+          "lo": -0.0005931608350398674,
+          "hi": 0.002908681782646917,
+          "stable": false
+        }
+      }
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Cadres et professions intellectuelles en communes denses",
+      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Un tour de France pour relancer la campagne, c'est une bonne idée, ça montre de l'engagement, même si ici à Béziers, je ne suis pas sûr qu'il ait beaucoup d'échos.",
+        "C'est positif qu'Édouard Philippe se déplace près de chez nous, ça peut montrer un investissement réel dans le pays, même si je reste plutôt prudente sur ses propositions.",
+        "Un tour de France me semble important, c'est bien qu'il essaie de toucher tous les territoires, même si ça ne m'influence pas beaucoup pour mon vote."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0015275190066875125,
+          "lo": -0.002529151967837246,
+          "hi": -0.0005068851606055084,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.004909633459817354,
+          "lo": 0.0030559036987347285,
+          "hi": 0.0067669525373427325,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00019121409786891912,
+          "lo": -0.00038271951738995744,
+          "hi": -0.000025110432647256788,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.001261722191085094,
+          "lo": -0.0017423754547965607,
+          "hi": -0.0008985887534219468,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.002363723190751578,
+          "lo": -0.002980411165878405,
+          "hi": -0.0017369019752719664,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00034544974826353556,
+          "lo": -0.00047338275389774637,
+          "hi": -0.00021214656411626647,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00027042125541759866,
+          "lo": -0.0003890851081568775,
+          "hi": -0.00015111400209056737,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008860267286794799,
+          "lo": -0.0011770080671539287,
+          "hi": -0.0005733804845347817,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0006082666736925748,
+          "lo": -0.0008954745291351191,
+          "hi": -0.00038073122698356306,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.000228072092323828,
+          "lo": -0.0004273479789141592,
+          "hi": -0.000037967433558150973,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00021496433077176748,
+          "lo": -0.00036708545213472583,
+          "hi": -0.00009030057997412939,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.00002413718610881082,
+          "lo": 0.000012695149174914857,
+          "hi": 0.0000366689284275302,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0029636086696157612,
+          "lo": 0.0010915122731203406,
+          "hi": 0.004616709134772109,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Cadres et professions intellectuelles supérieures en communes denses",
       "matchedCount": 10635,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -272,9 +513,9 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         },
         "right": {
           "toward": 0,
@@ -283,8 +524,75 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -295,15 +603,289 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que ce tour de France d'Édouard Philippe est une bonne idée pour renouer le contact avec les territoires, mais honnêtement, ce n'est pas si décisif pour moi dans mon vote.",
-        "Je n'ai pas vraiment suivi son tour de France, mais j'imagine que ça ne changera pas grand-chose à mes choix de vote, je suis plus attentive aux faits concrets.",
-        "Le fait qu'Édouard Philippe se lance dans un tour de France, ça montre un peu d'ambition et de volonté de terrain, ce qui peut me faire pencher un peu vers le centre."
-      ]
+        "Je trouve que ce tour de France d'Édouard Philippe pourrait redynamiser sa campagne, mais honnêtement, à Béziers, on est assez loin de son profil et je ne suis pas sûr que ça change grand-chose à mon vote.",
+        "Je suis curieuse de voir si ce tour de France d'Édouard Philippe peut vraiment toucher les gens ici à Béziers. Ça me paraît un peu éloigné de nos préoccupations, mais peut-être que ça influencera un peu mon choix.",
+        "Le fait qu'Édouard Philippe fasse un tour de France, c'est un peu un signe qu'il veut redevenir visible. Ça peut me donner confiance qu'il veut vraiment s'investir dans cette campagne."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0015558108141819776,
+          "lo": -0.0028106933288462766,
+          "hi": -0.00044967664600078827,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.00812131820692138,
+          "lo": 0.006787982701903635,
+          "hi": 0.009582511073055014,
+          "stable": true
+        },
+        "attal": {
+          "mean": -0.0005074645596442283,
+          "lo": -0.0008491647242675943,
+          "hi": -0.00023897239568846108,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0015342041218689335,
+          "lo": -0.002031377318306568,
+          "hi": -0.0010944730364724905,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.003126329393205047,
+          "lo": -0.0037893561222496035,
+          "hi": -0.002419905863308093,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003268492321768961,
+          "lo": -0.0005038810985022829,
+          "hi": -0.00017590016529564967,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0003066307453891993,
+          "lo": -0.0004709458761566249,
+          "hi": -0.00014882124295695215,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0010024844072940276,
+          "lo": -0.0013937350279879899,
+          "hi": -0.0006553181064468038,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00020644522454879935,
+          "lo": -0.00039657575745870153,
+          "hi": -0.000026348432451963493,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00042383105858340175,
+          "lo": -0.0005851701337714776,
+          "hi": -0.0002685700077020498,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00015638871477418413,
+          "lo": -0.0002667239799661146,
+          "hi": -0.00006063886509872238,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000016584849330034802,
+          "lo": 0.000007768317543632603,
+          "hi": 0.000026811456003869886,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.00100853521541528,
+          "lo": -0.0003224226480307447,
+          "hi": 0.0023017389594970484,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Ouvriers de 35 à 64 ans en communes intermédiaires",
+      "matchedCount": 144,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, Édouard Philippe qui fait un tour de France, ça me laisse un peu froid. Je suis plus concerné par mon travail et mon quotidien que par ses déplacements.",
+        "Édouard Philippe qui fait un tour de France, ça ne me parle pas trop, c'est pas un candidat qui me touche vraiment dans mon coin du Val-d'Oise.",
+        "Un tour de France d'Édouard Philippe, ça ne changera pas grand-chose pour moi, je reste concentré sur mes préoccupations locales."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0007589887483344266,
+          "lo": -0.0021147065813884106,
+          "hi": 0.0004574594435165248,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.0027452592117071547,
+          "lo": 0.001270249935311623,
+          "hi": 0.004361643018452072,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.000003806014745519762,
+          "lo": -0.00003850409285097154,
+          "hi": 0.00003370792873539026,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0005903919464091248,
+          "lo": -0.0009317245671500315,
+          "hi": -0.00023479893683076478,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00010886841007052928,
+          "lo": -0.0005393869694508883,
+          "hi": 0.00036867821544457033,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00009891580357419026,
+          "lo": -0.00021464525872058818,
+          "hi": 0.000012862181227852047,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000107216629336323,
+          "lo": -0.00021178140766813772,
+          "hi": -0.00002149912693367966,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00048445033885815013,
+          "lo": -0.0006888544446801122,
+          "hi": -0.0002915478130739401,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00010018107715484466,
+          "lo": -0.0001927440830853662,
+          "hi": -0.000018993228977847658,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0007486765213678562,
+          "lo": -0.0010206525119339108,
+          "hi": -0.0005297137821354498,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00037398618506944846,
+          "lo": -0.0005368566847530858,
+          "hi": -0.00021721007113268843,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000006770016424654424,
+          "lo": 0.0000036564456541884048,
+          "hi": 0.000011009792313845159,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0006158404172975732,
+          "lo": -0.0005458742118643074,
+          "hi": 0.00170333771589871,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "ba8a1bcd7949d8e06aa889e63a81402d76e51f9bc61a8c5d4391daccf465deb5"
+    "contentHash": "ecbe8b2d71d134812aa9c267d41dc0d7163d3c5b283f5018170ffedd7194cbe8"
   }
 }

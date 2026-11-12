@@ -4,36 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "b6a21780ce5d2af2",
+  "inputHash": "0790d224b9b93cd6",
   "eventInputHash": "e5342ffd656aea4fdad8dcb23073bf95af4b0119bb845d9ac35d70aea83be190",
-  "computedAt": "2026-11-11T12:54:30.653Z",
+  "computedAt": "2026-11-12T13:52:45.064Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le procès des parents de la petite Inass s'ouvre avec une requalification des faits en délit moins lourd, 39 ans après sa mort, ce qui entraîne un traitement judiciaire plus rapide mais moins médiatisé.",
-    "whatChanges": "L'issue judiciaire est allégée, ce qui modifie la perception publique et l'impact sur la sensibilisation aux violences familiales."
+    "description": "Le procès des parents de la petite Inass s'ouvre ce lundi, 39 ans après sa mort, avec une nouvelle expertise médico-légale remettant en cause les conclusions initiales, suscitant un débat public plus intense sur la responsabilité et la justice.",
+    "whatChanges": "La réévaluation médico-légale modifie la perception du dossier auprès du public et pourrait influencer l'opinion des électeurs sensibles aux questions de justice et d'innocence dans les affaires anciennes."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Habitants adultes des communes rurales concernées par l'affaire Inass",
-      "mechanism": "Le procès des parents de la petite Inass se tient 39 ans après sa mort dans un contexte rural marqué par une forte attention locale à cette tragédie, ce public vivant dans des communes rurales est directement concerné par le procès et ses retombées sociales locales.",
-      "reason": "Les habitants adultes vivant dans des territoires ruraux où s'est déroulé cet événement judiciaire portent un intérêt majeur au suivi du procès, impactant leur perception de la justice locale.",
+      "name": "Femmes célibataires en milieu urbain",
+      "mechanism": "Le retour médiatique du procès de l'affaire Inass peut particulièrement sensibiliser les femmes célibataires résidant en milieu urbain, qui peuvent partager un sentiment d'empathie et d'inquiétude vis-à-vis des violences familiales et du rôle des institutions judiciaires dans la protection des enfants.",
+      "reason": "Ce public féminin célibataire urbain représente une population généralement plus attentive aux thématiques de violence familiale et protection sociale sous l'angle des droits des victimes.",
       "all": [
-        "geo.rural",
-        "age.25_34"
+        "sex.female",
+        "marital.single",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Connaissance et opinion sur le procès Inass"
+        "Empathie envers les victimes",
+        "Confiance dans le système judiciaire",
+        "Sensibilisation aux violences familiales"
       ],
-      "count": 354,
-      "distinctCommunes": 64,
+      "count": 15818,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -44,21 +47,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Personnes retraitées vivant en couple dans des communes rurales",
-      "mechanism": "Les couples de retraités en commune rurale sont susceptibles d’être particulièrement sensibles au volet judiciaire et mémoriel de l’affaire Inass, notamment dans un contexte où les enjeux locaux restent vifs et où cette catégorie sociale représente une part importante de la population rurale.",
-      "reason": "Cette catégorie démographique est souvent impliquée socialement dans leur commune et suit de près les événements judiciaires locaux importants.",
+      "name": "Retraités ruraux à domicile seuls",
+      "mechanism": "Les retraités vivant seuls en zones rurales peuvent être concernés par ce procès en raison de leur forte présence dans les communautés rurales où s’est déroulée l’histoire et leur intérêt pour la mémoire locale ainsi que la justice sociale dans leur environnement direct.",
+      "reason": "Ce groupe fragile et isolé est susceptible de réagir au rappel d’un événement dramatique survenu dans leur milieu, renforçant leur sensibilité aux questions sociales et judiciaires.",
       "all": [
-        "cluster.retired_couple",
+        "cluster.isolated_senior",
         "geo.rural"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur la justice et l’affaire Inass"
+        "Lien avec la mémoire locale",
+        "Attitude envers le procès",
+        "Perception du système judiciaire"
       ],
-      "count": 434,
-      "distinctCommunes": 74,
+      "count": 126,
+      "distinctCommunes": 49,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -69,26 +74,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes actifs ruraux entre 25 et 49 ans",
-      "mechanism": "Les jeunes adultes actifs (employés, ouvriers ou intermédiaires) vivant en communes rurales autour du lieu de l’affaire Inass constituent un public concerné par les débats et retombées sociales liés au procès, potentiellement sensibilisés aux questions de justice, protection de l’enfance et mémoire locale.",
-      "reason": "Cette tranche d'âge est socialement active et peut être mobilisée autour des questions judiciaires et mémorielles de la région.",
+      "name": "Jeunes familles en couple dans communes intermédiaires",
+      "mechanism": "Ce segment rassemble les couples avec enfants vivant dans des communes de densité intermédiaire, concernées par la dynamique locale liée au procès de la petite Inass, car ils participent à la vie familiale dans ces zones à proximité de lieux d’événements historiques locaux.",
+      "reason": "Réduction du segment trop large initial en limitant uniquement aux communes de densité intermédiaire, excluant les communes denses, pour réduire la taille du groupe",
       "all": [
-        "geo.rural"
+        "household.couple_with_children",
+        "geo.intermediate"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [
-        "occupation.retired",
-        "occupation.other_inactive"
-      ],
+      "any": [],
+      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception de la justice locale et de l’affaire Inass"
+        "Perception de la sécurité locale",
+        "Connaissance du procès"
       ],
-      "count": 891,
-      "distinctCommunes": 87,
+      "count": 1142,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -109,55 +110,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Habitants adultes des communes rurales concernées par l'affaire Inass",
-      "matchedCount": 354,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "C'est tragique que cela prenne autant de temps pour juger un cas aussi grave. Je me demande si ça sert vraiment à quelque chose après tant d'années.",
-        "Un procès aussi tard, c'est compliqué. Mais si on diminue la gravité, c'est peut-être mieux pour dépasser le passé sans trop de bruit.",
-        "Ça me choque que ce procès arrive si tard pour une petite fille... Si c'est moins médiatisé, peut-être moins de souffrance pour les familles."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Personnes retraitées vivant en couple dans des communes rurales",
-      "matchedCount": 434,
+      "segmentName": "Femmes célibataires en milieu urbain",
+      "matchedCount": 15818,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -188,23 +142,170 @@
           "noClearChange": 48
         },
         "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette affaire ressurgit après tant d'années, je trouve ça à la fois triste et une lourdeur de la justice. Ça ne changera rien à mon vote.",
-        "Un procès après tant d'années, ça réveille des émotions mais je reste plutôt focalisé sur ma vie locale. Ça ne modifie pas mon choix politique.",
-        "C'est une histoire triste et qui dure trop longtemps. Je pense que la justice devrait être plus rapide, mais ça ne change rien pour moi."
-      ]
+        "C'est terriblement triste de voir une affaire si ancienne enfin ressortir, ça me touche car la justice doit pouvoir faire la lumière, même des années après.",
+        "C'est triste, mais ça me semble tellement loin pour moi. Je ne pense pas que ça change grand-chose à comment je vois la politique.",
+        "Une telle affaire qui ressurgit me rappelle que la justice peut être longue et compliquée, mais c'est important que ça se passe, même si je suis un peu réservée."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0012063235688741462,
+          "lo": -0.0021671731226068727,
+          "hi": -0.000299773541712339,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0009952187789121515,
+          "lo": -0.0016750182395102158,
+          "hi": -0.0004301866146789155,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0003239652358991369,
+          "lo": -0.0006838638356841297,
+          "hi": -0.00003580588052864386,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0010711355365302397,
+          "lo": -0.0016514513810758228,
+          "hi": -0.0005009645447220196,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.000532445391769268,
+          "lo": -0.0014520142511923408,
+          "hi": 0.00035957143129148613,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00030025533125857903,
+          "lo": -0.000031092528294338356,
+          "hi": 0.0006846678338497851,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00006268377181318153,
+          "lo": -0.00015880120114761693,
+          "hi": 0.00005426850178260088,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00035707227296570527,
+          "lo": -0.0007463176958600086,
+          "hi": -0.00004733654752141543,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002677306500878859,
+          "lo": -0.0006012806880256425,
+          "hi": -0.00003117690744103965,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0002841477420353921,
+          "lo": -0.0005527110589173359,
+          "hi": -0.00005781903437503512,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0001180905256710779,
+          "lo": -0.00025560722059370957,
+          "hi": -0.000012222178352337592,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000062491281145708555,
+          "lo": -0.000016382634499380442,
+          "hi": 5.679545941433434e-7,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004924807271414167,
+          "lo": 0.0017659222435615727,
+          "hi": 0.008173451450766617,
+          "stable": false
+        }
+      }
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Jeunes actifs ruraux entre 25 et 49 ans",
-      "matchedCount": 891,
+      "segmentName": "Jeunes familles en couple dans communes intermédiaires",
+      "matchedCount": 1142,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -235,18 +336,359 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 2,
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette affaire me choque profondément, c'est terrifiant que cela prenne tant de temps pour qu'un procès ait lieu. Je me sens triste mais pas du tout concernée politiquement.",
-        "C’est dramatique que justice soit si lente, mais je suis plutôt préoccupée par d’autres sujets pour mon vote. Cette affaire ne change rien pour moi.",
-        "Je trouve cette histoire très triste et inquiétante, mais honnêtement cela ne modifie pas mon vote, je reste concentrée sur des enjeux plus locaux."
-      ]
+        "Cette histoire me touche, c'est terrible qu'il faille attendre 39 ans pour un procès. J'espère que la justice saura faire la lumière, mais je reste assez distante de ce genre de faits dans ma vie quotidienne.",
+        "C'est horrible, ce genre d'affaire me révolte un peu, même si je ne m'intéresse pas beaucoup à la politique. Ça ne changera pas beaucoup mon vote mais ça me donne une mauvaise image du système judiciaire.",
+        "Ce genre d'affaire de longue haleine, ça me laisse un peu froid, je vis ma retraite tranquillement et ça ne change rien à ma façon de voir la politique."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0009149514227203009,
+          "lo": -0.00166015479268481,
+          "hi": -0.00022618700202062998,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00006287580168123782,
+          "lo": -0.0005900648021899325,
+          "hi": 0.0006610856926092347,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00007259681277784684,
+          "lo": -0.00011478099584715982,
+          "hi": 0.0003422942951298244,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0007174107568294477,
+          "lo": 7.912714975079107e-7,
+          "hi": 0.001512642155493804,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0013279788827307815,
+          "lo": 0.00045930665592572767,
+          "hi": 0.002213306321207698,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00011980660664054703,
+          "lo": 0.00001051844804495886,
+          "hi": 0.0002666608725681242,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00010086648915936402,
+          "lo": 0.000026914704722515105,
+          "hi": 0.00018613994377155246,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000005471870652850473,
+          "lo": -0.00011033873690633206,
+          "hi": 0.00009642723722100879,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000007778086427897443,
+          "lo": -0.00008492057347039177,
+          "hi": 0.00005810750055595835,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00032348336049162923,
+          "lo": -0.0006671781640830345,
+          "hi": -0.00007689210526086483,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0000427077987760734,
+          "lo": -0.0001289288040597388,
+          "hi": 0.00003958750974499282,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.00001023128922889432,
+          "lo": 0.0000010603973522644026,
+          "hi": 0.00002565634307111663,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0009916224966168934,
+          "lo": -0.0037145423464783663,
+          "hi": 0.0009889215231397633,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Retraités ruraux à domicile seuls",
+      "matchedCount": 126,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est une triste histoire qui remonte très loin, je ne vois pas comment cela changerait ma façon de penser. J'espère juste que la justice fait bien son travail.",
+        "C'est une affaire triste, mais ça ne va pas changer mes choix politiques. La justice doit faire son travail correctement, c'est tout.",
+        "Une affaire ancienne dont je n'avais pas souvenir précis, ça ne changera pas ma manière de voir les choses. Je garde mes habitudes et mes choix."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0001544359060966447,
+          "lo": -0.0004070089472653036,
+          "hi": 0.000047637311100139544,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0002258760208745901,
+          "lo": -0.000498837781048324,
+          "hi": -0.000021448028483660755,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00004264251262375558,
+          "lo": -0.000001072353011054309,
+          "hi": 0.00010907328902668501,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00010082617501149087,
+          "lo": -0.00020152016594211235,
+          "hi": -0.000016550067285607078,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00008329446382086406,
+          "lo": -0.00021719076519819075,
+          "hi": 0.0000017570228202123891,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 7.824453312779556e-7,
+          "lo": -0.000003380538573101682,
+          "hi": 0.000005580422475434737,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 5.703598545883417e-7,
+          "lo": -0.000002239789590387195,
+          "hi": 0.000003872860383459173,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.000019000148701812502,
+          "lo": -0.00006952521922470158,
+          "hi": 0.00001458716159847672,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000019725572479219217,
+          "lo": -0.00006995884114137736,
+          "hi": 0.000011657572489545484,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00004009410984056105,
+          "lo": -0.00013307066730485896,
+          "hi": 0.00003248089815098366,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 5.545047460362492e-7,
+          "lo": -0.000004281548592720806,
+          "hi": 0.000005391905487771413,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 8.483419067587627e-8,
+          "lo": -4.5629959308577864e-7,
+          "hi": 5.445482543045768e-7,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0005986177400788486,
+          "lo": 0.00008159612627484218,
+          "hi": 0.0012231618702500467,
+          "stable": false
+        }
+      }
     },
     "global_1": {
       "segmentId": "global_1",
@@ -278,27 +720,174 @@
         },
         "far_right": {
           "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 1,
+          "noClearChange": 92
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
           "away": 0,
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 1,
-          "noClearChange": 95
+          "noClearChange": 92
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est dramatique qu'il ait fallu tant d'années pour ouvrir ce procès, cela montre un grand retard de la justice. Je trouve important que ce genre d'affaires ne soit pas oubliée, même après tant de temps.",
-        "Je ne me sens pas vraiment concernée par cette affaire, ça reste trop lointain et je suis surtout préoccupée par mon quotidien. Je ne pense pas que ça influence mon vote.",
-        "Je trouve triste que la justice ait été si lente, mais ce genre d'affaires ne me touche pas assez pour changer mes opinions politiques. Je préférerais que les priorités soient sur des sujets plus actuels."
-      ]
+        "C'est une affaire ancienne qui reste malheureusement marquante, mais à mon âge, cela me touche plus comme un fait de société que comme un événement politique. Je me concentre sur les candidats stables qui peuvent gérer la France avec sagesse.",
+        "Cette histoire tragique ne touche pas directement ma vie ni mes préoccupations quotidiennes, donc ça ne change pas vraiment mon regard sur les candidats. Je reste bien ancrée dans mes choix habituels.",
+        "Ce procès me semble poignant, mais je me demande surtout comment la justice peut évoluer après tant d'années. Je reste engagée dans mes convictions progressistes et je cherche des candidats qui portent cet idéal."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0006399081869078201,
+          "lo": -0.00124195951926095,
+          "hi": -0.00004424638715899246,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0007876799508620189,
+          "lo": -0.0011981681158751986,
+          "hi": -0.0004491582239414644,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00008657691494351644,
+          "lo": -0.00019351594658111385,
+          "hi": 0.000025511046182430256,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00043811704539807123,
+          "lo": 0.00012397215724382332,
+          "hi": 0.0007766992586108183,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0009912271597625135,
+          "lo": 0.0002312487715690736,
+          "hi": 0.0016332530722892563,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00013675869895627427,
+          "lo": 0.000020563817623873868,
+          "hi": 0.00027636970372260135,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.000028146878407104068,
+          "lo": -0.00007415862855559267,
+          "hi": 0.0001366071294376534,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00033395783707881356,
+          "lo": -0.0004983820037376748,
+          "hi": -0.00019307867976483566,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00023153824319494245,
+          "lo": -0.0003810447193064053,
+          "hi": -0.00010169000706583357,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0008707041311194291,
+          "lo": -0.001193493461584835,
+          "hi": -0.000593450766046419,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00018369682018589954,
+          "lo": -0.0002884654125297936,
+          "hi": -0.00008015704697367111,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000012640835603638774,
+          "lo": -0.000044512986430284234,
+          "hi": 0.000009403043001015807,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0015524531373721107,
+          "lo": 0.00013860361357998183,
+          "hi": 0.003199977877947849,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "1e43b38043fd7fa92dcb87f14948eddcdd2f28d2414d86c180872c32c0f6b367"
+    "contentHash": "f145eb4dfc7340ed6e7a83b927db9bd8cb419d378946eeb60bb3607c35ac104d"
   }
 }

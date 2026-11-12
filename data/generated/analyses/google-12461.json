@@ -4,24 +4,24 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "70c7ab5d0b794130",
+  "inputHash": "2d87b7d7fbc125a4",
   "eventInputHash": "5a823fac4935b1550dc70b6d9bca7eb855d98f46d90feea82aa13a54e1d3dd3e",
-  "computedAt": "2026-11-11T12:53:32.298Z",
+  "computedAt": "2026-11-12T13:54:57.493Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Pour la présidentielle, Macron annonce vouloir une «coalition» centrée principalement sur les élus et responsables locaux, excluant explicitement les figures politiques issues de la gauche radicale comme Raphaël Glucksmann.",
-    "whatChanges": "La coalition recherchée se concentre sur un rassemblement plus modéré et local, ce qui pourrait renforcer son attrait auprès des électeurs centristes et modérés tout en perdant une partie du soutien potentiel à gauche radicale."
+    "description": "Pour la présidentielle, Macron propose une coalition centrée uniquement sur des élus issus des partis traditionnels, sans inclure Raphaël Glucksmann ni David Lisnard.",
+    "whatChanges": "La coalition est plus restreinte et exclut des figures plus transversales, ce qui pourrait limiter l'attractivité auprès des électeurs cherchant un rassemblement plus large et diversifié."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Cadres et professions intellectuelles supérieures en milieu urbain",
-      "mechanism": "Emmanuel Macron propose une coalition large incluant des figures telles que Raphaël Glucksmann (de gauche) et David Lisnard (de droite), visant à rassembler l'électorat des cadres urbains et professions intellectuelles supérieures, qui sont au cœur des enjeux politiques de la présidentielle.",
-      "reason": "Ce segment représente les cadres urbains, population clé pour la coalition politique proposée par Macron.",
+      "name": "Cadres urbains diplômés des communes denses",
+      "mechanism": "Emmanuel Macron cherche à former une coalition incluant Raphaël Glucksmann à David Lisnard, mobilisant particulièrement les cadres et professions intellectuelles supérieures vivant en communes denses, qui sont directement concernés par cette volonté d'alliance politique urbaine et diplômée.",
+      "reason": "Les cadres urbains représentent un électorat clé pour la coalition politique proposée, combinant diplôme élevé et habitat en zone dense où s'appuient les alliances évoquées.",
       "all": [
         "cluster.urban_executive"
       ],
@@ -29,8 +29,8 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers la coalition Macron Glucksmann Lisnard",
-        "Opinion sur la présidentielle 2027"
+        "Opinion sur la coalition Macron-Glucksmann-Lisnard",
+        "Soutien à Emmanuel Macron"
       ],
       "count": 10635,
       "distinctCommunes": 72,
@@ -44,23 +44,28 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "La coalition présidentielle vise aussi les jeunes diplômés des villes, centrés sur les discours progressistes et qui peuvent être sensibilisés par le rapprochement politique entre figures de gauche et droite.",
-      "reason": "Ce segment rassemble les jeunes diplômés urbains susceptibles d'être concernés par la coalition transversale envisagée.",
+      "name": "Jeunes familles actives de 25 à 49 ans en couple avec enfants",
+      "mechanism": "La coalition vise aussi à rassembler une large base de jeunes familles, couples avec enfants âgés de 25 à 49 ans, groupes sociologiquement engagés dans la politique présidentielle et sensibles aux propositions inclusives de Macron incluant divers profils idéologiques.",
+      "reason": "Les jeunes familles constituent un groupe socio-démographique clé avec enfants concernés par les politiques nationales, à la croisée des âges et de la parentalité, donc impactés par l'appel à la coalition.",
       "all": [
-        "cluster.young_urban_graduate"
+        "household.couple_with_children"
       ],
-      "any": [],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intérêt pour la présidentielle 2027",
-        "Soutien perçu à la coalition Macron-Glucksmann-Lisnard"
+        "Niveau d'adhésion à la coalition présidentielle",
+        "Soutien électoral"
       ],
-      "count": 11394,
-      "distinctCommunes": 72,
+      "count": 26388,
+      "distinctCommunes": 176,
       "status": "filterable_discovery_sample",
-      "repairs": [],
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
       "counterfactual": {
         "intervention": "Pour la présidentielle, Macron veut une «coalition» allant de Raphaël Glucksmann à David Lisnard",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -69,22 +74,21 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers et employés de 35 à 49 ans en communes denses",
-      "mechanism": "Macron veut rassembler une coalition large incluant des salarié·es modestes urbains comme les ouvriers et employés adultes, ici ciblés en milieu urbain où leur concentration est notable.",
-      "reason": "Segment redéfini plus restreint que les salariés modestes globaux, en combinant âge et densité pour réduire la taille.",
+      "name": "Agriculteurs de 50 ans et plus en milieu rural",
+      "mechanism": "La coalition présidentielle vise également à inclure des profils issus des territoires ruraux, notamment les agriculteurs de 50 ans et plus, qui partagent un intérêt à se faire représenter par une alliance politique diverse allant de Glucksmann à Lisnard, ce dernier étant maire d'une commune moyenne et proche des territoires traditionnels.",
+      "reason": "Les agriculteurs de 50 ans et plus en milieu rural forment un groupe territorial traditionnel souvent éloigné des coalitions urbaines, mais potentiellement sensible à une coalition élargie intégrant des figures municipales comme Lisnard.",
       "all": [
-        "occupation.employee",
-        "geo.dense",
-        "age.35_49"
+        "cluster.older_farmer"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers la coalition électorale"
+        "Perception de la coalition Macron-Lisnard",
+        "Soutien à Emmanuel Macron en milieu rural"
       ],
-      "count": 6646,
-      "distinctCommunes": 72,
+      "count": 384,
+      "distinctCommunes": 79,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -105,102 +109,8 @@
   "contrasts": {
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Ouvriers et employés de 35 à 49 ans en communes denses",
-      "matchedCount": 6646,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, une coalition de Glucksmann à Lisnard ? Ça me paraît un peu flou, et dans mon coin, ça n'a pas l'air de changer grand-chose à mon vote.",
-        "Une coalition large de Macron, du socialiste à la droite locale ? Ça me laisse un peu perplexe, mais ça ne me ferait pas changer mes habitudes de vote, je reste centriste.",
-        "Je ne suis pas très attentive à ces coalitions, du moment que ça reste raisonnable. Macron exclure la gauche radicale ? Ça m'attriste un peu, mais je reste dans mon choix de gauche."
-      ]
-    },
-    "global_1": {
-      "segmentId": "global_1",
-      "segmentName": "Whole-index scenario",
-      "matchedCount": 2000,
-      "sampledCount": 96,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 1,
-          "away": 1,
-          "noClearChange": 94
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 94
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 95
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne vois pas bien l'intérêt d'une telle coalition, surtout avec ces noms qui me parlent peu. Ça ne change rien pour moi.",
-        "Une coalition avec Glucksmann ? Je n'y comprends pas grand-chose et ça ne me touche pas vraiment. Je vote selon ma vie, pas ces stratégies politiques.",
-        "Cette histoire de coalition ne me parle pas. Je reste fidèle à ce que je pensais."
-      ]
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 11394,
+      "segmentName": "Agriculteurs de 50 ans et plus en milieu rural",
+      "matchedCount": 384,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -216,9 +126,9 @@
           "noClearChange": 48
         },
         "center": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 47
+          "noClearChange": 48
         },
         "right": {
           "toward": 0,
@@ -226,9 +136,76 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
-          "away": 1,
+          "toward": 1,
+          "away": 0,
           "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
           "toward": 0,
@@ -239,14 +216,94 @@
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis intrigué par cette idée de coalition large, même si je ne suis pas sûr que ça change grand-chose pour ma vie quotidienne à Lyon.",
-        "Cette coalition me paraît un peu floue, et sans impact direct sur ma vie, ça ne change rien à mon intention de vote, j'y prête peu attention.",
-        "Franchement, une coalition comme ça, c’est pas ce qui va me convaincre ; j’ai surtout des préoccupations concrètes, pas ces stratégies politiciennes."
-      ]
+        "Une coalition avec Glucksmann à gauche et Lisnard à droite, c'est un mélange bizarre. Je m'en fiche un peu, je veux surtout que ça aide les agriculteurs comme moi.",
+        "Je vois pas trop pourquoi Macron voudrait faire alliance avec des types comme Glucksmann ou Lisnard. Ça ne changera rien à ma décision, je vote ce qui me semble le mieux pour les agriculteurs.",
+        "Une coalition qui mélange la gauche et la droite ? C’est trop compliqué, ça ne m’intéresse pas vraiment, je préfère me concentrer sur ce qui touche mon travail et ma région."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.00044863158805594157,
+          "lo": -0.0022939505902016388,
+          "hi": 0.0014778904737880148,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0027189914853339506,
+          "lo": -0.0039392866212772095,
+          "hi": -0.0014840748323658674,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00022138253182869353,
+          "lo": -0.00046974113233441754,
+          "hi": 0.0008527967092012362,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0054790658391983245,
+          "lo": 0.00449699708843095,
+          "hi": 0.0065922813539231765,
+          "stable": true
+        },
+        "melenchon": {
+          "mean": -0.0010825859859217508,
+          "lo": -0.0019049680837068493,
+          "hi": -0.0003158832627455568,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003968058487655698,
+          "lo": -0.0005535045429609858,
+          "hi": -0.00025166184393083605,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00017950597026456633,
+          "lo": -0.0003227586184046068,
+          "hi": -0.000046987602284515625,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0014132543417559353,
+          "lo": -0.002150640214207004,
+          "hi": -0.0007680750458156084,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.0035286833421673534,
+          "lo": 0.0024439623800894504,
+          "hi": 0.004773720600568854,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0008146055017976647,
+          "lo": -0.0011701033885289302,
+          "hi": -0.0004558012743081764,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00028907602590919583,
+          "lo": -0.00045772544508155985,
+          "hi": -0.00013800857438459732,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000012258682059115313,
+          "lo": 0.000001657087620461619,
+          "hi": 0.000023820494131870755,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0018979336474488709,
+          "lo": -0.003067164932211628,
+          "hi": -0.0005821389121970187,
+          "stable": false
+        }
+      }
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Cadres et professions intellectuelles supérieures en milieu urbain",
+      "segmentName": "Cadres urbains diplômés des communes denses",
       "matchedCount": 10635,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -264,8 +321,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -278,23 +335,558 @@
           "noClearChange": 48
         },
         "abstention": {
+          "toward": 2,
+          "away": 3,
+          "noClearChange": 43
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
           "toward": 0,
           "away": 0,
           "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 3,
+          "noClearChange": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve cette idée de coalition un peu floue, je vois mal comment des gens aussi différents pourraient s'entendre vraiment. Ça ne change pas grand-chose pour moi en fait.",
-        "Une coalition élargie pourrait aider Macron à rassembler, mais exclure la gauche radicale, ça peut aliéner certains progressistes. Cela m'influence un peu dans mon rapport à son projet.",
-        "À Béziers, où la droite dure est forte, entendre parler d'une coalition avec la gauche radicale ne me parle pas du tout. Exclure cette gauche me semble plus conforme à ce que je ressens ici."
-      ]
+        "Franchement, une coalition aussi large, ça me paraît bien compliqué et un peu artificiel. Je m'en fiche un peu, ça changera pas grand-chose à ma vie.",
+        "Je vois l'idée d'une coalition large comme un moyen de rassembler, mais c'est pas sûr que ça marche vraiment. Je suis plutôt centré sur les idées, pas sur qui est dans quelle coalition.",
+        "Je ne suis pas très intéressée par ces histoires de coalitions. Marine Le Pen reste une référence ici, ça me parle plus que la stratégie politique d'Emmanuel Macron."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.00020824133051665938,
+          "lo": -0.0014625900368699547,
+          "hi": 0.001102754671575875,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.005304103606678191,
+          "lo": -0.006731093529199552,
+          "hi": -0.003909822752731611,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0007066398660941541,
+          "lo": -0.0004899478873757043,
+          "hi": 0.0017970223314766013,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0059820151047923166,
+          "lo": 0.003686698964696159,
+          "hi": 0.007956109300980861,
+          "stable": true
+        },
+        "melenchon": {
+          "mean": -0.002630050397122634,
+          "lo": -0.003588906596647253,
+          "hi": -0.001672071921837987,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0001905765574714857,
+          "lo": -0.000423765948788561,
+          "hi": 0.0000024066190919077744,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00021718448177504728,
+          "lo": -0.0003985605354621254,
+          "hi": -0.00007774804658103965,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0018216252829917963,
+          "lo": -0.0023933437403686297,
+          "hi": -0.0012373718735047407,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.006216556950145777,
+          "lo": 0.005272583760768304,
+          "hi": 0.007135952426188221,
+          "stable": true
+        },
+        "zemmour": {
+          "mean": -0.0008958045143718333,
+          "lo": -0.0013836586738790585,
+          "hi": -0.0004951372470728405,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00038767687859286425,
+          "lo": -0.0006308709505432091,
+          "hi": -0.00022252685812714965,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00007870724211408201,
+          "lo": -0.00016174349494573715,
+          "hi": -0.000004625889169645771,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0011712416293976624,
+          "lo": -0.004801303043902818,
+          "hi": 0.0027682670095978187,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes familles actives de 25 à 49 ans en couple avec enfants",
+      "matchedCount": 26388,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, cette coalition Macron avec des gars très différents, ça me laisse un peu perplexe, je ne vois pas trop ce que ça change pour nous à la campagne.",
+        "Une coalition entre Glucksmann et Lisnard, ça fait un peu large, mais au moins ça pourrait rassembler plus de monde. Ça donne envie de voir si ça peut changer quelque chose.",
+        "Je trouve intéressant que Macron veuille une coalition large, mais franchement je ne suis pas sûr que ça me fasse changer d'avis, j'ai mes convictions et je reste prudent."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0022614272961864537,
+          "lo": -0.0038676697575354426,
+          "hi": -0.00029373506448378386,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.001941832923622865,
+          "lo": -0.00339076223278896,
+          "hi": -0.0005401476756597828,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.001520974802467671,
+          "lo": 0.000942100582264256,
+          "hi": 0.0020699005091867487,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.006215091790492469,
+          "lo": 0.004774819722419864,
+          "hi": 0.007629779005234223,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0017434596519301647,
+          "lo": -0.0027730269122479326,
+          "hi": -0.0008077645956073775,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -2.858021829735905e-7,
+          "lo": -0.00023543343545433747,
+          "hi": 0.0003078075231238969,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00015906636677568708,
+          "lo": -0.00028620837394436493,
+          "hi": -0.000054217645855870066,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007498625011283516,
+          "lo": -0.0011592252829986536,
+          "hi": -0.00036432796482380674,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.0049174213190265395,
+          "lo": 0.0039477039483528775,
+          "hi": 0.005875457339011112,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0005323204536750073,
+          "lo": -0.0008667945217955457,
+          "hi": -0.00019860270476242144,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00022364704095514826,
+          "lo": -0.0003809052810345108,
+          "hi": -0.00006415342123285215,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00006937103893187084,
+          "lo": -0.00014580589443953607,
+          "hi": 0.000004487841208946598,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.004972214836598143,
+          "lo": -0.008031642795422218,
+          "hi": -0.0023350977650889453,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 94
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 91
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 91
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une coalition large, ça peut sembler intelligent mais je ne sais pas trop si ça va nous simplifier la vie ou juste embrouiller les choses. Moi, je m'en tiens à celui qui pense un peu aux campagnes comme moi.",
+        "Je ne suis pas sûre de comprendre ce que ça change pour moi cette histoire de coalition. Moi, j'attends surtout des réponses concrètes pour nos vies d'ouvriers.",
+        "Je ne sais pas trop ce que Raphaël Glucksmann représente, mais une coalition large, ça me semble peut-être rassurant à mon âge, un rassemblement ça évite les surprises."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0008615788328656133,
+          "lo": -0.001898585473794007,
+          "hi": 0.00012370118361248032,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0013781834230113816,
+          "lo": -0.0020606201740172724,
+          "hi": -0.0006612726319173838,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0006144463445850219,
+          "lo": 0.00024783964664776964,
+          "hi": 0.001044183605460326,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0032969634169575297,
+          "lo": 0.0024733402209308106,
+          "hi": 0.004205199173472964,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0015829025427624773,
+          "lo": -0.002182787930777335,
+          "hi": -0.0011005762100352078,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00011848456986452464,
+          "lo": -0.0002706581817858448,
+          "hi": 0.00003977837601455524,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00022415603256990707,
+          "lo": -0.00032180654935751087,
+          "hi": -0.00013341060376588962,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0010255178091847256,
+          "lo": -0.0013702589996434239,
+          "hi": -0.0007181296368449051,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.002787365613108245,
+          "lo": 0.002161316236345336,
+          "hi": 0.003396777034255581,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0011906255145750684,
+          "lo": -0.0016026289064586313,
+          "hi": -0.0008100606997601133,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0002212231618395118,
+          "lo": -0.0003469717260845855,
+          "hi": -0.00009656884764293772,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.00001732259140843813,
+          "lo": 0.000003334618232617693,
+          "hi": 0.00004622780981429342,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0001134260793860236,
+          "lo": -0.0019564920268017832,
+          "hi": 0.0017232458590495433,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "2da3c94543b767001c8634d3b85f474655ee83f3b2c5512afac1301665a5cbb4"
+    "contentHash": "d3d6cf6b41f005403647e673a3d8c2e991cb3929fb62c133efd327a559424191"
   }
 }

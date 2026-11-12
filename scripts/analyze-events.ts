@@ -51,6 +51,12 @@ const METHOD_VERSION = V2 ? "radar-probabilistic-v2" : "radar-directional-v1";
 const force = process.argv.includes("--force");
 const onlyIndex = process.argv.indexOf("--only");
 const only = onlyIndex < 0 ? null : process.argv[onlyIndex + 1].split(","); // --only id1,id2
+const sinceIndex = process.argv.indexOf("--since");
+const since = sinceIndex < 0 ? null : process.argv[sinceIndex + 1]; // --since YYYY-MM-DD
+if (since && !/^\d{4}-\d{2}-\d{2}$/.test(since)) {
+  console.error("--since expects an ISO date (YYYY-MM-DD)");
+  process.exit(1);
+}
 const outIndex = process.argv.indexOf("--out"); // --out <dir>: write elsewhere (experiments), default = the published location
 const out = path.resolve(
   outIndex < 0 ? "data/generated/analyses" : process.argv[outIndex + 1],
@@ -325,7 +331,7 @@ async function analyzeOne({ id, demo, ...event }: Input) {
 
 // Worker pool: `concurrency` events at a time. A failed event never stops the others; the exit code reports it (for CI).
 const queue = (await loadEvents()).filter(
-  (event) => !only || only.includes(event.id),
+  (event) => (!only || only.includes(event.id)) && (!since || event.occurredAt >= since),
 );
 const failed: string[] = [];
 await Promise.all(
