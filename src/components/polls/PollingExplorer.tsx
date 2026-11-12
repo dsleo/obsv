@@ -47,7 +47,14 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
     x: number;
     y: number;
   } | null>(null);
-  const [selectedPoll, setSelectedPoll] = useState<{ observation: PollObservation; candidate: string } | null>(null);
+  const [selectedPoll, setSelectedPoll] = useState<{
+    observation: PollObservation;
+    candidate: string;
+    candidateId: CandidateId;
+    x: number;
+    y: number;
+    side: "left" | "right";
+  } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const sourceCardRef = useRef<HTMLElement>(null);
 
@@ -151,6 +158,28 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
       x: Math.max(96, Math.min(root.width - 96, anchorX)),
       y: Math.max(8, Math.min(root.height - 58, anchorY)),
     });
+  };
+  const selectPoll = (
+    observation: PollObservation,
+    candidate: string,
+    candidateId: CandidateId,
+    target: Element,
+  ) => {
+    if (!ref.current) return;
+    const root = ref.current.getBoundingClientRect();
+    const marker = target.getBoundingClientRect();
+    const pointX = marker.left + marker.width / 2 - root.left;
+    const pointY = marker.top + marker.height / 2 - root.top;
+    const side = pointX > root.width * 0.62 ? "left" : "right";
+    setSelectedPoll({
+      observation,
+      candidate,
+      candidateId,
+      x: side === "left" ? Math.max(12, pointX - 14) : Math.min(root.width - 12, pointX + 14),
+      y: Math.max(48, Math.min(root.height - 48, pointY)),
+      side,
+    });
+    setHoveredPoint(null);
   };
 
   return (
@@ -265,9 +294,9 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
                           onFocus={(focusEvent) => revealPoint(candidate, point, focusEvent.currentTarget)}
                           onBlur={() => setHoveredPoint(null)}
-                          onClick={() => {
+                          onClick={(event) => {
                             const poll = pollObservations.find((observation) => observation.day === point.day && observation.values[candidate.id] !== undefined) ?? null;
-                            setSelectedPoll(poll ? { observation: poll, candidate: candidate.name } : null);
+                            if (poll) selectPoll(poll, candidate.name, candidate.id, event.currentTarget);
                           }}
                         >
                           <title>{`${candidate.name} · ${formatShortDate(dayToIso(point.day))} · ${formatPct(point.value)}`}</title>
@@ -290,7 +319,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
                           onFocus={(focusEvent) => revealPoint(candidate, observedPoint, focusEvent.currentTarget)}
                           onBlur={() => setHoveredPoint(null)}
-                          onClick={() => setSelectedPoll({ observation: poll, candidate: candidate.name })}
+                          onClick={(event) => selectPoll(poll, candidate.name, candidate.id, event.currentTarget)}
                         >
                           <title>{`${candidate.name} · ${formatShortDate(poll.fieldworkEnd)} · ${formatPct(observedPoint.value)} % · ${poll.pollster}`}</title>
                         </circle>
@@ -335,9 +364,10 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
           </div>
         )}
         {selectedPoll && (
-          <aside ref={sourceCardRef} className="poll-source-card" aria-label="Détail du sondage sélectionné">
+          <aside ref={sourceCardRef} className="poll-source-card" data-side={selectedPoll.side} style={{ left: selectedPoll.x, top: selectedPoll.y }} aria-label="Détail du sondage sélectionné">
             <div>
               <strong>{selectedPoll.candidate}</strong>
+              <span>{formatShortDate(selectedPoll.observation.fieldworkEnd)} · {formatPct(selectedPoll.observation.values[selectedPoll.candidateId] ?? 0)} %</span>
               <span>{selectedPoll.observation.pollster}</span>
             </div>
             <a href={selectedPoll.observation.source.url} target="_blank" rel="noreferrer" aria-label={`Ouvrir la source du sondage ${selectedPoll.observation.pollster}`} title="Ouvrir la source">↗</a>

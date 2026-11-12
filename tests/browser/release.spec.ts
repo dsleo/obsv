@@ -14,6 +14,16 @@ test("the compact poll legend reveals the remaining candidates", async ({ page }
     /\/events\//,
   );
 });
+test("clicking a poll point opens its detail beside the point", async ({ page }) => {
+  await page.goto(`${prefix}/`);
+  const point = page.locator(".poll-observation-hit").first();
+  await point.click();
+  const detail = page.locator(".poll-source-card");
+  await expect(detail).toBeVisible();
+  await expect(detail.locator("a")).toBeVisible();
+  await expect(detail).toHaveAttribute("style", /left:.*top:/);
+  await expect(detail).not.toHaveAttribute("style", /right:/);
+});
 test("archive search survives reload and provides recovery", async ({
   page,
 }) => {

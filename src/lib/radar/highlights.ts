@@ -1,4 +1,5 @@
 import type { AnalysisArtifact } from "./analysisArtifact";
+import { pollCandidates } from "../../data/chartData";
 
 export const blocLabels: Record<string, string> = {
   radical_left: "Gauche radicale",
@@ -8,6 +9,11 @@ export const blocLabels: Record<string, string> = {
   far_right: "Extrême droite",
   abstention: "Abstention",
 };
+
+const candidateLabels: Record<string, string> = Object.fromEntries([
+  ...pollCandidates.map((candidate) => [candidate.id, candidate.short]),
+  ["abstention", "Abstention"],
+]);
 
 export type Signal = {
   bloc: string;
@@ -33,18 +39,19 @@ export function rankedSegments(
       const contrast = analysis.contrasts[segment.id];
       if (!contrast || segment.status !== "filterable_discovery_sample")
         return [];
-      const signals = Object.entries(contrast.summary)
+      const source = contrast.candidateSummary ?? contrast.summary;
+      const signals = Object.entries(source)
         .flatMap(([bloc, v]): Signal[] => [
           {
             bloc,
-            label: blocLabels[bloc] ?? bloc,
+            label: contrast.candidateSummary ? candidateLabels[bloc] ?? bloc : blocLabels[bloc] ?? bloc,
             direction: "toward",
             count: v.toward,
             sampled: contrast.sampledCount,
           },
           {
             bloc,
-            label: blocLabels[bloc] ?? bloc,
+            label: contrast.candidateSummary ? candidateLabels[bloc] ?? bloc : blocLabels[bloc] ?? bloc,
             direction: "away",
             count: v.away,
             sampled: contrast.sampledCount,
