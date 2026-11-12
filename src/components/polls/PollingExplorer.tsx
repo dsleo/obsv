@@ -47,7 +47,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
     x: number;
     y: number;
   } | null>(null);
-  const [selectedPoll, setSelectedPoll] = useState<{ observation: PollObservation; candidate: string; x: number; y: number } | null>(null);
+  const [selectedPoll, setSelectedPoll] = useState<{ observation: PollObservation; candidate: string } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const sourceCardRef = useRef<HTMLElement>(null);
 
@@ -267,7 +267,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           onBlur={() => setHoveredPoint(null)}
                           onClick={() => {
                             const poll = pollObservations.find((observation) => observation.day === point.day && observation.values[candidate.id] !== undefined) ?? null;
-                            setSelectedPoll(poll ? { observation: poll, candidate: candidate.name, x: hoveredPoint?.x ?? 120, y: hoveredPoint?.y ?? 20 } : null);
+                            setSelectedPoll(poll ? { observation: poll, candidate: candidate.name } : null);
                           }}
                         >
                           <title>{`${candidate.name} · ${formatShortDate(dayToIso(point.day))} · ${formatPct(point.value)}`}</title>
@@ -290,7 +290,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
                           onFocus={(focusEvent) => revealPoint(candidate, observedPoint, focusEvent.currentTarget)}
                           onBlur={() => setHoveredPoint(null)}
-                          onClick={() => setSelectedPoll({ observation: poll, candidate: candidate.name, x: hoveredPoint?.x ?? 120, y: hoveredPoint?.y ?? 20 })}
+                          onClick={() => setSelectedPoll({ observation: poll, candidate: candidate.name })}
                         >
                           <title>{`${candidate.name} · ${formatShortDate(poll.fieldworkEnd)} · ${formatPct(observedPoint.value)} % · ${poll.pollster}`}</title>
                         </circle>
@@ -335,7 +335,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
           </div>
         )}
         {selectedPoll && (
-          <aside ref={sourceCardRef} className="poll-source-card" style={{ left: selectedPoll.x, top: selectedPoll.y }} aria-label="Détail du sondage sélectionné">
+          <aside ref={sourceCardRef} className="poll-source-card" aria-label="Détail du sondage sélectionné">
             <div>
               <strong>{selectedPoll.candidate}</strong>
               <span>{selectedPoll.observation.pollster}</span>
