@@ -38,92 +38,65 @@ function Reactions({ group }: { group: RankedSegment }) {
 
 function ReactionFlow({ group }: { group: RankedSegment }) {
   const flowRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState<{ title: string; value: string; x: number; y: number } | null>(null);
+  const [hovered, setHovered] = useState<{ key: string; x: number; y: number } | null>(null);
   const levels = group.contrast.candidateLevels;
-  const transitions = group.contrast.candidateTransitions;
-  if (!levels || !transitions) return null;
+  const candidateSummary = group.contrast.candidateSummary;
+  if (!levels) return null;
   const labels = Object.fromEntries([...pollCandidates.map((candidate) => [candidate.id, candidate.short]), ["abstention", "Abstention"]]);
   const keys = [...pollCandidates.map((candidate) => candidate.id), "abstention"].filter((key) => levels[key] && labels[key]);
-  const beforeKeys = [...keys].sort((a, b) => levels[b].before - levels[a].before);
-  const afterKeys = [...keys].sort((a, b) => levels[b].after - levels[a].after);
-  const flows = keys.flatMap((from) => keys.map((to) => ({ from, to, count: transitions[from]?.[to] ?? 0 })))
-    .filter((flow) => flow.count > 0 && flow.from !== flow.to)
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 16);
+  const orderedKeys = [...keys].sort((a, b) => {
+    const aMax = Math.max(levels[a].before, levels[a].after);
+    const bMax = Math.max(levels[b].before, levels[b].after);
+    return bMax - aMax;
+  });
   if (!keys.length) return null;
   const barY = 38;
   const barHeight = 292;
   const barWidth = 46;
-  const height = 372;
+  const height = 378;
   const valueLabel = (value: number) => `${(value * 100).toFixed(1)} %`;
+  const deltaLabel = (value: number) => `${value >= 0 ? "+" : "−"}${Math.abs(value * 100).toFixed(1)} pt`;
   const candidateColors = Object.fromEntries(pollCandidates.map((candidate) => [candidate.id, candidate.color]));
   const segmentColor = (key: string) => key === "abstention" ? "#89928e" : candidateColors[key];
-  const stack = (ordered: string[], world: "before" | "after") => {
+  const stack = (world: "before" | "after") => {
     let cursor = barY;
-    return ordered.map((key) => {
+    return orderedKeys.map((key) => {
       const height = levels[key][world] * barHeight;
       const y = cursor;
       cursor += height;
       return { key, y, height };
     });
   };
-  const beforeStack = stack(beforeKeys, "before");
-  const afterStack = stack(afterKeys, "after");
+  const beforeStack = stack("before");
+  const afterStack = stack("after");
   const beforeY = Object.fromEntries(beforeStack.map((segment) => [segment.key, segment.y + segment.height / 2]));
   const afterY = Object.fromEntries(afterStack.map((segment) => [segment.key, segment.y + segment.height / 2]));
-  const sourceTotals = Object.fromEntries(keys.map((key) => [key, Object.values(transitions[key] ?? {}).reduce((sum, count) => sum + count, 0)]));
-  const reveal = (title: string, value: string, target: SVGGraphicsElement) => {
+  const reveal = (key: string, target: SVGGraphicsElement) => {
     if (!flowRef.current) return;
     const root = flowRef.current.getBoundingClientRect();
     const rect = target.getBoundingClientRect();
     const x = rect.left - root.left + rect.width / 2;
     const y = rect.top - root.top + rect.height / 2;
     setHovered({
-      title,
-      value,
+      key,
       x: Math.max(72, Math.min(root.width - 72, x)),
       y: Math.max(26, Math.min(root.height - 26, y)),
     });
   };
+  const profileRows = candidateSummary
+    ? keys
+      .map((key) => ({ key, toward: candidateSummary[key]?.toward ?? 0, away: candidateSummary[key]?.away ?? 0 }))
+      .filter((row) => row.toward > 0 || row.away > 0)
+      .sort((a, b) => Math.max(b.toward, b.away) - Math.max(a.toward, a.away))
+    : [];
   return (
     <div ref={flowRef} className="event-reaction-flow" aria-label="Répartition des intentions de vote simulées avant et après l’événement">
-      <div className="event-reaction-flow-head"><span>Avant l’événement</span><span>Après l’événement</span></div>
-      <svg viewBox={`0 0 720 ${height}`} role="img" aria-label="Répartition et transitions des intentions de vote simulées">
-        {flows.map(({ from, to, count }) => {
-          const share = count / Math.max(1, sourceTotals[from]);
-          const stroke = Math.max(1.5, count / group.contrast.sampledCount * 110);
-          return (
-            <g key={`flow-${from}-${to}`}>
-              <path
-                d={`M206 ${beforeY[from]} C310 ${beforeY[from]}, 410 ${afterY[to]}, 514 ${afterY[to]}`}
-                fill="none"
-                stroke={segmentColor(from)}
-                strokeOpacity=".52"
-                strokeWidth={stroke}
-                strokeLinecap="round"
-              >
-                <title>{`${labels[from]} → ${labels[to]} · ${(share * 100).toFixed(1)} %`}</title>
-              </path>
-              <path
-                d={`M206 ${beforeY[from]} C310 ${beforeY[from]}, 410 ${afterY[to]}, 514 ${afterY[to]}`}
-                fill="none"
-                stroke="transparent"
-                strokeWidth={Math.max(16, stroke + 12)}
-                strokeLinecap="round"
-                tabIndex={0}
-                aria-label={`${labels[from]} vers ${labels[to]}`}
-                onMouseEnter={(event) => reveal(`${labels[from]} → ${labels[to]}`, `${(share * 100).toFixed(1)} % des personnes`, event.currentTarget)}
-                onMouseLeave={() => setHovered(null)}
-                onFocus={(event) => reveal(`${labels[from]} → ${labels[to]}`, `${(share * 100).toFixed(1)} % des personnes`, event.currentTarget)}
-                onBlur={() => setHovered(null)}
-              />
-            </g>
-          );
-        })}
+      <div className="event-reaction-flow-head"><span>Sans l’événement</span><span>Écart moyen</span><span>Avec l’événement</span></div>
+      <svg viewBox={`0 0 720 ${height}`} role="img" aria-label="Répartition moyenne des intentions de vote simulées avant et après l’événement">
         {beforeStack.map(({ key, y, height: segmentHeight }) => (
           <g key={`before-${key}`}>
-            <rect x="160" y={y} width={barWidth} height={segmentHeight} fill={segmentColor(key)} onMouseEnter={(event) => reveal(labels[key], valueLabel(levels[key].before), event.currentTarget)} onMouseLeave={() => setHovered(null)} onFocus={(event) => reveal(labels[key], valueLabel(levels[key].before), event.currentTarget)} onBlur={() => setHovered(null)}>
-              <title>{`${labels[key]} · ${valueLabel(levels[key].before)}`}</title>
+            <rect x="160" y={y} width={barWidth} height={segmentHeight} fill={segmentColor(key)} onMouseEnter={(event) => reveal(key, event.currentTarget)} onMouseLeave={() => setHovered(null)} onFocus={(event) => reveal(key, event.currentTarget)} onBlur={() => setHovered(null)}>
+              <title>{`${labels[key]} · ${valueLabel(levels[key].before)} · ${deltaLabel(levels[key].change)}`}</title>
             </rect>
             {segmentHeight > 22 && <text x="183" y={y + segmentHeight / 2 + 4} textAnchor="middle" className="event-reaction-flow-bar-value">{valueLabel(levels[key].before)}</text>}
             {segmentHeight > 16 && <text x="150" y={y + segmentHeight / 2 + 4} textAnchor="end" className="event-reaction-flow-label">{labels[key]}</text>}
@@ -131,26 +104,46 @@ function ReactionFlow({ group }: { group: RankedSegment }) {
         ))}
         {afterStack.map(({ key, y, height: segmentHeight }) => (
           <g key={`after-${key}`}>
-            <rect x="514" y={y} width={barWidth} height={segmentHeight} fill={segmentColor(key)} onMouseEnter={(event) => reveal(labels[key], valueLabel(levels[key].after), event.currentTarget)} onMouseLeave={() => setHovered(null)} onFocus={(event) => reveal(labels[key], valueLabel(levels[key].after), event.currentTarget)} onBlur={() => setHovered(null)}>
-              <title>{`${labels[key]} · ${valueLabel(levels[key].after)}`}</title>
+            <rect x="514" y={y} width={barWidth} height={segmentHeight} fill={segmentColor(key)} onMouseEnter={(event) => reveal(key, event.currentTarget)} onMouseLeave={() => setHovered(null)} onFocus={(event) => reveal(key, event.currentTarget)} onBlur={() => setHovered(null)}>
+              <title>{`${labels[key]} · ${valueLabel(levels[key].after)} · ${deltaLabel(levels[key].change)}`}</title>
             </rect>
             {segmentHeight > 22 && <text x="537" y={y + segmentHeight / 2 + 4} textAnchor="middle" className="event-reaction-flow-bar-value">{valueLabel(levels[key].after)}</text>}
             {segmentHeight > 16 && <text x="570" y={y + segmentHeight / 2 + 4} className="event-reaction-flow-label">{labels[key]}</text>}
           </g>
         ))}
-        {flows.map(({ from, to, count }) => {
-          const stroke = Math.max(1.5, count / group.contrast.sampledCount * 110);
-          return (
-            <g key={`vertex-${from}-${to}`} pointerEvents="none">
-              <circle cx="206" cy={beforeY[from]} r={Math.max(2.5, stroke / 2)} fill={segmentColor(from)} stroke="#171b1b" strokeWidth="1" />
-              <circle cx="514" cy={afterY[to]} r={Math.max(2.5, stroke / 2)} fill={segmentColor(from)} stroke="#171b1b" strokeWidth="1" />
-            </g>
-          );
-        })}
-        <text x="183" y={barY + barHeight + 20} textAnchor="middle" className="event-reaction-flow-axis">Avant</text>
-        <text x="537" y={barY + barHeight + 20} textAnchor="middle" className="event-reaction-flow-axis">Après</text>
+        {orderedKeys.map((key) => Math.abs(levels[key].change) >= 0.005 && (
+          <text key={`delta-${key}`} x="360" y={(beforeY[key] + afterY[key]) / 2 + 4} textAnchor="middle" className={`event-reaction-flow-delta ${levels[key].change >= 0 ? "is-up" : "is-down"}`}>
+            {deltaLabel(levels[key].change)}
+          </text>
+        ))}
+        <text x="183" y={barY + barHeight + 20} textAnchor="middle" className="event-reaction-flow-axis">Sans</text>
+        <text x="537" y={barY + barHeight + 20} textAnchor="middle" className="event-reaction-flow-axis">Avec</text>
       </svg>
-      {hovered && <div className="event-flow-tooltip" style={{ left: hovered.x, top: hovered.y }} role="status"><strong>{hovered.title}</strong><span>{hovered.value}</span></div>}
+      {hovered && <div className="event-flow-tooltip" style={{ left: hovered.x, top: hovered.y }} role="status">
+        <strong>{labels[hovered.key]}</strong>
+        <span>Avant&nbsp; {valueLabel(levels[hovered.key].before)}</span>
+        <span>Après&nbsp; {valueLabel(levels[hovered.key].after)}</span>
+        <span className={levels[hovered.key].change >= 0 ? "is-up" : "is-down"}>{deltaLabel(levels[hovered.key].change)}</span>
+        {candidateSummary?.[hovered.key] && <><span>Plus enclins&nbsp; {pct(candidateSummary[hovered.key].toward, group.contrast.sampledCount)}</span><span>Moins enclins&nbsp; {pct(candidateSummary[hovered.key].away, group.contrast.sampledCount)}</span></>}
+      </div>}
+      {profileRows.length > 0 && <div className="event-profile-shifts">
+        <div className="event-profile-shifts-head"><div><h3>Profils plus ou moins enclins</h3><p>Part des profils dont la propension change d’au moins 2 points.</p></div><span>{group.contrast.sampledCount} profils</span></div>
+        <div className="event-profile-shift-grid"><span>Candidat</span><span>Plus</span><span>Moins</span></div>
+        <div className="event-profile-shift-list">{profileRows.slice(0, 6).map(({ key, toward, away }) => (
+          <div className="event-profile-shift-row" key={key}>
+            <strong>{labels[key]}</strong>
+            <span className="event-profile-shift-stat is-up"><ArrowUpRight size={14} aria-hidden="true" />{pct(toward, group.contrast.sampledCount)}</span>
+            <span className="event-profile-shift-stat is-down"><ArrowDownRight size={14} aria-hidden="true" />{pct(away, group.contrast.sampledCount)}</span>
+          </div>
+        ))}</div>
+        {profileRows.length > 6 && <details className="event-profile-shift-more"><summary>Voir tous les candidats</summary><div className="event-profile-shift-list">{profileRows.slice(6).map(({ key, toward, away }) => (
+          <div className="event-profile-shift-row" key={key}>
+            <strong>{labels[key]}</strong>
+            <span className="event-profile-shift-stat is-up"><ArrowUpRight size={14} aria-hidden="true" />{pct(toward, group.contrast.sampledCount)}</span>
+            <span className="event-profile-shift-stat is-down"><ArrowDownRight size={14} aria-hidden="true" />{pct(away, group.contrast.sampledCount)}</span>
+          </div>
+        ))}</div></details>}
+      </div>}
     </div>
   );
 }
