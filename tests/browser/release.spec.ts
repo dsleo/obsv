@@ -78,7 +78,8 @@ test("the known source mismatches cannot reappear in published event pages", asy
     page.getByText("Aucune actualité ne correspond", { exact: false }),
   ).toBeVisible();
   await page.goto(`${prefix}/events/google-22546/`);
-  await expect(page.getByText("SCÉNARIO ALTERNATIF", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("SCÉNARIO ALTERNATIF", { exact: true })).toBeVisible();
+  await expect(page.getByText("Ce qui change :", { exact: false })).toBeVisible();
 });
 
 test("every selectable chart line has meaningful light-theme contrast", async ({
