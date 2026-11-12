@@ -49,6 +49,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
   } | null>(null);
   const [selectedPoll, setSelectedPoll] = useState<{ observation: PollObservation; candidate: string; x: number; y: number } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const sourceCardRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setIds(initialIds);
@@ -61,6 +62,14 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
     observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+    if (!selectedPoll) return;
+    const dismiss = (event: PointerEvent) => {
+      if (sourceCardRef.current && !sourceCardRef.current.contains(event.target as Node)) setSelectedPoll(null);
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [selectedPoll]);
 
   const candidates = pollCandidates.filter((candidate) => ids.includes(candidate.id));
   const chartWidth = Math.max(width, 920);
@@ -322,16 +331,16 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
             role="status"
           >
             <strong>{hoveredPoint.candidate}</strong>
+            <span>{hoveredPoint.date} · {formatPct(hoveredPoint.value)} %</span>
           </div>
         )}
         {selectedPoll && (
-          <aside className="poll-source-card" style={{ left: selectedPoll.x, top: selectedPoll.y }} aria-label="Détail du sondage sélectionné">
+          <aside ref={sourceCardRef} className="poll-source-card" style={{ left: selectedPoll.x, top: selectedPoll.y }} aria-label="Détail du sondage sélectionné">
             <div>
               <strong>{selectedPoll.candidate}</strong>
               <span>{selectedPoll.observation.pollster}</span>
             </div>
             <a href={selectedPoll.observation.source.url} target="_blank" rel="noreferrer" aria-label={`Ouvrir la source du sondage ${selectedPoll.observation.pollster}`} title="Ouvrir la source">↗</a>
-            <button type="button" onClick={() => setSelectedPoll(null)} aria-label="Fermer le détail du sondage">×</button>
           </aside>
         )}
       </div>
