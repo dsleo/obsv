@@ -128,16 +128,19 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
     candidate: (typeof pollCandidates)[number],
     point: { day: number; value: number | null },
     target: Element,
+    pointer?: { clientX: number; clientY: number },
   ) => {
     if (point.value === null || !ref.current) return;
     const root = ref.current.getBoundingClientRect();
     const marker = target.getBoundingClientRect();
+    const anchorX = pointer ? pointer.clientX - root.left : marker.left + marker.width / 2 - root.left;
+    const anchorY = pointer ? pointer.clientY - root.top - 16 : marker.top - root.top - 48;
     setHoveredPoint({
       candidate: candidate.name,
       date: formatShortDate(dayToIso(point.day)),
       value: point.value,
-      x: Math.max(72, Math.min(root.width - 72, marker.left + marker.width / 2 - root.left)),
-      y: Math.max(8, marker.top - root.top - 48),
+      x: Math.max(96, Math.min(root.width - 96, anchorX)),
+      y: Math.max(8, Math.min(root.height - 58, anchorY)),
     });
   };
 
@@ -249,7 +252,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           cx={x(point.day)}
                           cy={y(point.value)}
                           r="7"
-                          onPointerEnter={(pointerEvent) => revealPoint(candidate, point, pointerEvent.currentTarget)}
+                          onPointerEnter={(pointerEvent) => revealPoint(candidate, point, pointerEvent.currentTarget, pointerEvent)}
                           onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
                           onFocus={(focusEvent) => revealPoint(candidate, point, focusEvent.currentTarget)}
                           onBlur={() => setHoveredPoint(null)}
@@ -274,7 +277,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           cy={y(observedPoint.value)}
                           r="5"
                           fill={candidate.color}
-                          onPointerEnter={(pointerEvent) => revealPoint(candidate, observedPoint, pointerEvent.currentTarget)}
+                          onPointerEnter={(pointerEvent) => revealPoint(candidate, observedPoint, pointerEvent.currentTarget, pointerEvent)}
                           onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
                           onFocus={(focusEvent) => revealPoint(candidate, observedPoint, focusEvent.currentTarget)}
                           onBlur={() => setHoveredPoint(null)}

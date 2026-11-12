@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import type { AnalysisArtifact } from "../../lib/radar/analysisArtifact";
 import { rankedSegments, type RankedSegment } from "../../lib/radar/highlights";
@@ -38,18 +38,30 @@ function Reactions({ group }: { group: RankedSegment }) {
 function ReactionFlow({ group }: { group: RankedSegment }) {
   const strongest = group.signals.slice(0, 3);
   if (!strongest.length) return null;
+  const rowHeight = 68;
+  const height = strongest.length * rowHeight + 48;
   return (
-    <div className="event-reaction-flow" aria-label="Mouvements directionnels les plus fréquents">
-      <div className="event-reaction-flow-head"><span>Sans l’événement</span><span>Avec l’événement</span></div>
-      {strongest.map((signal) => (
-        <div className="event-reaction-flow-row" key={`${signal.bloc}-${signal.direction}`}>
-          <span className="event-reaction-flow-label">{signal.label}</span>
-          <div className={`event-reaction-flow-track ${signal.direction}`}>
-            <i style={{ width: `${Math.max(8, (signal.count / group.contrast.sampledCount) * 100)}%` }} />
-          </div>
-          <b>{pct(signal.count, signal.sampled)}</b>
-        </div>
-      ))}
+    <div className="event-reaction-flow" aria-label="Flux parallèles des mouvements directionnels les plus fréquents">
+      <div className="event-reaction-flow-head"><span>Avant l’événement</span><span>Après l’événement</span></div>
+      <svg viewBox={`0 0 720 ${height}`} role="img" aria-label="Flux de profils simulés avant et après l’événement">
+        <text x="22" y="22" className="event-reaction-flow-axis">Intention simulée</text>
+        <text x="468" y="22" className="event-reaction-flow-axis">Mouvement observé</text>
+        <rect x="22" y="34" width="220" height={height - 50} rx="3" className="event-reaction-flow-source" />
+        <text x="132" y={height / 2 + 4} textAnchor="middle" className="event-reaction-flow-source-label">Profils du groupe</text>
+        {strongest.map((signal, index) => {
+          const y = 58 + index * rowHeight;
+          const width = Math.max(8, (signal.count / group.contrast.sampledCount) * 96);
+          const color = signal.direction === "toward" ? "var(--orange)" : "#9aa39e";
+          return (
+            <g key={`${signal.bloc}-${signal.direction}`}>
+              <path d={`M242 ${height / 2} C330 ${height / 2}, 350 ${y + 8}, 430 ${y + 8}`} fill="none" stroke={color} strokeOpacity=".72" strokeWidth={width} />
+              <rect x="430" y={y - 4} width="18" height="24" rx="2" fill={color} />
+              <text x="462" y={y + 12} className="event-reaction-flow-label">{signal.label}</text>
+              <text x="690" y={y + 12} textAnchor="end" className="event-reaction-flow-value">{pct(signal.count, signal.sampled)}</text>
+            </g>
+          );
+        })}
+      </svg>
       <small>Part des profils simulés devenant plus ou moins enclins à choisir ce bloc ; ce n’est pas une part de vote.</small>
     </div>
   );
@@ -58,9 +70,6 @@ function ReactionFlow({ group }: { group: RankedSegment }) {
 function Group({ group }: { group: RankedSegment }) {
   return (
     <div className="event-analysis-segment">
-      <div className="event-analysis-segment-title">
-        <h3>{group.segment.name}</h3>
-      </div>
       <p>{group.segment.mechanism}</p>
       <Reactions group={group} />
     </div>
@@ -106,30 +115,6 @@ export function EventSubpopulationAnalysis({
             </div>
             <Group key={groups[index].segment.id} group={groups[index]} />
             <ReactionFlow group={groups[index]} />
-            {groups.length > 1 && (
-              <div className="event-analysis-carousel">
-                <button
-                  type="button"
-                  onClick={() => setIndex((value) => (value + groups.length - 1) % groups.length)}
-                  aria-label="Groupe précédent"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <span>
-                  {groups.map((_, dot) => (
-                    <i key={dot} data-on={dot === index} />
-                  ))}
-                </span>
-                <span className="sr-only">Groupe {index + 1} sur {groups.length}</span>
-                <button
-                  type="button"
-                  onClick={() => setIndex((value) => (value + 1) % groups.length)}
-                  aria-label="Groupe suivant"
-                >
-                  <ChevronRight size={16} />
-                </button>
-              </div>
-            )}
           </div>
         )}
       </section>
