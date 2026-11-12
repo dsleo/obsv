@@ -4,41 +4,39 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "d6eb7c862f71e6aa",
+  "inputHash": "68c15f6fd2d9eb2a",
   "eventInputHash": "b6e29160a279ccce68aa255a81b85fa4347ba35feb6d43b305565ebacb4d0fea",
-  "computedAt": "2026-11-12T13:51:47.734Z",
+  "computedAt": "2026-11-12T16:18:13.476Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le 5 novembre, la manifestation parisienne part de Nation pour rejoindre République, inversant le parcours initialement prévu entre République et Nation.",
-    "whatChanges": "Ce changement de parcours modifie l'impact visuel et symbolique de la manifestation, pouvant influencer la mobilisation des riverains et la participation des manifestants, notamment ceux attachés aux quartiers de départ et d'arrivée."
+    "description": "La manifestation du 5 novembre à Paris, initialement prévue entre République et Nation, est réduite et concentrée uniquement autour de la place de la République, avec un parcours plus court pour limiter les perturbations.",
+    "whatChanges": "Le parcours plus court limite l'ampleur de la mobilisation visible en centre-ville, ce qui modère la perception de la colère sociale chez les électeurs parisiens et potentiellement réduit l'impact médiatique de la grève."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Actifs employés et ouvriers des quartiers parisiens concernés",
-      "mechanism": "Le parcours de la manifestation entre République et Nation concerne particulièrement les actifs employés et ouvriers vivant dans les communes denses de Paris concernés par le trajet, car ils sont directement impliqués ou impactés par l'événement social dans leur vie quotidienne.",
-      "reason": "Intersection pertinente pour cibler un public directement touché par la manifestation, plausible en tant que participant ou riverain affecté.",
+      "name": "Jeunes actifs urbains en couple avec enfants à Paris",
+      "mechanism": "Le parcours de la manifestation entre République et Nation à Paris concerne particulièrement les jeunes familles actives vivant dans la ville, susceptibles de participer ou d'être directement impactées par le trajet et le contexte de la grève du 5 novembre.",
+      "reason": "Ce segment rassemble les personnes jeunes, en couple avec enfants, vivant en commune dense dans la métropole parisienne, correspondant à un public susceptible d’être impliqué ou concerné par la manifestation.",
       "all": [
-        "occupation.employee",
+        "age.25_34",
+        "household.couple_with_children",
         "geo.dense",
         "municipal_system.paris_lyon_marseille"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur la manifestation",
-        "Participation à la manifestation"
+        "Participation à la manifestation",
+        "Perception de la grève",
+        "Impact sur la vie quotidienne"
       ],
-      "count": 15092,
+      "count": 7571,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -50,25 +48,27 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes diplômés urbains parisiens de 25 à 34 ans",
-      "mechanism": "Les jeunes diplômés urbains de 25 à 34 ans résidant dans Paris sont concernés par le parcours de la manifestation car ils forment un public souvent engagé politiquement dans ce type d’événement social organisé en zone dense de la capitale.",
-      "reason": "Ce segment restreint cible un public jeune, diplômé et urbain, potentiellement participant actif ou attentif à la manifestation sur le parcours répertorié.",
+      "name": "Employés et ouvriers urbains hommes de 35 à 49 ans habitant Paris",
+      "mechanism": "La grève mobilise traditionnellement les salariés modestes de la métropole parisienne ; ce segment représente les hommes employés ou ouvriers d'âge moyen vivant à Paris, directement concernés par les enjeux sociaux portés par la manifestation.",
+      "reason": "Ce segment combine l'âge, le sexe masculin, la catégorie socio-professionnelle des salariés modestes et la localisation urbaine dans la métropole parisienne, correspondant à une base potentielle de manifestants ou d'observateurs sensibles.",
       "all": [
-        "age.25_34",
-        "cluster.young_urban_graduate",
-        "municipal_system.paris_lyon_marseille",
-        "geo.dense"
+        "occupation.employee",
+        "geo.dense",
+        "sex.male",
+        "municipal_system.paris_lyon_marseille"
       ],
-      "any": [],
+      "any": [
+        "age.35_49"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intérêt pour la manifestation",
-        "Engagement politique",
-        "Opinion sur le parcours de manifestation"
+        "Participation à la manifestation",
+        "Attitudes envers les revendications",
+        "Impact perçu sur l'emploi"
       ],
-      "count": 9469,
-      "distinctCommunes": 48,
+      "count": 1544,
+      "distinctCommunes": 47,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -79,26 +79,24 @@
     },
     {
       "id": "segment_3",
-      "name": "Salariés modestes vivant en couple avec enfants dans Paris",
-      "mechanism": "Les salariés modestes en couple avec enfants vivant dans Paris sont concernés par la manifestation entre République et Nation car ils peuvent être mobilisés à la fois comme participants ou comme usagers affectés par le déroulement de la grève et du trajet dans leur quotidien familial.",
-      "reason": "Combinant situation familiale et catégorie socio-professionnelle en milieu urbain précis, ce segment donne une cible efficace pour comprendre les réactions et impacts de l'événement familialement et socialement.",
+      "name": "Cadres et professions intellectuelles supérieures de 50 à 64 ans habitant Paris",
+      "mechanism": "Les cadres urbains d'âge mature sont un public souvent concerné par les revendications sociales et les perturbations urbaines des manifestations à Paris, tant comme acteurs économiques touchés que comme observateurs éclairés.",
+      "reason": "Ce segment regroupe les cadres urbains d'âge 50-64 ans résidant dans la métropole parisienne, une population distincte par son statut social et son impact potentiel face à la manifestation.",
       "all": [
-        "cluster.modest_wage_earner",
-        "household.couple_with_children",
+        "occupation.executive_professional",
+        "geo.dense",
+        "age.50_64",
         "municipal_system.paris_lyon_marseille"
       ],
-      "any": [
-        "age.35_49",
-        "age.25_34"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Impact familial de la manifestation",
-        "Participation ou soutien à la grève",
-        "Perception de la sécurité pendant la manifestation"
+        "Perception de la grève",
+        "Impact professionnel",
+        "Attitudes politiques"
       ],
-      "count": 10117,
+      "count": 2508,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -110,27 +108,26 @@
     },
     {
       "id": "segment_4",
-      "name": "Femmes seules de 25 à 49 ans en milieu urbain dense parisien",
-      "mechanism": "Les femmes vivant seules âgées de 25 à 49 ans dans le Paris dense sont concernées par le passage de la manifestation entre République et Nation, notamment en raison du ressenti de sécurité et de l'impact sur leurs déplacements en milieu urbain dense où se déroule l'événement.",
-      "reason": "Segment étroit, combinant sexe, situation familiale, âge, et localisation pour cibler une population féminine à risque ou sensible à l’environnement urbain perturbé par la manifestation.",
+      "name": "Jeunes sans activité professionnelle vivant seuls en communes denses à Paris",
+      "mechanism": "Le segment des jeunes sans activité professionnelle vivant seuls dans les quartiers denses parisiens est particulièrement concerné par la dynamique sociale et politique des manifestations, pouvant être à la fois participants et affectés.",
+      "reason": "Ce segment combine la jeunesse, l'absence d'activité professionnelle, la situation en foyer seul, et la localisation urbaine très dense, fournissant un groupe restreint mais pertinent pour l'événement.",
       "all": [
-        "sex.female",
+        "cluster.young_without_activity",
         "household.single",
         "geo.dense",
         "municipal_system.paris_lyon_marseille"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49"
+        "age.18_24"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Sentiment de sécurité pendant la manifestation",
-        "Adaptation des déplacements",
-        "Opinion envers les manifestations urbaines"
+        "Attitude envers la manifestation",
+        "Participation prévue",
+        "Impact social"
       ],
-      "count": 3683,
+      "count": 5998,
       "distinctCommunes": 48,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -150,23 +147,23 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Jeunes diplômés urbains parisiens de 25 à 34 ans",
-      "matchedCount": 9469,
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes actifs urbains en couple avec enfants à Paris",
+      "matchedCount": 7571,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "center": {
           "toward": 0,
@@ -179,21 +176,21 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 0,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 43
         }
       },
       "candidateSummary": {
         "le-pen": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "philippe": {
           "toward": 0,
@@ -212,8 +209,8 @@
         },
         "melenchon": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "tondelier": {
           "toward": 0,
@@ -251,103 +248,190 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 43
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.2334888781430697,
+          "after": 0.23427755256118352,
+          "change": 0.0007886744181138106
+        },
+        "philippe": {
+          "before": 0.1033500683358468,
+          "after": 0.10186501508817242,
+          "change": -0.001485053247674381
+        },
+        "attal": {
+          "before": 0.028493030394228,
+          "after": 0.02811516541991482,
+          "change": -0.0003778649743131808
+        },
+        "glucksmann": {
+          "before": 0.08604217634793983,
+          "after": 0.0851578269765429,
+          "change": -0.0008843493713969336
+        },
+        "melenchon": {
+          "before": 0.1608818242623133,
+          "after": 0.15718780530980525,
+          "change": -0.003694018952508038
+        },
+        "tondelier": {
+          "before": 0.019453666880188833,
+          "after": 0.01962991005807336,
+          "change": 0.0001762431778845261
+        },
+        "roussel": {
+          "before": 0.0134758895309045,
+          "after": 0.013212749770769827,
+          "change": -0.000263139760134673
+        },
+        "retailleau": {
+          "before": 0.03669793598847989,
+          "after": 0.03605289826537528,
+          "change": -0.000645037723104612
+        },
+        "lisnard": {
+          "before": 0.021702273647632928,
+          "after": 0.021213495448698976,
+          "change": -0.0004887781989339514
+        },
+        "zemmour": {
+          "before": 0.028743421960612577,
+          "after": 0.02914223036672313,
+          "change": 0.00039880840611055193
+        },
+        "dupont-aignan": {
+          "before": 0.011955719200729185,
+          "after": 0.011893046993987305,
+          "change": -0.00006267220674188029
+        },
+        "arthaud": {
+          "before": 0.0058319641623034825,
+          "after": 0.005792119727459368,
+          "change": -0.000039844434844114526
+        },
+        "abstention": {
+          "before": 0.2498831511457508,
+          "after": 0.2564601840132937,
+          "change": 0.006577032867542881
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 13,
+          "abstention": 4
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 31
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Une manifestation à Paris, ça ne change rien pour moi à Lyon, surtout ce détail de parcours entre République et Nation.",
-        "La manifestation à Paris, même si je ne participe pas, je trouve ça important pour faire entendre les revendications. Le parcours importe peu, c'est le message qui compte.",
-        "Je vois passer cette info sur la manif à Paris, mais ça n'a pas d'impact direct sur ma vie ici. Je ne change rien à ma façon de voter."
+        "Franchement, une manif à Paris qui bloque la ville, c'est pénible pour tout le monde, même si j'essaie de comprendre leurs revendications. Ça ne me motive pas spécialement pour changer mon vote.",
+        "Je trouve que restreindre la manif, ça limite la visibilité des revendications. J’apprécie que les protestations puissent avoir un vrai impact, même si ça complique un peu la vie quotidienne à Paris.",
+        "J’ai un peu du mal avec ces grandes manifestations, même si je comprends que c’est important pour certains. Ces perturbations ne changent pas vraiment mon avis politique."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": -0.00004580312761104377,
-          "lo": -0.0001265562227998693,
-          "hi": 0.0000230758003370504,
+          "mean": 0.0007886744181137886,
+          "lo": -0.00027557550787166325,
+          "hi": 0.0021841113999340922,
           "stable": false
         },
         "philippe": {
-          "mean": -0.00003816727244827789,
-          "lo": -0.00010213945326013538,
-          "hi": 0.00001792226905894881,
+          "mean": -0.0014850532476743345,
+          "lo": -0.0024934988803024076,
+          "hi": -0.0005943629409339298,
           "stable": false
         },
         "attal": {
-          "mean": -0.000010536681245405076,
-          "lo": -0.000027170492585550012,
-          "hi": 0.0000038728430567792965,
+          "mean": -0.0003778649743131756,
+          "lo": -0.0008329862748565614,
+          "hi": -0.000015132541021080172,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0000261691300858117,
-          "lo": -0.00007348559438453018,
-          "hi": 0.000010114341694411494,
+          "mean": -0.0008843493713969164,
+          "lo": -0.0018445264942501102,
+          "hi": -0.00023361792904071782,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.0006581136616590332,
-          "lo": 0.00009985044955224988,
-          "hi": 0.0013162273233180664,
+          "mean": -0.0036940189525080346,
+          "lo": -0.005472268486010834,
+          "hi": -0.0019232849882154608,
           "stable": false
         },
         "tondelier": {
-          "mean": 0.0007193447704630264,
-          "lo": 0.0001067740813925476,
-          "hi": 0.0014491482593809654,
+          "mean": 0.00017624317788452346,
+          "lo": -0.0004918753225071409,
+          "hi": 0.0009788927761091367,
           "stable": false
         },
         "roussel": {
-          "mean": -0.000004162666143152259,
-          "lo": -0.00001229355869743065,
-          "hi": 0.000003128146915797337,
+          "mean": -0.0002631397601346719,
+          "lo": -0.0005196971164186631,
+          "hi": -0.00006672998988756636,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.000011600213390534764,
-          "lo": -0.00003255709614626605,
-          "hi": 0.000004587948809836161,
+          "mean": -0.000645037723104612,
+          "lo": -0.0010657974478306576,
+          "hi": -0.00030228680772723836,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.000006840565828177571,
-          "lo": -0.000019224178365655122,
-          "hi": 0.000002711060660357745,
+          "mean": -0.0004887781989339555,
+          "lo": -0.0009245041730044479,
+          "hi": -0.00016673203255893371,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.00004731070392607331,
-          "lo": -0.00013300360235318624,
-          "hi": 0,
+          "mean": 0.00039880840611055345,
+          "lo": 0.00006331992265322586,
+          "hi": 0.0008698950650785692,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.00000226496148714281,
-          "lo": -0.000006615354251483868,
-          "hi": 0.0000018880761623204661,
+          "mean": -0.00006267220674187602,
+          "lo": -0.00015985598110172537,
+          "hi": 0.000006764425984813681,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.0000017311213857992582,
-          "lo": -0.000004713501537917473,
-          "hi": 0.0000012512587663189563,
+          "mean": -0.000039844434844116566,
+          "lo": -0.00010357100527966471,
+          "hi": 0.000005546227600882684,
           "stable": false
         },
         "abstention": {
-          "mean": -0.0011828719885706416,
-          "lo": -0.002414447456147677,
-          "hi": -0.00022291174921971446,
+          "mean": 0.00657703286754284,
+          "lo": 0.003482933304004298,
+          "hi": 0.010178934555842756,
           "stable": false
         }
       }
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Salariés modestes vivant en couple avec enfants dans Paris",
-      "matchedCount": 10117,
+      "segmentName": "Cadres et professions intellectuelles supérieures de 50 à 64 ans habitant Paris",
+      "matchedCount": 2508,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -374,20 +458,20 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         }
       },
       "candidateSummary": {
         "le-pen": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "philippe": {
           "toward": 0,
@@ -445,289 +529,181 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.21741184777587044,
+          "after": 0.21579670471470205,
+          "change": -0.0016151430611683892
+        },
+        "philippe": {
+          "before": 0.12930340953096534,
+          "after": 0.12802235102518317,
+          "change": -0.0012810585057821677
+        },
+        "attal": {
+          "before": 0.03541740662377257,
+          "after": 0.03481313437074522,
+          "change": -0.000604272253027345
+        },
+        "glucksmann": {
+          "before": 0.09185451558270726,
+          "after": 0.09202463745884415,
+          "change": 0.00017012187613689445
+        },
+        "melenchon": {
+          "before": 0.12126840536907248,
+          "after": 0.1223613309651046,
+          "change": 0.001092925596032121
+        },
+        "tondelier": {
+          "before": 0.020698574873873325,
+          "after": 0.021187911209150492,
+          "change": 0.0004893363352771671
+        },
+        "roussel": {
+          "before": 0.014513906611814486,
+          "after": 0.014535829090242132,
+          "change": 0.00002192247842764533
+        },
+        "retailleau": {
+          "before": 0.0489733132296958,
+          "after": 0.0482690935961795,
+          "change": -0.0007042196335163009
+        },
+        "lisnard": {
+          "before": 0.029005090429474936,
+          "after": 0.028553581630185083,
+          "change": -0.0004515087992898528
+        },
+        "zemmour": {
+          "before": 0.026861383845571005,
+          "after": 0.02645437045688161,
+          "change": -0.0004070133886893944
+        },
+        "dupont-aignan": {
+          "before": 0.011140100855734395,
+          "after": 0.010959749649918922,
+          "change": -0.00018035120581547277
+        },
+        "arthaud": {
+          "before": 0.004351454149390677,
+          "after": 0.0043463397484350685,
+          "change": -0.000005114400955608632
+        },
+        "abstention": {
+          "before": 0.2492005911220572,
+          "after": 0.252674966084428,
+          "change": 0.003474374962370824
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 5
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, une manif à Paris, ça ne me concerne pas ici à Lyon, ça ne change rien à mon vote.",
-        "Une manif qui change de parcours à Paris, ça ne m'intéresse pas trop, je suis plus préoccupée par mon boulot et ma famille ici à Marseille.",
-        "Je travaille dans le métro, cette manif entre République et Nation c’est important, ça peut perturber mon travail et mes déplacements. Je comprends la manifestation, mais le parcours a son importance pour la gestion de la ville."
+        "Cette grève parisienne ne m'affecte pas directement, ça reste un classique ici comme ailleurs, je ne me sens pas concerné.",
+        "Habiter à Paris et voir une manifestation être réduite me semble positif, ça évite trop de désagréments dans le quartier, je préfère un peu moins d'impact.",
+        "Une manifestation réduite à Paris, c'est malheureusement typique, mais je ne suis pas vraiment concernée au quotidien ici à Marseille."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": -0.0004859361304289991,
-          "lo": -0.000970923399365309,
-          "hi": -0.00007770169497278712,
+          "mean": -0.0016151430611684031,
+          "lo": -0.0031083140316227396,
+          "hi": -0.0004469150733949553,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0003245420666224431,
-          "lo": -0.0006361809870800457,
-          "hi": -0.00008901122958037593,
+          "mean": -0.0012810585057822085,
+          "lo": -0.002411989554746301,
+          "hi": -0.00012302051943024594,
           "stable": false
         },
         "attal": {
-          "mean": -0.00009051295089647898,
-          "lo": -0.00018497135279092422,
-          "hi": -0.000016796409910928968,
+          "mean": -0.0006042722530273343,
+          "lo": -0.0010034540013328169,
+          "hi": -0.0002764509025991702,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.00034899004409253326,
-          "lo": -0.0006959988184264575,
-          "hi": -0.00002564789075871667,
+          "mean": 0.00017012187613688837,
+          "lo": -0.000499645444064438,
+          "hi": 0.0010227289801768142,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.0009525091168913997,
-          "lo": 0.0002489403670045455,
-          "hi": 0.0017273359502021704,
+          "mean": 0.0010929255960321774,
+          "lo": 0.00016064752423242904,
+          "hi": 0.002100802334941285,
           "stable": false
         },
         "tondelier": {
-          "mean": 0.00042869205502603787,
-          "lo": 0.0001523972022296698,
-          "hi": 0.0007157467292430949,
+          "mean": 0.0004893363352771668,
+          "lo": 0.000017218411683284627,
+          "hi": 0.0010703156278561129,
           "stable": false
         },
         "roussel": {
-          "mean": -0.000055304098039189774,
-          "lo": -0.00012213765245079928,
-          "hi": 9.913610262365484e-7,
+          "mean": 0.000021922478427645206,
+          "lo": -0.00018127412877138793,
+          "hi": 0.0002449238083711415,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0001248576937767348,
-          "lo": -0.0002672622958936228,
-          "hi": -0.00000390171044873603,
+          "mean": -0.0007042196335162889,
+          "lo": -0.0010794895864299594,
+          "hi": -0.00037714920268868595,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.00011282247622003068,
-          "lo": -0.00025181296615354033,
-          "hi": -0.000017254004498439566,
+          "mean": -0.00045150879928985516,
+          "lo": -0.000718364368164677,
+          "hi": -0.00023456168339647696,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0001526635806100002,
-          "lo": -0.0002831365096960719,
-          "hi": -0.00004009831657594094,
+          "mean": -0.0004070133886893901,
+          "lo": -0.0006256032458259411,
+          "hi": -0.00020151466635652993,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.00007775622730813962,
-          "lo": -0.00017208220398539717,
-          "hi": -0.000017333266203609267,
+          "mean": -0.00018035120581547266,
+          "lo": -0.00027825153853214155,
+          "hi": -0.0000826595048858375,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.000059542565007926256,
-          "lo": -0.0001225298355710286,
-          "hi": -0.0000013272550097165636,
+          "mean": -0.000005114400955609807,
+          "lo": -0.000009960320403104738,
+          "hi": -5.118846086517065e-7,
           "stable": false
         },
         "abstention": {
-          "mean": 0.00045172666108504733,
-          "lo": -0.0003010286033532956,
-          "hi": 0.0013008102534641356,
-          "stable": false
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Actifs employés et ouvriers des quartiers parisiens concernés",
-      "matchedCount": 15092,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "philippe": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "melenchon": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas vraiment concernée par le trajet précis de la manifestation à Paris, ça me semble plus un détail pour les Parisiens que pour moi à Lyon.",
-        "Vivant à Paris et étant dans un emploi assez stable, ces manifestations me dérangent un peu, surtout quand elles perturbent les transports. Le changement de parcours ne change pas vraiment mon avis sur tout ça.",
-        "Je suis assez habituée aux manifestations à Paris, mais ce genre de détail ne change pas vraiment mon opinion ou mon vote, ça reste une agitation habituelle."
-      ],
-      "candidateEffect": {
-        "le-pen": {
-          "mean": -0.0004606965886496817,
-          "lo": -0.0009491822661714672,
-          "hi": -0.0000515002060008235,
-          "stable": false
-        },
-        "philippe": {
-          "mean": -0.00030439242566737977,
-          "lo": -0.0005946194420999807,
-          "hi": -0.00010239999798383025,
-          "stable": false
-        },
-        "attal": {
-          "mean": -0.00012830145683048166,
-          "lo": -0.00023885398866769917,
-          "hi": -0.00001891110790788857,
-          "stable": false
-        },
-        "glucksmann": {
-          "mean": -0.000053960785523902176,
-          "lo": -0.000359139137191668,
-          "hi": 0.0002674605429421603,
-          "stable": false
-        },
-        "melenchon": {
-          "mean": 0.0003996599388170665,
-          "lo": -0.00010241812086488403,
-          "hi": 0.0011569209331658374,
-          "stable": false
-        },
-        "tondelier": {
-          "mean": 0.00010239766120192512,
-          "lo": -0.00010313686352784637,
-          "hi": 0.00039377883000565964,
-          "stable": false
-        },
-        "roussel": {
-          "mean": 0.00008159573614979801,
-          "lo": -0.000010689751493051305,
-          "hi": 0.0002270556236560221,
-          "stable": false
-        },
-        "retailleau": {
-          "mean": -0.00021918307023581656,
-          "lo": -0.0004534750086140946,
-          "hi": -0.000036620729816252365,
-          "stable": false
-        },
-        "lisnard": {
-          "mean": -0.00021491117486863664,
-          "lo": -0.00041047145118067743,
-          "hi": -0.0000698666535004801,
-          "stable": false
-        },
-        "zemmour": {
-          "mean": -0.0001484813065787952,
-          "lo": -0.0002817300029722734,
-          "hi": -0.000033222770145982504,
-          "stable": false
-        },
-        "dupont-aignan": {
-          "mean": -0.00008468558300646508,
-          "lo": -0.00016594086998254428,
-          "hi": -0.00002412671415391544,
-          "stable": false
-        },
-        "arthaud": {
-          "mean": -0.00002062092702492299,
-          "lo": -0.00007762257806175859,
-          "hi": 0.0000011256313831674873,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.001051579982217294,
-          "lo": 0.00009007131988124246,
-          "hi": 0.0023564685780191087,
+          "mean": 0.003474374962370675,
+          "lo": 0.001451922123336856,
+          "hi": 0.005937098608345016,
           "stable": false
         }
       }
@@ -766,9 +742,9 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 93
         }
       },
       "candidateSummary": {
@@ -833,103 +809,468 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 0,
-          "noClearChange": 96
+          "noClearChange": 93
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3382761340329263,
+          "after": 0.3384666689769067,
+          "change": 0.00019053494398041382
+        },
+        "philippe": {
+          "before": 0.07983608073581171,
+          "after": 0.07912198160651562,
+          "change": -0.0007140991292960835
+        },
+        "attal": {
+          "before": 0.021979922783154606,
+          "after": 0.02184236737140571,
+          "change": -0.0001375554117488964
+        },
+        "glucksmann": {
+          "before": 0.062418557181852206,
+          "after": 0.06215923875718792,
+          "change": -0.00025931842466428434
+        },
+        "melenchon": {
+          "before": 0.07919968821118835,
+          "after": 0.07929818131894702,
+          "change": 0.00009849310775866815
+        },
+        "tondelier": {
+          "before": 0.014198302313463014,
+          "after": 0.014317712281012892,
+          "change": 0.0001194099675498779
+        },
+        "roussel": {
+          "before": 0.00979189280269497,
+          "after": 0.009805844757947312,
+          "change": 0.000013951955252342399
+        },
+        "retailleau": {
+          "before": 0.038825360527066685,
+          "after": 0.03827696420270566,
+          "change": -0.0005483963243610238
+        },
+        "lisnard": {
+          "before": 0.022959818139174724,
+          "after": 0.022593636214899973,
+          "change": -0.00036618192427475063
+        },
+        "zemmour": {
+          "before": 0.041615165989641864,
+          "after": 0.040973517960818974,
+          "change": -0.0006416480288228901
+        },
+        "dupont-aignan": {
+          "before": 0.017271023114414103,
+          "after": 0.01701604063224733,
+          "change": -0.0002549824821667726
+        },
+        "arthaud": {
+          "before": 0.0028958564375261057,
+          "after": 0.0029066096825066724,
+          "change": 0.000010753244980566713
+        },
+        "abstention": {
+          "before": 0.2707321977310852,
+          "after": 0.2732212362368981,
+          "change": 0.0024890385058128905
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 83,
+          "abstention": 3
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 10
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette manifestation à Paris, même si je ne suis pas de la capitale, montre un certain mécontentement social que je comprends mais qui ne change rien à mon vote chez moi.",
-        "Je ne suis pas vraiment concernée par l'itinéraire précis de la manifestation, ça n'influence pas ma façon de voter, je fais attention surtout à ce qui a un impact direct chez moi.",
-        "En vivant à Paris, je suis consciente que ce genre de manifestation reflète des tensions sociales importantes, mais l'itinéraire de la manifestation ne change pas mon analyse politique."
+        "Je ne suis pas forcément concernée par cette manifestation à Paris, ça me paraît loin de ma vie quotidienne à la campagne, donc ça ne change pas grand-chose pour moi.",
+        "Je trouve que ces manifestations sont importantes pour se faire entendre, même si ici, ça ne perturbe pas trop mon quotidien. Une réduction du parcours pourrait mieux ménager les habitants.",
+        "La manifestation à Paris me semble un événement qui montre la contestation sociale. La réduction du parcours pourrait apaiser les tensions, ce qui me paraît positif."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": -0.00008595536421136345,
-          "lo": -0.0003529941308049282,
-          "hi": 0.00016889975227244296,
+          "mean": 0.00019053494398030743,
+          "lo": -0.0005352389865850635,
+          "hi": 0.0009914832706511094,
           "stable": false
         },
         "philippe": {
-          "mean": -0.000016431002016532468,
-          "lo": -0.00015018390502523926,
-          "hi": 0.00007907319282470205,
+          "mean": -0.0007140991292961174,
+          "lo": -0.0012361552834636127,
+          "hi": -0.00026909559874909936,
           "stable": false
         },
         "attal": {
-          "mean": -0.000013826176080141103,
-          "lo": -0.00004680217730791516,
-          "hi": 0.000011113720499229221,
+          "mean": -0.00013755541174890028,
+          "lo": -0.00038077255542653244,
+          "hi": 0.00009085035574749539,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0000017179171685935701,
-          "lo": -0.000056735337183373485,
-          "hi": 0.00005376964225051133,
+          "mean": -0.00025931842466428873,
+          "lo": -0.0006341854247749685,
+          "hi": 0.0001008046976607958,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.0002507512465883175,
-          "lo": 0.000011190889687694291,
-          "hi": 0.0006093026912428887,
+          "mean": 0.00009849310775869034,
+          "lo": -0.0005100756113736161,
+          "hi": 0.0007369273426131151,
           "stable": false
         },
         "tondelier": {
-          "mean": 0.000025149687797435497,
-          "lo": -0.000015525227299958255,
-          "hi": 0.0000752509674367569,
+          "mean": 0.0001194099675498721,
+          "lo": -0.000057316830067043656,
+          "hi": 0.00029488009340959746,
           "stable": false
         },
         "roussel": {
-          "mean": 0.0000029962121716347817,
-          "lo": -3.5862350557558316e-7,
-          "hi": 0.000008278087435841408,
+          "mean": 0.000013951955252338315,
+          "lo": -0.00012292899247193277,
+          "hi": 0.0001770361132320582,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.00006675698502603266,
-          "lo": -0.0001364569252273014,
-          "hi": -0.000005892378199747127,
+          "mean": -0.0005483963243610271,
+          "lo": -0.0008648018706905368,
+          "hi": -0.0003051506999859001,
           "stable": false
         },
         "lisnard": {
-          "mean": -6.547106835716321e-7,
-          "lo": -0.000028358233996012737,
-          "hi": 0.00001995930847955818,
+          "mean": -0.0003661819242747486,
+          "lo": -0.0006547529126670641,
+          "hi": -0.00015862445469292885,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.000006700740647107555,
-          "lo": -0.00008493382817046948,
-          "hi": 0.00006479549405409098,
+          "mean": -0.0006416480288228974,
+          "lo": -0.0009620492055718337,
+          "hi": -0.0003309575252796917,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": 0.000005739913946295826,
-          "lo": -3.375064668800024e-7,
-          "hi": 0.000013945232691331443,
+          "mean": -0.0002549824821667787,
+          "lo": -0.0004371164467925782,
+          "hi": -0.00010333389225857536,
           "stable": false
         },
         "arthaud": {
-          "mean": 7.466906966637363e-7,
-          "lo": -3.828507306806282e-7,
-          "hi": 0.0000024129428616576624,
+          "mean": 0.000010753244980567667,
+          "lo": -0.000002714686229889542,
+          "hi": 0.00003288365420372632,
           "stable": false
         },
         "abstention": {
-          "mean": -0.00009334085536700312,
-          "lo": -0.00048497427756201764,
-          "hi": 0.0002166703235980949,
+          "mean": 0.002489038505812983,
+          "lo": 0.0011230478077008529,
+          "hi": 0.004017606771725703,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Employés et ouvriers urbains hommes de 35 à 49 ans habitant Paris",
+      "matchedCount": 1544,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 1,
+          "noClearChange": 46
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.251830919080919,
+          "after": 0.2518821809186544,
+          "change": 0.00005126183773540571
+        },
+        "philippe": {
+          "before": 0.10149375624375627,
+          "after": 0.10059457258548034,
+          "change": -0.0008991836582759316
+        },
+        "attal": {
+          "before": 0.027623251748251764,
+          "after": 0.02756264379541246,
+          "change": -0.0000606079528393047
+        },
+        "glucksmann": {
+          "before": 0.09068188061938061,
+          "after": 0.09092217631227349,
+          "change": 0.00024029569289288344
+        },
+        "melenchon": {
+          "before": 0.16754601648351644,
+          "after": 0.16870080131069132,
+          "change": 0.0011547848271748762
+        },
+        "tondelier": {
+          "before": 0.020498751248751258,
+          "after": 0.021174489965642338,
+          "change": 0.0006757387168910799
+        },
+        "roussel": {
+          "before": 0.013999125874125882,
+          "after": 0.014159700717255086,
+          "change": 0.00016057484312920374
+        },
+        "retailleau": {
+          "before": 0.040873251748251765,
+          "after": 0.040054402053608475,
+          "change": -0.0008188496946432908
+        },
+        "lisnard": {
+          "before": 0.024061500999000996,
+          "after": 0.023857113208959557,
+          "change": -0.00020438779004143884
+        },
+        "zemmour": {
+          "before": 0.03111950549450551,
+          "after": 0.031037757440686695,
+          "change": -0.000081748053818817
+        },
+        "dupont-aignan": {
+          "before": 0.013122752247752252,
+          "after": 0.01292652642897067,
+          "change": -0.000196225818781582
+        },
+        "arthaud": {
+          "before": 0.005874375624375626,
+          "after": 0.005850303708916889,
+          "change": -0.000024071915458737103
+        },
+        "abstention": {
+          "before": 0.2112749125874126,
+          "after": 0.21127733155344822,
+          "change": 0.000002418966035616643
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 48
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {}
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je vois passer ces manifs souvent dans le quartier, ça crée du désordre, mais je comprends que certains veulent se faire entendre, même si ça bouffe la circulation.",
+        "Une manif comme ça, ça me stresse un peu, surtout dans Paris où je bosse. Mais ça fait partie de la démocratie, je suis partagé entre comprendre les revendications et vouloir être tranquille.",
+        "Je ne m'intéresse pas trop à ces manifs, ça gêne un peu mais ce n'est pas lié directement à ma vie, alors ça ne changera pas mon vote."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.00005126183773534326,
+          "lo": -0.0011059172128357754,
+          "hi": 0.00128784450677277,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0008991836582759269,
+          "lo": -0.0016493040423525617,
+          "hi": -0.00020937385793402385,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00006060795283929256,
+          "lo": -0.0003482679009867312,
+          "hi": 0.00022627500685566907,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00024029569289286262,
+          "lo": -0.00042680464694530253,
+          "hi": 0.0010459729240961937,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0011547848271748113,
+          "lo": 0.000027214766788992196,
+          "hi": 0.0023235850441244306,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0006757387168910821,
+          "lo": 0.00019458438824626712,
+          "hi": 0.0012438465428535439,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00016057484312920775,
+          "lo": -0.00011004281962642805,
+          "hi": 0.000475588261943931,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008188496946432818,
+          "lo": -0.0012565359843061412,
+          "hi": -0.0004059642137555733,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00020438779004144353,
+          "lo": -0.00045237797261537854,
+          "hi": -0.00003373853119573579,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00008174805381880731,
+          "lo": -0.00036827933497782673,
+          "hi": 0.0002291876925141853,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0001962258187815808,
+          "lo": -0.00044227800137277743,
+          "hi": -0.000030198685533597026,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000024071915458736415,
+          "lo": -0.00006694919744789827,
+          "hi": 0.0000028837517533334494,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0000024189660357085835,
+          "lo": -0.002145753622604676,
+          "hi": 0.002128119132901935,
           "stable": false
         }
       }
     },
     "segment_4": {
       "segmentId": "segment_4",
-      "segmentName": "Femmes seules de 25 à 49 ans en milieu urbain dense parisien",
-      "matchedCount": 3683,
+      "segmentName": "Jeunes sans activité professionnelle vivant seuls en communes denses à Paris",
+      "matchedCount": 5998,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -960,8 +1301,8 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 3,
-          "away": 0,
+          "toward": 2,
+          "away": 1,
           "noClearChange": 45
         }
       },
@@ -1027,95 +1368,181 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 3,
-          "away": 0,
+          "toward": 2,
+          "away": 1,
           "noClearChange": 45
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.20942101113563272,
+          "after": 0.2106991932132375,
+          "change": 0.0012781820776047725
+        },
+        "philippe": {
+          "before": 0.10558335236643025,
+          "after": 0.10363340332349742,
+          "change": -0.0019499490429328303
+        },
+        "attal": {
+          "before": 0.029093509442189216,
+          "after": 0.028676747670064964,
+          "change": -0.00041676177212425156
+        },
+        "glucksmann": {
+          "before": 0.0912136522038709,
+          "after": 0.09118871510805338,
+          "change": -0.000024937095817523236
+        },
+        "melenchon": {
+          "before": 0.15343799657054927,
+          "after": 0.1569960608805764,
+          "change": 0.0035580643100271425
+        },
+        "tondelier": {
+          "before": 0.02048843010046873,
+          "after": 0.021890656010970955,
+          "change": 0.0014022259105022257
+        },
+        "roussel": {
+          "before": 0.014551295232513297,
+          "after": 0.014885431271616014,
+          "change": 0.00033413603910271636
+        },
+        "retailleau": {
+          "before": 0.03754374677712744,
+          "after": 0.036287343745670816,
+          "change": -0.0012564030314566252
+        },
+        "lisnard": {
+          "before": 0.02221473403995648,
+          "after": 0.02107986444439428,
+          "change": -0.0011348695955622004
+        },
+        "zemmour": {
+          "before": 0.026445473428059096,
+          "after": 0.025410582753908614,
+          "change": -0.001034890674150482
+        },
+        "dupont-aignan": {
+          "before": 0.010723968650336249,
+          "after": 0.010486988158093418,
+          "change": -0.00023698049224283105
+        },
+        "arthaud": {
+          "before": 0.005333821806309032,
+          "after": 0.005320300471163206,
+          "change": -0.000013521335145825868
+        },
+        "abstention": {
+          "before": 0.27394900824655727,
+          "after": 0.273444712948753,
+          "change": -0.0005042952978042692
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 5
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 43
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas vraiment concernée par ce genre de manifestation à Paris, ça ne change rien à mes opinions ou à mon vote.",
-        "Cette manifestation à Paris ne m'affecte pas, je suis plus préoccupée par les questions locales et le travail. Ça ne m'incite pas à changer mon vote.",
-        "Habitant Paris, cette inversion de parcours de manifestation ne m'intéresse pas vraiment. C'est surtout une affaire de circulation, ça ne changera pas mon choix aux présidentielles."
+        "Je ne suis pas vraiment concerné par la grève à Paris, ça ne change pas grand-chose à ma vie à Lyon.",
+        "À Paris, les manifs, c'est assez courant, mais réduire le parcours ça limite les perturbations, c'est sans doute mieux pour ceux qui travaillent, comme moi.",
+        "Cette manifestation à Paris n'est pas mon truc, mais je comprends qu'ils réduisent le parcours pour éviter trop de désagréments."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.0003155222417236565,
-          "lo": -0.00003530533565938911,
-          "hi": 0.0008212381500615276,
+          "mean": 0.001278182077604778,
+          "lo": 0.00026618852665419686,
+          "hi": 0.0024199743803189964,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0006206569239815728,
-          "lo": -0.0010958656627204696,
-          "hi": -0.00022956742995942624,
+          "mean": -0.0019499490429328397,
+          "lo": -0.0027037479621144305,
+          "hi": -0.0011913706306785974,
           "stable": false
         },
         "attal": {
-          "mean": -0.00018838817201718852,
-          "lo": -0.0003280488467605036,
-          "hi": -0.00006699941230463346,
+          "mean": -0.0004167617721242389,
+          "lo": -0.0008550207334204495,
+          "hi": -0.000021734090007320277,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.00023984998778661323,
-          "lo": -0.0005275855488197258,
-          "hi": 0.00009918211917467074,
+          "mean": -0.00002493709581755504,
+          "lo": -0.0008065098485529922,
+          "hi": 0.000803527220401605,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0001986962193681168,
-          "lo": -0.0008653096107394635,
-          "hi": 0.0004681409060958916,
+          "mean": 0.003558064310027136,
+          "lo": 0.0023453333512907064,
+          "hi": 0.004910300572715422,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.00011979298373235871,
-          "lo": -0.000458061960205929,
-          "hi": 0.0002218230857735054,
+          "mean": 0.0014022259105022233,
+          "lo": 0.0008717926959671829,
+          "hi": 0.0020579216224449223,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0002603551342302536,
-          "lo": -0.0004600696409026773,
-          "hi": -0.0001067040257615002,
+          "mean": 0.0003341360391027173,
+          "lo": 0.00006034244316645851,
+          "hi": 0.0006399194484165261,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.00032209214174979013,
-          "lo": -0.0005769350711924417,
-          "hi": -0.0001198512294370705,
+          "mean": -0.001256403031456638,
+          "lo": -0.001667045035801883,
+          "hi": -0.0008780566183284633,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0002468801087697377,
-          "lo": -0.00042787920678731203,
-          "hi": -0.00009279925451559851,
+          "mean": -0.0011348695955621935,
+          "lo": -0.0015751112028821442,
+          "hi": -0.0007657012554580846,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.00007458087060264078,
-          "lo": -0.0001558184868893852,
-          "hi": -0.0000072350449338271705,
+          "mean": -0.0010348906741504827,
+          "lo": -0.0013855770459798749,
+          "hi": -0.0006116862260025785,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0001710771889521235,
-          "lo": -0.0002844646942903233,
-          "hi": -0.00006436946889540226,
+          "mean": -0.00023698049224283354,
+          "lo": -0.0003819559227553227,
+          "hi": -0.0001150183370009137,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.0000657222191344334,
-          "lo": -0.00013194008621511964,
-          "hi": -0.0000010397183431473775,
+          "mean": -0.00001352133514582773,
+          "lo": -0.00009347344305612195,
+          "hi": 0.000058685820684294467,
           "stable": false
         },
         "abstention": {
-          "mean": 0.0021925697086011635,
-          "lo": -0.00003195181824712396,
-          "hi": 0.004937938052333229,
+          "mean": -0.0005042952978041917,
+          "lo": -0.002655995323647374,
+          "hi": 0.0018764399518495286,
           "stable": false
         }
       }
@@ -1124,6 +1551,6 @@
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "6ad1abc61fa5fff532dc16e623d11677931875504c0a03c3d7fe818c6c81ca47"
+    "contentHash": "0f1db7ed2249f2d3060f5cb24b2eac50156fba95aa29ef4d091a59073962482e"
   }
 }

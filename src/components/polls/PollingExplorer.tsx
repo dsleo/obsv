@@ -47,7 +47,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
     x: number;
     y: number;
   } | null>(null);
-  const [selectedPoll, setSelectedPoll] = useState<{ observation: PollObservation; candidate: string; value: number } | null>(null);
+  const [selectedPoll, setSelectedPoll] = useState<{ observation: PollObservation; candidate: string; x: number; y: number } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -258,7 +258,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           onBlur={() => setHoveredPoint(null)}
                           onClick={() => {
                             const poll = pollObservations.find((observation) => observation.day === point.day && observation.values[candidate.id] !== undefined) ?? null;
-                            setSelectedPoll(poll ? { observation: poll, candidate: candidate.name, value: poll.values[candidate.id]! } : null);
+                            setSelectedPoll(poll ? { observation: poll, candidate: candidate.name, x: hoveredPoint?.x ?? 120, y: hoveredPoint?.y ?? 20 } : null);
                           }}
                         >
                           <title>{`${candidate.name} · ${formatShortDate(dayToIso(point.day))} · ${formatPct(point.value)}`}</title>
@@ -281,7 +281,7 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                           onPointerLeave={() => { if (!selectedPoll) setHoveredPoint(null); }}
                           onFocus={(focusEvent) => revealPoint(candidate, observedPoint, focusEvent.currentTarget)}
                           onBlur={() => setHoveredPoint(null)}
-                          onClick={() => setSelectedPoll({ observation: poll, candidate: candidate.name, value: observedPoint.value })}
+                          onClick={() => setSelectedPoll({ observation: poll, candidate: candidate.name, x: hoveredPoint?.x ?? 120, y: hoveredPoint?.y ?? 20 })}
                         >
                           <title>{`${candidate.name} · ${formatShortDate(poll.fieldworkEnd)} · ${formatPct(observedPoint.value)} % · ${poll.pollster}`}</title>
                         </circle>
@@ -322,16 +322,15 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
             role="status"
           >
             <strong>{hoveredPoint.candidate}</strong>
-            <span>{hoveredPoint.date} · {formatPct(hoveredPoint.value)}</span>
           </div>
         )}
         {selectedPoll && (
-          <aside className="poll-source-card" aria-label="Détail du sondage sélectionné">
+          <aside className="poll-source-card" style={{ left: selectedPoll.x, top: selectedPoll.y }} aria-label="Détail du sondage sélectionné">
             <div>
-              <strong>{selectedPoll.candidate} · {formatPct(selectedPoll.value)} %</strong>
-              <span>{selectedPoll.observation.pollster} · {selectedPoll.observation.fieldworkStart ? `${formatShortDate(selectedPoll.observation.fieldworkStart)} — ` : ""}{formatShortDate(selectedPoll.observation.fieldworkEnd)} · n={selectedPoll.observation.sample.toLocaleString("fr-FR")}</span>
+              <strong>{selectedPoll.candidate}</strong>
+              <span>{selectedPoll.observation.pollster}</span>
             </div>
-            <a href={selectedPoll.observation.source.url} target="_blank" rel="noreferrer">Voir la source <span aria-hidden="true">↗</span></a>
+            <a href={selectedPoll.observation.source.url} target="_blank" rel="noreferrer" aria-label={`Ouvrir la source du sondage ${selectedPoll.observation.pollster}`} title="Ouvrir la source">↗</a>
             <button type="button" onClick={() => setSelectedPoll(null)} aria-label="Fermer le détail du sondage">×</button>
           </aside>
         )}

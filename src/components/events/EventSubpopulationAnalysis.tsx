@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { AnalysisArtifact } from "../../lib/radar/analysisArtifact";
 import { rankedSegments, type RankedSegment } from "../../lib/radar/highlights";
 import { pct, reactionText } from "../../lib/radar/labels";
+import { pollCandidates } from "../../data/chartData";
 
 function Reactions({ group }: { group: RankedSegment }) {
   const { contrast, signals } = group;
@@ -36,28 +37,39 @@ function Reactions({ group }: { group: RankedSegment }) {
 }
 
 function ReactionFlow({ group }: { group: RankedSegment }) {
-  const strongest = group.signals.slice(0, 3);
-  if (!strongest.length) return null;
-  const rowHeight = 68;
-  const height = strongest.length * rowHeight + 48;
+  const levels = group.contrast.candidateLevels;
+  const transitions = group.contrast.candidateTransitions;
+  if (!levels || !transitions) return null;
+  const labels = Object.fromEntries([...pollCandidates.map((candidate) => [candidate.id, candidate.short]), ["abstention", "Abstention"]]);
+  const keys = Object.keys(levels)
+    .filter((key) => labels[key])
+    .sort((a, b) => Math.max(levels[b].before, levels[b].after) - Math.max(levels[a].before, levels[a].after))
+    .slice(0, 8);
+  const flows = keys.flatMap((from) => keys.map((to) => ({ from, to, count: transitions[from]?.[to] ?? 0 }))).filter((flow) => flow.count > 0).sort((a, b) => b.count - a.count).slice(0, 16);
+  if (!keys.length || !flows.length) return null;
+  const rowHeight = 38;
+  const height = keys.length * rowHeight + 58;
+  const y = (key: string) => 44 + keys.indexOf(key) * rowHeight + 14;
+  const width = (value: number) => Math.max(2, (value / group.contrast.sampledCount) * 150);
   return (
-    <div className="event-reaction-flow" aria-label="Flux parallèles des mouvements directionnels les plus fréquents">
+    <div className="event-reaction-flow" aria-label="Flux parallèles des intentions de vote simulées">
       <div className="event-reaction-flow-head"><span>Avant l’événement</span><span>Après l’événement</span></div>
-      <svg viewBox={`0 0 720 ${height}`} role="img" aria-label="Flux de profils simulés avant et après l’événement">
-        <text x="22" y="22" className="event-reaction-flow-axis">Intention simulée</text>
-        <text x="468" y="22" className="event-reaction-flow-axis">Mouvement observé</text>
-        <rect x="22" y="34" width="220" height={height - 50} rx="3" className="event-reaction-flow-source" />
-        <text x="132" y={height / 2 + 4} textAnchor="middle" className="event-reaction-flow-source-label">Profils du groupe</text>
-        {strongest.map((signal, index) => {
-          const y = 58 + index * rowHeight;
-          const width = Math.max(8, (signal.count / group.contrast.sampledCount) * 96);
-          const color = signal.direction === "toward" ? "var(--orange)" : "#9aa39e";
+      <svg viewBox={`0 0 720 ${height}`} role="img" aria-label="Flux de profils simulés entre catégories de candidats avant et après l’événement">
+        <text x="22" y="24" className="event-reaction-flow-axis">Intention de vote</text>
+        <text x="540" y="24" className="event-reaction-flow-axis">Intention de vote</text>
+        {keys.map((key) => (
+          <g key={key}>
+            <rect x="164" y={y(key) - width(levels[key].before) / 2} width="16" height={width(levels[key].before)} rx="2" className="event-reaction-flow-node" />
+            <rect x="510" y={y(key) - width(levels[key].after) / 2} width="16" height={width(levels[key].after)} rx="2" className="event-reaction-flow-node after" />
+            <text x="154" y={y(key) + 4} textAnchor="end" className="event-reaction-flow-label">{labels[key]}</text>
+            <text x="538" y={y(key) + 4} className="event-reaction-flow-label">{labels[key]}</text>
+          </g>
+        ))}
+        {flows.map(({ from, to, count }) => {
+          const color = from === to ? "#89928e" : "var(--orange)";
           return (
-            <g key={`${signal.bloc}-${signal.direction}`}>
-              <path d={`M242 ${height / 2} C330 ${height / 2}, 350 ${y + 8}, 430 ${y + 8}`} fill="none" stroke={color} strokeOpacity=".72" strokeWidth={width} />
-              <rect x="430" y={y - 4} width="18" height="24" rx="2" fill={color} />
-              <text x="462" y={y + 12} className="event-reaction-flow-label">{signal.label}</text>
-              <text x="690" y={y + 12} textAnchor="end" className="event-reaction-flow-value">{pct(signal.count, signal.sampled)}</text>
+            <g key={`${from}-${to}`}>
+              <path d={`M180 ${y(from)} C290 ${y(from)}, 400 ${y(to)}, 510 ${y(to)}`} fill="none" stroke={color} strokeOpacity=".55" strokeWidth={width(count)} />
             </g>
           );
         })}

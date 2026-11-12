@@ -4,72 +4,37 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "138609b91ecf566c",
+  "inputHash": "b5159f908bb11fa2",
   "eventInputHash": "881116fb5698e55d170d11280b3bd12aa750eb5b9b154124e4ff455b1f052e0f",
-  "computedAt": "2026-11-12T13:50:18.015Z",
+  "computedAt": "2026-11-12T16:16:28.821Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Incendie d’un lycée à Nantes : un seul élève de 16 ans est mis en examen, les enquêteurs excluant l'implication d'autres mineurs.",
-    "whatChanges": "La responsabilité limitée à un seul élève modère la perception d’un problème généralisé parmi les jeunes, atténuant l'inquiétude des parents et citoyens sur la sécurité dans les établissements scolaires."
+    "description": "Incendie d’un lycée à Nantes : les deux élèves de 16 ans suspectés sont placés sous contrôle judiciaire sans mise en examen, avec une enquête approfondie en cours.",
+    "whatChanges": "Le fait que les élèves ne soient pas mis en examen tout de suite pourrait réduire la stigmatisation initiale et modifier la perception des élèves et des parents sur la gravité de l’accusation."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Adolescents de 15 à 17 ans scolarisés en commune dense",
-      "mechanism": "Les élèves âgés de 15 à 17 ans et scolarisés dans des communes denses, potentiellement touchés par l'incendie du lycée à Nantes et concernés par les mises en examen des deux élèves de 16 ans.",
-      "reason": "Ce segment regroupe les jeunes proches de l'âge des inculpés, vivant en milieu urbain dense où se situe Nantes, donc directement concernés par l'incident et ses répercussions.",
+      "name": "Adolescents des communes denses proches de Nantes",
+      "mechanism": "L'incendie du lycée à Nantes concerne directement les adolescents scolarisés dans des communes urbaines à forte densité, car ils partagent le même environnement géographique et social que les élèves mis en examen de 16 ans, ainsi que le corps scolaire local susceptible d'être affecté par l'événement.",
+      "reason": "Ce groupe regroupe les personnes âgées de 18 à 24 ans vivant dans des communes denses où se trouve Nantes, un public jeune proche de l'âge des élèves impliqués, directement concerné par le climat scolaire et la sécurité dans la région.",
       "all": [
         "age.18_24",
         "geo.dense"
       ],
-      "any": [
-        "education.baccalaureate",
-        "education.cap_bep",
-        "education.brevet"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Connaissance de l'incendie au lycée",
-        "Opinion sur les mesures judiciaires",
-        "Sentiment de sécurité dans l'établissement"
+        "Sentiment de sécurité au lycée",
+        "Connaissance de l'incendie",
+        "Opinion sur la gestion de l'événement"
       ],
-      "count": 10101,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [
-        "Lacune « âge précis 16 ans » ignorée : cet attribut existe déjà dans les tags"
-      ],
-      "counterfactual": {
-        "intervention": "Incendie d’un lycée à Nantes : deux élèves de 16 ans mis en examen",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_2",
-      "name": "Parents d'élèves en couple avec enfants en communes denses",
-      "mechanism": "Parents vivant en couple avec enfants en âge scolaire, résidant en communes denses, donc concernés par la sécurité dans les établissements scolaires suite à l'incendie du lycée à Nantes.",
-      "reason": "Ce groupe représente la base familiale directement concernée par l'accident, pouvant influencer les débats locaux sur la sécurité scolaire et la responsabilité des jeunes impliqués.",
-      "all": [
-        "household.couple_with_children",
-        "geo.dense"
-      ],
-      "any": [
-        "age.35_49",
-        "age.50_64"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Préoccupation pour la sécurité des enfants en milieu scolaire",
-        "Attitude envers la justice pour les mineurs impliqués"
-      ],
-      "count": 24731,
+      "count": 14650,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -80,24 +45,78 @@
       }
     },
     {
-      "id": "segment_3",
-      "name": "Jeunes sans activité professionnelle de 18 à 24 ans en communes urbaines",
-      "mechanism": "Jeunes sans activité professionnelle âgés de 18 à 24 ans, habitant en communes urbaines, susceptibles d'avoir une proximité sociale avec les élèves impliqués dans l'incendie du lycée à Nantes et concernés par les répercussions sociales de l'événement.",
-      "reason": "Ce segment correspond à un public jeune proche de la situation des élèves mis en examen, exposé aux débats sur les responsabilités et mesures de prévention en milieu scolaire urbain.",
+      "id": "segment_2",
+      "name": "Jeunes employés urbains en cohabitation",
+      "mechanism": "Les jeunes actifs employés vivant en couple sans enfants dans des zones urbaines denses peuvent être sensibles à l'événement car ils sont souvent parents de futurs élèves ou ont des liens sociaux avec le lycée touché, et sont ainsi concernés par les questions de sécurité et d'éducation locale.",
+      "reason": "Ce groupe rassemble les jeunes de 25 à 34 ans employés, vivant en couple sans enfant dans des communes denses, représentant un segment urbain potentiel très concerné par la sécurité et la vie locale autour du lycée nantais.",
       "all": [
-        "cluster.young_without_activity",
-        "geo.dense",
-        "age.18_24"
+        "age.25_34",
+        "occupation.employee",
+        "household.couple_no_children",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Sentiment d'implication dans l'affaire",
-        "Opinion sur les sanctions judiciaires"
+        "Préoccupation pour la sécurité locale",
+        "Lien avec le lycée",
+        "Confiance dans les autorités éducatives"
       ],
-      "count": 8453,
-      "distinctCommunes": 72,
+      "count": 1113,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Incendie d’un lycée à Nantes : deux élèves de 16 ans mis en examen",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Parents de famille en couple de 35 à 49 ans dans les communes de plus de 1000 habitants",
+      "mechanism": "Parents de jeunes lycéens concernés par l'incendie du lycée à Nantes, résidant dans des communes importantes pour capter l'impact familial local lié à cet événement",
+      "reason": "Remplacement plus restreint du segment rejeté trop large pour cause d'effectif",
+      "all": [
+        "household.couple_with_children",
+        "commune_size.1000_plus",
+        "age.35_49"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers l'incendie et ses conséquences"
+      ],
+      "count": 17800,
+      "distinctCommunes": 119,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Incendie d’un lycée à Nantes : deux élèves de 16 ans mis en examen",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Parents de famille en couple de 25 à 34 ans dans les communes de plus de 1000 habitants",
+      "mechanism": "Parents jeunes de lycéens potentiellement concernés par l'incendie, résidant en communes de taille moyenne à grande, pour saisir une tranche d'âge parentale plus jeune que le segment rejeté",
+      "reason": "Segmentation plus fine par âge pour réduire l'effectif du segment trop large rejeté",
+      "all": [
+        "household.couple_with_children",
+        "commune_size.1000_plus",
+        "age.25_34"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception locale de l'incendie du lycée"
+      ],
+      "count": 8479,
+      "distinctCommunes": 119,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -118,8 +137,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Adolescents de 15 à 17 ans scolarisés en commune dense",
-      "matchedCount": 10101,
+      "segmentName": "Adolescents des communes denses proches de Nantes",
+      "matchedCount": 14650,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -136,8 +155,8 @@
         },
         "center": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "right": {
           "toward": 0,
@@ -150,16 +169,16 @@
           "noClearChange": 41
         },
         "abstention": {
-          "toward": 2,
-          "away": 4,
-          "noClearChange": 42
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
         }
       },
       "candidateSummary": {
         "le-pen": {
-          "toward": 7,
+          "toward": 6,
           "away": 0,
-          "noClearChange": 41
+          "noClearChange": 42
         },
         "philippe": {
           "toward": 0,
@@ -217,103 +236,471 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 2,
-          "away": 4,
-          "noClearChange": 42
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.22570542693186035,
+          "after": 0.23319398072511535,
+          "change": 0.007488553793254998
+        },
+        "philippe": {
+          "before": 0.11056928629638868,
+          "after": 0.10820584086218264,
+          "change": -0.002363445434206038
+        },
+        "attal": {
+          "before": 0.02587159533069017,
+          "after": 0.02498920386132598,
+          "change": -0.0008823914693641896
+        },
+        "glucksmann": {
+          "before": 0.09104703037654042,
+          "after": 0.08868174409335693,
+          "change": -0.0023652862831834987
+        },
+        "melenchon": {
+          "before": 0.15684917125870593,
+          "after": 0.15252383107123685,
+          "change": -0.004325340187469079
+        },
+        "tondelier": {
+          "before": 0.01989244148214658,
+          "after": 0.01912585502029218,
+          "change": -0.0007665864618544016
+        },
+        "roussel": {
+          "before": 0.013747475487377198,
+          "after": 0.013022319428730035,
+          "change": -0.0007251560586471629
+        },
+        "retailleau": {
+          "before": 0.034328606073259785,
+          "after": 0.0336067431221667,
+          "change": -0.000721862951093083
+        },
+        "lisnard": {
+          "before": 0.02314259187476456,
+          "after": 0.02218936138109634,
+          "change": -0.0009532304936682202
+        },
+        "zemmour": {
+          "before": 0.026957926965802247,
+          "after": 0.028980412759952293,
+          "change": 0.0020224857941500453
+        },
+        "dupont-aignan": {
+          "before": 0.011187200514926575,
+          "after": 0.011161209969832879,
+          "change": -0.000025990545093695916
+        },
+        "arthaud": {
+          "before": 0.005541423537934024,
+          "after": 0.005408142772937291,
+          "change": -0.000133280764996733
+        },
+        "abstention": {
+          "before": 0.2551598238696034,
+          "after": 0.25891135493177436,
+          "change": 0.003751531062170965
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 10
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 34,
+          "le-pen": 4
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est triste et inquiétant de voir des lycéens impliqués dans un incendie, mais ça ne change pas vraiment mon opinion politique, ça me semble plus une affaire judiciaire qu'un enjeu présidentiel.",
-        "Un incendie dans un lycée, c'est dommage, même si ce n'est pas un sujet politique direct pour moi ; je reste concentré sur ce qui touche à mes valeurs et mon avenir.",
-        "C’est choquant qu’autant de jeunes soient mêlés à des actes graves. Ça renforce mon sentiment qu’il faut plus de fermeté, peut-être plus d’ordre, et ça me fait un peu pencher vers des candidats qui promettent la sécurité."
+        "C’est triste qu’on en arrive à ce genre de drames dans un lycée, surtout avec des ados impliqués. Je pense que c’est grave, mais ça ne change pas vraiment mon opinion politique.",
+        "Cette histoire d’incendie avec des jeunes mis en examen me choque un peu. Je me demande si ce n’est pas trop vite accusé, mais ça ne va pas vraiment modifier ma façon de voir les choses pour les présidentielles.",
+        "J’ai entendu parler de cet incendie. Ce genre de faits renforce chez moi la défiance envers certains jeunes et l’insécurité, donc ça peut me faire voter un peu plus pour ceux qui prônent la fermeté."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.00636943852796117,
-          "lo": 0.004041522083418283,
-          "hi": 0.008802408909417915,
-          "stable": false
+          "mean": 0.007488553793255084,
+          "lo": 0.00486326343803887,
+          "hi": 0.010226435304231937,
+          "stable": true
         },
         "philippe": {
-          "mean": -0.0014827910322660447,
-          "lo": -0.0023442411185306744,
-          "hi": -0.0005347239773042176,
+          "mean": -0.00236344543420608,
+          "lo": -0.0035415937843753065,
+          "hi": -0.0012721475744473913,
           "stable": false
         },
         "attal": {
-          "mean": -0.00043924204625128845,
-          "lo": -0.000715534786993037,
-          "hi": -0.00023874389892610632,
+          "mean": -0.0008823914693641853,
+          "lo": -0.0012727224163175486,
+          "hi": -0.000521797631719172,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0009809177575188037,
-          "lo": -0.0016549326535850882,
-          "hi": -0.00033231837751628604,
+          "mean": -0.0023652862831834817,
+          "lo": -0.0032548614151371,
+          "hi": -0.0014716632699377714,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0025123370746185873,
-          "lo": -0.0036779504311737587,
-          "hi": -0.0013097560304039886,
+          "mean": -0.00432534018746907,
+          "lo": -0.005959633978970248,
+          "hi": -0.0027644480732375108,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.000317049736313685,
-          "lo": -0.0005355668676563292,
-          "hi": -0.00007635540306069086,
+          "mean": -0.0007665864618544065,
+          "lo": -0.001088719279828552,
+          "hi": -0.0004510493794171338,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0004889632368504162,
-          "lo": -0.0006908970906561593,
-          "hi": -0.00030171331681291217,
+          "mean": -0.0007251560586471613,
+          "lo": -0.0009854006679352238,
+          "hi": -0.000496119989838111,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0008549024112070348,
-          "lo": -0.0013162789897409775,
-          "hi": -0.0004538071202752295,
+          "mean": -0.0007218629510930959,
+          "lo": -0.0010787339890440978,
+          "hi": -0.00042016819616969443,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0005495771082726356,
-          "lo": -0.0008243798676962384,
-          "hi": -0.0002817763522550299,
+          "mean": -0.0009532304936682175,
+          "lo": -0.001309336960296808,
+          "hi": -0.0006197848914388578,
           "stable": false
         },
         "zemmour": {
-          "mean": 0.000783029009253611,
-          "lo": 0.00012881251933192353,
-          "hi": 0.0015663755805578224,
+          "mean": 0.002022485794150042,
+          "lo": 0.0011101607751187231,
+          "hi": 0.002956685978096898,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0002994755737587374,
-          "lo": -0.0004863408883619801,
-          "hi": -0.00010369932441707873,
+          "mean": -0.00002599054509369539,
+          "lo": -0.00029232510951426806,
+          "hi": 0.0002706875751016979,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00018490537165152812,
-          "lo": -0.00033349493359510676,
-          "hi": -0.00005870971379523549,
+          "mean": -0.00013328076499673225,
+          "lo": -0.00024068551871363834,
+          "hi": -0.00003934313352316235,
           "stable": false
         },
         "abstention": {
-          "mean": 0.0009576938114939874,
-          "lo": -0.0020395180815168143,
-          "hi": 0.004482562377144857,
+          "mean": 0.003751531062171012,
+          "lo": 0.001404976178748901,
+          "hi": 0.006356958982094318,
           "stable": false
         }
       }
     },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes sans activité professionnelle de 18 à 24 ans en communes urbaines",
-      "matchedCount": 8453,
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Jeunes employés urbains en cohabitation",
+      "matchedCount": 1113,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.2448568967836252,
+          "after": 0.25005478702650447,
+          "change": 0.005197890242879255
+        },
+        "philippe": {
+          "before": 0.09411556052400238,
+          "after": 0.09179134257476668,
+          "change": -0.0023242179492357073
+        },
+        "attal": {
+          "before": 0.02198193439413379,
+          "after": 0.021638268533494404,
+          "change": -0.0003436658606393861
+        },
+        "glucksmann": {
+          "before": 0.08006477818326514,
+          "after": 0.07816117886263964,
+          "change": -0.0019035993206255042
+        },
+        "melenchon": {
+          "before": 0.14934113164611662,
+          "after": 0.1465696892129225,
+          "change": -0.0027714424331941323
+        },
+        "tondelier": {
+          "before": 0.017500466589143945,
+          "after": 0.016920920773505703,
+          "change": -0.0005795458156382417
+        },
+        "roussel": {
+          "before": 0.012104665872576694,
+          "after": 0.011726551350998024,
+          "change": -0.0003781145215786697
+        },
+        "retailleau": {
+          "before": 0.033252476560342276,
+          "after": 0.03215265881209203,
+          "change": -0.0010998177482502425
+        },
+        "lisnard": {
+          "before": 0.022606082708537627,
+          "after": 0.0217207546080285,
+          "change": -0.0008853281005091265
+        },
+        "zemmour": {
+          "before": 0.02929937571019736,
+          "after": 0.031236787938496106,
+          "change": 0.0019374122282987474
+        },
+        "dupont-aignan": {
+          "before": 0.011857496622651932,
+          "after": 0.012036446625152948,
+          "change": 0.00017895000250101566
+        },
+        "arthaud": {
+          "before": 0.005438217383983915,
+          "after": 0.005301573175712023,
+          "change": -0.0001366442082718928
+        },
+        "abstention": {
+          "before": 0.27758091702142307,
+          "after": 0.28068904050568677,
+          "change": 0.003108123484263703
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 9
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 37,
+          "le-pen": 2
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est triste de voir des jeunes impliqués dans un incendie, ça doit avoir des conséquences importantes, même si je suis loin de tout cela à Paris.",
+        "Je suis inquiète de ce qui arrive dans les lycées, ça montre un mal-être évident, mais je préfère attendre les résultats de l'enquête avant de me faire une opinion.",
+        "Je suis assez choquée par un incendie dans un lycée, ça renforce mon inquiétude pour la jeunesse et la sécurité dans ma ville."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.005197890242879339,
+          "lo": 0.0033246527861381637,
+          "hi": 0.00755274252132265,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0023242179492357,
+          "lo": -0.0032350845474711774,
+          "hi": -0.0012190922657760864,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0003436658606393842,
+          "lo": -0.0008372773438878328,
+          "hi": 0.00027657287817446543,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0019035993206255144,
+          "lo": -0.002744558850306705,
+          "hi": -0.001158206258410525,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00277144243319413,
+          "lo": -0.004280419411438203,
+          "hi": -0.0012983785800862759,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0005795458156382434,
+          "lo": -0.000937923621267529,
+          "hi": -0.00022472949709052454,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0003781145215786697,
+          "lo": -0.0006371087426558115,
+          "hi": -0.00007464875599705332,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0010998177482502496,
+          "lo": -0.0015849299664133798,
+          "hi": -0.0006592246956765782,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0008853281005091179,
+          "lo": -0.0012233103193982668,
+          "hi": -0.0006008088489516168,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.0019374122282987555,
+          "lo": 0.0012411932745644049,
+          "hi": 0.002630572928126135,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.0001789500025010166,
+          "lo": -0.00010369645827963492,
+          "hi": 0.0004750707356287732,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00013664420827189284,
+          "lo": -0.0002668262864408249,
+          "hi": -0.000029969868568225126,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0031081234842638083,
+          "lo": 0.000601986624678098,
+          "hi": 0.005624697680440722,
+          "stable": false
+        }
+      }
+    },
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Parents de famille en couple de 25 à 34 ans dans les communes de plus de 1000 habitants",
+      "matchedCount": 8479,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -339,14 +726,14 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "abstention": {
           "toward": 7,
           "away": 0,
           "noClearChange": 41
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
         }
       },
       "candidateSummary": {
@@ -411,290 +798,184 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 7,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 41
+          "noClearChange": 43
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.24221427743491353,
+          "after": 0.24731007976668684,
+          "change": 0.005095802331773314
+        },
+        "philippe": {
+          "before": 0.10160569838905265,
+          "after": 0.09782207074872067,
+          "change": -0.0037836276403319796
+        },
+        "attal": {
+          "before": 0.023906073724184723,
+          "after": 0.02311540370520977,
+          "change": -0.0007906700189749538
+        },
+        "glucksmann": {
+          "before": 0.08739581898374432,
+          "after": 0.08507205041534026,
+          "change": -0.0023237685684040638
+        },
+        "melenchon": {
+          "before": 0.15629096988874994,
+          "after": 0.1515445643101012,
+          "change": -0.004746405578648749
+        },
+        "tondelier": {
+          "before": 0.019113174367403608,
+          "after": 0.018815466042560694,
+          "change": -0.0002977083248429137
+        },
+        "roussel": {
+          "before": 0.01317285295420273,
+          "after": 0.013182186723579575,
+          "change": 0.000009333769376845477
+        },
+        "retailleau": {
+          "before": 0.03426515757747222,
+          "after": 0.033215654853377734,
+          "change": -0.0010495027240944865
+        },
+        "lisnard": {
+          "before": 0.02330191114976231,
+          "after": 0.022496692957270012,
+          "change": -0.0008052181924922998
+        },
+        "zemmour": {
+          "before": 0.02880224139494325,
+          "after": 0.030973691477009943,
+          "change": 0.002171450082066692
+        },
+        "dupont-aignan": {
+          "before": 0.011795888190951365,
+          "after": 0.011768990612556417,
+          "change": -0.00002689757839494794
+        },
+        "arthaud": {
+          "before": 0.005502090262499106,
+          "after": 0.005277574871260811,
+          "change": -0.00022451539123829502
+        },
+        "abstention": {
+          "before": 0.25263384568212,
+          "after": 0.2594055735163258,
+          "change": 0.006771727834205821
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 18,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "le-pen": 1,
+          "abstention": 28
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça m'inquiète un peu que deux jeunes soient mis en examen pour cet incendie, on entend souvent parler de violences dans les lycées, c’est triste.",
-        "Franchement, ça ne me touche pas vraiment, ce genre d'histoires dans un lycée à Nantes, moi je fais ma vie ici à Dunkerque.",
-        "C’est triste ce qui s’est passé, mais ça ne change pas vraiment ce que je pense sur les candidats, je suis juste un peu déçu que ces jeunes en viennent à ça."
+        "C’est triste qu’il y ait un incendie dans un lycée, mais deux gamins de 16 ans mis en examen, ça me paraît un peu fort sans connaître les détails.",
+        "Un incendie dans un lycée à Béziers, ça fait peur pour nos enfants, mais je préfère attendre les faits avant de juger ces jeunes mis en examen.",
+        "Ça me désole qu’il y ait un tel incident dans un lycée, mais je ne pense pas que cela change mes choix politiques, c’est pas mon problème direct."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.004867225630067613,
-          "lo": 0.0030910733728364537,
-          "hi": 0.0065213879279948745,
+          "mean": 0.005095802331773469,
+          "lo": 0.003083666213477314,
+          "hi": 0.007059863319199093,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0018848689620946865,
-          "lo": -0.0028230407415067212,
-          "hi": -0.0009639275431299977,
+          "mean": -0.003783627640332027,
+          "lo": -0.005146248669419148,
+          "hi": -0.0026773559543384847,
           "stable": false
         },
         "attal": {
-          "mean": -0.0010272293324744737,
-          "lo": -0.001317782784972114,
-          "hi": -0.0007486874977104358,
+          "mean": -0.0007906700189749498,
+          "lo": -0.0010641156540066698,
+          "hi": -0.0004960461609972508,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.002230536334848265,
-          "lo": -0.0030406470317380784,
-          "hi": -0.0014244344637810182,
+          "mean": -0.0023237685684041015,
+          "lo": -0.003200385113406404,
+          "hi": -0.0014956277372990782,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0027773896204652346,
-          "lo": -0.00386515570404718,
-          "hi": -0.0015315151928899575,
+          "mean": -0.0047464055786487335,
+          "lo": -0.0060569801747974,
+          "hi": -0.003350288062445243,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.00012757575682663947,
-          "lo": -0.0005899786134893767,
-          "hi": 0.0004533146663778487,
+          "mean": -0.0002977083248429087,
+          "lo": -0.0005692975608322093,
+          "hi": -0.000004760219074256775,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0004179073250633604,
-          "lo": -0.0007221239291965296,
-          "hi": -0.0000977261013526046,
+          "mean": 0.000009333769376844537,
+          "lo": -0.00024783593536060203,
+          "hi": 0.0003044210335399127,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0011546032179724315,
-          "lo": -0.0015215047265033546,
-          "hi": -0.0008462989715805473,
+          "mean": -0.0010495027240944898,
+          "lo": -0.0013668908033055403,
+          "hi": -0.0007066457755992359,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0009218954809773116,
-          "lo": -0.0012627730120626918,
-          "hi": -0.0005595612437992212,
+          "mean": -0.0008052181924923003,
+          "lo": -0.0010914819512591863,
+          "hi": -0.0005774014434855478,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.00019643611665839567,
-          "lo": -0.0006093714815707255,
-          "hi": 0.00029990382503070377,
+          "mean": 0.002171450082066695,
+          "lo": 0.0013480434231806589,
+          "hi": 0.0031097574816527154,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0004849479725989859,
-          "lo": -0.0006969855979910197,
-          "hi": -0.0002806847853946843,
+          "mean": -0.00002689757839494673,
+          "lo": -0.00028205436226517126,
+          "hi": 0.00024794112317423357,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00019202026957917509,
-          "lo": -0.0003128595176593375,
-          "hi": -0.00009269949948265104,
+          "mean": -0.00022451539123829363,
+          "lo": -0.0003412006023621044,
+          "hi": -0.00011881156110887137,
           "stable": false
         },
         "abstention": {
-          "mean": 0.006548184759491367,
-          "lo": 0.003864573772783776,
-          "hi": 0.00919812940292456,
-          "stable": false
-        }
-      }
-    },
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Parents d'élèves en couple avec enfants en communes denses",
-      "matchedCount": 24731,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
-        },
-        "abstention": {
-          "toward": 8,
-          "away": 1,
-          "noClearChange": 39
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 7,
-          "away": 0,
-          "noClearChange": 41
-        },
-        "philippe": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "melenchon": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 8,
-          "away": 1,
-          "noClearChange": 39
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça dramatique et inquiétant que des adolescents soient impliqués dans un incendie volontaire, ça montre un malaise dans la jeunesse d'aujourd'hui.",
-        "Ça me touche peu directement, c'est triste mais je ne pense pas que ça change vraiment mon regard sur les candidats.",
-        "Je trouve ça préoccupant. Cela nourrit mon inquiétude sur l'évolution de la jeunesse et la sécurité dans les établissements scolaires."
-      ],
-      "candidateEffect": {
-        "le-pen": {
-          "mean": 0.008110067246101305,
-          "lo": 0.0054492754634972605,
-          "hi": 0.010732242898362795,
+          "mean": 0.006771727834205755,
+          "lo": 0.004223108546835279,
+          "hi": 0.009671181763977061,
           "stable": true
-        },
-        "philippe": {
-          "mean": -0.00279883730596947,
-          "lo": -0.004027189397595745,
-          "hi": -0.001509551638662332,
-          "stable": false
-        },
-        "attal": {
-          "mean": -0.0012517990386026363,
-          "lo": -0.0017267339392152499,
-          "hi": -0.0008221940987210747,
-          "stable": false
-        },
-        "glucksmann": {
-          "mean": -0.002938989701447099,
-          "lo": -0.003882013252323301,
-          "hi": -0.002069844544449798,
-          "stable": false
-        },
-        "melenchon": {
-          "mean": -0.004478853097483587,
-          "lo": -0.006132554864076441,
-          "hi": -0.0031532217034284265,
-          "stable": false
-        },
-        "tondelier": {
-          "mean": -0.0007194638827575291,
-          "lo": -0.0009804754801161434,
-          "hi": -0.0005023510409120471,
-          "stable": false
-        },
-        "roussel": {
-          "mean": -0.0007649687337468956,
-          "lo": -0.001020899027103574,
-          "hi": -0.0005358960098573513,
-          "stable": false
-        },
-        "retailleau": {
-          "mean": -0.0012000724741035227,
-          "lo": -0.0017511277404007857,
-          "hi": -0.000729931378035507,
-          "stable": false
-        },
-        "lisnard": {
-          "mean": -0.001224296987527662,
-          "lo": -0.0018009651452217483,
-          "hi": -0.0007741235133297778,
-          "stable": false
-        },
-        "zemmour": {
-          "mean": -0.000167364130000395,
-          "lo": -0.0009558566677878083,
-          "hi": 0.0006855825150431141,
-          "stable": false
-        },
-        "dupont-aignan": {
-          "mean": -0.0007859475903971893,
-          "lo": -0.001245766575509325,
-          "hi": -0.0004484258605144859,
-          "stable": false
-        },
-        "arthaud": {
-          "mean": -0.00025165505091024134,
-          "lo": -0.00038265377707275163,
-          "hi": -0.00011945814874211945,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.00847218074684493,
-          "lo": 0.004750450221193887,
-          "hi": 0.012339126781448195,
-          "stable": false
         }
       }
     },
@@ -732,9 +1013,9 @@
           "noClearChange": 90
         },
         "abstention": {
-          "toward": 3,
+          "toward": 7,
           "away": 2,
-          "noClearChange": 91
+          "noClearChange": 87
         }
       },
       "candidateSummary": {
@@ -799,95 +1080,464 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 3,
+          "toward": 7,
           "away": 2,
-          "noClearChange": 91
+          "noClearChange": 87
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.33958753118411455,
+          "after": 0.34678369090666283,
+          "change": 0.007196159722548279
+        },
+        "philippe": {
+          "before": 0.07773438934420925,
+          "after": 0.07430445975595425,
+          "change": -0.0034299295882549985
+        },
+        "attal": {
+          "before": 0.01822790352389809,
+          "after": 0.017425494476113745,
+          "change": -0.0008024090477843429
+        },
+        "glucksmann": {
+          "before": 0.06400563109830505,
+          "after": 0.06242677309527985,
+          "change": -0.0015788580030252006
+        },
+        "melenchon": {
+          "before": 0.08126149727891635,
+          "after": 0.07942638806684585,
+          "change": -0.0018351092120705015
+        },
+        "tondelier": {
+          "before": 0.013988431660485861,
+          "after": 0.013414139381069739,
+          "change": -0.0005742922794161227
+        },
+        "roussel": {
+          "before": 0.009728385454012745,
+          "after": 0.009451686136457391,
+          "change": -0.0002766993175553536
+        },
+        "retailleau": {
+          "before": 0.035217137424070385,
+          "after": 0.03471997536577269,
+          "change": -0.0004971620582976954
+        },
+        "lisnard": {
+          "before": 0.024019658105260203,
+          "after": 0.022947190561495998,
+          "change": -0.0010724675437642044
+        },
+        "zemmour": {
+          "before": 0.0404954289480858,
+          "after": 0.04184638639210277,
+          "change": 0.0013509574440169758
+        },
+        "dupont-aignan": {
+          "before": 0.016654351220619,
+          "after": 0.01604776522295194,
+          "change": -0.0006065859976670598
+        },
+        "arthaud": {
+          "before": 0.0029370970501878826,
+          "after": 0.002821325858348616,
+          "change": -0.00011577119183926645
+        },
+        "abstention": {
+          "before": 0.27614255770783486,
+          "after": 0.27838472478094417,
+          "change": 0.0022421670731093135
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 85,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 9,
+          "le-pen": 1
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est bien triste de voir de jeunes élèves impliqués ainsi, cela me peine beaucoup. Je me demande si ce n'est pas un signe de mal-être actuel chez les jeunes.",
-        "Je trouve ça triste pour ces jeunes et pour leur famille, mais ça ne change rien à ce que je pense de la politique.",
-        "C'est désolant que des jeunes soient mêlés à ce genre d'incident, ça pourrait refléter des problèmes dans notre société ou notre système éducatif."
+        "C'est triste qu'on en arrive à mettre en examen des adolescents pour un incendie. J'espère que la vérité sera bien éclaircie avant tout jugement.",
+        "Je ne vois pas trop ce que cette histoire a à voir avec la présidentielle, ce sont des jeunes qui font des bêtises, malheureusement c'est comme ça parfois.",
+        "Que deux jeunes soient mis en examen pour un tel acte me choque un peu, c'est alarmant sur leur avenir et notre société."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.005793160465677352,
-          "lo": 0.004396815905372684,
-          "hi": 0.007191545041937833,
+          "mean": 0.007196159722548422,
+          "lo": 0.005629886690112967,
+          "hi": 0.008682214689526528,
           "stable": true
         },
         "philippe": {
-          "mean": -0.0012264291800247965,
-          "lo": -0.0018078225915460534,
-          "hi": -0.0005954940736426921,
+          "mean": -0.0034299295882549937,
+          "lo": -0.004067683997516145,
+          "hi": -0.0028106019629555445,
           "stable": false
         },
         "attal": {
-          "mean": -0.00043740907821966424,
-          "lo": -0.0006163015244903843,
-          "hi": -0.00029039858628787045,
+          "mean": -0.0008024090477843461,
+          "lo": -0.0010575454881792368,
+          "hi": -0.000543218724254875,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.001630467004472707,
-          "lo": -0.0021300322397894748,
-          "hi": -0.0010961116848593898,
+          "mean": -0.0015788580030251947,
+          "lo": -0.0021089888302655295,
+          "hi": -0.0011095760077578793,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0030877364058181788,
-          "lo": -0.0037984143263088133,
-          "hi": -0.002409954310148818,
+          "mean": -0.0018351092120704744,
+          "lo": -0.0025974997472096462,
+          "hi": -0.001064544191898654,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.00018899591235071946,
-          "lo": -0.00042086293055418225,
-          "hi": 0.00005329303847185216,
+          "mean": -0.00057429227941613,
+          "lo": -0.0007801906119019592,
+          "hi": -0.0003592946842529798,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0006780445012250829,
-          "lo": -0.0008957476596463272,
-          "hi": -0.00048557301026273857,
+          "mean": -0.00027669931755535147,
+          "lo": -0.0004766258886589312,
+          "hi": -0.00008144860255840715,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0004731303640460639,
-          "lo": -0.0008194131130712133,
-          "hi": -0.00006564090493705822,
+          "mean": -0.0004971620582977114,
+          "lo": -0.0009751095533231452,
+          "hi": -0.00004714775272355197,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0007008741137635019,
-          "lo": -0.0009551057176392973,
-          "hi": -0.00048233674248492975,
+          "mean": -0.0010724675437642083,
+          "lo": -0.0013251600173823132,
+          "hi": -0.0008028158927701762,
           "stable": false
         },
         "zemmour": {
-          "mean": 0.000426973171362594,
-          "lo": -0.00003155995205168851,
-          "hi": 0.0009298240751283387,
+          "mean": 0.0013509574440169697,
+          "lo": 0.000867395274766387,
+          "hi": 0.0018778280409394651,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.00010067515038020577,
-          "lo": -0.0002495550984369769,
-          "hi": 0.00007797541757805328,
+          "mean": -0.0006065859976670656,
+          "lo": -0.0008245888027361595,
+          "hi": -0.00039231493695611946,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00004137453238226888,
-          "lo": -0.00009520270539324714,
-          "hi": -0.000004963372569732697,
+          "mean": -0.00011577119183926457,
+          "lo": -0.00019931391034217998,
+          "hi": -0.00004534376223682327,
           "stable": false
         },
         "abstention": {
-          "mean": 0.002345002605643258,
-          "lo": 0.0006351282515414496,
-          "hi": 0.0041696501025588325,
+          "mean": 0.0022421670731093643,
+          "lo": -0.00012101249995390834,
+          "hi": 0.004393277732025307,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Parents de famille en couple de 35 à 49 ans dans les communes de plus de 1000 habitants",
+      "matchedCount": 17800,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 1,
+          "noClearChange": 45
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.27119085294725964,
+          "after": 0.277907619950098,
+          "change": 0.006716767002838353
+        },
+        "philippe": {
+          "before": 0.09380996163040989,
+          "after": 0.09120440327640328,
+          "change": -0.0026055583540066096
+        },
+        "attal": {
+          "before": 0.022015307163032752,
+          "after": 0.021209145576134583,
+          "change": -0.0008061615868981686
+        },
+        "glucksmann": {
+          "before": 0.09266791617485692,
+          "after": 0.08896949585818498,
+          "change": -0.0036984203166719465
+        },
+        "melenchon": {
+          "before": 0.1482550206050927,
+          "after": 0.14558979599734007,
+          "change": -0.0026652246077526476
+        },
+        "tondelier": {
+          "before": 0.020308263580611424,
+          "after": 0.019917169764226916,
+          "change": -0.0003910938163845072
+        },
+        "roussel": {
+          "before": 0.01403865531049865,
+          "after": 0.013577030967143551,
+          "change": -0.0004616243433550986
+        },
+        "retailleau": {
+          "before": 0.03397060711671893,
+          "after": 0.03324327696507106,
+          "change": -0.0007273301516478731
+        },
+        "lisnard": {
+          "before": 0.023056662015139603,
+          "after": 0.02244623443447173,
+          "change": -0.0006104275806678751
+        },
+        "zemmour": {
+          "before": 0.03230533476931686,
+          "after": 0.03437687258901209,
+          "change": 0.0020715378196952336
+        },
+        "dupont-aignan": {
+          "before": 0.013309467457560302,
+          "after": 0.012836040160380797,
+          "change": -0.0004734272971795052
+        },
+        "arthaud": {
+          "before": 0.005311170332507669,
+          "after": 0.005185504997261141,
+          "change": -0.00012566533524652722
+        },
+        "abstention": {
+          "before": 0.22976078089699456,
+          "after": 0.23353740946427173,
+          "change": 0.0037766285672771738
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 28
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 18,
+          "le-pen": 2
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve cette affaire triste, surtout que ce sont encore des jeunes. Ça ne changera pas mon vote, ça me semble assez éloigné de mes préoccupations actuelles.",
+        "Cela ne me touche pas directement, même si c'est inquiétant. Je reste vigilante, mais ça ne modifie pas mon choix politique que j'ai bien en tête.",
+        "C'est triste pour ces jeunes ; je ne sais pas trop quoi penser, mais cela me semble un peu loin de mes préoccupations actuelles. Je ne change pas d'avis."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.006716767002838288,
+          "lo": 0.004152726640998788,
+          "hi": 0.009712370153589979,
+          "stable": true
+        },
+        "philippe": {
+          "mean": -0.0026055583540066543,
+          "lo": -0.0036019925792986213,
+          "hi": -0.001641662435474118,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0008061615868981711,
+          "lo": -0.001207882934490957,
+          "hi": -0.0003999719638324716,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.003698420316671959,
+          "lo": -0.004974366893174401,
+          "hi": -0.0025551424498774663,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.002665224607752646,
+          "lo": -0.0037705000097867044,
+          "hi": -0.00139305116601998,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00039109381638450223,
+          "lo": -0.0007607849340426151,
+          "hi": -0.00010329158732035703,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00046162434335509484,
+          "lo": -0.0006931000029828681,
+          "hi": -0.00026639143191295044,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007273301516478888,
+          "lo": -0.0011364480348002234,
+          "hi": -0.0003888776149813401,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.000610427580667867,
+          "lo": -0.0009448677688633705,
+          "hi": -0.0003292248642693218,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.002071537819695216,
+          "lo": 0.0013669929329817746,
+          "hi": 0.0028681221079466233,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00047342729717950535,
+          "lo": -0.000776381325234316,
+          "hi": -0.00020349924863865467,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00012566533524652768,
+          "lo": -0.00021625908697421947,
+          "hi": -0.000024730037643224247,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0037766285672773043,
+          "lo": 0.0012228159288603033,
+          "hi": 0.006513544441274927,
           "stable": false
         }
       }
@@ -896,6 +1546,6 @@
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "db8ea8dd5024c0b53f5833b8a00cd4a723cf4b924edc522d5adec7207b81680c"
+    "contentHash": "e5e9837a0c02ccffeb84e3e25f282daf5c2ad35facf72a26915beed7f3e9fc1d"
   }
 }

@@ -4,44 +4,43 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "daee5e2a46683149",
+  "inputHash": "b55685a8c78a569f",
   "eventInputHash": "8cd752b5e546b591862ad83e68a728d8b8f9467c4cd72116400c28bf4ee938fd",
-  "computedAt": "2026-11-12T13:50:36.916Z",
+  "computedAt": "2026-11-12T16:17:23.177Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Une partie significative du groupe communiste à l'Assemblée annonce ne pas soutenir Mélenchon, préférant une position d'autonomie vis-à-vis de sa candidature lors de la présidentielle.",
-    "whatChanges": "Cela maintient une division à gauche, rendant plus incertaine la consolidation des voix communistes autour de Mélenchon, et pouvant disperser les électeurs plus radicalisés ou attachés à un communisme indépendant."
+    "description": "Une partie minoritaire mais influente du groupe communiste à l'Assemblée décide de ne pas soutenir Mélenchon et de se tenir neutre afin d'éviter de diviser davantage la gauche.",
+    "whatChanges": "Cela crée une ambivalence dans le soutien communiste, diminuant la mobilisation des électeurs de gauche les plus indécis et affaiblissant la dynamique unitaire derrière Mélenchon."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains de moins de 35 ans",
-      "mechanism": "Le soutien de la majorité du groupe communiste à l'Assemblée à Mélenchon vise un électorat jeune, diplômé et urbain, qui est typiquement sensible aux propositions de la gauche radicale et souvent actif dans les grandes villes où la densité est élevée.",
-      "reason": "Intersection des jeunes adultes de moins de 35 ans vivant en commune dense avec un niveau de diplôme bac+3 ou plus, groupe connu pour son engagement politique potentiel et sa sensibilité aux propositions de Mélenchon.",
+      "name": "Jeunes actifs salariés modestes en milieu urbain dense",
+      "mechanism": "Le soutien officiel du groupe communiste à Mélenchon vise particulièrement les jeunes actifs urbains employés et ouvriers, cœur historique du vote de gauche radicale dans les zones denses comme Paris, Lyon et Marseille.",
+      "reason": "Ce segment compose l'intersection des jeunes salariés modestes, souvent sensibles aux revendications de la gauche radicale, vivant dans des communes à forte densité urbaine concernées par la dynamique électorale de Mélenchon.",
       "all": [
-        "education.bac_plus_3_4",
+        "age.18_24",
         "geo.dense"
       ],
       "any": [
-        "age.18_24",
-        "age.25_34"
+        "occupation.employee",
+        "occupation.worker"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers Jean-Luc Mélenchon",
-        "Soutien au groupe communiste à l'Assemblée",
-        "Intérêt pour la présidentielle"
+        "Soutien à Mélenchon",
+        "Attitude envers le PCF"
       ],
-      "count": 4295,
-      "distinctCommunes": 71,
+      "count": 4508,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [
-        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
       ],
       "counterfactual": {
         "intervention": "Présidentielle : la majorité du groupe communiste à l'Assemblée annonce soutenir Mélenchon",
@@ -51,29 +50,28 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes urbains de 35 à 64 ans",
-      "mechanism": "Le groupe communiste invite à soutenir Mélenchon un électorat populaire urbain constitué d'employés et ouvriers, qui se trouve souvent concerné par les politiques de gauche radicale en raison des enjeux sociaux et économiques qu'ils rencontrent.",
-      "reason": "Personnes âgées de 35 à 64 ans employées ou ouvriers en communes à forte densité, un segment qui inclut une base sociale importante qui pourrait soutenir Mélenchon suite à l'appel du groupe communiste.",
+      "name": "Jeunes diplômés urbains engagés à gauche",
+      "mechanism": "Le groupe communiste à l'Assemblée soutient Mélenchon qui attire notamment les jeunes diplômés des villes, très sensibles aux enjeux sociaux et écologiques portés par la gauche radicale et intensément présents dans les grandes agglomérations comme Paris, Lyon et Marseille.",
+      "reason": "Ce segment se caractérise par des jeunes de moins de 35 ans, bien diplômés (bac+3 ou plus) résidant en milieu urbain dense, public cible des discours progressistes et radicalisés à gauche.",
       "all": [
-        "geo.dense",
-        "occupation.employee"
+        "age.18_24",
+        "geo.dense"
       ],
       "any": [
-        "age.35_49",
-        "age.50_64"
+        "education.bac_plus_3_4",
+        "education.bac_plus_5_plus"
       ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Soutien à Mélenchon",
-        "Sensibilité aux questions sociales",
-        "Perception du groupe communiste"
+        "Intérêt pour la présidentielle",
+        "Soutien au programme Mélenchon"
       ],
-      "count": 11192,
-      "distinctCommunes": 72,
+      "count": 1478,
+      "distinctCommunes": 67,
       "status": "filterable_discovery_sample",
       "repairs": [
-        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+        "education : education.bac_plus_3_4 ou education.bac_plus_5_plus regroupés en union (« any ») ; une personne n’a qu’une seule valeur de education"
       ],
       "counterfactual": {
         "intervention": "Présidentielle : la majorité du groupe communiste à l'Assemblée annonce soutenir Mélenchon",
@@ -83,52 +81,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Jeunes familles urbaines de 25 à 49 ans",
-      "mechanism": "Les couples avec enfants vivant en milieu urbain constituent une cible clé pour le message du groupe communiste apportant son soutien à Mélenchon, car les questions de justice sociale, d'éducation et de logement y sont très présentes.",
-      "reason": "Couples avec enfants dans les tranches d'âge 25-49 ans vivant dans des communes denses, souvent concernés par la politique familiale et sociale portée par la gauche radicale comme Mélenchon.",
+      "name": "Ouvriers de 35 à 49 ans en communes intermédiaires",
+      "mechanism": "Ouvriers d'âge adulte intermédiaire (35-49 ans) vivant en communes de densité intermédiaire, population socialement exposée aux thèmes de la gauche radicale portée par le groupe communiste à l'Assemblée, susceptibles d'être directement mobilisés par le soutien à Mélenchon.",
+      "reason": "Segment resserré sur un âge unique et un type de densité, sans plusieurs unions.",
       "all": [
-        "household.couple_with_children",
-        "geo.dense"
-      ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Attitude à l'égard de Mélenchon",
-        "Priorités politiques",
-        "Impact de l'appel du groupe communiste"
-      ],
-      "count": 25109,
-      "distinctCommunes": 72,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Présidentielle : la majorité du groupe communiste à l'Assemblée annonce soutenir Mélenchon",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Jeunes agriculteurs de moins de 35 ans",
-      "mechanism": "Le groupe communiste à l'Assemblée soutenant Mélenchon peut attirer les jeunes agriculteurs, un public spécifique qui fait face à des difficultés économiques et sociales susceptibles de les rapprocher des positions de la gauche radicale.",
-      "reason": "Agriculteurs exploitants de moins de 35 ans, un groupe restreint et spécifique souvent en quête de politiques renouvelées pour l'agriculture et l'emploi, directement concerné par le message politique de Mélenchon soutenu par le groupe communiste.",
-      "all": [
-        "cluster.young_farmer"
+        "occupation.worker",
+        "age.35_49",
+        "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Soutien à Mélenchon",
-        "Perception des politiques agricoles de gauche",
-        "Impact de la prise de position du groupe communiste"
+        "Attitude envers la gauche radicale",
+        "Connaissance du soutien communiste à Mélenchon"
       ],
-      "count": 145,
-      "distinctCommunes": 42,
+      "count": 160,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -147,212 +116,18 @@
     }
   ],
   "contrasts": {
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Jeunes familles urbaines de 25 à 49 ans",
-      "matchedCount": 25109,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 2,
-          "noClearChange": 43
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "philippe": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "melenchon": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 2,
-          "noClearChange": 43
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Moi, cette annonce du groupe communiste, ça me fait un peu plaisir, j'aime bien quand les partis de gauche s'unissent plutôt que de se diviser, ça donne de la force à Mélenchon que je trouve proche des gens comme moi.",
-        "Je ne suis pas très surprise que les communistes soutiennent Mélenchon, ça confirme pour moi un certain front à gauche, cependant cette nouvelle ne change pas vraiment mon choix politique.",
-        "Vu que le groupe communiste soutient Mélenchon, ça me conforte un peu plus. Je me sens plus motivé à voter pour lui, il représente mieux mes idées que certains autres candidats."
-      ],
-      "candidateEffect": {
-        "le-pen": {
-          "mean": -0.0017858242831946109,
-          "lo": -0.0030735603239715596,
-          "hi": -0.0004763342568027378,
-          "stable": false
-        },
-        "philippe": {
-          "mean": -0.0008767959511741197,
-          "lo": -0.0015859187787397007,
-          "hi": -0.00032896444789996495,
-          "stable": false
-        },
-        "attal": {
-          "mean": -0.0001110773655972219,
-          "lo": -0.0002501982032717251,
-          "hi": 0.000014271994128128341,
-          "stable": false
-        },
-        "glucksmann": {
-          "mean": -0.0012699450547354544,
-          "lo": -0.0019379476175867937,
-          "hi": -0.0005960970545140625,
-          "stable": false
-        },
-        "melenchon": {
-          "mean": 0.007720844080649102,
-          "lo": 0.005765003878426184,
-          "hi": 0.009412293577201206,
-          "stable": true
-        },
-        "tondelier": {
-          "mean": -0.0007162758705214646,
-          "lo": -0.0012414064614465934,
-          "hi": -0.00033426514308250075,
-          "stable": false
-        },
-        "roussel": {
-          "mean": -0.00034459332778242644,
-          "lo": -0.0012646804593467763,
-          "hi": 0.0005345477258342222,
-          "stable": false
-        },
-        "retailleau": {
-          "mean": -0.0007721839792718415,
-          "lo": -0.001193857599884794,
-          "hi": -0.00046534350456798874,
-          "stable": false
-        },
-        "lisnard": {
-          "mean": -0.0005149499027456301,
-          "lo": -0.0008105514023630002,
-          "hi": -0.0002665815031652827,
-          "stable": false
-        },
-        "zemmour": {
-          "mean": -0.0005667842796085828,
-          "lo": -0.0009311392795220242,
-          "hi": -0.0002479601470504193,
-          "stable": false
-        },
-        "dupont-aignan": {
-          "mean": -0.0004129818533848637,
-          "lo": -0.0006255180722197971,
-          "hi": -0.00021002908539707933,
-          "stable": false
-        },
-        "arthaud": {
-          "mean": -0.00007223647117546689,
-          "lo": -0.00015623421172791463,
-          "hi": 0.000005298106367312381,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.0002771957414574022,
-          "lo": -0.0035684072917361704,
-          "hi": 0.0031120354511118085,
-          "stable": false
-        }
-      }
-    },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains de moins de 35 ans",
-      "matchedCount": 4295,
+      "segmentName": "Jeunes actifs salariés modestes en milieu urbain dense",
+      "matchedCount": 4508,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 3,
+          "toward": 8,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 40
         },
         "left": {
           "toward": 0,
@@ -371,12 +146,12 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "abstention": {
-          "toward": 3,
-          "away": 1,
+          "toward": 2,
+          "away": 2,
           "noClearChange": 44
         }
       },
@@ -402,9 +177,9 @@
           "noClearChange": 48
         },
         "melenchon": {
-          "toward": 3,
+          "toward": 9,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 39
         },
         "tondelier": {
           "toward": 0,
@@ -442,103 +217,192 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 3,
-          "away": 1,
+          "toward": 2,
+          "away": 2,
           "noClearChange": 44
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.2510189302041946,
+          "after": 0.24746366951889545,
+          "change": -0.0035552606852991275
+        },
+        "philippe": {
+          "before": 0.10987735271374131,
+          "after": 0.1084017938082224,
+          "change": -0.0014755589055189117
+        },
+        "attal": {
+          "before": 0.025599587459688242,
+          "after": 0.024846574409728827,
+          "change": -0.0007530130499594154
+        },
+        "glucksmann": {
+          "before": 0.08323779734620741,
+          "after": 0.08130158490313236,
+          "change": -0.0019362124430750555
+        },
+        "melenchon": {
+          "before": 0.16527989956624892,
+          "after": 0.17790900472053503,
+          "change": 0.012629105154286113
+        },
+        "tondelier": {
+          "before": 0.018185178658289402,
+          "after": 0.017786712432185166,
+          "change": -0.0003984662261042361
+        },
+        "roussel": {
+          "before": 0.012498223761922186,
+          "after": 0.012151967422223886,
+          "change": -0.0003462563396983004
+        },
+        "retailleau": {
+          "before": 0.03338764049270417,
+          "after": 0.0318611561822268,
+          "change": -0.0015264843104773745
+        },
+        "lisnard": {
+          "before": 0.02270259445227762,
+          "after": 0.021702487585202244,
+          "change": -0.0010001068670753774
+        },
+        "zemmour": {
+          "before": 0.029902353921542432,
+          "after": 0.02883969146316119,
+          "change": -0.0010626624583812416
+        },
+        "dupont-aignan": {
+          "before": 0.012440223561274506,
+          "after": 0.011695440535146885,
+          "change": -0.0007447830261276215
+        },
+        "arthaud": {
+          "before": 0.005833410926431135,
+          "after": 0.005656941354856695,
+          "change": -0.00017646957157443997
+        },
+        "abstention": {
+          "before": 0.23003680693547793,
+          "after": 0.23038297566448304,
+          "change": 0.0003461687290051141
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 22,
+          "melenchon": 2
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 21,
+          "melenchon": 1,
+          "le-pen": 2
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est rassurant que le groupe communiste soutienne Mélenchon, ça rend la gauche un peu plus claire pour moi.",
-        "Le soutien des communistes à Mélenchon peut renforcer sa crédibilité, ça me parle un peu pour la gauche, même si je reste assez distante.",
-        "Je ne suis pas très attentive aux soutiens politiques entre partis, ça ne change pas vraiment ma vision pour la présidentielle."
+        "Ça me paraît normal que les communistes soutiennent Mélenchon, ça fait sens pour unir la gauche. Ça ne va pas me faire changer d'avis car je pense surtout aux enjeux concrets de ma vie.",
+        "Je vois que les communistes soutiennent Mélenchon, ça peut aider la gauche à se rassembler. Cependant, ça ne change pas vraiment ma décision, je suis assez pragmatique et ça reste le même choix pour moi.",
+        "Je trouve que les communistes qui soutiennent Mélenchon, ça peut encourager la gauche à être plus forte. Ça me donne un peu plus envie de voter Mélenchon, sinon je serais resté un peu hésitant."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": -0.0012608671008309564,
-          "lo": -0.002244548735251689,
-          "hi": -0.00016495037559071586,
+          "mean": -0.0035552606852991796,
+          "lo": -0.0050331463860478235,
+          "hi": -0.002023506886310006,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0012457803451598629,
-          "lo": -0.0017692771481664794,
-          "hi": -0.000718133242242212,
+          "mean": -0.0014755589055189297,
+          "lo": -0.0020964576275188406,
+          "hi": -0.0009304204839420747,
           "stable": false
         },
         "attal": {
-          "mean": -0.0005852809579971432,
-          "lo": -0.0008557430848573319,
-          "hi": -0.000349034672507399,
+          "mean": -0.0007530130499594214,
+          "lo": -0.0010232385986874177,
+          "hi": -0.0004943050903750507,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0010603118672518792,
-          "lo": -0.0017237042101060061,
-          "hi": -0.0004927488687743647,
+          "mean": -0.0019362124430750615,
+          "lo": -0.0024391540658047764,
+          "hi": -0.0013719318694264543,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.00904728742168646,
-          "lo": 0.007034807146262659,
-          "hi": 0.011511544013617815,
+          "mean": 0.012629105154286177,
+          "lo": 0.010726075861808676,
+          "hi": 0.014700876649910065,
           "stable": true
         },
         "tondelier": {
-          "mean": -0.0005495127431796455,
-          "lo": -0.0007930248194333011,
-          "hi": -0.0002915571652778201,
+          "mean": -0.00039846622610423325,
+          "lo": -0.0006930985877936155,
+          "hi": -0.00011966013009326102,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0010643916098508023,
-          "lo": -0.0014976948986289735,
-          "hi": -0.0006791428261990668,
+          "mean": -0.0003462563396983026,
+          "lo": -0.0006840906926311928,
+          "hi": 0.0000023088912417007753,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0014008996922138504,
-          "lo": -0.0018063522177497791,
-          "hi": -0.0009738695054964357,
+          "mean": -0.0015264843104773648,
+          "lo": -0.0019139386770138736,
+          "hi": -0.0011613613498095863,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0006355128963250702,
-          "lo": -0.0009142745492961339,
-          "hi": -0.0003736450199647674,
+          "mean": -0.0010001068670753754,
+          "lo": -0.0012263940709277552,
+          "hi": -0.0007621129087949308,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0008888517031541993,
-          "lo": -0.0012723357626143246,
-          "hi": -0.0005327134457211019,
+          "mean": -0.0010626624583812449,
+          "lo": -0.0013459693588076084,
+          "hi": -0.0007795287747393846,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0006807863481170288,
-          "lo": -0.0009080967996689381,
-          "hi": -0.0004345454880249052,
+          "mean": -0.0007447830261276201,
+          "lo": -0.0009295419331085538,
+          "hi": -0.0005632459840719729,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.0002912958608078192,
-          "lo": -0.00044484921385133956,
-          "hi": -0.00016522373552644592,
+          "mean": -0.00017646957157443823,
+          "lo": -0.0002906130970605814,
+          "hi": -0.00006893701114333573,
           "stable": false
         },
         "abstention": {
-          "mean": 0.0006162037032018224,
-          "lo": -0.0022674770660806396,
-          "hi": 0.003528517540023157,
+          "mean": 0.00034616872900500306,
+          "lo": -0.0026543741599932176,
+          "hi": 0.003309823895888593,
           "stable": false
         }
       }
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes urbains de 35 à 64 ans",
-      "matchedCount": 11192,
+      "segmentName": "Jeunes diplômés urbains engagés à gauche",
+      "matchedCount": 1478,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -565,12 +429,12 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
+          "toward": 0,
+          "away": 1,
           "noClearChange": 47
         }
       },
@@ -636,95 +500,464 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
-          "away": 0,
+          "toward": 0,
+          "away": 1,
           "noClearChange": 47
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.21186095868004298,
+          "after": 0.21062250258048845,
+          "change": -0.0012384560995545302
+        },
+        "philippe": {
+          "before": 0.12894927283876864,
+          "after": 0.1285775999582698,
+          "change": -0.00037167288049883007
+        },
+        "attal": {
+          "before": 0.030185356826235132,
+          "after": 0.030065913077136946,
+          "change": -0.00011944374909818659
+        },
+        "glucksmann": {
+          "before": 0.09782568036819005,
+          "after": 0.09651757006354027,
+          "change": -0.0013081103046497788
+        },
+        "melenchon": {
+          "before": 0.16224142047027715,
+          "after": 0.17295804052504357,
+          "change": 0.010716620054766424
+        },
+        "tondelier": {
+          "before": 0.021394072063378993,
+          "after": 0.02075173062795004,
+          "change": -0.0006423414354289544
+        },
+        "roussel": {
+          "before": 0.014748791673830627,
+          "after": 0.014725114604337472,
+          "change": -0.000023677069493155747
+        },
+        "retailleau": {
+          "before": 0.03705826358749769,
+          "after": 0.035794121130113286,
+          "change": -0.001264142457384404
+        },
+        "lisnard": {
+          "before": 0.02520537084923667,
+          "after": 0.02461924816331178,
+          "change": -0.0005861226859248878
+        },
+        "zemmour": {
+          "before": 0.025289907442254303,
+          "after": 0.02489094784458329,
+          "change": -0.0003989595976710142
+        },
+        "dupont-aignan": {
+          "before": 0.010457388534370095,
+          "after": 0.010105928156488014,
+          "change": -0.00035146037788208115
+        },
+        "arthaud": {
+          "before": 0.00577040418233683,
+          "after": 0.0057510403081581195,
+          "change": -0.000019363874178710862
+        },
+        "abstention": {
+          "before": 0.2290131124835808,
+          "after": 0.22462024296057884,
+          "change": -0.004392869523001969
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 15
+        },
+        "philippe": {
+          "melenchon": 1
+        },
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {
+          "melenchon": 3
+        },
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 28,
+          "le-pen": 1
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je suis contente que le groupe communiste soutienne Mélenchon, ça montre une certaine unité à gauche, ça peut peut-être renforcer son camp.",
-        "Ce genre d'accord ou de divisions entre la gauche, ça ne change pas trop mon vote, je regarde plus du côté du FN ici, c'est important pour moi.",
-        "Je ne suis pas surprise que les communistes se rallient à Mélenchon, cela pourrait renforcer sa campagne à gauche. C'est logique pour moi."
+        "Ça m'intéresse un peu, même si je suis plutôt distante des débats politiques à cause de mon travail et de ma vie perso. Le soutien des communistes à Mélenchon pourrait peut-être renforcer sa voix, même si ici à Béziers les score de Le Pen reste fort.",
+        "C’est intéressant que les communistes se rallient à Mélenchon, ça peut solidifier la gauche dans une campagne déjà bien tendue. Je suis assez pro-gauche moi, alors ça m’encourage un peu à voter Mélenchon.",
+        "Je trouve ça bien que le groupe communiste montre son soutien à Mélenchon, ça peut rassembler la gauche. Pour moi c’est important car je suis assez à gauche dans mes idées, même si j'essaie de rester pragmatique."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": -0.004112134152655901,
-          "lo": -0.005653248580345251,
-          "hi": -0.0024347435521827124,
+          "mean": -0.001238456099554414,
+          "lo": -0.0024735559005553583,
+          "hi": 0.00010861197110506708,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0007422076555830596,
-          "lo": -0.0013165110685764289,
-          "hi": -0.0002755722547336881,
+          "mean": -0.00037167288049881907,
+          "lo": -0.0008845384432922456,
+          "hi": 0.00005339397308064987,
           "stable": false
         },
         "attal": {
-          "mean": -0.00005255771683258557,
-          "lo": -0.00015936596730199213,
-          "hi": 0.00004826645232884221,
+          "mean": -0.00011944374909819706,
+          "lo": -0.0002941174053199893,
+          "hi": 0.000060267353845725965,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0012392454248066267,
-          "lo": -0.0019365049039717505,
-          "hi": -0.0006988656385393239,
+          "mean": -0.0013081103046497713,
+          "lo": -0.0018539926686276954,
+          "hi": -0.0007747297259829497,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.008506636644245552,
-          "lo": 0.006867352234695586,
-          "hi": 0.010043717680007442,
+          "mean": 0.010716620054766446,
+          "lo": 0.00925322008443436,
+          "hi": 0.012171502162197983,
           "stable": true
         },
         "tondelier": {
-          "mean": -0.0002638831934490367,
-          "lo": -0.0004472440588991345,
-          "hi": -0.00010754108615238372,
+          "mean": -0.0006423414354289515,
+          "lo": -0.000980048383041634,
+          "hi": -0.0003206595790518348,
           "stable": false
         },
         "roussel": {
-          "mean": -0.001197325401598492,
-          "lo": -0.0017627484174381287,
-          "hi": -0.0006104571076901373,
+          "mean": -0.00002367706949314888,
+          "lo": -0.0006641021904553902,
+          "hi": 0.0005743995412726671,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0008302649394040709,
-          "lo": -0.001212638971840069,
-          "hi": -0.0005146053483104327,
+          "mean": -0.0012641424573844077,
+          "lo": -0.0016192564130377786,
+          "hi": -0.0008677707258539996,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0005881141462088513,
-          "lo": -0.0009537994927336372,
-          "hi": -0.00031236981088646356,
+          "mean": -0.0005861226859248872,
+          "lo": -0.0008375031380745103,
+          "hi": -0.00039193965985823354,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0009167242846353255,
-          "lo": -0.001361699293356856,
-          "hi": -0.0005048863384287081,
+          "mean": -0.00039895959767101874,
+          "lo": -0.0006483694059408384,
+          "hi": -0.0001489518291056958,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0005290620950778601,
-          "lo": -0.0007082136772670672,
-          "hi": -0.00032238583413701853,
+          "mean": -0.00035146037788207665,
+          "lo": -0.0005106216114713772,
+          "hi": -0.0001820302324703295,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00005090438532104593,
-          "lo": -0.00012747995269504075,
-          "hi": 0.000012356690251635603,
+          "mean": -0.000019363874178712732,
+          "lo": -0.00010462367799129388,
+          "hi": 0.0000480823249869424,
           "stable": false
         },
         "abstention": {
-          "mean": 0.0020157867513273114,
-          "lo": -0.00013588468788049377,
-          "hi": 0.004301407165013718,
+          "mean": -0.004392869523002032,
+          "lo": -0.006575370871903403,
+          "hi": -0.0023524615669740898,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Ouvriers de 35 à 49 ans en communes intermédiaires",
+      "matchedCount": 160,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.4370556772441195,
+          "after": 0.43328491209271053,
+          "change": -0.00377076515140895
+        },
+        "philippe": {
+          "before": 0.052707756992275236,
+          "after": 0.052696188804057686,
+          "change": -0.00001156818821754918
+        },
+        "attal": {
+          "before": 0.012353870251056677,
+          "after": 0.012431008520398608,
+          "change": 0.0000771382693419316
+        },
+        "glucksmann": {
+          "before": 0.060538726174507666,
+          "after": 0.05956149498902927,
+          "change": -0.0009772311854783985
+        },
+        "melenchon": {
+          "before": 0.10402440345774089,
+          "after": 0.11286067820839231,
+          "change": 0.008836274750651421
+        },
+        "tondelier": {
+          "before": 0.013082642190544723,
+          "after": 0.012909077822508204,
+          "change": -0.00017356436803651898
+        },
+        "roussel": {
+          "before": 0.009166053766560493,
+          "after": 0.009982387815047084,
+          "change": 0.0008163340484865916
+        },
+        "retailleau": {
+          "before": 0.016312228526425977,
+          "after": 0.016140173206199544,
+          "change": -0.000172055320226433
+        },
+        "lisnard": {
+          "before": 0.011124722101229827,
+          "after": 0.010801855463854225,
+          "change": -0.00032286663737560173
+        },
+        "zemmour": {
+          "before": 0.05193910711971881,
+          "after": 0.051082435434746935,
+          "change": -0.0008566716849718742
+        },
+        "dupont-aignan": {
+          "before": 0.021438089385960504,
+          "after": 0.020966508995952798,
+          "change": -0.0004715803900077059
+        },
+        "arthaud": {
+          "before": 0.0038333597782545833,
+          "after": 0.0038305801628002283,
+          "change": -0.000002779615454355077
+        },
+        "abstention": {
+          "before": 0.20642336301160502,
+          "after": 0.20345269848430259,
+          "change": -0.0029706645273024357
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 48
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {}
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Franchement, entendre que les communistes de l'Assemblée soutiennent Mélenchon, ça ne me fait ni chaud ni froid, je vote pour qui s'occupe vraiment de nous, pas des stratégies politiques.",
+        "Les communistes soutiennent Mélenchon ? Ça me donne plus confiance en lui, ça montre qu'il rassemble la gauche. Je pourrais voter un peu plus pour lui.",
+        "Moi, ça ne change rien, je suis plutôt centrée, je regarde ce qui est concret pour notre région, pas ces histoires de soutiens politiques."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0037707651514090287,
+          "lo": -0.005369233077296515,
+          "hi": -0.0021963647571211255,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.000011568188217558938,
+          "lo": -0.0003600114662545219,
+          "hi": 0.0002878428904006611,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00007713826934193674,
+          "lo": -0.000016520220816509007,
+          "hi": 0.00018155064019577003,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0009772311854784057,
+          "lo": -0.001515145536777217,
+          "hi": -0.0004466712023299749,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.008836274750651445,
+          "lo": 0.007502621203568142,
+          "hi": 0.01005256737510357,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": -0.00017356436803651939,
+          "lo": -0.0002870641344758345,
+          "hi": -0.00004506939613717653,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0008163340484865951,
+          "lo": 0.00040562700167963867,
+          "hi": 0.0011967030039670703,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00017205532022643487,
+          "lo": -0.0003067915768150682,
+          "hi": -0.00005241775818081001,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00032286663737559506,
+          "lo": -0.00048598906211195467,
+          "hi": -0.0001921155693542293,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0008566716849718567,
+          "lo": -0.0013057267347213932,
+          "hi": -0.00047123544905698325,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0004715803900077206,
+          "lo": -0.0006527873415072674,
+          "hi": -0.00031823621926355063,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00000277961545435486,
+          "lo": -0.00004071950086593584,
+          "hi": 0.00002180838839025243,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.002970664527302505,
+          "lo": -0.005118491543735128,
+          "hi": -0.0012090911437261827,
           "stable": false
         }
       }
@@ -738,9 +971,9 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 1,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 91
         },
         "left": {
           "toward": 0,
@@ -759,360 +992,254 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 96
+          "away": 2,
+          "noClearChange": 94
         },
         "abstention": {
-          "toward": 2,
-          "away": 2,
-          "noClearChange": 92
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "philippe": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "melenchon": {
           "toward": 1,
           "away": 0,
           "noClearChange": 95
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 2,
-          "noClearChange": 92
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je ne suis pas très politisée, ça ne change pas grand-chose pour moi que les communistes soutiennent Mélenchon, ça ne va pas changer mon vote.",
-        "Je suis un peu méfiante envers Mélenchon, le fait que le groupe communiste le soutienne peut renforcer mon impression qu'il y a un vrai rassemblement à gauche, mais ça ne me fera pas changer mon vote qui est plutôt centré.",
-        "Je suis plutôt intéressé par cette annonce, ça peut donner une image de rassemblement à gauche, même si je suis prudent sur les effets concrets de ce genre de soutien interne."
-      ],
-      "candidateEffect": {
-        "le-pen": {
-          "mean": -0.0020636936608734086,
-          "lo": -0.0029635709246353206,
-          "hi": -0.0010810065930840131,
-          "stable": false
-        },
-        "philippe": {
-          "mean": -0.000036704632929918437,
-          "lo": -0.00028680707739248633,
-          "hi": 0.00020442741989959507,
-          "stable": false
-        },
-        "attal": {
-          "mean": -0.0000466345049183625,
-          "lo": -0.00016186081926941958,
-          "hi": 0.00004575668902112457,
-          "stable": false
-        },
-        "glucksmann": {
-          "mean": -0.00021714216985128658,
-          "lo": -0.0005693116111530765,
-          "hi": 0.00012706381719036669,
-          "stable": false
-        },
-        "melenchon": {
-          "mean": 0.0052074773909554116,
-          "lo": 0.003986632278278698,
-          "hi": 0.006428865212938248,
-          "stable": false
-        },
-        "tondelier": {
-          "mean": -0.000047443764514500216,
-          "lo": -0.00011505157113662028,
-          "hi": 0.000013260999446093035,
-          "stable": false
-        },
-        "roussel": {
-          "mean": -0.00009856620008773095,
-          "lo": -0.00035490638293496254,
-          "hi": 0.0002259204238501493,
-          "stable": false
-        },
-        "retailleau": {
-          "mean": -0.00022539833576792524,
-          "lo": -0.00040123295363765876,
-          "hi": -0.00004466422892104119,
-          "stable": false
-        },
-        "lisnard": {
-          "mean": -0.00012470379931793206,
-          "lo": -0.0003251688403881534,
-          "hi": 0.000011077966488110732,
-          "stable": false
-        },
-        "zemmour": {
-          "mean": -0.00026306666890353093,
-          "lo": -0.0004908070097042176,
-          "hi": -0.000058133903862012865,
-          "stable": false
-        },
-        "dupont-aignan": {
-          "mean": -0.00005046014081848278,
-          "lo": -0.00012734654998452992,
-          "hi": 0.000020560590192371283,
-          "stable": false
-        },
-        "arthaud": {
-          "mean": 8.65207619541061e-7,
-          "lo": -0.00002786831744286499,
-          "hi": 0.00001559742669089425,
-          "stable": false
-        },
-        "abstention": {
-          "mean": -0.002034528720591871,
-          "lo": -0.0035913036478734148,
-          "hi": -0.0005768241732668442,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Jeunes agriculteurs de moins de 35 ans",
-      "matchedCount": 145,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 9,
-          "away": 0,
-          "noClearChange": 39
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 5,
-          "noClearChange": 41
         }
       },
       "candidateSummary": {
         "le-pen": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 2,
+          "noClearChange": 94
         },
         "philippe": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "attal": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "glucksmann": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "melenchon": {
-          "toward": 9,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 39
+          "noClearChange": 91
         },
         "tondelier": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "roussel": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "retailleau": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "lisnard": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "zemmour": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "dupont-aignan": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "arthaud": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 2,
-          "away": 5,
-          "noClearChange": 41
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3425950339300892,
+          "after": 0.3396341601736732,
+          "change": -0.002960873756416016
+        },
+        "philippe": {
+          "before": 0.07752857134014139,
+          "after": 0.07686353289958579,
+          "change": -0.0006650384405555987
+        },
+        "attal": {
+          "before": 0.018259696310841175,
+          "after": 0.01809111871226644,
+          "change": -0.00016857759857473453
+        },
+        "glucksmann": {
+          "before": 0.06236289886623431,
+          "after": 0.06193490400642971,
+          "change": -0.0004279948598046035
+        },
+        "melenchon": {
+          "before": 0.08711662700972166,
+          "after": 0.09414412743389285,
+          "change": 0.00702750042417119
+        },
+        "tondelier": {
+          "before": 0.013645410152817219,
+          "after": 0.013399215999795475,
+          "change": -0.0002461941530217445
+        },
+        "roussel": {
+          "before": 0.00946843699429237,
+          "after": 0.00955130980526729,
+          "change": 0.00008287281097492036
+        },
+        "retailleau": {
+          "before": 0.032196843215062464,
+          "after": 0.031615445182177696,
+          "change": -0.0005813980328847682
+        },
+        "lisnard": {
+          "before": 0.021874239577441792,
+          "after": 0.02141903853917863,
+          "change": -0.0004552010382631623
+        },
+        "zemmour": {
+          "before": 0.040819302861231636,
+          "after": 0.040173089134143254,
+          "change": -0.0006462137270883822
+        },
+        "dupont-aignan": {
+          "before": 0.01677971530908746,
+          "after": 0.016483219091869807,
+          "change": -0.00029649621721765385
+        },
+        "arthaud": {
+          "before": 0.003082982521989786,
+          "after": 0.003064460213297341,
+          "change": -0.000018522308692445286
+        },
+        "abstention": {
+          "before": 0.27427024191104926,
+          "after": 0.2736263788084224,
+          "change": -0.0006438631026268737
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 80,
+          "abstention": 2
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "le-pen": 1,
+          "abstention": 13
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Ça me semble plutôt normal que le groupe communiste soutienne Mélenchon, c'est une gauche qui me parle. Ça renforce peut-être sa crédibilité, même si je suis surtout attentif aux projets agricoles et écologiques.",
-        "Je suis un peu intéressé par la gauche, alors si les communistes soutiennent Mélenchon, ça montre qu'il a une base solide. Mais le plus important pour moi, c'est que ça puisse vraiment aider les agriculteurs locaux et pas que des discours.",
-        "Pour être honnête, je ne suis pas trop branchée politique. Que les communistes choisissent Mélenchon ou pas, ça ne change pas vraiment mon vote. Je regarde surtout ce qui impacte mon exploitation et la région."
+        "Franchement, le soutien des communistes à Mélenchon ne me bouleverse pas vraiment, je ne suis pas très proche de cette gauche radicale.",
+        "Je trouve ça bien que les communistes soutiennent Mélenchon, ça pourrait peut-être enfin éviter que la gauche se divise trop.",
+        "Ah, la gauche communiste qui soutient Mélenchon, ça me semble logique. C’est intéressant, mais je ne suis pas sûr que ça changera grand-chose à mon vote."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": -0.0029178817904893417,
-          "lo": -0.004255676200543463,
-          "hi": -0.0017005400574656604,
+          "mean": -0.0029608737564160784,
+          "lo": -0.00402318156613144,
+          "hi": -0.0020159710350014706,
           "stable": false
         },
         "philippe": {
-          "mean": -0.001727839953452672,
-          "lo": -0.0027355847538460903,
-          "hi": -0.0008162964915142652,
+          "mean": -0.000665038440555603,
+          "lo": -0.0010108853636638456,
+          "hi": -0.00032855085270788254,
           "stable": false
         },
         "attal": {
-          "mean": -0.0003167691696764458,
-          "lo": -0.0005611859737494078,
-          "hi": -0.00009525297055187547,
+          "mean": -0.00016857759857473844,
+          "lo": -0.0002960132586695875,
+          "hi": -0.000060707271188959086,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0012719385457802734,
-          "lo": -0.0019763667279469777,
-          "hi": -0.0006754524094021146,
+          "mean": -0.000427994859804581,
+          "lo": -0.0007694393194867169,
+          "hi": -0.00007460435899105805,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.012425216972668398,
-          "lo": 0.009706806273894105,
-          "hi": 0.01502039292033656,
+          "mean": 0.007027500424171169,
+          "lo": 0.005973636068645972,
+          "hi": 0.008119276562428767,
           "stable": true
         },
         "tondelier": {
-          "mean": -0.00048584341997438265,
-          "lo": -0.0008004133805306826,
-          "hi": -0.0001888327982148332,
+          "mean": -0.00024619415302173963,
+          "lo": -0.0003643197547511837,
+          "hi": -0.00012674415048929914,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0002612235396180359,
-          "lo": -0.0007698886444311983,
-          "hi": 0.0002602504589346932,
+          "mean": 0.00008287281097491815,
+          "lo": -0.00014016022975142528,
+          "hi": 0.00031732609524428326,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0013849369679313718,
-          "lo": -0.00182510297343679,
-          "hi": -0.0009786360315555069,
+          "mean": -0.0005813980328847472,
+          "lo": -0.0008138944065112954,
+          "hi": -0.0003819674805723507,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.000988033475497184,
-          "lo": -0.00132516294051734,
-          "hi": -0.0006374839151596048,
+          "mean": -0.00045520103826316745,
+          "lo": -0.0005969327729188011,
+          "hi": -0.0003227637082139209,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0008808771349006322,
-          "lo": -0.0012965522740880332,
-          "hi": -0.0005458156350422681,
+          "mean": -0.000646213727088398,
+          "lo": -0.000845205789842372,
+          "hi": -0.0004558624648323354,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0004597354670629915,
-          "lo": -0.0006572489742993113,
-          "hi": -0.0002686672841302659,
+          "mean": -0.0002964962172176512,
+          "lo": -0.0003981235058624234,
+          "hi": -0.00020196847538436505,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00007698234915440763,
-          "lo": -0.00017725554228219912,
-          "hi": 0.000014783616943031395,
+          "mean": -0.00001852230869244552,
+          "lo": -0.00005864812806869894,
+          "hi": 0.00000971293903277098,
           "stable": false
         },
         "abstention": {
-          "mean": -0.0016531551591306693,
-          "lo": -0.005307999113189413,
-          "hi": 0.0017502227136251397,
+          "mean": -0.0006438631026269296,
+          "lo": -0.0021306109640079527,
+          "hi": 0.0008592685572206736,
           "stable": false
         }
       }
@@ -1121,6 +1248,6 @@
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "509c9bc58e0be8f69231c7385df636410b1ec27aa30dbe31a0927e2bbf21accd"
+    "contentHash": "4019254585e301efa9aa747e2e23001a094e940dad863d0b7fbb2612a01bf441"
   }
 }

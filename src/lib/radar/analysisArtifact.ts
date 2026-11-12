@@ -42,6 +42,11 @@ const candidateDirectionCounts = z.object({
   away: z.number(),
   noClearChange: z.number(),
 });
+const candidateLevel = z.object({
+  before: z.number(),
+  after: z.number(),
+  change: z.number(),
+});
 const contrastSchema = z.object({
   segmentId: z.string(),
   segmentName: z.string(),
@@ -51,6 +56,8 @@ const contrastSchema = z.object({
   comparator: z.string(),
   summary: z.record(z.string(), directionCounts),
   candidateSummary: z.record(z.string(), candidateDirectionCounts).optional(),
+  candidateLevels: z.record(z.string(), candidateLevel).optional(),
+  candidateTransitions: z.record(z.string(), z.record(z.string(), z.number())).optional(),
   note: z.string(),
   // Method v2 (radar-probabilistic-v2): effect in probability points (-1..1) per bloc and abstention, bootstrap 95% interval, stable = same sign across independent runs.
   runs: z.number().optional(),

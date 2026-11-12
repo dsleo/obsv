@@ -4,38 +4,41 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "f18c517634b5091e",
+  "inputHash": "8f7e19f600e6ec0d",
   "eventInputHash": "16aac0921774b1b40f34370eedf22636020aeeb2e962973e71f6eb505b5182e3",
-  "computedAt": "2026-11-12T13:48:12.730Z",
+  "computedAt": "2026-11-12T16:14:38.368Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Eric Zemmour annonce sa candidature un mois plus tard que prévu, juste après les résultats du premier tour, afin de capitaliser sur les débats politiques en cours.",
-    "whatChanges": "Le décalage de l'annonce modère l'impact initial sur les électeurs de droite dure, qui s'étaient mobilisés rapidement, en réduisant l'effet de surprise et en donnant plus de temps aux concurrents pour affiner leurs positions."
+    "description": "Eric Zemmour annonce sa candidature à l'élection présidentielle française, mais en adoptant un discours davantage axé sur le rassemblement national et sur des propositions économiques moins controversées.",
+    "whatChanges": "Le ton moins clivant de Zemmour pourrait séduire un électorat plus large, notamment des centristes et certains électeurs de droite modérée, réduisant l'effet de rejet chez les électeurs plus progressistes."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes salariés modestes en communes denses",
-      "mechanism": "Les jeunes employés et ouvriers en communes urbaines denses représentent un électorat clé touché par les discours d'Eric Zemmour sur les questions d'emploi, d'identité et de sécurité dans les grandes villes.",
-      "reason": "Jeunes actifs modestes vivant en zones urbaines, cible majeure du discours socio-économique et sécuritaire lié à la candidature.",
+      "name": "Salariés modestes des communes intermédiaires âgés de 35 à 64 ans",
+      "mechanism": "Ce groupe est un électorat populaire pouvant être sensible au discours d'Eric Zemmour qui cible des préoccupations économiques et d'identité, notamment sur la sécurisation de l'emploi et le contrôle de l'immigration.",
+      "reason": "Les salariés modestes, employés et ouvriers des communes non urbaines denses peuvent être une base électorale significative pour cette candidature, attentifs aux propositions sur les sujets économiques et sociaux.",
       "all": [
-        "age.25_34",
-        "cluster.modest_wage_earner",
+        "occupation.employee"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [
         "geo.dense"
       ],
-      "any": [],
-      "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers les propositions d'Eric Zemmour",
-        "Sentiment d'identité nationale"
+        "Intérêt pour la candidature d'Eric Zemmour",
+        "Opinion sur les thèmes sécuritaires et immigrations"
       ],
-      "count": 8798,
-      "distinctCommunes": 72,
+      "count": 639,
+      "distinctCommunes": 85,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -46,23 +49,26 @@
     },
     {
       "id": "segment_2",
-      "name": "Retraités vivant en couple dans les grandes agglomérations",
-      "mechanism": "Les retraités en couple dans les grandes villes sont concernés par les propositions d'Eric Zemmour sur la sécurité, la retraite et la place des traditions françaises urbaines.",
-      "reason": "Retraités en couple, souvent sensibles aux discours sur la sécurité et l'identité, dans un contexte urbain.",
+      "name": "Hommes de 50 à 64 ans en couple avec enfants en communes périurbaines et intermédiaires",
+      "mechanism": "La candidature d'Eric Zemmour peut interpeller particulièrement les pères de familles en milieu périurbain ou intermédiaire, notamment sur des revendications relatives à la sécurité, aux valeurs traditionnelles et à l’éducation, que Zemmour met en avant.",
+      "reason": "Ce segment combine la dimension familiale masculine sensible aux valeurs conservatrices et une localisation géographique où ces thèmes peuvent porter.",
       "all": [
-        "occupation.retired",
-        "household.couple_no_children",
-        "geo.dense"
+        "sex.male",
+        "household.couple_with_children",
+        "age.50_64"
       ],
-      "any": [],
+      "any": [
+        "geo.intermediate",
+        "commune_size.1000_plus"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Opinion sur les réformes de retraite proposées",
-        "Perception de la sécurité urbaine"
+        "Intérêt porté au programme de Zemmour",
+        "Perception des enjeux familiaux et identitaires"
       ],
-      "count": 15215,
-      "distinctCommunes": 72,
+      "count": 4564,
+      "distinctCommunes": 118,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -73,23 +79,23 @@
     },
     {
       "id": "segment_3",
-      "name": "Employés de 35 à 49 ans en communes intermédiaires",
-      "mechanism": "Eric Zemmour évoque des thèmes économiques et sociaux ciblant aussi les employés urbains ou périurbains âgés de 35 à 49 ans, vivant en communes intermédiaires et plus urbanisées, un groupe sensible aux enjeux économiques actuels.",
-      "reason": "Remplacement d'un segment trop petit par un groupe plus large et géographiquement rééquilibré",
+      "name": "Jeunes diplômés urbains non mobilisés",
+      "mechanism": "Paradoxalement, certains jeunes diplômés urbains sans activité professionnelle peuvent être touchés par la candidature d’Eric Zemmour du fait d’un sentiment de marginalisation ou de rejet de certaines élites, thème parfois exploité par ce candidat.",
+      "reason": "Ce segment resserré combine un profil académique élevé, une localisation urbaine dense et une situation professionnelle spécifique, pouvant induire une réception singulière du discours de Zemmour.",
       "all": [
-        "occupation.employee",
-        "age.35_49",
-        "geo.intermediate"
+        "cluster.young_urban_graduate",
+        "cluster.young_without_activity",
+        "geo.dense"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Soutien à la candidature d'Eric Zemmour",
-        "Perception des enjeux économiques locaux"
+        "Vulnérabilité à l’appel identitaire",
+        "Réaction face à la candidature d’Eric Zemmour"
       ],
-      "count": 210,
-      "distinctCommunes": 24,
+      "count": 423,
+      "distinctCommunes": 49,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -108,10 +114,10 @@
     }
   ],
   "contrasts": {
-    "segment_2": {
-      "segmentId": "segment_2",
-      "segmentName": "Retraités vivant en couple dans les grandes agglomérations",
-      "matchedCount": 15215,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés urbains non mobilisés",
+      "matchedCount": 423,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -137,21 +143,21 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         },
         "abstention": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 45
+          "away": 1,
+          "noClearChange": 47
         }
       },
       "candidateSummary": {
         "le-pen": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 47
         },
         "philippe": {
           "toward": 0,
@@ -210,102 +216,189 @@
         },
         "abstention": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 45
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.20795535571521095,
+          "after": 0.21255679460247942,
+          "change": 0.004601438887268466
+        },
+        "philippe": {
+          "before": 0.1069926420875772,
+          "after": 0.10477113975910844,
+          "change": -0.0022215023284687524
+        },
+        "attal": {
+          "before": 0.025097440241028068,
+          "after": 0.02454051048345914,
+          "change": -0.0005569297575689289
+        },
+        "glucksmann": {
+          "before": 0.09784176020353665,
+          "after": 0.09676594227314676,
+          "change": -0.001075817930389883
+        },
+        "melenchon": {
+          "before": 0.153379147190774,
+          "after": 0.15142045941720414,
+          "change": -0.0019586877735698616
+        },
+        "tondelier": {
+          "before": 0.021388541343880657,
+          "after": 0.021349909942428275,
+          "change": -0.00003863140145238253
+        },
+        "roussel": {
+          "before": 0.014890472534309857,
+          "after": 0.014510920288265998,
+          "change": -0.0003795522460438589
+        },
+        "retailleau": {
+          "before": 0.037718701737040033,
+          "after": 0.03681322457151331,
+          "change": -0.000905477165526726
+        },
+        "lisnard": {
+          "before": 0.0252221484495686,
+          "after": 0.02455586413274005,
+          "change": -0.0006662843168285526
+        },
+        "zemmour": {
+          "before": 0.0248047358560083,
+          "after": 0.027175351120565603,
+          "change": 0.0023706152645573027
+        },
+        "dupont-aignan": {
+          "before": 0.010434136616896092,
+          "after": 0.00976987763358967,
+          "change": -0.0006642589833064216
+        },
+        "arthaud": {
+          "before": 0.005248838331423161,
+          "after": 0.005215294270228484,
+          "change": -0.000033544061194676865
+        },
+        "abstention": {
+          "before": 0.2690260796927465,
+          "after": 0.2705547115052706,
+          "change": 0.001528631812524106
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 4
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 42,
+          "le-pen": 2
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que l'annonce de Zemmour ne change pas grand-chose pour moi, ce n'est pas un candidat que je soutiens. Je continue à suivre surtout les débats locaux et les candidats qui me parlent plus directement.",
-        "Zemmour, ce n'est pas vraiment mon truc, mais je comprends que certains se rallient à lui. Son annonce précoce ne me fait pas changer d'avis, et une annonce après le premier tour me laisserait de marbre aussi.",
-        "Je ne suis pas très intéressée par cette candidature de Zemmour. Ça ne me touche pas vraiment, je reste fidèle à mes convictions habituelles."
+        "Honnêtement, Zemmour et ses provocations, ça ne m'intéresse pas vraiment, je préfère rester concentrée sur mes études et mes projets associatifs.",
+        "Zemmour qui se présente, ça fait peur, surtout s'il radicalise encore plus le débat. S'il se calme un peu, ça pourrait être moins inquiétant, mais je reste méfiante.",
+        "Zemmour annonce sa candidature? Je n'aime pas son ton habituel, mais s'il parlait davantage de rassemblement et d'économie, ça changerait la donne."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.00021158200410797677,
-          "lo": -0.0005474820873946062,
-          "hi": 0.000891690415886519,
+          "mean": 0.004601438887268414,
+          "lo": 0.003256876507073828,
+          "hi": 0.0062572354755770125,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0008724469437161457,
-          "lo": -0.0017145444928855908,
-          "hi": -0.00006725872845886789,
+          "mean": -0.0022215023284687537,
+          "lo": -0.003024639324332615,
+          "hi": -0.0014501065746365348,
           "stable": false
         },
         "attal": {
-          "mean": -0.00007856164073257572,
-          "lo": -0.00021148062430407271,
-          "hi": 0.00003377557935327094,
+          "mean": -0.000556929757568919,
+          "lo": -0.0008381004396760041,
+          "hi": -0.0003110843243323567,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0006066972022765339,
-          "lo": -0.0011521089897937472,
-          "hi": -0.0001925972908420451,
+          "mean": -0.0010758179303898745,
+          "lo": -0.0015666388440299017,
+          "hi": -0.0006371145651460295,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0007469280850816887,
-          "lo": -0.0013265068073190771,
-          "hi": -0.0002610987180125471,
+          "mean": -0.0019586877735698074,
+          "lo": -0.002728255230291509,
+          "hi": -0.0011320999419437963,
           "stable": false
         },
         "tondelier": {
-          "mean": 0.0000268803397717194,
-          "lo": -0.00007495502651804933,
-          "hi": 0.00010240922064392428,
+          "mean": -0.000038631401452387734,
+          "lo": -0.0001957414229235764,
+          "hi": 0.0001332256704385963,
           "stable": false
         },
         "roussel": {
-          "mean": 0.00000558667261720026,
-          "lo": -0.00006444606824428137,
-          "hi": 0.00006071635165205227,
+          "mean": -0.00037955224604385485,
+          "lo": -0.0005436309716626912,
+          "hi": -0.00021979288988419258,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.00006578856336677048,
-          "lo": -0.00034564463509840815,
-          "hi": 0.0002066350761605965,
+          "mean": -0.0009054771655267491,
+          "lo": -0.0011377645479110096,
+          "hi": -0.0006741753862436568,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0000965598857102739,
-          "lo": -0.0003092697812038055,
-          "hi": 0.00010478950832679337,
+          "mean": -0.0006662843168285573,
+          "lo": -0.0009725430409398076,
+          "hi": -0.00044190359046114705,
           "stable": false
         },
         "zemmour": {
-          "mean": 0.003515054890118852,
-          "lo": 0.0024112106355232807,
-          "hi": 0.004697321340157146,
+          "mean": 0.0023706152645572936,
+          "lo": 0.0008306840603297892,
+          "hi": 0.00398348358888164,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.00039064223163847497,
-          "lo": -0.0007589426430543492,
-          "hi": -0.00014491486998436247,
+          "mean": -0.0006642589833064275,
+          "lo": -0.0009429787405550033,
+          "hi": -0.00038305103176558726,
           "stable": false
         },
         "arthaud": {
-          "mean": 0.000010951915235783303,
-          "lo": 0.000004756372030450828,
-          "hi": 0.000017578639775701502,
+          "mean": -0.00003354406119467698,
+          "lo": -0.00010001320126535342,
+          "hi": 0.000009524813564011988,
           "stable": false
         },
         "abstention": {
-          "mean": -0.0009124312693290712,
-          "lo": -0.0032574988651007265,
-          "hi": 0.0016142907015986117,
+          "mean": 0.001528631812524316,
+          "lo": -0.0003124408222794726,
+          "hi": 0.0032914420800706445,
           "stable": false
         }
       }
     },
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Jeunes salariés modestes en communes denses",
-      "matchedCount": 8798,
+      "segmentName": "Salariés modestes des communes intermédiaires âgés de 35 à 64 ans",
+      "matchedCount": 639,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -331,14 +424,14 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 1,
-          "noClearChange": 47
+          "noClearChange": 44
         }
       },
       "candidateSummary": {
@@ -403,289 +496,182 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 0,
+          "toward": 3,
           "away": 1,
-          "noClearChange": 47
+          "noClearChange": 44
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.37006760851238846,
+          "after": 0.372333093465595,
+          "change": 0.0022654849532065535
+        },
+        "philippe": {
+          "before": 0.058564547360320525,
+          "after": 0.05714355487497546,
+          "change": -0.0014209924853450656
+        },
+        "attal": {
+          "before": 0.01379212035564586,
+          "after": 0.013312360797256726,
+          "change": -0.0004797595583891333
+        },
+        "glucksmann": {
+          "before": 0.05675512911851955,
+          "after": 0.05528580491266715,
+          "change": -0.0014693242058523986
+        },
+        "melenchon": {
+          "before": 0.07762702693791791,
+          "after": 0.07570177131436116,
+          "change": -0.0019252556235567486
+        },
+        "tondelier": {
+          "before": 0.012459368815432241,
+          "after": 0.011977753685430559,
+          "change": -0.0004816151300016825
+        },
+        "roussel": {
+          "before": 0.008604906022962945,
+          "after": 0.008082491928694023,
+          "change": -0.0005224140942689214
+        },
+        "retailleau": {
+          "before": 0.018938230751767253,
+          "after": 0.018228912022545396,
+          "change": -0.000709318729221857
+        },
+        "lisnard": {
+          "before": 0.012875390292581964,
+          "after": 0.012270618578905717,
+          "change": -0.000604771713676247
+        },
+        "zemmour": {
+          "before": 0.044172133555211573,
+          "after": 0.046775975105462934,
+          "change": 0.002603841550251361
+        },
+        "dupont-aignan": {
+          "before": 0.018002208026323376,
+          "after": 0.01690579602361776,
+          "change": -0.001096412002705615
+        },
+        "arthaud": {
+          "before": 0.0027915864996748327,
+          "after": 0.0027517505251701178,
+          "change": -0.00003983597450471499
+        },
+        "abstention": {
+          "before": 0.3053497437512534,
+          "after": 0.30923011676531786,
+          "change": 0.0038803730140644643
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 38
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 9,
+          "le-pen": 1
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Zemmour ? Franchement, ça ne change rien à ma façon de voir les choses, je suis plus préoccupée par mon boulot et la vie de tous les jours.",
-        "Zemmour candidat ? Peu importe le moment où il le dit, je suis plus intéressée par ce qui peut vraiment améliorer ma vie à Paris.",
-        "La candidature de Zemmour, ça me laisse plutôt indifférente. Je ne vois pas bien ce que ça peut changer pour mon travail et ma vie quotidienne."
+        "Je trouve qu’Éric Zemmour est un personnage qui divise, son annonce ne changera pas vraiment mon vote, je préfère les candidats plus modérés.",
+        "Zemmour qui annonce sa candidature, ça ne m'intéresse pas trop, c'est pas mon genre, je suis plutôt à gauche et il ne change rien à mon choix.",
+        "L'annonce de Zemmour ne me fait ni chaud ni froid, je suis plutôt préoccupée par ma vie quotidienne et son discours controversé ne me convainc pas."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.0016856512265264387,
-          "lo": 0.0007530011420994309,
-          "hi": 0.002636262600967543,
+          "mean": 0.002265484953206536,
+          "lo": 0.0011825598087020054,
+          "hi": 0.003435620895384186,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0011419811848963743,
-          "lo": -0.0016040616467898504,
-          "hi": -0.0006934717610872338,
+          "mean": -0.0014209924853450676,
+          "lo": -0.0018802136257105187,
+          "hi": -0.000926363536424257,
           "stable": false
         },
         "attal": {
-          "mean": -0.00027853410280751504,
-          "lo": -0.0004431017979175758,
-          "hi": -0.0001364179093036776,
+          "mean": -0.00047975955838913876,
+          "lo": -0.0006247215388655636,
+          "hi": -0.0003201246489703409,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0007045499307228861,
-          "lo": -0.001135057324834668,
-          "hi": -0.0003441746357109059,
+          "mean": -0.001469324205852436,
+          "lo": -0.0017985946792019273,
+          "hi": -0.0011174252548740383,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0013751968754203271,
-          "lo": -0.002333289778575983,
-          "hi": -0.0006464042411037313,
+          "mean": -0.0019252556235567514,
+          "lo": -0.002391919442281121,
+          "hi": -0.001508035499731188,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.00014186613648280036,
-          "lo": -0.00027504485778325367,
-          "hi": -0.000021427186375527248,
+          "mean": -0.0004816151300016847,
+          "lo": -0.000619037331847756,
+          "hi": -0.00032292629078335694,
           "stable": false
         },
         "roussel": {
-          "mean": -0.00017758498969754074,
-          "lo": -0.0003090219571677061,
-          "hi": -0.0000512453732476517,
+          "mean": -0.0005224140942689242,
+          "lo": -0.0006964409989993942,
+          "hi": -0.0003786175485270957,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.00045657360845700396,
-          "lo": -0.0007736918385390801,
-          "hi": -0.00022359015935362304,
+          "mean": -0.000709318729221867,
+          "lo": -0.0008703898908376186,
+          "hi": -0.0005546137435550556,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0002333507408813731,
-          "lo": -0.000418210316149308,
-          "hi": -0.00008623438137093894,
+          "mean": -0.0006047717136762466,
+          "lo": -0.0007725723241858113,
+          "hi": -0.00043024267009654054,
           "stable": false
         },
         "zemmour": {
-          "mean": 0.0014230927020416134,
-          "lo": -0.000022225093101665695,
-          "hi": 0.002931878161487211,
+          "mean": 0.002603841550251362,
+          "lo": 0.0007841146203119378,
+          "hi": 0.004119732762693843,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0002526983513542945,
-          "lo": -0.00043909339666088463,
-          "hi": -0.00007692365663440669,
+          "mean": -0.0010964120027056117,
+          "lo": -0.001432538190594787,
+          "hi": -0.0007828030839804502,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00008741610298414442,
-          "lo": -0.0001803454063259003,
-          "hi": -0.000011021197141622888,
+          "mean": -0.00003983597450471452,
+          "lo": -0.00010452517490606067,
+          "hi": 0.0000036317883704864668,
           "stable": false
         },
         "abstention": {
-          "mean": 0.0017410080951362223,
-          "lo": -0.00044913232066712445,
-          "hi": 0.003990537146638523,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Employés de 35 à 49 ans en communes intermédiaires",
-      "matchedCount": 210,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "philippe": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "melenchon": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Zemmour qui se présente ? Honnêtement, ça ne change pas grand-chose pour moi, j'aime bien la stabilité et je ne me sens pas vraiment concernée par ses idées.",
-        "Zemmour qui se lance, ça ne me fait ni chaud ni froid, ça ne changera pas mon vote, je préfère ceux qui défendent mes idées, comme Mélenchon.",
-        "Zemmour qui annonce sa candidature, ça ne m'emballe pas. Je suis plutôt proche de Marine Le Pen, et ce nouveau candidat me semble un peu trop radical."
-      ],
-      "candidateEffect": {
-        "le-pen": {
-          "mean": 0.0003215719071462698,
-          "lo": -0.0008416867311570655,
-          "hi": 0.0015829059455660054,
-          "stable": false
-        },
-        "philippe": {
-          "mean": -0.0004648700895630922,
-          "lo": -0.0007542510054958338,
-          "hi": -0.0001701734605814702,
-          "stable": false
-        },
-        "attal": {
-          "mean": -0.0002507055120434243,
-          "lo": -0.00042749704170228116,
-          "hi": -0.0001081740748185377,
-          "stable": false
-        },
-        "glucksmann": {
-          "mean": -0.0011348066088592678,
-          "lo": -0.0015718430198515638,
-          "hi": -0.000790232019877091,
-          "stable": false
-        },
-        "melenchon": {
-          "mean": -0.0013730248593714172,
-          "lo": -0.0018514047151267253,
-          "hi": -0.0009007871271850724,
-          "stable": false
-        },
-        "tondelier": {
-          "mean": -0.00008585338501874375,
-          "lo": -0.00022321894656755154,
-          "hi": 0.000007135625598832269,
-          "stable": false
-        },
-        "roussel": {
-          "mean": -0.00016074203841923046,
-          "lo": -0.00027988106838899184,
-          "hi": -0.000045282003899992225,
-          "stable": false
-        },
-        "retailleau": {
-          "mean": -0.0003980975226598957,
-          "lo": -0.0007370810362863416,
-          "hi": -0.00012253262175650082,
-          "stable": false
-        },
-        "lisnard": {
-          "mean": -0.00027243454566229557,
-          "lo": -0.0005210001397599283,
-          "hi": -0.00006967913490480425,
-          "stable": false
-        },
-        "zemmour": {
-          "mean": 0.003690601929390773,
-          "lo": 0.0026119320165703397,
-          "hi": 0.004798673560648997,
-          "stable": false
-        },
-        "dupont-aignan": {
-          "mean": -0.0007752294867452618,
-          "lo": -0.0010909237186598154,
-          "hi": -0.0004746710318512029,
-          "stable": false
-        },
-        "arthaud": {
-          "mean": 0.000008231776876557759,
-          "lo": 0.0000027873311735823354,
-          "hi": 0.000015456733077202873,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0008953584349290401,
-          "lo": -0.0009812688747231804,
-          "hi": 0.0026157128785377405,
+          "mean": 0.0038803730140645394,
+          "lo": 0.0014052844297395076,
+          "hi": 0.006078325782280382,
           "stable": false
         }
       }
@@ -719,14 +705,14 @@
           "noClearChange": 96
         },
         "far_right": {
-          "toward": 2,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 94
+          "noClearChange": 95
         },
         "abstention": {
           "toward": 5,
-          "away": 2,
-          "noClearChange": 89
+          "away": 3,
+          "noClearChange": 88
         }
       },
       "candidateSummary": {
@@ -792,94 +778,464 @@
         },
         "abstention": {
           "toward": 5,
-          "away": 2,
-          "noClearChange": 89
+          "away": 3,
+          "noClearChange": 88
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.34351820988309306,
+          "after": 0.3456978129807738,
+          "change": 0.002179603097680727
+        },
+        "philippe": {
+          "before": 0.07882347306352204,
+          "after": 0.07676642492463956,
+          "change": -0.0020570481388824807
+        },
+        "attal": {
+          "before": 0.018487224096949154,
+          "after": 0.017840133884101703,
+          "change": -0.0006470902128474509
+        },
+        "glucksmann": {
+          "before": 0.06335670164197164,
+          "after": 0.06228247390288589,
+          "change": -0.001074227739085755
+        },
+        "melenchon": {
+          "before": 0.08137663058781153,
+          "after": 0.08038527988276015,
+          "change": -0.0009913507050513803
+        },
+        "tondelier": {
+          "before": 0.013841980942411085,
+          "after": 0.013480737545489467,
+          "change": -0.0003612433969216178
+        },
+        "roussel": {
+          "before": 0.009623800204518028,
+          "after": 0.009171837641096386,
+          "change": -0.00045196256342164114
+        },
+        "retailleau": {
+          "before": 0.03464585044177086,
+          "after": 0.0336191372688369,
+          "change": -0.0010267131729339643
+        },
+        "lisnard": {
+          "before": 0.02352078949572288,
+          "after": 0.022736897269351034,
+          "change": -0.0007838922263718462
+        },
+        "zemmour": {
+          "before": 0.040932152035466206,
+          "after": 0.04358832942395835,
+          "change": 0.002656177388492144
+        },
+        "dupont-aignan": {
+          "before": 0.0168206924828145,
+          "after": 0.01606358287817523,
+          "change": -0.0007571096046392681
+        },
+        "arthaud": {
+          "before": 0.002947169518964682,
+          "after": 0.002793403047621469,
+          "change": -0.00015376647134321278
+        },
+        "abstention": {
+          "before": 0.2721053256049843,
+          "after": 0.2755739493503099,
+          "change": 0.003468623745325583
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 83,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 10,
+          "le-pen": 2
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Zemmour, encore lui ? Franchement, j'en entends parler sans que ça change grand-chose à ma vie ici, sur l'île. Je reste fidèle à mes habitudes.",
-        "Cette annonce de candidature de Zemmour, ça fait parler au boulot, mais ça ne va pas vraiment changer mon vote, je reste fidèle à Le Pen, elle représente mieux mes préoccupations.",
-        "Zemmour se représente ? Franchement, je trouve son discours trop radical, ça ne me parle pas. Je préfère rester sur mes convictions actuelles."
+        "Je trouve qu'Éric Zemmour en candidat, ça va encore faire un peu de bruit, mais ça ne me touche pas vraiment dans ma vie ici à Oléron. Je préfère rester fidèle à Marine Le Pen, ça me parle plus localement.",
+        "Zemmour qui annonce sa candidature, franchement ça ne me surprend pas. Je reste plus sensible à des candidats comme Marine Le Pen qui parlent direct aux gens comme moi, c'est sûr que la candidature de Zemmour va probablement diviser un peu les voix à droite.",
+        "Zemmour candidat ? Je ne suis pas très convaincue, ça ne m'attire pas vraiment. Je pense que ça ne va pas changer mon choix, je reste plutôt centrée sur les projets d'Emmanuel Macron ou Mélenchon selon les propositions sociales."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.002182943138204845,
-          "lo": 0.0013068497404065463,
-          "hi": 0.0030956973882195014,
+          "mean": 0.0021796030976808586,
+          "lo": 0.0011018762705136069,
+          "hi": 0.0031774969375237033,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0012347136877311135,
-          "lo": -0.0015693332290848217,
-          "hi": -0.0008967467811756708,
+          "mean": -0.0020570481388824807,
+          "lo": -0.002490548116189283,
+          "hi": -0.0017006103553913593,
           "stable": false
         },
         "attal": {
-          "mean": -0.0006595199332429653,
-          "lo": -0.0008392875488195775,
-          "hi": -0.0004886749344312507,
+          "mean": -0.000647090212847445,
+          "lo": -0.0007855204054385313,
+          "hi": -0.0005082684751511153,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0014563805913124048,
-          "lo": -0.0018595266447999717,
-          "hi": -0.0010801233414168023,
+          "mean": -0.001074227739085756,
+          "lo": -0.0014203982917852648,
+          "hi": -0.0007508305890564206,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0015881125042671177,
-          "lo": -0.0020203412276205714,
-          "hi": -0.0011471477556648912,
+          "mean": -0.0009913507050513487,
+          "lo": -0.001420101507207586,
+          "hi": -0.0005934669850043482,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.00035669274902164856,
-          "lo": -0.00046256974208357197,
-          "hi": -0.00024353540110571,
+          "mean": -0.00036124339692161913,
+          "lo": -0.0004673212888112554,
+          "hi": -0.0002716167593929196,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0003171288135231572,
-          "lo": -0.0004119365578209903,
-          "hi": -0.0002163023009833822,
+          "mean": -0.00045196256342164114,
+          "lo": -0.0005531632538386543,
+          "hi": -0.000355168764291946,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0010570243025385456,
-          "lo": -0.0013247923930637551,
-          "hi": -0.0008020194877888942,
+          "mean": -0.0010267131729339632,
+          "lo": -0.001255324906107394,
+          "hi": -0.0007806823306244294,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.00069071519757551,
-          "lo": -0.0008810742211542008,
-          "hi": -0.0005227204556974868,
+          "mean": -0.0007838922263718606,
+          "lo": -0.0009609946220277169,
+          "hi": -0.0005970093976273926,
           "stable": false
         },
         "zemmour": {
-          "mean": 0.0037665654784653085,
-          "lo": 0.0029778122117186372,
-          "hi": 0.004509756588353444,
+          "mean": 0.002656177388492159,
+          "lo": 0.0016458374553498798,
+          "hi": 0.003618549370642121,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0009117418631895269,
-          "lo": -0.0011361698084657714,
-          "hi": -0.0006606465096991774,
+          "mean": -0.0007571096046392719,
+          "lo": -0.0010380877940539903,
+          "hi": -0.0005101148628541819,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00008582616002596355,
-          "lo": -0.00015211910697205254,
-          "hi": -0.00003301171243223645,
+          "mean": -0.00015376647134321276,
+          "lo": -0.00023868108179456022,
+          "hi": -0.0000897333183531999,
           "stable": false
         },
         "abstention": {
-          "mean": 0.0024083471857578214,
-          "lo": 0.0006859760356906502,
-          "hi": 0.004118450625328306,
+          "mean": 0.0034686237453255826,
+          "lo": 0.001359871706092067,
+          "hi": 0.00535900537047321,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Hommes de 50 à 64 ans en couple avec enfants en communes périurbaines et intermédiaires",
+      "matchedCount": 4564,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.27010134489508014,
+          "after": 0.2757041053254485,
+          "change": 0.0056027604303683365
+        },
+        "philippe": {
+          "before": 0.09692485713462969,
+          "after": 0.09423765195451651,
+          "change": -0.0026872051801131724
+        },
+        "attal": {
+          "before": 0.022751759299804237,
+          "after": 0.021670356474171926,
+          "change": -0.0010814028256323112
+        },
+        "glucksmann": {
+          "before": 0.07900862156718153,
+          "after": 0.07683557200105577,
+          "change": -0.0021730495661257537
+        },
+        "melenchon": {
+          "before": 0.12738114212328305,
+          "after": 0.12412491652937853,
+          "change": -0.0032562255939045243
+        },
+        "tondelier": {
+          "before": 0.017272584554032678,
+          "after": 0.01664302342488311,
+          "change": -0.0006295611291495667
+        },
+        "roussel": {
+          "before": 0.011792827681682981,
+          "after": 0.011282429310959083,
+          "change": -0.0005103983707238982
+        },
+        "retailleau": {
+          "before": 0.04241372678949229,
+          "after": 0.04106845757298788,
+          "change": -0.0013452692165044078
+        },
+        "lisnard": {
+          "before": 0.02893566605381678,
+          "after": 0.02765730878986522,
+          "change": -0.0012783572639515593
+        },
+        "zemmour": {
+          "before": 0.03227541869798664,
+          "after": 0.03861810659805708,
+          "change": 0.006342687900070441
+        },
+        "dupont-aignan": {
+          "before": 0.013272684662545971,
+          "after": 0.012678406456578807,
+          "change": -0.0005942782059671636
+        },
+        "arthaud": {
+          "before": 0.004584172498847157,
+          "after": 0.004357867353713925,
+          "change": -0.00022630514513323225
+        },
+        "abstention": {
+          "before": 0.2532851940416168,
+          "after": 0.25512179820838354,
+          "change": 0.001836604166766731
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 26,
+          "abstention": 2
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 19,
+          "le-pen": 1
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Zemmour, franchement, ses discours me laissent plutôt sceptique, je préfère les candidats qui parlent de solutions concrètes pour le travail et la vie quotidienne.",
+        "Je ne suis pas convaincu par Zemmour, surtout quand il sème la polémique. Si son discours se calmait un peu, peut-être que je l'écouterais plus sérieusement.",
+        "Zemmour? Je préfère quand même Marine Le Pen, il me semble que ses idées sont plus claires pour notre région."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.005602760430368381,
+          "lo": 0.004111701981660562,
+          "hi": 0.00740312298543256,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.002687205180113209,
+          "lo": -0.003400010421585359,
+          "hi": -0.0019772711947335002,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0010814028256323153,
+          "lo": -0.001360265767035249,
+          "hi": -0.0008236695337508635,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0021730495661257646,
+          "lo": -0.0026755721709911836,
+          "hi": -0.0017241094790551388,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.003256225593904548,
+          "lo": -0.003928505817432078,
+          "hi": -0.0025893328669902463,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0006295611291495692,
+          "lo": -0.0007903417884883437,
+          "hi": -0.00048306559335244804,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0005103983707239017,
+          "lo": -0.0006424984193100573,
+          "hi": -0.00037843742305532067,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0013452692165043941,
+          "lo": -0.0017928716947326789,
+          "hi": -0.0009378398719002387,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.001278357263951559,
+          "lo": -0.0016299137669985482,
+          "hi": -0.0009706804011688891,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.0063426879000704406,
+          "lo": 0.005651775355158782,
+          "hi": 0.007028012749767954,
+          "stable": true
+        },
+        "dupont-aignan": {
+          "mean": -0.0005942782059671624,
+          "lo": -0.0009251688148685105,
+          "hi": -0.0002315233067123313,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00022630514513323212,
+          "lo": -0.0003322432026418537,
+          "hi": -0.00011803199346485111,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0018366041667668236,
+          "lo": 0.0000418107415496091,
+          "hi": 0.00407861634878191,
           "stable": false
         }
       }
@@ -888,6 +1244,6 @@
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "c607a2778c8dfce6a67bb26ed92840588bb0187ea76c9d566ceba0e719611fd5"
+    "contentHash": "600a4ba63c9f9cc8082114800571f7f58458171329fe413f0532595a2ac21962"
   }
 }

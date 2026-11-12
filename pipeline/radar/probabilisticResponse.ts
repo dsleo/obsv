@@ -130,7 +130,7 @@ async function askBatch(event: RadarEvent, alternative: string | null, personas:
 }
 
 const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } catch { return run(); } };
-type Row = { personaId: string; delta: CandidateDist; deltaAlt: CandidateDist | null; text: string };
+type Row = { personaId: string; before: CandidateDist; after: CandidateDist; delta: CandidateDist; deltaAlt: CandidateDist | null; text: string };
 
 /** n personas per run (batches of `batch`, in parallel), `runs` independent samples. Effect = mean(ifEvent - ifNoEvent), bootstrap 95% interval. */
 export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentPreview, { n = 24, batch = PERSONA_MODE === "roleplay" ? 4 : 8, runs = 2, alternative = null as string | null } = {}) {
@@ -144,7 +144,7 @@ export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentP
     matched = matches;
     const chunks = Array.from({ length: Math.ceil(selected.length / batch) }, (_, i) => selected.slice(i * batch, (i + 1) * batch));
     const answers = (await Promise.all(chunks.map((chunk, i) => retry(() => askBatch(event, alternative, chunk, `${segment.id}|${run}|${i}`, candidateTarget, blocTarget, priorMass))))).flat();
-    return answers.map((a) => ({ personaId: a.personaId, delta: diff(a.ifEvent, a.ifNoEvent), deltaAlt: a.ifAlternative ? diff(a.ifEvent, a.ifAlternative) : null, text: a.text }));
+    return answers.map((a) => ({ personaId: a.personaId, before: a.ifNoEvent, after: a.ifEvent, delta: diff(a.ifEvent, a.ifNoEvent), deltaAlt: a.ifAlternative ? diff(a.ifEvent, a.ifAlternative) : null, text: a.text }));
   }));
   const all = perRun.flat();
   const random = rng(`${event.title}|${segment.id}`);
@@ -160,6 +160,17 @@ export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentP
   };
   const candidateKeys = [...CANDIDATE_IDS, "abstention"];
   const candidateEffect = summarise(candidateKeys, (r) => r.delta);
+  const candidateLevels = Object.fromEntries(candidateKeys.map((key) => {
+    const before = mean(all.map((row) => row.before), key);
+    const after = mean(all.map((row) => row.after), key);
+    return [key, { before, after, change: after - before }];
+  }));
+  const argmax = (distribution: CandidateDist) => candidateKeys.reduce((best, key) => distribution[key] > distribution[best] ? key : best, candidateKeys[0]);
+  const candidateTransitions: Record<string, Record<string, number>> = Object.fromEntries(candidateKeys.map((key) => [key, {}]));
+  for (const row of all) {
+    const from = argmax(row.before), to = argmax(row.after);
+    candidateTransitions[from][to] = (candidateTransitions[from][to] ?? 0) + 1;
+  }
   // Preserve the original bloc-level contract for backtests and consumers that
   // still expect `effect`/`altEffect` to be keyed by the five blocs + abstention.
   const toBloc = (candidate: CandidateDist | null): Dist | null => candidate ? blocDistribution(candidate) : null;
@@ -179,7 +190,7 @@ export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentP
   }]));
   return { segmentId: segment.id, segmentName: segment.name, matchedCount: matched, sampledCount: all.length, runs, comparator: segment.counterfactual.comparator,
     selection: "deterministic_diversity_sample_by_2022_prior", evidenceGrade: "unvalidated_llm_directional_hypothesis" as const,
-    effect, ...(altEffect ? { altEffect } : {}), ...(candidateEffect ? { candidateEffect } : {}), summary, candidateSummary, mechanisms: all.slice(0, 3).map((r) => r.text).filter(Boolean),
+    effect, ...(altEffect ? { altEffect } : {}), ...(candidateEffect ? { candidateEffect } : {}), summary, candidateSummary, candidateLevels, candidateTransitions, mechanisms: all.slice(0, 3).map((r) => r.text).filter(Boolean),
     note: "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
   };
 }

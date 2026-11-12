@@ -4,40 +4,37 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "b5d5722945a2289c",
+  "inputHash": "ae45758a94cd70b2",
   "eventInputHash": "bdd2a1d971798fc0880b622bff3b03f59d3871676f68fba197f42dcdc118a497",
-  "computedAt": "2026-11-12T13:52:54.961Z",
+  "computedAt": "2026-11-12T16:18:42.148Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Le 5 novembre, les syndicats appellent à une mobilisation uniquement symbolique à Clisson, avec une journée de manifestations sans blocage des transports ni grève générale.",
-    "whatChanges": "La mobilisation est perçue comme moins radicale, ce qui limite l'impact sur l'opinion publique et la pression sur le gouvernement, en particulier parmi les électeurs modérés et les travailleurs peu enclins au conflit."
+    "description": "Les syndicats appellent à une mobilisation le 5 novembre à Clisson, mais réduisent l'appel à une simple journée de protestation sans grève, favorisant des rassemblements symboliques plutôt que des arrêts de travail.",
+    "whatChanges": "Cette variante atténue l'impact économique de la mobilisation et peut ralentir l'adhésion des salariés les plus réticents à faire grève, modifiant la dynamique du mouvement social."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Salariés modestes en communes intermédiaires",
-      "mechanism": "Les salariés modestes, c'est-à-dire les employés et ouvriers des communes intermédiaires, sont ciblés par l'appel à mobilisation pour la grève du 5 novembre à Clisson, étant souvent concernés par les revendications sociales portées par les syndicats.",
-      "reason": "Ce groupe représente la base principale des mobilisations syndicales dans de nombreuses régions, y compris les villes moyennes comme Clisson.",
+      "name": "Salariés modestes en couple avec enfants à Clisson",
+      "mechanism": "Les salariés employés ou ouvriers vivant en couple avec enfants à Clisson sont visés par l'appel à la mobilisation du 5 novembre, car ils constituent un groupe social potentiellement impacté par les réformes sociales contestées et formant une base populaire mobilisable localement.",
+      "reason": "Ce groupe est particulièrement concerné par les enjeux sociaux et économiques de la grève, étant dans une situation familiale qui peut renforcer leur perception des enjeux liés à l'emploi, la précarité et les services publics.",
       "all": [
         "occupation.employee",
+        "household.couple_with_children",
         "geo.intermediate"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49",
-        "age.50_64"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Attitude envers la grève",
-        "Niveau de mobilisation prévue"
+        "Intérêt pour la grève",
+        "Intention de participer"
       ],
-      "count": 498,
+      "count": 234,
       "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -49,25 +46,23 @@
     },
     {
       "id": "segment_2",
-      "name": "Jeunes familles en communes de taille moyenne",
-      "mechanism": "Les jeunes familles vivant dans des communes de taille moyenne sont concernées par la mobilisation du 5 novembre à Clisson car elles peuvent être affectées par les impacts sociaux des revendications portées lors de la grève.",
-      "reason": "Ce groupe représente un public familial dans des communes intermédiaires comme Clisson où la grève peut influencer leur quotidien et leur soutien à la mobilisation.",
+      "name": "Jeunes sans activité professionnelle dans les communes denses de Clisson",
+      "mechanism": "Les jeunes âgés de 18 à 24 ans sans activité professionnelle dans les communes denses à Clisson sont un public ciblé par les syndicats pour la mobilisation du 5 novembre, car ils représentent une population susceptible d'être sensibilisée aux revendications sociales et de participer à la dynamique de protestation.",
+      "reason": "Ce segment inclut des jeunes souvent en situation précaire ou en formation, vivant en milieu urbain proche de Clisson, ce qui les relie fortement à l'événement et à ses motifs.",
       "all": [
-        "household.couple_with_children",
-        "commune_size.1000_plus"
+        "age.18_24",
+        "cluster.young_without_activity",
+        "geo.dense"
       ],
-      "any": [
-        "age.25_34",
-        "age.35_49"
-      ],
+      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception de la grève",
-        "Impact attendu sur la vie familiale"
+        "Soutien aux revendications syndicales",
+        "Participation à la mobilisation"
       ],
-      "count": 26279,
-      "distinctCommunes": 119,
+      "count": 8453,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -78,23 +73,22 @@
     },
     {
       "id": "segment_3",
-      "name": "Ouvriers âgés de 50 à 64 ans en commune dense",
-      "mechanism": "Les ouvriers âgés de 50 à 64 ans vivant dans des communes denses sont concernés par la grève du 5 novembre à Clisson car ils font partie des publics exposés aux réformes sociales que les syndicats dénoncent et peuvent être très impliqués dans la mobilisation.",
-      "reason": "Ce segment combine un âge proche de la retraite pour des ouvriers souvent touchés par les questions sociales, vivant dans des centres urbains proches, renforçant leur sensibilité à l'appel syndical.",
+      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires autour de Clisson",
+      "mechanism": "L'appel à la grève du 5 novembre à Clisson concerne explicitement les ouvriers de 50 à 64 ans vivant dans les communes intermédiaires proches, groupe directement touché par les réformes sociales et susceptible d'être mobilisé par les syndicats.",
+      "reason": "segment resserré par âge, profession et densité géographique",
       "all": [
-        "age.50_64",
-        "occupation.worker",
-        "geo.dense"
+        "cluster.older_worker",
+        "geo.intermediate"
       ],
       "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Intensité du soutien syndical",
-        "Engagement dans la grève"
+        "Participation à la grève",
+        "Perception des réformes sociales"
       ],
-      "count": 3436,
-      "distinctCommunes": 72,
+      "count": 144,
+      "distinctCommunes": 24,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -115,21 +109,21 @@
   "contrasts": {
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Jeunes familles en communes de taille moyenne",
-      "matchedCount": 26279,
+      "segmentName": "Jeunes sans activité professionnelle dans les communes denses de Clisson",
+      "matchedCount": 8453,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 3,
-          "noClearChange": 45
+          "away": 0,
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 47
+          "away": 0,
+          "noClearChange": 48
         },
         "center": {
           "toward": 0,
@@ -147,8 +141,8 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 6,
-          "away": 0,
+          "toward": 4,
+          "away": 2,
           "noClearChange": 42
         }
       },
@@ -175,8 +169,8 @@
         },
         "melenchon": {
           "toward": 0,
-          "away": 2,
-          "noClearChange": 46
+          "away": 0,
+          "noClearChange": 48
         },
         "tondelier": {
           "toward": 0,
@@ -214,111 +208,477 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 6,
-          "away": 0,
+          "toward": 4,
+          "away": 2,
           "noClearChange": 42
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.23047777222777233,
+          "after": 0.23115160021207282,
+          "change": 0.0006738279843004902
+        },
+        "philippe": {
+          "before": 0.09602183233433233,
+          "after": 0.09383340300477677,
+          "change": -0.002188429329555555
+        },
+        "attal": {
+          "before": 0.024468843656343654,
+          "after": 0.02377788922486185,
+          "change": -0.0006909544314818022
+        },
+        "glucksmann": {
+          "before": 0.08196767815517819,
+          "after": 0.08028026240616125,
+          "change": -0.0016874157490169434
+        },
+        "melenchon": {
+          "before": 0.14362389693639682,
+          "after": 0.14700601807386718,
+          "change": 0.0033821211374703564
+        },
+        "tondelier": {
+          "before": 0.018451069763569767,
+          "after": 0.020374862112253013,
+          "change": 0.001923792348683246
+        },
+        "roussel": {
+          "before": 0.013078171828171831,
+          "after": 0.013043089559431146,
+          "change": -0.000035082268740684736
+        },
+        "retailleau": {
+          "before": 0.03269482600732599,
+          "after": 0.031665990460544934,
+          "change": -0.0010288355467810567
+        },
+        "lisnard": {
+          "before": 0.018034299034299036,
+          "after": 0.017374194358913683,
+          "change": -0.0006601046753853534
+        },
+        "zemmour": {
+          "before": 0.028257992007992016,
+          "after": 0.02734750182548473,
+          "change": -0.000910490182507287
+        },
+        "dupont-aignan": {
+          "before": 0.012244297369297373,
+          "after": 0.012149420676355471,
+          "change": -0.00009487669294190246
+        },
+        "arthaud": {
+          "before": 0.005039418914418917,
+          "after": 0.005105677161581626,
+          "change": 0.00006625824716270916
+        },
+        "abstention": {
+          "before": 0.2956399017649019,
+          "after": 0.2968900909236956,
+          "change": 0.001250189158793713
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {},
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 45,
+          "le-pen": 3
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, cette grève ne me concerne pas trop, j'évite les conflits et je préfère rester discret dans le boulot et la vie.",
-        "Une grève à Marseille ? Ça ne m’étonne pas, mais ça ne change pas grand-chose pour moi, je suis plus préoccupée par mes projets que par les manifestations.",
-        "Je comprends pourquoi les syndicats font grève, mais ça me dérange un peu, j’ai besoin de bosser et les blocages, c’est toujours embêtant pour moi."
+        "Je trouve que c'est important de se mobiliser pour nos droits, surtout avec les difficultés qu'on rencontre en ce moment. Une grève, ça fait souvent bouger les choses.",
+        "Une grève, ça ne me concerne pas trop même si j'entends parler de ces choses. Je ne sais pas si ça influencera vraiment mon vote, je préfère rester sur mes idées de base.",
+        "Une grève par ici, ça pourrait toucher les jeunes et les gens comme moi. J'aime bien voir les gens s'engager, surtout quand c'est pacifique et qu'on peut exprimer nos idées."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.0016759088719186018,
-          "lo": 0.0002322212073048533,
-          "hi": 0.003203238884572539,
+          "mean": 0.0006738279843005596,
+          "lo": -0.0008064895332374552,
+          "hi": 0.0022092146534297055,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0025471914240249127,
-          "lo": -0.0035644501177073064,
-          "hi": -0.001673389250544598,
+          "mean": -0.0021884293295555647,
+          "lo": -0.003002475196260615,
+          "hi": -0.001339849207115869,
           "stable": false
         },
         "attal": {
-          "mean": -0.0012827007643678937,
-          "lo": -0.0016994084846358552,
-          "hi": -0.0008440214004934296,
+          "mean": -0.0006909544314818041,
+          "lo": -0.0010006992392230527,
+          "hi": -0.00035838600858714665,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.002022103451792339,
-          "lo": -0.003115362491351976,
-          "hi": -0.0011222790510199896,
+          "mean": -0.0016874157490169197,
+          "lo": -0.002484451939397796,
+          "hi": -0.0009012550651756253,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.0017006295946676653,
-          "lo": -0.000669088169895489,
-          "hi": 0.0038696807059752053,
+          "mean": 0.0033821211374702614,
+          "lo": 0.0014893997608716521,
+          "hi": 0.0053156822383456336,
           "stable": false
         },
         "tondelier": {
-          "mean": 0.0006284517923247033,
-          "lo": 0.00006411358208598583,
-          "hi": 0.001280108455003934,
+          "mean": 0.001923792348683246,
+          "lo": 0.0011022735677669365,
+          "hi": 0.0028095458530921036,
           "stable": false
         },
         "roussel": {
-          "mean": 0.00034417779275492267,
-          "lo": -0.00008764301426289028,
-          "hi": 0.0008157015483272512,
+          "mean": -0.00003508226874068479,
+          "lo": -0.00023851891673936526,
+          "hi": 0.0001888046834612036,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0016266784012049812,
-          "lo": -0.002206639967963677,
-          "hi": -0.0011681207592142422,
+          "mean": -0.0010288355467810751,
+          "lo": -0.0013972287189600637,
+          "hi": -0.0006724640287958168,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0013322748428144602,
-          "lo": -0.0017668051022431822,
-          "hi": -0.000868348058677415,
+          "mean": -0.0006601046753853514,
+          "lo": -0.0010112621076704051,
+          "hi": -0.00038447492696780096,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0015963949678571077,
-          "lo": -0.002451930701883573,
-          "hi": -0.0008698078295695293,
+          "mean": -0.0009104901825072788,
+          "lo": -0.0012917767226369142,
+          "hi": -0.0005845884971324014,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0007986898247149137,
-          "lo": -0.0012469407751123404,
-          "hi": -0.0004605878977249899,
+          "mean": -0.00009487669294190057,
+          "lo": -0.0002895479049169626,
+          "hi": 0.00009788318512678658,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00015732962667828375,
-          "lo": -0.00026605502100168283,
-          "hi": -0.00005414114588663761,
+          "mean": 0.0000662582471627112,
+          "lo": -0.00001724709300100793,
+          "hi": 0.00015899164845413678,
           "stable": false
         },
         "abstention": {
-          "mean": 0.007014195251788993,
-          "lo": 0.0024878302101634074,
-          "hi": 0.011824523671360611,
+          "mean": 0.0012501891587937842,
+          "lo": -0.002242572437211694,
+          "hi": 0.0052372101409374205,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Salariés modestes en couple avec enfants à Clisson",
+      "matchedCount": 234,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 2,
+          "noClearChange": 41
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 2,
+          "noClearChange": 41
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.37174136966870147,
+          "after": 0.3741648813031288,
+          "change": 0.0024235116344273333
+        },
+        "philippe": {
+          "before": 0.056872484127796115,
+          "after": 0.05487680008098591,
+          "change": -0.001995684046810206
+        },
+        "attal": {
+          "before": 0.01440049098521508,
+          "after": 0.013889167704943474,
+          "change": -0.0005113232802716056
+        },
+        "glucksmann": {
+          "before": 0.05914633665901997,
+          "after": 0.057986140771692125,
+          "change": -0.001160195887327846
+        },
+        "melenchon": {
+          "before": 0.08838746419970796,
+          "after": 0.08975152017341664,
+          "change": 0.001364055973708686
+        },
+        "tondelier": {
+          "before": 0.013358947653502583,
+          "after": 0.013771941715087723,
+          "change": 0.0004129940615851396
+        },
+        "roussel": {
+          "before": 0.00933675704709939,
+          "after": 0.00936524258218917,
+          "change": 0.000028485535089779745
+        },
+        "retailleau": {
+          "before": 0.017944036862475036,
+          "after": 0.017058780837238326,
+          "change": -0.0008852560252367095
+        },
+        "lisnard": {
+          "before": 0.009878592171145594,
+          "after": 0.009407583005148294,
+          "change": -0.00047100916599730064
+        },
+        "zemmour": {
+          "before": 0.04560010017402094,
+          "after": 0.04482370542778508,
+          "change": -0.0007763947462358645
+        },
+        "dupont-aignan": {
+          "before": 0.019861412157973598,
+          "after": 0.019105841058210258,
+          "change": -0.00075557109976334
+        },
+        "arthaud": {
+          "before": 0.003167794085088506,
+          "after": 0.0030928313610109944,
+          "change": -0.00007496272407751152
+        },
+        "abstention": {
+          "before": 0.29030421420825353,
+          "after": 0.29270556397916303,
+          "change": 0.0024013497709095
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 39
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 8,
+          "le-pen": 1
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je comprends que les syndicats appellent à la grève, mais ce genre d'action ne change pas vraiment mon quotidien. Ça m'embêterait juste si ça perturbait les transports ou le travail.",
+        "Franchement, une grève le 5 novembre, ça m'agace un peu, surtout si ça bloque la mairie ou les services. Mais une simple journée de rassemblement sans grève, ça me semble plus supportable, au moins ça fera entendre leurs voix sans trop de dérangement.",
+        "Une grève qui bloque tout, ce serait embêtant, je travaille souvent le matin et une journée sans service, ce n'est pas évident. Un rassemblement symbolique, ça me dérangerait moins."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0024235116344272106,
+          "lo": 0.00020053469518643377,
+          "hi": 0.005405066575452151,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0019956840468102264,
+          "lo": -0.0028842883144127238,
+          "hi": -0.001095715514031526,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0005113232802715955,
+          "lo": -0.0009844836444868668,
+          "hi": -0.00009730234036997034,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.001160195887327815,
+          "lo": -0.002180192906465882,
+          "hi": -0.0001906474970194156,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0013640559737087433,
+          "lo": -0.00016478689193612459,
+          "hi": 0.002797823288688267,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00041299406158514077,
+          "lo": -0.00007838622000573985,
+          "hi": 0.0009009192349265729,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00002848553508978224,
+          "lo": -0.00026561572778569317,
+          "hi": 0.000291737717620369,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008852560252367131,
+          "lo": -0.0013234924810494398,
+          "hi": -0.0004662587472879639,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00047100916599729777,
+          "lo": -0.0007067605693152531,
+          "hi": -0.0002760915984122544,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0007763947462358917,
+          "lo": -0.001265098085511536,
+          "hi": -0.0003244899604996475,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0007555710997633334,
+          "lo": -0.0010981521087391156,
+          "hi": -0.0004126427312280052,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00007496272407750919,
+          "lo": -0.00016343069434210657,
+          "hi": -0.000002834486853286859,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0024013497709095104,
+          "lo": -0.001498120630879666,
+          "hi": 0.006599709025464973,
           "stable": false
         }
       }
     },
     "segment_3": {
       "segmentId": "segment_3",
-      "segmentName": "Ouvriers âgés de 50 à 64 ans en commune dense",
-      "matchedCount": 3436,
+      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires autour de Clisson",
+      "matchedCount": 144,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "left": {
           "toward": 0,
@@ -336,20 +696,20 @@
           "noClearChange": 48
         },
         "far_right": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
         },
         "abstention": {
-          "toward": 2,
+          "toward": 5,
           "away": 1,
-          "noClearChange": 45
+          "noClearChange": 42
         }
       },
       "candidateSummary": {
         "le-pen": {
-          "toward": 2,
-          "away": 0,
+          "toward": 0,
+          "away": 2,
           "noClearChange": 46
         },
         "philippe": {
@@ -368,9 +728,9 @@
           "noClearChange": 48
         },
         "melenchon": {
-          "toward": 2,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 46
+          "noClearChange": 48
         },
         "tondelier": {
           "toward": 0,
@@ -408,95 +768,179 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 2,
+          "toward": 5,
           "away": 1,
-          "noClearChange": 45
+          "noClearChange": 42
         }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.4285486453500789,
+          "after": 0.4262472773223956,
+          "change": -0.002301368027683326
+        },
+        "philippe": {
+          "before": 0.052911245374526565,
+          "after": 0.05088593340973144,
+          "change": -0.0020253119647951276
+        },
+        "attal": {
+          "before": 0.01320692587473532,
+          "after": 0.012581756659521768,
+          "change": -0.0006251692152135519
+        },
+        "glucksmann": {
+          "before": 0.04957909668320365,
+          "after": 0.04821111057325147,
+          "change": -0.001367986109952181
+        },
+        "melenchon": {
+          "before": 0.08107653907710101,
+          "after": 0.08381130997582288,
+          "change": 0.002734770898721872
+        },
+        "tondelier": {
+          "before": 0.011353174457356141,
+          "after": 0.012561878100617362,
+          "change": 0.0012087036432612205
+        },
+        "roussel": {
+          "before": 0.007749172082390676,
+          "after": 0.007980417974550293,
+          "change": 0.00023124589215961673
+        },
+        "retailleau": {
+          "before": 0.01862349394340928,
+          "after": 0.01766909757944588,
+          "change": -0.0009543963639634008
+        },
+        "lisnard": {
+          "before": 0.010186591503113554,
+          "after": 0.009647154246689113,
+          "change": -0.000539437256424441
+        },
+        "zemmour": {
+          "before": 0.05256083244185339,
+          "after": 0.05134649610559077,
+          "change": -0.0012143363362626183
+        },
+        "dupont-aignan": {
+          "before": 0.022957496906416772,
+          "after": 0.02205900593545268,
+          "change": -0.0008984909709640922
+        },
+        "arthaud": {
+          "before": 0.0028539188756329706,
+          "after": 0.0027707190991885424,
+          "change": -0.00008319977644442823
+        },
+        "abstention": {
+          "before": 0.24839286743018177,
+          "after": 0.2542278430177421,
+          "change": 0.005834975587560326
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 48
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {}
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je trouve que c’est normal que les syndicats se fassent entendre, mais ici à Paris je suis un peu distante, ça ne change pas grand-chose pour moi qui travaille tranquille la nuit.",
-        "Je trouve que les syndicats ont raison de se mobiliser, la vie est dure à l'usine et un vrai mouvement peut changer les choses. Je serais peut-être plus engagée si ça bloque le travail.",
-        "Je ne suis pas sûr que cette grève à Clisson me touche directement, mais je comprends que les collègues veuillent faire valoir leurs droits."
+        "Une grève le 5 novembre, ça ne me surprend pas, mais je me demande si ça changera vraiment les choses pour nous à l'usine.",
+        "Une grève à Clisson ? Ça ne me motive pas trop, je suis plus du genre à aller bosser et pas à perdre une journée pour un rassemblement.",
+        "Je vois la grève du 5 novembre, ça peut faire un peu de bruis, mais je ne suis pas vraiment partisan de ces arrêts de travail, ça complique tout."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.0037769465929403593,
-          "lo": 0.0011420342658073127,
-          "hi": 0.007256150890452693,
+          "mean": -0.0023013680276832518,
+          "lo": -0.005083055662895682,
+          "hi": 0.000001578933927689578,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0038483646334652316,
-          "lo": -0.004792166034302819,
-          "hi": -0.0029426706721915057,
+          "mean": -0.002025311964795109,
+          "lo": -0.002644614105097263,
+          "hi": -0.0014913604956737412,
           "stable": false
         },
         "attal": {
-          "mean": -0.001276689743194761,
-          "lo": -0.0017771474140363737,
-          "hi": -0.0008864883800377201,
+          "mean": -0.0006251692152135488,
+          "lo": -0.0009059920384915082,
+          "hi": -0.0003874527578935967,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0018771673313451353,
-          "lo": -0.002959405368885916,
-          "hi": -0.0008395776441264781,
+          "mean": -0.0013679861099521965,
+          "lo": -0.0020816628924497046,
+          "hi": -0.000644263070217404,
           "stable": false
         },
         "melenchon": {
-          "mean": 0.006598151094326289,
-          "lo": 0.004376023736801975,
-          "hi": 0.008637846393119509,
+          "mean": 0.0027347708987218587,
+          "lo": 0.0008789721194565632,
+          "hi": 0.004553656762913788,
           "stable": false
         },
         "tondelier": {
-          "mean": 0.001172678863541836,
-          "lo": 0.0004775991994508026,
-          "hi": 0.001755879124336407,
+          "mean": 0.001208703643261224,
+          "lo": 0.0006957546874675253,
+          "hi": 0.0018402114795065723,
           "stable": false
         },
         "roussel": {
-          "mean": -0.00014466246158549695,
-          "lo": -0.0004770380297128118,
-          "hi": 0.0002421035260033785,
+          "mean": 0.00023124589215961692,
+          "lo": -0.00012527168199177963,
+          "hi": 0.0006178835740500115,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0016001773652186957,
-          "lo": -0.002124538730026324,
-          "hi": -0.001155875048676983,
+          "mean": -0.0009543963639633999,
+          "lo": -0.0012458188554346089,
+          "hi": -0.0006687271572259507,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0008957591779906295,
-          "lo": -0.0012131603333182584,
-          "hi": -0.0006292699967143557,
+          "mean": -0.0005394372564244353,
+          "lo": -0.000746080293831905,
+          "hi": -0.00036104550222729767,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0016216270470279994,
-          "lo": -0.0020672890983808195,
-          "hi": -0.0011808609025442988,
+          "mean": -0.0012143363362625982,
+          "lo": -0.0017967339498874948,
+          "hi": -0.0007183464285576562,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0009632334917141237,
-          "lo": -0.0013029019668487293,
-          "hi": -0.0006654689436545032,
+          "mean": -0.0008984909709640953,
+          "lo": -0.0012039136208984993,
+          "hi": -0.0006186986316084844,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.0002540289620982885,
-          "lo": -0.000379183444593536,
-          "hi": -0.0001359464160869187,
+          "mean": -0.00008319977644442719,
+          "lo": -0.0001673081157563856,
+          "hi": -0.0000196926836095926,
           "stable": false
         },
         "abstention": {
-          "mean": 0.0009339336628319227,
-          "lo": -0.0015068235972030993,
-          "hi": 0.0030910632215955937,
+          "mean": 0.005834975587560313,
+          "lo": 0.0023924682354794498,
+          "hi": 0.009450829832763826,
           "stable": false
         }
       }
@@ -510,382 +954,275 @@
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 94
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
           "toward": 1,
-          "away": 1,
-          "noClearChange": 94
-        },
-        "abstention": {
-          "toward": 21,
           "away": 0,
-          "noClearChange": 75
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 4,
-          "away": 0,
-          "noClearChange": 92
-        },
-        "philippe": {
-          "toward": 0,
-          "away": 1,
           "noClearChange": 95
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "melenchon": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 94
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "abstention": {
-          "toward": 21,
-          "away": 0,
-          "noClearChange": 75
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je comprends que des gens veulent se mobiliser, mais dans mon coin à la campagne, ça ne changera pas vraiment mon boulot ni ma vie quotidienne.",
-        "À mon âge, ces grèves me fatiguent un peu, surtout si ça bloque tout. Une mobilisation symbolique, ça me va mieux, c’est moins contraignant.",
-        "La grève, ça complique la vie surtout quand on a des enfants et un emploi du temps chargé. Une journée de manifestations sans blocage, c’est plus acceptable."
-      ],
-      "candidateEffect": {
-        "le-pen": {
-          "mean": 0.0029333885156635855,
-          "lo": 0.0014943083460780895,
-          "hi": 0.004748649616148913,
-          "stable": false
-        },
-        "philippe": {
-          "mean": -0.0034647869441912713,
-          "lo": -0.004346806207311482,
-          "hi": -0.0025440858673986557,
-          "stable": false
-        },
-        "attal": {
-          "mean": -0.001278027706351734,
-          "lo": -0.0016440530135753012,
-          "hi": -0.0009592746163381859,
-          "stable": false
-        },
-        "glucksmann": {
-          "mean": -0.0027349707647503093,
-          "lo": -0.0034886998808895463,
-          "hi": -0.0020190773035430984,
-          "stable": false
-        },
-        "melenchon": {
-          "mean": -0.0013979887244259927,
-          "lo": -0.0027089370181846545,
-          "hi": 0.00006692520347030969,
-          "stable": false
-        },
-        "tondelier": {
-          "mean": -0.0002514112830873878,
-          "lo": -0.0006004331152819818,
-          "hi": 0.00007066407195695428,
-          "stable": false
-        },
-        "roussel": {
-          "mean": -0.0004141490612523788,
-          "lo": -0.0006405819084936846,
-          "hi": -0.00019358075321562477,
-          "stable": false
-        },
-        "retailleau": {
-          "mean": -0.0011625459091774797,
-          "lo": -0.0016618000426035374,
-          "hi": -0.0006221472343832897,
-          "stable": false
-        },
-        "lisnard": {
-          "mean": -0.0009545863191918689,
-          "lo": -0.0012068119734772271,
-          "hi": -0.0007201623009116682,
-          "stable": false
-        },
-        "zemmour": {
-          "mean": -0.0012728146527937892,
-          "lo": -0.0019594791045215243,
-          "hi": -0.0007611774566864809,
-          "stable": false
-        },
-        "dupont-aignan": {
-          "mean": -0.0008797414244537489,
-          "lo": -0.0011799977893120126,
-          "hi": -0.000610769767169336,
-          "stable": false
-        },
-        "arthaud": {
-          "mean": -0.00020451647964432251,
-          "lo": -0.0002869527368215098,
-          "hi": -0.00012926020562711732,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.01108215075365669,
-          "lo": 0.007741181987670691,
-          "hi": 0.014738703381480797,
-          "stable": true
-        }
-      }
-    },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Salariés modestes en communes intermédiaires",
-      "matchedCount": 498,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
         },
         "left": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "center": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "right": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "far_right": {
           "toward": 2,
-          "away": 0,
-          "noClearChange": 46
+          "away": 5,
+          "noClearChange": 89
         },
         "abstention": {
-          "toward": 13,
-          "away": 0,
-          "noClearChange": 35
+          "toward": 9,
+          "away": 4,
+          "noClearChange": 83
         }
       },
       "candidateSummary": {
         "le-pen": {
-          "toward": 3,
-          "away": 0,
-          "noClearChange": 45
+          "toward": 2,
+          "away": 4,
+          "noClearChange": 90
         },
         "philippe": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "attal": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "glucksmann": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "melenchon": {
-          "toward": 0,
+          "toward": 1,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 95
         },
         "tondelier": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "roussel": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "retailleau": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "lisnard": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "zemmour": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "dupont-aignan": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "arthaud": {
           "toward": 0,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 13,
-          "away": 0,
-          "noClearChange": 35
+          "toward": 9,
+          "away": 4,
+          "noClearChange": 83
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.338551868624037,
+          "after": 0.3388573865959785,
+          "change": 0.00030551797194150465
+        },
+        "philippe": {
+          "before": 0.08040797881852696,
+          "after": 0.07846261327737943,
+          "change": -0.001945365541147534
+        },
+        "attal": {
+          "before": 0.020263382826785574,
+          "after": 0.02014145505071777,
+          "change": -0.00012192777606780461
+        },
+        "glucksmann": {
+          "before": 0.062476859895304916,
+          "after": 0.061943608893635066,
+          "change": -0.0005332510016698502
+        },
+        "melenchon": {
+          "before": 0.08233041729211861,
+          "after": 0.08441867504783422,
+          "change": 0.0020882577557156112
+        },
+        "tondelier": {
+          "before": 0.014074648449918946,
+          "after": 0.014470893416873779,
+          "change": 0.00039624496695483263
+        },
+        "roussel": {
+          "before": 0.009844957053367263,
+          "after": 0.009801227635898845,
+          "change": -0.000043729417468418505
+        },
+        "retailleau": {
+          "before": 0.03705870762631402,
+          "after": 0.036411557705363314,
+          "change": -0.0006471499209507042
+        },
+        "lisnard": {
+          "before": 0.020389027391739516,
+          "after": 0.02001030525191706,
+          "change": -0.00037872213982245717
+        },
+        "zemmour": {
+          "before": 0.04152461305442729,
+          "after": 0.040708233305638976,
+          "change": -0.0008163797487883151
+        },
+        "dupont-aignan": {
+          "before": 0.018053673719618368,
+          "after": 0.01764339763720227,
+          "change": -0.00041027608241609934
+        },
+        "arthaud": {
+          "before": 0.002906471697830739,
+          "after": 0.0028489384763084914,
+          "change": -0.0000575332215222474
+        },
+        "abstention": {
+          "before": 0.2721173935500105,
+          "after": 0.2742817077052521,
+          "change": 0.002164314155241598
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 90
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "le-pen": 1,
+          "abstention": 5
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Franchement, une grève avec blocage à Clisson, ça ne me concerne pas directement et je n'aime pas trop les perturbations inutiles dans mon quotidien. Une simple manifestation symbolique serait plus correcte à mes yeux.",
-        "Une grève avec blocage quand je travaille, c’est vraiment contraignant, surtout avec un enfant. Je préférerais une mobilisation symbolique qui fait passer le message sans me compliquer la vie.",
-        "Je ne suis pas très concernée par ces grèves qui ne touchent pas mon lieu de travail, mais si ça bloque, ça me dérange. Une manifestation sans blocage, ça me semblerait plus raisonnable."
+        "Ça ne me concerne pas vraiment directement, je travaille dans une PME et une grève à Clisson, ce n'est pas proche de chez moi. Ça ne change rien à mon vote.",
+        "Une grève à Clisson, c'est un peu loin et ça ne me touche pas directement. J'ai toujours été un peu distante des mouvements syndicaux, donc ça ne change rien pour moi.",
+        "Je travaille en grande surface à Nantes, et même si la grève est à Clisson, ce genre d'appel à mobilisation me rend un peu curieuse. Mais à vrai dire, ça ne change pas vraiment mon orientation de vote, je reste attachée aux candidats de gauche."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.00455954023093965,
-          "lo": 0.0022002341510819917,
-          "hi": 0.007048897641935482,
+          "mean": 0.0003055179719415191,
+          "lo": -0.0016776013360563964,
+          "hi": 0.002102287423490149,
           "stable": false
         },
         "philippe": {
-          "mean": -0.003688460124661262,
-          "lo": -0.004950944197752085,
-          "hi": -0.0026396939052637466,
+          "mean": -0.001945365541147527,
+          "lo": -0.0026098292219802685,
+          "hi": -0.001259250759382864,
           "stable": false
         },
         "attal": {
-          "mean": -0.0006343749604446012,
-          "lo": -0.0008439616317931919,
-          "hi": -0.0004062115268937374,
+          "mean": -0.00012192777606780902,
+          "lo": -0.00032878592179810584,
+          "hi": 0.00010028056129610058,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0021165354705896936,
-          "lo": -0.003034627573602173,
-          "hi": -0.00138032501436033,
+          "mean": -0.000533251001669882,
+          "lo": -0.0009228801380579922,
+          "hi": -0.00014121934637215493,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.004186287237975716,
-          "lo": -0.00629385448917967,
-          "hi": -0.0023192615479798863,
+          "mean": 0.0020882577557155934,
+          "lo": 0.0007333724103357475,
+          "hi": 0.0036136713895417176,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.0008979318369589599,
-          "lo": -0.0015540397077737588,
-          "hi": -0.0003419690981751058,
+          "mean": 0.00039624496695483366,
+          "lo": 0.00007663739727012046,
+          "hi": 0.0007773896983928443,
           "stable": false
         },
         "roussel": {
-          "mean": -0.00044462542948253307,
-          "lo": -0.0006894614523023222,
-          "hi": -0.00021034662533260106,
+          "mean": -0.00004372941746841637,
+          "lo": -0.00024266998898163304,
+          "hi": 0.0001887900850132965,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0009952970384895469,
-          "lo": -0.0014224373177523454,
-          "hi": -0.0006457967158203616,
+          "mean": -0.0006471499209506936,
+          "lo": -0.0010036753441490772,
+          "hi": -0.0003205140455885694,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0005741735554525575,
-          "lo": -0.0007737774494707917,
-          "hi": -0.00034236601402391336,
+          "mean": -0.0003787221398224594,
+          "lo": -0.0005220027587013069,
+          "hi": -0.0002287621561879964,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0014167334303583896,
-          "lo": -0.0018379190629151177,
-          "hi": -0.0010674500306674527,
+          "mean": -0.0008163797487883207,
+          "lo": -0.0012081314997466636,
+          "hi": -0.00048593870123404896,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0008447911655529821,
-          "lo": -0.0011473156092914492,
-          "hi": -0.0005426648930868803,
+          "mean": -0.00041027608241611213,
+          "lo": -0.0005944561413981639,
+          "hi": -0.00025940398837125876,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00016084518975902626,
-          "lo": -0.0002582671768813914,
-          "hi": -0.0000793677444776216,
+          "mean": -0.000057533221522246306,
+          "lo": -0.00012028123534350912,
+          "hi": 0.0000013496739914403305,
           "stable": false
         },
         "abstention": {
-          "mean": 0.011400515208785615,
-          "lo": 0.007747870558460088,
-          "hi": 0.015029642197807572,
-          "stable": true
+          "mean": 0.0021643141552415194,
+          "lo": -0.00011870310368427711,
+          "hi": 0.004505638641759796,
+          "stable": false
         }
       }
     }
@@ -893,6 +1230,6 @@
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "f687fc89dfc5245cec0363780cac53cc2c03de7b1c454ddabfe93b96ea4fa2cd"
+    "contentHash": "13a30cbb66f9d58a1a926014baacaa13834f31677b43748fa388ef4d8241eac1"
   }
 }

@@ -4,37 +4,42 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "5437233f752e1833",
+  "inputHash": "c45e5eb2636f853e",
   "eventInputHash": "c27960acee918656894bc06fae762025caec8a890826143ac9fecb15553dd19e",
-  "computedAt": "2026-11-12T13:47:21.528Z",
+  "computedAt": "2026-11-12T16:14:04.493Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Un conducteur de car est placé sous contrôle judiciaire sans mise en examen après l'accident dans l'Ain, en attendant les résultats complets de l'enquête sur les causes de l'accident.",
-    "whatChanges": "Le chauffeur évite la mise en examen immédiate, ce qui limite la stigmatisation juridique dans l'immédiat, rassurant certains électeurs sensibles à la présomption d'innocence et aux conditions de travail des transporteurs."
+    "description": "Suite à l'accident de car dans l’Ain, le chauffeur a été placé sous contrôle judiciaire sans mise en examen pour « homicide involontaire », en raison de l'enquête en cours sur d'autres facteurs contributifs.",
+    "whatChanges": "Le fait que le chauffeur ne soit pas immédiatement mis en examen pour homicide involontaire peut ralentir la stigmatisation des conducteurs professionnels et modérer l'impact émotionnel chez l'opinion publique et les électeurs concernés par la sécurité routière."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Habitants des communes rurales de l’Ain",
-      "mechanism": "L’accident de car s’est produit dans l’Ain, une zone caractérisée par des communes rurales ; les habitants de ces communes sont directement concernés par l’événement tragique local et ses conséquences sur la sécurité des transport en commun.",
-      "reason": "Les populations rurales peuvent être plus affectées émotionnellement et socialement par cet accident local qui touche leur quotidien et la mobilité.",
+      "name": "Habitants des communes rurales de l’Ain en activité salariée",
+      "mechanism": "Habitants vivant dans des communes rurales proches de l’accident dans l’Ain, en emploi salarié susceptibles d’utiliser ou d’être affectés par le trafic routier des cars.",
+      "reason": "Remplacement précis évitant l’attribut manquant résidence département, intersection resserrée par occupation salariée et géographie rurale.",
       "all": [
         "geo.rural",
-        "commune_size.under_1000"
+        "commune_size.1000_plus"
       ],
-      "any": [],
+      "any": [
+        "occupation.employee",
+        "occupation.intermediate",
+        "occupation.worker"
+      ],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Perception de la sécurité dans les transports",
-        "Attitude envers la gestion locale de l’accident"
+        "Perception du risque routier",
+        "Usage du transport en car",
+        "Attitude envers la sécurité routière"
       ],
-      "count": 476,
-      "distinctCommunes": 88,
+      "count": 838,
+      "distinctCommunes": 23,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -45,23 +50,24 @@
     },
     {
       "id": "segment_2",
-      "name": "Familles avec enfants des communes proches de l’accident",
-      "mechanism": "Les familles avec enfants vivant dans les communes de taille moyenne ou petite dans la région de l’Ain sont concernées par cet accident car elles utilisent fréquemment les transports scolaires et collectifs, et sont sensibles aux risques pour leurs enfants.",
-      "reason": "Ce groupe est directement impacté par les questions de sécurité des transports scolaires et collectifs suite à cet accident grave dans leur environnement proche.",
+      "name": "Travailleurs ouvriers d’âge moyen en communes intermédiaires et rurales",
+      "mechanism": "Ouvriers de 35 à 64 ans vivant en communes rurales ou intermédiaires, susceptibles d’être usagers fréquents des transports collectifs ou sensibles à la sécurité routière dans leur vie professionnelle et hors travail.",
+      "reason": "Segment ciblé et resserré par âge, profession ouvrière et géographie rurale/intermédiaire, évitant les attributs non disponibles.",
       "all": [
-        "household.couple_with_children",
-        "commune_size.1000_plus",
+        "occupation.worker"
+      ],
+      "any": [
+        "geo.rural",
         "geo.intermediate"
       ],
-      "any": [],
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Niveau d’inquiétude sur la sécurité des enfants dans les transports",
-        "Soutien aux mesures de renforcement de la sécurité routière"
+        "Utilisation du car pour les trajets travail et personnels",
+        "Perception du risque routier"
       ],
-      "count": 1142,
-      "distinctCommunes": 24,
+      "count": 771,
+      "distinctCommunes": 88,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -72,11 +78,12 @@
     },
     {
       "id": "segment_3",
-      "name": "Agents de la route ruraux de 35 à 64 ans",
-      "mechanism": "Conducteurs professionnels potentiellement concernés par la responsabilité dans l’accident du car dans l’Ain, vivant en zone rurale où l’accident s’est produit.",
-      "reason": "Segment resserré sur l’âge et la zone rurale pour cibler les conducteurs professionnels potentiellement concernés.",
+      "name": "Salariés ouvriers hommes âgés de 35 à 64 ans en communes rurales",
+      "mechanism": "Travailleurs ouvriers masculins d’âge mature en communes rurales de l’Ain, concernés par les conditions de travail et le risque d’accidents sur leur lieu de vie",
+      "reason": "Intersection de sexe, âge, zone rurale et catégorie ouvrière pour un groupe homogène et suffisamment restreint",
       "all": [
-        "occupation.employee",
+        "sex.male",
+        "occupation.worker",
         "geo.rural"
       ],
       "any": [
@@ -86,42 +93,15 @@
       "none": [],
       "membershipGaps": [],
       "measurementNeeds": [
-        "Connaissance de l’accident",
-        "Opinion sur la responsabilité du chauffeur"
+        "Préoccupation liée à la sécurité routière",
+        "Usage des transports collectifs"
       ],
-      "count": 258,
-      "distinctCommunes": 61,
+      "count": 150,
+      "distinctCommunes": 52,
       "status": "filterable_discovery_sample",
-      "repairs": [],
-      "counterfactual": {
-        "intervention": "Accident de car dans l’Ain : le chauffeur mis en examen pour « homicide involontaire »",
-        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-        "outcomeToMeasure": "intention de vote par bloc et abstention"
-      }
-    },
-    {
-      "id": "segment_4",
-      "name": "Résidents âgés dans les communes rurales de l’Ain",
-      "mechanism": "Population âgée vivant dans des communes rurales proches du lieu de l’accident, susceptibles d’être concernés par l’événement et ses conséquences locales.",
-      "reason": "Segment précis combinant âge avancé et zone rurale pour cibler les personnes potentiellement impactées localement.",
-      "all": [
-        "age.65_74",
-        "geo.rural"
+      "repairs": [
+        "age : age.35_49 ou age.50_64 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
       ],
-      "any": [
-        "occupation.retired",
-        "occupation.other_inactive"
-      ],
-      "none": [],
-      "membershipGaps": [],
-      "measurementNeeds": [
-        "Niveau d’inquiétude suite à l’accident",
-        "Connaissance des mesures de sécurité routière"
-      ],
-      "count": 352,
-      "distinctCommunes": 65,
-      "status": "filterable_discovery_sample",
-      "repairs": [],
       "counterfactual": {
         "intervention": "Accident de car dans l’Ain : le chauffeur mis en examen pour « homicide involontaire »",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -140,202 +120,8 @@
   "contrasts": {
     "segment_1": {
       "segmentId": "segment_1",
-      "segmentName": "Habitants des communes rurales de l’Ain",
-      "matchedCount": 476,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 1,
-          "noClearChange": 44
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "philippe": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "melenchon": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 3,
-          "away": 1,
-          "noClearChange": 44
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Franchement, ça me choque pas plus que ça, c'est le genre d'accident qui peut arriver, même si ça fait toujours de la peine.",
-        "Je suis un peu triste pour les familles, mais je ne vois pas en quoi ça change vraiment ma façon de voir la politique.",
-        "C’est triste, mais ça ne me fait pas changer de candidat. Je suis plutôt concentrée sur ce qui me touche dans mon quotidien."
-      ],
-      "candidateEffect": {
-        "le-pen": {
-          "mean": 0.003401268253474126,
-          "lo": 0.001857251885091547,
-          "hi": 0.005353147601186866,
-          "stable": false
-        },
-        "philippe": {
-          "mean": -0.0009993359930833988,
-          "lo": -0.002140077262031298,
-          "hi": 0.00018425755978680852,
-          "stable": false
-        },
-        "attal": {
-          "mean": -0.00016568947851664838,
-          "lo": -0.00034793451366650386,
-          "hi": -0.000022215784156591673,
-          "stable": false
-        },
-        "glucksmann": {
-          "mean": -0.0010678418815232658,
-          "lo": -0.0016551992027022538,
-          "hi": -0.0005823853965316143,
-          "stable": false
-        },
-        "melenchon": {
-          "mean": -0.001398121866362841,
-          "lo": -0.0023538801899993574,
-          "hi": -0.0005597921426532059,
-          "stable": false
-        },
-        "tondelier": {
-          "mean": -0.00013993205325527495,
-          "lo": -0.0002589843260679951,
-          "hi": -0.000042393072173667486,
-          "stable": false
-        },
-        "roussel": {
-          "mean": -0.00017448899618634686,
-          "lo": -0.0003064859010310628,
-          "hi": -0.00006009206747215991,
-          "stable": false
-        },
-        "retailleau": {
-          "mean": -0.0010472379552550761,
-          "lo": -0.0016393533262212805,
-          "hi": -0.0004811884404899644,
-          "stable": false
-        },
-        "lisnard": {
-          "mean": -0.00079594182460818,
-          "lo": -0.0012333497673596002,
-          "hi": -0.00040249513402322145,
-          "stable": false
-        },
-        "zemmour": {
-          "mean": -0.0008609874748302491,
-          "lo": -0.0014289707810799105,
-          "hi": -0.0001658758700935631,
-          "stable": false
-        },
-        "dupont-aignan": {
-          "mean": -0.00012845551722616907,
-          "lo": -0.00029089196183752455,
-          "hi": 0.00004216017204963499,
-          "stable": false
-        },
-        "arthaud": {
-          "mean": 0.000009011365123618762,
-          "lo": 0.0000023370169595641574,
-          "hi": 0.000017144496305593462,
-          "stable": false
-        },
-        "abstention": {
-          "mean": 0.0033677534222497133,
-          "lo": 0.0007352930672315337,
-          "hi": 0.0062487319771326365,
-          "stable": false
-        }
-      }
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Agents de la route ruraux de 35 à 64 ans",
-      "matchedCount": 258,
+      "segmentName": "Habitants des communes rurales de l’Ain en activité salariée",
+      "matchedCount": 838,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -366,9 +152,9 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 8,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 40
+          "noClearChange": 46
         }
       },
       "candidateSummary": {
@@ -433,103 +219,187 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 8,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 40
+          "noClearChange": 46
         }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.4090832369182131,
+          "after": 0.41268822196796223,
+          "change": 0.0036049850497491542
+        },
+        "philippe": {
+          "before": 0.07083982006615973,
+          "after": 0.06969823646582324,
+          "change": -0.0011415836003364904
+        },
+        "attal": {
+          "before": 0.015938874604830275,
+          "after": 0.015476273653162774,
+          "change": -0.0004626009516675005
+        },
+        "glucksmann": {
+          "before": 0.056545168265078126,
+          "after": 0.05571225066311524,
+          "change": -0.0008329176019628848
+        },
+        "melenchon": {
+          "before": 0.0804793805192809,
+          "after": 0.07924502777601287,
+          "change": -0.0012343527432680246
+        },
+        "tondelier": {
+          "before": 0.012063201144684718,
+          "after": 0.011865549869438977,
+          "change": -0.0001976512752457412
+        },
+        "roussel": {
+          "before": 0.008396238603089431,
+          "after": 0.008230554888091362,
+          "change": -0.00016568371499806923
+        },
+        "retailleau": {
+          "before": 0.020189170812590553,
+          "after": 0.019894961103637282,
+          "change": -0.0002942097089532712
+        },
+        "lisnard": {
+          "before": 0.014751184958426039,
+          "after": 0.014487746861771074,
+          "change": -0.0002634380966549648
+        },
+        "zemmour": {
+          "before": 0.04806242490929228,
+          "after": 0.047362988728536864,
+          "change": -0.0006994361807554153
+        },
+        "dupont-aignan": {
+          "before": 0.019770749725989294,
+          "after": 0.019299255822921968,
+          "change": -0.0004714939030673257
+        },
+        "arthaud": {
+          "before": 0.002770753082383329,
+          "after": 0.002778391085781217,
+          "change": 0.000007638003397888223
+        },
+        "abstention": {
+          "before": 0.2411097963899823,
+          "after": 0.24326054111374473,
+          "change": 0.002150744723762421
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 48
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {}
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C’est triste ce qui s’est passé dans l’Ain, mais honnêtement, ça ne change pas vraiment mon avis sur la politique. Ce genre d’accident est regrettable, mais je reste focalisé sur mes préoccupations du quotidien.",
-        "Cette histoire d’accident et de mise en examen est inquiétante, mais je ne vois pas comment ça pourrait influer sur mes opinions politiques. Je reste prudente, ça pourrait me faire réfléchir sur la nécessité de meilleures règles de sécurité.",
-        "Je trouve ça assez triste, mais ça ne me fait pas changer d’avis pour la présidentielle. Je me concentre plus sur l’économie et les services dans ma région."
+        "C'est triste ce qui est arrivé, mais ce genre d'accident ne change rien à mon vote, je préfère rester concentrée sur les candidats qui défendent mes valeurs.",
+        "C'est une affaire grave, mais ça ne touche pas directement ma vie. Je ne change pas mon vote à cause de ça, j'attends les programmes politiques.",
+        "Un accident comme ça, c'est triste, mais ce n'est pas un fait politique. Ça ne changera pas pour moi, je vote en fonction des projets sérieux."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.004666021002827994,
-          "lo": 0.002862343872152761,
-          "hi": 0.006674651701403835,
+          "mean": 0.003604985049749323,
+          "lo": 0.0023229750676711327,
+          "hi": 0.005146873899835589,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0031715744303837303,
-          "lo": -0.004010296785268209,
-          "hi": -0.0023651548675383345,
+          "mean": -0.0011415836003364724,
+          "lo": -0.0019185123340457397,
+          "hi": -0.0005231550865130103,
           "stable": false
         },
         "attal": {
-          "mean": -0.0006249263487227864,
-          "lo": -0.0008489329256355493,
-          "hi": -0.0004163120000172928,
+          "mean": -0.00046260095166749185,
+          "lo": -0.0006505474127856276,
+          "hi": -0.00030995734098369264,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.002598982379504357,
-          "lo": -0.003320977766597282,
-          "hi": -0.0019093880259665266,
+          "mean": -0.0008329176019628866,
+          "lo": -0.00134105375274687,
+          "hi": -0.00039087166193904095,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.002706902890034928,
-          "lo": -0.003699410263948324,
-          "hi": -0.001753440109213403,
+          "mean": -0.0012343527432680445,
+          "lo": -0.0018373753153331984,
+          "hi": -0.0006954287496045838,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.0004976969073339155,
-          "lo": -0.0006820986844615919,
-          "hi": -0.0003315500663625624,
+          "mean": -0.00019765127524574478,
+          "lo": -0.00036511755931808716,
+          "hi": -0.00007559550392522334,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0005879766351569804,
-          "lo": -0.0008236431564343865,
-          "hi": -0.0003772606135752858,
+          "mean": -0.00016568371499806858,
+          "lo": -0.00027687404566062603,
+          "hi": -0.00006569876511217217,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0007602735006053156,
-          "lo": -0.001131205034801654,
-          "hi": -0.00041508714262554437,
+          "mean": -0.00029420970895326873,
+          "lo": -0.0005115185543274006,
+          "hi": -0.00012787778562807015,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.000519726609836553,
-          "lo": -0.0008040115066014039,
-          "hi": -0.00029035293254543406,
+          "mean": -0.00026343809665495786,
+          "lo": -0.00043340968855961937,
+          "hi": -0.00011588153128310158,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0012618238749660677,
-          "lo": -0.001651570032943481,
-          "hi": -0.0008466088560601075,
+          "mean": -0.0006994361807554118,
+          "lo": -0.001087002546892442,
+          "hi": -0.00039851836607933947,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0009093661052109459,
-          "lo": -0.0012198344560947984,
-          "hi": -0.0006127522994144326,
+          "mean": -0.00047149390306732217,
+          "lo": -0.0007744914221506349,
+          "hi": -0.00023170224820043866,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00007959222646469336,
-          "lo": -0.00016479757085057994,
-          "hi": -0.000014336007492259505,
+          "mean": 0.000007638003397888738,
+          "lo": 1.7799270036624013e-7,
+          "hi": 0.000016724952108146716,
           "stable": false
         },
         "abstention": {
-          "mean": 0.00905282090539227,
-          "lo": 0.006209090761448942,
-          "hi": 0.011909969599758333,
-          "stable": true
+          "mean": 0.002150744723762468,
+          "lo": 0.00034621379914561166,
+          "hi": 0.004040882472133635,
+          "stable": false
         }
       }
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Familles avec enfants des communes proches de l’accident",
-      "matchedCount": 1142,
+      "segmentName": "Travailleurs ouvriers d’âge moyen en communes intermédiaires et rurales",
+      "matchedCount": 771,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -560,16 +430,294 @@
           "noClearChange": 47
         },
         "abstention": {
-          "toward": 5,
-          "away": 1,
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 10,
+          "away": 0,
+          "noClearChange": 38
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.440834597561587,
+          "after": 0.4431360611167378,
+          "change": 0.002301463555150818
+        },
+        "philippe": {
+          "before": 0.05416856111687816,
+          "after": 0.05173395160298267,
+          "change": -0.002434609513895486
+        },
+        "attal": {
+          "before": 0.012229472122829948,
+          "after": 0.011893309476108995,
+          "change": -0.00033616264672095206
+        },
+        "glucksmann": {
+          "before": 0.05225164232157959,
+          "after": 0.05055063986123675,
+          "change": -0.0017010024603428403
+        },
+        "melenchon": {
+          "before": 0.09216511824083652,
+          "after": 0.08955268534235512,
+          "change": -0.0026124328984813983
+        },
+        "tondelier": {
+          "before": 0.011146116851472675,
+          "after": 0.010826444451562486,
+          "change": -0.0003196723999101883
+        },
+        "roussel": {
+          "before": 0.007750092081190906,
+          "after": 0.007453500120742852,
+          "change": -0.00029659196044805325
+        },
+        "retailleau": {
+          "before": 0.016751227374636125,
+          "after": 0.015981296985870606,
+          "change": -0.0007699303887655183
+        },
+        "lisnard": {
+          "before": 0.012313326395434226,
+          "after": 0.011729959339418264,
+          "change": -0.0005833670560159623
+        },
+        "zemmour": {
+          "before": 0.05191430819333182,
+          "after": 0.05121895180161218,
+          "change": -0.000695356391719644
+        },
+        "dupont-aignan": {
+          "before": 0.02135319053560927,
+          "after": 0.020690212552610904,
+          "change": -0.0006629779829983654
+        },
+        "arthaud": {
+          "before": 0.003229045082092995,
+          "after": 0.0031832639511473865,
+          "change": -0.00004578113094560847
+        },
+        "abstention": {
+          "before": 0.2238933021225208,
+          "after": 0.23204972339761398,
+          "change": 0.008156421275093195
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 48
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {}
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C’est triste cet accident, mais je comprends qu’il faut voir les circonstances avant de juger le chauffeur. Je ne change pas beaucoup d’avis pour ça.",
+        "Je connais l’accident, c’est triste, mais ce chauffeur pouvait avoir des raisons. Ça change pas mon vote, je reste fidèle à Le Pen.",
+        "C’est une tragédie ce qui est arrivé. J’attends d’en savoir plus avant de juger, mais ça me fait réfléchir sur la sécurité routière."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.002301463555150931,
+          "lo": 0.0003210701854038459,
+          "hi": 0.0044570567059598375,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0024346095138954946,
+          "lo": -0.0038651985811060086,
+          "hi": -0.0014506252472593862,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0003361626467209525,
+          "lo": -0.0004930221210279642,
+          "hi": -0.0001641207274462908,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0017010024603428423,
+          "lo": -0.002431459725213474,
+          "hi": -0.0011081106553865845,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0026124328984813987,
+          "lo": -0.0037655681923729565,
+          "hi": -0.0016486431264941496,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003196723999101875,
+          "lo": -0.0004935354417604929,
+          "hi": -0.00016627892985748196,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0002965919604480543,
+          "lo": -0.00042596735669623334,
+          "hi": -0.00016231481093402752,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007699303887655154,
+          "lo": -0.001118456936355184,
+          "hi": -0.00047549440308029416,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0005833670560159619,
+          "lo": -0.000846376765558783,
+          "hi": -0.000328804385093036,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0006953563917196389,
+          "lo": -0.0014297662034674543,
+          "hi": -0.00010219252581531585,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0006629779829983671,
+          "lo": -0.0011346332170631566,
+          "hi": -0.0002843853192321706,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00004578113094560791,
+          "lo": -0.00011134666547455326,
+          "hi": -7.62708957860295e-7,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.008156421275093091,
+          "lo": 0.004576234468052409,
+          "hi": 0.011882846595907222,
+          "stable": true
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Salariés ouvriers hommes âgés de 35 à 64 ans en communes rurales",
+      "matchedCount": 150,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 6,
+          "away": 0,
           "noClearChange": 42
         }
       },
       "candidateSummary": {
         "le-pen": {
-          "toward": 3,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 45
+          "noClearChange": 48
         },
         "philippe": {
           "toward": 0,
@@ -627,95 +775,179 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 5,
-          "away": 1,
+          "toward": 6,
+          "away": 0,
           "noClearChange": 42
         }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.4592909152813844,
+          "after": 0.46209886955658536,
+          "change": 0.0028079542752009745
+        },
+        "philippe": {
+          "before": 0.05285734549149401,
+          "after": 0.05129938009496974,
+          "change": -0.0015579653965242732
+        },
+        "attal": {
+          "before": 0.011896516710924973,
+          "after": 0.011634546613893253,
+          "change": -0.0002619700970317197
+        },
+        "glucksmann": {
+          "before": 0.049339821770509745,
+          "after": 0.04838256835935034,
+          "change": -0.0009572534111594033
+        },
+        "melenchon": {
+          "before": 0.0851712017325925,
+          "after": 0.08272700810826329,
+          "change": -0.0024441936243292106
+        },
+        "tondelier": {
+          "before": 0.010605411316526162,
+          "after": 0.010319410395901082,
+          "change": -0.00028600092062507944
+        },
+        "roussel": {
+          "before": 0.007334135627573801,
+          "after": 0.007039568847663053,
+          "change": -0.0002945667799107484
+        },
+        "retailleau": {
+          "before": 0.018792590817232172,
+          "after": 0.018319321134164467,
+          "change": -0.00047326968306770495
+        },
+        "lisnard": {
+          "before": 0.013771520711937976,
+          "after": 0.013515422323305167,
+          "change": -0.0002560983886328097
+        },
+        "zemmour": {
+          "before": 0.054041432315663655,
+          "after": 0.05310157077853919,
+          "change": -0.0009398615371244631
+        },
+        "dupont-aignan": {
+          "before": 0.02227076143886435,
+          "after": 0.021592475131149206,
+          "change": -0.0006782863077151452
+        },
+        "arthaud": {
+          "before": 0.0029375665214073574,
+          "after": 0.0028820153589535456,
+          "change": -0.000055551162453811725
+        },
+        "abstention": {
+          "before": 0.2116907802638888,
+          "after": 0.2170878432972622,
+          "change": 0.005397063033373395
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 48
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {}
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est triste cet accident, j'espère que la justice fera la lumière mais ça ne change pas vraiment mon vote, je suis déjà bien décidé.",
-        "Un chauffeur mis en examen, c’est un coup dur, mais je ne me sens pas directement concerné dans ma vie. Ça ne change pas mon vote.",
-        "C’est triste cet accident, mais ce genre d’affaire ne me fait pas vraiment bouger sur mes convictions politiques."
+        "C'est vraiment triste cet accident, ça montre que la route n'est pas toujours sûre. J'espère que ça va faire réfléchir tout le monde, surtout ceux qui conduisent des cars.",
+        "Ce genre d'accident est toujours dramatique, mais pour moi ça ne change rien, j'attends d'en savoir plus avant de me faire une opinion sur la responsabilité.",
+        "C'est un drame, mais je n'ai pas vraiment d'avis politique là-dessus. L'important c'est que la justice fasse son travail sans se précipiter."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.0039065422617419665,
-          "lo": 0.0017734367024464157,
-          "hi": 0.006538637907436678,
+          "mean": 0.0028079542752009862,
+          "lo": 0.0008942187856695594,
+          "hi": 0.004783166988583422,
           "stable": false
         },
         "philippe": {
-          "mean": -0.0024481640033622632,
-          "lo": -0.0036284163925752477,
-          "hi": -0.0014711969278142101,
+          "mean": -0.0015579653965242764,
+          "lo": -0.0020213653429302716,
+          "hi": -0.0011064724026423913,
           "stable": false
         },
         "attal": {
-          "mean": -0.0003990402582052452,
-          "lo": -0.0006715524748022345,
-          "hi": -0.00017011302801556917,
+          "mean": -0.0002619700970317153,
+          "lo": -0.0004162524919351374,
+          "hi": -0.00011509497315295189,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.0014250052948338004,
-          "lo": -0.0021672361741175354,
-          "hi": -0.0006497131888233281,
+          "mean": -0.0009572534111593843,
+          "lo": -0.0013452628618873602,
+          "hi": -0.000585452195910375,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0016518927839894602,
-          "lo": -0.0024403460998388333,
-          "hi": -0.0009274193670529658,
+          "mean": -0.0024441936243291915,
+          "lo": -0.0032801269163435197,
+          "hi": -0.0016023004962772945,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.00029758957946465216,
-          "lo": -0.00048324020051447174,
-          "hi": -0.00012524691524294328,
+          "mean": -0.00028600092062508253,
+          "lo": -0.00042702142196585487,
+          "hi": -0.0001664869729227882,
           "stable": false
         },
         "roussel": {
-          "mean": -0.00032323567097222614,
-          "lo": -0.0005134526296667589,
-          "hi": -0.0001578873224187337,
+          "mean": -0.00029456677991075014,
+          "lo": -0.00048205491291825525,
+          "hi": -0.0001449434035503579,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0005404009840286875,
-          "lo": -0.0009471285820010973,
-          "hi": -0.00023031573902041703,
+          "mean": -0.0004732696830677,
+          "lo": -0.000694393142729309,
+          "hi": -0.0002619053839580376,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0005027520273076163,
-          "lo": -0.0009341579975867782,
-          "hi": -0.0002067425962300921,
+          "mean": -0.00025609838863281334,
+          "lo": -0.0004583756126182155,
+          "hi": -0.00008514699881963089,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0009386170947569193,
-          "lo": -0.0017309618196523057,
-          "hi": -0.00034487254328612206,
+          "mean": -0.0009398615371244667,
+          "lo": -0.0014597902718804408,
+          "hi": -0.0005097301105948746,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.000551167312390158,
-          "lo": -0.0008953760192473374,
-          "hi": -0.0002750318562543639,
+          "mean": -0.0006782863077151559,
+          "lo": -0.001064392123725039,
+          "hi": -0.00031624066958716113,
           "stable": false
         },
         "arthaud": {
-          "mean": -0.00014310770413561726,
-          "lo": -0.0002505315270206337,
-          "hi": -0.00005751369726424719,
+          "mean": -0.00005555116245381113,
+          "lo": -0.00011965753683345557,
+          "hi": 0.000006925810895337234,
           "stable": false
         },
         "abstention": {
-          "mean": 0.005314430451704662,
-          "lo": 0.0018466968684206966,
-          "hi": 0.009174828949080336,
+          "mean": 0.0053970630333733645,
+          "lo": 0.003125671542927606,
+          "hi": 0.008430289259434306,
           "stable": false
         }
       }
@@ -740,31 +972,31 @@
         },
         "center": {
           "toward": 0,
-          "away": 2,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 93
+        },
+        "abstention": {
+          "toward": 15,
+          "away": 0,
+          "noClearChange": 81
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 1,
           "noClearChange": 94
         },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 96
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
-        "abstention": {
-          "toward": 9,
-          "away": 1,
-          "noClearChange": 86
-        }
-      },
-      "candidateSummary": {
-        "le-pen": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 95
-        },
         "philippe": {
           "toward": 0,
           "away": 0,
@@ -821,289 +1053,183 @@
           "noClearChange": 96
         },
         "abstention": {
-          "toward": 9,
-          "away": 1,
-          "noClearChange": 86
+          "toward": 15,
+          "away": 0,
+          "noClearChange": 81
         }
       },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Cette histoire est bien triste, mais je ne vois pas comment cela pourrait changer mon vote, je suis plutôt attachée à mes convictions déjà établies.",
-        "C’est triste cet accident, ça me fait un peu peur pour la sécurité des transports. Sans mise en examen, ça paraît plus prudent, au moins ils attendent avant de juger trop vite.",
-        "Je trouve ça triste, mais c’est un drame assez éloigné de ma vie pour que ça ne change pas ma façon de voir la politique."
-      ],
-      "candidateEffect": {
+      "candidateLevels": {
         "le-pen": {
-          "mean": 0.002239834006692139,
-          "lo": 0.0011193592659421946,
-          "hi": 0.0034369003307648392,
-          "stable": false
+          "before": 0.3377939195649839,
+          "after": 0.33979404014161513,
+          "change": 0.002000120576631237
         },
         "philippe": {
-          "mean": -0.0021336475436018842,
-          "lo": -0.003009075188704802,
-          "hi": -0.0014308996861694303,
-          "stable": false
+          "before": 0.07840867721282127,
+          "after": 0.07560005566328673,
+          "change": -0.00280862154953454
         },
         "attal": {
-          "mean": -0.0003575405593250314,
-          "lo": -0.000549081814427541,
-          "hi": -0.00014937215808656464,
-          "stable": false
+          "before": 0.017677588515277943,
+          "after": 0.017225507867324887,
+          "change": -0.00045208064795305633
         },
         "glucksmann": {
-          "mean": -0.0008623404189536627,
-          "lo": -0.001361165419288787,
-          "hi": -0.00046829055463603605,
-          "stable": false
+          "before": 0.06510667728185322,
+          "after": 0.06355910053308819,
+          "change": -0.001547576748765031
         },
         "melenchon": {
-          "mean": -0.0008917512772180582,
-          "lo": -0.0016282650480302693,
-          "hi": -0.00021364670244423904,
-          "stable": false
+          "before": 0.0808543550823937,
+          "after": 0.07880083014007892,
+          "change": -0.0020535249423147828
         },
         "tondelier": {
-          "mean": -0.0002124226251705989,
-          "lo": -0.0003320091873975802,
-          "hi": -0.00009568738849146557,
-          "stable": false
+          "before": 0.013927613834136508,
+          "after": 0.013602990578989753,
+          "change": -0.00032462325514675573
         },
         "roussel": {
-          "mean": -0.00017947754954198932,
-          "lo": -0.000287693015717343,
-          "hi": -0.00008759078991219351,
-          "stable": false
+          "before": 0.009718972194641013,
+          "after": 0.009300902076286942,
+          "change": -0.0004180701183540709
         },
         "retailleau": {
-          "mean": -0.00077236449326047,
-          "lo": -0.0010403951429143535,
-          "hi": -0.0005082852262613456,
-          "stable": false
+          "before": 0.03362784576946503,
+          "after": 0.032461769902030424,
+          "change": -0.0011660758674346058
         },
         "lisnard": {
-          "mean": -0.0006112353707629809,
-          "lo": -0.0008392281324548918,
-          "hi": -0.0004187649607168803,
-          "stable": false
+          "before": 0.02463750845657364,
+          "after": 0.023666905829661463,
+          "change": -0.0009706026269121759
         },
         "zemmour": {
-          "mean": -0.0010063494262466822,
-          "lo": -0.0013664628018410273,
-          "hi": -0.0006349345332228071,
-          "stable": false
+          "before": 0.0397201166518455,
+          "after": 0.03873601998329404,
+          "change": -0.000984096668551461
         },
         "dupont-aignan": {
-          "mean": -0.00038982018296937655,
-          "lo": -0.0005839370949965453,
-          "hi": -0.00017809695980111387,
-          "stable": false
+          "before": 0.01634424097943381,
+          "after": 0.01579215887018222,
+          "change": -0.0005520821092515928
         },
         "arthaud": {
-          "mean": -0.00005668008308536759,
-          "lo": -0.00010975679078568505,
-          "hi": -0.000015857338831987123,
-          "stable": false
+          "before": 0.002749930699170004,
+          "after": 0.0027332833894356708,
+          "change": -0.000016647309734333076
         },
         "abstention": {
-          "mean": 0.005233795523443965,
-          "lo": 0.0031462903561426795,
-          "hi": 0.007665787030938981,
-          "stable": false
-        }
-      }
-    },
-    "segment_4": {
-      "segmentId": "segment_4",
-      "segmentName": "Résidents âgés dans les communes rurales de l’Ain",
-      "matchedCount": 352,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 2,
-          "noClearChange": 46
-        },
-        "center": {
-          "toward": 0,
-          "away": 1,
-          "noClearChange": 47
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
-        },
-        "abstention": {
-          "toward": 11,
-          "away": 0,
-          "noClearChange": 37
+          "before": 0.27943255375740444,
+          "after": 0.28872643502472545,
+          "change": 0.009293881267321003
         }
       },
-      "candidateSummary": {
+      "candidateTransitions": {
         "le-pen": {
-          "toward": 1,
-          "away": 0,
-          "noClearChange": 47
+          "le-pen": 80,
+          "abstention": 5
         },
-        "philippe": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "attal": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "glucksmann": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "melenchon": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "tondelier": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "roussel": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "retailleau": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "lisnard": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "zemmour": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "dupont-aignan": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "arthaud": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
         "abstention": {
-          "toward": 11,
-          "away": 0,
-          "noClearChange": 37
+          "abstention": 10,
+          "le-pen": 1
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Cette histoire est triste, mais je me demande si le chauffeur est vraiment responsable ou si c'est un malheureux accident. Je préfère attendre les conclusions avant de me faire une opinion.",
-        "Un accident tragique, bien sûr, mais je trouve que mettre directement en examen le chauffeur peut paraître prématuré. Il faut voir les résultats exacts de l'enquête.",
-        "C'est une situation pénible, mais je ne suis pas sûre que ces événements influencent mon vote. J'aimerais simplement que justice soit rendue avec discernement."
+        "C’est bien triste cet accident, mais franchement ça ne change rien à mon vote. Ce genre de problème judiciaire autour d’un accident ne me touche pas personnellement.",
+        "Je trouve ça très triste pour les familles, mais cela ne va pas me faire changer d’avis. Ce genre de nouvelles ne touche pas vraiment ma compréhension du vote.",
+        "Cet accident me peine, mais je ne pense pas que ça influence vraiment mes choix politiques. Ce n’est pas un sujet qui change vraiment mes intentions de vote."
       ],
       "candidateEffect": {
         "le-pen": {
-          "mean": 0.003412214209732123,
-          "lo": 0.001760440011199068,
-          "hi": 0.00513416273957885,
+          "mean": 0.0020001205766313405,
+          "lo": 0.0008911707608976038,
+          "hi": 0.003401075078331445,
           "stable": false
         },
         "philippe": {
-          "mean": -0.003662141289404523,
-          "lo": -0.0046564029900602695,
-          "hi": -0.0025011060677846584,
+          "mean": -0.0028086215495345154,
+          "lo": -0.0034007684848304746,
+          "hi": -0.002258160459472561,
           "stable": false
         },
         "attal": {
-          "mean": -0.0007702202215368868,
-          "lo": -0.00121445282799317,
-          "hi": -0.000394204594407869,
+          "mean": -0.0004520806479530565,
+          "lo": -0.0006457462114194873,
+          "hi": -0.00028286664640675554,
           "stable": false
         },
         "glucksmann": {
-          "mean": -0.002359805203457887,
-          "lo": -0.003455087429680145,
-          "hi": -0.0014464281246569849,
+          "mean": -0.0015475767487650304,
+          "lo": -0.0020207877687945376,
+          "hi": -0.0010132646265052397,
           "stable": false
         },
         "melenchon": {
-          "mean": -0.0018616643917359883,
-          "lo": -0.002554898949750218,
-          "hi": -0.0012333728581024976,
+          "mean": -0.0020535249423147884,
+          "lo": -0.0026340821874427053,
+          "hi": -0.0014190345409387803,
           "stable": false
         },
         "tondelier": {
-          "mean": -0.000765236442502816,
-          "lo": -0.0011215996739677742,
-          "hi": -0.00041012835478207427,
+          "mean": -0.00032462325514675714,
+          "lo": -0.0004497864900254364,
+          "hi": -0.00022425017342213448,
           "stable": false
         },
         "roussel": {
-          "mean": -0.0005187797824983681,
-          "lo": -0.0007369153210455851,
-          "hi": -0.00032172319620973216,
+          "mean": -0.0004180701183540722,
+          "lo": -0.0005230645443103845,
+          "hi": -0.00030896275168978206,
           "stable": false
         },
         "retailleau": {
-          "mean": -0.0017327238462005769,
-          "lo": -0.0025518009511521357,
-          "hi": -0.0010913315141989413,
+          "mean": -0.0011660758674346006,
+          "lo": -0.0016047308222829893,
+          "hi": -0.0008139741714273723,
           "stable": false
         },
         "lisnard": {
-          "mean": -0.0011611901354910224,
-          "lo": -0.0017174901220920024,
-          "hi": -0.0007157268685507341,
+          "mean": -0.0009706026269121655,
+          "lo": -0.0013444939331956499,
+          "hi": -0.0006139732969431395,
           "stable": false
         },
         "zemmour": {
-          "mean": -0.0014655432749112924,
-          "lo": -0.0020633876980630213,
-          "hi": -0.0009818583764172092,
+          "mean": -0.0009840966685514725,
+          "lo": -0.0014897125244128127,
+          "hi": -0.0004916522264320284,
           "stable": false
         },
         "dupont-aignan": {
-          "mean": -0.0007909490738947324,
-          "lo": -0.0012589589442205799,
-          "hi": -0.0004483042919453208,
+          "mean": -0.0005520821092515924,
+          "lo": -0.0007607481665955392,
+          "hi": -0.000357338648725199,
           "stable": false
         },
         "arthaud": {
-          "mean": 4.468439257034648e-7,
-          "lo": -0.000003556450574189165,
-          "hi": 0.00000428027430842203,
+          "mean": -0.000016647309734332835,
+          "lo": -0.00004394499464996942,
+          "hi": -9.705911607011804e-7,
           "stable": false
         },
         "abstention": {
-          "mean": 0.011675592607976302,
-          "lo": 0.007700041295356844,
-          "hi": 0.01588403301213527,
+          "mean": 0.009293881267321046,
+          "lo": 0.00679856661029437,
+          "hi": 0.012074449306599658,
           "stable": true
         }
       }
@@ -1112,6 +1238,6 @@
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
     "status": "automatic",
-    "contentHash": "a44b545cb9c8fba275559ae6fb0db836e16953abc8e33ada3e0715d8d720a161"
+    "contentHash": "115e8075e8fb0281b59ca33a83fe51e4a11651418dcc027e15a42505ba323172"
   }
 }
