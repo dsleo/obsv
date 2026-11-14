@@ -68,7 +68,7 @@ if (issues.length) {
   // Article collections never enter the chart module imported by browser components.
   const chart = {
     ...snapshot,
-    events: events.filter((e) => e.importance === "major").map(({ articles, ...e }) => e),
+    events: events.map(({ articles, ...e }) => e), // all events: candidate plots mark their own top events; chartEvents still filters on major
   };
   await mkdir(output, { recursive: true });
   for (const [name, value] of Object.entries({

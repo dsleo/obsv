@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { pct } from "../../lib/radar/labels";
+import { IMPACT_MIN_SHARE } from "../../lib/radar/highlights";
 import { sitePath } from "../../lib/paths";
 
 export type ImpactRow = {
@@ -49,7 +50,6 @@ function List({ rows: all, kind }: { rows: ImpactRow[]; kind: "gain" | "loss" })
                 title={`${n} réponses simulées sur ${r.sampled}`}
               >
                 {pct(n, r.sampled)}
-                <small>{kind === "gain" ? "rapprochement simulé" : "éloignement simulé"}</small>
               </b>
             </a>
           );
@@ -89,13 +89,12 @@ export function CandidateImpacts({ rows }: { rows: ImpactRow[] }) {
     [...list].sort((a, b) =>
       order === "date" ? b.pollDay - a.pollDay : share(b, kind) - share(a, kind),
     );
-  const MIN = 0.02; // below 2 % of profiles the signal is noise: not listed
   const gains = sort(
-      rows.filter((r) => r.toward > r.away && share(r, "gain") >= MIN),
+      rows.filter((r) => r.toward > r.away && share(r, "gain") >= IMPACT_MIN_SHARE),
       "gain",
     ),
     losses = sort(
-      rows.filter((r) => r.away > r.toward && share(r, "loss") >= MIN),
+      rows.filter((r) => r.away > r.toward && share(r, "loss") >= IMPACT_MIN_SHARE),
       "loss",
     );
   return (

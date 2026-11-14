@@ -15,6 +15,19 @@ const candidateLabels: Record<string, string> = Object.fromEntries([
   ["abstention", "Abstention"],
 ]);
 
+type ImpactLike = { id: string; toward: number; away: number; sampled: number };
+export const IMPACT_MIN_SHARE = 0.02; // below 2 % of profiles the signal is noise: not listed
+/** Ids of the top-n "rapprochement" and top-n "éloignement" events, by share of profiles (what the candidate page lists first). */
+export function topImpactIds(rows: ImpactLike[], n = 5): string[] {
+  const top = (kind: "toward" | "away", other: "toward" | "away") =>
+    rows
+      .filter((r) => r[kind] > r[other] && r[kind] / r.sampled >= IMPACT_MIN_SHARE)
+      .sort((a, b) => b[kind] / b.sampled - a[kind] / a.sampled)
+      .slice(0, n)
+      .map((r) => r.id);
+  return [...new Set([...top("toward", "away"), ...top("away", "toward")])];
+}
+
 export type Signal = {
   bloc: string;
   label: string;

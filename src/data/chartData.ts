@@ -282,6 +282,9 @@ export const chartEvents = radarEvents.filter(
     event.pollDay <= POLL_DAYS,
 );
 
+/** Every event inside the plotted window (major or not): the candidate pages mark their own top events. */
+export const windowEvents = radarEvents.filter((event) => event.pollDay >= 0 && event.pollDay <= POLL_DAYS);
+
 export type PollObservation = {
   id: string;
   day: number;

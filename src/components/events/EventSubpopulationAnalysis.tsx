@@ -7,18 +7,28 @@ import { rankedSegments, type RankedSegment } from "../../lib/radar/highlights";
 import { pct } from "../../lib/radar/labels";
 import { pollCandidates } from "../../data/chartData";
 
+const candidateLabels: Record<string, string> = Object.fromEntries([...pollCandidates.map((candidate) => [candidate.id, candidate.short]), ["abstention", "Abstention"]]);
+type Signal = { candidate: string; label: string; direction: "toward" | "away"; count: number };
+
+/** One signal per candidate: "plus enclins" and "moins enclins" net out (toward - away); a zero net is dropped. */
+function netSignals(group: RankedSegment): Signal[] {
+  const net = new Map<string, { label: string; count: number }>();
+  const add = (candidate: string, label: string, delta: number) =>
+    net.set(candidate, { label, count: (net.get(candidate)?.count ?? 0) + delta });
+  const summary = group.contrast.candidateSummary;
+  if (summary)
+    for (const [candidate, v] of Object.entries(summary)) add(candidate, candidateLabels[candidate] ?? candidate, v.toward - v.away);
+  else
+    for (const s of group.signals) add(s.bloc, s.label, s.direction === "toward" ? s.count : -s.count);
+  return [...net]
+    .filter(([, v]) => v.count !== 0)
+    .map(([candidate, v]) => ({ candidate, label: v.label, direction: v.count > 0 ? ("toward" as const) : ("away" as const), count: Math.abs(v.count) }))
+    .sort((a, b) => b.count - a.count);
+}
+
 function Reactions({ group }: { group: RankedSegment }) {
   const { contrast } = group;
-  const candidateLabels = Object.fromEntries([...pollCandidates.map((candidate) => [candidate.id, candidate.short]), ["abstention", "Abstention"]]);
-  const signals = contrast.candidateSummary
-    ? Object.entries(contrast.candidateSummary)
-      .flatMap(([candidate, value]) => [
-        { candidate, label: candidateLabels[candidate] ?? candidate, direction: "toward" as const, count: value.toward },
-        { candidate, label: candidateLabels[candidate] ?? candidate, direction: "away" as const, count: value.away },
-      ])
-      .filter((signal) => signal.count > 0)
-      .sort((a, b) => b.count - a.count)
-    : group.signals.map((signal) => ({ candidate: signal.bloc, label: signal.label, direction: signal.direction, count: signal.count }));
+  const signals = netSignals(group);
   const reactionText = (candidate: string, label: string, direction: "toward" | "away") => {
     const more = direction === "toward";
     if (candidate === "abstention") return `${more ? "plus" : "moins"} enclins à s’abstenir`;
@@ -45,16 +55,24 @@ function Reactions({ group }: { group: RankedSegment }) {
       <details className="analysis-method">
         <summary>Comprendre les réponses</summary>
         <p>
-          Pour chacun des {contrast.sampledCount} profils synthétiques, le modèle estime une distribution complète d’intentions de vote dans deux scénarios : sans l’événement et avec l’événement. Une carte « plus enclins » compte les profils dont la probabilité attribuée à un candidat augmente d’au moins deux points ; « moins enclins » applique le même seuil à la baisse. Ces résultats décrivent une simulation exploratoire, pas un sondage ni un vote observé, et les groupes peuvent se recouper.
+          Pour chacun des {contrast.sampledCount} profils synthétiques, le modèle estime une distribution complète d’intentions de vote dans deux scénarios : sans l’événement et avec l’événement. Une carte « plus enclins » compte les profils dont la probabilité attribuée à un candidat augmente d’au moins deux points ; « moins enclins » applique le même seuil à la baisse. Pour un même candidat, les deux sens sont additionnés : seul le solde est affiché. Ces résultats décrivent une simulation exploratoire, pas un sondage ni un vote observé, et les groupes peuvent se recouper.
         </p>
       </details>
     </div>
   );
 }
 
+/** Short pill label: whole words up to 28 chars, then "…". The full name shows once the group is selected. */
+function shortLabel(name: string, max = 28): string {
+  if (name.length <= max) return name;
+  const cut = name.slice(0, max + 1).replace(/\s+\S*$/, "");
+  return `${cut || name.slice(0, max)}…`;
+}
+
 function Group({ group }: { group: RankedSegment }) {
   return (
     <div className="event-analysis-segment">
+      <h3 className="event-analysis-group-title">{group.segment.name}</h3>
       <p>{group.segment.mechanism}</p>
       <Reactions group={group} />
     </div>
@@ -68,7 +86,7 @@ export function EventSubpopulationAnalysis({
   analysis: AnalysisArtifact | null;
   showAlternative?: boolean;
 }) {
-  const groups = rankedSegments(analysis);
+  const groups = rankedSegments(analysis).filter((group) => netSignals(group).length > 0);
   const [index, setIndex] = useState(0);
   const alternative = showAlternative ? analysis?.alternative : null;
   return (
@@ -92,10 +110,11 @@ export function EventSubpopulationAnalysis({
                   aria-selected={groupIndex === index}
                   className={groupIndex === index ? "is-active" : undefined}
                   key={group.segment.id}
+                  title={group.segment.name}
                   onClick={() => setIndex(groupIndex)}
                 >
                   <span className="event-analysis-group-index">{groupIndex + 1}</span>
-                  <span className="event-analysis-group-name">{group.segment.name}</span>
+                  <span className="event-analysis-group-name">{shortLabel(group.segment.name)}</span>
                 </button>
               ))}
             </div>

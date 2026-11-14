@@ -10,7 +10,7 @@ import {
   pollWindowLabel,
   radarEvents,
 } from "../../data/radarData";
-import { candidateSignal } from "../../lib/radar/highlights";
+import { candidateSignal, topImpactIds } from "../../lib/radar/highlights";
 import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import { currentPollValue, formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { CandidateChart } from "./CandidateChart";
@@ -87,11 +87,7 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
           <CandidateChart
             candidateId={candidate.id}
             color={candidate.color}
-            eventIds={rows
-              .slice()
-              .sort((a, b) => Math.max(b.toward, b.away) / b.sampled - Math.max(a.toward, a.away) / a.sampled)
-              .slice(0, 6)
-              .map((row) => row.id)}
+            eventIds={topImpactIds(rows)}
           />
         </section>
 
