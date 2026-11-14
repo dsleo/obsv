@@ -10,7 +10,6 @@ export function SiteFooter() {
           <p>Les faits, les sondages et les hypothèses.</p>
         </div>
         <nav aria-label="Pied de page">
-          <Link href="/">Accueil</Link>
           <Link href="/radar">Le radar</Link>
           <Link href="/events">Événements</Link>
           <Link href="/candidates">Candidats</Link>
