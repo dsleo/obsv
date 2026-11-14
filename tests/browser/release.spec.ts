@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 const prefix = process.env.TEST_BASE_PATH ?? "";
 test("the compact poll legend reveals the remaining candidates", async ({ page }) => {
   await page.goto(`${prefix}/`);
@@ -87,7 +88,12 @@ test("the known source mismatches cannot reappear in published event pages", asy
   await expect(
     page.getByText("Aucune actualité ne correspond", { exact: false }),
   ).toBeVisible();
-  await page.goto(`${prefix}/events/google-22546/`);
+  // Live data decides which events carry a valid alternative: take one from the built site instead of pinning an event id.
+  const withAlternative = readdirSync("out/events").find(
+    (id) => existsSync(`out/events/${id}/index.html`) && readFileSync(`out/events/${id}/index.html`, "utf8").includes("SCÉNARIO ALTERNATIF"),
+  );
+  expect(withAlternative, "no built event page shows an alternative scenario").toBeTruthy();
+  await page.goto(`${prefix}/events/${withAlternative}/`);
   await expect(page.getByText("SCÉNARIO ALTERNATIF", { exact: true })).toBeVisible();
   await expect(page.getByText("Ce qui change :", { exact: false })).toBeVisible();
 });
