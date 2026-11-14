@@ -13,7 +13,7 @@ export function parseCsv(text) {
   });
 }
 
-/** Returns { polls, skipped } where skipped counts rows dropped for missing sample sizes. */
+/** Returns { polls }. */
 export function sondaxToPolls(csvText, { knownCandidates = null } = {}) {
   const surveys = new Map();
   for (const row of parseCsv(csvText)) {
@@ -23,14 +23,11 @@ export function sondaxToPolls(csvText, { knownCandidates = null } = {}) {
     surveys.get(row.sondage_id).shares[row.candidat_id] = Number(row.score);
   }
 
-  let skipped = 0;
   const polls = [];
   for (const { row, shares } of surveys.values()) {
-    const sampleSize = Number(row.echantillon);
-    if (!Number.isInteger(sampleSize) || sampleSize <= 0) {
-      skipped += 1;
-      continue;
-    }
+    // Sondax sometimes has no sample size yet (Wikipedia lacks it): keep the poll, sampleSize stays null.
+    const n = Number(row.echantillon);
+    const sampleSize = row.echantillon && Number.isInteger(n) && n > 0 ? n : null;
     polls.push({
       id: row.sondage_id,
       // Sondax exposes no publication date: fieldwork end is the date we can stand behind.
@@ -48,5 +45,5 @@ export function sondaxToPolls(csvText, { knownCandidates = null } = {}) {
     });
   }
   polls.sort((a, b) => a.fieldworkEnd.localeCompare(b.fieldworkEnd));
-  return { polls, skipped };
+  return { polls };
 }

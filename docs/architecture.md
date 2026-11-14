@@ -67,7 +67,7 @@ type PollObservation = {
   pollster: string;
   sponsor?: string;
   population: "registered_voters" | "likely_voters" | "adults";
-  sampleSize: number;
+  sampleSize?: number | null; // absent when Sondax has none yet
   round: "first" | "runoff";
   candidateShares: Record<string, number>;
   undecidedShare?: number;

@@ -6,7 +6,7 @@ const EDITORIAL = ["draft", "reviewed", "published", "retracted"];
 const SHARE_TOLERANCE = 1; // rounded shares may sum slightly above 100
 
 export const FEEDS = {
-  polls: ["id", "publishedAt", "pollster", "sampleSize", "candidateShares", "source"],
+  polls: ["id", "publishedAt", "pollster", "candidateShares", "source"],
   events: ["id", "occurredAt", "title", "summary", "sources"],
 };
 
@@ -48,8 +48,8 @@ function checkPoll(row, p, issues, known) {
   if (!isDate(row.publishedAt)) issues.push(`${p}.publishedAt must be ISO 8601`);
   for (const f of ["fieldworkStart", "fieldworkEnd"])
     if (row[f] != null && !isDate(row[f])) issues.push(`${p}.${f} must be ISO 8601`);
-  if (!Number.isInteger(row.sampleSize) || row.sampleSize <= 0)
-    issues.push(`${p}.sampleSize must be a positive integer`);
+  if (row.sampleSize != null && (!Number.isInteger(row.sampleSize) || row.sampleSize <= 0))
+    issues.push(`${p}.sampleSize must be a positive integer when provided`);
   if (
     isDate(row.fieldworkStart) &&
     isDate(row.fieldworkEnd) &&

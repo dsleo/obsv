@@ -15,16 +15,16 @@ const csv = [
 
 const candidates = new Set(["le-pen", "attal", "philippe"]);
 
-test("keeps retained first-round configurations only, drops unknown candidates and unsampled polls", () => {
-  const { polls, skipped } = sondaxToPolls(csv, { knownCandidates: candidates });
-  assert.equal(skipped, 1);
+test("keeps retained first-round configurations only, drops unknown candidates, keeps unsampled polls", () => {
+  const { polls } = sondaxToPolls(csv, { knownCandidates: candidates });
   assert.deepEqual(
     polls.map((poll) => poll.id),
-    ["ifop-2026-10-29"],
+    ["ifop-2026-07-08", "ifop-2026-10-29"],
   );
-  assert.deepEqual(polls[0].candidateShares, { "le-pen": 35, attal: 8 });
-  assert.equal(polls[0].publishedAt, "2026-10-29T00:00:00Z");
-  assert.equal(polls[0].source.url, "https://example.org/notice");
+  assert.equal(polls[0].sampleSize, null);
+  assert.deepEqual(polls[1].candidateShares, { "le-pen": 35, attal: 8 });
+  assert.equal(polls[1].publishedAt, "2026-10-29T00:00:00Z");
+  assert.equal(polls[1].source.url, "https://example.org/notice");
 });
 
 test("output passes the polls.json contract validator", () => {

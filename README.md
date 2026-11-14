@@ -15,7 +15,7 @@ npm run dev
 
 ## Sources et intégrité du fil
 
-Les sondages sont collectés depuis le CSV Sondax (configuration principale au premier tour, taille d’échantillon obligatoire), avec leur notice et les dates du terrain. Le CSV est lu avec un parseur prenant en charge les champs entre guillemets.
+Les sondages sont collectés depuis le CSV Sondax (configuration principale au premier tour, tous les sondages sont conservés, même sans taille d’échantillon renseignée), avec leur notice et les dates du terrain. Le CSV est lu avec un parseur prenant en charge les champs entre guillemets.
 
 Les événements proviennent de l’API election-tracker, implémentée dans [danchemla/sondageTracker](https://github.com/danchemla/sondageTracker). L’adaptateur privilégie son contrat `articles` : titres, éditeurs et résumés originaux de chaque article. Les anciennes `source_descriptions` Google peuvent contenir plusieurs titres concaténés : elles ne sont jamais utilisées comme résumé factuel. Le mode de compatibilité conserve seulement les articles associés au sujet et sépare le premier titre de son média. Sans résumé original fiable, le site renvoie aux sources.
 

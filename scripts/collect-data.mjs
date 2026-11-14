@@ -38,12 +38,12 @@ if (pollsUrl) {
 } else {
   const csv = await fetchText(SONDAX_CSV_URL, { timeout: 60_000, maxBytes: 20_000_000 });
   await writeFile(path.join(destination, "sondax.csv"), csv); // full file (all configurations, second-round duels): outcome for scripts/backtest-pairs.ts
-  const { polls, skipped } = sondaxToPolls(csv, { knownCandidates });
+  const { polls } = sondaxToPolls(csv, { knownCandidates });
   const payload = { schemaVersion: 1, polls };
   check("polls", payload);
   await write("polls", payload);
   console.log(
-    `polls: collected ${polls.length} first-round polls from Sondax (${skipped} skipped without sample size)`,
+    `polls: collected ${polls.length} first-round polls from Sondax`,
   );
 }
 
