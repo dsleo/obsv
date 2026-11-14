@@ -133,7 +133,7 @@ export type TopSolde = {
   share: number; // |net| / sampled, 0..1
 };
 
-export function topSolde(analysis: AnalysisArtifact | null): TopSolde | null {
+export function topSolde(analysis: AnalysisArtifact | null, exclude: string[] = []): TopSolde | null {
   if (!analysis) return null;
   let best: TopSolde | null = null;
   for (const { segment, contrast } of rankedSegments(analysis)) {
@@ -141,7 +141,7 @@ export function topSolde(analysis: AnalysisArtifact | null): TopSolde | null {
     for (const [candidate, v] of Object.entries(contrast.candidateSummary ?? contrast.summary)) {
       const net = v.toward - v.away;
       const share = Math.abs(net) / contrast.sampledCount;
-      if (net && share > (best?.share ?? 0))
+      if (!exclude.includes(candidate) && net && share > (best?.share ?? 0))
         best = {
           eventId: analysis.eventId,
           segmentId: segment.id,

@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 const prefix = process.env.TEST_BASE_PATH ?? "";
 test("the compact poll legend reveals the remaining candidates", async ({ page }) => {
-  await page.goto(`${prefix}/`);
+  await page.goto(`${prefix}/radar/`);
   const more = page.getByRole("button", { name: "Afficher plus de candidats" });
   await expect(more).toBeVisible();
   await more.click();
@@ -16,7 +16,7 @@ test("the compact poll legend reveals the remaining candidates", async ({ page }
   );
 });
 test("clicking a poll point opens its detail beside the point", async ({ page }) => {
-  await page.goto(`${prefix}/`);
+  await page.goto(`${prefix}/radar/`);
   const point = page.locator(".poll-observation-hit").first();
   await point.click();
   const detail = page.locator(".poll-source-card");
@@ -45,6 +45,7 @@ test("archive search survives reload and provides recovery", async ({
 for (const theme of ["light", "dark"] as const) {
   for (const route of [
     "/",
+    "/radar/",
     "/events/",
     "/events/google-28633/",
     "/candidates/",
@@ -102,7 +103,7 @@ test("every selectable chart line has meaningful light-theme contrast", async ({
   page,
 }) => {
   await page.emulateMedia({ colorScheme: "light" });
-  await page.goto(`${prefix}/`);
+  await page.goto(`${prefix}/radar/`);
   await page.getByRole("button", { name: "Afficher plus de candidats" }).click();
   const hiddenSeries = page.locator(".poll-series-key button[aria-pressed='false']");
   while (await hiddenSeries.count()) await hiddenSeries.first().click();

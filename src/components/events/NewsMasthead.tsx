@@ -15,7 +15,7 @@ export function NewsMasthead({ section }: { section: string }) {
 
         <nav className="news-nav" aria-label="Rubriques">
           <a
-            href={sitePath("/")}
+            href={sitePath("/radar")}
             className={section === "ACCUEIL" ? "active" : undefined}
             aria-current={section === "ACCUEIL" ? "page" : undefined}
           >

@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE_URL.endsWith("/") ? SITE_URL : `${SITE_URL}/`;
   return [
     "",
+    "radar/",
     "events/",
     "candidates/",
     "method/",

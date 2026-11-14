@@ -2,12 +2,12 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ChevronRight } from "lucide-react";
-import { BrandMark } from "../BrandMark";
 import { OverflowFilters } from "../OverflowFilters";
 import { PollingExplorer } from "../polls/PollingExplorer";
 import { chartEvents, eventFilters, type EventFilter } from "../../data/chartData";
 import { sitePath } from "../../lib/paths";
 import type { HeatedSolde } from "../../lib/radar/highlights";
+import { RadarHeader } from "./RadarHeader";
 import "./radar.css";
 export function SignalRadar({ linkableIds, soldes }: { linkableIds: string[]; soldes: Record<string, HeatedSolde> }) {
   const [filter, setFilter] = useState("all");
@@ -20,22 +20,7 @@ export function SignalRadar({ linkableIds, soldes }: { linkableIds: string[]; so
   );
   return (
     <main className="radar-page" id="contenu">
-      <header className="radar-header">
-        <Link className="radar-brand" href="/" aria-label="L’Observatoire, accueil">
-          <span className="radar-brand-mark">
-            <BrandMark />
-          </span>
-          <span>L’Observatoire</span>
-        </Link>
-        <nav className="radar-nav" aria-label="Navigation principale">
-          <Link className="active" aria-current="page" href="/">
-            Le radar
-          </Link>
-          <Link href="/events">Événements</Link>
-          <Link href="/candidates">Candidats</Link>
-          <Link href="/method">Méthode</Link>
-        </nav>
-      </header>
+      <RadarHeader active="radar" />
       <section className="radar-motto compact-intro">
         <span className="panel-kicker">PRÉSIDENTIELLE 2027</span>
         <h1>
