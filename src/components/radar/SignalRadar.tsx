@@ -8,12 +8,14 @@ import { PollingExplorer } from "../polls/PollingExplorer";
 import { chartEvents, eventFilters, type EventFilter } from "../../data/chartData";
 import { sitePath } from "../../lib/paths";
 import "./radar.css";
-export function SignalRadar() {
+export function SignalRadar({ linkableIds }: { linkableIds: string[] }) {
   const [filter, setFilter] = useState("all");
   const events = useMemo(
     () =>
-      (filter === "all" ? chartEvents : chartEvents.filter((e) => e.filter === filter)).slice(0, 6),
-    [filter],
+      chartEvents
+        .filter((e) => linkableIds.includes(e.id) && (filter === "all" || e.filter === filter))
+        .slice(0, 6),
+    [filter, linkableIds],
   );
   return (
     <main className="radar-page" id="contenu">
@@ -42,7 +44,7 @@ export function SignalRadar() {
       </section>
       <section className="radar-workspace" aria-label="Sondages observés">
         <div className="radar-chart-panel">
-          <PollingExplorer />
+          <PollingExplorer eventIds={linkableIds} />
         </div>
       </section>
       <section className="radar-feed-section" id="events">

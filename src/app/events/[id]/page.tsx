@@ -4,11 +4,12 @@ import { EventArticle } from "../../../components/events/EventArticle";
 import { loadAnalysis } from "../../../lib/radar/loadAnalysis";
 import { pageMetadata } from "../../../lib/metadata";
 import { radarEvents } from "../../../data/radarData";
+import { publishedEvents } from "../../../lib/radar/publishedEvents";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return radarEvents.filter((event) => loadAnalysis(event.id)).map((event) => ({ id: event.id }));
+  return publishedEvents.map((event) => ({ id: event.id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {

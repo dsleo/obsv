@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import type { RadarEvent } from "../../data/radarData";
-import { radarEvents } from "../../data/radarData";
+import { publishedEvents } from "../../lib/radar/publishedEvents";
 import type { AnalysisArtifact } from "../../lib/radar/analysisArtifact";
 import { alternativeFlags } from "../../../pipeline/radar/alternative";
 import { diverseArticles } from "../../lib/radar/labels";
@@ -21,7 +21,7 @@ export function EventArticle({
   const publishers = new Set(
     articles.map((a) => a.publisher.toLocaleLowerCase("fr")).filter(Boolean),
   ).size;
-  const related = radarEvents
+  const related = publishedEvents
     .filter((e) => e.id !== event.id)
     .map((e) => ({
       event: e,
@@ -36,7 +36,7 @@ export function EventArticle({
     .map((x) => x.event);
   const recommended = related.length
     ? related
-    : radarEvents.filter((e) => e.id !== event.id).slice(0, 2);
+    : publishedEvents.filter((e) => e.id !== event.id).slice(0, 2);
   return (
     <main className="news-page news-article-page" id="contenu">
       <NewsMasthead section="ÉVÉNEMENT" />

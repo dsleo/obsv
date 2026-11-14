@@ -1,12 +1,10 @@
 import Link from "next/link";
-import { radarEvents } from "../../data/radarData";
+import { publishedEvents } from "../../lib/radar/publishedEvents";
 import { EventGrid, StoryImage } from "./EventGrid";
 import { NewsMasthead } from "./NewsMasthead";
 import { sitePath } from "../../lib/paths";
-import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import "./event-pages.css";
 export function EventsIndex() {
-  const publishedEvents = radarEvents.filter((event) => loadAnalysis(event.id));
   const lead = publishedEvents[0];
   return (
     <main className="news-page" id="contenu">

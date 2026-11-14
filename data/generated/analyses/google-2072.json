@@ -4,40 +4,44 @@
   "methodVersion": "radar-probabilistic-v2",
   "model": "gpt-4.1-mini-2025-04-14",
   "ontologyVersion": "fr-electorate-5",
-  "inputHash": "6afcad52bede2cc9",
-  "computedAt": "2026-11-09T20:41:08.775Z",
+  "inputHash": "014488f8b80d8f31",
+  "eventInputHash": "7f3de2037e6ccc3732e00730ee9ccb8f093c70ec96f474bd4c982cdf7b03f9ec",
+  "computedAt": "2026-11-14T13:46:14.066Z",
   "evidenceGrade": "hypothesis",
   "index": {
     "frame": "complete_communes",
     "rowCount": 115011
   },
   "alternative": {
-    "description": "Anne Hidalgo décide finalement de rester neutre et ne donne pas son soutien officiel à Raphaël Glucksmann pour la primaire à gauche, appelant les électeurs à faire leur choix librement entre tous les candidats.",
-    "whatChanges": "Le retrait du soutien officiel d'Anne Hidalgo relance la compétition interne à gauche et apporte une incertitude supplémentaire auprès des électeurs socialistes et écologistes."
+    "description": "Anne Hidalgo retire son soutien à Raphaël Glucksmann et annonce son intention de ne pas soutenir de candidat durant la primaire à gauche, laissant le champ libre à une concurrence plus ouverte entre les prétendants.",
+    "whatChanges": "La division à gauche reste plus marquée et les électeurs socialistes sont moins mobilisés autour d'un candidat unique, ce qui peut affaiblir la dynamique de la primaire à gauche."
   },
   "segments": [
     {
       "id": "segment_1",
-      "name": "Jeunes diplômés urbains sensibles à l’union à gauche",
-      "mechanism": "Ce segment regroupe les jeunes diplômés (moins de 35 ans, bac+3 ou plus) vivant en commune dense qui sont la cible naturelle du soutien d'Anne Hidalgo à Raphaël Glucksmann, car cette population tend à être concernée par les débats et alliances à gauche dans les grandes villes.",
-      "reason": "Intersection ciblée de jeunes diplômés urbains, souvent électeurs potentiels à gauche, concernés par les alliances entre candidatures socialistes et sociétales.",
+      "name": "Jeunes diplômés urbains favorables à l'union de la gauche",
+      "mechanism": "Anne Hidalgo, figure de la gauche urbaine et écologiste, soutient Raphaël Glucksmann pour la primaire à gauche, ciblant un électorat jeune, diplômé et vivant en milieu urbain, plus réceptif à cet appel à l'unité de la gauche.",
+      "reason": "Ce segment rassemble un électorat sensible au profil d'Anne Hidalgo et à l'appel à la primaire de gauche, combinant jeunesse, haut niveau de diplôme et vie en commune dense.",
       "all": [
+        "age.18_24",
         "education.bac_plus_3_4",
         "geo.dense"
       ],
       "any": [
-        "age.18_24",
-        "age.25_34"
+        "sex.female",
+        "sex.male"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 4295,
-      "distinctCommunes": 71,
-      "status": "filterable_discovery_sample",
-      "repairs": [
-        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      "measurementNeeds": [
+        "Attitude envers la primaire de la gauche",
+        "Connaissance du soutien d'Anne Hidalgo",
+        "Soutien politique à Raphaël Glucksmann"
       ],
+      "count": 1070,
+      "distinctCommunes": 67,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
       "counterfactual": {
         "intervention": "Présidentielle 2027 : Anne Hidalgo apporte son soutien à Raphaël Glucksmann pour la primaire à gauche",
         "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
@@ -46,22 +50,27 @@
     },
     {
       "id": "segment_2",
-      "name": "Salariés modestes actifs de communes intermédiaires",
-      "mechanism": "Les employés et ouvriers dans des communes intermédiaires entre 25 et 49 ans forment un électorat populaire à gauche que l’alliance Hidalgo-Glucksmann cherche à mobiliser en présentant une candidature unie.",
-      "reason": "Public de classe populaire urbaine ou périurbaine touché par le discours de rassemblement à la primaire socialiste, potentiellement influencé par les appels d’Hidalgo.",
+      "name": "Couples avec enfants d'âge adulte intermédiaire en commune dense",
+      "mechanism": "Le soutien d'Anne Hidalgo à Raphaël Glucksmann en vue de la primaire à gauche vise particulièrement les familles urbaines avec enfants, qui constituent une base sociale clé pour la gauche modérée et progressiste.",
+      "reason": "Les familles urbaines avec enfants d'âge intermédiaire sont plus susceptibles d'être concernées par le projet politique porté par ce duo pour les primaires de gauche.",
       "all": [
-        "occupation.employee",
-        "geo.intermediate"
+        "household.couple_with_children",
+        "age.35_49",
+        "geo.dense"
       ],
       "any": [
-        "age.25_34",
-        "age.35_49"
+        "sex.female",
+        "sex.male"
       ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 327,
-      "distinctCommunes": 24,
+      "measurementNeeds": [
+        "Intention de vote à la primaire de gauche",
+        "Perception du projet politique",
+        "Réceptivité au soutien d'Anne Hidalgo"
+      ],
+      "count": 16964,
+      "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
       "counterfactual": {
@@ -72,19 +81,25 @@
     },
     {
       "id": "segment_3",
-      "name": "Cadres urbains de 35 à 49 ans favorables à une candidature socialiste unifiée",
-      "mechanism": "Les cadres urbains d'âge moyen sont une catégorie clé à convaincre pour la primaire à gauche, particulièrement impactés par le soutien public d’Anne Hidalgo à Raphaël Glucksmann, figure de l’aile socialiste modérée.",
-      "reason": "Intersection de cadres en commune dense avec une attention probable aux débats politiques de gauche et à l’image des candidatures socialistes.",
+      "name": "Employés et ouvriers urbains de 35 à 64 ans",
+      "mechanism": "Le soutien d'Anne Hidalgo à Raphaël Glucksmann vise à mobiliser la base populaire de gauche, en particulier les salariés urbains modestes, pour la primaire à gauche.",
+      "reason": "Ce segment rassemble des actifs urbains employés ou ouvriers, un socle essentiel de l'électorat de gauche modérée potentiellement sensible à l'appel d'Anne Hidalgo.",
       "all": [
-        "occupation.executive_professional",
-        "geo.dense",
-        "age.35_49"
+        "occupation.employee",
+        "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 4569,
+      "measurementNeeds": [
+        "Intention de vote à la primaire à gauche",
+        "Attitudes envers l'union des gauches",
+        "Connaissance du soutien d'Anne Hidalgo"
+      ],
+      "count": 11192,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -96,19 +111,26 @@
     },
     {
       "id": "segment_4",
-      "name": "Femmes en couple avec enfants vivant en milieu urbain dense",
-      "mechanism": "Les femmes en couple avec enfants en commune dense représentent un public familial sensible aux enjeux sociétaux portés par la gauche, ciblé par la campagne de rassemblement autour de Glucksmann et le soutien d'Hidalgo.",
-      "reason": "Intersection de sexe, ménage familial et milieu urbain qui correspond à une base électorale habituelle pour la gauche socialiste soucieuse des questions familiales et sociales.",
+      "name": "Cadres urbains diplômés de 35 à 49 ans",
+      "mechanism": "Le soutien d'Anne Hidalgo à Raphaël Glucksmann mobilise une élite urbaine, diplômée et active, influente dans les décisions politiques et portée à soutenir un candidat de gauche progressiste lors de la primaire.",
+      "reason": "Ce segment d'actifs cadres et professions intellectuelles supérieures en milieu urbain est stratégiquement important pour la dynamique de la primaire à gauche initiée par Anne Hidalgo.",
       "all": [
-        "sex.female",
-        "household.couple_with_children",
+        "occupation.executive_professional",
+        "age.35_49",
         "geo.dense"
       ],
-      "any": [],
+      "any": [
+        "sex.female",
+        "sex.male"
+      ],
       "none": [],
       "membershipGaps": [],
-      "measurementNeeds": [],
-      "count": 17751,
+      "measurementNeeds": [
+        "Soutien politique à Raphaël Glucksmann",
+        "Receptivité envers l'appel d'Anne Hidalgo",
+        "Attitude envers la primaire de la gauche"
+      ],
+      "count": 4569,
       "distinctCommunes": 72,
       "status": "filterable_discovery_sample",
       "repairs": [],
@@ -128,6 +150,288 @@
     }
   ],
   "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains favorables à l'union de la gauche",
+      "matchedCount": 1070,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.21490617393116354,
+          "after": 0.2152024672247984,
+          "change": 0.00029629329363486945
+        },
+        "philippe": {
+          "before": 0.13659734692641687,
+          "after": 0.13515027517994305,
+          "change": -0.0014470717464738214
+        },
+        "attal": {
+          "before": 0.04699683292488732,
+          "after": 0.04601395600073547,
+          "change": -0.0009828769241518528
+        },
+        "glucksmann": {
+          "before": 0.09292881368960465,
+          "after": 0.10169314645755227,
+          "change": 0.008764332767947622
+        },
+        "melenchon": {
+          "before": 0.15100610348788848,
+          "after": 0.14596987959673707,
+          "change": -0.005036223891151409
+        },
+        "tondelier": {
+          "before": 0.023341469239688304,
+          "after": 0.022906750882090557,
+          "change": -0.00043471835759774716
+        },
+        "roussel": {
+          "before": 0.017115731768687865,
+          "after": 0.01643700746132269,
+          "change": -0.000678724307365177
+        },
+        "retailleau": {
+          "before": 0.03941784449372376,
+          "after": 0.038453492818970536,
+          "change": -0.0009643516747532208
+        },
+        "lisnard": {
+          "before": 0,
+          "after": 0,
+          "change": 0
+        },
+        "zemmour": {
+          "before": 0.020301553020268048,
+          "after": 0.019802828715748292,
+          "change": -0.0004987243045197556
+        },
+        "dupont-aignan": {
+          "before": 0.008057971315841557,
+          "after": 0.007714320439700643,
+          "change": -0.0003436508761409133
+        },
+        "arthaud": {
+          "before": 0.008141469613906242,
+          "after": 0.007766597422596153,
+          "change": -0.00037487219131008935
+        },
+        "abstention": {
+          "before": 0.2411886895879234,
+          "after": 0.24288927779980476,
+          "change": 0.0017005882118813764
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 11
+        },
+        "philippe": {
+          "philippe": 4
+        },
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 33
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je ne suis pas très impliquée dans les rivalités de la gauche, cela ne change pas vraiment mon avis sur les candidats.",
+        "Je suis intéressée par la gauche, donc le soutien d'Hidalgo à Glucksmann me paraît une bonne nouvelle, ça peut réunir plus de monde.",
+        "Je trouve que le soutien d'Hidalgo pourrait rendre la primaire plus claire à gauche, c'est intéressant, même si ça ne me fait pas changer d'avis."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": 0.0002962932936348816,
+          "lo": -0.0005008635934018521,
+          "hi": 0.001105294055167936,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.001447071746473858,
+          "lo": -0.0018937009136970725,
+          "hi": -0.000940257301807809,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0009828769241518687,
+          "lo": -0.0013395313027805493,
+          "hi": -0.00068057905811206,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.008764332767947606,
+          "lo": 0.007431061103255481,
+          "hi": 0.009976432132111876,
+          "stable": true
+        },
+        "melenchon": {
+          "mean": -0.005036223891151337,
+          "lo": -0.006098322064278211,
+          "hi": -0.003911733862114639,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0004347183575977509,
+          "lo": -0.0005978227483279222,
+          "hi": -0.0002662084596013912,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000678724307365178,
+          "lo": -0.0008920752983316431,
+          "hi": -0.0004467770173243589,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0009643516747532272,
+          "lo": -0.0012642745150312636,
+          "hi": -0.0007162422036772579,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0004987243045197599,
+          "lo": -0.0006697327741036523,
+          "hi": -0.00033236939496901876,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0003436508761409168,
+          "lo": -0.0004832575344769924,
+          "hi": -0.0002010648598614247,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0003748721913100907,
+          "lo": -0.0005017634316852357,
+          "hi": -0.00026250152276205944,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0017005882118815107,
+          "lo": -0.00030173027681810956,
+          "hi": 0.003844263013000783,
+          "stable": false
+        }
+      }
+    },
     "global_1": {
       "segmentId": "global_1",
       "segmentName": "Whole-index scenario",
@@ -158,40 +462,275 @@
         },
         "far_right": {
           "toward": 0,
-          "away": 1,
-          "noClearChange": 95
+          "away": 0,
+          "noClearChange": 96
         },
         "abstention": {
-          "toward": 1,
+          "toward": 0,
           "away": 0,
-          "noClearChange": 95
+          "noClearChange": 96
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.33861172421205304,
+          "after": 0.3382521582141534,
+          "change": -0.00035956599789965793
+        },
+        "philippe": {
+          "before": 0.09033812467868603,
+          "after": 0.09012137885983158,
+          "change": -0.00021674581885444688
+        },
+        "attal": {
+          "before": 0.03111260514969678,
+          "after": 0.03103738116789878,
+          "change": -0.0000752239817979998
+        },
+        "glucksmann": {
+          "before": 0.063380296982863,
+          "after": 0.06854223413809678,
+          "change": 0.005161937155233776
+        },
+        "melenchon": {
+          "before": 0.08299528062920576,
+          "after": 0.08041850723539269,
+          "change": -0.00257677339381307
+        },
+        "tondelier": {
+          "before": 0.015915319068346048,
+          "after": 0.015866003204108418,
+          "change": -0.00004931586423763054
+        },
+        "roussel": {
+          "before": 0.011707272902834303,
+          "after": 0.011630070481226612,
+          "change": -0.00007720242160769164
+        },
+        "retailleau": {
+          "before": 0.03692568035150131,
+          "after": 0.03668906424315469,
+          "change": -0.0002366161083466184
+        },
+        "lisnard": {
+          "before": 0,
+          "after": 0,
+          "change": 0
+        },
+        "zemmour": {
+          "before": 0.03204976520163654,
+          "after": 0.03194266123572525,
+          "change": -0.00010710396591129268
+        },
+        "dupont-aignan": {
+          "before": 0.012790670549235455,
+          "after": 0.012707720582642718,
+          "change": -0.00008294996659273697
+        },
+        "arthaud": {
+          "before": 0.004478859207221746,
+          "after": 0.004455973633380273,
+          "change": -0.00002288557384147287
+        },
+        "abstention": {
+          "before": 0.2796944010667199,
+          "after": 0.2783368470043888,
+          "change": -0.0013575540623310678
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 83,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 9,
+          "le-pen": 3
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très familière de ces soutiens politiques, ça ne change pas vraiment mon avis sur la primaire à gauche.",
-        "Anne Hidalgo qui soutient Glucksmann ? Je ne me sens pas vraiment concernée par leurs disputes internes, ça ne me fera ni approcher ni reculer de mes intentions de vote.",
-        "Je regarde surtout la gauche radicale à Marseille, ce soutien d'Hidalgo à Glucksmann ne me fait ni chaud ni froid."
-      ]
+        "Je ne suis pas très intéressée par ces alliances politiques, ça ne change rien pour moi dans mon quotidien à la campagne.",
+        "Je ne suis pas vraiment concernée par ces soutiens entre candidats à gauche, je fais plutôt selon ce qui me semble défendre mes intérêts au travail et à la maison.",
+        "Ah, je sais qui est Anne Hidalgo, mais ce soutien à Glucksmann ne me fera pas changer d'avis, je préfère Mélenchon ou la gauche plus engagée."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0003595659978997059,
+          "lo": -0.0010672092581201313,
+          "hi": 0.0003569825737417924,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00021674581885444067,
+          "lo": -0.0004446504475943312,
+          "hi": 0.0000468646504036611,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00007522398179799954,
+          "lo": -0.00021367599984044782,
+          "hi": 0.00005493844682557708,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.005161937155233747,
+          "lo": 0.0043303882808733716,
+          "hi": 0.00603000603942979,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.002576773393813105,
+          "lo": -0.0031407256979008855,
+          "hi": -0.001975920161053997,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00004931586423763403,
+          "lo": -0.00011962213839687755,
+          "hi": 0.000015944530506046948,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00007720242160769629,
+          "lo": -0.0001413136787322733,
+          "hi": -0.00002224234567663567,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00023661610834659313,
+          "lo": -0.0003947017400526645,
+          "hi": -0.00008665570005917749,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00010710396591130291,
+          "lo": -0.00024091121519175085,
+          "hi": 0.000008669788041367615,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0000829499665927404,
+          "lo": -0.000165503423204433,
+          "hi": -0.000014639976397950242,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000022885573841473154,
+          "lo": -0.00006801764514408226,
+          "hi": 0.000009889996888927413,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0013575540623310602,
+          "lo": -0.002297479910014968,
+          "hi": -0.000569473390370189,
+          "stable": false
+        }
+      }
     },
     "segment_2": {
       "segmentId": "segment_2",
-      "segmentName": "Salariés modestes actifs de communes intermédiaires",
-      "matchedCount": 327,
+      "segmentName": "Couples avec enfants d'âge adulte intermédiaire en commune dense",
+      "matchedCount": 16964,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "left": {
-          "toward": 0,
+          "toward": 5,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 43
         },
         "center": {
           "toward": 0,
@@ -210,68 +749,254 @@
         },
         "abstention": {
           "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
           "away": 0,
           "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 6,
+          "away": 0,
+          "noClearChange": 42
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.24056291096080842,
+          "after": 0.23994917534358848,
+          "change": -0.000613735617219946
+        },
+        "philippe": {
+          "before": 0.12241521211962646,
+          "after": 0.12095171596859212,
+          "change": -0.0014634961510343325
+        },
+        "attal": {
+          "before": 0.04178533597308096,
+          "after": 0.041715508856559565,
+          "change": -0.00006982711652139817
+        },
+        "glucksmann": {
+          "before": 0.10437843074400156,
+          "after": 0.11402071491405924,
+          "change": 0.009642284170057677
+        },
+        "melenchon": {
+          "before": 0.15522823894884427,
+          "after": 0.15033780633653587,
+          "change": -0.0048904326123083985
+        },
+        "tondelier": {
+          "before": 0.026034721331902686,
+          "after": 0.025706425949673397,
+          "change": -0.00032829538222928917
+        },
+        "roussel": {
+          "before": 0.01941307267373633,
+          "after": 0.019144962158406987,
+          "change": -0.00026811051532934366
+        },
+        "retailleau": {
+          "before": 0.04396896104701765,
+          "after": 0.04364031447091935,
+          "change": -0.00032864657609829595
+        },
+        "lisnard": {
+          "before": 0,
+          "after": 0,
+          "change": 0
+        },
+        "zemmour": {
+          "before": 0.022624386532262775,
+          "after": 0.02228108072880683,
+          "change": -0.0003433058034559462
+        },
+        "dupont-aignan": {
+          "before": 0.009374691849336808,
+          "after": 0.00920529804485718,
+          "change": -0.00016939380447962907
+        },
+        "arthaud": {
+          "before": 0.008311232805834342,
+          "after": 0.00813866860167248,
+          "change": -0.00017256420416186281
+        },
+        "abstention": {
+          "before": 0.20590280501354766,
+          "after": 0.20490832862632838,
+          "change": -0.0009944763872192786
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 32
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 16
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "Je ne suis pas très au fait de cette primaire à gauche et ce soutien ne me touche pas vraiment, je reste surtout préoccupée par ma vie de famille.",
-        "Anne Hidalgo soutenant Glucksmann ? Je trouve ça logique, ça renforce l’unité à gauche même si je ne suis pas convaincue par Glucksmann, je pourrais être tentée de voter un peu plus à gauche pour autant.",
-        "Je ne suis pas très intéressée par ces luttes internes à gauche, ça ne changera pas vraiment mon vote."
-      ]
+        "Je ne connais pas trop Glucksmann, mais Hidalgo qui le soutient ça ne me parle pas, ça ne change rien à mon vote, je suis plutôt proche de Mélenchon ou même Le Pen pour défendre les ouvriers comme moi.",
+        "Hidalgo qui soutient Glucksmann, ça me fait penser que la gauche essaie vraiment de s'unir pour 2027. Ça peut renforcer leur position contre la droite et l'extrême droite, c'est important.",
+        "Franchement, ce soutien d'Hidalgo à Glucksmann ne va pas me faire changer d'avis, je suis plus sensible à Mélenchon ou même Le Pen sur certains sujets."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0006137356172199078,
+          "lo": -0.0016667096980961342,
+          "hi": 0.0005191964399389881,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.001463496151034305,
+          "lo": -0.002672210316365878,
+          "hi": -0.0005933711754709166,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00006982711652138252,
+          "lo": -0.000329927859707061,
+          "hi": 0.00019732035616099736,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0096422841700577,
+          "lo": 0.007646054425577516,
+          "hi": 0.01195666572270485,
+          "stable": true
+        },
+        "melenchon": {
+          "mean": -0.004890432612308434,
+          "lo": -0.005945353107974868,
+          "hi": -0.003645035752229346,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003282953822292903,
+          "lo": -0.0005448018977981619,
+          "hi": -0.00009743240122032312,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00026811051532934317,
+          "lo": -0.00046148685603672354,
+          "hi": -0.00010442988881413549,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00032864657609829254,
+          "lo": -0.0005632263333868469,
+          "hi": -0.00008466557714714797,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00034330580345594844,
+          "lo": -0.0005198633488637324,
+          "hi": -0.0001458995767467411,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00016939380447962668,
+          "lo": -0.00029837341355423794,
+          "hi": -0.00006046982829421429,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00017256420416186195,
+          "lo": -0.00027895905355510155,
+          "hi": -0.00007076139256102939,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0009944763872193057,
+          "lo": -0.0032289709336509923,
+          "hi": 0.0010063163192240616,
+          "stable": false
+        }
+      }
     },
     "segment_4": {
       "segmentId": "segment_4",
-      "segmentName": "Femmes en couple avec enfants vivant en milieu urbain dense",
-      "matchedCount": 17751,
-      "sampledCount": 48,
-      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
-      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
-      "summary": {
-        "radical_left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "left": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "center": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "far_right": {
-          "toward": 0,
-          "away": 0,
-          "noClearChange": 48
-        },
-        "abstention": {
-          "toward": 2,
-          "away": 0,
-          "noClearChange": 46
-        }
-      },
-      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
-      "runs": 2,
-      "mechanisms": [
-        "Je trouve ça intéressant que Hidalgo soutienne Glucksmann, ça peut vraiment structurer la primaire à gauche. Ça me rassure un peu car je préfère une gauche unie, même si je ne suis pas une fan inconditionnelle de ces deux-là.",
-        "Franchement, je m'en fiche un peu. La politique à Paris, surtout ces soutiens, ça me parle pas trop au quotidien. Je préfère me concentrer sur les candidats qui me représentent plutôt que sur qui soutient qui.",
-        "Ce soutien ne change rien pour moi. Je vote souvent en fonction des idées concrètes pour le travail et la vie quotidienne, et ces jeux politiques d'élite me laissent un peu froide."
-      ]
-    },
-    "segment_3": {
-      "segmentId": "segment_3",
-      "segmentName": "Cadres urbains de 35 à 49 ans favorables à une candidature socialiste unifiée",
+      "segmentName": "Cadres urbains diplômés de 35 à 49 ans",
       "matchedCount": 4569,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
@@ -308,31 +1033,265 @@
           "noClearChange": 48
         }
       },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.23429383842258153,
+          "after": 0.23364496440109514,
+          "change": -0.0006488740214863897
+        },
+        "philippe": {
+          "before": 0.14255406924711325,
+          "after": 0.141410993299218,
+          "change": -0.0011430759478952557
+        },
+        "attal": {
+          "before": 0.04888624705551372,
+          "after": 0.04800979206693673,
+          "change": -0.0008764549885769898
+        },
+        "glucksmann": {
+          "before": 0.10028509782820799,
+          "after": 0.1081627189367415,
+          "change": 0.007877621108533503
+        },
+        "melenchon": {
+          "before": 0.1435075289935445,
+          "after": 0.13847884259744045,
+          "change": -0.005028686396104043
+        },
+        "tondelier": {
+          "before": 0.024961800410077947,
+          "after": 0.024232540096463983,
+          "change": -0.0007292603136139636
+        },
+        "roussel": {
+          "before": 0.018523188468333247,
+          "after": 0.017974928314703053,
+          "change": -0.0005482601536301937
+        },
+        "retailleau": {
+          "before": 0.04340469579373433,
+          "after": 0.04250195879531943,
+          "change": -0.0009027369984149006
+        },
+        "lisnard": {
+          "before": 0,
+          "after": 0,
+          "change": 0
+        },
+        "zemmour": {
+          "before": 0.022362242363095867,
+          "after": 0.02190009559197849,
+          "change": -0.00046214677111737837
+        },
+        "dupont-aignan": {
+          "before": 0.008648909157558945,
+          "after": 0.008385019247104908,
+          "change": -0.0002638899104540366
+        },
+        "arthaud": {
+          "before": 0.007502197653544506,
+          "after": 0.007178282555983867,
+          "change": -0.0003239150975606394
+        },
+        "abstention": {
+          "before": 0.20507018460669388,
+          "after": 0.20811986409701425,
+          "change": 0.0030496794903203672
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 35
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 12,
+          "le-pen": 1
+        }
+      },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "En tant que chargée de mission développement durable, je vois le soutien d'Anne Hidalgo à Raphaël Glucksmann comme un geste qui peut unifier une partie de la gauche, même si je ne suis pas forcément convaincue par Glucksmann.",
-        "Je suis un peu perplexe par le soutien d'Anne Hidalgo à Glucksmann. Cela ne change pas grand-chose à mon choix potentiel, je reste plutôt attiré par les options de gauche radicale ou Macron.",
-        "Je suis assez éloignée de la primaire de gauche, ce soutien ne me parlera pas beaucoup dans mon choix présidentiel."
-      ]
+        "Je trouve intéressant qu'Anne Hidalgo soutienne Raphaël Glucksmann, ça peut donner plus de poids à la primaire à gauche. Ça pourrait motiver un peu plus les électeurs de gauche dans Paris.",
+        "Hidalgo qui soutient Glucksmann ? Ça ne change pas grand-chose pour moi, je regarde plutôt les propositions concrètes pour Martigues. Ce genre de soutien politique, ça ne m'influence pas trop.",
+        "Le soutien d’Hidalgo à Glucksmann ? Honnêtement, ça ne m’emballe pas plus que ça. Je suis plus attentif aux candidats qui prennent vraiment en compte les préoccupations des Marseillais."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.000648874021486484,
+          "lo": -0.0011702641674419586,
+          "hi": -0.00010446557839028103,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00114307594789527,
+          "lo": -0.001718288110180287,
+          "hi": -0.0006173341262211752,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0008764549885769863,
+          "lo": -0.0014083794779087093,
+          "hi": -0.0004928185155339725,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.007877621108533519,
+          "lo": 0.006668203732973343,
+          "hi": 0.008944335806840913,
+          "stable": true
+        },
+        "melenchon": {
+          "mean": -0.005028686396103955,
+          "lo": -0.005939312194400523,
+          "hi": -0.004137582078936691,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0007292603136139679,
+          "lo": -0.001000931240527067,
+          "hi": -0.0004656192783532653,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0005482601536301908,
+          "lo": -0.0007122419788480253,
+          "hi": -0.0003960642089196084,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0009027369984149136,
+          "lo": -0.001215566580458965,
+          "hi": -0.0006111894559195819,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0004621467711173712,
+          "lo": -0.0006182858478437089,
+          "hi": -0.00031459058127559884,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.000263889910454035,
+          "lo": -0.00039913836102140494,
+          "hi": -0.00014724475900462251,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000323915097560644,
+          "lo": -0.00045697200026208483,
+          "hi": -0.0002009066340928857,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0030496794903202926,
+          "lo": 0.0014112622281490805,
+          "hi": 0.004764186430705631,
+          "stable": false
+        }
+      }
     },
-    "segment_1": {
-      "segmentId": "segment_1",
-      "segmentName": "Jeunes diplômés urbains sensibles à l’union à gauche",
-      "matchedCount": 4295,
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Employés et ouvriers urbains de 35 à 64 ans",
+      "matchedCount": 11192,
       "sampledCount": 48,
       "evidenceGrade": "unvalidated_llm_directional_hypothesis",
       "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
       "summary": {
         "radical_left": {
           "toward": 0,
-          "away": 0,
-          "noClearChange": 48
+          "away": 1,
+          "noClearChange": 47
         },
         "left": {
-          "toward": 0,
+          "toward": 2,
           "away": 0,
-          "noClearChange": 48
+          "noClearChange": 46
         },
         "center": {
           "toward": 0,
@@ -350,22 +1309,257 @@
           "noClearChange": 48
         },
         "abstention": {
-          "toward": 1,
+          "toward": 4,
           "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 1,
           "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.24543265463544953,
+          "after": 0.24294480810568744,
+          "change": -0.0024878465297620833
+        },
+        "philippe": {
+          "before": 0.10905675542212777,
+          "after": 0.10650836089395037,
+          "change": -0.0025483945281774
+        },
+        "attal": {
+          "before": 0.03741531619243301,
+          "after": 0.03668381264463641,
+          "change": -0.0007315035477966012
+        },
+        "glucksmann": {
+          "before": 0.09233861626792027,
+          "after": 0.10153796598111631,
+          "change": 0.00919934971319604
+        },
+        "melenchon": {
+          "before": 0.13197000883011653,
+          "after": 0.12586028699524268,
+          "change": -0.006109721834873849
+        },
+        "tondelier": {
+          "before": 0.02309512306731434,
+          "after": 0.022484977754004695,
+          "change": -0.000610145313309645
+        },
+        "roussel": {
+          "before": 0.017029529007638263,
+          "after": 0.016395715631889133,
+          "change": -0.0006338133757491302
+        },
+        "retailleau": {
+          "before": 0.043088643663654946,
+          "after": 0.041891252328041674,
+          "change": -0.0011973913356132723
+        },
+        "lisnard": {
+          "before": 0,
+          "after": 0,
+          "change": 0
+        },
+        "zemmour": {
+          "before": 0.02319686746828017,
+          "after": 0.022613683519700802,
+          "change": -0.0005831839485793688
+        },
+        "dupont-aignan": {
+          "before": 0.009336867624123316,
+          "after": 0.008927603285470482,
+          "change": -0.0004092643386528344
+        },
+        "arthaud": {
+          "before": 0.00702346834875293,
+          "after": 0.006924365825460897,
+          "change": -0.00009910252329203319
+        },
+        "abstention": {
+          "before": 0.2610161494721887,
+          "after": 0.26722716703479893,
+          "change": 0.0062110175626102215
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 20,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 27
         }
       },
       "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
       "runs": 2,
       "mechanisms": [
-        "C'est intéressant de voir Hidalgo soutenir Glucksmann, ça tranche un peu dans la gauche. Je vais peut-être y prêter un peu plus attention, même si ça ne change pas fondamentalement mon vote.",
-        "Franchement, Hidalgo qui soutient Glucksmann, ça ne m'impacte pas. Ici à Béziers, c'est plutôt le RN qui attire mon attention, donc ça ne change rien à ma façon de voter.",
-        "Hidalgo qui soutient Glucksmann ? Je regarde ça avec un peu de distance, mais ça me confirme que la gauche est divisée. Je reste méfiante, donc ça ne change pas mon vote."
-      ]
+        "Franchement, je ne suis pas sûr que le choix d'Hidalgo change grand-chose à mon vote, je reste attaché à mes convictions et surtout à qui me semble le plus proche de mes intérêts.",
+        "J'aime bien Glucksmann, donc savoir qu'Hidalgo le soutient me conforte un peu, ça montre qu'il est un candidat sérieux à gauche.",
+        "Pour moi, le soutien d'Hidalgo à Glucksmann illustre la cohésion à gauche, ça me donne un peu plus envie de soutenir ce candidat."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0024878465297622364,
+          "lo": -0.003655430447768574,
+          "hi": -0.0015555043828730248,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0025483945281773446,
+          "lo": -0.003357776807216144,
+          "hi": -0.00177579528750959,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.0007315035477966019,
+          "lo": -0.001038556994825917,
+          "hi": -0.0004460591098980376,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00919934971319608,
+          "lo": 0.0076664722994211195,
+          "hi": 0.01113222305990874,
+          "stable": true
+        },
+        "melenchon": {
+          "mean": -0.006109721834873949,
+          "lo": -0.007610995070111977,
+          "hi": -0.004883669394238197,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0006101453133096348,
+          "lo": -0.0008332094084899664,
+          "hi": -0.0003909055779182373,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000633813375749134,
+          "lo": -0.0008969404447056421,
+          "hi": -0.00040683209861969524,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0011973913356132899,
+          "lo": -0.0017108462774406252,
+          "hi": -0.0007328504268779108,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0,
+          "lo": 0,
+          "hi": 0,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0005831839485793577,
+          "lo": -0.0007844846663967418,
+          "hi": -0.00040001407602213024,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00040926433865283326,
+          "lo": -0.0005579340505259745,
+          "hi": -0.00027611090404549974,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00009910252329203063,
+          "lo": -0.0002024615412440693,
+          "hi": -0.000031919777404763905,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006211017562610335,
+          "lo": 0.0042489924941439055,
+          "hi": 0.008938207248824626,
+          "stable": false
+        }
+      }
     }
   },
   "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
   "review": {
-    "status": "pending"
+    "status": "automatic",
+    "contentHash": "399a6c780aeb46cf3f91868cef19b01feff39cfd8f5cc009ab7ba113e302052c"
   }
 }

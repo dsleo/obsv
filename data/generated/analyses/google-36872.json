@@ -1,0 +1,1246 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-36872",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "09f6a6c641552bb0",
+  "eventInputHash": "07559b8b3cd7f75395483282a3e82ccca44f58611138ba74431095e7216bd7e5",
+  "computedAt": "2026-11-14T13:43:55.936Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Jean-Luc Mélenchon annonce au Salon du \"Made in France\" vouloir soutenir la filière textile française en renforçant l'innovation et la modernisation des entreprises existantes plutôt qu'en se concentrant exclusivement sur la culture du lin.",
+    "whatChanges": "Le focus passe de la relance agricole spécifique à une stratégie industrielle plus large, ce qui pourrait séduire davantage les travailleurs de l'industrie textile et les entreprises, tout en mobilisant moins les agriculteurs spécialisés dans le lin."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes agriculteurs impliqués dans la culture du lin",
+      "mechanism": "Jean-Luc Mélenchon propose de recréer la filière textile française à partir de la culture du lin, ciblant directement les jeunes exploitants agricoles susceptibles de relancer cette filière agricole et industrielle.",
+      "reason": "Cette catégorie correspond précisément aux agriculteurs exploitants de moins de 35 ans, qui sont les plus concernés par la relance de la filière textile basée sur le lin, et représentent un segment clairement identifiable et spécifique.",
+      "all": [
+        "cluster.young_farmer"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers la relance du textile français",
+        "Intérêt pour la culture du lin"
+      ],
+      "count": 145,
+      "distinctCommunes": 42,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Salon du \"Made in France\": Jean-Luc Mélenchon veut \"recréer la filière textile française à partir de la culture du lin\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Salariés modestes en communes intermédiaires",
+      "mechanism": "Les salariés modestes, dont employés et ouvriers, en communes de densité intermédiaire peuvent être concernés par l'impact industriel et économique de la relance du textile français, notamment en termes d'emplois créés ou sauvegardés.",
+      "reason": "Ce segment rassemble des actifs en milieu semi-urbain susceptibles d'être affectés par la revitalisation industrielle liée à la filière textile, sans toucher aux catégories agricoles déjà ciblées.",
+      "all": [
+        "geo.intermediate"
+      ],
+      "any": [
+        "occupation.employee",
+        "occupation.worker"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la relance industrielle",
+        "Impact perçu sur l'emploi local"
+      ],
+      "count": 1040,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "occupation : occupation.employee ou occupation.worker regroupés en union (« any ») ; une personne n’a qu’une seule valeur de occupation"
+      ],
+      "counterfactual": {
+        "intervention": "Salon du \"Made in France\": Jean-Luc Mélenchon veut \"recréer la filière textile française à partir de la culture du lin\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes diplômés urbains sensibles aux enjeux industriels et écologiques",
+      "mechanism": "Le projet de Mélenchon pour relancer la filière textile à partir du lin peut intéresser des jeunes diplômés urbains sensibles aux enjeux de développement durable, d'industrie locale et de souveraineté économique.",
+      "reason": "Ce groupe représente des urbains jeunes et diplômés, potentiellement réceptifs à des projets combinant innovation, écologie et économie locale, différents des catégories agricoles ou ouvrières.",
+      "all": [
+        "cluster.young_urban_graduate",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers l'industrie écologique",
+        "Soutien à la filière textile Made in France"
+      ],
+      "count": 11394,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Salon du \"Made in France\": Jean-Luc Mélenchon veut \"recréer la filière textile française à partir de la culture du lin\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Salon du \"Made in France\": Jean-Luc Mélenchon veut \"recréer la filière textile française à partir de la culture du lin\"",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes agriculteurs impliqués dans la culture du lin",
+      "matchedCount": 145,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 43
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 1,
+          "away": 4,
+          "noClearChange": 43
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.2503249377005811,
+          "after": 0.24923730366412125,
+          "change": -0.001087634036459867
+        },
+        "philippe": {
+          "before": 0.08633630687548301,
+          "after": 0.08606372306362803,
+          "change": -0.00027258381185497893
+        },
+        "attal": {
+          "before": 0.019716671818141667,
+          "after": 0.01948004331943441,
+          "change": -0.00023662849870725866
+        },
+        "glucksmann": {
+          "before": 0.07372720839798458,
+          "after": 0.07329637082842776,
+          "change": -0.00043083756955682173
+        },
+        "melenchon": {
+          "before": 0.14664518606247948,
+          "after": 0.15321781582413282,
+          "change": 0.006572629761653348
+        },
+        "tondelier": {
+          "before": 0.01561184655120879,
+          "after": 0.01535150629923771,
+          "change": -0.0002603402519710807
+        },
+        "roussel": {
+          "before": 0.010735309250980924,
+          "after": 0.0104295899671807,
+          "change": -0.0003057192838002241
+        },
+        "retailleau": {
+          "before": 0.03546588246147145,
+          "after": 0.03493239630107757,
+          "change": -0.0005334861603938784
+        },
+        "lisnard": {
+          "before": 0.032407921398603344,
+          "after": 0.031986183210151085,
+          "change": -0.00042173818845225863
+        },
+        "zemmour": {
+          "before": 0.027959775665977033,
+          "after": 0.02751448980384967,
+          "change": -0.0004452858621273627
+        },
+        "dupont-aignan": {
+          "before": 0.012682576763577954,
+          "after": 0.012323690303665086,
+          "change": -0.00035888645991286744
+        },
+        "arthaud": {
+          "before": 0.005274499476762702,
+          "after": 0.005180496574132701,
+          "change": -0.0000940029026300004
+        },
+        "abstention": {
+          "before": 0.2831118775767476,
+          "after": 0.2809863908409609,
+          "change": -0.002125486735786719
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 11,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 36
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que relancer la culture du lin pour relancer notre filière textile locale, c'est plutôt une bonne idée, surtout si cela peut aider les agriculteurs comme moi à diversifier leurs cultures et préserver notre savoir-faire.",
+        "Je ne suis pas très sûre que miser uniquement sur la culture du lin soit suffisant pour relancer la filière textile, mais soutenir la modernisation des entreprises, ça me parait plus réaliste et efficace.",
+        "C’est intéressant qu’on parle de relancer notre industrie textile, mais je suis plus sensible à l’idée d’innovation et de modernisation qu’à un simple retour à la culture du lin, qui me paraît un peu dépassée pour Paris."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0010876340364599727,
+          "lo": -0.002348276971578221,
+          "hi": 0.00013809428977778516,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.00027258381185499324,
+          "lo": -0.000794405246965876,
+          "hi": 0.0002103304139680043,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00023662849870725717,
+          "lo": -0.00040355567681138373,
+          "hi": -0.00008127669187498372,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0004308375695568573,
+          "lo": -0.000814552869437214,
+          "hi": -0.000035716438594884534,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.00657262976165323,
+          "lo": 0.004535179716302242,
+          "hi": 0.00854220130961704,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": -0.00026034025197108204,
+          "lo": -0.0004154912509084403,
+          "hi": -0.00012939908258852414,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0003057192838002297,
+          "lo": -0.00045674401254141087,
+          "hi": -0.0001503400866891125,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0005334861603938703,
+          "lo": -0.0008617171911638288,
+          "hi": -0.0002680782617246979,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0004217381884522536,
+          "lo": -0.000688028162355929,
+          "hi": -0.00020562984370953036,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0004452858621273556,
+          "lo": -0.0007445383962656592,
+          "hi": -0.00014671115624176386,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0003588864599128664,
+          "lo": -0.0005323116535229645,
+          "hi": -0.0001691264104668208,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00009400290263000127,
+          "lo": -0.00019779021850018286,
+          "hi": -0.000008244442233679253,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0021254867357864663,
+          "lo": -0.005347852112911761,
+          "hi": 0.0007546490934833254,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes en communes intermédiaires",
+      "matchedCount": 1040,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3817110650361573,
+          "after": 0.3798464673862674,
+          "change": -0.001864597649889943
+        },
+        "philippe": {
+          "before": 0.051507772716859794,
+          "after": 0.05109336443377412,
+          "change": -0.000414408283085671
+        },
+        "attal": {
+          "before": 0.011230722418125672,
+          "after": 0.011214122999760346,
+          "change": -0.000016599418365325844
+        },
+        "glucksmann": {
+          "before": 0.056322880156215734,
+          "after": 0.05589208093250444,
+          "change": -0.0004307992237112951
+        },
+        "melenchon": {
+          "before": 0.10206734648374914,
+          "after": 0.10674583013591316,
+          "change": 0.004678483652164014
+        },
+        "tondelier": {
+          "before": 0.011939597668541335,
+          "after": 0.011945187078882473,
+          "change": 0.000005589410341138093
+        },
+        "roussel": {
+          "before": 0.008209676584320334,
+          "after": 0.008135832245665631,
+          "change": -0.00007384433865470323
+        },
+        "retailleau": {
+          "before": 0.016418291228831223,
+          "after": 0.016232910619247726,
+          "change": -0.00018538060958349714
+        },
+        "lisnard": {
+          "before": 0.015126581395826977,
+          "after": 0.014956929848141164,
+          "change": -0.0001696515476858132
+        },
+        "zemmour": {
+          "before": 0.042754868735268646,
+          "after": 0.04248363394212593,
+          "change": -0.00027123479314271337
+        },
+        "dupont-aignan": {
+          "before": 0.019189650294240714,
+          "after": 0.019002226040641734,
+          "change": -0.00018742425359898063
+        },
+        "arthaud": {
+          "before": 0.003708400811577474,
+          "after": 0.0037229906262738663,
+          "change": 0.000014589814696392128
+        },
+        "abstention": {
+          "before": 0.27981314647028543,
+          "after": 0.278728423710802,
+          "change": -0.0010847227594834585
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 39,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 7,
+          "le-pen": 1
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est sympa de vouloir relancer la filière textile, mais la culture du lin, ça me paraît un peu trop agricole pour moi, je préfère une approche plus pragmatique.",
+        "Intéressant ! Soutenir l'industrie textile en modernisant ça me parle plus, ça correspond à la réalité d'une PME comme la mienne dans les services, on a besoin d'innovation.",
+        "J'aime l'idée de produire localement, mais la culture du lin, c'est un peu flou pour moi. Par contre, moderniser les entreprises, ça me paraît plus concret et écologique."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.001864597649889957,
+          "lo": -0.0033642415241483827,
+          "hi": -0.00002875628196329083,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.000414408283085674,
+          "lo": -0.0008328832074545387,
+          "hi": -0.00006877636164800899,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.000016599418365322113,
+          "lo": -0.00011425980376762143,
+          "hi": 0.00009212265040998035,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00043079922371129015,
+          "lo": -0.0007358339991043864,
+          "hi": -0.0001496150056986465,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.004678483652164001,
+          "lo": 0.0028128232192636527,
+          "hi": 0.006612192351306903,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.000005589410341135853,
+          "lo": -0.00006848988859912155,
+          "hi": 0.00005933101093538349,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00007384433865470173,
+          "lo": -0.00014824817596532602,
+          "hi": -0.000009393119945529791,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00018538060958349598,
+          "lo": -0.0003247963770424081,
+          "hi": -0.00006911252699267817,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0001696515476858076,
+          "lo": -0.0003236350136148914,
+          "hi": -0.00003894101924586087,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00027123479314271136,
+          "lo": -0.0004601416399971545,
+          "hi": -0.00008053507795384614,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0001874242535989742,
+          "lo": -0.0003119739740408226,
+          "hi": -0.00007445367936999516,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000014589814696392173,
+          "lo": 0.000007381052948869806,
+          "hi": 0.000021719181168607988,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0010847227594835782,
+          "lo": -0.002708201430850073,
+          "hi": 0.0003816133289746941,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 93
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 93
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3470657778980039,
+          "after": 0.34555491469356925,
+          "change": -0.0015108632044346648
+        },
+        "philippe": {
+          "before": 0.07060701274068601,
+          "after": 0.07016846685326016,
+          "change": -0.00043854588742585354
+        },
+        "attal": {
+          "before": 0.01535814801601948,
+          "after": 0.015226974971032354,
+          "change": -0.0001311730449871252
+        },
+        "glucksmann": {
+          "before": 0.06310257483750346,
+          "after": 0.0626715144681047,
+          "change": -0.0004310603693987586
+        },
+        "melenchon": {
+          "before": 0.08501005376513353,
+          "after": 0.09183321459999398,
+          "change": 0.006823160834860453
+        },
+        "tondelier": {
+          "before": 0.013442957335884345,
+          "after": 0.01338641896794309,
+          "change": -0.00005653836794125566
+        },
+        "roussel": {
+          "before": 0.009163493664744405,
+          "after": 0.009018643544160961,
+          "change": -0.00014485012058344446
+        },
+        "retailleau": {
+          "before": 0.029517995283404697,
+          "after": 0.029266248499107365,
+          "change": -0.00025174678429733255
+        },
+        "lisnard": {
+          "before": 0.027111544501509544,
+          "after": 0.026854457211362395,
+          "change": -0.00025708729014714896
+        },
+        "zemmour": {
+          "before": 0.03896816827222177,
+          "after": 0.03835309393625867,
+          "change": -0.0006150743359630978
+        },
+        "dupont-aignan": {
+          "before": 0.017402124920773258,
+          "after": 0.017248385440619653,
+          "change": -0.00015373948015360434
+        },
+        "arthaud": {
+          "before": 0.0033060477594877833,
+          "after": 0.003314523075509765,
+          "change": 0.000008475316021981563
+        },
+        "abstention": {
+          "before": 0.27994410100462797,
+          "after": 0.27710314373907763,
+          "change": -0.002840957265550337
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 83
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "le-pen": 3,
+          "abstention": 10
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Cette idée de relancer le textile en cultivant du lin, ça me parle, c'est notre tradition ici. Peut-être que ça aidera les artisans comme j'étais.",
+        "Je ne sais pas trop quoi penser de cultiver du lin, mais soutenir les entreprises locales ça me semble mieux que de me concentrer sur une seule culture.",
+        "Je trouve intéressant qu'on parle de textile français, même si la culture du lin me semble un peu simpliste. Favoriser l'innovation me paraît plus pragmatique."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0015108632044346822,
+          "lo": -0.0027411803990073287,
+          "hi": -0.0002354776364787142,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0004385458874258561,
+          "lo": -0.0008131645287062675,
+          "hi": -0.00013777697707510164,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00013117304498713554,
+          "lo": -0.00024260094953485647,
+          "hi": -0.000047433520125280585,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.00043106036939870323,
+          "lo": -0.0007071100559308792,
+          "hi": -0.00015998403654405975,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.006823160834860463,
+          "lo": 0.005733857128921362,
+          "hi": 0.007894219242376694,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": -0.000056538367941256185,
+          "lo": -0.00012292651139209315,
+          "hi": 0.000006381792725762023,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0001448501205834493,
+          "lo": -0.0002272681714754385,
+          "hi": -0.0000694912180856995,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00025174678429732577,
+          "lo": -0.0004177357165869331,
+          "hi": -0.00011777136287303107,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002570872901471274,
+          "lo": -0.00039522095868160936,
+          "hi": -0.00012147394792667247,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0006150743359630812,
+          "lo": -0.0008764515071953742,
+          "hi": -0.00035362215665744905,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0001537394801536211,
+          "lo": -0.0002451999482094759,
+          "hi": -0.000050224247977698006,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000008475316021980668,
+          "lo": -0.000021224709573970814,
+          "hi": 0.0000248384354265917,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.002840957265550214,
+          "lo": -0.004515245043240515,
+          "hi": -0.001262687773111863,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes diplômés urbains sensibles aux enjeux industriels et écologiques",
+      "matchedCount": 11394,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.22133140095008885,
+          "after": 0.220217779906736,
+          "change": -0.0011136210433528582
+        },
+        "philippe": {
+          "before": 0.11124600261120049,
+          "after": 0.10936704802571313,
+          "change": -0.0018789545854873552
+        },
+        "attal": {
+          "before": 0.02412411094593486,
+          "after": 0.02369011924015481,
+          "change": -0.0004339917057800506
+        },
+        "glucksmann": {
+          "before": 0.09418133097415453,
+          "after": 0.09294886320468161,
+          "change": -0.001232467769472917
+        },
+        "melenchon": {
+          "before": 0.15863110735427235,
+          "after": 0.16292738968299933,
+          "change": 0.004296282328726975
+        },
+        "tondelier": {
+          "before": 0.020019401068389637,
+          "after": 0.019762886211122144,
+          "change": -0.00025651485726749246
+        },
+        "roussel": {
+          "before": 0.013790663802075514,
+          "after": 0.013259948195874028,
+          "change": -0.0005307156062014859
+        },
+        "retailleau": {
+          "before": 0.035831686836439426,
+          "after": 0.03492248280327146,
+          "change": -0.0009092040331679652
+        },
+        "lisnard": {
+          "before": 0.032936058629797725,
+          "after": 0.032266131322076445,
+          "change": -0.0006699273077212797
+        },
+        "zemmour": {
+          "before": 0.02478915352463309,
+          "after": 0.024424875503697156,
+          "change": -0.00036427802093593614
+        },
+        "dupont-aignan": {
+          "before": 0.01116555465910258,
+          "after": 0.010832955795998847,
+          "change": -0.0003325988631037325
+        },
+        "arthaud": {
+          "before": 0.005874277932807883,
+          "after": 0.005811327161345335,
+          "change": -0.00006295077146254748
+        },
+        "abstention": {
+          "before": 0.246079250711103,
+          "after": 0.2495681929463294,
+          "change": 0.003488942235226389
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 12,
+          "abstention": 1,
+          "melenchon": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {
+          "melenchon": 3
+        },
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 30,
+          "melenchon": 1
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve intéressant qu'on veuille relancer la filière textile française, surtout avec une approche qui valorise une culture locale comme le lin. C'est cohérent avec la transition écologique que je promeus.",
+        "L'idée de Mélenchon de revitaliser la filière textile est honorable, mais je préfère une démarche plus pragmatique qui modernise les entreprises existantes plutôt que de se concentrer uniquement sur une culture spécifique.",
+        "Je ne suis pas trop intéressée par ce genre de discours, ça me semble un peu loin de mes préoccupations, et puis je ne connais pas trop Mélenchon."
+      ],
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0011136210433527686,
+          "lo": -0.0024108419668909943,
+          "hi": -0.00008444834665245528,
+          "stable": false
+        },
+        "philippe": {
+          "mean": -0.0018789545854872756,
+          "lo": -0.0026244981976365034,
+          "hi": -0.0010479936467528742,
+          "stable": false
+        },
+        "attal": {
+          "mean": -0.00043399170578004156,
+          "lo": -0.00063347471018647,
+          "hi": -0.00028324524001159854,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0012324677694728998,
+          "lo": -0.0016405520295668507,
+          "hi": -0.0008417361850517779,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.004296282328727029,
+          "lo": 0.0018545054781786427,
+          "hi": 0.006723915246268425,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0002565148572674897,
+          "lo": -0.0004248076927689202,
+          "hi": -0.00007956280130529075,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0005307156062014791,
+          "lo": -0.0006853628644151356,
+          "hi": -0.00037785818443150247,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0009092040331679583,
+          "lo": -0.0011921159224364513,
+          "hi": -0.0006754157717186506,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0006699273077212754,
+          "lo": -0.0009149083146497704,
+          "hi": -0.00045403521443436825,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0003642780209359381,
+          "lo": -0.0005554885009643027,
+          "hi": -0.00019013443464019372,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0003325988631037279,
+          "lo": -0.0004766695493494631,
+          "hi": -0.00018423551392962825,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00006295077146254594,
+          "lo": -0.00014390845748546018,
+          "hi": 0.000006143275212381443,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0034889422352263957,
+          "lo": 0.00101902315479259,
+          "hi": 0.0059675790521714666,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "automatic",
+    "contentHash": "fd0c60675daa0f1d9854f3823c164fc6b06d43c75da28c71672116f07bfd729c"
+  }
+}
