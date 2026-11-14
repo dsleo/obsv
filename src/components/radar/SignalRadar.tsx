@@ -7,8 +7,9 @@ import { OverflowFilters } from "../OverflowFilters";
 import { PollingExplorer } from "../polls/PollingExplorer";
 import { chartEvents, eventFilters, type EventFilter } from "../../data/chartData";
 import { sitePath } from "../../lib/paths";
+import type { HeatedSolde } from "../../lib/radar/highlights";
 import "./radar.css";
-export function SignalRadar({ linkableIds }: { linkableIds: string[] }) {
+export function SignalRadar({ linkableIds, soldes }: { linkableIds: string[]; soldes: Record<string, HeatedSolde> }) {
   const [filter, setFilter] = useState("all");
   const events = useMemo(
     () =>
@@ -44,7 +45,7 @@ export function SignalRadar({ linkableIds }: { linkableIds: string[] }) {
       </section>
       <section className="radar-workspace" aria-label="Sondages observés">
         <div className="radar-chart-panel">
-          <PollingExplorer eventIds={linkableIds} />
+          <PollingExplorer eventIds={linkableIds} soldes={soldes} />
         </div>
       </section>
       <section className="radar-feed-section" id="events">

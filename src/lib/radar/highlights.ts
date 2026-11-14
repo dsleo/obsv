@@ -119,3 +119,53 @@ export function candidateSignal(analysis: AnalysisArtifact | null, candidateId: 
     ? { toward: value.toward, away: value.away, sampled: contrast.sampledCount }
     : null;
 }
+
+/** Biggest "solde net" of an event: one group × candidate reaction (toward − away, as shown on the event page). Keeps its group and event info. */
+export type TopSolde = {
+  eventId: string;
+  segmentId: string;
+  segmentName: string;
+  candidate: string;
+  label: string;
+  direction: "toward" | "away";
+  net: number; // signed count of synthetic profiles
+  sampled: number;
+  share: number; // |net| / sampled, 0..1
+};
+
+export function topSolde(analysis: AnalysisArtifact | null): TopSolde | null {
+  if (!analysis) return null;
+  let best: TopSolde | null = null;
+  for (const { segment, contrast } of rankedSegments(analysis)) {
+    if (!contrast.sampledCount) continue;
+    for (const [candidate, v] of Object.entries(contrast.candidateSummary ?? contrast.summary)) {
+      const net = v.toward - v.away;
+      const share = Math.abs(net) / contrast.sampledCount;
+      if (net && share > (best?.share ?? 0))
+        best = {
+          eventId: analysis.eventId,
+          segmentId: segment.id,
+          segmentName: segment.name,
+          candidate,
+          label: (contrast.candidateSummary ? candidateLabels : blocLabels)[candidate] ?? candidate,
+          direction: net > 0 ? "toward" : "away",
+          net,
+          sampled: contrast.sampledCount,
+          share,
+        };
+    }
+  }
+  return best;
+}
+
+/** Top solde of each event plus a 0..1 heat (min → 90th percentile, clamped) so a few outliers don't wash out the scale. */
+export type HeatedSolde = TopSolde & { heat: number };
+export function heatedSoldes(solde: (TopSolde | null)[]): Record<string, HeatedSolde> {
+  const list = solde.filter((s): s is TopSolde => !!s);
+  const shares = list.map((s) => s.share).sort((a, b) => a - b);
+  const lo = shares[0] ?? 0;
+  const hi = shares[Math.floor(0.9 * (shares.length - 1))] ?? 0;
+  return Object.fromEntries(
+    list.map((s) => [s.eventId, { ...s, heat: hi > lo ? Math.min(1, Math.max(0, (s.share - lo) / (hi - lo))) : 0 }]),
+  );
+}

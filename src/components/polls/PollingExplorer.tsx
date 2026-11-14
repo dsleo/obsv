@@ -16,6 +16,7 @@ import {
 } from "../../data/chartData";
 import { formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { sitePath } from "../../lib/paths";
+import type { HeatedSolde } from "../../lib/radar/highlights";
 import "./polls.css";
 
 const DASHES = ["", "8 3", "3 3", "10 3 2 3", "1 3", "12 4"];
@@ -33,14 +34,15 @@ const defaultIds = rankedIds.slice(0, 5);
  * line, open a marked event directly, and reveal the remaining series only on
  * demand. Poll tables and method notes live on the Method page.
  */
-export function PollingExplorer({ candidateId, eventIds }: { candidateId?: CandidateId; eventIds?: string[] }) {
+const WINDOW_DAYS = 3;
+export function PollingExplorer({ candidateId, eventIds, soldes }: { candidateId?: CandidateId; eventIds?: string[]; soldes?: Record<string, HeatedSolde> }) {
   const initialIds = candidateId
     ? ([candidateId, ...defaultIds.filter((id) => id !== candidateId)].slice(0, 5) as CandidateId[])
     : defaultIds;
   const [ids, setIds] = useState<CandidateId[]>(initialIds);
   const [expanded, setExpanded] = useState(false);
   const [width, setWidth] = useState(860);
-  const [hoveredEvent, setHoveredEvent] = useState<{ title: string; x: number } | null>(null);
+  const [hoveredEvent, setHoveredEvent] = useState<{ title: string; date: string; solde?: HeatedSolde; x: number } | null>(null);
   const [hoveredPoint, setHoveredPoint] = useState<{
     candidate: string;
     date: string;
@@ -132,13 +134,22 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
     );
   const legendCandidates = expanded ? pollCandidates : candidates;
   const ticks = [...new Set([0, Math.round(POLL_DAYS / 2), POLL_DAYS])];
-  const plottedEvents = eventIds ? windowEvents.filter((event) => eventIds.includes(event.id)) : chartEvents;
+  const inWindow = eventIds ? windowEvents.filter((event) => eventIds.includes(event.id)) : chartEvents;
+  // With soldes: keep only the strongest event of each WINDOW_DAYS-day window, so the strip stays readable.
+  const plottedEvents = soldes
+    ? [...inWindow.filter((event) => soldes[event.id])]
+        .sort((a, b) => soldes[b.id].share - soldes[a.id].share)
+        .filter((event, _, all) => all.find((other) => Math.floor(other.pollDay / WINDOW_DAYS) === Math.floor(event.pollDay / WINDOW_DAYS)) === event)
+        .sort((a, b) => a.pollDay - b.pollDay)
+    : inWindow;
   const revealEvent = (event: (typeof chartEvents)[number], target: Element) => {
     if (!ref.current) return;
     const root = ref.current.getBoundingClientRect();
     const marker = target.getBoundingClientRect();
     setHoveredEvent({
       title: event.title,
+      date: event.shortDate,
+      solde: soldes?.[event.id],
       x: Math.max(120, Math.min(root.width - 120, marker.left + marker.width / 2 - root.left)),
     });
   };
@@ -281,7 +292,9 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
                   cx={x(event.pollDay)}
                   cy={bottom + 41 + (index % 2) * 10}
                   r="6"
-                  fill={event.color}
+                  {...(soldes
+                    ? { fill: "var(--orange)", fillOpacity: 0.1 + 0.9 * (soldes[event.id]?.heat ?? 0), stroke: "var(--orange)", strokeOpacity: 0.5 }
+                    : { fill: event.color })}
                 />
               </a>
             ))}
@@ -371,7 +384,20 @@ export function PollingExplorer({ candidateId, eventIds }: { candidateId?: Candi
         )}
         {hoveredEvent && (
           <div className="poll-event-hovercard" style={{ left: hoveredEvent.x }} role="status">
-            {hoveredEvent.title}
+            <small className="poll-event-date">{hoveredEvent.date}</small>
+            <strong>{hoveredEvent.title}</strong>
+            {hoveredEvent.solde && (
+              <div className="poll-event-solde">
+                <b>
+                  {hoveredEvent.solde.net > 0 ? "+" : "−"}
+                  {Math.round(hoveredEvent.solde.share * 100)} %
+                </b>
+                <span>
+                  {hoveredEvent.solde.direction === "toward" ? "plus enclins" : "moins enclins"} : {hoveredEvent.solde.label}
+                  <small>{hoveredEvent.solde.segmentName}</small>
+                </span>
+              </div>
+            )}
           </div>
         )}
         {hoveredPoint && (
