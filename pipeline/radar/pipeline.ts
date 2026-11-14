@@ -339,3 +339,5 @@ export async function analyzeRadarEvent(rawEvent: unknown) {
   if (eventAnalysisCache.size > 50) eventAnalysisCache.delete(eventAnalysisCache.keys().next().value!);
   return pending;
 }
+
+export { SYSTEM as EVENT_MAP_SYSTEM, REPAIR_SYSTEM as EVENT_MAP_REPAIR_SYSTEM, eventMapSchema }; // read by scripts/prompt-map.ts

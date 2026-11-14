@@ -130,7 +130,7 @@ async function askBatch(event: RadarEvent, alternative: string | null, personas:
 }
 
 const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } catch { return run(); } };
-type Row = { personaId: string; before: CandidateDist; after: CandidateDist; delta: CandidateDist; deltaAlt: CandidateDist | null; text: string };
+type Row = { personaId: string; profile: string; before: CandidateDist; after: CandidateDist; delta: CandidateDist; deltaAlt: CandidateDist | null; text: string };
 
 /** n personas per run (batches of `batch`, in parallel), `runs` independent samples. Effect = mean(ifEvent - ifNoEvent), bootstrap 95% interval. */
 export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentPreview, { n = 24, batch = PERSONA_MODE === "roleplay" ? 4 : 8, runs = 2, alternative = null as string | null } = {}) {
@@ -144,7 +144,8 @@ export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentP
     matched = matches;
     const chunks = Array.from({ length: Math.ceil(selected.length / batch) }, (_, i) => selected.slice(i * batch, (i + 1) * batch));
     const answers = (await Promise.all(chunks.map((chunk, i) => retry(() => askBatch(event, alternative, chunk, `${segment.id}|${run}|${i}`, candidateTarget, blocTarget, priorMass))))).flat();
-    return answers.map((a) => ({ personaId: a.personaId, before: a.ifNoEvent, after: a.ifEvent, delta: diff(a.ifEvent, a.ifNoEvent), deltaAlt: a.ifAlternative ? diff(a.ifEvent, a.ifAlternative) : null, text: a.text }));
+    const profileOf = (id: string) => { const p = selected.find((x) => x.id === id); return p ? `${p.sex}, ${p.age} ans, ${p.occupation.toLowerCase()}, ${p.commune}` : ""; };
+    return answers.map((a) => ({ personaId: a.personaId, profile: profileOf(a.personaId), before: a.ifNoEvent, after: a.ifEvent, delta: diff(a.ifEvent, a.ifNoEvent), deltaAlt: a.ifAlternative ? diff(a.ifEvent, a.ifAlternative) : null, text: a.text }));
   }));
   const all = perRun.flat();
   const random = rng(`${event.title}|${segment.id}`);
@@ -188,9 +189,17 @@ export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentP
     away: all.filter((r) => r.delta[key] <= -0.02).length,
     noClearChange: all.filter((r) => Math.abs(r.delta[key]) < 0.02).length,
   }]));
+  // Quotes: for each candidate with a non-zero net balance (toward - away, the figure the site shows), the first-person reaction of the persona who moved most in that direction (>= 2 points).
+  const quotes = Object.fromEntries(candidateKeys.flatMap((key) => {
+    const { toward, away } = candidateSummary[key];
+    const sign = toward > away ? 1 : away > toward ? -1 : 0;
+    if (!sign) return [];
+    const best = all.filter((r) => r.text && sign * r.delta[key] >= 0.02).sort((a, b) => sign * b.delta[key] - sign * a.delta[key])[0];
+    return best ? [[key, { text: best.text, profile: best.profile, direction: sign > 0 ? "toward" : "away", points: Math.round(best.delta[key] * 100) }]] : [];
+  }));
   return { segmentId: segment.id, segmentName: segment.name, matchedCount: matched, sampledCount: all.length, runs, comparator: segment.counterfactual.comparator,
     selection: "deterministic_diversity_sample_by_2022_prior", evidenceGrade: "unvalidated_llm_directional_hypothesis" as const,
-    effect, ...(altEffect ? { altEffect } : {}), ...(candidateEffect ? { candidateEffect } : {}), summary, candidateSummary, candidateLevels, candidateTransitions, mechanisms: all.slice(0, 3).map((r) => r.text).filter(Boolean),
+    effect, ...(altEffect ? { altEffect } : {}), ...(candidateEffect ? { candidateEffect } : {}), summary, candidateSummary, candidateLevels, candidateTransitions, mechanisms: all.slice(0, 3).map((r) => r.text).filter(Boolean), quotes,
     note: "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
   };
 }
@@ -204,3 +213,5 @@ export async function evaluateGlobalEffect(event: RadarEvent, scenario: { interv
   } as SegmentPreview;
   return { ...(await evaluateSegmentEffect(event, segment, { n: 48, ...opts })), scope: "global_distributed_discovery_sample" as const };
 }
+
+export { SYSTEM_ROLEPLAY, SYSTEM_DEMOGRAPHIC, roleplayAlt, CANDIDATE_DEF }; // read by scripts/prompt-map.ts

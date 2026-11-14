@@ -50,3 +50,5 @@ export async function proposeAlternative(event: { title: string; description: st
   }
   return best!.alt;
 }
+
+export { SYSTEM as ALTERNATIVE_SYSTEM }; // read by scripts/prompt-map.ts

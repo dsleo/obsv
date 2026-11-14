@@ -62,6 +62,8 @@ const contrastSchema = z.object({
   // Method v2 (radar-probabilistic-v2): effect in probability points (-1..1) per bloc and abstention, bootstrap 95% interval, stable = same sign across independent runs.
   runs: z.number().optional(),
   mechanisms: z.array(z.string()).optional(),
+  // Per candidate with a net balance: the first-person reaction of the simulated profile that moved most in the balance's direction.
+  quotes: z.record(z.string(), z.object({ text: z.string(), profile: z.string(), direction: z.enum(["toward", "away"]), points: z.number() })).optional(),
   effect: z
     .record(
       z.string(),

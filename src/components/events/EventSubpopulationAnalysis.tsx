@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Info } from "lucide-react";
 import { useState } from "react";
 import type { AnalysisArtifact } from "../../lib/radar/analysisArtifact";
 import { rankedSegments, type RankedSegment } from "../../lib/radar/highlights";
@@ -26,38 +26,69 @@ function netSignals(group: RankedSegment): Signal[] {
     .sort((a, b) => b.count - a.count);
 }
 
+const METHOD_NOTE = (n: number) =>
+  `Pour chacun des ${n} profils synthétiques, le modèle estime une distribution complète d’intentions de vote dans deux scénarios : sans l’événement et avec l’événement. « Plus enclins » compte les profils dont la probabilité attribuée à un candidat augmente d’au moins deux points ; « moins enclins » applique le même seuil à la baisse. Pour un même candidat, les deux sens sont additionnés : seul le solde est affiché. Cliquer sur un solde affiche la réaction du profil qui a le plus bougé dans ce sens. Ces résultats décrivent une simulation exploratoire, pas un sondage ni un vote observé, et les groupes peuvent se recouper.`;
+
 function Reactions({ group }: { group: RankedSegment }) {
   const { contrast } = group;
-  const signals = netSignals(group);
+  const signals = netSignals(group).slice(0, 4);
+  const [open, setOpen] = useState<string | null>(null);
+  const quoteOf = (signal: Signal) => {
+    const q = contrast.quotes?.[signal.candidate];
+    return q && q.direction === signal.direction ? q : null;
+  };
   const reactionText = (candidate: string, label: string, direction: "toward" | "away") => {
     const more = direction === "toward";
     if (candidate === "abstention") return `${more ? "plus" : "moins"} enclins à s’abstenir`;
     return `${more ? "plus" : "moins"} enclins à voter pour ${label}`;
   };
+  const opened = signals.find((signal) => signal.candidate === open);
+  const openedQuote = opened ? quoteOf(opened) : null;
   return (
     <div className="event-analysis-response">
+      <span className="event-analysis-info" tabIndex={0} role="note" aria-label="Comprendre les réponses">
+        <Info size={17} aria-hidden="true" />
+        <span className="event-analysis-info-tip">{METHOD_NOTE(contrast.sampledCount)}</span>
+      </span>
       <p className="event-analysis-context">Évolution simulée des intentions de vote, candidat par candidat.</p>
       <ul className="event-analysis-reactions">
-        {signals.slice(0, 4).map((signal) => (
-          <li key={signal.candidate + signal.direction} data-dir={signal.direction}>
-            <div className="event-analysis-stat">
-              <b>{pct(signal.count, contrast.sampledCount)}</b>
-              {signal.direction === "toward" ? (
-                <ArrowUpRight size={20} strokeWidth={2.4} aria-hidden="true" />
+        {signals.map((signal) => {
+          const quote = quoteOf(signal);
+          const body = (
+            <>
+              <div className="event-analysis-stat">
+                <b>{pct(signal.count, contrast.sampledCount)}</b>
+                {signal.direction === "toward" ? (
+                  <ArrowUpRight size={20} strokeWidth={2.4} aria-hidden="true" />
+                ) : (
+                  <ArrowDownRight size={20} strokeWidth={2.4} aria-hidden="true" />
+                )}
+              </div>
+              <span>{reactionText(signal.candidate, signal.label, signal.direction)}</span>
+            </>
+          );
+          return (
+            <li key={signal.candidate + signal.direction} data-dir={signal.direction}>
+              {quote ? (
+                <button type="button" aria-expanded={open === signal.candidate} onClick={() => setOpen(open === signal.candidate ? null : signal.candidate)}>
+                  {body}
+                </button>
               ) : (
-                <ArrowDownRight size={20} strokeWidth={2.4} aria-hidden="true" />
+                body
               )}
-            </div>
-            <span>{reactionText(signal.candidate, signal.label, signal.direction)}</span>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
-      <details className="analysis-method">
-        <summary>Comprendre les réponses</summary>
-        <p>
-          Pour chacun des {contrast.sampledCount} profils synthétiques, le modèle estime une distribution complète d’intentions de vote dans deux scénarios : sans l’événement et avec l’événement. Une carte « plus enclins » compte les profils dont la probabilité attribuée à un candidat augmente d’au moins deux points ; « moins enclins » applique le même seuil à la baisse. Pour un même candidat, les deux sens sont additionnés : seul le solde est affiché. Ces résultats décrivent une simulation exploratoire, pas un sondage ni un vote observé, et les groupes peuvent se recouper.
-        </p>
-      </details>
+      {openedQuote && (
+        <figure className="event-analysis-quote">
+          <blockquote>« {openedQuote.text} »</blockquote>
+          <figcaption>
+            {openedQuote.profile} · {opened!.label} {openedQuote.points > 0 ? "+" : "−"}
+            {Math.abs(openedQuote.points)} pts
+          </figcaption>
+        </figure>
+      )}
     </div>
   );
 }

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carte des prompts — L’Observatoire</title>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#1c1f1f;--mute:#5d6670;--line:#ddd9cf;--llm:#c2410c;--llm-bg:#fff4ec;--code:#475569;--soft:#f1efe8;--in:#1d4ed8;--out:#15803d}
+@media (prefers-color-scheme:dark){:root{--bg:#121516;--card:#1b2022;--ink:#e8e6df;--mute:#a1a9b0;--line:#323a3c;--llm:#fb923c;--llm-bg:#2a1f18;--code:#94a3b8;--soft:#14181a;--in:#7aa2ff;--out:#5fd38b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,sans-serif}
+header,main{max-width:62rem;margin:0 auto;padding:0 1.2rem}header{padding-top:2rem}
+h1{margin:0 0 .5rem;font-size:1.7rem}header p{color:var(--mute);margin:.4rem 0}
+nav{position:sticky;top:0;z-index:5;display:flex;gap:.45rem;flex-wrap:wrap;padding:.7rem 1.2rem;background:var(--bg);border-bottom:1px solid var(--line);margin-top:1.4rem}
+nav a{font-size:.8rem;padding:.25rem .65rem;border-radius:99px;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+nav a.llm{border-color:var(--llm);color:var(--llm)}nav a.legacy{opacity:.55}
+main{padding-top:1.5rem;padding-bottom:4rem}
+.stage{margin-bottom:.4rem}
+.body{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--code);border-radius:10px;padding:1.3rem 1.6rem}
+.stage.llm .body{border-left-color:var(--llm);background:linear-gradient(var(--llm-bg),var(--card) 7rem)}
+.stage.code .body{padding:1rem 1.6rem}
+.stage.legacy{opacity:.7}
+.tag{margin:0 0 .2rem;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--code)}.stage.llm .tag{color:var(--llm);font-weight:700}
+h2{margin:0 0 .3rem;font-size:1.35rem}.stage.code h2{font-size:1.1rem}
+.meta{margin:0 0 .9rem;color:var(--mute);font-size:.85rem}.role{margin:0 0 1rem;max-width:46rem}
+code{font:.8rem ui-monospace,Menlo,monospace}
+.arrow{text-align:center;color:var(--mute);font-size:1.6rem;line-height:1;padding:.7rem 0}
+.fold{border:1px solid var(--line);border-radius:8px;margin:.8rem 0;background:var(--soft)}
+.fold>summary{cursor:pointer;padding:.6rem .9rem;font-weight:600;font-size:.9rem;color:var(--llm)}
+.fold-body{padding:.4rem 1.3rem 1rem;border-top:1px solid var(--line);max-height:38rem;overflow:auto}
+.fold-body p{margin:.8rem 0;max-width:46rem;line-height:1.75}
+.io{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:1.2rem}
+@media(max-width:860px){.io{grid-template-columns:1fr}}
+h3{margin:0 0 .5rem;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.in h3{color:var(--in)}.out h3{color:var(--out)}.example h3{color:var(--mute)}
+.example{margin-top:1.4rem;padding:.9rem 1.2rem;border-radius:8px;background:var(--soft);border:1px dashed var(--line)}
+dl{margin:0}dt{font-weight:600;font-size:.88rem;margin-top:.9rem}dt:first-child{margin-top:0}dd{margin:.15rem 0 0;color:var(--ink);opacity:.88;max-width:46rem}
+</style></head><body>
+<header><h1>Carte des prompts</h1>
+<p>Modèle épinglé : <code>gpt-4.1-mini-2025-04-14</code>. La méthode actuelle utilise 4 prompts (A, B, C, D) ; l’ancienne méthode v1 est grisée en bas. Orange : appel au modèle ; gris : code sans LLM.</p>
+<p>Les prompts sont lus directement dans le code (<code>npm run docs:prompts</code> régénère la page). Les exemples viennent de l’analyse <code>google-22546</code>.</p></header>
+<nav><a href="#event" class="code">Événement</a><a href="#alt" class="llm">A · Scénario alternatif</a><a href="#map" class="llm">B · Carte des publics concernés</a><a href="#check" class="code">Contrôle des segments</a><a href="#repair" class="llm">C · Réparation des segments</a><a href="#fallback" class="code">Repli et échantillonnage</a><a href="#personas" class="llm">D · Réponses des profils (jeu de rôle)</a><a href="#agg" class="code">Agrégation</a><a href="#site" class="code">Page événement</a><a href="#legacy" class="llm legacy">Ancienne méthode v1 · direction par bloc</a></nav>
+<main>
+<section class="stage code" id="event">
+  <div class="body">
+    <p class="tag">Code, sans LLM</p>
+    <h2>Événement</h2>
+    <p class="meta">aucun appel · <code>data/generated/snapshot.json</code></p>
+    <p class="role">Le titre et le résumé factuel de l’événement public. La date et l’URL ne sont jamais envoyées au modèle : elles l’inviteraient à se souvenir de la vraie issue.</p>
+    
+    
+    
+    
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage llm" id="alt">
+  <div class="body">
+    <p class="tag">Appel LLM</p>
+    <h2>A · Scénario alternatif</h2>
+    <p class="meta">1 à 3 appels par événement · <code>pipeline/radar/alternative.ts</code></p>
+    <p class="role">Invente une variante proche de l’événement. Un contrôle sans LLM (nom nouveau, ton seul, copie, hors sujet…) renvoie ses reproches au modèle ; la tentative la moins signalée est gardée.</p>
+    <details class="fold sys" open><summary>Prompt envoyé au modèle</summary><div class="fold-body"><p>Vous recevez un événement réel de la campagne présidentielle française (titre et description).</p><p>Proposez UN scénario alternatif PROCHE : une variante plausible du même événement, qui aurait eu un impact différent sur les électeurs.</p><p>Faites varier un seul élément clé : l’issue, l’acteur, le ton ou le contenu de la mesure, le calendrier, l’ampleur.</p><p>Le scénario alternatif doit rester dans le même domaine que l’événement : ce n’est JAMAIS l’absence d’événement ni une action sans rapport (atelier, dialogue, campagne de communication).</p><p>Il doit être formulé comme un fait précis, au même niveau de détail que l’événement.</p><p>Exemples (illustratifs, ne les recopiez pas) :</p><p>- Événement :</p><p>« Le groupe communiste à l’Assemblée annonce soutenir Mélenchon ».</p><p>Alternative :</p><p>« Le groupe communiste annonce présenter son propre candidat et refuse de soutenir Mélenchon » ; ce qui change : la gauche reste divisée au lieu de se rassembler derrière un candidat.</p><p>- Événement :</p><p>« Attal propose une grande primaire des démocrates ».</p><p>Alternative :</p><p>« Attal annonce sa candidature en solo, sans primaire » ; ce qui change : le camp central se fragmente au lieu de chercher un candidat commun.</p><p>- Événement :</p><p>« Un candidat propose de relever l’âge de départ à la retraite à 65 ans ».</p><p>Alternative :</p><p>« Le même candidat propose de maintenir l’âge à 62 ans mais d’allonger la durée de cotisation » ; ce qui change : l’effort est présenté différemment et touche d’autres publics.</p><p>Règles strictes :</p><p>(1) N’introduisez AUCUN nom de personne, d’organisation, de lieu ou de fait absent de l’événement (pas de nouvelle candidature, rencontre, suspension, attaque ou démission inventée) ; modifiez seulement ce que l’événement contient déjà.</p><p>(2) Variez un FAIT observable : l’issue (accepte/refuse, retire/maintient), le contenu ou le chiffre d’une mesure, le calendrier, l’ampleur, la décision ou le résultat.</p><p>Ne réécrivez jamais une interaction privée ou son ton : pas de dîner, de débat familial, de dialogue apaisé, de compréhension mutuelle, de formulation plus conciliante.</p><p>(3) Le changement doit pouvoir expliquer pourquoi la réponse de certains groupes différerait de celle suscitée par le fait réel.</p><p>(4) Soyez précis : nommez les acteurs déjà présents, pas « un des candidats » ; aucune mention de médias.</p><p>Rédigez en français.</p><p>« description » : le scénario alternatif.</p><p>« whatChanges » : en une phrase, ce qui change par rapport à l’événement réel et pour quels publics.</p></div></details>
+    
+    <div class="io">
+      <div class="col in"><h3>Ce qui entre</h3><dl><dt>Événement</dt><dd>titre et description</dd><dt>Retour sur la tentative précédente</dt><dd>seulement aux 2e et 3e essais : la liste des défauts détectés</dd></dl></div>
+      <div class="col out"><h3>Ce qui doit sortir</h3><dl><dt>Description</dt><dd>le scénario alternatif</dd><dt>Ce qui change</dt><dd>une phrase : la différence avec l’événement réel et les publics touchés</dd></dl></div>
+    </div>
+    <div class="example"><h3>Sortie réelle (google-22546)</h3><dl><dt>Description</dt><dd>Lors des repas familiaux, certains parents expriment plus de compréhension envers le blocage des lycées par les adolescents, reconnaissant leurs raisons sociales et politiques, ce qui entraîne des échanges moins conflictuels entre générations.</dd><dt>Ce qui change</dt><dd>Le ton plus empathique des parents modère les tensions intergénérationnelles, ce qui influence positivement la perception de l'action des lycéens auprès des familles.</dd></dl></div>
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage llm" id="map">
+  <div class="body">
+    <p class="tag">Appel LLM</p>
+    <h2>B · Carte des publics concernés</h2>
+    <p class="meta">1 appel par événement · <code>pipeline/radar/pipeline.ts</code></p>
+    <p class="role">Propose 3 à 4 groupes de profils (des filtres sur des tags). Il ne chiffre rien : il dit qui est concerné et pourquoi.</p>
+    <details class="fold sys" open><summary>Prompt envoyé au modèle</summary><div class="fold-body"><p>Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral.</p><p>Utilisez UNIQUEMENT les identifiants de tags fournis.</p><p>Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet.</p><p>Ne classez pas les groupes selon ces effectifs.</p><p>Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ».</p><p>Les familles age, sex, education, occupation, household, marital, geo et commune_size sont à valeur unique : une personne n’a qu’une seule valeur par famille.</p><p>« all » contient donc au plus un tag par famille ; pour « 35 à 64 ans » ou « employés et ouvriers », placez les valeurs alternatives dans « any ».</p><p>« any » est UNE seule liste d’alternatives : n’y mélangez pas plusieurs familles et ne l’utilisez pas pour deux unions à la fois.</p><p>Les tags sont des BRIQUES pour COMPOSER des publics sur mesure : construisez l’intersection qui correspond au mécanisme de CET événement, au-delà des publics nommés.</p><p>Les « clusters » fournis (14 publics déjà définis par des règles sur les tags) ne sont que des raccourcis et des exemples : n’en utilisez un que s’il correspond exactement au public visé, seul ou combiné à d’autres tags ; sinon composez votre propre filtre à partir des tags.</p><p>Dans « membershipGaps », indiquez UNIQUEMENT un attribut nécessaire pour définir le groupe nommé qu’AUCUN tag ni cluster fourni ne peut représenter (revenu, pension, vote passé, statut de sortant…) ; un attribut déjà couvert par une famille de tags (âge, foyer, statut matrimonial, densité…) n’est jamais une lacune, choisissez simplement la valeur voulue.</p><p>Laissez ce champ vide si les tags suffisent.</p><p>Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds » (courtes expressions en français, par exemple « Attitude envers la police », jamais d’identifiants en snake_case), jamais dans « membershipGaps ».</p><p>N’utilisez pas de substitut approximatif pour une caractéristique absente.</p><p>SPÉCIFICITÉ À L’ÉVÉNEMENT : chaque segment doit être le public plausiblement le plus concerné par le mécanisme PROPRE de CET événement : qui constitue la base de la personne ou du candidat soutenu ou attaqué, qui est visé par la mesure ou la proposition, qui vit là où l’événement s’est produit.</p><p>« mechanism » : une ou deux phrases qui citent NOMMÉMENT la personne, la mesure, le lieu ou le thème de l’événement (reprenez ses termes) et expliquent pourquoi CE public est concerné ; un mécanisme qui conviendrait à n’importe quel événement politique est insuffisant.</p><p>N’utilisez PAS les archétypes génériques habituels (jeunes diplômés des villes, salariés modestes, jeunes sans activité, retraités peu diplômés) sauf si l’événement les concerne réellement.</p><p>Préférez des intersections précises de tags (âge × occupation × densité, sexe × foyer, etc.) à un seul grand groupe.</p><p>Incluez au moins un segment étroit (moins de 5 % de l’échantillon) lorsque l’événement le permet.</p><p>CONTRAINTES DE TAILLE vérifiées après coup : un segment doit compter au moins 100 personnes, au plus 25 % de l’échantillon (« maxSegmentSize » personnes) et couvrir au moins 3 communes.</p><p>Un segment trop large (un tag de profession ou d’âge seul, plusieurs unions) sera rejeté : combinez des tags pour le resserrer.</p><p>Proposez 3 ou 4 segments distincts, qui ne se recouvrent pas.</p><p>N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine.</p><p>Rédigez tous les champs en langage naturel en français.</p><p>EXEMPLES ILLUSTRATIFS (événements fictifs, à ne PAS recopier : adaptez le raisonnement à l’événement réel) :</p><p>Exemple 1 — « Le maire de Lille appelle à rassembler la gauche derrière une candidature unique à la présidentielle »</p><p>  • « Cadres des grandes villes » : mécanisme « électorat urbain et diplômé, cœur de cible de l’appel à l’union de la gauche porté par le maire de Lille » ; all [cluster.urban_executive] (un cluster seul, car c’est exactement le bon public).</p><p>  • « Femmes cadres intermédiaires des communes denses » : mécanisme « électorat féminin de la gauche modérée, concerné par la question de l’union » ; all [sex.female, occupation.intermediate, geo.dense] (intersection de 3 tags).</p><p>  • « Actifs employés des communes intermédiaires » : mécanisme « base populaire de la gauche, à convaincre de se ranger derrière une candidature unique » ; all [geo.intermediate, occupation.employee], any [age.25_34, age.35_49] (tags obligatoires + liste d’alternatives).</p><p>Exemple 2 — « Le gouvernement propose de désindexer les pensions de retraite de l’inflation en 2027 »</p><p>  • « Retraités de 75 ans et plus ne vivant pas seuls » : mécanisme « premiers touchés par la désindexation des pensions, avec peu de marge d’adaptation » ; all [occupation.retired], any [age.75_plus], none [household.single] (usage d’un « none »).</p><p>  • « Ouvriers de 50 à 64 ans » : mécanisme « proches de la retraite, ils anticipent l’effet de la désindexation sur leur future pension » ; all [cluster.older_worker].</p><p>  • « Retraités ruraux » : mécanisme « pensions modestes et dépendance à la voiture dans les communes rurales, très sensibles à la perte de pouvoir d’achat » ; all [cluster.rural_retiree].</p><p>Exemple 3 — « Le ministre de l’Intérieur annonce 500 policiers supplémentaires après une fusillade à Marseille »</p><p>  • « Parents de famille des communes denses » : mécanisme « familles exposées à l’insécurité urbaine, destinataires de l’annonce de renforts policiers » ; all [household.couple_with_children, geo.dense, education.baccalaureate].</p><p>  • « Commerçants et artisans » : mécanisme « premiers concernés par la sécurité de leur commerce, sensibles à la présence policière » ; all [cluster.independent].</p><p>  • « Femmes de 25 à 49 ans vivant seules en ville » : mécanisme « sentiment d’insécurité dans l’espace public après une fusillade » ; all [sex.female, household.single, geo.dense], any [age.25_34, age.35_49].</p><p>Ces exemples montrent des filtres de formes variées (cluster seul, intersection de 3 tags, « any », « none ») ; chaque mécanisme nomme un élément précis de l’événement.</p></div></details>
+    
+    <div class="io">
+      <div class="col in"><h3>Ce qui entre</h3><dl><dt>Événement</dt><dd>titre et description</dd><dt>Familles de tags à valeur unique</dt><dd>âge, sexe, diplôme, profession, foyer…</dd><dt>Clusters</dt><dd>14 publics prédéfinis, avec leurs effectifs</dd><dt>Tags disponibles</dt><dd>chaque tag avec son effectif dans l’index</dd><dt>Tailles</dt><dd>taille de l’index, taille maximale d’un segment, minimum 100</dd></dl></div>
+      <div class="col out"><h3>Ce qui doit sortir</h3><dl><dt>Nom</dt><dd>nom du groupe</dd><dt>Mécanisme</dt><dd>1 à 2 phrases qui citent l’événement et expliquent pourquoi ce public est concerné</dd><dt>Raison</dt><dd>pourquoi ce public</dd><dt>Filtre</dt><dd>tags à réunir (tous), au moins un de (any), à exclure (none)</dd><dt>Lacunes d’appartenance</dt><dd>attribut nécessaire que les tags ne peuvent pas représenter</dd><dt>À mesurer</dt><dd>variables à mesurer pour valider l’hypothèse</dd></dl></div>
+    </div>
+    <div class="example"><h3>Sortie réelle (google-22546), premier des 4 groupes</h3><dl><dt>Nom</dt><dd>Parents d'adolescents en couple avec enfants en milieu urbain dense</dd><dt>Mécanisme</dt><dd>Ce segment comprend les parents vivant en couple avec enfants dans des communes denses où les blocages des lycées affectent directement la vie familiale et les relations quotidiennes, suscitant des conflits lors des repas en lien avec les perturbations scolaires.</dd><dt>Raison</dt><dd>Ce public est vraisemblablement concerné par les tensions entre parents et ados sur le blocage des lycées, puisqu'ils vivent en milieu urbain dense et ont la charge éducative d'enfants, probablement adolescents.</dd><dt>Filtre</dt><dd>tous : household.couple_with_children, geo.dense · au moins un de : age.35_49, age.25_34 · exclure : —</dd><dt>À mesurer</dt><dd>Perception des blocages scolaires · Relations familiales lors des repas · Attitudes envers les mouvements lycéens</dd></dl></div>
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage code" id="check">
+  <div class="body">
+    <p class="tag">Code, sans LLM</p>
+    <h2>Contrôle des segments</h2>
+    <p class="meta">aucun appel · <code>pipeline/radar/pipeline.ts · segmentRepair.ts</code></p>
+    <p class="role">Valide chaque filtre (tags connus, une valeur par famille) et compte les profils : au moins 100 personnes, 3 communes, au plus 25 % de l’index, pas de doublon ni de groupe générique. Objectif : 3 segments retenus.</p>
+    
+    
+    
+    
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage llm" id="repair">
+  <div class="body">
+    <p class="tag">Appel LLM</p>
+    <h2>C · Réparation des segments</h2>
+    <p class="meta">0 à 2 appels, tant qu’il manque des segments · <code>pipeline/radar/pipeline.ts</code></p>
+    <p class="role">Même prompt que B, plus une mission de réparation : on lui renvoie les segments refusés avec la raison, et les segments déjà acceptés à ne pas répéter.</p>
+    <details class="fold sys" open><summary>Prompt envoyé au modèle</summary><div class="fold-body"><p>Vous proposez des hypothèses testables sur les publics concernés, jamais des estimations d’effet électoral.</p><p>Utilisez UNIQUEMENT les identifiants de tags fournis.</p><p>Les effectifs indiquent la couverture dans un échantillon synthétique de communes sélectionnées, comprenant beaucoup de Paris, Lyon et Marseille ; ils ne représentent NI la population nationale NI des tailles d’effet.</p><p>Ne classez pas les groupes selon ces effectifs.</p><p>Un segment correspond à l’intersection des tags de « all », à au moins un tag de « any » si la liste n’est pas vide, et à l’exclusion des tags de « none ».</p><p>Les familles age, sex, education, occupation, household, marital, geo et commune_size sont à valeur unique : une personne n’a qu’une seule valeur par famille.</p><p>« all » contient donc au plus un tag par famille ; pour « 35 à 64 ans » ou « employés et ouvriers », placez les valeurs alternatives dans « any ».</p><p>« any » est UNE seule liste d’alternatives : n’y mélangez pas plusieurs familles et ne l’utilisez pas pour deux unions à la fois.</p><p>Les tags sont des BRIQUES pour COMPOSER des publics sur mesure : construisez l’intersection qui correspond au mécanisme de CET événement, au-delà des publics nommés.</p><p>Les « clusters » fournis (14 publics déjà définis par des règles sur les tags) ne sont que des raccourcis et des exemples : n’en utilisez un que s’il correspond exactement au public visé, seul ou combiné à d’autres tags ; sinon composez votre propre filtre à partir des tags.</p><p>Dans « membershipGaps », indiquez UNIQUEMENT un attribut nécessaire pour définir le groupe nommé qu’AUCUN tag ni cluster fourni ne peut représenter (revenu, pension, vote passé, statut de sortant…) ; un attribut déjà couvert par une famille de tags (âge, foyer, statut matrimonial, densité…) n’est jamais une lacune, choisissez simplement la valeur voulue.</p><p>Laissez ce champ vide si les tags suffisent.</p><p>Placez les variables de résultat, mécanisme, exposition et enquête dans « measurementNeeds » (courtes expressions en français, par exemple « Attitude envers la police », jamais d’identifiants en snake_case), jamais dans « membershipGaps ».</p><p>N’utilisez pas de substitut approximatif pour une caractéristique absente.</p><p>SPÉCIFICITÉ À L’ÉVÉNEMENT : chaque segment doit être le public plausiblement le plus concerné par le mécanisme PROPRE de CET événement : qui constitue la base de la personne ou du candidat soutenu ou attaqué, qui est visé par la mesure ou la proposition, qui vit là où l’événement s’est produit.</p><p>« mechanism » : une ou deux phrases qui citent NOMMÉMENT la personne, la mesure, le lieu ou le thème de l’événement (reprenez ses termes) et expliquent pourquoi CE public est concerné ; un mécanisme qui conviendrait à n’importe quel événement politique est insuffisant.</p><p>N’utilisez PAS les archétypes génériques habituels (jeunes diplômés des villes, salariés modestes, jeunes sans activité, retraités peu diplômés) sauf si l’événement les concerne réellement.</p><p>Préférez des intersections précises de tags (âge × occupation × densité, sexe × foyer, etc.) à un seul grand groupe.</p><p>Incluez au moins un segment étroit (moins de 5 % de l’échantillon) lorsque l’événement le permet.</p><p>CONTRAINTES DE TAILLE vérifiées après coup : un segment doit compter au moins 100 personnes, au plus 25 % de l’échantillon (« maxSegmentSize » personnes) et couvrir au moins 3 communes.</p><p>Un segment trop large (un tag de profession ou d’âge seul, plusieurs unions) sera rejeté : combinez des tags pour le resserrer.</p><p>Proposez 3 ou 4 segments distincts, qui ne se recouvrent pas.</p><p>N’affirmez aucune variation chiffrée du vote et ne traitez jamais les biographies synthétiques comme des données d’enquête humaine.</p><p>Rédigez tous les champs en langage naturel en français.</p><p>EXEMPLES ILLUSTRATIFS (événements fictifs, à ne PAS recopier : adaptez le raisonnement à l’événement réel) :</p><p>Exemple 1 — « Le maire de Lille appelle à rassembler la gauche derrière une candidature unique à la présidentielle »</p><p>  • « Cadres des grandes villes » : mécanisme « électorat urbain et diplômé, cœur de cible de l’appel à l’union de la gauche porté par le maire de Lille » ; all [cluster.urban_executive] (un cluster seul, car c’est exactement le bon public).</p><p>  • « Femmes cadres intermédiaires des communes denses » : mécanisme « électorat féminin de la gauche modérée, concerné par la question de l’union » ; all [sex.female, occupation.intermediate, geo.dense] (intersection de 3 tags).</p><p>  • « Actifs employés des communes intermédiaires » : mécanisme « base populaire de la gauche, à convaincre de se ranger derrière une candidature unique » ; all [geo.intermediate, occupation.employee], any [age.25_34, age.35_49] (tags obligatoires + liste d’alternatives).</p><p>Exemple 2 — « Le gouvernement propose de désindexer les pensions de retraite de l’inflation en 2027 »</p><p>  • « Retraités de 75 ans et plus ne vivant pas seuls » : mécanisme « premiers touchés par la désindexation des pensions, avec peu de marge d’adaptation » ; all [occupation.retired], any [age.75_plus], none [household.single] (usage d’un « none »).</p><p>  • « Ouvriers de 50 à 64 ans » : mécanisme « proches de la retraite, ils anticipent l’effet de la désindexation sur leur future pension » ; all [cluster.older_worker].</p><p>  • « Retraités ruraux » : mécanisme « pensions modestes et dépendance à la voiture dans les communes rurales, très sensibles à la perte de pouvoir d’achat » ; all [cluster.rural_retiree].</p><p>Exemple 3 — « Le ministre de l’Intérieur annonce 500 policiers supplémentaires après une fusillade à Marseille »</p><p>  • « Parents de famille des communes denses » : mécanisme « familles exposées à l’insécurité urbaine, destinataires de l’annonce de renforts policiers » ; all [household.couple_with_children, geo.dense, education.baccalaureate].</p><p>  • « Commerçants et artisans » : mécanisme « premiers concernés par la sécurité de leur commerce, sensibles à la présence policière » ; all [cluster.independent].</p><p>  • « Femmes de 25 à 49 ans vivant seules en ville » : mécanisme « sentiment d’insécurité dans l’espace public après une fusillade » ; all [sex.female, household.single, geo.dense], any [age.25_34, age.35_49].</p><p>Ces exemples montrent des filtres de formes variées (cluster seul, intersection de 3 tags, « any », « none ») ; chaque mécanisme nomme un élément précis de l’événement.</p><p>MISSION DE RÉPARATION : une première proposition a été partiellement rejetée.</p><p>Vous recevez « rejected » (segments refusés, avec la raison précise : tag inconnu, tags en conflit, trop large avec son effectif, trop petit, doublon, générique…), « accepted » (segments déjà retenus : ne les répétez pas et évitez tout recouvrement) et « needed » (nombre de remplaçants à proposer).</p><p>Proposez des segments de remplacement DIFFÉRENTS et plus étroits (trop large : ajoutez des tags d’intersection ; trop petit : retirez un tag ou prenez un cluster ; conflit : une seule valeur par famille dans « all »), toujours liés au mécanisme de l’événement.</p><p>Utilisez uniquement les tags et clusters fournis.</p></div></details>
+    
+    <div class="io">
+      <div class="col in"><h3>Ce qui entre</h3><dl><dt>Tout ce que reçoit B</dt><dd>événement, tags, clusters, tailles</dd><dt>Nombre à remplacer</dt><dd>combien de segments manquent</dd><dt>Acceptés</dt><dd>nom, filtre et effectif de chaque segment déjà retenu</dd><dt>Refusés</dt><dd>nom, filtre, effectif et raison précise du refus (trop petit, trop large, doublon…)</dd></dl></div>
+      <div class="col out"><h3>Ce qui doit sortir</h3><dl><dt>Même structure que B</dt><dd>des segments de remplacement, plus étroits</dd></dl></div>
+    </div>
+    
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage code" id="fallback">
+  <div class="body">
+    <p class="tag">Code, sans LLM</p>
+    <h2>Repli et échantillonnage</h2>
+    <p class="meta">aucun appel · <code>pipeline/radar/pipeline.ts · relativeResponse.ts</code></p>
+    <p class="role">S’il reste moins de 2 segments valides, les segments refusés sont desserrés (retrait de tags). Pour chaque segment retenu, un échantillon divers de profils est tiré de façon déterministe ; un scénario global (tout l’index) est ajouté par gabarit.</p>
+    
+    
+    
+    
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage llm" id="personas">
+  <div class="body">
+    <p class="tag">Appel LLM</p>
+    <h2>D · Réponses des profils (jeu de rôle)</h2>
+    <p class="meta">lots de 4 profils · 2 passes indépendantes · 24 profils par segment (48 pour le scénario global) · <code>pipeline/radar/probabilisticResponse.ts</code></p>
+    <p class="role">Le modèle incarne chaque personne : une réaction à la première personne, puis trois intentions de vote (sans l’événement, avec l’événement, avec le scénario alternatif). Les candidats sont présentés dans un ordre aléatoire fixé par graine, pour éviter un biais de position.</p>
+    <details class="fold sys" open><summary>Prompt envoyé au modèle</summary><div class="fold-body"><p>Vous incarnez des personnes françaises.</p><p>On vous décrit chacune en détail (âge, métier, lieu, biographie, contexte électoral de sa commune).</p><p>Pour chaque personne, mettez-vous à sa place : ce que SA situation, SES habitudes et SES valeurs probables lui feraient penser de l’actualité décrite, comme si vous étiez elle, et non comme un analyste politique.</p><p>Beaucoup de gens suivent peu l’actualité politique : sans lien concret avec sa vie, son quotidien ou ses convictions, la personne ne change rien à son intention de vote.</p><p>Chaque personne répond indépendamment des autres.</p><p>Pour chacune, écrivez d’abord « reaction » : une ou deux phrases à la première personne (ce que vous pensez de cette nouvelle, ou si elle vous laisse indifférent), puis les distributions.</p><p>Pour chaque personne, donnez trois distributions d’intention de vote à la présidentielle sur les candidats fournis et l’abstention (un nombre entre 0 et 1 par candidat, somme égale à 1) :</p><p>« ifNoEvent » : l’événement n’a pas eu lieu ;</p><p>« ifEvent » : l’événement a eu lieu et la personne en a connaissance ;</p><p>« ifAlternative » : le scénario alternatif décrit a eu lieu à la place, et la personne en a connaissance.</p><p>Partez de la distribution de base fournie (modèle d’enquête 2022 recalé sur le niveau des sondages récents, contexte faible) et écartez-vous-en seulement pour une raison concrète liée à l’événement ou au scénario ; sans raison concrète, les distributions restent égales à la base, y compris pour l’abstention.</p><p>Un déplacement raisonnable est de quelques points, rarement plus de 10 points, et seulement pour les personnes réellement concernées.</p><p>Un même événement peut mobiliser ou démobiliser : estimez aussi l’abstention.</p><p>Fournissez exactement une réponse par personne, avec toutes les clés candidat et abstention.</p></div></details>
+    <details class="fold sys"><summary>Variante « demographic » (ANALYZE_PERSONA=demographic, non utilisée par défaut)</summary><div class="fold-body"><p>Vous estimez, pour des profils synthétiques français, leur intention de vote à la présidentielle selon plusieurs mondes.</p><p>Pour chaque personne, donnez trois distributions d’intention de vote à la présidentielle sur les candidats fournis et l’abstention (un nombre entre 0 et 1 par candidat, somme égale à 1) :</p><p>« ifNoEvent » : l’événement n’a pas eu lieu ;</p><p>« ifEvent » : l’événement a eu lieu et la personne en a connaissance ;</p><p>« ifAlternative » : le scénario alternatif décrit a eu lieu à la place, et la personne en a connaissance.</p><p>Partez de la distribution de base fournie (modèle d’enquête 2022 recalé sur le niveau des sondages récents, contexte faible) et écartez-vous-en seulement pour une raison concrète liée à l’événement ou au scénario ; sans raison concrète, les distributions restent égales à la base, y compris pour l’abstention.</p><p>Un déplacement raisonnable est de quelques points, rarement plus de 10 points, et seulement pour les personnes réellement concernées.</p><p>Un même événement peut mobiliser ou démobiliser : estimez aussi l’abstention.</p><p>Fournissez exactement une réponse par personne, avec toutes les clés candidat et abstention.</p><p>Ne devinez ni parti préféré ni idéologie à partir de la profession, de l’âge ou du lieu.</p><p>Expliquez en français, en une phrase, le mécanisme concret ou son absence (champ « mechanism »).</p></div></details>
+    <div class="io">
+      <div class="col in"><h3>Ce qui entre</h3><dl><dt>Événement</dt><dd>titre et description</dd><dt>Scénario alternatif</dt><dd>description et ce qui change (étape A)</dd><dt>Candidats</dt><dd>identifiant → nom, plus « ne vote pas »</dd><dt>Pour chaque personne</dt><dd>identifiant · âge, sexe, diplôme, profession, foyer, situation, commune, département, densité · biographie · parcours professionnel · résultats électoraux de la commune (2022, 2024, 2026) · intention de vote de base (modèle d’enquête 2022 recalé sur les sondages des 45 jours précédents)</dd></dl></div>
+      <div class="col out"><h3>Ce qui doit sortir</h3><dl><dt>Réaction</dt><dd>1 à 2 phrases à la première personne : ce que la personne pense de la nouvelle, ou son indifférence</dd><dt>Sans l’événement</dt><dd>part de vote par candidat + abstention (somme = 1)</dd><dt>Avec l’événement</dt><dd>idem</dd><dt>Avec le scénario alternatif</dt><dd>idem</dd></dl></div>
+    </div>
+    <div class="example"><h3>Réaction réelle (google-22546, groupe « Parents d'adolescents en couple avec enfants en milieu urbain dense »)</h3><dl><dt>Réaction</dt><dd>Les disputes entre parents et ados sur le blocage des lycées, ça me semble un peu stérile. J'essaie de rester pragmatique, ça ne change rien à mon opinion politique.</dd><dt>Autre réaction</dt><dd>Ces tensions à table entre parents et ados, je vois ça chez moi aussi. Ça me fatigue plus qu'autre chose, je préfère ne pas trop m'en mêler.</dd><dt>Les trois distributions</dt><dd>exemple non conservé dans l’artefact : seules les moyennes et les écarts par candidat sont gardés</dd></dl></div>
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage code" id="agg">
+  <div class="body">
+    <p class="tag">Code, sans LLM</p>
+    <h2>Agrégation</h2>
+    <p class="meta">aucun appel · <code>pipeline/radar/probabilisticResponse.ts</code></p>
+    <p class="role">Pour chaque profil : écart = avec l’événement − sans l’événement. « Plus enclins » / « moins enclins » = profils dont la probabilité d’un candidat bouge d’au moins 2 points. Intervalles de bootstrap, stabilité entre les 2 passes. Écrit l’analyse dans data/generated/analyses/. Aujourd’hui seules les 3 premières réactions de chaque groupe sont conservées.</p>
+    
+    
+    
+    
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage code" id="site">
+  <div class="body">
+    <p class="tag">Code, sans LLM</p>
+    <h2>Page événement</h2>
+    <p class="meta">aucun appel · <code>src/components/events/EventSubpopulationAnalysis.tsx</code></p>
+    <p class="role">« Évolution simulée des intentions de vote, candidat par candidat » : solde plus/moins enclins par candidat et par groupe. Rendu au build, aucun appel au modèle dans le navigateur.</p>
+    
+    
+    
+    
+  </div>
+  <div class="arrow" aria-hidden="true">↓</div>
+</section>
+
+<section class="stage llm legacy" id="legacy">
+  <div class="body">
+    <p class="tag">Appel LLM</p>
+    <h2>Ancienne méthode v1 · direction par bloc</h2>
+    <p class="meta">uniquement avec --method v1 (plus utilisée) · <code>pipeline/radar/relativeResponse.ts</code></p>
+    <p class="role">Remplacée par D : le modèle ne donnait qu’une direction (vers, loin, pas de changement net) pour chaque bloc politique.</p>
+    <details class="fold sys"><summary>Prompt envoyé au modèle</summary><div class="fold-body"><p>Vous comparez une intervention précise à son scénario contrefactuel pour des profils synthétiques français.</p><p>Pour chaque profil, indiquez uniquement la DIRECTION de son inclination de vote vers chacun des cinq blocs politiques et l’abstention, en supposant qu’il ait connaissance de l’intervention.</p><p>Par défaut, utilisez « no_clear_change », sauf si l’événement ou l’intervention comporte un élément concret pertinent pour un parti et qu’une réaction différenciée soit plausible pour ce profil.</p><p>Une modification procédurale ou d’une règle électorale locale ne permet pas, à elle seule, de conclure quel parti national en bénéficierait.</p><p>N’inventez ni avantage partisan, ni statut de sortant, ni idéologie privée, ni exposition personnelle à partir de la profession, de l’âge, des résultats électoraux locaux ou d’une biographie synthétique.</p><p>N’utilisez les propensions issues de l’enquête de 2022 que comme contexte historique faible ; les résultats locaux observés ne décrivent que le lieu et ne révèlent pas le vote de cette personne.</p><p>N’inférez ni vote actuel pour 2027, ni variation en points, ni effet causal, ni prévision pour la population.</p><p>Ne forcez pas un changement pour chaque bloc.</p><p>Fournissez exactement une réponse par profil et exactement une entrée par bloc.</p><p>Expliquez brièvement le mécanisme concret — ou son absence — ainsi que la principale incertitude.</p><p>Rédigez ces explications en français.</p></div></details>
+    
+    <div class="io">
+      <div class="col in"><h3>Ce qui entre</h3><dl><dt>Événement, intervention, comparateur, groupe</dt><dd>texte</dd><dt>Définition des 5 blocs</dt><dd>gauche radicale, gauche, centre, droite, extrême droite</dd><dt>Profils</dt><dd>description de chaque personne</dd></dl></div>
+      <div class="col out"><h3>Ce qui doit sortir</h3><dl><dt>Par profil</dt><dd>direction pour chaque bloc et l’abstention · mécanisme · principale incertitude</dd></dl></div>
+    </div>
+    
+  </div>
+  
+</section></main>
+</body></html>
