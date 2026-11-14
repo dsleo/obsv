@@ -128,6 +128,11 @@ export function MethodExplainer() {
               }}
             >
               <div className="method-chapter-copy">
+                <div className="method-progress" aria-hidden="true">
+                  {chapters.map((step, stepIndex) => (
+                    <span key={step.title} className={stepIndex <= index ? "is-done" : undefined} />
+                  ))}
+                </div>
                 <span className="method-story-label">{chapter.eyebrow}</span>
                 <h3>{chapter.title}</h3>
                 <p>{chapter.text}</p>
