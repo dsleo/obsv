@@ -24,8 +24,8 @@ const base = { personaId: z.string(), ifNoEvent: dist, ifEvent: dist };
 const plain = z.object({ responses: z.array(z.object({ ...base, mechanism: z.string() })) });
 const plainAlt = z.object({ responses: z.array(z.object({ ...base, ifAlternative: dist, mechanism: z.string() })) });
 // Role-play: the persona's own words first (a short first-person reaction), then the numbers.
-const roleplay = z.object({ responses: z.array(z.object({ personaId: z.string(), reaction: z.string(), ifNoEvent: dist, ifEvent: dist })) });
-const roleplayAlt = z.object({ responses: z.array(z.object({ personaId: z.string(), reaction: z.string(), ifNoEvent: dist, ifEvent: dist, ifAlternative: dist })) });
+const roleplay = z.object({ responses: z.array(z.object({ personaId: z.string(), reaction: z.string(), ifNoEvent: dist, ifEvent: dist, why: z.string(), whyFor: z.string() })) });
+const roleplayAlt = z.object({ responses: z.array(z.object({ personaId: z.string(), reaction: z.string(), ifNoEvent: dist, ifEvent: dist, ifAlternative: dist, why: z.string(), whyFor: z.string() })) });
 
 // Baseline: "survey" = 2022 survey-model prior; "poll" (default) = the same prior re-anchored on the polls of the 45 days before the event.
 export const BASELINE_MODE = process.env.ANALYZE_BASELINE === "survey" ? "survey" : "poll";
@@ -92,7 +92,7 @@ const COMMON = (poll: boolean, alt: boolean) => `Pour chaque personne, donnez ${
 
 const SYSTEM_DEMOGRAPHIC = (poll: boolean, alt: boolean) => `Vous estimez, pour des profils synthétiques français, leur intention de vote à la présidentielle selon plusieurs mondes. ${COMMON(poll, alt)} Ne devinez ni parti préféré ni idéologie à partir de la profession, de l’âge ou du lieu. Expliquez en français, en une phrase, le mécanisme concret ou son absence (champ « mechanism »).`;
 
-const SYSTEM_ROLEPLAY = (poll: boolean, alt: boolean) => `Vous incarnez des personnes françaises. On vous décrit chacune en détail (âge, métier, lieu, biographie, contexte électoral de sa commune). Pour chaque personne, mettez-vous à sa place : ce que SA situation, SES habitudes et SES valeurs probables lui feraient penser de l’actualité décrite, comme si vous étiez elle, et non comme un analyste politique. Beaucoup de gens suivent peu l’actualité politique : sans lien concret avec sa vie, son quotidien ou ses convictions, la personne ne change rien à son intention de vote. Chaque personne répond indépendamment des autres. Pour chacune, écrivez d’abord « reaction » : une ou deux phrases à la première personne (ce que vous pensez de cette nouvelle, ou si elle vous laisse indifférent), puis les distributions. ${COMMON(poll, alt)}`;
+const SYSTEM_ROLEPLAY = (poll: boolean, alt: boolean) => `Vous incarnez des personnes françaises. On vous décrit chacune en détail (âge, métier, lieu, biographie, contexte électoral de sa commune). Pour chaque personne, mettez-vous à sa place : ce que SA situation, SES habitudes et SES valeurs probables lui feraient penser de l’actualité décrite, comme si vous étiez elle, et non comme un analyste politique. Beaucoup de gens suivent peu l’actualité politique : sans lien concret avec sa vie, son quotidien ou ses convictions, la personne ne change rien à son intention de vote. Chaque personne répond indépendamment des autres. Pour chacune, écrivez d’abord « reaction » : une ou deux phrases à la première personne (ce que vous pensez de cette nouvelle, ou si elle vous laisse indifférent), puis les distributions, puis « why » et « whyFor » : si « ifEvent » s’écarte de « ifNoEvent » d’au moins deux points, « whyFor » est la clé (candidat ou abstention) qui bouge le plus et « why » une phrase à la première personne qui donne la raison concrète de CE déplacement-là, pour ce choix précis (par exemple pourquoi vous vous abstiendriez, ou pourquoi vous voteriez moins pour tel candidat) ; sinon deux chaînes vides. ${COMMON(poll, alt)}`;
 
 const CANDIDATE_DEF = Object.fromEntries([
   ...pollCandidates.map((candidate) => [candidate.id, candidate.name]),
@@ -105,7 +105,7 @@ function localContext(p: RadarPersona) {
     .map((row) => ({ scrutin: row.electionId, abstention_commune: `${Math.round(row.abstentionShare * 100)} %`, premiers_choix_commune: row.voteVectorEligible ? row.choices.slice(0, 2).map((choice) => `${choice.label} ${Math.round(choice.shareOfRegistered * 100)} % des inscrits`) : [] }));
 }
 
-type Answer = { personaId: string; ifNoEvent: CandidateDist; ifEvent: CandidateDist; ifAlternative?: CandidateDist; mechanism?: string; reaction?: string };
+type Answer = { personaId: string; ifNoEvent: CandidateDist; ifEvent: CandidateDist; ifAlternative?: CandidateDist; mechanism?: string; reaction?: string; why?: string; whyFor?: string };
 
 async function askBatch(event: RadarEvent, alternative: string | null, personas: RadarPersona[], seed: string, candidateTarget: Record<string, number> | null, blocTarget: Record<string, number> | null, priorMass: number[]) {
   const order = [...CANDIDATE_IDS, "abstention"].sort((a, b) => createHash("sha256").update(`${seed}${a}`).digest("hex").localeCompare(createHash("sha256").update(`${seed}${b}`).digest("hex"))); // candidates shown in a seeded random order: no positional bias
@@ -126,11 +126,11 @@ async function askBatch(event: RadarEvent, alternative: string | null, personas:
   const wanted = new Set(personas.map((p) => p.id)), seen = new Set<string>();
   for (const r of out.data.responses) { if (!wanted.has(r.personaId) || seen.has(r.personaId)) throw new Error("Unexpected or duplicate persona response"); seen.add(r.personaId); }
   if (seen.size !== wanted.size) throw new Error("The model omitted a sampled persona");
-  return out.data.responses.map((r) => ({ personaId: r.personaId, ifNoEvent: normaliseCandidate(r.ifNoEvent), ifEvent: normaliseCandidate(r.ifEvent), ifAlternative: r.ifAlternative ? normaliseCandidate(r.ifAlternative) : null, text: r.mechanism ?? r.reaction ?? "" }));
+  return out.data.responses.map((r) => ({ personaId: r.personaId, ifNoEvent: normaliseCandidate(r.ifNoEvent), ifEvent: normaliseCandidate(r.ifEvent), ifAlternative: r.ifAlternative ? normaliseCandidate(r.ifAlternative) : null, text: r.mechanism ?? r.reaction ?? "", why: r.why ?? "", whyFor: r.whyFor ?? "" }));
 }
 
 const retry = async <T>(run: () => Promise<T>) => { try { return await run(); } catch { return run(); } };
-type Row = { personaId: string; profile: string; before: CandidateDist; after: CandidateDist; delta: CandidateDist; deltaAlt: CandidateDist | null; text: string };
+type Row = { personaId: string; profile: string; before: CandidateDist; after: CandidateDist; delta: CandidateDist; deltaAlt: CandidateDist | null; text: string; why: string; whyFor: string };
 
 /** n personas per run (batches of `batch`, in parallel), `runs` independent samples. Effect = mean(ifEvent - ifNoEvent), bootstrap 95% interval. */
 export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentPreview, { n = 24, batch = PERSONA_MODE === "roleplay" ? 4 : 8, runs = 2, alternative = null as string | null } = {}) {
@@ -145,7 +145,7 @@ export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentP
     const chunks = Array.from({ length: Math.ceil(selected.length / batch) }, (_, i) => selected.slice(i * batch, (i + 1) * batch));
     const answers = (await Promise.all(chunks.map((chunk, i) => retry(() => askBatch(event, alternative, chunk, `${segment.id}|${run}|${i}`, candidateTarget, blocTarget, priorMass))))).flat();
     const profileOf = (id: string) => { const p = selected.find((x) => x.id === id); return p ? `${p.sex}, ${p.age} ans, ${p.occupation.toLowerCase()}, ${p.commune}` : ""; };
-    return answers.map((a) => ({ personaId: a.personaId, profile: profileOf(a.personaId), before: a.ifNoEvent, after: a.ifEvent, delta: diff(a.ifEvent, a.ifNoEvent), deltaAlt: a.ifAlternative ? diff(a.ifEvent, a.ifAlternative) : null, text: a.text }));
+    return answers.map((a) => ({ personaId: a.personaId, profile: profileOf(a.personaId), before: a.ifNoEvent, after: a.ifEvent, delta: diff(a.ifEvent, a.ifNoEvent), deltaAlt: a.ifAlternative ? diff(a.ifEvent, a.ifAlternative) : null, text: a.text, why: a.why, whyFor: a.whyFor }));
   }));
   const all = perRun.flat();
   const random = rng(`${event.title}|${segment.id}`);
@@ -189,13 +189,13 @@ export async function evaluateSegmentEffect(event: RadarEvent, segment: SegmentP
     away: all.filter((r) => r.delta[key] <= -0.02).length,
     noClearChange: all.filter((r) => Math.abs(r.delta[key]) < 0.02).length,
   }]));
-  // Quotes: for each candidate with a non-zero net balance (toward - away, the figure the site shows), the first-person reaction of the persona who moved most in that direction (>= 2 points).
+  // Quotes: for each candidate with a non-zero net balance (toward - away, the figure the site shows), the persona's own stated reason (`why`, written after the numbers, only if it is about this very choice: `whyFor`) from the persona who moved most in that direction (>= 2 points).
   const quotes = Object.fromEntries(candidateKeys.flatMap((key) => {
     const { toward, away } = candidateSummary[key];
     const sign = toward > away ? 1 : away > toward ? -1 : 0;
     if (!sign) return [];
-    const best = all.filter((r) => r.text && sign * r.delta[key] >= 0.02).sort((a, b) => sign * b.delta[key] - sign * a.delta[key])[0];
-    return best ? [[key, { text: best.text, profile: best.profile, direction: sign > 0 ? "toward" : "away", points: Math.round(best.delta[key] * 100) }]] : [];
+    const best = all.filter((r) => r.why.trim() && r.whyFor === key && sign * r.delta[key] >= 0.02).sort((a, b) => sign * b.delta[key] - sign * a.delta[key])[0];
+    return best ? [[key, { text: best.why, profile: best.profile, direction: sign > 0 ? "toward" : "away", points: Math.round(best.delta[key] * 100) }]] : [];
   }));
   return { segmentId: segment.id, segmentName: segment.name, matchedCount: matched, sampledCount: all.length, runs, comparator: segment.counterfactual.comparator,
     selection: "deterministic_diversity_sample_by_2022_prior", evidenceGrade: "unvalidated_llm_directional_hypothesis" as const,
