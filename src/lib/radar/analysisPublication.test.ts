@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { eventInputHash } from "./analysisInput";
 import { analysisContentHash } from "./analysisReview";
 import { analysisArtifactSchema } from "./analysisArtifact";
@@ -25,9 +25,10 @@ describe("automatic analysis publication integrity", () => {
     );
   });
   it("accepts automatic publication without inventing a human reviewer", () => {
-    const raw = JSON.parse(
-      readFileSync("data/generated/analyses/google-1.json", "utf8"),
-    );
+    // ponytail: any published analysis will do; pinning one id broke CI when it was pruned.
+    const dir = "data/generated/analyses";
+    const file = readdirSync(dir).find((f) => f.endsWith(".json"));
+    const raw = JSON.parse(readFileSync(`${dir}/${file}`, "utf8"));
     raw.review = { status: "automatic" };
     raw.eventInputHash = eventInputHash(event);
     raw.review.contentHash = analysisContentHash(raw);

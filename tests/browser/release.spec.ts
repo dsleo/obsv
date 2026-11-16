@@ -42,12 +42,14 @@ test("archive search survives reload and provides recovery", async ({
     .click();
   await expect(page.getByRole("searchbox")).toHaveValue("");
 });
+// ponytail: first built event page, so the check survives data pruning.
+const anyEvent = readdirSync("out/events").find((id) => existsSync(`out/events/${id}/index.html`));
 for (const theme of ["light", "dark"] as const) {
   for (const route of [
     "/",
     "/radar/",
     "/events/",
-    "/events/google-28633/",
+    `/events/${anyEvent}/`,
     "/candidates/",
     "/candidates/le-pen/",
     "/method/",
