@@ -45,6 +45,32 @@ test("archive search survives reload and provides recovery", async ({
 // ponytail: first built event page, so the check survives data pruning.
 const anyEvent = readdirSync("out/events").find((id) => existsSync(`out/events/${id}/index.html`));
 for (const theme of ["light", "dark"] as const) {
+  test(`${theme} impact map contrast across all intensities`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
+    await page.goto(`${prefix}/`);
+    // Exercise both directions independently of the live feed and selected week.
+    await page.locator(".impact-map tbody").evaluate((body) => {
+      body.replaceChildren();
+      for (const direction of ["positive", "negative"]) {
+        for (let intensity = 0; intensity <= 100; intensity += 5) {
+          const row = document.createElement("tr");
+          const cell = document.createElement("td");
+          const link = document.createElement("a");
+          link.href = "#contenu";
+          link.textContent = `${direction === "positive" ? "+" : "−"}${intensity} %`;
+          link.style.background = `color-mix(in srgb, var(--impact-${direction}) ${intensity}%, transparent)`;
+          cell.append(link);
+          row.append(cell);
+          body.append(row);
+        }
+      }
+    });
+    const results = await new AxeBuilder({ page })
+      .include(".impact-map")
+      .withRules(["color-contrast"])
+      .analyze();
+    expect(results.violations).toEqual([]);
+  });
   for (const route of [
     "/",
     "/radar/",

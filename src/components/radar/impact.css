@@ -1,7 +1,11 @@
 .impact { display: grid; gap: 1.5rem; padding-block: 1rem 2rem; min-width: 0; }
 .impact > * { min-width: 0; }
 .impact-empty { color: var(--muted); }
-.impact-map { overflow-x: auto; }
+/* Full-strength fills keep at least 4.5:1 contrast with --ink in each theme. */
+.impact-map { --impact-positive: #ec5b34; --impact-negative: #6f8c88; overflow-x: auto; }
+@media (prefers-color-scheme: dark) {
+  .impact-map { --impact-positive: #9c4930; --impact-negative: #41615d; }
+}
 .impact-map table { width: 100%; border-collapse: separate; border-spacing: 3px; min-width: 34rem; }
 .impact-map th { font: 650 0.75rem var(--font-body), sans-serif; color: var(--muted); text-align: left; padding: 0.3rem 0.4rem; }
 .impact-map thead th { text-align: center; }

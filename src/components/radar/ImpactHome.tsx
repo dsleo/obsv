@@ -20,7 +20,7 @@ const label = (id: string) => (id === "abstention" ? "Abstention" : pollCandidat
 const pct = (s: number) => `${s > 0 ? "+" : "−"}${Math.round(Math.abs(s) * 100)} %`;
 // Colour = intensity (saturates at 40 %): orange = more inclined, teal-grey = less inclined.
 const tint = (s: number) =>
-  `color-mix(in srgb, ${s > 0 ? "var(--orange)" : "var(--cand-philippe)"} ${Math.round(Math.min(1, Math.abs(s) / 0.4) * 100)}%, transparent)`;
+  `color-mix(in srgb, ${s > 0 ? "var(--impact-positive)" : "var(--impact-negative)"} ${Math.round(Math.min(1, Math.abs(s) / 0.4) * 100)}%, transparent)`;
 
 export function ImpactHome({ data }: { data: ImpactData }) {
   const last = Math.max(...Object.values(data.meta).map((m) => m.pollDay));
