@@ -1,0 +1,1584 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-21801",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "f1e200aac7f4c204",
+  "eventInputHash": "d5a66a31c3106afe7ac8e090deb0b0092761e0b719c93777e243fb4dd6b64f7b",
+  "computedAt": "2026-11-18T09:19:29.752Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Au lieu d'annoncer une hausse directe du Smic, le gouvernement propose une augmentation progressive de 3% étalée sur un an, combinée à des allégements de charges pour les petites entreprises afin de favoriser l'emploi.",
+    "whatChanges": "La mesure devient plus graduelle et ciblée, ce qui pourrait rassurer les employeurs tout en offrant une augmentation moins immédiate du pouvoir d'achat aux salariés modestes."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Employés et ouvriers de 25 à 49 ans en commune dense",
+      "mechanism": "Cette hausse du Smic vise directement les salariés modestes actifs dans les zones urbaines denses, où le coût de la vie est plus élevé, affectant leur pouvoir d'achat et leur budget quotidien.",
+      "reason": "Les salariés d'âge intermédiaire et actifs dans des secteurs de faible qualification en milieu urbain dense sont ceux les plus concernés par la mesure de hausse du salaire minimum, car ils représentent la majorité des bénéficiaires potentiels.",
+      "all": [
+        "occupation.employee",
+        "geo.dense"
+      ],
+      "any": [
+        "age.25_34",
+        "age.35_49"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Attitude envers la hausse du Smic",
+        "Perception du pouvoir d'achat"
+      ],
+      "count": 11776,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.25_34 ou age.35_49 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Smic, une hausse pour soutenir le pouvoir d'achat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Ouvriers de 50 à 64 ans en communes intermédiaires ou denses",
+      "mechanism": "Les ouvriers plus âgés, proches de l'âge de la retraite, subissent un fort impact du pouvoir d'achat lié à leur salaire, et la hausse du Smic peut ainsi influer sur leur situation économique immédiate.",
+      "reason": "Cette population dépasse l'âge jeune, maintient une activité ouvrière, souvent en milieu intermédiaire ou urbain, ce qui resserre le groupe sur ceux potentiellement concernés par la mesure dans leur vie professionnelle.",
+      "all": [
+        "occupation.worker",
+        "age.50_64"
+      ],
+      "any": [
+        "geo.intermediate",
+        "geo.dense"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Opinion sur la hausse du Smic",
+        "Impact ressenti sur le budget"
+      ],
+      "count": 3580,
+      "distinctCommunes": 96,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Smic, une hausse pour soutenir le pouvoir d'achat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Jeunes sans activité professionnelle de 18 à 24 ans en commune dense",
+      "mechanism": "Beaucoup de jeunes sans activité, souvent en formation ou à la recherche d'emploi en milieu urbain dense, sont influencés indirectement par la hausse du Smic via le marché du travail et le coût de la vie.",
+      "reason": "Le segment regroupe des jeunes en insertion ou inactifs dans les zones urbaines, qui peuvent être fortement sensibles à l'évolution du salaire minimum et ses effets socio-économiques.",
+      "all": [
+        "age.18_24",
+        "cluster.young_without_activity",
+        "geo.dense"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Perception de la hausse du Smic",
+        "Espoirs / craintes lié au marché du travail"
+      ],
+      "count": 8453,
+      "distinctCommunes": 72,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Smic, une hausse pour soutenir le pouvoir d'achat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_4",
+      "name": "Mères seules salariées modestes en communes intermédiaires ou denses",
+      "mechanism": "La hausse du Smic soutient directement le pouvoir d'achat des familles monoparentales salariées modestes, souvent confrontées à des difficultés économiques importantes, particulièrement en milieu urbain et péri-urbain.",
+      "reason": "Ce groupe combine statut familial spécifique et situation socio-professionnelle modeste dans des territoires denses ou intermédiaires, reflet concret de la cible prioritaire de la mesure pour améliorer le quotidien des plus fragiles.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "household.single_parent"
+      ],
+      "any": [
+        "geo.dense",
+        "geo.intermediate"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Impact de la hausse du Smic sur le budget familial",
+        "Attitude envers la mesure"
+      ],
+      "count": 3455,
+      "distinctCommunes": 94,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Smic, une hausse pour soutenir le pouvoir d'achat",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Smic, une hausse pour soutenir le pouvoir d'achat",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_4": {
+      "segmentId": "segment_4",
+      "segmentName": "Mères seules salariées modestes en communes intermédiaires ou denses",
+      "matchedCount": 3455,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.2443873517820668,
+          "after": 0.23932522050035884,
+          "change": -0.00506213128170796
+        },
+        "philippe": {
+          "before": 0.09688642147517891,
+          "after": 0.09581749881040692,
+          "change": -0.0010689226647719874
+        },
+        "attal": {
+          "before": 0.022685238827277358,
+          "after": 0.026968407767440944,
+          "change": 0.004283168940163586
+        },
+        "glucksmann": {
+          "before": 0.09461331772253068,
+          "after": 0.09549712773884174,
+          "change": 0.0008838100163110624
+        },
+        "melenchon": {
+          "before": 0.1457504106563332,
+          "after": 0.14902924874242165,
+          "change": 0.003278838086088448
+        },
+        "tondelier": {
+          "before": 0.02070582023969508,
+          "after": 0.021233873814069572,
+          "change": 0.000528053574374493
+        },
+        "roussel": {
+          "before": 0.014164978034660734,
+          "after": 0.013976491702716662,
+          "change": -0.00018848633194407279
+        },
+        "retailleau": {
+          "before": 0.03837380233514438,
+          "after": 0.03697577494373975,
+          "change": -0.001398027391404634
+        },
+        "lisnard": {
+          "before": 0.025811681105313,
+          "after": 0.025527583666067954,
+          "change": -0.0002840974392450471
+        },
+        "zemmour": {
+          "before": 0.029204745520314938,
+          "after": 0.028071077686907406,
+          "change": -0.0011336678334075319
+        },
+        "dupont-aignan": {
+          "before": 0.011935911011415027,
+          "after": 0.011691301229379931,
+          "change": -0.0002446097820350962
+        },
+        "arthaud": {
+          "before": 0.005311485725669372,
+          "after": 0.005333263893723572,
+          "change": 0.00002177816805419997
+        },
+        "abstention": {
+          "before": 0.2501688355644004,
+          "after": 0.250553129503925,
+          "change": 0.0003842939395246048
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 18,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 28,
+          "le-pen": 1
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une hausse du Smic, ça peut vraiment aider mon budget serré. J'espère que ça sera suffisant pour couvrir un peu mieux les frais avec ma fille.",
+        "Je ne vis pas bien du tout avec mon salaire d'agent d'entretien, une hausse du Smic, c'est plutôt une bonne nouvelle pour moi.",
+        "Une augmentation du Smic pourrait améliorer un peu ma vie, même si c'est juste un petit bol d'air."
+      ],
+      "quotes": {},
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.005062131281708042,
+          "lo": -0.006179505125246977,
+          "hi": -0.003846348566098608,
+          "stable": true
+        },
+        "philippe": {
+          "mean": -0.001068922664772,
+          "lo": -0.0026564919634570233,
+          "hi": 0.0005141878925653321,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.004283168940163591,
+          "lo": 0.0035281951698771193,
+          "hi": 0.004992200510774997,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0008838100163110675,
+          "lo": -0.000607398599345541,
+          "hi": 0.002366818575953647,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.003278838086088392,
+          "lo": 0.0018377182295931176,
+          "hi": 0.004353663185535786,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0005280535743744951,
+          "lo": 0.00014205569656438973,
+          "hi": 0.0009472031059730712,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00018848633194406598,
+          "lo": -0.0003496771268362505,
+          "hi": -0.000036760110773975076,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0013980273914046334,
+          "lo": -0.0022721500667764734,
+          "hi": -0.0006534664525336874,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002840974392450325,
+          "lo": -0.000539171642265346,
+          "hi": -0.00006420183159886618,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0011336678334075369,
+          "lo": -0.0014961797612512585,
+          "hi": -0.0007574745070251357,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0002446097820350948,
+          "lo": -0.00042190684422045146,
+          "hi": -0.00010607358072193694,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.0000217781680542008,
+          "lo": 0.000010023600648971542,
+          "hi": 0.00003434197150780315,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0003842939395246863,
+          "lo": -0.0022484157724641553,
+          "hi": 0.0035490192250274993,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Employés et ouvriers de 25 à 49 ans en commune dense",
+      "matchedCount": 11776,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 3,
+          "away": 0,
+          "noClearChange": 45
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 2,
+          "noClearChange": 46
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "attal": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.2726283004563938,
+          "after": 0.2661899065485849,
+          "change": -0.006438393907808926
+        },
+        "philippe": {
+          "before": 0.0842569193550387,
+          "after": 0.08633747919060446,
+          "change": 0.002080559835565751
+        },
+        "attal": {
+          "before": 0.019926775052134933,
+          "after": 0.024424971941739305,
+          "change": 0.004498196889604372
+        },
+        "glucksmann": {
+          "before": 0.08441775650272325,
+          "after": 0.08577007872097447,
+          "change": 0.0013523222182512257
+        },
+        "melenchon": {
+          "before": 0.14044682138800155,
+          "after": 0.14547551035056352,
+          "change": 0.005028688962561978
+        },
+        "tondelier": {
+          "before": 0.018471107749881956,
+          "after": 0.01851345302783551,
+          "change": 0.000042345277953555194
+        },
+        "roussel": {
+          "before": 0.012803641314311694,
+          "after": 0.01276656380404572,
+          "change": -0.000037077510265973515
+        },
+        "retailleau": {
+          "before": 0.030963289737647486,
+          "after": 0.030167153661065028,
+          "change": -0.0007961360765824585
+        },
+        "lisnard": {
+          "before": 0.0210089850909333,
+          "after": 0.020650848816633895,
+          "change": -0.0003581362742994046
+        },
+        "zemmour": {
+          "before": 0.03243510106707643,
+          "after": 0.032047660385429805,
+          "change": -0.0003874406816466239
+        },
+        "dupont-aignan": {
+          "before": 0.013351036626037023,
+          "after": 0.013310293745674516,
+          "change": -0.000040742880362506714
+        },
+        "arthaud": {
+          "before": 0.005413923024982261,
+          "after": 0.005440712858492947,
+          "change": 0.00002678983351068597
+        },
+        "abstention": {
+          "before": 0.26387634263483756,
+          "after": 0.25890536694835586,
+          "change": -0.004970975686481693
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 26,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 19,
+          "le-pen": 2
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une hausse du Smic, ça peut vraiment aider mon pouvoir d'achat au quotidien. C'est rassurant de voir que le gouvernement agit pour nous.",
+        "Une hausse du Smic peut soulager notre budget familial, c'est une bonne nouvelle. Je préfère ça plutôt qu'une augmentation progressive qui ne changerait rien tout de suite.",
+        "Je vois bien qu'une hausse du Smic m'aiderait, mais je crains que ça n'engendre aussi une hausse des prix. J'attends de voir si ça impacte vraiment mon budget."
+      ],
+      "quotes": {
+        "attal": {
+          "text": "Je soutiens un gouvernement qui améliore directement mon salaire, ça change beaucoup ma vie quotidienne.",
+          "profile": "Femme, 26 ans, employés, Paris",
+          "direction": "toward",
+          "points": 2
+        },
+        "abstention": {
+          "text": "Je préfère une hausse immédiate du Smic plutôt qu'une montée progressive, ça répond plus vite à nos besoins.",
+          "profile": "Femme, 46 ans, employés, Marseille",
+          "direction": "away",
+          "points": -2
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.006438393907808951,
+          "lo": -0.00855704566902894,
+          "hi": -0.004396457753318347,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.00208055983556575,
+          "lo": 0.0008286937914651805,
+          "hi": 0.0037522034122291167,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.004498196889604381,
+          "lo": 0.0032781548868843127,
+          "hi": 0.0060573108559078374,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0013523222182512337,
+          "lo": 0.0008901069760565947,
+          "hi": 0.001811630121786463,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0050286889625619745,
+          "lo": 0.0034734589732496324,
+          "hi": 0.006501379436439667,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.000042345277953556095,
+          "lo": -0.00007622721478408349,
+          "hi": 0.00016699013121857612,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00003707751026596826,
+          "lo": -0.00016298678567818145,
+          "hi": 0.00009895264315608131,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007961360765824562,
+          "lo": -0.0015002532144000214,
+          "hi": -0.00018967260259305778,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0003581362742994048,
+          "lo": -0.0009830854233296566,
+          "hi": 0.00008436713237069652,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00038744068164662626,
+          "lo": -0.0006745192774209211,
+          "hi": -0.00011120767638183953,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00004074288036250111,
+          "lo": -0.00012171978363154823,
+          "hi": 0.000029371474631042843,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000026789833510685782,
+          "lo": 0.000006914063221154792,
+          "hi": 0.00005124220534303385,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.00497097568648167,
+          "lo": -0.008120549079804848,
+          "hi": -0.002229726727141149,
+          "stable": false
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Jeunes sans activité professionnelle de 18 à 24 ans en commune dense",
+      "matchedCount": 8453,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 42
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 42
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.222166030457697,
+          "after": 0.22134995161770643,
+          "change": -0.000816078839990575
+        },
+        "philippe": {
+          "before": 0.10358247289497287,
+          "after": 0.10518922135610596,
+          "change": 0.001606748461133095
+        },
+        "attal": {
+          "before": 0.024333038853872193,
+          "after": 0.02778822904362439,
+          "change": 0.003455190189752197
+        },
+        "glucksmann": {
+          "before": 0.0947649635149635,
+          "after": 0.09575842687091163,
+          "change": 0.000993463355948132
+        },
+        "melenchon": {
+          "before": 0.1503361322319656,
+          "after": 0.15174074370434268,
+          "change": 0.001404611472377082
+        },
+        "tondelier": {
+          "before": 0.020727868977868973,
+          "after": 0.020947872357482925,
+          "change": 0.00022000337961395125
+        },
+        "roussel": {
+          "before": 0.014394676873843541,
+          "after": 0.014139792773281083,
+          "change": -0.000254884100562458
+        },
+        "retailleau": {
+          "before": 0.03558273495773493,
+          "after": 0.03424123771964595,
+          "change": -0.001341497238088983
+        },
+        "lisnard": {
+          "before": 0.023812080270413604,
+          "after": 0.023030268098357242,
+          "change": -0.000781812172056362
+        },
+        "zemmour": {
+          "before": 0.026416643541643536,
+          "after": 0.025577864206926173,
+          "change": -0.0008387793347173628
+        },
+        "dupont-aignan": {
+          "before": 0.010999924458257789,
+          "after": 0.010836037663927616,
+          "change": -0.00016388679433017306
+        },
+        "arthaud": {
+          "before": 0.005354337166837166,
+          "after": 0.005348636044108395,
+          "change": -0.0000057011227287710395
+        },
+        "abstention": {
+          "before": 0.2675290957999292,
+          "after": 0.26405171854357945,
+          "change": -0.003477377256349723
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 2
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 38,
+          "le-pen": 8
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est une bonne nouvelle pour moi et d'autres jeunes précaires, ça aide vraiment à boucler les fins de mois difficiles.",
+        "Une hausse directe du Smic, c'est important pour les ménages modestes. Mais j'aimerais aussi voir un vrai soutien à l'emploi pour que ça profite vraiment.",
+        "Franchement, je m’en fiche un peu, ça ne change pas grand-chose pour moi dans l'immédiat."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "Je suis directement concerné par une hausse du Smic, ça aide vraiment mon pouvoir d'achat.",
+          "profile": "Homme, 24 ans, autres sans activité professionnelle, Paris",
+          "direction": "toward",
+          "points": 2
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0008160788399906669,
+          "lo": -0.0026532858520812736,
+          "hi": 0.0009544877182049155,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.001606748461133107,
+          "lo": 0.000018377772848403306,
+          "hi": 0.0033673892146591374,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0034551901897522,
+          "lo": 0.0027136915558634675,
+          "hi": 0.004240583963430847,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0009934633559481286,
+          "lo": 0.00029630172093631467,
+          "hi": 0.0016366640405257214,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.001404611472377125,
+          "lo": 0.00023230599864825763,
+          "hi": 0.0024435870272232077,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00022000337961394797,
+          "lo": -0.000058044983826966985,
+          "hi": 0.0005102969667529377,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0002548841005624527,
+          "lo": -0.00045078302143676616,
+          "hi": -0.00005661719091149621,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0013414972380890063,
+          "lo": -0.001801000621966877,
+          "hi": -0.0008666701280880852,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0007818121720563681,
+          "lo": -0.0012786700905883666,
+          "hi": -0.00037946693449202105,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0008387793347173718,
+          "lo": -0.0011431552149424767,
+          "hi": -0.0005685705739046498,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0001638867943301757,
+          "lo": -0.0003766867250718841,
+          "hi": 0.000013604521283312157,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.0000057011227287728555,
+          "lo": -0.00007649461850710129,
+          "hi": 0.000048735168035150905,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.0034773772563496436,
+          "lo": -0.0067169404773905,
+          "hi": -0.0003461035695300335,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Ouvriers de 50 à 64 ans en communes intermédiaires ou denses",
+      "matchedCount": 3580,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 2,
+          "away": 4,
+          "noClearChange": 42
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 4,
+          "noClearChange": 42
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 46
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3217110005453319,
+          "after": 0.3165952456800975,
+          "change": -0.005115754865234412
+        },
+        "philippe": {
+          "before": 0.07742293414137225,
+          "after": 0.07801593862611131,
+          "change": 0.0005930044847390625
+        },
+        "attal": {
+          "before": 0.018089461181152806,
+          "after": 0.019971234711036064,
+          "change": 0.0018817735298832586
+        },
+        "glucksmann": {
+          "before": 0.07027479939530835,
+          "after": 0.07003400361020323,
+          "change": -0.00024079578510512178
+        },
+        "melenchon": {
+          "before": 0.12822527775222387,
+          "after": 0.1312706503855938,
+          "change": 0.0030453726333699305
+        },
+        "tondelier": {
+          "before": 0.01531789478708141,
+          "after": 0.01563668853494259,
+          "change": 0.00031879374786117874
+        },
+        "roussel": {
+          "before": 0.010628451516799815,
+          "after": 0.010646811412229935,
+          "change": 0.00001835989543011972
+        },
+        "retailleau": {
+          "before": 0.03318193585321829,
+          "after": 0.032366616334713806,
+          "change": -0.0008153195185044843
+        },
+        "lisnard": {
+          "before": 0.022552048144987263,
+          "after": 0.022333509434265292,
+          "change": -0.00021853871072197162
+        },
+        "zemmour": {
+          "before": 0.03857369005547647,
+          "after": 0.03753898547200828,
+          "change": -0.0010347045834681948
+        },
+        "dupont-aignan": {
+          "before": 0.01572492261663917,
+          "after": 0.015544495411498329,
+          "change": -0.00018042720514084044
+        },
+        "arthaud": {
+          "before": 0.004667340370683682,
+          "after": 0.004607370767885762,
+          "change": -0.00005996960279792008
+        },
+        "abstention": {
+          "before": 0.24363024363972463,
+          "after": 0.24543844961941377,
+          "change": 0.0018082059796891425
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 41
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "le-pen": 3,
+          "abstention": 4
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une hausse du Smic, ça peut faire du bien pour arrondir les fins de mois, même si ce n'est pas grand-chose. Je suis attentif à tout ce qui peut m'aider à mieux vivre.",
+        "Une augmentation du Smic, ça me parle directement, ça fait une vraie différence pour nous, les ouvrières. Je préfère quand ça vient direct plutôt que progressif, c'est plus certain pour les factures à payer.",
+        "C’est bien que le Smic augmente, même un peu, mais j’attends aussi que ça ne se fasse pas au détriment des emplois dans ma région."
+      ],
+      "quotes": {},
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.005115754865234288,
+          "lo": -0.008092334839428736,
+          "hi": -0.0018411299759619748,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.000593004484739083,
+          "lo": -0.0004998579844298829,
+          "hi": 0.0016412402314444437,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0018817735298832666,
+          "lo": 0.0011848885662262656,
+          "hi": 0.002594535360072421,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0002407957851051217,
+          "lo": -0.0009692907078018625,
+          "hi": 0.0004906866175991586,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0030453726333699847,
+          "lo": 0.0009273474411980263,
+          "hi": 0.004807313013689204,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0003187937478611778,
+          "lo": -0.000020959955645402303,
+          "hi": 0.0007176066034261021,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00001835989543011453,
+          "lo": -0.00013301631687379382,
+          "hi": 0.00016865104964967383,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0008153195185044885,
+          "lo": -0.0012866497487816731,
+          "hi": -0.0003921972797890214,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00021853871072197094,
+          "lo": -0.0005145259739135138,
+          "hi": 0.000044156293920056935,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.001034704583468195,
+          "lo": -0.001748182282324014,
+          "hi": -0.0004661249577547837,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00018042720514084955,
+          "lo": -0.0004343233212503906,
+          "hi": 0.000008779135982847839,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.000059969602797921945,
+          "lo": -0.00014728219022878944,
+          "hi": 0.000004888209710803069,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0018082059796892126,
+          "lo": -0.0012221766242835556,
+          "hi": 0.005310094569892187,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 0,
+          "away": 1,
+          "noClearChange": 95
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3403553382111695,
+          "after": 0.33517520576945237,
+          "change": -0.005180132441717111
+        },
+        "philippe": {
+          "before": 0.07891903423709097,
+          "after": 0.07904790146829775,
+          "change": 0.00012886723120678067
+        },
+        "attal": {
+          "before": 0.018521317472944786,
+          "after": 0.022091087385304544,
+          "change": 0.0035697699123597576
+        },
+        "glucksmann": {
+          "before": 0.06372923254641102,
+          "after": 0.06437843934919353,
+          "change": 0.0006492068027825065
+        },
+        "melenchon": {
+          "before": 0.08485079558661564,
+          "after": 0.08713428180594919,
+          "change": 0.0022834862193335526
+        },
+        "tondelier": {
+          "before": 0.01394787670102223,
+          "after": 0.014181480820955458,
+          "change": 0.00023360411993322838
+        },
+        "roussel": {
+          "before": 0.009729102199928848,
+          "after": 0.00982045772977318,
+          "change": 0.0000913555298443329
+        },
+        "retailleau": {
+          "before": 0.032949171130786235,
+          "after": 0.032666784948389475,
+          "change": -0.00028238618239675994
+        },
+        "lisnard": {
+          "before": 0.022407048451799267,
+          "after": 0.022211911185918743,
+          "change": -0.00019513726588052394
+        },
+        "zemmour": {
+          "before": 0.040580941536352146,
+          "after": 0.0398576606858529,
+          "change": -0.0007232808504992472
+        },
+        "dupont-aignan": {
+          "before": 0.016624004033277053,
+          "after": 0.016472054657899166,
+          "change": -0.00015194937537788694
+        },
+        "arthaud": {
+          "before": 0.003051940250361424,
+          "after": 0.003064535954978301,
+          "change": 0.000012595704616877226
+        },
+        "abstention": {
+          "before": 0.27433419764224076,
+          "after": 0.27389819823803513,
+          "change": -0.00043599940420563366
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 81,
+          "abstention": 2
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 13
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une hausse du Smic, c’est toujours une bonne nouvelle pour ceux qui ont peu, même si à la retraite ça ne me concerne plus directement.",
+        "Cela fait du bien d'entendre parler d'une hausse du Smic, j'espère que cela aidera vraiment le pouvoir d'achat des plus modestes.",
+        "Une hausse du Smic, c’est positif, ça pourrait améliorer le quotidien de ceux qui galèrent. J’y suis sensible."
+      ],
+      "quotes": {},
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.005180132441717072,
+          "lo": -0.006169829201079652,
+          "hi": -0.0041469043174602585,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.00012886723120678523,
+          "lo": -0.0009051458977549121,
+          "hi": 0.0012556265439923934,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.003569769912359759,
+          "lo": 0.0029074782814463695,
+          "hi": 0.004319112315782032,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.000649206802782517,
+          "lo": 0.000348341551321974,
+          "hi": 0.0009755801133025287,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.002283486219333579,
+          "lo": 0.0014244830249412405,
+          "hi": 0.0029410063758169777,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0002336041199332312,
+          "lo": 0.00014082132640001778,
+          "hi": 0.0003291156304018406,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00009135552984433785,
+          "lo": 0.000013438383090651552,
+          "hi": 0.00015454929829488264,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0002823861823967787,
+          "lo": -0.0004899522545960608,
+          "hi": -0.00005904163603282056,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00019513726588052198,
+          "lo": -0.00033786089701713645,
+          "hi": -0.00008610359932971213,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0007232808504992441,
+          "lo": -0.0009683317315037149,
+          "hi": -0.0004851292280888371,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00015194937537789795,
+          "lo": -0.00023686981755996362,
+          "hi": -0.00005910607109666956,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000012595704616876914,
+          "lo": 0.000006682648545266072,
+          "hi": 0.00001833433565627413,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.00043599940420556367,
+          "lo": -0.0019497031761285491,
+          "hi": 0.0009991958056941516,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "automatic",
+    "contentHash": "bb9771076f6c70726e3aba563330c8b355794ce078daf248c78733252bbfa68e"
+  }
+}

@@ -1,0 +1,1316 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-84837",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "80c621e41d014749",
+  "eventInputHash": "bd206a31cf1ceb4a00db73d27652a74dc67c799712892f92766f45a0c1e27b0d",
+  "computedAt": "2026-11-18T09:08:09.380Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Marine Le Pen défend lors du débat une réforme visant à conditionner les subventions aux associations « politisées » à une transparence accrue de leur activité politique, plutôt qu'à une suppression totale des fonds.",
+    "whatChanges": "Le ton plus nuancé de Le Pen modère l'impact négatif auprès des électeurs associatifs et modérés, qui craignaient une coupure drastique de financements."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Jeunes diplômés urbains favorables aux associations politiques",
+      "mechanism": "Ce segment rassemble les jeunes de moins de 35 ans diplômés de bac+3 ou plus vivant en communes denses, groupe très actif dans les associations politiques et directement concerné par l'annonce de Marine Le Pen de couper les subventions aux associations \"politisées\" au débat présidentiel.",
+      "reason": "Les jeunes diplômés urbains sont généralement plus engagés dans les domaines associatifs et politiques, et peuvent être particulièrement sensibles à la question du financement des associations fortement impliquées dans la vie politique.",
+      "all": [
+        "education.bac_plus_3_4",
+        "geo.dense"
+      ],
+      "any": [
+        "age.18_24",
+        "age.25_34"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Engagement associatif",
+        "Perception des restrictions de subventions",
+        "Opinion sur Marine Le Pen"
+      ],
+      "count": 4295,
+      "distinctCommunes": 71,
+      "status": "filterable_discovery_sample",
+      "repairs": [
+        "age : age.18_24 ou age.25_34 regroupés en union (« any ») ; une personne n’a qu’une seule valeur de age"
+      ],
+      "counterfactual": {
+        "intervention": "Marine Le Pen critiquée en plein débat de la présidentielle pour sa volonté de couper les subventions des associations \"politisées\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Salariés modestes en couple avec enfants dans les communes intermédiaires",
+      "mechanism": "Ce segment comprend des employés et ouvriers vivant dans des communes de densité intermédiaire, souvent bénéficiaires ou usagers d'associations localement financées, impactés par la critique de Marine Le Pen visant à couper les subventions des associations \"politisées\" pendant le débat présidentiel.",
+      "reason": "Les salariés modestes avec enfants sont souvent bénéficiaires des actions associatives en milieu non dense, ils sont directement concernés par la proposition de suppression des aides à ces associations dans un contexte de préparation électorale.",
+      "all": [
+        "cluster.modest_wage_earner",
+        "household.couple_with_children",
+        "geo.intermediate"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Utilisation des services associatifs",
+        "Opinion sur la subvention des associations",
+        "Attitude envers Marine Le Pen"
+      ],
+      "count": 474,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Marine Le Pen critiquée en plein débat de la présidentielle pour sa volonté de couper les subventions des associations \"politisées\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Cadres urbains mariés de 35 à 49 ans",
+      "mechanism": "Ce segment forme des cadres et professions intellectuelles supérieures urbains mariés d'âge moyen, qui suivent et réagissent aux débats présidentiels et à la proposition de Marine Le Pen de supprimer les aides aux associations politisées, influençant leur positionnement politique.",
+      "reason": "Les cadres urbains mariés de cette tranche d'âge ont une forte exposition médiatique et une capacité d'engagement politique, ils sont concernés par le débat sur le financement des associations politisées.",
+      "all": [
+        "occupation.executive_professional",
+        "geo.dense",
+        "marital.married",
+        "age.35_49"
+      ],
+      "any": [],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Suivi médiatique du débat",
+        "Opinion sur les subventions associatives",
+        "Perception de Marine Le Pen"
+      ],
+      "count": 2201,
+      "distinctCommunes": 71,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Marine Le Pen critiquée en plein débat de la présidentielle pour sa volonté de couper les subventions des associations \"politisées\"",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Marine Le Pen critiquée en plein débat de la présidentielle pour sa volonté de couper les subventions des associations \"politisées\"",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 35,
+          "noClearChange": 61
+        },
+        "abstention": {
+          "toward": 20,
+          "away": 2,
+          "noClearChange": 74
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 35,
+          "noClearChange": 61
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 20,
+          "away": 2,
+          "noClearChange": 74
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3367641604629597,
+          "after": 0.32175520529878987,
+          "change": -0.015008955164169835
+        },
+        "philippe": {
+          "before": 0.07557809181625444,
+          "after": 0.07604849951601682,
+          "change": 0.00047040769976237906
+        },
+        "attal": {
+          "before": 0.01708441193811108,
+          "after": 0.01722444789339141,
+          "change": 0.0001400359552803307
+        },
+        "glucksmann": {
+          "before": 0.06445063702735654,
+          "after": 0.06539187087411669,
+          "change": 0.0009412338467601478
+        },
+        "melenchon": {
+          "before": 0.08451082706170722,
+          "after": 0.08805315410459595,
+          "change": 0.003542327042888732
+        },
+        "tondelier": {
+          "before": 0.013979649280199707,
+          "after": 0.014424831744245586,
+          "change": 0.0004451824640458787
+        },
+        "roussel": {
+          "before": 0.009354509311737633,
+          "after": 0.009644847710786896,
+          "change": 0.0002903383990492635
+        },
+        "retailleau": {
+          "before": 0.03491105017445921,
+          "after": 0.035010204770595764,
+          "change": 0.00009915459613655392
+        },
+        "lisnard": {
+          "before": 0.03348376772627852,
+          "after": 0.033658174382279506,
+          "change": 0.00017440665600098465
+        },
+        "zemmour": {
+          "before": 0.0374390583950989,
+          "after": 0.03738444762629132,
+          "change": -0.00005461076880758364
+        },
+        "dupont-aignan": {
+          "before": 0.01715693383286701,
+          "after": 0.017291643607826947,
+          "change": 0.00013470977495993672
+        },
+        "arthaud": {
+          "before": 0.002989565624614037,
+          "after": 0.0030114943274443876,
+          "change": 0.000021928702830350394
+        },
+        "abstention": {
+          "before": 0.2722973373483558,
+          "after": 0.28110117814361885,
+          "change": 0.00880384079526303
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "abstention": 17,
+          "le-pen": 71
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 8
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu dur de vouloir couper toutes les subventions aux associations, surtout celles qui aident les gens. Cela me laisse un peu perplexe.",
+        "Honnêtement, ça ne change pas grand-chose pour moi. Je ne suis pas forcément très intéressée par ces débats, ça ne va pas vraiment influencer mon vote.",
+        "Marine Le Pen, c'est trop radical parfois, là franchement cette idée de couper toutes les subventions aux associations politisées me semble excessive, mais la transparence, ça peut se discuter."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "Cette proposition modérée me rassure car elle ne stigmatise pas les associations, je peux continuer à envisager de voter Le Pen.",
+          "profile": "Femme, 41 ans, professions intermédiaires, Paris 17e Arrondissement",
+          "direction": "away",
+          "points": -4
+        },
+        "abstention": {
+          "text": "Je ne suis pas pour couper totalement les subventions aux associations, cela me semble un geste trop dur.",
+          "profile": "Femme, 74 ans, retraités, Châteauneuf-Grasse",
+          "direction": "toward",
+          "points": 4
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.01500895516417001,
+          "lo": -0.017108718133813417,
+          "hi": -0.012672304210128932,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.0004704076997624003,
+          "lo": 0.000010892733222766333,
+          "hi": 0.000915072228466807,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00014003595528032327,
+          "lo": -0.00003973703611840835,
+          "hi": 0.0003174520678261014,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0009412338467601651,
+          "lo": 0.0004252613159828678,
+          "hi": 0.0013729814939265974,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.003542327042888685,
+          "lo": 0.002796199244608539,
+          "hi": 0.0042210610401897915,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00044518246404587906,
+          "lo": 0.0002834499935253629,
+          "hi": 0.0006275029512862627,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00029033839904926885,
+          "lo": 0.00020525936807405947,
+          "hi": 0.00039135231761836556,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0.00009915459613655858,
+          "lo": -0.000039601447358000256,
+          "hi": 0.00023588115200252302,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.0001744066560009617,
+          "lo": 0.000015845165350272907,
+          "hi": 0.0003131589457588473,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.000054610768807600665,
+          "lo": -0.00041949161532171516,
+          "hi": 0.00024308094390388052,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.00013470977495992666,
+          "lo": 0.00005891870162818733,
+          "hi": 0.00023606591429058965,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000021928702830351434,
+          "lo": 0.000014277569224047928,
+          "hi": 0.00003148171117524795,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.0088038407952631,
+          "lo": 0.005859563585802184,
+          "hi": 0.011906856465792419,
+          "stable": true
+        }
+      }
+    },
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Cadres urbains mariés de 35 à 49 ans",
+      "matchedCount": 2201,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 17,
+          "noClearChange": 31
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 2,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 20,
+          "noClearChange": 28
+        },
+        "philippe": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 2,
+          "away": 2,
+          "noClearChange": 44
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.24145611285194613,
+          "after": 0.22358820244402774,
+          "change": -0.01786791040791838
+        },
+        "philippe": {
+          "before": 0.11302759425676095,
+          "after": 0.11560027650140925,
+          "change": 0.0025726822446482944
+        },
+        "attal": {
+          "before": 0.025427532656699312,
+          "after": 0.026172271196219232,
+          "change": 0.0007447385395199201
+        },
+        "glucksmann": {
+          "before": 0.09745441699608369,
+          "after": 0.1013540381389504,
+          "change": 0.0038996211428667105
+        },
+        "melenchon": {
+          "before": 0.1504855532563866,
+          "after": 0.15823969022768336,
+          "change": 0.00775413697129676
+        },
+        "tondelier": {
+          "before": 0.02088305063305063,
+          "after": 0.021972764659580094,
+          "change": 0.0010897140265294647
+        },
+        "roussel": {
+          "before": 0.014109526817860152,
+          "after": 0.0144725319830889,
+          "change": 0.00036300516522874866
+        },
+        "retailleau": {
+          "before": 0.036452891307057964,
+          "after": 0.03718926356372097,
+          "change": 0.0007363722566630093
+        },
+        "lisnard": {
+          "before": 0.03501470307720308,
+          "after": 0.03544249381349685,
+          "change": 0.0004277907362937733
+        },
+        "zemmour": {
+          "before": 0.02686553340720006,
+          "after": 0.027206050455444258,
+          "change": 0.0003405170482441988
+        },
+        "dupont-aignan": {
+          "before": 0.012338443150943151,
+          "after": 0.012543121767580982,
+          "change": 0.00020467861663783088
+        },
+        "arthaud": {
+          "before": 0.0054398567315234,
+          "after": 0.0055157760399164495,
+          "change": 0.00007591930839304963
+        },
+        "abstention": {
+          "before": 0.22104478485728474,
+          "after": 0.2207035192088813,
+          "change": -0.0003412656484034493
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 23,
+          "melenchon": 4,
+          "abstention": 3
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 18
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que vouloir couper les subventions aux associations « politisées » me paraît un peu radical, c'est important de garder un certain pluralisme dans la société.",
+        "Cette volonté de Marine Le Pen de couper les fonds aux associations « politisées » me semble injuste, beaucoup d'associations jouent un rôle utile.",
+        "Je n'aime pas cette idée de couper complètement les subventions, c'est bon de garder un contrôle mais pas de supprimer."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "Je suis attaché à la diversité d'expression des associations, couper leur budget est une mesure trop brutale à mes yeux.",
+          "profile": "Homme, 49 ans, cadres et professions intellectuelles supérieures, Marseille 9e Arrondissement",
+          "direction": "away",
+          "points": -4
+        },
+        "philippe": {
+          "text": "Ce genre d'idée radicale me fait préférer un candidat modéré comme Philippe qui semble plus équilibré.",
+          "profile": "Homme, 49 ans, cadres et professions intellectuelles supérieures, Paris 8e Arrondissement",
+          "direction": "toward",
+          "points": 3
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.017867910407918446,
+          "lo": -0.02073859869112468,
+          "hi": -0.015111058759492299,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.002572682244648358,
+          "lo": 0.0013351471975657752,
+          "hi": 0.004086732731081711,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0007447385395199235,
+          "lo": 0.00039175246472016636,
+          "hi": 0.0011075963945777181,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0038996211428667,
+          "lo": 0.0024623581641361396,
+          "hi": 0.005470336911537157,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.007754136971296788,
+          "lo": 0.00632552487467448,
+          "hi": 0.009301535598072548,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": 0.0010897140265294673,
+          "lo": 0.0007893165316506986,
+          "hi": 0.0014092011992281695,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00036300516522875414,
+          "lo": 0.00017180859885216268,
+          "hi": 0.0005837073698686732,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0.0007363722566630064,
+          "lo": 0.00039570962198419245,
+          "hi": 0.0010700534744898067,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.0004277907362937816,
+          "lo": 0.00015557402842740023,
+          "hi": 0.0007447385394795603,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.00034051704824418564,
+          "lo": -0.00001682314295890659,
+          "hi": 0.000811560238605911,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.000204678616637832,
+          "lo": -0.0000010416735716631098,
+          "hi": 0.0004500032270752841,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000075919308393052,
+          "lo": 0.000026731842097238764,
+          "hi": 0.0001368525440740631,
+          "stable": false
+        },
+        "abstention": {
+          "mean": -0.00034126564840342095,
+          "lo": -0.0036854816133515237,
+          "hi": 0.003310396503866249,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Jeunes diplômés urbains favorables aux associations politiques",
+      "matchedCount": 4295,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 22,
+          "noClearChange": 26
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 3,
+          "noClearChange": 37
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 23,
+          "noClearChange": 25
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 8,
+          "away": 3,
+          "noClearChange": 37
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.2283366804025443,
+          "after": 0.21208683518370064,
+          "change": -0.01624984521884365
+        },
+        "philippe": {
+          "before": 0.10390695222730283,
+          "after": 0.10497807537919178,
+          "change": 0.001071123151888953
+        },
+        "attal": {
+          "before": 0.023539485356741757,
+          "after": 0.02378626171925538,
+          "change": 0.0002467763625136239
+        },
+        "glucksmann": {
+          "before": 0.0901803584335707,
+          "after": 0.09211705338568175,
+          "change": 0.0019366949521110594
+        },
+        "melenchon": {
+          "before": 0.1680702462079692,
+          "after": 0.17579842470694929,
+          "change": 0.007728178498980082
+        },
+        "tondelier": {
+          "before": 0.019560814979353764,
+          "after": 0.020385678170062805,
+          "change": 0.0008248631907090409
+        },
+        "roussel": {
+          "before": 0.013144724139320696,
+          "after": 0.013611585848658578,
+          "change": 0.00046686170933788254
+        },
+        "retailleau": {
+          "before": 0.033393021900646934,
+          "after": 0.03331946289728293,
+          "change": -0.00007355900336400434
+        },
+        "lisnard": {
+          "before": 0.03205964519013844,
+          "after": 0.031882227775122195,
+          "change": -0.00017741741501624275
+        },
+        "zemmour": {
+          "before": 0.025396131002540515,
+          "after": 0.02544830212667872,
+          "change": 0.00005217112413820335
+        },
+        "dupont-aignan": {
+          "before": 0.011666762177046257,
+          "after": 0.011774887967339732,
+          "change": 0.00010812579029347534
+        },
+        "arthaud": {
+          "before": 0.0060618607337964495,
+          "after": 0.006063722292772431,
+          "change": 0.000001861558975981524
+        },
+        "abstention": {
+          "before": 0.24468331724902817,
+          "after": 0.24874748254730353,
+          "change": 0.004064165298275357
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "abstention": 8,
+          "le-pen": 9,
+          "melenchon": 2
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {
+          "melenchon": 3
+        },
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 25,
+          "melenchon": 1
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve ça un peu extrême de vouloir couper toutes les subventions aux associations politiques, ça pénaliserait la démocratie locale.",
+        "Je ne suis pas surprise par ces critiques, couper les subventions aux associations politisées, c'est contre-productif.",
+        "Cette volonté de couper toutes les subventions aux associations me semble sévère et peu adaptée."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "Je trouve que la suppression pure et simple des subventions pour ces associations est trop dure et injuste.",
+          "profile": "Femme, 33 ans, employés, Marseille 1er Arrondissement",
+          "direction": "away",
+          "points": -3
+        },
+        "melenchon": {
+          "text": "Je trouve ce genre de mesures anti-démocratiques, je préfère voter pour quelqu'un qui défend la diversité politique, donc Mélenchon.",
+          "profile": "Homme, 31 ans, professions intermédiaires, Paris",
+          "direction": "toward",
+          "points": 2
+        },
+        "abstention": {
+          "text": "Je me méfie des coups secs aux financements associatifs qui peuvent nuire aux gens comme moi.",
+          "profile": "Homme, 23 ans, ouvriers, Paris",
+          "direction": "toward",
+          "points": 4
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.016249845218843584,
+          "lo": -0.018966433117683614,
+          "hi": -0.013294527029059977,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.0010711231518889897,
+          "lo": 0.00020071874856633556,
+          "hi": 0.002053670574259292,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00024677636251362983,
+          "lo": -0.0000010799774440643118,
+          "hi": 0.000521764454013052,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0019366949521110422,
+          "lo": 0.0008553286706598605,
+          "hi": 0.0031728685342938593,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.007728178498980105,
+          "lo": 0.0053854749571227226,
+          "hi": 0.01022695506083915,
+          "stable": true
+        },
+        "tondelier": {
+          "mean": 0.0008248631907090406,
+          "lo": 0.0004386357582063831,
+          "hi": 0.0012711323196366593,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.0004668617093378863,
+          "lo": 0.0002232595702033269,
+          "hi": 0.000751139135859716,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00007355900336400434,
+          "lo": -0.0002243799218273729,
+          "hi": 0.00004889712419487755,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00017741741501624836,
+          "lo": -0.0004458832933145138,
+          "hi": 0.000026233679079043575,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": 0.00005217112413820451,
+          "lo": -0.0000772467114019662,
+          "hi": 0.00018431822834917428,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.00010812579029347842,
+          "lo": -0.00007659083999306405,
+          "hi": 0.0003639004839625588,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.0000018615589759827889,
+          "lo": -0.000020084138505359274,
+          "hi": 0.000022553258201389694,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.004064165298275478,
+          "lo": -0.00005770242610314384,
+          "hi": 0.008123530323370409,
+          "stable": false
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Salariés modestes en couple avec enfants dans les communes intermédiaires",
+      "matchedCount": 474,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 26,
+          "noClearChange": 22
+        },
+        "abstention": {
+          "toward": 15,
+          "away": 0,
+          "noClearChange": 33
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 24,
+          "noClearChange": 24
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 15,
+          "away": 0,
+          "noClearChange": 33
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3977102259173067,
+          "after": 0.3779281079599996,
+          "change": -0.01978211795730711
+        },
+        "philippe": {
+          "before": 0.05265676949561383,
+          "after": 0.05289810843907944,
+          "change": 0.00024133894346561185
+        },
+        "attal": {
+          "before": 0.011835634003553171,
+          "after": 0.011899982675124073,
+          "change": 0.00006434867157090185
+        },
+        "glucksmann": {
+          "before": 0.0553020212032403,
+          "after": 0.05613684257367932,
+          "change": 0.0008348213704390192
+        },
+        "melenchon": {
+          "before": 0.10271395640997344,
+          "after": 0.10629105159479062,
+          "change": 0.003577095184817178
+        },
+        "tondelier": {
+          "before": 0.011939738232532152,
+          "after": 0.012235250317281258,
+          "change": 0.00029551208474910655
+        },
+        "roussel": {
+          "before": 0.008043110273028441,
+          "after": 0.008253188706801763,
+          "change": 0.00021007843377332178
+        },
+        "retailleau": {
+          "before": 0.016733471089892264,
+          "after": 0.016949295408383313,
+          "change": 0.00021582431849104938
+        },
+        "lisnard": {
+          "before": 0.01604588725634985,
+          "after": 0.016075062619440524,
+          "change": 0.000029175363090674922
+        },
+        "zemmour": {
+          "before": 0.04425707601383955,
+          "after": 0.044165012454848766,
+          "change": -0.00009206355899078061
+        },
+        "dupont-aignan": {
+          "before": 0.020315786652251245,
+          "after": 0.0203427722783615,
+          "change": 0.000026985626110254124
+        },
+        "arthaud": {
+          "before": 0.003688315396899233,
+          "after": 0.0036923551602351507,
+          "change": 0.000004039763335917865
+        },
+        "abstention": {
+          "before": 0.2587580080555197,
+          "after": 0.27313296981197466,
+          "change": 0.014374961756454974
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 41,
+          "abstention": 5
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 2
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Je trouve que couper les subventions aux associations politisées, c'est un peu radical et ça pourrait nuire à des causes importantes. Cette nouvelle ne me plaît pas vraiment.",
+        "Ça ne change pas grand-chose pour moi, je suis plutôt centrée sur ma vie quotidienne et ce genre de débat politique ne m’impacte pas vraiment.",
+        "Cette idée de couper les subventions me paraît un peu excessive. J’aurais préféré plus de transparence plutôt qu’une coupure brutale."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "La suppression totale des subventions me fait douter, donc je baisse un peu mon vote pour Le Pen.",
+          "profile": "Femme, 37 ans, ouvriers, Le Cannet-des-Maures",
+          "direction": "away",
+          "points": -6
+        },
+        "abstention": {
+          "text": "J'aime Le Pen, mais la suppression totale des subventions me fait hésiter à cause des conséquences trop dures pour certaines associations proches de chez moi.",
+          "profile": "Homme, 35 ans, ouvriers, Tergnier",
+          "direction": "toward",
+          "points": 4
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.019782117957307194,
+          "lo": -0.023753300005414254,
+          "hi": -0.015592392492182505,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.00024133894346559443,
+          "lo": 0.00000387831316298923,
+          "hi": 0.00047609447859991495,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00006434867157090414,
+          "lo": 0.000009222778952299573,
+          "hi": 0.00014380366518676658,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.0008348213704390273,
+          "lo": 0.00031268487985042936,
+          "hi": 0.0013895333800182437,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": 0.0035770951848171756,
+          "lo": 0.0019479181135601605,
+          "hi": 0.005349560981944242,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.0002955120847491055,
+          "lo": 0.00011202043922703841,
+          "hi": 0.0005266500785837729,
+          "stable": false
+        },
+        "roussel": {
+          "mean": 0.00021007843377332316,
+          "lo": 0.0000879686972338025,
+          "hi": 0.0003481521418740432,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": 0.00021582431849104556,
+          "lo": 0.00008693580570710239,
+          "hi": 0.0003558602606519059,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 0.000029175363090675718,
+          "lo": -0.00009105591754539465,
+          "hi": 0.0001349771525702705,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.00009206355899077166,
+          "lo": -0.0003248560343504876,
+          "hi": 0.0001356274697739791,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": 0.00002698562611024679,
+          "lo": -0.0000936047333085203,
+          "hi": 0.00015649125160425035,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000004039763335919423,
+          "lo": -0.00000822823126681097,
+          "hi": 0.00001703224682358328,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.01437496175645496,
+          "lo": 0.010636264764950347,
+          "hi": 0.018029594243791372,
+          "stable": true
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "automatic",
+    "contentHash": "24ba4b655f4b6ecf142ce273ff94fb418c0c02a602508fa618bb8cbfb24102f0"
+  }
+}
