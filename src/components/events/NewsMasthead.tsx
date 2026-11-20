@@ -35,9 +35,6 @@ export function NewsMasthead({ section }: { section: string }) {
           >
             Candidats
           </a>
-          <a href={sitePath("/method")} aria-current={section === "MÉTHODE" ? "page" : undefined}>
-            Méthode
-          </a>
         </nav>
       </header>
     </>

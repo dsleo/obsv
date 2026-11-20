@@ -13,7 +13,7 @@ export function SiteFooter() {
           <Link href="/radar">Le radar</Link>
           <Link href="/events">Événements</Link>
           <Link href="/candidates">Candidats</Link>
-          <Link href="/method">Méthode</Link>
+          <Link href="/method">Comment ça marche</Link>
           <Link href="/about">À propos et corrections</Link>
         </nav>
       </div>

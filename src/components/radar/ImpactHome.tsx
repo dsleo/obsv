@@ -14,7 +14,6 @@ export type ImpactData = {
   cells: ImpactCell[];
 };
 const HEAT_START = dayOffset("2026-10-27"); // earlier weeks have too few analyses
-const HERO_DAYS = 7;
 const MAX_COLS = 6;
 const label = (id: string) => (id === "abstention" ? "Abstention" : pollCandidates.find((c) => c.id === id)?.short ?? id);
 const pct = (s: number) => `${s > 0 ? "+" : "−"}${Math.round(Math.abs(s) * 100)} %`;
@@ -30,14 +29,16 @@ export function ImpactHome({ data }: { data: ImpactData }) {
   const [playing, setPlaying] = useState(false);
   useEffect(() => {
     if (!playing) return;
-    const timer = setInterval(() => setWeek((w) => (w >= weeks ? (setPlaying(false), w) : w + 1)), 1200);
+    const timer = setInterval(() => setWeek((current) => (current >= weeks ? (setPlaying(false), current) : current + 1)), 1200);
     return () => clearInterval(timer);
   }, [playing, weeks]);
 
-  // The hero is fixed on the last 7 days; only the map below replays by week.
+  // The headline and matrix always describe the same selected week.
   const hero = useMemo(
-    () => Object.values(data.heroes).filter((h) => data.meta[h.eventId].pollDay > last - HERO_DAYS).sort((a, b) => b.share - a.share)[0],
-    [data, last],
+    () => Object.values(data.heroes)
+      .filter((item) => Math.floor((data.meta[item.eventId].pollDay - HEAT_START) / 7) === week)
+      .sort((a, b) => b.share - a.share)[0],
+    [data, week],
   );
   const cells = useMemo(
     () => data.cells.filter((c) => Math.floor((data.meta[c.e].pollDay - HEAT_START) / 7) === week),
@@ -87,7 +88,7 @@ export function ImpactHome({ data }: { data: ImpactData }) {
 
       {hero ? (
         <div className="impact-hero">
-          <span className="impact-kicker">CETTE SEMAINE</span>
+          <span className="impact-kicker">SEMAINE DU {formatShortDate(dayToIso(from))}</span>
           <b className="impact-hero-value">{pct(hero.net / hero.sampled)}</b>
           <div>
             <p className="impact-hero-who">{hero.segmentName}</p>
@@ -95,12 +96,13 @@ export function ImpactHome({ data }: { data: ImpactData }) {
               {hero.direction === "toward" ? "plus enclins à voter pour" : "moins enclins à voter pour"} <em>{hero.label}</em>
             </p>
             <p className="impact-hero-event">
-              suite à <a href={sitePath(`/events/${hero.eventId}`)}>{data.meta[hero.eventId]?.title}</a>
+              <span>suite à</span>
+              <a href={sitePath(`/events/${hero.eventId}`)} title={data.meta[hero.eventId]?.title}>{data.meta[hero.eventId]?.title}</a>
             </p>
           </div>
         </div>
       ) : (
-        <p className="impact-empty">Aucun événement analysé sur cette période.</p>
+        <p className="impact-empty">Aucun événement analysé.</p>
       )}
 
       <h2 className="impact-map-title">Les Français qui ont le plus bougé</h2>
@@ -138,7 +140,7 @@ export function ImpactHome({ data }: { data: ImpactData }) {
         </table>
       </div>
 
-      <div className="impact-replay">
+      <div className="impact-replay" aria-label="Choisir une semaine">
         <button
           type="button"
           onClick={() => {

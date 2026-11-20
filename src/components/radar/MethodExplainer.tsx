@@ -161,6 +161,22 @@ export function MethodExplainer() {
       </div>
 
       <div className="method-essential method-essential-bottom">
+        <details>
+          <summary>Ce qui est vérifié</summary>
+          <p>
+            Le modèle de propension s’appuie sur une enquête électorale de 2022. Sur des réponses
+            mises à l’écart, il améliore faiblement une estimation simple ; cela ne valide ni le
+            vote d’une personne ni les intentions pour 2027.
+          </p>
+          <p>
+            Le calage local reproduit les résultats agrégés observés dans certaines communes. Il
+            vérifie le calcul, pas le vote attribué à chaque profil synthétique.
+          </p>
+          <p>
+            Les réactions simulées aux événements ont été comparées aux variations de sondages.
+            Elles ne constituent pas une mesure des changements de vote observés.
+          </p>
+        </details>
         <p>
           <strong>Les sondages sont des observations.</strong> Ils proviennent de Sondax, d’après
           Wikipédia. Les points du graphique correspondent à la fin du terrain ; les courbes

@@ -15,7 +15,6 @@ export function RadarHeader({ active }: { active: "home" | "radar" }) {
         <Link {...cur("radar")} href="/radar">Le radar</Link>
         <Link href="/events">Événements</Link>
         <Link href="/candidates">Candidats</Link>
-        <Link href="/method">Méthode</Link>
       </nav>
     </header>
   );
