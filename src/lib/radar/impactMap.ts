@@ -1,10 +1,10 @@
 import type { AnalysisArtifact } from "./analysisArtifact";
 import { groupFamily } from "./groupFamilies";
-import { rankedSegments } from "./highlights";
+import { IMPACT_MIN_SHARE, rankedSegments } from "./highlights";
 
 /** One event's strongest reaction of a group family (level 1 + 2) for a candidate: s = signed net share of profiles (-1..1). */
 export type ImpactCell = { e: string; f1: string; f2: string; c: string; s: number };
-export const IMPACT_MIN_CELL = 0.04; // below 4 % of profiles: noise, not shipped to the client
+export const IMPACT_MIN_CELL = IMPACT_MIN_SHARE; // the same 5 % cutoff as event highlights, before rounding
 
 export function impactCells(analysis: AnalysisArtifact | null): ImpactCell[] {
   if (!analysis) return [];

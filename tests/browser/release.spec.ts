@@ -48,7 +48,7 @@ for (const theme of ["light", "dark"] as const) {
   test(`${theme} impact map contrast across all intensities`, async ({ page }) => {
     await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
     await page.goto(`${prefix}/`);
-    // Exercise both directions independently of the live feed and selected week.
+    // Exercise both directions independently of the live feed and selected event.
     await page.locator(".impact-map tbody").evaluate((body) => {
       body.replaceChildren();
       for (const direction of ["positive", "negative"]) {

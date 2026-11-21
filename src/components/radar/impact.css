@@ -8,18 +8,25 @@
 }
 .impact-map table { width: 100%; border-collapse: separate; border-spacing: 3px; min-width: 34rem; }
 .impact-map th { font: 650 0.75rem var(--font-body), sans-serif; color: var(--muted); text-align: left; padding: 0.3rem 0.4rem; }
-.impact-map thead th { text-align: center; }
+.impact-map thead th { text-align: center; height: 2rem; }
 .impact-map th button { all: unset; cursor: pointer; color: var(--ink); font-weight: 650; }
 .impact-map td { padding: 0; height: 2.4rem; background: var(--paper-deep); }
 .impact-map td a { display: grid; place-items: center; height: 100%; color: var(--ink); font: 650 0.8125rem var(--font-body), sans-serif; text-decoration: none; }
 .impact-map td a:hover, .impact-map td a:focus-visible { outline: 2px solid var(--ink); }
+.impact-map td.impact-cell-empty { background: color-mix(in srgb, var(--muted) 10%, var(--paper)); }
+.impact-map .impact-row-empty th button { color: var(--muted); cursor: default; font-weight: 500; }
+.impact-map .impact-row-empty th button:hover { color: var(--muted); text-decoration: none; }
 .impact-sub th { padding-left: 1.4rem; font-weight: 500; }
 .impact-sub td { height: 1.9rem; }
 .impact-map-title { margin: 0; text-align: center; font: 400 clamp(1.8rem, 4vw, 2.8rem)/1.05 var(--font-display), Georgia, serif; }
-.impact-replay { display: grid; grid-template-columns: auto 1fr auto; gap: 0.8rem; align-items: center; color: var(--muted); font-size: 0.8125rem; }
-.impact-replay button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; }
-.impact-replay button:disabled { opacity: 0.45; cursor: default; }
-.impact-replay input { accent-color: var(--orange); width: 100%; }
+.impact-event-slider { display: grid; gap: 0.5rem; }
+.impact-event-selection { display: flex; justify-content: flex-end; color: var(--muted); font-size: 0.8125rem; }
+.impact-event-slider input { accent-color: var(--orange); width: 100%; min-height: 44px; margin: 0; cursor: grab; }
+.impact-event-slider input:active { cursor: grabbing; }
+.impact-event-slider input:disabled { cursor: default; }
+.impact-comparison { border-top: 1px solid var(--rule); }
+.impact-event-slider input:focus-visible, .impact-map:focus-visible, .impact-map th button:focus-visible { outline: 2px solid var(--orange-dark); outline-offset: 3px; }
+.impact-comparison-content { display: grid; gap: 1.5rem; padding-block: 1.5rem 0; }
 @media (max-width: 640px) { .impact-hero { grid-template-columns: 1fr; } }
 .impact h1.panel-kicker { margin: 0; }
 .impact-map th button:hover { color: var(--orange-dark); text-decoration: underline; }
@@ -29,17 +36,33 @@
 .impact h1.impact-title { margin: 0; font: 400 clamp(1.9rem, 4.4vw, 3.8rem)/1.05 var(--font-display), Georgia, serif; letter-spacing: -0.02em; }
 .impact-title em { color: var(--orange-dark); font-weight: 350; }
 .impact-intro p { margin: 0; color: var(--text-2); font-size: clamp(1rem, 1.7vw, 1.25rem); line-height: 1.45; }
-.impact-hero { position: relative; display: grid; grid-template-columns: auto 1fr; gap: clamp(1.2rem, 4vw, 3rem); align-items: center; padding: clamp(2.2rem, 4vw, 3rem) clamp(1.2rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.2rem); border: 1px solid var(--ink); }
-.impact-hero > div { min-width: 0; }
+.impact-hero { position: relative; padding: clamp(2.2rem, 4vw, 3rem) clamp(1.2rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.2rem); border: 1px solid var(--ink); }
+.impact-hero-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+.impact-hero-event-title, .impact-effect-label, .impact-hero-effect { grid-column: 1; min-width: 0; }
+.impact-hero-event-title { grid-row: 1; }
+.impact-effect-label { grid-row: 2; }
+.impact-hero-effect { grid-row: 3; }
+.impact-hero-event-title .impact-label { display: block; margin-bottom: 0.6rem; color: var(--muted); }
+.impact-hero-event-title > a { display: block; min-height: 3.3em; font: 450 clamp(1.7rem, 3.6vw, 2.9rem)/1.1 var(--font-display), Georgia, serif; letter-spacing: -0.015em; overflow-wrap: anywhere; }
+.impact-hero-event-title > a { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.impact-hero-event-title > a { text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.impact-effect-label { margin: 1.4rem 0 1rem; display: flex; align-items: center; gap: 0.8rem; color: var(--muted); font-size: 0.85rem; }
+.impact-effect-label::before { content: ""; width: 2.5rem; height: 1px; background: var(--ink); }
+.impact-hero-effect { display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); gap: clamp(1rem, 3vw, 2.4rem); align-items: center; }
+.impact-hero-effect > * { min-width: 0; }
 .impact-kicker { position: absolute; top: -0.65rem; left: 1.5rem; padding: 0 0.6rem; background: var(--paper); color: var(--orange-dark); font: 750 0.75rem var(--font-body), sans-serif; letter-spacing: 0.12em; }
-.impact-hero-value { font: 400 clamp(4rem, 12vw, 8.5rem)/0.85 var(--font-display), Georgia, serif; color: var(--orange); }
+.impact-hero-value { font: 400 clamp(3.4rem, 8vw, 6rem)/0.85 var(--font-display), Georgia, serif; color: var(--orange); white-space: nowrap; }
 .impact-hero-what { margin: 0.35rem 0 1.1rem; color: var(--text-2); font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .impact-hero-what em { color: var(--orange-dark); font-style: italic; font-weight: 600; }
 .impact-hero-who { margin: 0; font: 450 clamp(1.5rem, 3vw, 2.4rem)/1.1 var(--font-display), Georgia, serif; }
-.impact-hero-event { display: flex; gap: 0.25em; min-width: 0; margin: 0; color: var(--muted); white-space: nowrap; }
-.impact-hero-event a { display: block; flex: 1; overflow: hidden; min-width: 0; color: var(--ink); font-weight: 650; text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 3px; text-overflow: ellipsis; white-space: nowrap; }
-.impact-hero-event a:hover { color: var(--orange-dark); }
+/* Reserve the largest text footprint at this viewport, keeping every name readable
+   and the box steady while selecting events or after fonts finish loading. */
+.impact-hero-copy, .impact-text-sizing { display: grid; }
+.impact-text-sizing > span { grid-area: 1 / 1; min-width: 0; overflow-wrap: anywhere; }
+.impact-hero-text { align-self: center; }
+.impact-hero-who { overflow-wrap: anywhere; }
+.impact-hero-event-title > a:hover { color: var(--orange-dark); }
 .impact-go { display: grid; justify-items: center; gap: 1.2rem; padding: clamp(2.5rem, 6vw, 4rem) 1rem; text-align: center; border-top: 3px solid var(--ink); }
 .impact-cta { display: inline-flex; align-items: center; gap: 0.7rem; min-height: 56px; padding: 0.9rem 1.8rem; text-align: left; background: var(--orange); color: #15191b; font: 700 1.05rem var(--font-body), sans-serif; text-decoration: none; transition: background 0.2s, gap 0.2s; }
 .impact-cta:hover, .impact-cta:focus-visible { gap: 1.1rem; background: var(--orange-dark); color: #fff; }
-@media (max-width: 640px) { .impact-hero { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .impact-hero-effect { grid-template-columns: 1fr; } }

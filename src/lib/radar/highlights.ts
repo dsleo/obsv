@@ -120,7 +120,7 @@ export function candidateSignal(analysis: AnalysisArtifact | null, candidateId: 
     : null;
 }
 
-/** Biggest "solde net" of an event: one group × candidate reaction (toward − away, as shown on the event page). Keeps its group and event info. */
+/** Biggest "solde net" of an event: one group × candidate reaction (toward − away, as shown on the event page). Keeps its group and event info; signals below 5 % are not highlighted. */
 export type TopSolde = {
   eventId: string;
   segmentId: string;
@@ -141,7 +141,7 @@ export function topSolde(analysis: AnalysisArtifact | null, exclude: string[] = 
     for (const [candidate, v] of Object.entries(contrast.candidateSummary ?? contrast.summary)) {
       const net = v.toward - v.away;
       const share = Math.abs(net) / contrast.sampledCount;
-      if (!exclude.includes(candidate) && net && share > (best?.share ?? 0))
+      if (!exclude.includes(candidate) && share >= IMPACT_MIN_SHARE && share > (best?.share ?? 0))
         best = {
           eventId: analysis.eventId,
           segmentId: segment.id,

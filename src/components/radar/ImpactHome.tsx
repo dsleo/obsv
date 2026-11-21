@@ -1,7 +1,6 @@
 "use client";
-import { Fragment, useEffect, useMemo, useState } from "react";
-import { Pause, Play } from "lucide-react";
-import { dayOffset, dayToIso, formatShortDate, pollCandidates } from "../../data/chartData";
+import { Fragment, useMemo, useState } from "react";
+import { dayToIso, pollCandidates } from "../../data/chartData";
 import { sitePath } from "../../lib/paths";
 import { L1_ORDER } from "../../lib/radar/groupFamilies";
 import type { TopSolde } from "../../lib/radar/highlights";
@@ -13,8 +12,22 @@ export type ImpactData = {
   meta: Record<string, { title: string; shortDate: string; pollDay: number }>;
   cells: ImpactCell[];
 };
-const HEAT_START = dayOffset("2026-10-27"); // earlier weeks have too few analyses
-const MAX_COLS = 6;
+const COLUMN_NUMBER: Record<string, number> = {
+  abstention: 0,
+  "le-pen": 1,
+  melenchon: 2,
+  philippe: 3,
+  attal: 4,
+  glucksmann: 5,
+  tondelier: 6,
+  roussel: 7,
+  retailleau: 8,
+  lisnard: 9,
+  zemmour: 10,
+  "dupont-aignan": 11,
+  arthaud: 12,
+  bardella: 13,
+};
 const label = (id: string) => (id === "abstention" ? "Abstention" : pollCandidates.find((c) => c.id === id)?.short ?? id);
 const pct = (s: number) => `${s > 0 ? "+" : "−"}${Math.round(Math.abs(s) * 100)} %`;
 // Colour = intensity (saturates at 40 %): orange = more inclined, teal-grey = less inclined.
@@ -22,30 +35,22 @@ const tint = (s: number) =>
   `color-mix(in srgb, ${s > 0 ? "var(--impact-positive)" : "var(--impact-negative)"} ${Math.round(Math.min(1, Math.abs(s) / 0.4) * 100)}%, transparent)`;
 
 export function ImpactHome({ data }: { data: ImpactData }) {
-  const last = Math.max(...Object.values(data.meta).map((m) => m.pollDay));
-  const weeks = Math.floor((last - HEAT_START) / 7);
-  const [week, setWeek] = useState(weeks);
+  const events = useMemo(
+    () => Object.keys(data.meta)
+      .filter((id) => data.heroes[id])
+      .sort((a, b) => data.meta[a].pollDay - data.meta[b].pollDay || a.localeCompare(b)),
+    [data],
+  );
+  const [eventIndex, setEventIndex] = useState(Math.max(0, events.length - 1));
   const [open, setOpen] = useState<string | null>(null);
-  const [playing, setPlaying] = useState(false);
-  useEffect(() => {
-    if (!playing) return;
-    const timer = setInterval(() => setWeek((current) => (current >= weeks ? (setPlaying(false), current) : current + 1)), 1200);
-    return () => clearInterval(timer);
-  }, [playing, weeks]);
-
-  // The headline and matrix always describe the same selected week.
-  const hero = useMemo(
-    () => Object.values(data.heroes)
-      .filter((item) => Math.floor((data.meta[item.eventId].pollDay - HEAT_START) / 7) === week)
-      .sort((a, b) => b.share - a.share)[0],
-    [data, week],
-  );
+  const selectedEventId = events[eventIndex];
+  const selectedEvent = data.meta[selectedEventId];
+  const hero = data.heroes[selectedEventId];
+  // Both views use only this event's contrasts; reactions are never accumulated.
   const cells = useMemo(
-    () => data.cells.filter((c) => Math.floor((data.meta[c.e].pollDay - HEAT_START) / 7) === week),
-    [data, week],
+    () => data.cells.filter((c) => c.e === selectedEventId),
+    [data, selectedEventId],
   );
-  const from = HEAT_START + 7 * week;
-  const weekLabel = formatShortDate(dayToIso(Math.min(from + 6, last)));
 
   // Strongest cell per (row, candidate). Rows are level 1 families; a click opens their level 2 rows.
   const strongest = (row: (c: ImpactCell) => string) => {
@@ -58,16 +63,15 @@ export function ImpactHome({ data }: { data: ImpactData }) {
   };
   const l1 = strongest((c) => c.f1);
   const l2 = strongest((c) => `${c.f1}>${c.f2}`);
-  const reach = new Map<string, number>();
-  for (const c of cells) reach.set(c.c, Math.max(reach.get(c.c) ?? 0, Math.abs(c.s)));
-  const cols = ["abstention", ...[...reach].filter(([id]) => id !== "abstention").sort((a, b) => b[1] - a[1]).slice(0, MAX_COLS).map(([id]) => id)];
-  const rows = L1_ORDER.filter((r) => cols.some((c) => l1.has(`${r}|${c}`)));
+  // Only this event's candidates appear, always in the same relative order.
+  const cols = [...new Set(cells.map((c) => c.c))]
+    .sort((a, b) => (COLUMN_NUMBER[a] ?? Number.MAX_SAFE_INTEGER) - (COLUMN_NUMBER[b] ?? Number.MAX_SAFE_INTEGER) || a.localeCompare(b));
   const l2Rows = (r: string) => [...new Set(cells.filter((c) => c.f1 === r).map((c) => c.f2))].sort();
 
   const cell = (m: Map<string, ImpactCell>, key: string, c: string) => {
     const v = m.get(`${key}|${c}`);
     return (
-      <td key={c}>
+      <td key={c} className={v ? undefined : "impact-cell-empty"} aria-label={v ? undefined : "Aucune valeur affichée pour ce groupe et cet événement"}>
         {v ? (
           <a href={sitePath(`/events/${v.e}`)} style={{ background: tint(v.s) }} title={`${data.meta[v.e]?.shortDate} · ${data.meta[v.e]?.title}`}>
             {pct(v.s)}
@@ -88,72 +92,98 @@ export function ImpactHome({ data }: { data: ImpactData }) {
 
       {hero ? (
         <div className="impact-hero">
-          <span className="impact-kicker">SEMAINE DU {formatShortDate(dayToIso(from))}</span>
-          <b className="impact-hero-value">{pct(hero.net / hero.sampled)}</b>
-          <div>
-            <p className="impact-hero-who">{hero.segmentName}</p>
-            <p className="impact-hero-what">
-              {hero.direction === "toward" ? "plus enclins à voter pour" : "moins enclins à voter pour"} <em>{hero.label}</em>
-            </p>
-            <p className="impact-hero-event">
-              <span>suite à</span>
-              <a href={sitePath(`/events/${hero.eventId}`)} title={data.meta[hero.eventId]?.title}>{data.meta[hero.eventId]?.title}</a>
-            </p>
+          <time className="impact-kicker" dateTime={dayToIso(selectedEvent.pollDay)}>{selectedEvent.shortDate}</time>
+          <div className="impact-hero-layout">
+            <div className="impact-hero-event-title">
+              <span className="impact-label">L’événement</span>
+              <a href={sitePath(`/events/${hero.eventId}`)} title={selectedEvent.title}>{selectedEvent.title}</a>
+            </div>
+            <div className="impact-effect-label">Effet simulé</div>
+            <div className="impact-hero-effect">
+              <b className="impact-hero-value">{pct(hero.net / hero.sampled)}</b>
+              <div className="impact-hero-copy">
+                <p className="impact-hero-who">{hero.segmentName}</p>
+                <p className="impact-hero-what">
+                  {hero.direction === "toward" ? "plus enclins à voter pour" : "moins enclins à voter pour"} <em>{hero.label}</em>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
         <p className="impact-empty">Aucun événement analysé.</p>
       )}
 
-      <h2 className="impact-map-title">Les Français qui ont le plus bougé</h2>
-      <div className="impact-map">
-        <table>
-          <thead>
-            <tr>
-              <th />
-              {cols.map((c) => (
-                <th key={c}>{label(c)}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <Fragment key={r}>
-                <tr>
-                  <th scope="row">
-                    <button type="button" aria-expanded={open === r} onClick={() => setOpen(open === r ? null : r)}>
-                      {r}
-                    </button>
-                  </th>
-                  {cols.map((c) => cell(l1, r, c))}
-                </tr>
-                {open === r &&
-                  l2Rows(r).map((sub) => (
-                    <tr key={`${r}>${sub}`} className="impact-sub">
-                      <th scope="row">{sub}</th>
-                      {cols.map((c) => cell(l2, `${r}>${sub}`, c))}
-                    </tr>
-                  ))}
-              </Fragment>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {selectedEvent && (
+        <div className="impact-event-slider" aria-label="Choisir un événement">
+          <div className="impact-event-selection">
+            <time dateTime={dayToIso(selectedEvent.pollDay)}>{selectedEvent.shortDate}</time>
+          </div>
+          <input
+            id="impact-event"
+            type="range"
+            min={0}
+            max={Math.max(0, events.length - 1)}
+            step={1}
+            value={eventIndex}
+            disabled={events.length < 2}
+            aria-label="Événement affiché"
+            aria-valuetext={`${selectedEvent.shortDate} · ${selectedEvent.title}`}
+            onChange={(e) => {
+              setEventIndex(Number(e.target.value));
+              setOpen(null);
+            }}
+          />
+        </div>
+      )}
 
-      <div className="impact-replay" aria-label="Choisir une semaine">
-        <button
-          type="button"
-          onClick={() => {
-            if (!playing && week >= weeks) setWeek(0);
-            setPlaying(!playing);
-          }}
-          aria-label={playing ? "Pause" : "Rejouer semaine par semaine"}
-        >
-          {playing ? <Pause size={16} /> : <Play size={16} />}
-        </button>
-        <input type="range" min={0} max={weeks} value={week} onChange={(e) => { setPlaying(false); setWeek(Number(e.target.value)); }} aria-label="Semaine affichée" />
-        <time>{weekLabel}</time>
-      </div>
+      {selectedEvent && (
+        <div className="impact-comparison">
+          <div className="impact-comparison-content">
+            <h2 className="impact-map-title">Les Français qui ont le plus bougé</h2>
+              <div className="impact-map" role="region" aria-label="Impacts de l’événement sélectionné par sous-population" tabIndex={0}>
+                <table style={{ minWidth: `${16 + cols.length * 5.5}rem` }}>
+                  <colgroup>
+                    <col style={{ width: "16rem" }} />
+                    {cols.map((c) => <col key={c} />)}
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th />
+                      {cols.map((c) => (
+                        <th key={c} scope="col">{label(c)}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {L1_ORDER.map((r) => {
+                      const hasValues = cols.some((c) => l1.has(`${r}|${c}`));
+                      return (
+                      <Fragment key={r}>
+                        <tr className={hasValues ? undefined : "impact-row-empty"}>
+                          <th scope="row">
+                            <button type="button" disabled={!hasValues} aria-expanded={open === r} onClick={() => setOpen(open === r ? null : r)}>
+                              {r}
+                            </button>
+                          </th>
+                          {cols.map((c) => cell(l1, r, c))}
+                        </tr>
+                        {open === r &&
+                          l2Rows(r).map((sub) => (
+                            <tr key={`${r}>${sub}`} className="impact-sub">
+                              <th scope="row">{sub}</th>
+                              {cols.map((c) => cell(l2, `${r}>${sub}`, c))}
+                            </tr>
+                          ))}
+                      </Fragment>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
