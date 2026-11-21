@@ -98,14 +98,16 @@ export function ImpactHome({ data }: { data: ImpactData }) {
               <span className="impact-label">L’événement</span>
               <a href={sitePath(`/events/${hero.eventId}`)} title={selectedEvent.title}>{selectedEvent.title}</a>
             </div>
-            <div className="impact-effect-label">Effet simulé</div>
-            <div className="impact-hero-effect">
-              <b className="impact-hero-value">{pct(hero.net / hero.sampled)}</b>
-              <div className="impact-hero-copy">
-                <p className="impact-hero-who">{hero.segmentName}</p>
-                <p className="impact-hero-what">
-                  {hero.direction === "toward" ? "plus enclins à voter pour" : "moins enclins à voter pour"} <em>{hero.label}</em>
-                </p>
+            <div className="impact-effect-panel">
+              <div className="impact-effect-label">Effet simulé</div>
+              <div className="impact-hero-effect">
+                <b className="impact-hero-value">{pct(hero.net / hero.sampled)}</b>
+                <div className="impact-hero-copy">
+                  <p className="impact-hero-who">{hero.segmentName}</p>
+                  <p className="impact-hero-what">
+                    {hero.direction === "toward" ? "plus enclins à voter pour" : "moins enclins à voter pour"} <em>{hero.label}</em>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
