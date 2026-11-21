@@ -37,13 +37,18 @@ const tint = (s: number) =>
 export function ImpactHome({ data }: { data: ImpactData }) {
   const events = useMemo(
     () => Object.keys(data.meta)
-      .filter((id) => data.heroes[id])
-      .sort((a, b) => data.meta[a].pollDay - data.meta[b].pollDay || a.localeCompare(b)),
+      .filter((id) => {
+        const hero = data.heroes[id];
+        return hero && Math.abs(hero.net / hero.sampled) >= 0.1;
+      })
+      .sort((a, b) => data.meta[a].pollDay - data.meta[b].pollDay || a.localeCompare(b))
+      .slice(-50),
     [data],
   );
   const [eventIndex, setEventIndex] = useState(Math.max(0, events.length - 1));
+  const activeEventIndex = Math.min(eventIndex, Math.max(0, events.length - 1));
   const [open, setOpen] = useState<string | null>(null);
-  const selectedEventId = events[eventIndex];
+  const selectedEventId = events[activeEventIndex];
   const selectedEvent = data.meta[selectedEventId];
   const hero = data.heroes[selectedEventId];
   // Both views use only this event's contrasts; reactions are never accumulated.
@@ -98,16 +103,14 @@ export function ImpactHome({ data }: { data: ImpactData }) {
               <span className="impact-label">L’événement</span>
               <a href={sitePath(`/events/${hero.eventId}`)} title={selectedEvent.title}>{selectedEvent.title}</a>
             </div>
-            <div className="impact-effect-panel">
-              <div className="impact-effect-label">Effet simulé</div>
-              <div className="impact-hero-effect">
-                <b className="impact-hero-value">{pct(hero.net / hero.sampled)}</b>
-                <div className="impact-hero-copy">
-                  <p className="impact-hero-who">{hero.segmentName}</p>
-                  <p className="impact-hero-what">
-                    {hero.direction === "toward" ? "plus enclins à voter pour" : "moins enclins à voter pour"} <em>{hero.label}</em>
-                  </p>
-                </div>
+            <div className="impact-effect-label">Effet simulé</div>
+            <div className="impact-hero-effect">
+              <b className="impact-hero-value">{pct(hero.net / hero.sampled)}</b>
+              <div className="impact-hero-copy">
+                <p className="impact-hero-who">{hero.segmentName}</p>
+                <p className="impact-hero-what">
+                  {hero.direction === "toward" ? "plus enclins à voter pour" : "moins enclins à voter pour"} <em>{hero.label}</em>
+                </p>
               </div>
             </div>
           </div>
@@ -127,7 +130,7 @@ export function ImpactHome({ data }: { data: ImpactData }) {
             min={0}
             max={Math.max(0, events.length - 1)}
             step={1}
-            value={eventIndex}
+            value={activeEventIndex}
             disabled={events.length < 2}
             aria-label="Événement affiché"
             aria-valuetext={`${selectedEvent.shortDate} · ${selectedEvent.title}`}

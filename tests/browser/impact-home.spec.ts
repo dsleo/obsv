@@ -14,8 +14,10 @@ const events = publishedEvents.flatMap((event) => {
   const analysis = loadAnalysis(event.id);
   const hero = topSolde(analysis, ["abstention"]);
   const meta = windowEvents.find((item) => item.id === event.id);
-  return hero && meta ? [{ ...meta, hero, cells: impactCells(analysis) }] : [];
-}).sort((a, b) => a.pollDay - b.pollDay || a.id.localeCompare(b.id));
+  return hero && meta && Math.abs(hero.net / hero.sampled) >= 0.1
+    ? [{ ...meta, hero, cells: impactCells(analysis) }]
+    : [];
+}).sort((a, b) => a.pollDay - b.pollDay || a.id.localeCompare(b.id)).slice(-50);
 
 test("homepage selects individual events and keeps the comparison synchronized", async ({ page }) => {
   test.setTimeout(90_000);
