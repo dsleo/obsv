@@ -64,7 +64,7 @@ test("homepage selects individual events and keeps the comparison synchronized",
     expect(new Set(headers).size).toBe(headers.length);
     await expect(page.locator(".impact-hero-event-title > a")).toHaveAttribute("href", `${prefix}/events/${event.id}`);
     await expect(page.locator(".impact-hero-event-title > a")).toHaveText(event.title);
-    await expect(page.locator(".impact-hero-text .impact-hero-who")).toHaveText(event.hero.segmentName);
+    await expect(page.locator(".impact-hero-copy .impact-hero-who")).toHaveText(event.hero.segmentName);
     const heroBox = (await page.locator(".impact-hero").boundingBox())!;
     expect(heroBox.height).toBeCloseTo(initialBox.height, 1);
     expect(heroBox.width).toBeCloseTo(initialBox.width, 1);
@@ -77,7 +77,7 @@ test("homepage selects individual events and keeps the comparison synchronized",
       await expect(row.locator("td a")).toHaveCount(0);
       await expect(row.locator("td:not(.impact-cell-empty)")).toHaveCount(0);
     }
-    const nameFits = await page.locator(".impact-hero-text .impact-hero-who").evaluate((name) => {
+    const nameFits = await page.locator(".impact-hero-copy .impact-hero-who").evaluate((name) => {
       const hero = name.closest(".impact-hero")!.getBoundingClientRect();
       const text = name.getBoundingClientRect();
       return text.left >= hero.left && text.right <= hero.right && text.bottom <= hero.bottom;
