@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { AnalysisArtifact } from "./analysisArtifact";
-import { topSolde } from "./highlights";
+import { qualifyingSegments, qualifyingSignals, topSolde } from "./highlights";
 import { impactCells } from "./impactMap";
 
 function analysis(toward: number, away = 0, sampled = 10_000, candidateLevel = true): AnalysisArtifact {
@@ -54,6 +54,7 @@ describe("the shared 5 % net-impact threshold", () => {
   it.each([200, 499])("excludes a net reaction of %i / 10,000 in both directions", (net) => {
     for (const artifact of [analysis(net), analysis(0, net)]) {
       expect(topSolde(artifact)).toBeNull();
+      expect(qualifyingSegments(artifact)).toEqual([]);
       expect(impactCells(artifact)).toEqual([]);
     }
   });
@@ -61,6 +62,7 @@ describe("the shared 5 % net-impact threshold", () => {
   it.each([500, 501])("includes a net reaction of %i / 10,000 in both directions", (net) => {
     for (const artifact of [analysis(net), analysis(0, net)]) {
       expect(topSolde(artifact)?.share).toBe(net / 10_000);
+      expect(qualifyingSegments(artifact)).toHaveLength(1);
       expect(impactCells(artifact)).toHaveLength(1);
     }
   });
@@ -81,6 +83,19 @@ describe("the shared 5 % net-impact threshold", () => {
     artifact.contrasts.retired.candidateSummary!.abstention = { toward: 900, away: 0, noClearChange: 9100 };
     expect(topSolde(artifact)?.candidate).toBe("abstention");
     expect(topSolde(artifact, ["abstention"])).toBeNull();
+  });
+
+
+  it("only displays qualifying reactions within a qualifying group", () => {
+    const artifact = analysis(500);
+    artifact.contrasts.retired.candidateSummary!.attal = { toward: 499, away: 0, noClearChange: 9501 };
+    expect(qualifyingSignals(qualifyingSegments(artifact)[0]).map((signal) => signal.candidate)).toEqual(["retailleau"]);
+  });
+
+  it("does not publish analyses with no filterable group", () => {
+    const artifact = analysis(500);
+    artifact.segments = [];
+    expect(qualifyingSegments(artifact)).toEqual([]);
   });
 
   it("handles missing analyses and empty samples", () => {

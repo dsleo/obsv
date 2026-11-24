@@ -3,35 +3,17 @@
 import { ArrowDownRight, ArrowUpRight, Info } from "lucide-react";
 import { useState } from "react";
 import type { AnalysisArtifact } from "../../lib/radar/analysisArtifact";
-import { rankedSegments, type RankedSegment } from "../../lib/radar/highlights";
+import { qualifyingSegments, qualifyingSignals, type RankedSegment } from "../../lib/radar/highlights";
 import { pct } from "../../lib/radar/labels";
-import { pollCandidates } from "../../data/chartData";
 
-const candidateLabels: Record<string, string> = Object.fromEntries([...pollCandidates.map((candidate) => [candidate.id, candidate.short]), ["abstention", "Abstention"]]);
-type Signal = { candidate: string; label: string; direction: "toward" | "away"; count: number };
-
-/** One signal per candidate: "plus enclins" and "moins enclins" net out (toward - away); a zero net is dropped. */
-function netSignals(group: RankedSegment): Signal[] {
-  const net = new Map<string, { label: string; count: number }>();
-  const add = (candidate: string, label: string, delta: number) =>
-    net.set(candidate, { label, count: (net.get(candidate)?.count ?? 0) + delta });
-  const summary = group.contrast.candidateSummary;
-  if (summary)
-    for (const [candidate, v] of Object.entries(summary)) add(candidate, candidateLabels[candidate] ?? candidate, v.toward - v.away);
-  else
-    for (const s of group.signals) add(s.bloc, s.label, s.direction === "toward" ? s.count : -s.count);
-  return [...net]
-    .filter(([, v]) => v.count !== 0)
-    .map(([candidate, v]) => ({ candidate, label: v.label, direction: v.count > 0 ? ("toward" as const) : ("away" as const), count: Math.abs(v.count) }))
-    .sort((a, b) => b.count - a.count);
-}
+type Signal = ReturnType<typeof qualifyingSignals>[number];
 
 const METHOD_NOTE = (n: number) =>
   `Pour chacun des ${n} profils synthétiques, le modèle estime une distribution complète d’intentions de vote dans deux scénarios : sans l’événement et avec l’événement. « Plus enclins » compte les profils dont la probabilité attribuée à un candidat augmente d’au moins deux points ; « moins enclins » applique le même seuil à la baisse. Pour un même candidat, les deux sens sont additionnés : seul le solde est affiché. Cliquer sur un solde affiche la réaction du profil qui a le plus bougé dans ce sens. Ces résultats décrivent une simulation exploratoire, pas un sondage ni un vote observé, et les groupes peuvent se recouper.`;
 
 function Reactions({ group }: { group: RankedSegment }) {
   const { contrast } = group;
-  const signals = netSignals(group).slice(0, 4);
+  const signals = qualifyingSignals(group).slice(0, 4);
   const [open, setOpen] = useState<string | null>(null);
   const quoteOf = (signal: Signal) => {
     const q = contrast.quotes?.[signal.candidate];
@@ -117,7 +99,7 @@ export function EventSubpopulationAnalysis({
   analysis: AnalysisArtifact | null;
   showAlternative?: boolean;
 }) {
-  const groups = rankedSegments(analysis).filter((group) => netSignals(group).length > 0);
+  const groups = qualifyingSegments(analysis);
   const [index, setIndex] = useState(0);
   const alternative = showAlternative ? analysis?.alternative : null;
   return (

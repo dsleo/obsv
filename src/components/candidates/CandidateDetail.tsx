@@ -8,9 +8,9 @@ import {
   LAST_POLL_DAY,
   pollCandidates,
   pollWindowLabel,
-  radarEvents,
 } from "../../data/radarData";
 import { candidateSignal, topImpactIds } from "../../lib/radar/highlights";
+import { publishedEvents } from "../../lib/radar/publishedEvents";
 import { loadAnalysis } from "../../lib/radar/loadAnalysis";
 import { currentPollValue, formatPct, getSmoothedPollValue } from "../../lib/chart";
 import { CandidateChart } from "./CandidateChart";
@@ -26,7 +26,7 @@ export function CandidateDetail({ candidateId }: { candidateId: string }) {
   const first = getSmoothedPollValue(candidate.id, FIRST_POLL_DAY);
   const current = currentPollValue(candidate.id);
   const netChange = current !== null && first !== null ? current - first : null;
-  const rows = radarEvents.flatMap((event): ImpactRow[] => {
+  const rows = publishedEvents.flatMap((event): ImpactRow[] => {
     const signal = candidateSignal(loadAnalysis(event.id), candidate.id);
     return signal
       ? [

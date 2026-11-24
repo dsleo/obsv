@@ -77,6 +77,30 @@ export function rankedSegments(
     .sort((a, b) => (b.signals[0]?.count ?? 0) - (a.signals[0]?.count ?? 0));
 }
 
+/** Net candidate reactions that meet the unrounded publication threshold. */
+export function qualifyingSignals(group: RankedSegment) {
+  const { contrast } = group;
+  if (contrast.sampledCount <= 0) return [];
+  const source = contrast.candidateSummary ?? contrast.summary;
+  const labels = contrast.candidateSummary ? candidateLabels : blocLabels;
+  return Object.entries(source)
+    .map(([candidate, value]) => {
+      const net = value.toward - value.away;
+      return {
+        candidate,
+        label: labels[candidate] ?? candidate,
+        direction: net > 0 ? ("toward" as const) : ("away" as const),
+        count: Math.abs(net),
+      };
+    })
+    .filter((signal) => signal.count / contrast.sampledCount >= IMPACT_MIN_SHARE)
+    .sort((a, b) => b.count - a.count);
+}
+
+export function qualifyingSegments(analysis: AnalysisArtifact | null): RankedSegment[] {
+  return rankedSegments(analysis).filter((group) => qualifyingSignals(group).length > 0);
+}
+
 /** The most impacted segment. */
 export const leadSegment = (analysis: AnalysisArtifact | null) =>
   rankedSegments(analysis)[0] ?? null;
