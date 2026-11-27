@@ -1,0 +1,1291 @@
+{
+  "schemaVersion": 2,
+  "eventId": "google-39323",
+  "methodVersion": "radar-probabilistic-v2",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "ontologyVersion": "fr-electorate-5",
+  "inputHash": "6622c94a8b6478b3",
+  "eventInputHash": "b1e4aa0b595b9cfe6319778fbdeb114647361d012865496c66dc6b9ac756a644",
+  "computedAt": "2026-11-27T05:47:51.062Z",
+  "evidenceGrade": "hypothesis",
+  "index": {
+    "frame": "complete_communes",
+    "rowCount": 115011
+  },
+  "alternative": {
+    "description": "Le gouvernement annonce une baisse du prix du gazole de seulement 5 à 8 centimes par litre dès le 1er novembre, au lieu des 12 à 18 centimes initialement prévus.",
+    "whatChanges": "La réduction plus modeste du prix du carburant est perçue comme insuffisante par les automobilistes et les routiers, ce qui réduit l'impact positif escompté sur leur pouvoir d'achat."
+  },
+  "segments": [
+    {
+      "id": "segment_1",
+      "name": "Employés et ouvriers résidant en communes de taille moyenne",
+      "mechanism": "La baisse du prix du gazole intéresse particulièrement les salariés employés et ouvriers qui utilisent un véhicule diesel pour leurs déplacements quotidiens dans des communes de taille moyenne, pour qui cette économie sur le carburant est notable.",
+      "reason": "Les salariés modestes habitant des communes intermédiaires sont souvent dépendants de leur véhicule diesel pour se rendre au travail.",
+      "all": [
+        "occupation.employee",
+        "geo.intermediate",
+        "commune_size.1000_plus"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Usage du carburant diesel",
+        "Sensibilité aux variations de prix du carburant"
+      ],
+      "count": 381,
+      "distinctCommunes": 24,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Prix des carburants : une baisse de 12 à 18 centimes par litre de gazole attendue dès le 1er novembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_2",
+      "name": "Couples avec enfants actifs en zones peu denses",
+      "mechanism": "Les familles actives avec enfants dans des zones intermédiaires ou peu denses sont concernées par la baisse du gazole car ce carburant est souvent nécessaire pour leurs déplacements quotidiens, notamment en zones peu desservies par les transports en commun.",
+      "reason": "Segment représentant des jeunes familles actives dans des zones non urbaines, avec usage probable de véhicule au gazole",
+      "all": [
+        "household.couple_with_children"
+      ],
+      "any": [
+        "geo.intermediate",
+        "geo.rural"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Usage du gazole pour déplacements familiaux",
+        "Opinion sur la baisse du prix du gazole"
+      ],
+      "count": 2003,
+      "distinctCommunes": 114,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Prix des carburants : une baisse de 12 à 18 centimes par litre de gazole attendue dès le 1er novembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    },
+    {
+      "id": "segment_3",
+      "name": "Ouvriers de 35 à 64 ans vivant en communes petites à moyennes",
+      "mechanism": "Ouvriers adultes, potentiellement utilisateurs de véhicules diesel pour leur activité professionnelle ou déplacements domicile-travail, bénéficient directement de la baisse annoncée du prix du gazole dès le 1er novembre.",
+      "reason": "Segmentation plus précise dans la catégorie ouvriers, dans des communes pas trop grandes, afin d’éviter un segment trop large",
+      "all": [
+        "occupation.worker"
+      ],
+      "any": [
+        "age.35_49",
+        "age.50_64"
+      ],
+      "none": [],
+      "membershipGaps": [],
+      "measurementNeeds": [
+        "Impact économique perçu de la baisse du prix du gazole",
+        "Habitudes de déplacement motorisé"
+      ],
+      "count": 8921,
+      "distinctCommunes": 152,
+      "status": "filterable_discovery_sample",
+      "repairs": [],
+      "counterfactual": {
+        "intervention": "Prix des carburants : une baisse de 12 à 18 centimes par litre de gazole attendue dès le 1er novembre",
+        "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+        "outcomeToMeasure": "intention de vote par bloc et abstention"
+      }
+    }
+  ],
+  "globalScenarios": [
+    {
+      "intervention": "Prix des carburants : une baisse de 12 à 18 centimes par litre de gazole attendue dès le 1er novembre",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "outcomeToMeasure": "intention de vote par bloc et abstention",
+      "reason": "Scénario global unique, formulé par gabarit : l’événement tel qu’énoncé comparé à son absence, sur l’ensemble de l’échantillon."
+    }
+  ],
+  "contrasts": {
+    "segment_3": {
+      "segmentId": "segment_3",
+      "segmentName": "Ouvriers de 35 à 64 ans vivant en communes petites à moyennes",
+      "matchedCount": 8921,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "abstention": {
+          "toward": 14,
+          "away": 0,
+          "noClearChange": 34
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 4,
+          "noClearChange": 44
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 14,
+          "away": 0,
+          "noClearChange": 34
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3262614313739481,
+          "after": 0.3205927367825787,
+          "change": -0.005668694591369372
+        },
+        "philippe": {
+          "before": 0.08126787071814622,
+          "after": 0.08139759885634947,
+          "change": 0.00012972813820325002
+        },
+        "attal": {
+          "before": 0.02316582314862208,
+          "after": 0.02349989363234037,
+          "change": 0.00033407048371828993
+        },
+        "glucksmann": {
+          "before": 0.07327138803316159,
+          "after": 0.07257247552596606,
+          "change": -0.0006989125071955316
+        },
+        "melenchon": {
+          "before": 0.1483754126636558,
+          "after": 0.14555609230832434,
+          "change": -0.0028193203553314727
+        },
+        "tondelier": {
+          "before": 0.017270883002805184,
+          "after": 0.016957561057744135,
+          "change": -0.0003133219450610486
+        },
+        "roussel": {
+          "before": 0.012062547210259301,
+          "after": 0.011924696599603976,
+          "change": -0.00013785061065532504
+        },
+        "retailleau": {
+          "before": 0.03447837069309181,
+          "after": 0.03376908852517939,
+          "change": -0.0007092821679124187
+        },
+        "lisnard": {
+          "before": 0.014937153064908578,
+          "after": 0.014701597524204281,
+          "change": -0.00023555554070429745
+        },
+        "zemmour": {
+          "before": 0.039207144293984635,
+          "after": 0.03858828594010865,
+          "change": -0.000618858353875984
+        },
+        "dupont-aignan": {
+          "before": 0.017957779730241322,
+          "after": 0.017539201429492623,
+          "change": -0.00041857830074869956
+        },
+        "arthaud": {
+          "before": 0.005749981354774276,
+          "after": 0.0056818655563005485,
+          "change": -0.00006811579847372778
+        },
+        "abstention": {
+          "before": 0.20599421471240106,
+          "after": 0.21721890626180737,
+          "change": 0.011224691549406307
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 46,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 1
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est une bonne nouvelle, ça va un peu soulager mon budget carburant qui est serré. Même là, ça reste un peu juste.",
+        "Je trouve que c'est bien, en tant qu'ouvrière j'utilise beaucoup la voiture, ça aide un peu sur les dépenses. Mais ça reste modeste.",
+        "Ça va me faire moins mal au porte-monnaie, donc c'est une petite bonne nouvelle. Je prends la voiture régulièrement pour le travail."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "Avec des dépenses de carburant légèrement allégées, je me sens un peu moins tentée de voter pour l'extrême droite qui joue souvent sur la colère économique.",
+          "profile": "Femme, 42 ans, ouvriers, Marseille",
+          "direction": "away",
+          "points": -2
+        },
+        "abstention": {
+          "text": "Cette baisse importante du gazole me rassure un peu car c'est une dépense importante pour nous et réduit la fatigue du quotidien.",
+          "profile": "Homme, 48 ans, ouvriers, Lyon 8e Arrondissement",
+          "direction": "toward",
+          "points": 5
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.005668694591369349,
+          "lo": -0.007651805300381737,
+          "hi": -0.003813380728743622,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.00012972813820323658,
+          "lo": -0.0012089374950442816,
+          "hi": 0.0016179606254853533,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.00033407048371829074,
+          "lo": -0.00014980491213406155,
+          "hi": 0.000732111446623457,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0006989125071954991,
+          "lo": -0.0012584398437953026,
+          "hi": -0.0001364249274124036,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0028193203553314385,
+          "lo": -0.0035922631127345167,
+          "hi": -0.002110710876573941,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.0003133219450610443,
+          "lo": -0.00044174365640859363,
+          "hi": -0.00018068806491966722,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.0001378506106553237,
+          "lo": -0.0002562594025551657,
+          "hi": -0.000027803854142451213,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0007092821679124055,
+          "lo": -0.0010544183071614607,
+          "hi": -0.0003703337274237508,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.0002355555407042982,
+          "lo": -0.0003967414263939756,
+          "hi": -0.00008698716508256112,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0006188583538759815,
+          "lo": -0.0009083314236549671,
+          "hi": -0.0002683207439607938,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0004185783007486917,
+          "lo": -0.0005936138548171962,
+          "hi": -0.0002838747729763664,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": -0.00006811579847372286,
+          "lo": -0.000151926295992751,
+          "hi": -0.000001934910669769198,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.011224691549406265,
+          "lo": 0.007197604080223449,
+          "hi": 0.015724468473736042,
+          "stable": true
+        }
+      }
+    },
+    "segment_2": {
+      "segmentId": "segment_2",
+      "segmentName": "Couples avec enfants actifs en zones peu denses",
+      "matchedCount": 2003,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 47
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 4,
+          "away": 0,
+          "noClearChange": 44
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3640907099058904,
+          "after": 0.3590788848421112,
+          "change": -0.005011825063779174
+        },
+        "philippe": {
+          "before": 0.0776772247071819,
+          "after": 0.08001463562838464,
+          "change": 0.002337410921202737
+        },
+        "attal": {
+          "before": 0.022142855826778513,
+          "after": 0.022424416004161934,
+          "change": 0.0002815601773834206
+        },
+        "glucksmann": {
+          "before": 0.06248658463464913,
+          "after": 0.06227073144394574,
+          "change": -0.00021585319070339254
+        },
+        "melenchon": {
+          "before": 0.0894410947220754,
+          "after": 0.08792440296938402,
+          "change": -0.001516691752691382
+        },
+        "tondelier": {
+          "before": 0.014746764955498015,
+          "after": 0.01451220680221875,
+          "change": -0.0002345581532792653
+        },
+        "roussel": {
+          "before": 0.010226843831028487,
+          "after": 0.01004587035919709,
+          "change": -0.00018097347183139607
+        },
+        "retailleau": {
+          "before": 0.02387102428398989,
+          "after": 0.023715588288871797,
+          "change": -0.00015543599511809447
+        },
+        "lisnard": {
+          "before": 0.010414864808844862,
+          "after": 0.010346129205734871,
+          "change": -0.00006873560310999109
+        },
+        "zemmour": {
+          "before": 0.04359746930926776,
+          "after": 0.04223757480871446,
+          "change": -0.0013598945005532936
+        },
+        "dupont-aignan": {
+          "before": 0.0200386076138771,
+          "after": 0.019765693794571094,
+          "change": -0.0002729138193060046
+        },
+        "arthaud": {
+          "before": 0.003478482894532301,
+          "after": 0.0034816211612352095,
+          "change": 0.0000031382667029086417
+        },
+        "abstention": {
+          "before": 0.2577874725063861,
+          "after": 0.264182244691469,
+          "change": 0.0063947721850828865
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 45,
+          "abstention": 1
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 2
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Ah, une baisse du prix du gazole, ça va sûrement m'aider pour mes trajets et courses. C'est une bonne nouvelle, même si je suis assez méfiante envers les annonces gouvernementales.",
+        "C'est toujours ça de pris sur le prix du gazole, ça aide pour aller au travail et ramener les courses. J'espère que ce sera bien appliqué.",
+        "Une baisse du prix du gazole, c'est bien pour les familles comme la mienne, ça aide à mieux gérer le budget sans stress."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "Je soutiens davantage Le Pen car elle promet souvent des mesures concrètes sur le pouvoir d'achat, et une baisse plus importante me rassure plus.",
+          "profile": "Femme, 30 ans, employés, Fronton",
+          "direction": "toward",
+          "points": 2
+        },
+        "abstention": {
+          "text": "Même une petite aide sur le prix du carburant rend les déplacements moins pénibles pour le budget.",
+          "profile": "Homme, 37 ans, professions intermédiaires, Le Rheu",
+          "direction": "toward",
+          "points": 3
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.005011825063779164,
+          "lo": -0.007400149328297905,
+          "hi": -0.0026909542779832,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.0023374109212027545,
+          "lo": 0.0009237294178105157,
+          "hi": 0.003848019755112106,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.000281560177383424,
+          "lo": -0.0001744468369932529,
+          "hi": 0.0007444622185571928,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.0002158531907033958,
+          "lo": -0.0007265993157658145,
+          "hi": 0.0002852732392111036,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00151669175269143,
+          "lo": -0.002495324503876368,
+          "hi": -0.0005561416682085457,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00023455815327927355,
+          "lo": -0.00044980484235738897,
+          "hi": -0.000014633921731619585,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00018097347183139106,
+          "lo": -0.00032922270526011864,
+          "hi": -0.00006013631490832732,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.0001554359951180907,
+          "lo": -0.0004010623417853747,
+          "hi": 0.00004876948763259946,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00006873560310999238,
+          "lo": -0.00023827145010283835,
+          "hi": 0.00011022127892403455,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0013598945005533006,
+          "lo": -0.001838532461890672,
+          "hi": -0.0008450056894222362,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.0002729138193059993,
+          "lo": -0.0005186719149699127,
+          "hi": -0.00005874811573300062,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.0000031382667029077112,
+          "lo": -0.00005761490327026486,
+          "hi": 0.00003177393633677625,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.006394772185082928,
+          "lo": 0.004023263368819544,
+          "hi": 0.009052171334159859,
+          "stable": false
+        }
+      }
+    },
+    "segment_1": {
+      "segmentId": "segment_1",
+      "segmentName": "Employés et ouvriers résidant en communes de taille moyenne",
+      "matchedCount": 381,
+      "sampledCount": 48,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "center": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "far_right": {
+          "toward": 0,
+          "away": 3,
+          "noClearChange": 45
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 48
+        },
+        "abstention": {
+          "toward": 5,
+          "away": 0,
+          "noClearChange": 43
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.36203653197001673,
+          "after": 0.35663425681153055,
+          "change": -0.0054022751584861806
+        },
+        "philippe": {
+          "before": 0.06146818044959074,
+          "after": 0.06368190102987756,
+          "change": 0.002213720580286821
+        },
+        "attal": {
+          "before": 0.017496730032942144,
+          "after": 0.018157809417547906,
+          "change": 0.0006610793846057623
+        },
+        "glucksmann": {
+          "before": 0.05942386597027424,
+          "after": 0.05936492934089349,
+          "change": -0.00005893662938075139
+        },
+        "melenchon": {
+          "before": 0.08625276396049412,
+          "after": 0.08551832474047834,
+          "change": -0.0007344392200157868
+        },
+        "tondelier": {
+          "before": 0.013996663388534177,
+          "after": 0.01389070613715943,
+          "change": -0.00010595725137474594
+        },
+        "roussel": {
+          "before": 0.009747699724142357,
+          "after": 0.009650967718501116,
+          "change": -0.00009673200564124136
+        },
+        "retailleau": {
+          "before": 0.02105900571785505,
+          "after": 0.020847638798405094,
+          "change": -0.0002113669194499547
+        },
+        "lisnard": {
+          "before": 0.009185886494786709,
+          "after": 0.009129448679618441,
+          "change": -0.000056437815168267416
+        },
+        "zemmour": {
+          "before": 0.04345013971868966,
+          "after": 0.04235041572310951,
+          "change": -0.00109972399558015
+        },
+        "dupont-aignan": {
+          "before": 0.01989204667302474,
+          "after": 0.019578582806756756,
+          "change": -0.00031346386626798436
+        },
+        "arthaud": {
+          "before": 0.003353420498136571,
+          "after": 0.003364228012220657,
+          "change": 0.000010807514084086329
+        },
+        "abstention": {
+          "before": 0.29263706540151263,
+          "after": 0.2978307907839011,
+          "change": 0.005193725382388492
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 36,
+          "abstention": 6
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 6
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "Une baisse des prix du gazole, ça peut vraiment soulager mon budget et celui des familles que j'accompagne.",
+        "Une baisse du gazole, c'est bien, mais ça reste quand même un budget important pour moi.",
+        "Une baisse du prix du gazole, c'est une bonne nouvelle même si c'est pas énorme, ça aide un peu à la fin du mois."
+      ],
+      "quotes": {
+        "abstention": {
+          "text": "Le prix un peu plus bas du gazole me soulage un peu, ce qui me motive un peu plus à ne pas m'abstenir, même si je reste méfiant envers les politiques.",
+          "profile": "Homme, 55 ans, employés, Tergnier",
+          "direction": "toward",
+          "points": 4
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.005402275158486281,
+          "lo": -0.007103141555014345,
+          "hi": -0.003933947449021361,
+          "stable": true
+        },
+        "philippe": {
+          "mean": 0.002213720580286814,
+          "lo": 0.0012574067574303962,
+          "hi": 0.0032222952867698106,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0006610793846057646,
+          "lo": 0.00019042798449524036,
+          "hi": 0.001079070195444178,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": -0.000058936629380769824,
+          "lo": -0.0005716968184266473,
+          "hi": 0.00047178729143710355,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.0007344392200157898,
+          "lo": -0.0015630745106482323,
+          "hi": 0.0002522749205918322,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": -0.00010595725137474135,
+          "lo": -0.0002637282155158916,
+          "hi": 0.00004897953766827977,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.00009673200564124056,
+          "lo": -0.0002416546159677272,
+          "hi": 0.00004569104317619892,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00021136691944996218,
+          "lo": -0.00039936623366793744,
+          "hi": -0.000025623687011734257,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": -0.00005643781516827148,
+          "lo": -0.00022886512047072812,
+          "hi": 0.00012365741466228595,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0010997239955801458,
+          "lo": -0.001456499080530559,
+          "hi": -0.0007493445112674293,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00031346386626797987,
+          "lo": -0.0005179770186222007,
+          "hi": -0.00013750672720679608,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 0.000010807514084087557,
+          "lo": 0.000004177490279873984,
+          "hi": 0.00001808358718254237,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.005193725382388521,
+          "lo": 0.002059086427379176,
+          "hi": 0.00819363567044763,
+          "stable": false
+        }
+      }
+    },
+    "global_1": {
+      "segmentId": "global_1",
+      "segmentName": "Whole-index scenario",
+      "matchedCount": 2000,
+      "sampledCount": 96,
+      "evidenceGrade": "unvalidated_llm_directional_hypothesis",
+      "comparator": "L’événement n’a pas lieu ou n’est pas relayé dans les médias",
+      "summary": {
+        "radical_left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "left": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "center": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "right": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "far_right": {
+          "toward": 1,
+          "away": 0,
+          "noClearChange": 95
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 90
+        }
+      },
+      "candidateSummary": {
+        "le-pen": {
+          "toward": 2,
+          "away": 0,
+          "noClearChange": 94
+        },
+        "philippe": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "attal": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "glucksmann": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "melenchon": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "tondelier": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "roussel": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "retailleau": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "lisnard": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "zemmour": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "dupont-aignan": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "arthaud": {
+          "toward": 0,
+          "away": 0,
+          "noClearChange": 96
+        },
+        "abstention": {
+          "toward": 3,
+          "away": 3,
+          "noClearChange": 90
+        }
+      },
+      "candidateLevels": {
+        "le-pen": {
+          "before": 0.3437376223021771,
+          "after": 0.3408244077757989,
+          "change": -0.0029132145263781606
+        },
+        "philippe": {
+          "before": 0.07981249969714008,
+          "after": 0.08189853556050844,
+          "change": 0.002086035863368363
+        },
+        "attal": {
+          "before": 0.022638349489318102,
+          "after": 0.023365132249670517,
+          "change": 0.0007267827603524152
+        },
+        "glucksmann": {
+          "before": 0.05931912050898518,
+          "after": 0.05943877943195288,
+          "change": 0.00011965892296769698
+        },
+        "melenchon": {
+          "before": 0.08541010201121967,
+          "after": 0.08495460382337765,
+          "change": -0.00045549818784201834
+        },
+        "tondelier": {
+          "before": 0.013991057791048082,
+          "after": 0.014002185758064544,
+          "change": 0.000011127967016461363
+        },
+        "roussel": {
+          "before": 0.009730156999699686,
+          "after": 0.009696848122445199,
+          "change": -0.00003330887725448706
+        },
+        "retailleau": {
+          "before": 0.03503745035147517,
+          "after": 0.034884803151618765,
+          "change": -0.000152647199856408
+        },
+        "lisnard": {
+          "before": 0.015190144086452523,
+          "after": 0.015190792788287168,
+          "change": 6.487018346448825e-7
+        },
+        "zemmour": {
+          "before": 0.04122090923544674,
+          "after": 0.040359583865524525,
+          "change": -0.000861325369922214
+        },
+        "dupont-aignan": {
+          "before": 0.018834270372973253,
+          "after": 0.0186173845859419,
+          "change": -0.00021688578703135328
+        },
+        "arthaud": {
+          "before": 0.0032084201033228,
+          "after": 0.003208768817084122,
+          "change": 3.487137613220233e-7
+        },
+        "abstention": {
+          "before": 0.2718698970507416,
+          "after": 0.27355817406972527,
+          "change": 0.0016882770189836638
+        }
+      },
+      "candidateTransitions": {
+        "le-pen": {
+          "le-pen": 78,
+          "abstention": 4
+        },
+        "philippe": {},
+        "attal": {},
+        "glucksmann": {},
+        "melenchon": {},
+        "tondelier": {},
+        "roussel": {},
+        "retailleau": {},
+        "lisnard": {},
+        "zemmour": {},
+        "dupont-aignan": {},
+        "arthaud": {},
+        "abstention": {
+          "abstention": 11,
+          "le-pen": 3
+        }
+      },
+      "note": "Effet estimé = différence entre deux distributions de vote simulées (avec / sans l’événement) sur des profils synthétiques, avec intervalle de bootstrap. Hypothèse non validée par des réponses humaines ; ce n’est pas une prévision de vote.",
+      "runs": 2,
+      "mechanisms": [
+        "C'est une bonne nouvelle cette baisse, ça va m'aider à payer moins pour aller bosser avec ma voiture.",
+        "C'est une bonne chose que le prix du gazole baisse, ça soulagera un peu notre budget retraite.",
+        "Ce serait bien que le prix du gazole baisse, mais bon, ça ne change pas grand-chose pour moi."
+      ],
+      "quotes": {
+        "le-pen": {
+          "text": "Je soutiens davantage Marine Le Pen quand le gouvernement fait baisser les prix du carburant, c'est un signe que mon quotidien est pris en compte.",
+          "profile": "Femme, 49 ans, professions intermédiaires, Boulogne-sur-Mer",
+          "direction": "toward",
+          "points": 3
+        }
+      },
+      "candidateEffect": {
+        "le-pen": {
+          "mean": -0.0029132145263781315,
+          "lo": -0.0043273656340374654,
+          "hi": -0.0014367250488013996,
+          "stable": false
+        },
+        "philippe": {
+          "mean": 0.0020860358633683126,
+          "lo": 0.0011423452861976215,
+          "hi": 0.0029669336433906742,
+          "stable": false
+        },
+        "attal": {
+          "mean": 0.0007267827603524129,
+          "lo": 0.00044184309249668997,
+          "hi": 0.0010826231465856158,
+          "stable": false
+        },
+        "glucksmann": {
+          "mean": 0.00011965892296769474,
+          "lo": -0.0001913885251542066,
+          "hi": 0.0004790840537981329,
+          "stable": false
+        },
+        "melenchon": {
+          "mean": -0.00045549818784198056,
+          "lo": -0.0009385733676824762,
+          "hi": 0.0000442496796054675,
+          "stable": false
+        },
+        "tondelier": {
+          "mean": 0.00001112796701645054,
+          "lo": -0.00007951513030589174,
+          "hi": 0.00009368881662105916,
+          "stable": false
+        },
+        "roussel": {
+          "mean": -0.000033308877254489334,
+          "lo": -0.00009165681549207226,
+          "hi": 0.000025192187895607736,
+          "stable": false
+        },
+        "retailleau": {
+          "mean": -0.00015264719985643222,
+          "lo": -0.0004913424007672364,
+          "hi": 0.00018962979288260397,
+          "stable": false
+        },
+        "lisnard": {
+          "mean": 6.487018346432201e-7,
+          "lo": -0.00011830235240131362,
+          "hi": 0.00012385691432348283,
+          "stable": false
+        },
+        "zemmour": {
+          "mean": -0.0008613253699222253,
+          "lo": -0.0012061096053971375,
+          "hi": -0.0005528556404388601,
+          "stable": false
+        },
+        "dupont-aignan": {
+          "mean": -0.00021688578703135339,
+          "lo": -0.000375378454286472,
+          "hi": -0.00009078829470758506,
+          "stable": false
+        },
+        "arthaud": {
+          "mean": 3.487137613208713e-7,
+          "lo": -0.000030193522707566765,
+          "hi": 0.00001476595592947905,
+          "stable": false
+        },
+        "abstention": {
+          "mean": 0.001688277018983767,
+          "lo": -0.00004689061475328787,
+          "hi": 0.0034748098693808244,
+          "stable": false
+        }
+      }
+    }
+  },
+  "note": "Ces hypothèses portent sur l’exposition à l’événement de profils synthétiques. Les réactions directionnelles sont exploratoires et doivent être validées auprès de personnes réelles ; aucun déplacement électoral n’est estimé.",
+  "review": {
+    "status": "automatic",
+    "contentHash": "bee881fdeafd573a3ef54c7deb4eaeb69902d351e1c2d090a60e1d1f614e0d20"
+  }
+}
